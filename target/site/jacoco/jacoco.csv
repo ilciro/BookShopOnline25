@@ -7,7 +7,7 @@ BookShopOnline25 Maven Webapp,laptop.database.negozio,NegozioDao,21,122,2,8,6,37
 BookShopOnline25 Maven Webapp,laptop.database.negozio,MemoriaNegozio,0,214,0,12,0,44,0,13,0,7
 BookShopOnline25 Maven Webapp,laptop.database.negozio,PersistenzaNegozio,6,9,0,0,3,3,3,2,3,2
 BookShopOnline25 Maven Webapp,laptop.database.negozio,CsvNegozio,6,238,6,16,2,48,6,11,0,6
-BookShopOnline25 Maven Webapp,laptop.database.cartacredito,PersistenzaCC,23,0,2,0,8,0,5,0,4,0
+BookShopOnline25 Maven Webapp,laptop.database.cartacredito,PersistenzaCC,29,0,2,0,9,0,5,0,4,0
 BookShopOnline25 Maven Webapp,laptop.database.cartacredito,MemoriaCartaCredito,275,0,22,0,56,0,15,0,4,0
 BookShopOnline25 Maven Webapp,laptop.database.cartacredito,CsvCartaCredito,219,0,16,0,46,0,13,0,5,0
 BookShopOnline25 Maven Webapp,laptop.database.cartacredito,CartaCreditoDao,123,0,4,0,32,0,5,0,3,0
@@ -17,7 +17,7 @@ BookShopOnline25 Maven Webapp,laptop.controller.secondouclogin,ControllerAggiorn
 BookShopOnline25 Maven Webapp,laptop.controller.secondouclogin,ControllerLogin,96,220,14,15,18,48,11,11,1,2
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerGestioneUtente,271,0,20,0,48,0,18,0,5,0
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerGestione,825,0,56,0,139,0,49,0,10,0
-BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerReport,231,0,20,0,44,0,21,0,6,0
+BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerReport,72,159,8,12,14,30,8,13,1,5
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerRaccolta,386,0,38,0,77,0,34,0,7,0
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerVisualizzaOrdini,104,0,10,0,20,0,11,0,4,0
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerUtenti,92,0,8,0,19,0,10,0,4,0
@@ -38,7 +38,7 @@ BookShopOnline25 Maven Webapp,laptop.database.giornale,GiornaleDao,49,392,3,9,14
 BookShopOnline25 Maven Webapp,laptop.database.giornale,MemoriaGiornale,1,359,3,15,1,70,3,13,0,7
 BookShopOnline25 Maven Webapp,laptop.database.giornale,CsvGiornale,116,775,44,62,16,161,37,35,1,18
 BookShopOnline25 Maven Webapp,laptop.database.giornale,PersistenzaGiornale,16,3,0,0,6,1,6,1,6,1
-BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerCheckPagamentoData,150,659,34,38,31,97,25,27,1,5
+BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerCheckPagamentoData,134,570,30,36,27,86,21,27,1,6
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerScegliNegozio,15,124,4,10,3,20,4,10,0,4
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerDownload,9,335,9,25,1,56,9,14,0,5
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerPagamentoCC,205,97,20,4,36,26,18,4,4,2
@@ -68,14 +68,14 @@ BookShopOnline25 Maven Webapp,laptop.database.rivista,MemoriaRivista,1,357,4,14,
 BookShopOnline25 Maven Webapp,laptop.database.users,PersistenzaUtente,14,3,0,0,5,1,5,1,5,1
 BookShopOnline25 Maven Webapp,laptop.database.users,CsvUtente,154,468,33,33,29,92,28,19,2,12
 BookShopOnline25 Maven Webapp,laptop.database.users,MemoriaUtente,41,286,3,9,13,59,4,8,1,5
-BookShopOnline25 Maven Webapp,laptop.database.users,UsersDao,450,187,14,4,117,46,15,6,7,5
-BookShopOnline25 Maven Webapp,laptop.database.report,ReportDao,251,5,20,0,67,2,17,2,6,2
-BookShopOnline25 Maven Webapp,laptop.database.report,CsvReport,125,94,13,3,26,20,11,5,4,4
-BookShopOnline25 Maven Webapp,laptop.database.report,MemoriaReport,98,162,6,4,23,32,7,5,3,3
+BookShopOnline25 Maven Webapp,laptop.database.users,UsersDao,374,193,14,4,101,48,15,7,7,6
+BookShopOnline25 Maven Webapp,laptop.database.report,ReportDao,82,179,9,11,18,53,9,11,1,8
+BookShopOnline25 Maven Webapp,laptop.database.report,CsvReport,110,109,13,3,22,24,9,7,2,6
+BookShopOnline25 Maven Webapp,laptop.database.report,MemoriaReport,7,253,1,9,2,53,2,10,1,5
 BookShopOnline25 Maven Webapp,laptop.database.report,PersistenzaReport,8,4,0,0,4,2,4,2,4,2
 BookShopOnline25 Maven Webapp,laptop.database.fattura,ContrassegnoDao,22,136,2,4,6,38,2,5,0,4
 BookShopOnline25 Maven Webapp,laptop.database.fattura,CsvFattura,13,305,2,14,5,65,3,13,1,7
 BookShopOnline25 Maven Webapp,laptop.database.fattura,PersistenzaFattura,6,9,0,0,3,2,3,2,3,2
 BookShopOnline25 Maven Webapp,laptop.database.fattura,MemoriaFattura,0,237,1,5,0,48,1,8,0,6
-BookShopOnline25 Maven Webapp,laptop.utilities,ConnToDb,16,141,3,3,4,45,3,8,0,8
+BookShopOnline25 Maven Webapp,laptop.utilities,ConnToDb,39,118,3,3,11,38,3,8,0,8
 BookShopOnline25 Maven Webapp,laptop.controller,ControllerSystemState,28,68,0,2,12,29,8,19,8,18

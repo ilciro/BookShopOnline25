@@ -48,11 +48,13 @@ public class ControllerDownload {
 	private static final String FILE="file";
 
 
+
 	private void acquistaLibro(String persistenza) throws DocumentException, IOException, URISyntaxException, CsvValidationException, IdException, ClassNotFoundException {
   		PersistenzaLibro pL;
 		l.setId(vis.getId());
 		l.scarica(vis.getId());
 		l.leggi(vis.getId());
+
 
 		if(persistenza.equals(DATABASE)) pL=new LibroDao();
 		else if(persistenza.equals(FILE)) pL=new CsvLibro();

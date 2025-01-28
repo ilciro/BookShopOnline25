@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: primouc.TestControllerAcquista
 -------------------------------------------------------------------------------
-Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.594 s - in primouc.TestControllerAcquista
+Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.342 s - in primouc.TestControllerAcquista

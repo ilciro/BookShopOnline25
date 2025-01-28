@@ -38,7 +38,7 @@ class TestControllerPagamentoCash {
     @ValueSource(strings = {"database","file","memoria"})
     void testControllaG(String strings) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
         vis.setMetodoP("cash");
-        vis.setId(1);
+        vis.setId(2);
         vis.setTypeAsDaily();
         cPCash.controlla("francesca","violi","via gerbere 8","",strings);
         assertEquals("cash",vis.getMetodoP());

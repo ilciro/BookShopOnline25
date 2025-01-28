@@ -193,11 +193,11 @@ public class RivistaDao extends PersistenzaRivista{
 
     @Override
     public void initializza() throws IOException, CsvValidationException {
-<span class="fc" id="L196">        Logger.getLogger(&quot;crea db sql&quot;).log(Level.INFO, &quot;\n creating tables ..&quot;);</span>
+<span class="fc" id="L196">        Logger.getLogger(&quot;crea db sql per le riviste&quot;).log(Level.INFO, &quot;\n creating tables ro magazine ..&quot;);</span>
         try{
 <span class="pc bpc" id="L198" title="1 of 2 branches missed.">            if(vis.isPopulated())</span>
             {
-<span class="fc" id="L200">                Logger.getLogger(&quot; crea db if&quot;).log(Level.INFO, &quot; database already populated&quot;);</span>
+<span class="fc" id="L200">                Logger.getLogger(&quot; crea tabella riviste if&quot;).log(Level.INFO, &quot; table magazines already populated&quot;);</span>
             }
             else {
 <span class="nc" id="L203">                ConnToDb.creaPopolaDb();</span>
@@ -205,7 +205,7 @@ public class RivistaDao extends PersistenzaRivista{
             }
 <span class="nc" id="L206">        }catch (FileNotFoundException e)</span>
         {
-<span class="nc" id="L208">            Logger.getLogger(&quot;crea db &quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta .&quot;, e);</span>
+<span class="nc" id="L208">            Logger.getLogger(&quot;crea tabella riviste &quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella rivista.&quot;, e);</span>
 
 <span class="fc" id="L210">        }</span>
 <span class="fc" id="L211">    }</span>

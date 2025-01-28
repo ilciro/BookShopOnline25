@@ -182,11 +182,11 @@ public class GiornaleDao extends PersistenzaGiornale{
 
     @Override
     public void initializza()  {
-<span class="fc" id="L185">        Logger.getLogger(&quot;crea db sql&quot;).log(Level.INFO, &quot;\n creating tables ..&quot;);</span>
+<span class="fc" id="L185">        Logger.getLogger(&quot;crea db sql per i giornali&quot;).log(Level.INFO, &quot;\n creating tables daily ..&quot;);</span>
         try{
 <span class="pc bpc" id="L187" title="1 of 2 branches missed.">            if(vis.isPopulated())</span>
             {
-<span class="fc" id="L189">                Logger.getLogger(&quot; crea db if&quot;).log(Level.INFO, &quot; database already populated&quot;);</span>
+<span class="fc" id="L189">                Logger.getLogger(&quot; crea tabella giornali if&quot;).log(Level.INFO, &quot; table daily already populated&quot;);</span>
             }
             else {
 <span class="nc" id="L192">                ConnToDb.creaPopolaDb();</span>
@@ -194,7 +194,7 @@ public class GiornaleDao extends PersistenzaGiornale{
             }
 <span class="nc" id="L195">        }catch (FileNotFoundException e)</span>
         {
-<span class="nc" id="L197">            Logger.getLogger(&quot;crea db &quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta .&quot;, e);</span>
+<span class="nc" id="L197">            Logger.getLogger(&quot;crea tabella giornale &quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nei gironali.&quot;, e);</span>
 
 <span class="fc" id="L199">        }</span>
 <span class="fc" id="L200">    }</span>

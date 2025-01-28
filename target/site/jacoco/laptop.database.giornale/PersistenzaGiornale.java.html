@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 <span class="fc" id="L15">public class PersistenzaGiornale {</span>
-<span class="nc" id="L16">    public  boolean inserisciGiornale(Giornale g) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {return true;}</span>
+<span class="nc" id="L16">    public  boolean inserisciGiornale(Giornale g) throws CsvValidationException, IOException,  ClassNotFoundException {return true;}</span>
 <span class="nc" id="L17">    public  boolean removeGiornaleById(Giornale g) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {return false;}</span>
 <span class="nc" id="L18">    public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {return FXCollections.emptyObservableList();}</span>
 <span class="nc" id="L19">    public ObservableList&lt;Giornale&gt; getGiornaleByIdTitoloAutoreLibro(Giornale g) throws CsvValidationException, IOException, IdException, ClassNotFoundException {return FXCollections.emptyObservableList();}</span>
