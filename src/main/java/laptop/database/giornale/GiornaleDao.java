@@ -182,6 +182,10 @@ public class GiornaleDao extends PersistenzaGiornale{
 
     @Override
     public void initializza()  {
+        extracted();
+    }
+
+    private void extracted() {
         Logger.getLogger("crea db sql per i giornali").log(Level.INFO, "\n creating tables daily ..");
         try{
             if(vis.isPopulated())

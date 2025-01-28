@@ -198,6 +198,11 @@ public class LibroDao extends PersistenzaLibro{
 
     @Override
     public void initializza()  {
+        extracted();
+
+    }
+
+    private void extracted() {
         Logger.getLogger("crea db sql per i libri").log(Level.INFO, "\n creating tables books ..");
         try{
             if(vis.isPopulated())
@@ -213,7 +218,6 @@ public class LibroDao extends PersistenzaLibro{
             Logger.getLogger("crea tabella libri ").log(Level.SEVERE, "\n eccezione ottenuta nei libri .", e);
 
         }
-
     }
 
 

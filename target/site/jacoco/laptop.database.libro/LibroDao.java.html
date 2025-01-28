@@ -198,43 +198,47 @@ public class LibroDao extends PersistenzaLibro{
 
     @Override
     public void initializza()  {
-<span class="fc" id="L201">        Logger.getLogger(&quot;crea db sql per i libri&quot;).log(Level.INFO, &quot;\n creating tables books ..&quot;);</span>
+<span class="fc" id="L201">        extracted();</span>
+
+<span class="fc" id="L203">    }</span>
+
+    private void extracted() {
+<span class="fc" id="L206">        Logger.getLogger(&quot;crea db sql per i libri&quot;).log(Level.INFO, &quot;\n creating tables books ..&quot;);</span>
         try{
-<span class="fc bfc" id="L203" title="All 2 branches covered.">            if(vis.isPopulated())</span>
+<span class="fc bfc" id="L208" title="All 2 branches covered.">            if(vis.isPopulated())</span>
             {
-<span class="fc" id="L205">                Logger.getLogger(&quot; crea tabella libri if&quot;).log(Level.INFO, &quot; table books already populated&quot;);</span>
+<span class="fc" id="L210">                Logger.getLogger(&quot; crea tabella libri if&quot;).log(Level.INFO, &quot; table books already populated&quot;);</span>
             }
             else {
-<span class="fc" id="L208">                ConnToDb.creaPopolaDb();</span>
-<span class="fc" id="L209">                vis.setPopulated(true);</span>
+<span class="fc" id="L213">                ConnToDb.creaPopolaDb();</span>
+<span class="fc" id="L214">                vis.setPopulated(true);</span>
             }
-<span class="nc" id="L211">        }catch (FileNotFoundException e)</span>
+<span class="nc" id="L216">        }catch (FileNotFoundException e)</span>
         {
-<span class="nc" id="L213">            Logger.getLogger(&quot;crea tabella libri &quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nei libri .&quot;, e);</span>
+<span class="nc" id="L218">            Logger.getLogger(&quot;crea tabella libri &quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nei libri .&quot;, e);</span>
 
-<span class="fc" id="L215">        }</span>
-
-<span class="fc" id="L217">    }</span>
+<span class="fc" id="L220">        }</span>
+<span class="fc" id="L221">    }</span>
 
 
     private String[] retLibro(Libro l)
     {
-<span class="fc" id="L222">        String [] roba=new String[13];</span>
-<span class="fc" id="L223">        roba[0]=l.getTitolo();</span>
-<span class="fc" id="L224">        roba[1]= String.valueOf(l.getNrPagine());</span>
-<span class="fc" id="L225">        roba[2]=l.getCodIsbn();</span>
-<span class="fc" id="L226">        roba[3]=l.getEditore();</span>
-<span class="fc" id="L227">        roba[4]=l.getAutore();</span>
-<span class="fc" id="L228">        roba[5]=l.getLingua();</span>
-<span class="fc" id="L229">        roba[6]=l.getCategoria();</span>
-<span class="fc" id="L230">        roba[7]= String.valueOf(l.getDataPubb());</span>
-<span class="fc" id="L231">        roba[8]=l.getRecensione();</span>
-<span class="fc" id="L232">        roba[9]= String.valueOf(l.getNrCopie());</span>
-<span class="fc" id="L233">        roba[10]=l.getDesc();</span>
-<span class="fc" id="L234">        roba[11]= String.valueOf(l.getDisponibilita());</span>
-<span class="fc" id="L235">        roba[12]= String.valueOf(l.getPrezzo());</span>
+<span class="fc" id="L226">        String [] roba=new String[13];</span>
+<span class="fc" id="L227">        roba[0]=l.getTitolo();</span>
+<span class="fc" id="L228">        roba[1]= String.valueOf(l.getNrPagine());</span>
+<span class="fc" id="L229">        roba[2]=l.getCodIsbn();</span>
+<span class="fc" id="L230">        roba[3]=l.getEditore();</span>
+<span class="fc" id="L231">        roba[4]=l.getAutore();</span>
+<span class="fc" id="L232">        roba[5]=l.getLingua();</span>
+<span class="fc" id="L233">        roba[6]=l.getCategoria();</span>
+<span class="fc" id="L234">        roba[7]= String.valueOf(l.getDataPubb());</span>
+<span class="fc" id="L235">        roba[8]=l.getRecensione();</span>
+<span class="fc" id="L236">        roba[9]= String.valueOf(l.getNrCopie());</span>
+<span class="fc" id="L237">        roba[10]=l.getDesc();</span>
+<span class="fc" id="L238">        roba[11]= String.valueOf(l.getDisponibilita());</span>
+<span class="fc" id="L239">        roba[12]= String.valueOf(l.getPrezzo());</span>
 
-<span class="fc" id="L237">        return  roba;</span>
+<span class="fc" id="L241">        return  roba;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

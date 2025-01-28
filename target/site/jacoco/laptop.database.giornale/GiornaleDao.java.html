@@ -182,21 +182,25 @@ public class GiornaleDao extends PersistenzaGiornale{
 
     @Override
     public void initializza()  {
-<span class="fc" id="L185">        Logger.getLogger(&quot;crea db sql per i giornali&quot;).log(Level.INFO, &quot;\n creating tables daily ..&quot;);</span>
+<span class="fc" id="L185">        extracted();</span>
+<span class="fc" id="L186">    }</span>
+
+    private void extracted() {
+<span class="fc" id="L189">        Logger.getLogger(&quot;crea db sql per i giornali&quot;).log(Level.INFO, &quot;\n creating tables daily ..&quot;);</span>
         try{
-<span class="pc bpc" id="L187" title="1 of 2 branches missed.">            if(vis.isPopulated())</span>
+<span class="pc bpc" id="L191" title="1 of 2 branches missed.">            if(vis.isPopulated())</span>
             {
-<span class="fc" id="L189">                Logger.getLogger(&quot; crea tabella giornali if&quot;).log(Level.INFO, &quot; table daily already populated&quot;);</span>
+<span class="fc" id="L193">                Logger.getLogger(&quot; crea tabella giornali if&quot;).log(Level.INFO, &quot; table daily already populated&quot;);</span>
             }
             else {
-<span class="nc" id="L192">                ConnToDb.creaPopolaDb();</span>
-<span class="nc" id="L193">                vis.setPopulated(true);</span>
+<span class="nc" id="L196">                ConnToDb.creaPopolaDb();</span>
+<span class="nc" id="L197">                vis.setPopulated(true);</span>
             }
-<span class="nc" id="L195">        }catch (FileNotFoundException e)</span>
+<span class="nc" id="L199">        }catch (FileNotFoundException e)</span>
         {
-<span class="nc" id="L197">            Logger.getLogger(&quot;crea tabella giornale &quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nei gironali.&quot;, e);</span>
+<span class="nc" id="L201">            Logger.getLogger(&quot;crea tabella giornale &quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nei gironali.&quot;, e);</span>
 
-<span class="fc" id="L199">        }</span>
-<span class="fc" id="L200">    }</span>
+<span class="fc" id="L203">        }</span>
+<span class="fc" id="L204">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

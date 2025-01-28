@@ -193,6 +193,10 @@ public class RivistaDao extends PersistenzaRivista{
 
     @Override
     public void initializza() throws IOException, CsvValidationException {
+        extracted();
+    }
+
+    private void extracted() {
         Logger.getLogger("crea db sql per le riviste").log(Level.INFO, "\n creating tables ro magazine ..");
         try{
             if(vis.isPopulated())

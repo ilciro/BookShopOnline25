@@ -143,9 +143,15 @@ public class MemoriaLibro extends PersistenzaLibro{
         }
 
 
+        status = isStatus(l, status);
+
+        return status;
+    }
+
+    private boolean isStatus(Libro l, boolean status) throws IOException {
         for(int i=1;i<=list.size();i++)
         {
-            if(i==l.getId()) {
+            if(i== l.getId()) {
                 status = list.remove(list.get(i-1));
             }
         }
@@ -167,7 +173,6 @@ public class MemoriaLibro extends PersistenzaLibro{
                 oos.writeObject(list);
             }
         }
-
         return status;
     }
 }

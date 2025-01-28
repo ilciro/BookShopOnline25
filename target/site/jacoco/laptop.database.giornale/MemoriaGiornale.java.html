@@ -140,32 +140,37 @@ import java.util.ArrayList;
 
         }
 
-<span class="fc bfc" id="L143" title="All 2 branches covered.">        for(int i=1;i&lt;=list.size();i++)</span>
+<span class="fc" id="L143">        status = isStatus(g, status);</span>
+
+<span class="fc" id="L145">        return status;</span>
+    }
+
+    private boolean isStatus(Giornale g, boolean status) throws IOException {
+<span class="fc bfc" id="L149" title="All 2 branches covered.">        for(int i=1;i&lt;=list.size();i++)</span>
         {
-<span class="fc bfc" id="L145" title="All 2 branches covered.">            if(i==g.getId()) {</span>
-<span class="fc" id="L146">                status = list.remove(list.get(i-1));</span>
+<span class="fc bfc" id="L151" title="All 2 branches covered.">            if(i== g.getId()) {</span>
+<span class="fc" id="L152">                status = list.remove(list.get(i-1));</span>
             }
         }
 
-<span class="fc" id="L150">        Path path = Path.of(SERIALIZZAZIONE);</span>
+<span class="fc" id="L156">        Path path = Path.of(SERIALIZZAZIONE);</span>
         try {
-<span class="fc" id="L152">            Files.delete(path);</span>
-<span class="pc bpc" id="L153" title="1 of 2 branches missed.">            if(!Files.exists(path))</span>
+<span class="fc" id="L158">            Files.delete(path);</span>
+<span class="pc bpc" id="L159" title="1 of 2 branches missed.">            if(!Files.exists(path))</span>
             {
-<span class="fc" id="L155">                throw new IOException(&quot;file is deleted!!&quot;);</span>
+<span class="fc" id="L161">                throw new IOException(&quot;file is deleted!!&quot;);</span>
 
             }
 
-<span class="fc" id="L159">        }catch (IOException e)</span>
+<span class="fc" id="L165">        }catch (IOException e)</span>
         {
-<span class="fc" id="L161">            Files.createFile(path);</span>
-<span class="fc" id="L162">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L163">                ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
-<span class="fc" id="L164">                oos.writeObject(list);</span>
+<span class="fc" id="L167">            Files.createFile(path);</span>
+<span class="fc" id="L168">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L169">                ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
+<span class="fc" id="L170">                oos.writeObject(list);</span>
             }
-<span class="nc" id="L166">        }</span>
-
-<span class="fc" id="L168">        return status;</span>
+<span class="nc" id="L172">        }</span>
+<span class="fc" id="L173">        return status;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

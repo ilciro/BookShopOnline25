@@ -193,22 +193,26 @@ public class RivistaDao extends PersistenzaRivista{
 
     @Override
     public void initializza() throws IOException, CsvValidationException {
-<span class="fc" id="L196">        Logger.getLogger(&quot;crea db sql per le riviste&quot;).log(Level.INFO, &quot;\n creating tables ro magazine ..&quot;);</span>
+<span class="fc" id="L196">        extracted();</span>
+<span class="fc" id="L197">    }</span>
+
+    private void extracted() {
+<span class="fc" id="L200">        Logger.getLogger(&quot;crea db sql per le riviste&quot;).log(Level.INFO, &quot;\n creating tables ro magazine ..&quot;);</span>
         try{
-<span class="pc bpc" id="L198" title="1 of 2 branches missed.">            if(vis.isPopulated())</span>
+<span class="pc bpc" id="L202" title="1 of 2 branches missed.">            if(vis.isPopulated())</span>
             {
-<span class="fc" id="L200">                Logger.getLogger(&quot; crea tabella riviste if&quot;).log(Level.INFO, &quot; table magazines already populated&quot;);</span>
+<span class="fc" id="L204">                Logger.getLogger(&quot; crea tabella riviste if&quot;).log(Level.INFO, &quot; table magazines already populated&quot;);</span>
             }
             else {
-<span class="nc" id="L203">                ConnToDb.creaPopolaDb();</span>
-<span class="nc" id="L204">                vis.setPopulated(true);</span>
+<span class="nc" id="L207">                ConnToDb.creaPopolaDb();</span>
+<span class="nc" id="L208">                vis.setPopulated(true);</span>
             }
-<span class="nc" id="L206">        }catch (FileNotFoundException e)</span>
+<span class="nc" id="L210">        }catch (FileNotFoundException e)</span>
         {
-<span class="nc" id="L208">            Logger.getLogger(&quot;crea tabella riviste &quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella rivista.&quot;, e);</span>
+<span class="nc" id="L212">            Logger.getLogger(&quot;crea tabella riviste &quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella rivista.&quot;, e);</span>
 
-<span class="fc" id="L210">        }</span>
-<span class="fc" id="L211">    }</span>
+<span class="fc" id="L214">        }</span>
+<span class="fc" id="L215">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

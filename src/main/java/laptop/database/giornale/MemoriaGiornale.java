@@ -140,9 +140,15 @@ public class MemoriaGiornale extends PersistenzaGiornale{
 
         }
 
+        status = isStatus(g, status);
+
+        return status;
+    }
+
+    private boolean isStatus(Giornale g, boolean status) throws IOException {
         for(int i=1;i<=list.size();i++)
         {
-            if(i==g.getId()) {
+            if(i== g.getId()) {
                 status = list.remove(list.get(i-1));
             }
         }
@@ -164,7 +170,6 @@ public class MemoriaGiornale extends PersistenzaGiornale{
                 oos.writeObject(list);
             }
         }
-
         return status;
     }
 }

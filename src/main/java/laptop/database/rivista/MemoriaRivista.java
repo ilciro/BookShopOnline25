@@ -53,9 +53,15 @@ public class MemoriaRivista extends PersistenzaRivista{
 
         }
 
+        status = isStatus(r, status);
+
+        return status;
+    }
+
+    private boolean isStatus(Rivista r, boolean status) throws IOException {
         for(int i=1;i<=list.size();i++)
         {
-            if(i==r.getId()) {
+            if(i== r.getId()) {
                 status = list.remove(list.get(i-1));
             }
         }
@@ -66,9 +72,9 @@ public class MemoriaRivista extends PersistenzaRivista{
             if(!Files.exists(path))
             {
                 throw new IOException("file is deleted!!");
-                
+
             }
-            
+
         }catch (IOException e)
         {
             Files.createFile(path);
@@ -77,7 +83,6 @@ public class MemoriaRivista extends PersistenzaRivista{
                 oos.writeObject(list);
             }
         }
-
         return status;
     }
 
