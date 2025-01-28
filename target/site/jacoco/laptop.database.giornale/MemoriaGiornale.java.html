@@ -123,11 +123,11 @@ import java.util.ArrayList;
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public ObservableList&lt;Giornale&gt; getGiornali() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="nc" id="L126">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="nc" id="L127">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
-<span class="nc" id="L128">            list= (ArrayList&lt;Giornale&gt;) ois.readObject();</span>
+<span class="fc" id="L126">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L127">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="fc" id="L128">            list= (ArrayList&lt;Giornale&gt;) ois.readObject();</span>
         }
-<span class="nc" id="L130">        return FXCollections.observableList(list);</span>
+<span class="fc" id="L130">        return FXCollections.observableList(list);</span>
     }
 
     @Override

@@ -135,29 +135,29 @@ public class RivistaDao extends PersistenzaRivista{
 
     @Override
     public ObservableList&lt;Rivista&gt; getRiviste() throws CsvValidationException, IOException, IdException {
-<span class="nc" id="L138">        ObservableList&lt;Rivista&gt; catalogo = FXCollections.observableArrayList();</span>
-<span class="nc" id="L139">        String[] info=new String[7];</span>
+<span class="fc" id="L138">        ObservableList&lt;Rivista&gt; catalogo = FXCollections.observableArrayList();</span>
+<span class="fc" id="L139">        String[] info=new String[7];</span>
 
-<span class="nc" id="L141">        query = &quot;select * from RIVISTA &quot;;</span>
-<span class="nc" id="L142">        try (Connection conn = ConnToDb.connectionToDB();</span>
-<span class="nc" id="L143">             PreparedStatement prepQ= conn.prepareStatement(query))  {</span>
+<span class="fc" id="L141">        query = &quot;select * from RIVISTA &quot;;</span>
+<span class="fc" id="L142">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="fc" id="L143">             PreparedStatement prepQ= conn.prepareStatement(query))  {</span>
 
 
-<span class="nc" id="L146">            ResultSet rs=prepQ.executeQuery();</span>
-<span class="nc bnc" id="L147" title="All 2 branches missed.">            while (rs.next())</span>
+<span class="fc" id="L146">            ResultSet rs=prepQ.executeQuery();</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">            while (rs.next())</span>
             {
-<span class="nc" id="L149">                info[0]=rs.getString(&quot;titolo&quot;);</span>
-<span class="nc" id="L150">                info[2]=rs.getString(&quot;editore&quot;);</span>
-<span class="nc" id="L151">                info[3]=rs.getString(&quot;autore&quot;);</span>
-<span class="nc" id="L152">                info[4]=rs.getString(&quot;lingua&quot;);</span>
-<span class="nc" id="L153">                info[5]=rs.getString(&quot;categoria&quot;);</span>
-<span class="nc" id="L154">                catalogo.add((Rivista)f.creaRivista(info,rs.getString(&quot;descrizione&quot;),rs.getDate(&quot;dataPubblicazione&quot;).toLocalDate(),rs.getInt(&quot;disp&quot;),rs.getFloat(&quot;prezzo&quot;),rs.getInt(&quot;copieRimanenti&quot;),rs.getInt(&quot;idRivista&quot;)));</span>
+<span class="fc" id="L149">                info[0]=rs.getString(&quot;titolo&quot;);</span>
+<span class="fc" id="L150">                info[2]=rs.getString(&quot;editore&quot;);</span>
+<span class="fc" id="L151">                info[3]=rs.getString(&quot;autore&quot;);</span>
+<span class="fc" id="L152">                info[4]=rs.getString(&quot;lingua&quot;);</span>
+<span class="fc" id="L153">                info[5]=rs.getString(&quot;categoria&quot;);</span>
+<span class="fc" id="L154">                catalogo.add((Rivista)f.creaRivista(info,rs.getString(&quot;descrizione&quot;),rs.getDate(&quot;dataPubblicazione&quot;).toLocalDate(),rs.getInt(&quot;disp&quot;),rs.getFloat(&quot;prezzo&quot;),rs.getInt(&quot;copieRimanenti&quot;),rs.getInt(&quot;idRivista&quot;)));</span>
 
             }
 <span class="nc" id="L157">        } catch (SQLException e) {</span>
 <span class="nc" id="L158">            java.util.logging.Logger.getLogger(&quot;get data rivista obs&quot;).log(Level.INFO, ECCEZIONE, e);</span>
-<span class="nc" id="L159">        }</span>
-<span class="nc" id="L160">        return catalogo;</span>
+<span class="fc" id="L159">        }</span>
+<span class="fc" id="L160">        return catalogo;</span>
     }
 
     @Override

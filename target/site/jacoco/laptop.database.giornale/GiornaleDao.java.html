@@ -86,27 +86,27 @@ public class GiornaleDao extends PersistenzaGiornale{
 
     @Override
     public ObservableList&lt;Giornale&gt; getGiornali()  {
-<span class="nc" id="L89">        ObservableList&lt;Giornale&gt; catalogo= FXCollections.observableArrayList();</span>
-<span class="nc" id="L90">        query = &quot;select * from GIORNALE&quot;;</span>
-<span class="nc" id="L91">        try (Connection conn = ConnToDb.connectionToDB();</span>
-<span class="nc" id="L92">             PreparedStatement prepQ = conn.prepareStatement(query)) {</span>
+<span class="fc" id="L89">        ObservableList&lt;Giornale&gt; catalogo= FXCollections.observableArrayList();</span>
+<span class="fc" id="L90">        query = &quot;select * from GIORNALE&quot;;</span>
+<span class="fc" id="L91">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="fc" id="L92">             PreparedStatement prepQ = conn.prepareStatement(query)) {</span>
 
-<span class="nc" id="L94">            ResultSet rs = prepQ.executeQuery();</span>
-<span class="nc bnc" id="L95" title="All 2 branches missed.">            while (rs.next()) {</span>
+<span class="fc" id="L94">            ResultSet rs = prepQ.executeQuery();</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">            while (rs.next()) {</span>
 
-<span class="nc" id="L97">                f.createRaccoltaFinale1(GIORNALE, rs.getString(1), null, rs.getString(4), null, rs.getString(4), rs.getString(2));</span>
+<span class="fc" id="L97">                f.createRaccoltaFinale1(GIORNALE, rs.getString(1), null, rs.getString(4), null, rs.getString(4), rs.getString(2));</span>
 
 
-<span class="nc" id="L100">                f.createRaccoltaFinale2(GIORNALE, 0, rs.getInt(6), rs.getInt(7), rs.getFloat(8), rs.getInt(9));</span>
+<span class="fc" id="L100">                f.createRaccoltaFinale2(GIORNALE, 0, rs.getInt(6), rs.getInt(7), rs.getFloat(8), rs.getInt(9));</span>
 
-<span class="nc" id="L102">                catalogo.add((Giornale)f.createRaccoltaFinaleCompleta(GIORNALE, rs.getDate(5).toLocalDate(), rs.getString(6), null));</span>
+<span class="fc" id="L102">                catalogo.add((Giornale)f.createRaccoltaFinaleCompleta(GIORNALE, rs.getDate(5).toLocalDate(), rs.getString(6), null));</span>
 
 
             }
 <span class="nc" id="L106">        } catch (SQLException | NullPointerException e) {</span>
 <span class="nc" id="L107">            Logger.getLogger(&quot;get giornale id&quot;).log(Level.INFO, ECCEZIONE, e);</span>
-<span class="nc" id="L108">        }</span>
-<span class="nc" id="L109">        return catalogo;</span>
+<span class="fc" id="L108">        }</span>
+<span class="fc" id="L109">        return catalogo;</span>
     }
 
     @Override

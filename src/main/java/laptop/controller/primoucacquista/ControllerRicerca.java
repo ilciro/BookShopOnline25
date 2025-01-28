@@ -30,8 +30,6 @@ import laptop.model.user.User;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.Level;
@@ -63,7 +61,6 @@ public class ControllerRicerca {
             case MEMORIA -> pL=new MemoriaLibro();
             default -> Logger.getLogger("id oggetto libro").log(Level.SEVERE," id book in null or zero");
         }
-        if(!Files.exists(Path.of("memory/serializzazioneLibro.ser")))
             pL.initializza();
         Libro l=new Libro();
         l.setTitolo(nome);
@@ -94,7 +91,6 @@ public class ControllerRicerca {
             case MEMORIA -> pG=new MemoriaGiornale();
             default -> Logger.getLogger("id oggetto giornale").log(Level.SEVERE," id daily in null or zero");
         }
-        if(!Files.exists(Path.of("memory/serializzazioneGiornale.ser")))
             pG.initializza();
         Giornale g=new Giornale();
         g.setTitolo(nome);
@@ -123,7 +119,6 @@ public class ControllerRicerca {
             case MEMORIA -> pR=new MemoriaRivista();
             default -> Logger.getLogger("id oggetto rivista").log(Level.SEVERE," id magazine in null or zero");
         }
-        if(!Files.exists(Path.of("memory/serializzazioneRivista.ser")))
             pR.initializza();
         Rivista r=new Rivista();
         r.setTitolo(nome);

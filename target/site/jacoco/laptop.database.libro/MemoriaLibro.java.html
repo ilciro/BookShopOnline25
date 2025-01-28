@@ -125,11 +125,11 @@ import java.util.ArrayList;
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public ObservableList&lt;Libro&gt; getLibri() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="nc" id="L128">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="nc" id="L129">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
-<span class="nc" id="L130">            list= (ArrayList&lt;Libro&gt;) ois.readObject();</span>
+<span class="fc" id="L128">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L129">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="fc" id="L130">            list= (ArrayList&lt;Libro&gt;) ois.readObject();</span>
         }
-<span class="nc" id="L132">        return FXCollections.observableList(list);</span>
+<span class="fc" id="L132">        return FXCollections.observableList(list);</span>
     }
 
     @Override

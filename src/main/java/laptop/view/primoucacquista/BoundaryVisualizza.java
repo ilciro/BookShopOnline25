@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
@@ -231,11 +230,9 @@ public class BoundaryVisualizza implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		try {
+
 			cV = new ControllerVisualizza();
-		} catch (IOException e) {
-			Logger.getLogger("initializw buondaty visualizza").log(Level.SEVERE,"exception .",e);
-		}
+
 
 	}
 

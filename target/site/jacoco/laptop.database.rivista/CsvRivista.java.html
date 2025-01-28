@@ -272,45 +272,45 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
     @Override
     public ObservableList&lt;Rivista&gt; getRiviste() throws CsvValidationException, IOException, IdException {
-<span class="nc" id="L275">        ObservableList&lt;Rivista&gt; list = FXCollections.observableArrayList();</span>
-<span class="nc" id="L276">        synchronized (this.cacheRivista) {</span>
-<span class="nc bnc" id="L277" title="All 2 branches missed.">            for (Map.Entry&lt;Integer, Rivista&gt; id : cacheRivista.entrySet()) {</span>
-<span class="nc bnc" id="L278" title="All 2 branches missed.">                boolean recordT = !id.getValue().getTitolo().isEmpty();</span>
+<span class="fc" id="L275">        ObservableList&lt;Rivista&gt; list = FXCollections.observableArrayList();</span>
+<span class="fc" id="L276">        synchronized (this.cacheRivista) {</span>
+<span class="fc bfc" id="L277" title="All 2 branches covered.">            for (Map.Entry&lt;Integer, Rivista&gt; id : cacheRivista.entrySet()) {</span>
+<span class="pc bpc" id="L278" title="1 of 2 branches missed.">                boolean recordT = !id.getValue().getTitolo().isEmpty();</span>
 
-<span class="nc bnc" id="L280" title="All 2 branches missed.">                if (recordT)</span>
-<span class="nc" id="L281">                    list.add(id.getValue());</span>
-<span class="nc" id="L282">            }</span>
-<span class="nc" id="L283">        }</span>
-<span class="nc bnc" id="L284" title="All 2 branches missed.">        if (list.isEmpty()) {</span>
-<span class="nc" id="L285">            list = retrieveRivista(this.fdR);</span>
-<span class="nc" id="L286">            synchronized (this.cacheRivista) {</span>
-<span class="nc bnc" id="L287" title="All 2 branches missed.">                for (Rivista rivista : list)</span>
-<span class="nc" id="L288">                    this.cacheRivista.put(rivista.getId(), rivista);</span>
-<span class="nc" id="L289">            }</span>
+<span class="pc bpc" id="L280" title="1 of 2 branches missed.">                if (recordT)</span>
+<span class="fc" id="L281">                    list.add(id.getValue());</span>
+<span class="fc" id="L282">            }</span>
+<span class="fc" id="L283">        }</span>
+<span class="fc bfc" id="L284" title="All 2 branches covered.">        if (list.isEmpty()) {</span>
+<span class="fc" id="L285">            list = retrieveRivista(this.fdR);</span>
+<span class="fc" id="L286">            synchronized (this.cacheRivista) {</span>
+<span class="fc bfc" id="L287" title="All 2 branches covered.">                for (Rivista rivista : list)</span>
+<span class="fc" id="L288">                    this.cacheRivista.put(rivista.getId(), rivista);</span>
+<span class="fc" id="L289">            }</span>
 
         }
-<span class="nc" id="L292">        return list;</span>
+<span class="fc" id="L292">        return list;</span>
     }
 
     private static synchronized ObservableList&lt;Rivista&gt; retrieveRivista(File fdR) throws IOException, CsvValidationException, IdException {
         ObservableList&lt;Rivista&gt; rivistaList;
-<span class="nc" id="L297">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fdR)))) {</span>
+<span class="fc" id="L297">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fdR)))) {</span>
             String[] gVector;
 
-<span class="nc" id="L300">            rivistaList = FXCollections.observableArrayList();</span>
-<span class="nc bnc" id="L301" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="fc" id="L300">            rivistaList = FXCollections.observableArrayList();</span>
+<span class="fc bfc" id="L301" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
 
 
-<span class="nc" id="L304">                    rivistaList.add(getRivista(gVector));</span>
+<span class="fc" id="L304">                    rivistaList.add(getRivista(gVector));</span>
 
 
             }
         }
-<span class="nc bnc" id="L309" title="All 2 branches missed.">        if (rivistaList.isEmpty()) {</span>
+<span class="pc bpc" id="L309" title="1 of 2 branches missed.">        if (rivistaList.isEmpty()) {</span>
 <span class="nc" id="L310">            throw new IdException(&quot;rivista not found!!&quot;);</span>
         }
 
-<span class="nc" id="L313">        return rivistaList;</span>
+<span class="fc" id="L313">        return rivistaList;</span>
     }
 
     @Override

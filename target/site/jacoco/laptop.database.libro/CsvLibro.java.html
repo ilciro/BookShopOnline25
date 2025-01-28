@@ -373,50 +373,50 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
     @Override
     public ObservableList&lt;Libro&gt; getLibri() throws CsvValidationException, IOException, IdException {
-<span class="nc" id="L376">        ObservableList&lt;Libro&gt; list=FXCollections.observableArrayList();</span>
-<span class="nc" id="L377">        synchronized (this.cacheLibro)</span>
+<span class="fc" id="L376">        ObservableList&lt;Libro&gt; list=FXCollections.observableArrayList();</span>
+<span class="fc" id="L377">        synchronized (this.cacheLibro)</span>
         {
-<span class="nc bnc" id="L379" title="All 2 branches missed.">            for(Map.Entry&lt;Integer, Libro&gt; id:this.cacheLibro.entrySet())</span>
+<span class="fc bfc" id="L379" title="All 2 branches covered.">            for(Map.Entry&lt;Integer, Libro&gt; id:this.cacheLibro.entrySet())</span>
             {
 
-<span class="nc bnc" id="L382" title="All 2 branches missed.">                boolean recordT = !id.getValue().getTitolo().isEmpty();</span>
+<span class="pc bpc" id="L382" title="1 of 2 branches missed.">                boolean recordT = !id.getValue().getTitolo().isEmpty();</span>
 
 
 
-<span class="nc bnc" id="L386" title="All 2 branches missed.">                if (recordT)</span>
-<span class="nc" id="L387">                    list.add(id.getValue());</span>
+<span class="pc bpc" id="L386" title="1 of 2 branches missed.">                if (recordT)</span>
+<span class="fc" id="L387">                    list.add(id.getValue());</span>
 
-<span class="nc" id="L389">            }</span>
-<span class="nc" id="L390">        }</span>
-<span class="nc bnc" id="L391" title="All 2 branches missed.">        if(list.isEmpty())</span>
+<span class="fc" id="L389">            }</span>
+<span class="fc" id="L390">        }</span>
+<span class="fc bfc" id="L391" title="All 2 branches covered.">        if(list.isEmpty())</span>
         {
-<span class="nc" id="L393">            list=retrieveLibro(this.fdL);</span>
-<span class="nc" id="L394">            synchronized (this.cacheLibro)</span>
+<span class="fc" id="L393">            list=retrieveLibro(this.fdL);</span>
+<span class="fc" id="L394">            synchronized (this.cacheLibro)</span>
             {
-<span class="nc bnc" id="L396" title="All 2 branches missed.">                for(Libro libro : list)</span>
-<span class="nc" id="L397">                    this.cacheLibro.put(libro.getId(),libro);</span>
-<span class="nc" id="L398">            }</span>
+<span class="fc bfc" id="L396" title="All 2 branches covered.">                for(Libro libro : list)</span>
+<span class="fc" id="L397">                    this.cacheLibro.put(libro.getId(),libro);</span>
+<span class="fc" id="L398">            }</span>
 
         }
-<span class="nc" id="L401">        return list;</span>
+<span class="fc" id="L401">        return list;</span>
     }
 
     private static synchronized ObservableList&lt;Libro&gt; retrieveLibro(File fdL) throws CsvValidationException, IOException, IdException {
         ObservableList&lt;Libro&gt; list;
-<span class="nc" id="L406">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fdL)))) {</span>
+<span class="fc" id="L406">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fdL)))) {</span>
             String[] gVector;
-<span class="nc" id="L408">            list = FXCollections.observableArrayList();</span>
+<span class="fc" id="L408">            list = FXCollections.observableArrayList();</span>
 
 
-<span class="nc bnc" id="L411" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
-<span class="nc" id="L412">                    list.add(getLibro(gVector));</span>
+<span class="fc bfc" id="L411" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="fc" id="L412">                    list.add(getLibro(gVector));</span>
             }
         }
-<span class="nc bnc" id="L415" title="All 2 branches missed.">        if (list.isEmpty()) {</span>
+<span class="pc bpc" id="L415" title="1 of 2 branches missed.">        if (list.isEmpty()) {</span>
 <span class="nc" id="L416">            throw new IdException(&quot;book not found!!&quot;);</span>
         }
 
-<span class="nc" id="L419">        return list;</span>
+<span class="fc" id="L419">        return list;</span>
     }
 
     @Override

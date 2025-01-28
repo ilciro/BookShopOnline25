@@ -4,8 +4,10 @@
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primouc/TestControllerNegozio.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primouc/TestControllerPagamentoCCredito.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primouc/TestControllerPagamentoCash.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primouc/TestControllerRicerca.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primouc/TestControllerScarica.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primouc/TestControllerScaricaAnnulla.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primouc/TestControllerVisualizza.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/secondouc/TestControllerLoginLogout.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/secondouc/TestControllerRegistraUtente.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/secondouc/TestControllerUpdatePassword.java

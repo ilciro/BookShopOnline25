@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: secondouc.TestControllerRegistraUtente
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.868 s - in secondouc.TestControllerRegistraUtente
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.825 s - in secondouc.TestControllerRegistraUtente

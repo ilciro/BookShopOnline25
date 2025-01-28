@@ -96,28 +96,28 @@ public class LibroDao extends PersistenzaLibro{
 
     @Override
     public ObservableList&lt;Libro&gt; getLibri() throws CsvValidationException, IOException, IdException {
-<span class="nc" id="L99">        ObservableList&lt;Libro&gt; catalogo = FXCollections.observableArrayList();</span>
+<span class="fc" id="L99">        ObservableList&lt;Libro&gt; catalogo = FXCollections.observableArrayList();</span>
 
-<span class="nc" id="L101">        query = &quot;select * from LIBRO &quot;;</span>
-<span class="nc" id="L102">        try (Connection conn = ConnToDb.connectionToDB();</span>
-<span class="nc" id="L103">             PreparedStatement prepQ = conn.prepareStatement(query);</span>
-<span class="nc" id="L104">             ResultSet rs = prepQ.executeQuery()) {</span>
-<span class="nc bnc" id="L105" title="All 2 branches missed.">            while (rs.next()) {</span>
+<span class="fc" id="L101">        query = &quot;select * from LIBRO &quot;;</span>
+<span class="fc" id="L102">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="fc" id="L103">             PreparedStatement prepQ = conn.prepareStatement(query);</span>
+<span class="fc" id="L104">             ResultSet rs = prepQ.executeQuery()) {</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">            while (rs.next()) {</span>
 
-<span class="nc" id="L107">                f.createRaccoltaFinale1(LIBRO, rs.getString(1), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));</span>
-
-
-<span class="nc" id="L110">                f.createRaccoltaFinale2(LIBRO, rs.getInt(2), rs.getInt(10), rs.getInt(12), rs.getFloat(13), rs.getInt(14));</span>
+<span class="fc" id="L107">                f.createRaccoltaFinale1(LIBRO, rs.getString(1), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));</span>
 
 
-<span class="nc" id="L113">                catalogo.add((Libro) f.createRaccoltaFinaleCompleta(LIBRO, rs.getDate(8).toLocalDate(), rs.getString(9), rs.getString(11)));</span>
+<span class="fc" id="L110">                f.createRaccoltaFinale2(LIBRO, rs.getInt(2), rs.getInt(10), rs.getInt(12), rs.getFloat(13), rs.getInt(14));</span>
+
+
+<span class="fc" id="L113">                catalogo.add((Libro) f.createRaccoltaFinaleCompleta(LIBRO, rs.getDate(8).toLocalDate(), rs.getString(9), rs.getString(11)));</span>
 
 
             }
 <span class="nc" id="L117">        } catch (SQLException e) {</span>
 <span class="nc" id="L118">            Logger.getLogger(&quot;get libri&quot;).log(Level.INFO, ECCEZIONE, e);</span>
-<span class="nc" id="L119">        }</span>
-<span class="nc" id="L120">        return catalogo;</span>
+<span class="fc" id="L119">        }</span>
+<span class="fc" id="L120">        return catalogo;</span>
     }
 
 
