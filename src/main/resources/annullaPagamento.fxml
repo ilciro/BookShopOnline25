@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.view.primoucacquista.BuondaryAnnullaPagamento">
+   <children>
+      <Label fx:id="header" layoutX="67.0" layoutY="24.0" prefHeight="16.0" prefWidth="552.0" text="Benvenuto nella schermata per annullare il pagamento con annessa fattura" textFill="#0202ee" />
+      <TextArea fx:id="tAFattura" layoutX="14.0" layoutY="60.0" prefHeight="106.0" prefWidth="430.0" />
+      <TextArea fx:id="tAPagamento" layoutX="14.0" layoutY="186.0" prefHeight="106.0" prefWidth="430.0" />
+      <TextField fx:id="idFattura" layoutX="462.0" layoutY="101.0" prefHeight="26.0" prefWidth="124.0" />
+      <TextField fx:id="idPagamento" layoutX="457.0" layoutY="227.0" prefHeight="26.0" prefWidth="127.0" />
+      <VBox fx:id="vbox" layoutX="644.0" layoutY="299.0" prefHeight="115.0" prefWidth="100.0">
+         <children>
+            <RadioButton fx:id="databaseButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="103.0" text="Database">
+               <toggleGroup>
+                  <ToggleGroup fx:id="toggleGroup" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="fileButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="111.0" text="File" toggleGroup="$toggleGroup">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="memoriaButton" mnemonicParsing="false" text="memoria" toggleGroup="$toggleGroup">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </RadioButton>
+            <Button fx:id="buttonI" mnemonicParsing="false" onAction="#indietro" prefHeight="24.0" prefWidth="112.0" text="indietro" textFill="RED">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <VBox fx:id="vboxFattura" layoutX="616.0" layoutY="58.0" prefHeight="106.0" prefWidth="157.0">
+         <children>
+            <RadioButton fx:id="buttonGeneraFattura" mnemonicParsing="false" onAction="#generaFattura" prefHeight="18.0" prefWidth="160.0" text="Genera fattura">
+               <toggleGroup>
+                  <ToggleGroup fx:id="toggleGroupF" />
+               </toggleGroup>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="buttonCancellaFattura" mnemonicParsing="false" onAction="#cancellaFattura" text="Cancella Fattura" toggleGroup="$toggleGroupF">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </RadioButton>
+         </children>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+      </VBox>
+      <VBox fx:id="vbox2" layoutX="616.0" layoutY="186.0" prefHeight="91.0" prefWidth="157.0">
+         <children>
+            <RadioButton fx:id="buttonGeneraPagamento" mnemonicParsing="false" onAction="#generaPagamento" prefHeight="18.0" prefWidth="168.0" text="Genera Pagamento">
+               <toggleGroup>
+                  <ToggleGroup fx:id="toggleGroupP" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="buttonCancellaPagamento" mnemonicParsing="false" onAction="#cancellaPagamento" text="Cancella Pagamento" toggleGroup="$toggleGroupP">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </RadioButton>
+         </children>
+      </VBox>
+   </children>
+</Pane>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CsvCartaCredito.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25</a> &gt; <a href="index.source.html" class="el_package">laptop.database.cartacredito</a> &gt; <span class="el_source">CsvCartaCredito.java</span></div><h1>CsvCartaCredito.java</h1><pre class="source lang-java linenums">package laptop.database.cartacredito;
+
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
+import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.exception.IdException;
+import laptop.model.CartaDiCredito;
+import laptop.model.raccolta.Raccolta;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.sql.Date;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class CsvCartaCredito extends PersistenzaCC{
+    private final File fileCartaCredito;
+    private static final int GETINDEXNOMEPCC=0;
+    private static final int GETINDEXCOGNOMEPCC=1;
+    private static final int GETINDEXCODICECARTA=2;
+    private static final int GETINDEXSCADCC=3;
+    private static final int GETINDEXPINCC=4;
+    private static final int GETINDEXAMMONTARE=5;
+    private static final int GETINDEXIDCC=6;
+    private static final String CARTACREDITO=&quot;report/reportCartaCredito.csv&quot;;
+    private static final String IDWRONG=&quot; id wrong ..!!&quot;;
+    private static final String IDERROR=&quot;id error !!..&quot;;
+
+<span class="nc" id="L33">    public CsvCartaCredito() throws IOException {</span>
+<span class="nc" id="L34">        this.fileCartaCredito=new File(CARTACREDITO);</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        if(!this.fileCartaCredito.exists())</span>
+<span class="nc" id="L36">            Files.createFile(Path.of(this.fileCartaCredito.toURI()));</span>
+
+
+<span class="nc" id="L39">    }</span>
+
+    @Override
+    public boolean insCC(CartaDiCredito cc) throws IOException ,CsvValidationException{
+<span class="nc" id="L43">       boolean status=false;</span>
+<span class="nc" id="L44">        try (CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(CARTACREDITO, true)))) {</span>
+<span class="nc" id="L45">            String[] gVector = new String[7];</span>
+
+<span class="nc" id="L47">            gVector[GETINDEXNOMEPCC] = cc.getNomeUser();</span>
+<span class="nc" id="L48">            gVector[GETINDEXCOGNOMEPCC] = cc.getCognomeUser();</span>
+<span class="nc" id="L49">            gVector[GETINDEXCODICECARTA] = cc.getNumeroCC();</span>
+<span class="nc" id="L50">            gVector[GETINDEXSCADCC] = String.valueOf(cc.getScadenza());</span>
+<span class="nc" id="L51">            gVector[GETINDEXPINCC] = cc.getCiv();</span>
+<span class="nc" id="L52">            gVector[GETINDEXAMMONTARE] = String.valueOf(cc.getPrezzoTransazine());</span>
+<span class="nc" id="L53">            gVector[GETINDEXIDCC] = String.valueOf(getIdMaxCC() + 1);</span>
+<span class="nc" id="L54">            writer.writeNext(gVector);</span>
+
+<span class="nc" id="L56">            writer.flush();</span>
+
+        }
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        if (cc.getNumeroCC()!=null) status=true;</span>
+<span class="nc" id="L60">        return status;</span>
+
+    }
+    private static int getIdMaxCC() throws IOException, CsvValidationException {
+        int id;
+<span class="nc" id="L65">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(CARTACREDITO)))) {</span>
+            String[] gVector;
+<span class="nc" id="L67">            id = 0;</span>
+
+            try {
+<span class="nc bnc" id="L70" title="All 2 branches missed.">                while ((gVector = reader.readNext()) != null) {</span>
+<span class="nc" id="L71">                    id = Integer.parseInt(gVector[GETINDEXIDCC]);</span>
+
+                }
+<span class="nc bnc" id="L74" title="All 2 branches missed.">                if (id == 0)</span>
+<span class="nc" id="L75">                    throw new IdException(&quot; id is 0!!&quot;);</span>
+<span class="nc" id="L76">            } catch (IdException e) {</span>
+<span class="nc" id="L77">                Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR);</span>
+
+<span class="nc" id="L79">            }</span>
+        }
+<span class="nc" id="L81">        return id;</span>
+    }
+
+
+
+    @Override
+    public ObservableList&lt;CartaDiCredito&gt; getCarteDiCredito(CartaDiCredito cc) throws IOException, ClassNotFoundException, CsvValidationException, IdException {
+<span class="nc" id="L88">        return retriveCarteCredito(this.fileCartaCredito,cc.getNumeroCC(),cc.getNomeUser());</span>
+    }
+
+    private ObservableList&lt;CartaDiCredito&gt; retriveCarteCredito(File fd,String numero,String nome) throws IOException, CsvValidationException, IdException {
+<span class="nc" id="L92">        ObservableList&lt;CartaDiCredito&gt; gList = FXCollections.observableArrayList();</span>
+<span class="nc" id="L93">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
+            String[] gVector;
+<span class="nc bnc" id="L95" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
+
+<span class="nc bnc" id="L97" title="All 4 branches missed.">                if(gVector[GETINDEXCODICECARTA].equals(numero) || gVector[GETINDEXNOMEPCC].equals(nome))</span>
+                {
+<span class="nc" id="L99">                    CartaDiCredito cc=new CartaDiCredito();</span>
+<span class="nc" id="L100">                    cc.setNomeUser(gVector[GETINDEXNOMEPCC]);</span>
+<span class="nc" id="L101">                    cc.setCognomeUser(gVector[GETINDEXCOGNOMEPCC]);</span>
+<span class="nc" id="L102">                    cc.setNumeroCC(gVector[GETINDEXCODICECARTA]);</span>
+<span class="nc" id="L103">                    cc.setScadenza(Date.valueOf(gVector[GETINDEXSCADCC]));</span>
+<span class="nc" id="L104">                    cc.setCiv(gVector[GETINDEXPINCC]);</span>
+<span class="nc" id="L105">                    cc.setAmmontare(Double.parseDouble(gVector[GETINDEXAMMONTARE]));</span>
+<span class="nc" id="L106">                    gList.add(cc);</span>
+
+<span class="nc" id="L108">                }</span>
+
+
+
+
+
+            }
+<span class="nc bnc" id="L115" title="All 2 branches missed.">            if (gList.isEmpty()) {</span>
+<span class="nc" id="L116">                throw new IdException(&quot;list libro is empty&quot;);</span>
+            }
+
+
+
+        }
+
+<span class="nc" id="L123">        return gList;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

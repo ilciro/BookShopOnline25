@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerGestioneUtente.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25</a> &gt; <a href="index.source.html" class="el_package">laptop.controller.terzoucgestioneprofilooggetto</a> &gt; <span class="el_source">ControllerGestioneUtente.java</span></div><h1>ControllerGestioneUtente.java</h1><pre class="source lang-java linenums">package laptop.controller.terzoucgestioneprofilooggetto;
+
+import com.opencsv.exceptions.CsvValidationException;
+import laptop.controller.ControllerSystemState;
+
+import laptop.database.users.CsvUtente;
+import laptop.database.users.MemoriaUtente;
+import laptop.database.users.PersistenzaUtente;
+import laptop.database.users.UsersDao;
+import laptop.exception.IdException;
+import laptop.model.user.TempUser;
+
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+<span class="nc" id="L20">public class ControllerGestioneUtente {</span>
+
+<span class="nc" id="L22">    private final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+    private PersistenzaUtente pU;
+
+    private static final String DATABASE=&quot;database&quot;;
+    private static final String FILE=&quot;file&quot;;
+    private static final String MEMORIA=&quot;memoria&quot;;
+
+
+    public TempUser getDataUser(String type) throws CsvValidationException, SQLException, IOException {
+
+<span class="nc" id="L32">        TempUser tu = null;</span>
+<span class="nc bnc" id="L33" title="All 4 branches missed.">        switch (type)</span>
+        {
+<span class="nc" id="L35">            case DATABASE -&gt; pU=new UsersDao();</span>
+<span class="nc" id="L36">            case FILE -&gt; pU=new CsvUtente();</span>
+<span class="nc" id="L37">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
+<span class="nc" id="L38">            default -&gt; Logger.getLogger(&quot;inserisci utente&quot;).log(Level.SEVERE,&quot;error in persistency data user&quot;);</span>
+        }
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        for(int i=1;i&lt;pU.getUserData().size();i++) {</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">            if(pU.getUserData().get(i).getId()==vis.getId())</span>
+<span class="nc" id="L42">                tu=pU.getUserData().get(i);</span>
+
+        }
+<span class="nc" id="L45">        return tu;</span>
+
+    }
+
+
+
+    public boolean inserisciUtente(String []data ,String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+
+<span class="nc" id="L53">        TempUser tu=new TempUser();</span>
+
+
+<span class="nc" id="L56">        tu.setIdRuoloT(data[0].substring(0,1));</span>
+<span class="nc" id="L57">        tu.setNomeT(data[1]);</span>
+<span class="nc" id="L58">        tu.setCognomeT(data[2]);</span>
+<span class="nc" id="L59">        tu.setEmailT(data[3]);</span>
+<span class="nc" id="L60">        tu.setPasswordT(data[4]);</span>
+<span class="nc" id="L61">        tu.setDescrizioneT(data[5]);</span>
+<span class="nc" id="L62">        tu.setDataDiNascitaT(LocalDate.parse(data[6]));</span>
+
+<span class="nc bnc" id="L64" title="All 4 branches missed.">        switch (type)</span>
+        {
+<span class="nc" id="L66">            case DATABASE -&gt; pU=new UsersDao();</span>
+<span class="nc" id="L67">            case FILE -&gt; pU=new CsvUtente();</span>
+<span class="nc" id="L68">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
+<span class="nc" id="L69">            default -&gt; Logger.getLogger(&quot;inserisci utente&quot;).log(Level.SEVERE,&quot;error in persistency&quot;);</span>
+        }
+
+<span class="nc" id="L72">        return pU.inserisciUtente(tu);</span>
+    }
+
+
+    private TempUser dati(String [] data)
+    {
+<span class="nc" id="L78">        TempUser tu=new TempUser();</span>
+<span class="nc" id="L79">        tu.setIdRuoloT(data[0].substring(0,1));</span>
+<span class="nc" id="L80">        tu.setNomeT(data[1]);</span>
+<span class="nc" id="L81">        tu.setCognomeT(data[2]);</span>
+<span class="nc" id="L82">        tu.setEmailT(data[3]);</span>
+<span class="nc" id="L83">        tu.setPasswordT(data[4]);</span>
+<span class="nc" id="L84">        tu.setDescrizioneT(data[5]);</span>
+<span class="nc" id="L85">        tu.setDataDiNascitaT(LocalDate.parse(data[6]));</span>
+<span class="nc" id="L86">        return tu;</span>
+    }
+
+
+
+    public boolean modifica(String[] data,String persistenza,String vecchiaMail) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
+<span class="nc" id="L92">        TempUser tu=new TempUser();</span>
+
+<span class="nc" id="L94">        tu.setEmailT(vecchiaMail);</span>
+<span class="nc" id="L95">        tu.setId(vis.getId());</span>
+
+
+<span class="nc bnc" id="L98" title="All 4 branches missed.">        switch (persistenza)</span>
+        {
+<span class="nc" id="L100">            case DATABASE -&gt; pU=new UsersDao();</span>
+<span class="nc" id="L101">            case FILE -&gt; pU=new CsvUtente();</span>
+<span class="nc" id="L102">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
+<span class="nc" id="L103">            default -&gt; Logger.getLogger(&quot;modifica utente&quot;).log(Level.SEVERE,&quot;error in persistency&quot;);</span>
+        }
+
+<span class="nc bnc" id="L106" title="All 2 branches missed.">        for (int i=0;i&lt;pU.getUserData().size();i++)</span>
+        {
+<span class="nc bnc" id="L108" title="All 2 branches missed.">            if(pU.getUserData().get(i).getId()==vis.getId())</span>
+            {
+
+<span class="nc" id="L111">                pU.removeUserByIdEmailPwd(tu);</span>
+
+            }
+        }
+<span class="nc" id="L115">       tu=dati(data);</span>
+<span class="nc" id="L116">        return pU.inserisciUtente(tu);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

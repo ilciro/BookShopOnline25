@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerRegistraUtente.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25</a> &gt; <a href="index.source.html" class="el_package">laptop.controller.secondouclogin</a> &gt; <span class="el_source">ControllerRegistraUtente.java</span></div><h1>ControllerRegistraUtente.java</h1><pre class="source lang-java linenums">package laptop.controller.secondouclogin;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Pattern;
+
+import com.opencsv.exceptions.CsvValidationException;
+
+import laptop.database.users.CsvUtente;
+import laptop.database.users.MemoriaUtente;
+import laptop.database.users.PersistenzaUtente;
+import laptop.database.users.UsersDao;
+import laptop.exception.IdException;
+import laptop.model.user.TempUser;
+
+
+public class ControllerRegistraUtente {
+<span class="nc" id="L23">	private Boolean state=false;</span>
+	private final TempUser tu;
+	private PersistenzaUtente pU;
+
+
+	//usato per persistenza
+<span class="nc" id="L29">	private String type=&quot;&quot;;</span>
+
+
+
+	private String getType() {
+<span class="nc" id="L34">		return type;</span>
+	}
+
+	public void setType(String type) {
+<span class="nc" id="L38">		this.type = type;</span>
+<span class="nc" id="L39">	}</span>
+
+	public Boolean registra(String n, String c, String email, String pwd,String desc, LocalDate localDate,String ruolo) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
+
+<span class="nc bnc" id="L43" title="All 4 branches missed.">		switch (getType())</span>
+		{
+<span class="nc" id="L45">			case &quot;database&quot;-&gt;pU=new UsersDao();</span>
+<span class="nc" id="L46">			case &quot;file&quot;-&gt;pU=new CsvUtente();</span>
+<span class="nc" id="L47">			case &quot;memoria&quot;-&gt;pU=new MemoriaUtente();</span>
+<span class="nc" id="L48">			default -&gt; Logger.getLogger(&quot;registra&quot;).log(Level.SEVERE,&quot;error in persistency&quot;);</span>
+		}
+<span class="nc bnc" id="L50" title="All 2 branches missed.">		if(!Files.exists(Path.of(&quot;memory/serializzazioneUtente.ser&quot;)))</span>
+<span class="nc" id="L51">			pU.initializza();</span>
+
+<span class="nc bnc" id="L53" title="All 2 branches missed.">		for (int i=0;i&lt;pU.getUserData().size();i++)</span>
+		{
+<span class="nc bnc" id="L55" title="All 2 branches missed.">			if(nomePresente(pU.getUserData().get(i).getNomeT(),n)&amp;&amp;</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">			cognomePresente(pU.getUserData().get(i).getCognomeT(),c)&amp;&amp;</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">			emailPresente(pU.getUserData().get(i).getEmailT(),email)) throw new IdException(&quot; user already inserted!!&quot;);</span>
+
+
+		}
+<span class="nc bnc" id="L61" title="All 2 branches missed.">		if(checkData(n,c,email,pwd))</span>
+		{
+<span class="nc" id="L63">			tu.setNomeT(n);</span>
+<span class="nc" id="L64">			tu.setCognomeT(c);</span>
+<span class="nc" id="L65">			tu.setEmailT(email);</span>
+<span class="nc" id="L66">			tu.setPasswordT(pwd);</span>
+<span class="nc" id="L67">			tu.setDescrizioneT(desc);</span>
+<span class="nc" id="L68">			tu.setDataDiNascitaT(localDate);</span>
+<span class="nc" id="L69">			tu.setIdRuoloT(ruolo);</span>
+<span class="nc" id="L70">			state=pU.inserisciUtente(tu);</span>
+
+
+		}
+<span class="nc" id="L74">		Logger.getLogger(&quot;registra&quot;).log(Level.INFO,&quot;user registered with email {0}&quot;,tu.getEmailT());</span>
+
+
+
+
+		
+
+
+<span class="nc" id="L82">		return state;</span>
+	}
+
+<span class="nc" id="L85">	private boolean nomePresente(String nomeL,String nome){return nomeL.equals(nome);}</span>
+<span class="nc" id="L86">	private boolean cognomePresente(String cognomeL,String cognome){return cognomeL.equals(cognome);}</span>
+<span class="nc" id="L87">	private boolean emailPresente(String emailL,String email){return emailL.equals(email);}</span>
+	
+	//le chiamo protected perchele uso nel controller stesso e basta 
+	private boolean checkData (String n, String c, String email, String pwd)
+	// controll  all data
+	{
+<span class="nc bnc" id="L93" title="All 6 branches missed.">		if(checkEmail(email) &amp;&amp; checkPassword(pwd) &amp;&amp; checkNomeCognome(n,c))</span>
+		{
+<span class="nc" id="L95">			state=true;</span>
+		}
+<span class="nc" id="L97">		return state;</span>
+	}
+
+	private boolean checkEmail(String email)
+	{
+		 Pattern pattern;
+
+		String emailRegex;
+<span class="nc" id="L105">		emailRegex= &quot;^[a-zA-Z0-9_+&amp;*-]+(?:\\.[a-zA-Z0-9_+&amp;*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$&quot;; </span>
+                  
+<span class="nc" id="L107">		pattern = Pattern.compile(emailRegex); </span>
+<span class="nc bnc" id="L108" title="All 2 branches missed.">		if (email == null) </span>
+<span class="nc" id="L109">			return false; </span>
+<span class="nc" id="L110">		return pattern.matcher(email).matches();</span>
+	}
+
+	private boolean checkPassword(String pwd )
+	{
+<span class="nc bnc" id="L115" title="All 2 branches missed.">		if(pwd.length()&gt;=8 ) {</span>
+<span class="nc" id="L116">			state= true;</span>
+		}
+<span class="nc" id="L118">		return state;</span>
+	}
+
+	private boolean checkNomeCognome(String n, String c)
+	{
+<span class="nc bnc" id="L123" title="All 4 branches missed.">		if (n != null &amp;&amp; c != null)</span>
+		{
+<span class="nc" id="L125">			state= true;</span>
+		}
+<span class="nc" id="L127">		return state;</span>
+	}
+	
+	public ControllerRegistraUtente()
+<span class="nc" id="L131">	{</span>
+<span class="nc" id="L132">		java.util.logging.Logger.getLogger(&quot;Test Costruttore&quot;).log(Level.INFO, &quot;Costruttore ControllerRegistaUtente&quot;);</span>
+<span class="nc" id="L133">		tu=new TempUser();</span>
+<span class="nc" id="L134">	}</span>
+
+
+	// TO DO: checkData o lo facciamo diretti in mysql
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

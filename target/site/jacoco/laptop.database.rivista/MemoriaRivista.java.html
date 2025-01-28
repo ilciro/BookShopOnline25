@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MemoriaRivista.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25</a> &gt; <a href="index.source.html" class="el_package">laptop.database.rivista</a> &gt; <span class="el_source">MemoriaRivista.java</span></div><h1>MemoriaRivista.java</h1><pre class="source lang-java linenums">package laptop.database.rivista;
+
+import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.exception.IdException;
+import laptop.model.raccolta.Raccolta;
+import laptop.model.raccolta.Rivista;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+
+<span class="fc" id="L19">public class MemoriaRivista extends PersistenzaRivista{</span>
+    private static final String SERIALIZZAZIONE=&quot;memory/serializzazioneRivista.ser&quot;;
+<span class="fc" id="L21">    private   ArrayList&lt;Rivista&gt; list=new ArrayList&lt;&gt;();</span>
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public boolean inserisciRivista(Rivista r) throws IOException, ClassNotFoundException {
+
+
+        //leggo
+<span class="fc" id="L28">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L29">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="fc" id="L30">                list= (ArrayList&lt;Rivista&gt;) ois.readObject();</span>
+        }
+<span class="fc" id="L32">        r.setId(list.size()+1);</span>
+<span class="fc" id="L33">        list.add(r);</span>
+
+<span class="fc" id="L35">        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L36">            ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
+<span class="fc" id="L37">            oos.writeObject(list);</span>
+        }
+
+
+<span class="fc" id="L41">       return true;</span>
+
+    }
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public boolean removeRivistaById(Rivista r) throws IOException, ClassNotFoundException {
+
+<span class="fc" id="L49">        boolean status=false;</span>
+<span class="fc" id="L50">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L51">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="fc" id="L52">            list= (ArrayList&lt;Rivista&gt;) ois.readObject();</span>
+
+        }
+
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        for(int i=1;i&lt;=list.size();i++)</span>
+        {
+<span class="fc bfc" id="L58" title="All 2 branches covered.">            if(i==r.getId()) {</span>
+<span class="fc" id="L59">                status = list.remove(list.get(i-1));</span>
+            }
+        }
+
+<span class="fc" id="L63">        Path path = Path.of(SERIALIZZAZIONE);</span>
+        try {
+<span class="fc" id="L65">            Files.delete(path);</span>
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">            if(!Files.exists(path))</span>
+            {
+<span class="fc" id="L68">                throw new IOException(&quot;file is deleted!!&quot;);</span>
+                
+            }
+            
+<span class="fc" id="L72">        }catch (IOException e)</span>
+        {
+<span class="fc" id="L74">            Files.createFile(path);</span>
+<span class="fc" id="L75">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L76">                ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
+<span class="fc" id="L77">                oos.writeObject(list);</span>
+            }
+<span class="nc" id="L79">        }</span>
+
+<span class="fc" id="L81">        return status;</span>
+    }
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public ObservableList&lt;Rivista&gt; getRiviste() throws IOException, ClassNotFoundException {
+       
+
+<span class="nc" id="L89">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L90">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="nc" id="L91">            list= (ArrayList&lt;Rivista&gt;) ois.readObject();</span>
+        }
+<span class="nc" id="L93">        return FXCollections.observableList(list);</span>
+    }
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+       
+<span class="fc" id="L100">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L101">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+
+<span class="fc" id="L103">           list= (ArrayList&lt;Rivista&gt;) ois.readObject();</span>
+        }
+<span class="fc" id="L105">        return FXCollections.observableArrayList(list);</span>
+
+    }
+
+
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public ObservableList&lt;Rivista&gt; getRivistaByIdTitoloAutoreRivista(Rivista r) throws IOException, ClassNotFoundException {
+
+
+<span class="fc" id="L116">        ObservableList&lt;Rivista&gt; listaRecuperata = FXCollections.observableArrayList();</span>
+<span class="fc" id="L117">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L118">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="fc" id="L119">            list= (ArrayList&lt;Rivista&gt;) ois.readObject();</span>
+        }
+<span class="pc bpc" id="L121" title="1 of 2 branches missed.">        for (Rivista rivista : list) {</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">            if (rivista.getId() == r.getId()</span>
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">                    || rivista.getTitolo().equals(r.getTitolo())</span>
+<span class="pc bpc" id="L124" title="1 of 2 branches missed.">                    || rivista.getAutore().equals(r.getAutore())) {</span>
+<span class="fc" id="L125">                listaRecuperata = FXCollections.observableArrayList(rivista);</span>
+<span class="fc" id="L126">                break;</span>
+            }
+
+<span class="fc" id="L129">        }</span>
+<span class="fc" id="L130">        return listaRecuperata;</span>
+    }
+
+    @Override
+    public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
+
+<span class="fc bfc" id="L136" title="All 2 branches covered.">        for(int i=1;i&lt;=5;i++)</span>
+        {
+            String line;
+
+
+<span class="fc" id="L141">            ArrayList&lt;String&gt; listaR = new ArrayList&lt;&gt;();</span>
+
+
+<span class="fc" id="L144">            try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/rivista&quot; + i + &quot;.txt&quot;);</span>
+<span class="fc" id="L145">                 BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
+<span class="fc bfc" id="L146" title="All 2 branches covered.">                while ((line = bufferedReader.readLine()) != null) {</span>
+<span class="fc" id="L147">                    listaR.add(line);</span>
+
+                }
+            }
+<span class="fc" id="L151">            Rivista r = getRivista(listaR);</span>
+<span class="fc" id="L152">            list.add(r);</span>
+        }
+<span class="fc" id="L154">        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L155">            ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
+<span class="fc" id="L156">            oos.writeObject(list);</span>
+        }
+
+
+
+
+<span class="fc" id="L162">    }</span>
+
+    private static @NotNull Rivista getRivista(ArrayList&lt;String&gt; listaR) {
+<span class="fc" id="L165">        Rivista r=new Rivista();</span>
+<span class="fc" id="L166">        r.setTitolo(listaR.get(0));</span>
+<span class="fc" id="L167">        r.setCategoria(listaR.get(1));</span>
+<span class="fc" id="L168">        r.setAutore(listaR.get(2));</span>
+<span class="fc" id="L169">        r.setLingua(listaR.get(3));</span>
+<span class="fc" id="L170">        r.setEditore(listaR.get(4));</span>
+<span class="fc" id="L171">        r.setDescrizione(listaR.get(5));</span>
+<span class="fc" id="L172">        r.setDataPubb(LocalDate.parse(listaR.get(6)));</span>
+<span class="fc" id="L173">        r.setDisp(Integer.parseInt(listaR.get(7)));</span>
+<span class="fc" id="L174">        r.setPrezzo(Float.parseFloat(listaR.get(8)));</span>
+<span class="fc" id="L175">        r.setCopieRim(Integer.parseInt(listaR.get(9)));</span>
+<span class="fc" id="L176">        r.setId(Integer.parseInt(listaR.get(10)));</span>
+<span class="fc" id="L177">        return r;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

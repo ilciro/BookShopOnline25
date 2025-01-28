@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerScegliNegozio.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25</a> &gt; <a href="index.source.html" class="el_package">laptop.controller.primoucacquista</a> &gt; <span class="el_source">ControllerScegliNegozio.java</span></div><h1>ControllerScegliNegozio.java</h1><pre class="source lang-java linenums">package laptop.controller.primoucacquista;
+
+
+import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.ObservableList;
+import laptop.database.negozio.CsvNegozio;
+import laptop.database.negozio.MemoriaNegozio;
+import laptop.database.negozio.NegozioDao;
+import laptop.database.negozio.PersistenzaNegozio;
+import laptop.exception.IdException;
+import laptop.model.Negozio;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+<span class="nc" id="L19">public class ControllerScegliNegozio {</span>
+	private PersistenzaNegozio pN;
+	private static final String DATABASE=&quot;database&quot;;
+	private static final String FILE=&quot;file&quot;;
+	private static final String MEMORIA=&quot;memoria&quot;;
+
+
+
+	
+
+	
+	public ObservableList&lt;Negozio&gt; getNegozi(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+<span class="nc bnc" id="L31" title="All 4 branches missed.">		switch (type) {</span>
+<span class="nc" id="L32">			case DATABASE -&gt; pN = new NegozioDao();</span>
+<span class="nc" id="L33">			case FILE -&gt; pN = new CsvNegozio();</span>
+<span class="nc" id="L34">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
+<span class="nc" id="L35">			default -&gt; Logger.getLogger(&quot;get negozi&quot;).log(Level.SEVERE,&quot;  empty list!!&quot;);</span>
+		}
+<span class="nc bnc" id="L37" title="All 2 branches missed.">		if(!Files.exists(Path.of(&quot;memory/serializzazioneNegozio.ser&quot;)))</span>
+<span class="nc" id="L38">		 	pN.initializza();</span>
+<span class="nc" id="L39">		return pN.getNegozi();</span>
+	}
+
+	public boolean isOpen(String type,int id) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+
+<span class="nc bnc" id="L44" title="All 4 branches missed.">		switch (type) {</span>
+<span class="nc" id="L45">			case DATABASE -&gt; pN = new NegozioDao();</span>
+<span class="nc" id="L46">			case FILE -&gt; pN = new CsvNegozio();</span>
+<span class="nc" id="L47">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
+<span class="nc" id="L48">			default -&gt; Logger.getLogger(&quot;is open&quot;).log(Level.SEVERE,&quot;  is open il null!!&quot;);</span>
+
+		}
+<span class="nc" id="L51">		Negozio n=pN.getNegozi().get(id-1);</span>
+<span class="nc" id="L52">		return pN.checkRitiro(n);</span>
+	}
+	public boolean isValid(String type,int id) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+
+<span class="nc bnc" id="L56" title="All 4 branches missed.">		switch (type) {</span>
+<span class="nc" id="L57">			case DATABASE -&gt; pN = new NegozioDao();</span>
+<span class="nc" id="L58">			case FILE -&gt; pN = new CsvNegozio();</span>
+<span class="nc" id="L59">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
+<span class="nc" id="L60">			default -&gt; Logger.getLogger(&quot;is valid&quot;).log(Level.SEVERE,&quot;  is open il null!!&quot;);</span>
+
+		}
+<span class="nc" id="L63">		Negozio n=pN.getNegozi().get(id-1);</span>
+<span class="nc" id="L64">		return pN.checkOpen(n);</span>
+	}
+	
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

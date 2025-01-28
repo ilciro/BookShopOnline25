@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CsvNegozio.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25</a> &gt; <a href="index.source.html" class="el_package">laptop.database.negozio</a> &gt; <span class="el_source">CsvNegozio.java</span></div><h1>CsvNegozio.java</h1><pre class="source lang-java linenums">package laptop.database.negozio;
+
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.exception.IdException;
+import laptop.model.Negozio;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+
+<span class="nc" id="L18">public class CsvNegozio extends PersistenzaNegozio{</span>
+    private static final String LOCATIONNEGOZIO = &quot;report/reportNegozio.csv&quot;;
+    private static final String NEGOZIOP=&quot;src/main/resources/csvfiles/negozio.csv&quot;;
+<span class="nc" id="L21">    private final File fdn=new File(LOCATIONNEGOZIO);</span>
+
+
+    private static final int GETINDEXNEGOZIOID = 0;
+    private static final int GETINDEXNEGOZIONOME = 1;
+    private static final int GETINDEXNEGOZIOVIA = 2;
+    private static final int GETINDEXNEGOZIOISVALID = 3;
+    private static final int GETINDEXNEGOZIOISOPEN = 4;
+
+
+    @Override
+    public ObservableList&lt;Negozio&gt; getNegozi() throws CsvValidationException, IOException, IdException {
+<span class="nc" id="L33">        return retrieveNegozi(this.fdn);</span>
+    }
+    private static synchronized ObservableList&lt;Negozio&gt; retrieveNegozi(File fd) throws IOException, CsvValidationException,IdException {
+<span class="nc" id="L36">        ObservableList&lt;Negozio&gt; gList=  FXCollections.observableArrayList();</span>
+<span class="nc" id="L37">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
+            String[] gVector;
+
+<span class="nc bnc" id="L40" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
+
+<span class="nc" id="L42">                Negozio n=new Negozio();</span>
+<span class="nc" id="L43">                n.setId(Integer.parseInt(gVector[GETINDEXNEGOZIOID]));</span>
+<span class="nc" id="L44">                n.setNome(gVector[GETINDEXNEGOZIONOME]);</span>
+<span class="nc" id="L45">                n.setVia(gVector[GETINDEXNEGOZIOVIA]);</span>
+<span class="nc" id="L46">                n.setIsOpen(Boolean.parseBoolean(gVector[GETINDEXNEGOZIOISOPEN]));</span>
+<span class="nc" id="L47">                n.setIsValid(Boolean.parseBoolean(gVector[GETINDEXNEGOZIOISVALID]));</span>
+<span class="nc" id="L48">                gList.add(n);</span>
+
+<span class="nc" id="L50">            }</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">            if (gList.isEmpty()) {</span>
+<span class="nc" id="L52">                throw new IdException(&quot;list libro is empty&quot;);</span>
+            }
+
+
+
+        }
+
+<span class="nc" id="L59">        return gList;</span>
+    }
+
+    @Override
+    public boolean checkOpen(Negozio shop) throws CsvValidationException, IOException {
+<span class="nc" id="L64">        boolean status=false;</span>
+        String[] gVector;
+
+        boolean recordFound;
+
+<span class="nc" id="L69">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(this.fdn)))) {</span>
+
+<span class="nc bnc" id="L71" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
+
+<span class="nc" id="L73">                recordFound = gVector[GETINDEXNEGOZIONOME].equals(shop.getNome());</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">                if (recordFound) {</span>
+
+<span class="nc" id="L76">                    Negozio n=new Negozio();</span>
+<span class="nc" id="L77">                    n.setId(Integer.parseInt(gVector[GETINDEXNEGOZIOID]));</span>
+<span class="nc" id="L78">                    n.setNome(gVector[GETINDEXNEGOZIONOME]);</span>
+<span class="nc" id="L79">                    n.setIsOpen(Boolean.parseBoolean(gVector[GETINDEXNEGOZIOISOPEN]));</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">                    if(Boolean.TRUE.equals(n.getIsOpen())) status=true;</span>
+
+<span class="nc" id="L82">                }</span>
+
+
+            }
+        }
+
+<span class="nc" id="L88">        return status;</span>
+
+    }
+
+    @Override
+   public boolean checkRitiro(Negozio shop) throws IOException, CsvValidationException {
+<span class="nc" id="L94">        boolean status=false;</span>
+        String[] gVector;
+        boolean recordFound;
+<span class="nc" id="L97">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(this.fdn)))) {</span>
+
+<span class="nc bnc" id="L99" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
+
+<span class="nc" id="L101">                recordFound = gVector[GETINDEXNEGOZIONOME].equals(shop.getNome());</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">                if (recordFound) {</span>
+
+<span class="nc" id="L104">                    Negozio n=new Negozio();</span>
+
+<span class="nc" id="L106">                    n.setId(Integer.parseInt(gVector[GETINDEXNEGOZIOID]));</span>
+<span class="nc" id="L107">                    n.setNome(gVector[GETINDEXNEGOZIONOME]);</span>
+<span class="nc" id="L108">                    n.setIsValid(Boolean.parseBoolean(gVector[GETINDEXNEGOZIOISVALID]));</span>
+<span class="nc bnc" id="L109" title="All 2 branches missed.">                   if(Boolean.TRUE.equals(n.getIsValid())) status=true;</span>
+
+<span class="nc" id="L111">                }</span>
+
+
+            }
+        }
+
+<span class="nc" id="L117">        return status;</span>
+    }
+
+    @Override
+    public void initializza() throws IOException {
+        try{
+<span class="nc bnc" id="L123" title="All 2 branches missed.">            if(!this.fdn.exists()) throw new IOException();</span>
+<span class="nc" id="L124">        }catch (IOException e)</span>
+        {
+<span class="nc" id="L126">            Logger.getLogger(&quot;initialize csvNEgozio&quot;).log(Level.SEVERE,&quot;file not exists!!&quot;);</span>
+<span class="nc" id="L127">            Files.copy(Path.of(NEGOZIOP), Path.of(LOCATIONNEGOZIO), REPLACE_EXISTING);</span>
+
+<span class="nc" id="L129">            Logger.getLogger(&quot;crea negpzio file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, e);</span>
+
+<span class="nc" id="L131">        }</span>
+<span class="nc" id="L132">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

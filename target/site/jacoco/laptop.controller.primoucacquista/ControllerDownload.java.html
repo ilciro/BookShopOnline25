@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerDownload.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25</a> &gt; <a href="index.source.html" class="el_package">laptop.controller.primoucacquista</a> &gt; <span class="el_source">ControllerDownload.java</span></div><h1>ControllerDownload.java</h1><pre class="source lang-java linenums">package laptop.controller.primoucacquista;
+
+
+import java.io.*;
+import java.net.URISyntaxException;
+
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+import com.itextpdf.text.DocumentException;
+
+
+import com.opencsv.exceptions.CsvValidationException;
+import laptop.controller.ControllerSystemState;
+
+import laptop.database.giornale.CsvGiornale;
+import laptop.database.giornale.GiornaleDao;
+import laptop.database.giornale.MemoriaGiornale;
+import laptop.database.giornale.PersistenzaGiornale;
+import laptop.database.libro.CsvLibro;
+import laptop.database.libro.LibroDao;
+import laptop.database.libro.MemoriaLibro;
+import laptop.database.libro.PersistenzaLibro;
+import laptop.database.rivista.CsvRivista;
+import laptop.database.rivista.MemoriaRivista;
+import laptop.database.rivista.PersistenzaRivista;
+import laptop.database.rivista.RivistaDao;
+import laptop.exception.IdException;
+import laptop.model.raccolta.Giornale;
+import laptop.model.raccolta.Libro;
+import laptop.model.raccolta.Rivista;
+
+
+
+public class ControllerDownload {
+<span class="fc" id="L38">    private final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+
+	private final Giornale g;
+	private final Rivista r;
+	private final Libro l;
+
+	private static final String LIBRO=&quot;libro&quot;;
+	private static final String GIORNALE=&quot;giornale&quot;;
+	private static final String RIVISTA=&quot;rivista&quot;;
+	private static final String DATABASE=&quot;database&quot;;
+	private static final String FILE=&quot;file&quot;;
+
+
+	private void acquistaLibro(String persistenza) throws DocumentException, IOException, URISyntaxException, CsvValidationException, IdException, ClassNotFoundException {
+  		PersistenzaLibro pL;
+<span class="fc" id="L53">		l.setId(vis.getId());</span>
+<span class="fc" id="L54">		l.scarica(vis.getId());</span>
+<span class="fc" id="L55">		l.leggi(vis.getId());</span>
+
+<span class="fc bfc" id="L57" title="All 2 branches covered.">		if(persistenza.equals(DATABASE)) pL=new LibroDao();</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">		else if(persistenza.equals(FILE)) pL=new CsvLibro();</span>
+<span class="fc" id="L59">		else pL=new MemoriaLibro();</span>
+
+<span class="fc" id="L61">		Libro tempLibro =new Libro();</span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">		for(int i=0;i&lt;pL.getLibroByIdTitoloAutoreLibro(l).size();i++)</span>
+		{
+<span class="fc bfc" id="L64" title="All 2 branches covered.">			if(pL.getLibroByIdTitoloAutoreLibro(l).get(i).getId()==l.getId())</span>
+			{
+<span class="fc" id="L66">				tempLibro=pL.getLibroByIdTitoloAutoreLibro(l).get(i);</span>
+<span class="fc" id="L67">				pL.removeLibroById(l);</span>
+<span class="fc" id="L68">				break;</span>
+			}
+		}
+<span class="fc" id="L71">		tempLibro.setNrCopie(tempLibro.getNrCopie()-vis.getQuantita());</span>
+
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">		if(pL.inserisciLibro(tempLibro)) Logger.getLogger(&quot;aggiorno libro&quot;).log(Level.INFO,&quot;update book succesfully!!&quot;);</span>
+
+<span class="fc" id="L75">	}</span>
+	private void acquistaGiornale(String persistenza) throws IOException, DocumentException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
+  PersistenzaGiornale pG;
+<span class="fc" id="L78">		g.setId(vis.getId());</span>
+<span class="fc" id="L79">		g.scarica(vis.getId());</span>
+<span class="fc" id="L80">		g.leggi(vis.getId());</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">		if(persistenza.equals(DATABASE))  pG=new GiornaleDao();</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">		else if(persistenza.equals(FILE)) pG=new CsvGiornale();</span>
+<span class="fc" id="L83">		else pG=new MemoriaGiornale();</span>
+<span class="fc" id="L84">		Giornale tempG=new Giornale();</span>
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">		for (int i=0;i&lt;pG.getGiornaleByIdTitoloAutoreLibro(g).size();i++)</span>
+		{
+<span class="pc bpc" id="L87" title="1 of 2 branches missed.">			if(pG.getGiornaleByIdTitoloAutoreLibro(g).get(i).getId()==g.getId())</span>
+			{
+<span class="fc" id="L89">				tempG=pG.getGiornaleByIdTitoloAutoreLibro(g).get(i);</span>
+<span class="fc" id="L90">				pG.removeGiornaleById(g);</span>
+<span class="fc" id="L91">				break;</span>
+			}
+		}
+<span class="fc" id="L94">		tempG.setCopieRimanenti(tempG.getCopieRimanenti()-vis.getQuantita());</span>
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">		if(pG.inserisciGiornale(tempG)) Logger.getLogger(&quot;aggiorno giornale&quot;).log(Level.INFO,&quot;update daily succesfully!!&quot;);</span>
+
+<span class="fc" id="L97">	}</span>
+	private void acquistaRivista(String persistenza) throws IOException, DocumentException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
+  PersistenzaRivista pR;
+<span class="fc" id="L100">		r.setId(vis.getId());</span>
+<span class="fc" id="L101">		r.scarica(vis.getId());</span>
+<span class="fc" id="L102">		r.leggi(vis.getId());</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">		if (persistenza.equals(DATABASE)) pR = new RivistaDao();</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">		else if (persistenza.equals(FILE)) pR = new CsvRivista();</span>
+<span class="fc" id="L105">		else pR=new MemoriaRivista();</span>
+<span class="fc" id="L106">		Rivista tempR=new Rivista();</span>
+<span class="pc bpc" id="L107" title="1 of 2 branches missed.">		for(int i=0;i&lt;pR.getRivistaByIdTitoloAutoreRivista(r).size();i++) {</span>
+<span class="pc bpc" id="L108" title="1 of 2 branches missed.">			if (pR.getRivistaByIdTitoloAutoreRivista(r).get(i).getId()==r.getId()) {</span>
+<span class="fc" id="L109">				tempR=pR.getRivistaByIdTitoloAutoreRivista(r).get(i);</span>
+<span class="fc" id="L110">				pR.removeRivistaById(r);</span>
+<span class="fc" id="L111">				break;</span>
+			}
+		}
+<span class="fc" id="L114">		tempR.setCopieRim(tempR.getCopieRim()-vis.getQuantita());</span>
+<span class="pc bpc" id="L115" title="1 of 2 branches missed.">		if (pR.inserisciRivista(tempR))Logger.getLogger(&quot;aggionro rivista&quot;).log(Level.INFO, &quot;update magazine succesfully!!&quot;);</span>
+
+<span class="fc" id="L117">	}</span>
+
+
+
+
+		public void scarica(String type,String persistenza) throws IOException, URISyntaxException, DocumentException, SQLException, CsvValidationException, IdException, ClassNotFoundException {
+<span class="pc bpc" id="L123" title="1 of 4 branches missed.">		switch (type)</span>
+		{
+<span class="fc" id="L125">			case LIBRO-&gt;acquistaLibro(persistenza);</span>
+<span class="fc" id="L126">			case GIORNALE -&gt; acquistaGiornale(persistenza);</span>
+<span class="fc" id="L127">			case RIVISTA -&gt; acquistaRivista(persistenza);</span>
+
+<span class="nc" id="L129">			default -&gt; 	Logger.getLogger(&quot;Test scarica&quot;).log(Level.SEVERE,&quot;download error&quot;);</span>
+
+		}
+<span class="fc" id="L132">	}</span>
+
+
+<span class="fc" id="L135">	public ControllerDownload()  {</span>
+
+<span class="fc" id="L137">        l = new Libro();</span>
+<span class="fc" id="L138">		g=new Giornale();</span>
+<span class="fc" id="L139">		r=new Rivista();</span>
+
+<span class="fc" id="L141">	}</span>
+
+
+
+
+	}
+
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

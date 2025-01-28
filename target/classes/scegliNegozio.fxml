@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="268.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.view.primoucacquista.BoundaryScegliNegozio">
+   <children>
+      <Label fx:id="labelL" layoutX="35.0" layoutY="32.0" prefHeight="41.0" prefWidth="299.0" text="Scegli uno dei negozi in cui effetuare il ritiro:" />
+      <RadioButton fx:id="radio1" layoutX="35.0" layoutY="130.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="toggleGroupB" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="radio3" layoutX="35.0" layoutY="192.0" mnemonicParsing="false" toggleGroup="$toggleGroupB" />
+      <RadioButton fx:id="radio2" layoutX="213.0" layoutY="130.0" mnemonicParsing="false" toggleGroup="$toggleGroupB" />
+      <RadioButton fx:id="radio4" layoutX="213.0" layoutY="192.0" mnemonicParsing="false" toggleGroup="$toggleGroupB" />
+      <Button fx:id="buttonV" layoutX="403.0" layoutY="189.0" mnemonicParsing="false" onAction="#verifica" text="verifica e conferma ritiro" textFill="#009e12" />
+      <VBox fx:id="vbox" layoutX="441.0" layoutY="65.0" prefHeight="106.0" prefWidth="100.0">
+         <children>
+            <RadioButton fx:id="databaseButton" mnemonicParsing="false" onAction="#database" prefHeight="18.0" prefWidth="103.0" text="Database">
+               <toggleGroup>
+                  <ToggleGroup fx:id="toggleGroupP" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="fileButton" mnemonicParsing="false" onAction="#file" prefHeight="18.0" prefWidth="117.0" text="File" toggleGroup="$toggleGroupP">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="memoriaButton" mnemonicParsing="false" onAction="#memoria" prefHeight="18.0" prefWidth="110.0" text="Memoria">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </RadioButton>
+         </children>
+      </VBox>
+   </children>
+</Pane>

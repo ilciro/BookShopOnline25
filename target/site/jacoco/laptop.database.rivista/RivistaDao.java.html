@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RivistaDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25</a> &gt; <a href="index.source.html" class="el_package">laptop.database.rivista</a> &gt; <span class="el_source">RivistaDao.java</span></div><h1>RivistaDao.java</h1><pre class="source lang-java linenums">package laptop.database.rivista;
+
+import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.controller.ControllerSystemState;
+import laptop.exception.IdException;
+import laptop.model.raccolta.Factory;
+import laptop.model.raccolta.Raccolta;
+import laptop.model.raccolta.Rivista;
+import laptop.utilities.ConnToDb;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class RivistaDao extends PersistenzaRivista{
+    private final Factory f;
+
+    private  String query ;
+
+
+<span class="fc" id="L25">    private boolean state=false;</span>
+
+<span class="fc" id="L27">    private final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+    private  static final String RIVISTA=&quot;rivista&quot;;
+
+    private static final String ECCEZIONE=&quot;eccezione generata:&quot;;
+
+
+
+
+
+<span class="fc" id="L36">    public RivistaDao() {</span>
+<span class="fc" id="L37">        f = new Factory();</span>
+
+
+<span class="fc" id="L40">    }</span>
+
+    @Override
+    public boolean inserisciRivista(Rivista r) throws CsvValidationException, IOException, SQLException {
+        int row;
+
+
+<span class="fc" id="L47">        query= &quot;INSERT INTO `RIVISTA`&quot;</span>
+                + &quot;(`titolo`,&quot;
+                + &quot;`categoria`,&quot;
+                + &quot;`autore`,&quot;
+                + &quot;`lingua`,&quot;
+                + &quot;`editore`,&quot;
+                + &quot;`descrizione`,&quot;
+                + &quot;`dataPubblicazione`,&quot;
+                + &quot;`copieRimanenti`,&quot;
+                + &quot;`disp`,&quot;
+                + &quot;`prezzo`)&quot;
+                + &quot;VALUES&quot;
+                + &quot;(?,?,?,?,?,?,?,?,?,?)&quot;;
+<span class="fc" id="L60">        try(Connection conn= ConnToDb.connectionToDB();</span>
+<span class="fc" id="L61">            PreparedStatement prepQ=conn.prepareStatement(query))</span>
+        {
+
+<span class="fc" id="L64">            prepQ.setString(1,r.getTitolo());</span>
+<span class="fc" id="L65">            prepQ.setString(2,r.getCategoria());</span>
+<span class="fc" id="L66">            prepQ.setString(3,r.getAutore());</span>
+<span class="fc" id="L67">            prepQ.setString(4,r.getLingua());</span>
+<span class="fc" id="L68">            prepQ.setString(5,r.getEditore());</span>
+<span class="fc" id="L69">            prepQ.setString(6,r.getDescrizione());</span>
+<span class="fc" id="L70">            prepQ.setDate(7, Date.valueOf(r.getDataPubb().toString()));</span>
+<span class="fc" id="L71">            prepQ.setInt(8,r.getCopieRim());</span>
+<span class="fc" id="L72">            prepQ.setInt(9, r.getDisp());</span>
+<span class="fc" id="L73">            prepQ.setFloat(10, r.getPrezzo());</span>
+
+
+<span class="fc" id="L76">            row=prepQ.executeUpdate();</span>
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">            state= row == 1; // true</span>
+
+<span class="nc" id="L79">        }catch(SQLException e)</span>
+        {
+<span class="nc" id="L81">            java.util.logging.Logger.getLogger(&quot;creazione Rivista&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+<span class="fc" id="L82">        }</span>
+
+
+<span class="fc" id="L85">        return state;</span>
+
+    }
+
+    @Override
+    public boolean removeRivistaById(Rivista r) throws CsvValidationException, IOException, SQLException {
+<span class="fc" id="L91">        int row = 0;</span>
+
+<span class="fc" id="L93">        query=&quot;delete from RIVISTA where idRivista=? or idRivista=?&quot;;</span>
+<span class="fc" id="L94">        try (Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L95">             PreparedStatement prepQ= conn.prepareStatement(query)){</span>
+
+<span class="fc" id="L97">            prepQ.setInt(1,r.getId());</span>
+<span class="fc" id="L98">            prepQ.setInt(2,vis.getId());</span>
+
+<span class="fc" id="L100">            row= prepQ.executeUpdate();</span>
+
+<span class="nc" id="L102">        } catch (SQLException e) {</span>
+<span class="nc" id="L103">            Logger.getLogger(&quot;elimina&quot;).log(Level.SEVERE,&quot; error in mysql delete&quot;, e);</span>
+<span class="fc" id="L104">        }</span>
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">        return  row==1;</span>
+
+    }
+
+    @Override
+    public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException {
+<span class="fc" id="L111">        ObservableList&lt;Raccolta&gt; catalogo = FXCollections.observableArrayList();</span>
+
+<span class="fc" id="L113">        query = &quot;select * from RIVISTA&quot;;</span>
+<span class="fc" id="L114">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="fc" id="L115">             PreparedStatement prepQ = conn.prepareStatement(query);</span>
+<span class="fc" id="L116">             ResultSet rs = prepQ.executeQuery()) {</span>
+<span class="fc bfc" id="L117" title="All 2 branches covered.">            while (rs.next()) {</span>
+<span class="fc" id="L118">                f.createRaccoltaFinale1(RIVISTA,rs.getString(1),null,rs.getString(5),rs.getString(3),rs.getString(4),rs.getString(2));</span>
+
+
+
+<span class="fc" id="L122">                f.createRaccoltaFinale2(RIVISTA, 0, rs.getInt(10), rs.getInt(8),rs.getFloat(9),rs.getInt(11));</span>
+
+<span class="fc" id="L124">                catalogo.add(f.createRaccoltaFinaleCompleta(RIVISTA, rs.getDate(7).toLocalDate(),null, null));</span>
+
+
+
+
+            }
+<span class="nc" id="L130">        } catch (SQLException e) {</span>
+<span class="nc" id="L131">            java.util.logging.Logger.getLogger(&quot;get libri&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+<span class="fc" id="L132">        }</span>
+<span class="fc" id="L133">        return catalogo;</span>
+    }
+
+    @Override
+    public ObservableList&lt;Rivista&gt; getRiviste() throws CsvValidationException, IOException, IdException {
+<span class="nc" id="L138">        ObservableList&lt;Rivista&gt; catalogo = FXCollections.observableArrayList();</span>
+<span class="nc" id="L139">        String[] info=new String[7];</span>
+
+<span class="nc" id="L141">        query = &quot;select * from RIVISTA &quot;;</span>
+<span class="nc" id="L142">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="nc" id="L143">             PreparedStatement prepQ= conn.prepareStatement(query))  {</span>
+
+
+<span class="nc" id="L146">            ResultSet rs=prepQ.executeQuery();</span>
+<span class="nc bnc" id="L147" title="All 2 branches missed.">            while (rs.next())</span>
+            {
+<span class="nc" id="L149">                info[0]=rs.getString(&quot;titolo&quot;);</span>
+<span class="nc" id="L150">                info[2]=rs.getString(&quot;editore&quot;);</span>
+<span class="nc" id="L151">                info[3]=rs.getString(&quot;autore&quot;);</span>
+<span class="nc" id="L152">                info[4]=rs.getString(&quot;lingua&quot;);</span>
+<span class="nc" id="L153">                info[5]=rs.getString(&quot;categoria&quot;);</span>
+<span class="nc" id="L154">                catalogo.add((Rivista)f.creaRivista(info,rs.getString(&quot;descrizione&quot;),rs.getDate(&quot;dataPubblicazione&quot;).toLocalDate(),rs.getInt(&quot;disp&quot;),rs.getFloat(&quot;prezzo&quot;),rs.getInt(&quot;copieRimanenti&quot;),rs.getInt(&quot;idRivista&quot;)));</span>
+
+            }
+<span class="nc" id="L157">        } catch (SQLException e) {</span>
+<span class="nc" id="L158">            java.util.logging.Logger.getLogger(&quot;get data rivista obs&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+<span class="nc" id="L159">        }</span>
+<span class="nc" id="L160">        return catalogo;</span>
+    }
+
+    @Override
+    public ObservableList&lt;Rivista&gt; getRivistaByIdTitoloAutoreRivista(Rivista r) throws CsvValidationException, IOException, IdException {
+<span class="fc" id="L165">        ObservableList&lt;Rivista&gt; catalogo = FXCollections.observableArrayList();</span>
+<span class="fc" id="L166">        String[] info=new String[7];</span>
+
+<span class="fc" id="L168">        query = &quot;select * from RIVISTA where idRivista=? or idRivista=? or titolo=? or autore=?&quot;;</span>
+<span class="fc" id="L169">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="fc" id="L170">             PreparedStatement prepQ= conn.prepareStatement(query))  {</span>
+
+<span class="fc" id="L172">            prepQ.setInt(1,r.getId());</span>
+<span class="fc" id="L173">            prepQ.setInt(2,vis.getId());</span>
+<span class="fc" id="L174">            prepQ.setString(3,r.getTitolo());</span>
+<span class="fc" id="L175">            prepQ.setString(4,r.getEditore());</span>
+
+<span class="fc" id="L177">            ResultSet rs=prepQ.executeQuery();</span>
+<span class="fc bfc" id="L178" title="All 2 branches covered.">            while (rs.next())</span>
+            {
+<span class="fc" id="L180">                info[0]=rs.getString(&quot;titolo&quot;);</span>
+<span class="fc" id="L181">                info[2]=rs.getString(&quot;editore&quot;);</span>
+<span class="fc" id="L182">                info[3]=rs.getString(&quot;autore&quot;);</span>
+<span class="fc" id="L183">                info[4]=rs.getString(&quot;lingua&quot;);</span>
+<span class="fc" id="L184">                info[5]=rs.getString(&quot;categoria&quot;);</span>
+<span class="fc" id="L185">                catalogo.add((Rivista)f.creaRivista(info,rs.getString(&quot;descrizione&quot;),rs.getDate(&quot;dataPubblicazione&quot;).toLocalDate(),rs.getInt(&quot;disp&quot;),rs.getFloat(&quot;prezzo&quot;),rs.getInt(&quot;copieRimanenti&quot;),rs.getInt(&quot;idRivista&quot;)));</span>
+
+            }
+<span class="nc" id="L188">        } catch (SQLException e) {</span>
+<span class="nc" id="L189">            java.util.logging.Logger.getLogger(&quot;get data rivista obs&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+<span class="fc" id="L190">        }</span>
+<span class="fc" id="L191">        return catalogo;</span>
+    }
+
+    @Override
+    public void initializza() throws IOException, CsvValidationException {
+<span class="fc" id="L196">        Logger.getLogger(&quot;crea db sql&quot;).log(Level.INFO, &quot;\n creating tables ..&quot;);</span>
+        try{
+<span class="pc bpc" id="L198" title="1 of 2 branches missed.">            if(vis.isPopulated())</span>
+            {
+<span class="fc" id="L200">                Logger.getLogger(&quot; crea db if&quot;).log(Level.INFO, &quot; database already populated&quot;);</span>
+            }
+            else {
+<span class="nc" id="L203">                ConnToDb.creaPopolaDb();</span>
+<span class="nc" id="L204">                vis.setPopulated(true);</span>
+            }
+<span class="nc" id="L206">        }catch (FileNotFoundException e)</span>
+        {
+<span class="nc" id="L208">            Logger.getLogger(&quot;crea db &quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta .&quot;, e);</span>
+
+<span class="fc" id="L210">        }</span>
+<span class="fc" id="L211">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
