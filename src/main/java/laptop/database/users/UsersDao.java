@@ -76,7 +76,7 @@ public class UsersDao extends PersistenzaUtente {
 
 	@Override
 	public ObservableList<TempUser> getUserData() throws SQLException {
-		ObservableList<TempUser> lista=FXCollections.emptyObservableList();
+		ObservableList<TempUser> lista=FXCollections.observableArrayList();
 		query="select * from USERS";
 		try(Connection conn=ConnToDb.connectionToDB();
 		PreparedStatement preQ=conn.prepareStatement(query)){

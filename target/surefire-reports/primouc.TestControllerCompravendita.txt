@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: primouc.TestControllerCompravendita
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.283 s - in primouc.TestControllerCompravendita
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.226 s - in primouc.TestControllerCompravendita

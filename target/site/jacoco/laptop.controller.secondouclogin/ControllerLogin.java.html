@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerLogin.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25</a> &gt; <a href="index.source.html" class="el_package">laptop.controller.secondouclogin</a> &gt; <span class="el_source">ControllerLogin.java</span></div><h1>ControllerLogin.java</h1><pre class="source lang-java linenums">package laptop.controller.secondouclogin;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerLogin.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.controller.secondouclogin</a> &gt; <span class="el_source">ControllerLogin.java</span></div><h1>ControllerLogin.java</h1><pre class="source lang-java linenums">package laptop.controller.secondouclogin;
 
 import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
@@ -11,15 +11,14 @@ import laptop.model.user.User;
 
 import java.io.IOException;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
+
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="nc" id="L20">public class ControllerLogin {</span>
-<span class="nc" id="L21">    private final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
-<span class="nc" id="L22">    private final User u= User.getInstance();</span>
+<span class="fc" id="L19">public class ControllerLogin {</span>
+<span class="fc" id="L20">    private final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+<span class="fc" id="L21">    private final User u= User.getInstance();</span>
     private PersistenzaUtente pU;
     private static final String DATABASE=&quot;database&quot;;
     private static final String FILE=&quot;file&quot;;
@@ -29,91 +28,90 @@ import java.util.logging.Logger;
     public String login(String email,String pwd,String type) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
 
 
-<span class="nc" id="L32">        u.setEmail(email);</span>
-<span class="nc" id="L33">        u.setPassword(pwd);</span>
+<span class="fc" id="L31">        u.setEmail(email);</span>
+<span class="fc" id="L32">        u.setPassword(pwd);</span>
 
 
-<span class="nc bnc" id="L36" title="All 4 branches missed.">        switch (type) {</span>
-<span class="nc" id="L37">            case DATABASE-&gt;pU=new UsersDao();</span>
-<span class="nc" id="L38">            case FILE-&gt; pU = new CsvUtente();</span>
-<span class="nc" id="L39">            case MEMORIA -&gt; pU = new MemoriaUtente();</span>
-<span class="nc" id="L40">            default -&gt; Logger.getLogger(&quot;login&quot;).log(Level.SEVERE,&quot;persistency error!!&quot;);</span>
+<span class="pc bpc" id="L35" title="1 of 4 branches missed.">        switch (type) {</span>
+<span class="fc" id="L36">            case DATABASE-&gt;pU=new UsersDao();</span>
+<span class="fc" id="L37">            case FILE-&gt; pU = new CsvUtente();</span>
+<span class="fc" id="L38">            case MEMORIA -&gt; pU = new MemoriaUtente();</span>
+<span class="nc" id="L39">            default -&gt; Logger.getLogger(&quot;login&quot;).log(Level.SEVERE,&quot;persistency error!!&quot;);</span>
         }
-<span class="nc bnc" id="L42" title="All 2 branches missed.">        if(!Files.exists(Path.of(&quot;memory/serializzazioneUtente.ser&quot;)))</span>
-<span class="nc" id="L43">            pU.initializza();</span>
+<span class="fc" id="L41">            pU.initializza();</span>
 
 
-<span class="nc" id="L46">        String ruolo=&quot;&quot;;</span>
-<span class="nc" id="L47">        String nome = &quot;&quot;;</span>
-<span class="nc" id="L48">        String cognome=&quot;&quot;;</span>
-<span class="nc" id="L49">        int id=0;</span>
+<span class="fc" id="L44">        String ruolo=&quot;&quot;;</span>
+<span class="fc" id="L45">        String nome = &quot;&quot;;</span>
+<span class="fc" id="L46">        String cognome=&quot;&quot;;</span>
+<span class="fc" id="L47">        int id=0;</span>
 
 
-<span class="nc bnc" id="L52" title="All 4 branches missed.">        switch (type) {</span>
-<span class="nc" id="L53">            case DATABASE-&gt;pU=new UsersDao();</span>
-<span class="nc" id="L54">            case FILE -&gt; pU = new CsvUtente();</span>
-<span class="nc" id="L55">            case MEMORIA -&gt; pU = new MemoriaUtente();</span>
-<span class="nc" id="L56">            default -&gt; Logger.getLogger(&quot;login&quot;).log(Level.SEVERE,&quot;persistency error!!&quot;);</span>
+<span class="pc bpc" id="L50" title="1 of 4 branches missed.">        switch (type) {</span>
+<span class="fc" id="L51">            case DATABASE-&gt;pU=new UsersDao();</span>
+<span class="fc" id="L52">            case FILE -&gt; pU = new CsvUtente();</span>
+<span class="fc" id="L53">            case MEMORIA -&gt; pU = new MemoriaUtente();</span>
+<span class="nc" id="L54">            default -&gt; Logger.getLogger(&quot;login&quot;).log(Level.SEVERE,&quot;persistency error!!&quot;);</span>
         }
 
 
         //uso tempUSer
 
 
-<span class="nc bnc" id="L63" title="All 2 branches missed.">        for (int i=0;i&lt;pU.getUserData().size();i++)</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        for (int i=0;i&lt;pU.getUserData().size();i++)</span>
         {
-<span class="nc bnc" id="L65" title="All 4 branches missed.">            if(pU.getUserData().get(i).getEmailT().equals(email)&amp;&amp; pU.getUserData().get(i).getPasswordT().equals(pwd))</span>
+<span class="pc bpc" id="L63" title="1 of 4 branches missed.">            if(pU.getUserData().get(i).getEmailT().equals(email)&amp;&amp; pU.getUserData().get(i).getPasswordT().equals(pwd))</span>
             {
-<span class="nc" id="L67">                nome=pU.getUserData().get(i).getNomeT();</span>
-<span class="nc" id="L68">                cognome=pU.getUserData().get(i).getCognomeT();</span>
-<span class="nc" id="L69">                id=pU.getUserData().get(i).getId();</span>
-<span class="nc" id="L70">                ruolo=pU.getUserData().get(i).getIdRuoloT();</span>
+<span class="fc" id="L65">                nome=pU.getUserData().get(i).getNomeT();</span>
+<span class="fc" id="L66">                cognome=pU.getUserData().get(i).getCognomeT();</span>
+<span class="fc" id="L67">                id=pU.getUserData().get(i).getId();</span>
+<span class="fc" id="L68">                ruolo=pU.getUserData().get(i).getIdRuoloT();</span>
             }
 
         }
 
-<span class="nc" id="L75">        u.setNome(nome);</span>
-<span class="nc" id="L76">        u.setCognome(cognome);</span>
+<span class="fc" id="L73">        u.setNome(nome);</span>
+<span class="fc" id="L74">        u.setCognome(cognome);</span>
 
 
-<span class="nc bnc" id="L79" title="All 5 branches missed.">        switch (ruolo)</span>
+<span class="pc bpc" id="L77" title="1 of 5 branches missed.">        switch (ruolo)</span>
         {
             case &quot;U&quot;,&quot;u&quot;,&quot;utente&quot;,&quot;UTENTE&quot;-&gt;
             {
-<span class="nc" id="L83">                ruolo=&quot;UTENTE&quot;;</span>
-<span class="nc" id="L84">                vis.setIsLogged(true);</span>
-<span class="nc" id="L85">                u.setIdRuolo(ruolo);</span>
-<span class="nc" id="L86">                u.setId(id);</span>
-<span class="nc" id="L87">            }</span>
+<span class="fc" id="L81">                ruolo=&quot;UTENTE&quot;;</span>
+<span class="fc" id="L82">                vis.setIsLogged(true);</span>
+<span class="fc" id="L83">                u.setIdRuolo(ruolo);</span>
+<span class="fc" id="L84">                u.setId(id);</span>
+<span class="fc" id="L85">            }</span>
             case &quot;A&quot;,&quot;a&quot;,&quot;admin&quot;,&quot;ADMIN&quot;-&gt; {
-<span class="nc" id="L89">                ruolo = &quot;ADMIN&quot;;</span>
-<span class="nc" id="L90">                vis.setIsLogged(true);</span>
-<span class="nc" id="L91">                u.setIdRuolo(ruolo);</span>
-<span class="nc" id="L92">                u.setId(id);</span>
-<span class="nc" id="L93">            }</span>
+<span class="fc" id="L87">                ruolo = &quot;ADMIN&quot;;</span>
+<span class="fc" id="L88">                vis.setIsLogged(true);</span>
+<span class="fc" id="L89">                u.setIdRuolo(ruolo);</span>
+<span class="fc" id="L90">                u.setId(id);</span>
+<span class="fc" id="L91">            }</span>
             case &quot;S&quot;,&quot;s&quot;,&quot;W&quot;,&quot;w&quot;,&quot;SCRITTORE&quot;-&gt; {
-<span class="nc" id="L95">                ruolo = &quot;SCRITTORE&quot;;</span>
-<span class="nc" id="L96">                vis.setIsLogged(true);</span>
-<span class="nc" id="L97">                u.setIdRuolo(ruolo);</span>
-<span class="nc" id="L98">                u.setId(id);</span>
-<span class="nc" id="L99">            }</span>
+<span class="fc" id="L93">                ruolo = &quot;SCRITTORE&quot;;</span>
+<span class="fc" id="L94">                vis.setIsLogged(true);</span>
+<span class="fc" id="L95">                u.setIdRuolo(ruolo);</span>
+<span class="fc" id="L96">                u.setId(id);</span>
+<span class="fc" id="L97">            }</span>
             case &quot;E&quot;,&quot;e&quot;,&quot;EDITORE&quot;-&gt; {
-<span class="nc" id="L101">                ruolo = &quot;EDITORE&quot;;</span>
-<span class="nc" id="L102">                vis.setIsLogged(true);</span>
-<span class="nc" id="L103">                u.setIdRuolo(ruolo);</span>
-<span class="nc" id="L104">                u.setId(id);</span>
-<span class="nc" id="L105">            }</span>
+<span class="fc" id="L99">                ruolo = &quot;EDITORE&quot;;</span>
+<span class="fc" id="L100">                vis.setIsLogged(true);</span>
+<span class="fc" id="L101">                u.setIdRuolo(ruolo);</span>
+<span class="fc" id="L102">                u.setId(id);</span>
+<span class="fc" id="L103">            }</span>
             default -&gt;
             {
-<span class="nc" id="L108">                ruolo=&quot;NONVALIDO&quot;;</span>
-<span class="nc" id="L109">                Logger.getLogger(&quot; login&quot;).log(Level.SEVERE, &quot; user not found!!&quot;);</span>
-<span class="nc" id="L110">                vis.setIsLogged(false);</span>
+<span class="nc" id="L106">                ruolo=&quot;NONVALIDO&quot;;</span>
+<span class="nc" id="L107">                Logger.getLogger(&quot; login&quot;).log(Level.SEVERE, &quot; user not found!!&quot;);</span>
+<span class="nc" id="L108">                vis.setIsLogged(false);</span>
             }
         }
 
 
 
-<span class="nc" id="L116">        return ruolo;</span>
+<span class="fc" id="L114">        return ruolo;</span>
 
     }
 
@@ -123,30 +121,30 @@ import java.util.logging.Logger;
     //passo a user e poi cancello
     public boolean userPresente(String email,String pwd,String type) throws CsvValidationException, IOException, SQLException {
 
-<span class="nc" id="L126">        boolean status=false;</span>
+<span class="nc" id="L124">        boolean status=false;</span>
 
-<span class="nc bnc" id="L128" title="All 4 branches missed.">        switch (type)</span>
+<span class="nc bnc" id="L126" title="All 4 branches missed.">        switch (type)</span>
         {
-<span class="nc" id="L130">            case DATABASE -&gt; pU=new UsersDao();</span>
-<span class="nc" id="L131">            case FILE-&gt;pU=new CsvUtente();</span>
-<span class="nc" id="L132">            case MEMORIA-&gt;pU=new MemoriaUtente();</span>
-<span class="nc" id="L133">            default -&gt; Logger.getLogger(&quot;user presente&quot;).log(Level.SEVERE,&quot;error in persistency&quot;);</span>
+<span class="nc" id="L128">            case DATABASE -&gt; pU=new UsersDao();</span>
+<span class="nc" id="L129">            case FILE-&gt;pU=new CsvUtente();</span>
+<span class="nc" id="L130">            case MEMORIA-&gt;pU=new MemoriaUtente();</span>
+<span class="nc" id="L131">            default -&gt; Logger.getLogger(&quot;user presente&quot;).log(Level.SEVERE,&quot;error in persistency&quot;);</span>
         }
 
-<span class="nc bnc" id="L136" title="All 2 branches missed.">        for (int i=0;i&lt;pU.getUserData().size();i++)</span>
+<span class="nc bnc" id="L134" title="All 2 branches missed.">        for (int i=0;i&lt;pU.getUserData().size();i++)</span>
         {
-<span class="nc bnc" id="L138" title="All 2 branches missed.">            if(pU.getUserData().get(i).getEmailT().equals(email)&amp;&amp;</span>
-<span class="nc bnc" id="L139" title="All 2 branches missed.">            pU.getUserData().get(i).getPasswordT().equals(pwd))</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">            if(pU.getUserData().get(i).getEmailT().equals(email)&amp;&amp;</span>
+<span class="nc bnc" id="L137" title="All 2 branches missed.">            pU.getUserData().get(i).getPasswordT().equals(pwd))</span>
             {
-<span class="nc" id="L141">                u.setEmail(email);</span>
-<span class="nc" id="L142">                u.setPassword(pwd);</span>
-<span class="nc" id="L143">                status=true;</span>
+<span class="nc" id="L139">                u.setEmail(email);</span>
+<span class="nc" id="L140">                u.setPassword(pwd);</span>
+<span class="nc" id="L141">                status=true;</span>
             }
         }
 
 
 
-<span class="nc" id="L149">        return status;</span>
+<span class="nc" id="L147">        return status;</span>
     }
 
 

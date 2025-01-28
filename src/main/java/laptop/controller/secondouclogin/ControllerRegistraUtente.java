@@ -1,8 +1,7 @@
 package laptop.controller.secondouclogin;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.Level;
@@ -47,7 +46,6 @@ public class ControllerRegistraUtente {
 			case "memoria"->pU=new MemoriaUtente();
 			default -> Logger.getLogger("registra").log(Level.SEVERE,"error in persistency");
 		}
-		if(!Files.exists(Path.of("memory/serializzazioneUtente.ser")))
 			pU.initializza();
 
 		for (int i=0;i<pU.getUserData().size();i++)

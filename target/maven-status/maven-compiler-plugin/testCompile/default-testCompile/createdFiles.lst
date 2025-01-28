@@ -1,7 +1,11 @@
+secondouc/TestControllerLoginLogout.class
 primouc/Test1.class
 primouc/TestControllerScarica.class
 primouc/TestControllerCompravendita.class
+secondouc/TestControllerRegistraUtente.class
 primouc/TestControllerPagamentoCCredito.class
 primouc/TestControllerPagamentoCash.class
 primouc/TestControllerScaricaAnnulla.class
 primouc/TestControllerAcquista.class
+primouc/TestControllerNegozio.class
+secondouc/TestControllerUpdatePassword.class

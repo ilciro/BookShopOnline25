@@ -4,7 +4,9 @@
   <groupId>BookShopOnline25</groupId>
   <artifactId>BookShopOnline25</artifactId>
   <packaging>war</packaging>
+  <name>BookShopOnline25 Maven Webapp</name>
   <version>0.0.1-SNAPSHOT</version>
+  <url>https://github.com/ilciro/BookShopOnline25.git</url>
   <build>
     <finalName>BookShopOnline25</finalName>
     <plugins>
