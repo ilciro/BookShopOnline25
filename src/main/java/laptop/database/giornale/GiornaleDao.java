@@ -182,15 +182,11 @@ public class GiornaleDao extends PersistenzaGiornale{
 
     @Override
     public void initializza()  {
-        extracted();
-    }
-
-    private void extracted() {
-        Logger.getLogger("crea db sql per i giornali").log(Level.INFO, "\n creating tables daily ..");
+        Logger.getLogger("crea db sql").log(Level.INFO, "\n creating tables ..");
         try{
             if(vis.isPopulated())
             {
-                Logger.getLogger(" crea tabella giornali if").log(Level.INFO, " table daily already populated");
+                Logger.getLogger(" crea db if").log(Level.INFO, " database already populated");
             }
             else {
                 ConnToDb.creaPopolaDb();
@@ -198,7 +194,7 @@ public class GiornaleDao extends PersistenzaGiornale{
             }
         }catch (FileNotFoundException e)
         {
-            Logger.getLogger("crea tabella giornale ").log(Level.SEVERE, "\n eccezione ottenuta nei gironali.", e);
+            Logger.getLogger("crea db ").log(Level.SEVERE, "\n eccezione ottenuta .", e);
 
         }
     }

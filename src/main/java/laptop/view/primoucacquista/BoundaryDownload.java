@@ -108,9 +108,12 @@ public class BoundaryDownload implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-
+        try {
             cD = new ControllerDownload();
+        } catch (IOException e) {
+			Logger.getLogger("Test initialize").log(Level.SEVERE, "eccezione ottenuta",e);
 
+		}
 
     }
 

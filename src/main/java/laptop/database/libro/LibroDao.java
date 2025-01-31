@@ -198,16 +198,11 @@ public class LibroDao extends PersistenzaLibro{
 
     @Override
     public void initializza()  {
-        extracted();
-
-    }
-
-    private void extracted() {
-        Logger.getLogger("crea db sql per i libri").log(Level.INFO, "\n creating tables books ..");
+        Logger.getLogger("crea db sql").log(Level.INFO, "\n creating tables ..");
         try{
             if(vis.isPopulated())
             {
-                Logger.getLogger(" crea tabella libri if").log(Level.INFO, " table books already populated");
+                Logger.getLogger(" crea db if").log(Level.INFO, " database already populated");
             }
             else {
                 ConnToDb.creaPopolaDb();
@@ -215,7 +210,7 @@ public class LibroDao extends PersistenzaLibro{
             }
         }catch (FileNotFoundException e)
         {
-            Logger.getLogger("crea tabella libri ").log(Level.SEVERE, "\n eccezione ottenuta nei libri .", e);
+            Logger.getLogger("crea db ").log(Level.SEVERE, "\n eccezione ottenuta .", e);
 
         }
     }

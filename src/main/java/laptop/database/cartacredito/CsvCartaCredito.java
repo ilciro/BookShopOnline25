@@ -84,11 +84,11 @@ public class CsvCartaCredito extends PersistenzaCC{
 
 
     @Override
-    public ObservableList<CartaDiCredito> getCarteDiCredito(CartaDiCredito cc) throws IOException, CsvValidationException {
+    public ObservableList<CartaDiCredito> getCarteDiCredito(CartaDiCredito cc) throws IOException, ClassNotFoundException, CsvValidationException, IdException {
         return retriveCarteCredito(this.fileCartaCredito,cc.getNumeroCC(),cc.getNomeUser());
     }
 
-    private ObservableList<CartaDiCredito> retriveCarteCredito(File fd,String numero,String nome) throws IOException, CsvValidationException {
+    private ObservableList<CartaDiCredito> retriveCarteCredito(File fd,String numero,String nome) throws IOException, CsvValidationException, IdException {
         ObservableList<CartaDiCredito> gList = FXCollections.observableArrayList();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {
             String[] gVector;
@@ -113,7 +113,7 @@ public class CsvCartaCredito extends PersistenzaCC{
 
             }
             if (gList.isEmpty()) {
-                throw new IOException("list libro is empty");
+                throw new IdException("list libro is empty");
             }
 
 

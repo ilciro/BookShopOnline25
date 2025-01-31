@@ -15,7 +15,6 @@ import laptop.exception.IdException;
 import laptop.utilities.ConnToDb;
 import laptop.model.user.TempUser;
 import laptop.model.user.User;
-import org.jetbrains.annotations.NotNull;
 
 
 public class UsersDao extends PersistenzaUtente {
@@ -77,7 +76,7 @@ public class UsersDao extends PersistenzaUtente {
 
 	@Override
 	public ObservableList<TempUser> getUserData() throws SQLException {
-		ObservableList<TempUser> lista=FXCollections.observableArrayList();
+		ObservableList<TempUser> lista=FXCollections.emptyObservableList();
 		query="select * from USERS";
 		try(Connection conn=ConnToDb.connectionToDB();
 		PreparedStatement preQ=conn.prepareStatement(query)){
@@ -85,25 +84,20 @@ public class UsersDao extends PersistenzaUtente {
 			ResultSet rs= preQ.executeQuery();
 			while (rs.next())
 			{
-				TempUser tu = getTempUser(rs, rs.getDate(8).toLocalDate());
+				TempUser tu=new TempUser();
+				tu.setId(rs.getInt(1));
+				tu.setIdRuoloT(rs.getString(2));
+				tu.setNomeT(rs.getString(3));
+				tu.setCognomeT(rs.getString(4));
+				tu.setEmailT(rs.getString(5));
+				tu.setPasswordT(rs.getString(6));
+				tu.setDescrizioneT(rs.getString(7));
+				tu.setDataDiNascitaT(rs.getDate(8).toLocalDate());
 				lista.add(tu);
 			}
 
 		}
 		return lista;
-	}
-
-	private static @NotNull TempUser getTempUser(ResultSet rs, LocalDate rs1) throws SQLException {
-		TempUser tu = new TempUser();
-		tu.setId(rs.getInt(1));
-		tu.setIdRuoloT(rs.getString(2));
-		tu.setNomeT(rs.getString(3));
-		tu.setCognomeT(rs.getString(4));
-		tu.setEmailT(rs.getString(5));
-		tu.setPasswordT(rs.getString(6));
-		tu.setDescrizioneT(rs.getString(7));
-		tu.setDataDiNascitaT(rs1);
-		return tu;
 	}
 
 	@Override
@@ -131,7 +125,15 @@ public class UsersDao extends PersistenzaUtente {
 			ResultSet rs= preQ.executeQuery();
 			while (rs.next())
 			{
-				TempUser tu = getTempUser(rs, rs.getDate(8).toLocalDate());
+				TempUser tu=new TempUser();
+				tu.setId(rs.getInt(1));
+				tu.setIdRuoloT(rs.getString(2));
+				tu.setNomeT(rs.getString(3));
+				tu.setCognomeT(rs.getString(4));
+				tu.setEmailT(rs.getString(5));
+				tu.setPasswordT(rs.getString(6));
+				tu.setDescrizioneT(rs.getString(7));
+				tu.setDataDiNascitaT(rs.getDate(8).toLocalDate());
 				lista.add(tu);
 			}
 
@@ -307,7 +309,18 @@ public class UsersDao extends PersistenzaUtente {
 			 PreparedStatement prepQ = conn.prepareStatement(query)) {
 			ResultSet rs = prepQ.executeQuery();
 			while (rs.next()) {
-				TempUser tu = getTempUser(rs, (rs.getDate(8).toLocalDate()));
+				TempUser tu=new TempUser();
+
+				tu.setId(rs.getInt(1));
+				tu.setIdRuoloT(rs.getString(2));
+				tu.setNomeT(rs.getString(3));
+				tu.setCognomeT(rs.getString(4));
+				tu.setEmailT(rs.getString(5));
+				tu.setPasswordT(rs.getString(6));
+				tu.setDescrizioneT(rs.getString(7));
+				tu.setDataDiNascitaT((rs.getDate(8).toLocalDate()));
+
+
 
 
 				list.add(tu);

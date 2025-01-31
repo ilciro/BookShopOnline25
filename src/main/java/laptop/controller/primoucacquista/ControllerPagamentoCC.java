@@ -34,7 +34,6 @@ public class ControllerPagamentoCC {
 	private PersistenzaCC pCC;
 	private CartaDiCredito cc;
 
-
 	private static final String SERIALIZZAZIONE="memory/serializzazioneCartaCredito.ser";
 	private static final String DATABASE="database";
 	private static final String FILE="file";
@@ -102,7 +101,7 @@ public class ControllerPagamentoCC {
 
 
 	public void pagamentoCC(String nome,String database) throws IdException, IOException, CsvValidationException, ClassNotFoundException {
-  		Pagamento p ;
+  Pagamento p ;
 		//effettuo pagamento
 		p=new Pagamento();
 		p.setIdPag(0);
@@ -112,7 +111,6 @@ public class ControllerPagamentoCC {
 		if(vis.getIsLogged())
 			p.setEmail(User.getInstance().getEmail());
 		else p.setEmail(null);
-
 
 
 		switch (vis.getType()) {

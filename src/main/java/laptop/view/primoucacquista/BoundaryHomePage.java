@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.ControllerHomePage;
 
+
 public class BoundaryHomePage implements Initializable {
 	@FXML
 	private Pane pane;

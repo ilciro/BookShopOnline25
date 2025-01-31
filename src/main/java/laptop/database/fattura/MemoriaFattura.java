@@ -53,16 +53,15 @@ public class MemoriaFattura extends PersistenzaFattura  {
         try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             list = (ArrayList<Fattura>) ois.readObject();
-        }
-        for (int i = 1; i <= list.size(); i++) {
-            if (i == f.getIdFattura()) {
-                System.out.println("id pagamento / i"+ f.getIdFattura() + i);
 
-                status = list.remove(list.get(i - 1));
-                break;
+            for (int i = 1; i < list.size(); i++) {
+                if (i == f.getIdFattura()) {
+                    status = list.remove(list.get(i - 1));
+                }
             }
+            return status;
+
         }
-        return status;
     }
 
     @Override

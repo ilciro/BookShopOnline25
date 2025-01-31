@@ -53,7 +53,7 @@ public class ControllerHomePage {
         if(type.equals(DATABASE)) pR =new RivistaDao();
         else if(type.equals(FILE)) pR =new CsvRivista();
         else pR=new MemoriaRivista();
-        if(!Files.exists(Path.of("memory/serializzazioneRivista.ser")))
+        if(!Files.exists(Path.of("memory/seriliazzazioneRivista.ser")))
             pR.initializza();
     }
 

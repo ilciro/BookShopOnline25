@@ -193,15 +193,11 @@ public class RivistaDao extends PersistenzaRivista{
 
     @Override
     public void initializza() throws IOException, CsvValidationException {
-        extracted();
-    }
-
-    private void extracted() {
-        Logger.getLogger("crea db sql per le riviste").log(Level.INFO, "\n creating tables ro magazine ..");
+        Logger.getLogger("crea db sql").log(Level.INFO, "\n creating tables ..");
         try{
             if(vis.isPopulated())
             {
-                Logger.getLogger(" crea tabella riviste if").log(Level.INFO, " table magazines already populated");
+                Logger.getLogger(" crea db if").log(Level.INFO, " database already populated");
             }
             else {
                 ConnToDb.creaPopolaDb();
@@ -209,7 +205,7 @@ public class RivistaDao extends PersistenzaRivista{
             }
         }catch (FileNotFoundException e)
         {
-            Logger.getLogger("crea tabella riviste ").log(Level.SEVERE, "\n eccezione ottenuta nella rivista.", e);
+            Logger.getLogger("crea db ").log(Level.SEVERE, "\n eccezione ottenuta .", e);
 
         }
     }

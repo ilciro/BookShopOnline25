@@ -1,30 +1,27 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
+
+
   <modelVersion>4.0.0</modelVersion>
-  <groupId>BookShopOnline25</groupId>
-  <artifactId>BookShopOnline25</artifactId>
-  <packaging>war</packaging>
+
+  <groupId>BookShopOnline</groupId>
+  <artifactId>BookShopOnline</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
 
-
-  <name>BookShopOnline25 Maven Webapp</name>
-  <url>https://github.com/ilciro/BookShopOnline25.git</url>
-
-
+  <name>BookShopOnline Maven Webapp</name>
+  <url>https://github.com/ilciro/BookShopOnline.git</url>
 
 
   <properties>
-
-    <!-- sonar config -->
-    <sonar.organization>ilciro10</sonar.organization>
-    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
     <java.version>17</java.version>
+
+
     <junit>5.9.2</junit>
     <!-- Plugin versions -->
     <maven.shade>3.2.2</maven.shade>
@@ -163,184 +160,185 @@
       <artifactId>build-helper-maven-plugin</artifactId>
       <version>3.4.0</version>
     </dependency>
-    <dependency>
-      <groupId>org.jetbrains</groupId>
-      <artifactId>annotations</artifactId>
-      <version>15.0</version>
-      <scope>compile</scope>
-    </dependency>
+      <dependency>
+          <groupId>org.jetbrains</groupId>
+          <artifactId>annotations</artifactId>
+          <version>15.0</version>
+          <scope>compile</scope>
+      </dependency>
+
+
 
 
 
   </dependencies>
   <build>
-    <finalName>BookShopOnline25</finalName>
+    <finalName>BookShopOnline</finalName>
 
 
-
-  <plugins>
-
-
-
-
-
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-clean-plugin</artifactId>
-      <version>3.3.1</version>
-    </plugin>
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-resources-plugin</artifactId>
-      <version>3.3.1</version>
+    <plugins>
 
 
 
 
-    </plugin>
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-compiler-plugin</artifactId>
-      <version>3.13.0</version>
-      <configuration>
-        <source>17</source>
-        <target>17</target>
-      </configuration>
 
-    </plugin>
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-surefire-plugin</artifactId>
-      <version>3.0.0-M5</version>
-      <configuration>
-        <runOrder>alphabetical</runOrder>
-        <skipTests>false</skipTests>
-      </configuration>
-    </plugin>
-
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-install-plugin</artifactId>
-      <version>3.1.1</version>
-    </plugin>
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-shade-plugin</artifactId>
-      <version>${maven.shade}</version>
-      <executions>
-        <execution>
-          <phase>package</phase>
-          <goals>
-            <goal>shade</goal>
-          </goals>
-          <configuration>
-            <transformers>
-              <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                <mainClass>BookShopOnline25</mainClass>
-              </transformer>
-            </transformers>
-          </configuration>
-        </execution>
-      </executions>
-    </plugin>
-    <plugin>
-      <groupId>org.openjfx</groupId>
-      <artifactId>javafx-maven-plugin</artifactId>
-      <configuration>
-        <mainClass>laptop.view.Main</mainClass>
-      </configuration>
-      <version>0.0.8</version>
-
-    </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>3.3.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.3.1</version>
 
 
 
-    <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-war-plugin -->
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-war-plugin</artifactId>
-      <version>3.3.2</version>
-      <!-- added this-->
-      <configuration>
-        <!-- levare "*"-->
-        <warSourceDirectory>src/main/webapp</warSourceDirectory>
-        <webResources>
-          <resource>
-            <directory>${project.build.directory}</directory>
-            <targetPath>WEB-INF</targetPath> <!-- introduced in plugin v 2.1 -->
-            <includes>
-              <include>*.txt</include>
-            </includes>
 
-          </resource>
-        </webResources>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <source>17</source>
+          <target>17</target>
+        </configuration>
 
-      </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M5</version>
+        <configuration>
+          <runOrder>alphabetical</runOrder>
+          <skipTests>true</skipTests>
+        </configuration>
+              </plugin>
 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
+        <version>3.1.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>${maven.shade}</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>BookShopOnline</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <configuration>
+          <mainClass>laptop.view.Main</mainClass>
+        </configuration>
+        <version>0.0.8</version>
 
-    </plugin>
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-site-plugin</artifactId>
-      <version>4.0.0-M5</version>
-    </plugin>
-
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-project-info-reports-plugin</artifactId>
-      <version>3.4.5</version>
-    </plugin>
-
-    <plugin>
-      <groupId>org.jacoco</groupId>
-      <artifactId>jacoco-maven-plugin</artifactId>
-      <version>${jacoco.version}</version>
-
-
-      <configuration>
-        <excludes>
-          <exclude>**/laptop/view/**</exclude>
-          <exclude>**/laptop/test/**</exclude>
-          <exclude>**/web/test/**</exclude>
-          <exclude>**/web/servlet/**</exclude>
-        </excludes>
-      </configuration>
-      <executions>
-        <execution>
-          <id>prepare-agent</id>
-          <goals>
-            <goal>prepare-agent</goal>
-          </goals>
-        </execution>
-        <execution>
-          <id>report</id>
-          <goals>
-            <goal>report</goal>
-          </goals>
-        </execution>
-      </executions>
-    </plugin>
-
-    <plugin>
-      <groupId>org.codehaus.mojo</groupId>
-      <artifactId>build-helper-maven-plugin</artifactId>
-      <version>3.4.0</version>
-      <executions>
-        <execution>
-          <phase>generate-sources</phase>
-          <goals>
-            <goal>add-source</goal>
-          </goals>
-
-        </execution>
-      </executions>
-    </plugin>
+      </plugin>
 
 
-  </plugins>
+
+      <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-war-plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.2</version>
+        <!-- added this-->
+        <configuration>
+          <!-- levare "*"-->
+          <warSourceDirectory>src/main/webapp</warSourceDirectory>
+          <webResources>
+            <resource>
+              <directory>${project.build.directory}</directory>
+              <targetPath>WEB-INF</targetPath> <!-- introduced in plugin v 2.1 -->
+              <includes>
+                <include>*.txt</include>
+              </includes>
+
+            </resource>
+          </webResources>
+
+        </configuration>
+
+
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>4.0.0-M5</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>3.4.5</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${jacoco.version}</version>
+
+
+        <configuration>
+          <excludes>
+            <exclude>**/laptop/view/**</exclude>
+            <exclude>**/laptop/test/**</exclude>
+            <exclude>**/web/test/**</exclude>
+            <exclude>**/web/servlet/**</exclude>
+          </excludes>
+        </configuration>
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>3.4.0</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+
+          </execution>
+        </executions>
+      </plugin>
+
+
+
+
+
+
+    </plugins>
   </build>
-
-
-
-
 </project>

@@ -40,7 +40,7 @@ public class ControllerVisualizza {
 
 	private final ControllerSystemState vis = ControllerSystemState.getInstance();
 
-	public ControllerVisualizza()  {
+	public ControllerVisualizza() throws IOException {
 		l = new Libro();
 		g = new Giornale();
 		r = new Rivista();

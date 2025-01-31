@@ -6,7 +6,7 @@ package laptop.controller;
 
 
 public class ControllerSystemState {
-
+	
 	 private int id;
 	 private String type;
 	 private boolean isLogged ;

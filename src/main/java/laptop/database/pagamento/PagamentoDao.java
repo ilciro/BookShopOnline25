@@ -19,7 +19,6 @@ public class PagamentoDao extends PersistenzaPagamento{
 
     @Override
     public boolean inserisciPagamento(Pagamento p) {
-
         int row = 0;
         query = "INSERT INTO PAGAMENTO(metodo,nomeUtente,spesaTotale,eMail,tipoAcquisto,idProdotto) values (?,?,?,?,?,?)";
 

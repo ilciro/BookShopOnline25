@@ -44,11 +44,11 @@ public class ControllerCheckPagamentoData {
     private final Giornale g;
     private final Rivista r;
 
-    private static final String DATABASE ="database";
-    private static final String FILE ="file";
+    private static final String DATABASE = "database";
+    private static final String FILE = "file";
     private static final String MEMORIA="memoria";
+    private static final String SERIALIZZAZIONE="memory/serializzazionePagamento.ser";
     private static final String SERIALIZZAZIONEREPO="memory/serializzazioneReport.ser";
-    private static final String SERIALIZZAZIONEPAGAMENTO="memory/serializzazionePagamento.ser";
 
 
     private PersistenzaPagamento pP;
@@ -89,8 +89,7 @@ public class ControllerCheckPagamentoData {
 
             default -> Logger.getLogger("CcPD database").log(Level.SEVERE,"type of book payment  not correct!!");
         }
-
-        if(!Files.exists(Path.of(SERIALIZZAZIONEPAGAMENTO)))
+        if(!Files.exists(Path.of(SERIALIZZAZIONE)))
             pP.inizializza();
         pP.inserisciPagamento(p);
 
@@ -98,7 +97,29 @@ public class ControllerCheckPagamentoData {
         //fare report
 
 
-        inserisciReport(type,pL,null,null);
+        switch (type) {
+            case DATABASE -> pR = new ReportDao();
+            case FILE -> pR = new CsvReport();
+            case MEMORIA -> pR = new MemoriaReport();
+            default -> Logger.getLogger("CcPD report libro").log(Level.SEVERE,"type of report book not correct!!");
+        }
+
+
+
+        Report report = new Report();
+        report.setTipologiaOggetto(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria());
+        report.setTitoloOggetto(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getTitolo());
+        report.setNrPezzi(vis.getQuantita());
+        report.setPrezzo(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getPrezzo());
+        report.setTotale(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getPrezzo() * vis.getQuantita());
+
+
+        Logger.getLogger("pagamento libro").log(Level.INFO," report:{0}",report);
+
+        if(!Files.exists(Path.of(SERIALIZZAZIONEREPO)))
+            pR.inizializza();
+        pR.insertReport(report);
+
 
 
     }
@@ -122,12 +143,28 @@ public class ControllerCheckPagamentoData {
             default -> Logger.getLogger("CcPD database daily").log(Level.SEVERE,"type of daily payment  not correct!!");
 
         }
-
-        if(!Files.exists(Path.of(SERIALIZZAZIONEPAGAMENTO)))
+        if(!Files.exists(Path.of(SERIALIZZAZIONE)))
             pP.inizializza();
         pP.inserisciPagamento(p);
+        //fare report
+        switch (type) {
+            case DATABASE -> pR = new ReportDao();
+            case FILE -> pR = new CsvReport();
+            case MEMORIA -> pR = new MemoriaReport();
+            default -> Logger.getLogger("CcPD database report").log(Level.SEVERE,"type of daily report  not correct!!");
 
-        inserisciReport(type,null,pG,null);
+        }
+        Report report=new Report();
+
+        report.setIdReport(0);
+        report.setTipologiaOggetto(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria());
+        report.setTitoloOggetto(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getTitolo());
+        report.setNrPezzi(vis.getQuantita());
+        report.setPrezzo(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getPrezzo());
+        report.setTotale(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getPrezzo() * vis.getQuantita());
+        if(!Files.exists(Path.of(SERIALIZZAZIONEREPO)))
+            pR.inizializza();
+        pR.insertReport(report);
     }
 
     private void pagamentoRivista(String type,Pagamento p) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
@@ -149,46 +186,11 @@ public class ControllerCheckPagamentoData {
             default -> Logger.getLogger("CcPD database pagamento rivista").log(Level.SEVERE,"type of magazine payment  not correct!!");
 
         }
-
-
-        if(!Files.exists(Path.of(SERIALIZZAZIONEPAGAMENTO)))
+        if(!Files.exists(Path.of(SERIALIZZAZIONE)))
             pP.inizializza();
         pP.inserisciPagamento(p);
-
         //fare report
-        inserisciReport(type,null,null,pRiv);
 
-
-    }
-
-    public void checkPagamentoData(String nome, String type) throws IdException, CsvValidationException, IOException, ClassNotFoundException {
-        Pagamento p;
-
-        switch (vis.getType()) {
-            case "libro" ->
-                    {
-
-                        p = new Pagamento(1, vis.getMetodoP(), nome, vis.getSpesaT(), User.getInstance().getEmail(), null, vis.getId());
-                        pagamentoLibro(type,p);
-                    }
-            case "giornale" ->
-
-                    {
-                        p = new Pagamento(1, vis.getMetodoP(), nome, vis.getSpesaT(), User.getInstance().getEmail(), null, vis.getId());
-                        pagamentoGiornale(type,p);
-                    }
-            case "rivista" ->
-                    {
-                        p = new Pagamento(1, vis.getMetodoP(), nome, vis.getSpesaT(), User.getInstance().getEmail(), null, vis.getId());
-
-                        pagamentoRivista(type,p);
-                    }
-            default -> Logger.getLogger("pagamento").log(Level.SEVERE, " error in payment");
-        }
-    }
-
-
-    private void inserisciReport(String type,PersistenzaLibro pL,PersistenzaGiornale pG,PersistenzaRivista pRiv) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
         switch (type) {
             case DATABASE -> pR = new ReportDao();
             case FILE -> pR = new CsvReport();
@@ -196,46 +198,32 @@ public class ControllerCheckPagamentoData {
             default -> Logger.getLogger("CcPD report magazine").log(Level.SEVERE,"type of magazine report  not correct!!");
 
         }
-        if(!Files.exists(Path.of(SERIALIZZAZIONEREPO)))
-            pR.inizializza();
         Report report =new Report();
 
         report.setIdReport(0);
-        if(pL!=null)
-        {
-            report.setTipologiaOggetto(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria());
-            report.setTitoloOggetto(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getTitolo());
-            report.setPrezzo(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getPrezzo());
-            report.setTotale(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getPrezzo() * vis.getQuantita());
-
-        }
-        if(pRiv!=null)
-        {
-            report.setTipologiaOggetto(pRiv.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria());
-            report.setTitoloOggetto(pRiv.getRivistaByIdTitoloAutoreRivista(r).get(0).getTitolo());
-            report.setPrezzo(pRiv.getRivistaByIdTitoloAutoreRivista(r).get(0).getPrezzo());
-            report.setTotale(pRiv.getRivistaByIdTitoloAutoreRivista(r).get(0).getPrezzo() * vis.getQuantita());
-
-
-        }
-        if(pG!=null)
-        {
-            report.setTipologiaOggetto(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria());
-            report.setTitoloOggetto(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getTitolo());
-            report.setPrezzo(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getPrezzo());
-            report.setTotale(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getPrezzo() * vis.getQuantita());
-
-        }
+        report.setTipologiaOggetto(pRiv.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria());
+        report.setTitoloOggetto(pRiv.getRivistaByIdTitoloAutoreRivista(r).get(0).getTitolo());
         report.setNrPezzi(vis.getQuantita());
+        report.setPrezzo(pRiv.getRivistaByIdTitoloAutoreRivista(r).get(0).getPrezzo());
+        report.setTotale(pRiv.getRivistaByIdTitoloAutoreRivista(r).get(0).getPrezzo() * vis.getQuantita());
 
 
-
+        if(!Files.exists(Path.of(SERIALIZZAZIONEREPO)))
+            pR.inizializza();
         pR.insertReport(report);
     }
 
+    public void checkPagamentoData(String nome, String type) throws IdException, CsvValidationException, IOException, ClassNotFoundException {
 
 
-
+        Pagamento p = new Pagamento(1, vis.getMetodoP(), nome, vis.getSpesaT(), User.getInstance().getEmail(), null, vis.getId());
+        switch (vis.getType()) {
+            case "libro" -> pagamentoLibro(type,p);
+            case "giornale" -> pagamentoGiornale(type,p);
+            case "rivista" -> pagamentoRivista(type,p);
+            default -> Logger.getLogger("pagamento").log(Level.SEVERE, " error in payment");
+        }
+    }
 
     public void controllaPag(String d, String c,String civ) {
 

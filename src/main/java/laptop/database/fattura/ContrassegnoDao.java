@@ -19,7 +19,7 @@ public class ContrassegnoDao extends PersistenzaFattura {
     
     @Override
     public boolean inserisciFattura(Fattura f) {
-        int row=0;
+        boolean success = false;
 
 
             query="insert into FATTURA (nome,cognome,via,comunicazioni,ammontare)values (?,?,?,?,?)";
@@ -32,14 +32,14 @@ public class ContrassegnoDao extends PersistenzaFattura {
                 prepQ.setString(3, f.getVia());
                 prepQ.setString(4,f.getCom());
                 prepQ.setFloat(5,vis.getSpesaT());
-              row=prepQ.executeUpdate();
+               success= prepQ.execute();
 
 
             }catch(SQLException e)
             {
                 Logger.getLogger("insert fattura").log(Level.INFO, ECCEZIONE, e);
             }
-            return row==1;
+            return success;
 
 
 

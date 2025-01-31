@@ -1,9 +1,9 @@
 package laptop.controller.primoucacquista;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.sql.SQLException;
 
 import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
@@ -20,31 +20,23 @@ public class ControllerPagamentoCash {
 
 	private final ControllerSystemState vis= ControllerSystemState.getInstance();
 	private final ControllerCheckPagamentoData cCPD;
-	private PersistenzaFattura pF;
 
 
-	public void controlla(String nome, String cognome, String via, String com,String type) throws  IdException, IOException, CsvValidationException, ClassNotFoundException {
+	public void controlla(String nome, String cognome, String via, String com,String type) throws SQLException, IdException, IOException, CsvValidationException, ClassNotFoundException {
+   PersistenzaFattura pF;
+
 
 
 
 			Fattura f=new Fattura(nome,cognome,via,com,vis.getSpesaT(),0);
 
+			if(type.equals("database"))pF=new ContrassegnoDao();
+			else if(type.equals("file")) pF=new CsvFattura();
+			else pF= new MemoriaFattura();
+			if(!Files.exists(Path.of("memory/serializzazioneFattura.ser")))
+				pF.inizializza();
 
-			switch (type)
-			{
-				case "database"->pF=new ContrassegnoDao();
-				case "file"->pF=new CsvFattura();
-				case "memoria"->pF=new MemoriaFattura();
-				default -> Logger.getLogger("controlla").log(Level.SEVERE," persistency is wrong!!");
-			}
-
-
-
-			pF.inizializza();
-
-
-			if(pF.inserisciFattura(f))
-				cCPD.checkPagamentoData(f.getNome(),type);
+			if(pF.inserisciFattura(f)) cCPD.checkPagamentoData(f.getNome(),type);
 
 
 	}

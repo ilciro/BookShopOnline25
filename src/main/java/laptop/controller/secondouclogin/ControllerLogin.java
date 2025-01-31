@@ -11,7 +11,8 @@ import laptop.model.user.User;
 
 import java.io.IOException;
 
-
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,6 +39,7 @@ public class ControllerLogin {
             case MEMORIA -> pU = new MemoriaUtente();
             default -> Logger.getLogger("login").log(Level.SEVERE,"persistency error!!");
         }
+        if(!Files.exists(Path.of("memory/serializzazioneUtente.ser")))
             pU.initializza();
 
 
