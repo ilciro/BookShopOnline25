@@ -8,6 +8,7 @@ import laptop.model.user.User;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,7 +16,7 @@ public class PersistenzaPagamento {
     public boolean inserisciPagamento(Pagamento p) throws CsvValidationException, IOException, ClassNotFoundException {return true;}
     public Pagamento ultimoPagamento() throws CsvValidationException, IOException, ClassNotFoundException {return null;}
     public boolean cancellaPagamento(Pagamento p) throws IOException, CsvValidationException, ClassNotFoundException {return true;}
-    public void inizializza() throws IOException, ClassNotFoundException {
+    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
         Logger.getLogger("inizializza pagamento").log(Level.INFO,"initialize payment");
     }
     public ObservableList<Pagamento> listPagamentiByUser(Pagamento p) throws CsvValidationException, IOException, ClassNotFoundException {return FXCollections.emptyObservableList();}

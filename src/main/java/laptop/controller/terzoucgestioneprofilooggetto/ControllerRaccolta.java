@@ -86,7 +86,7 @@ public class ControllerRaccolta {
 
 
 
-    private ObservableList<Raccolta> prendiLibri(String persistenza) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+    private ObservableList<Raccolta> prendiLibri(String persistenza) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
         switch (persistenza){
             case DATABASE -> pL=new LibroDao();
             case FILE -> pL=new CsvLibro();
@@ -126,7 +126,7 @@ public class ControllerRaccolta {
         return pG.retrieveRaccoltaData();
     }
 
-    public ControllerRaccolta() throws IOException {
+    public ControllerRaccolta()  {
 
         l=new Libro();
         g=new Giornale();

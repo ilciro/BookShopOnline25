@@ -100,6 +100,8 @@ public class BoundaryPagamentoCash implements Initializable{
 				if(databaseButton.isSelected()) type="database";
 				if(fileButton.isSelected()) type="file";
 				if(memoriaButton.isSelected()) type="memoria";
+
+
 				cPC.controlla(n, c, v, com,type);
 				
 				Logger.getLogger("pagamento cash").log(Level.INFO,"\n pagamento avvenuto");
@@ -138,14 +140,12 @@ public class BoundaryPagamentoCash implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-				try {
+
 					cPC = new ControllerPagamentoCash();
-				} catch (Exception e) {
-					Logger.getLogger("Test pagacc").log(Level.SEVERE,"\n eccezione ottenuta {0}",e.toString());
 
 
 					
-				}
+
 				if(vis.getIsLogged())
 				{
 					nomeTF.setText(cPC.getInfo()[0]);

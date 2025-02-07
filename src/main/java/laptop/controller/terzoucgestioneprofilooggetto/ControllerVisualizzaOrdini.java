@@ -13,6 +13,7 @@ import laptop.model.user.User;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,7 +30,7 @@ public class ControllerVisualizzaOrdini {
         return User.getInstance().getEmail();
     }
 
-    public ObservableList<Pagamento> getLista(String persistenza) throws CsvValidationException, IOException, ClassNotFoundException {
+    public ObservableList<Pagamento> getLista(String persistenza) throws CsvValidationException, IOException, ClassNotFoundException, SQLException {
 
 
 
@@ -44,7 +45,6 @@ public class ControllerVisualizzaOrdini {
         Pagamento p=new Pagamento();
         p.setEmail(getEmail());
 
-        if(!Files.exists(Path.of("memory/serializzazionePagamento.ser")))
             pP.inizializza();
 
         return pP.listPagamentiByUser(p);

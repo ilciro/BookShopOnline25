@@ -5,6 +5,7 @@ import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.controller.ControllerSystemState;
 import laptop.exception.IdException;
 import laptop.model.user.TempUser;
 import org.apache.commons.lang.SystemUtils;
@@ -36,6 +37,9 @@ public class CsvUtente extends PersistenzaUtente {
     private static final String LOCATIONU = "report/reportUtente.csv";
     private final HashMap<String, TempUser> cacheU;
     private final File fdU = new File(LOCATIONU);
+
+    private static final String UTENTEP="src/main/resources/csvfiles/utente.csv";
+    private static final ControllerSystemState vis= ControllerSystemState.getInstance();
 
 
     public CsvUtente() {
@@ -107,7 +111,34 @@ public class CsvUtente extends PersistenzaUtente {
 
     @Override
     public void initializza() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        super.initializza();
+        try {
+            File directory=new File("report");
+
+
+            if(directory.isDirectory())
+            {
+                String[] files = directory.list();
+
+
+                assert files != null;
+                if ( files.length == 0 || !this.fdU.exists()) {
+                    throw new IOException("cartella vuota");
+                }
+
+
+
+
+            }
+
+
+        } catch (IOException eFile) {
+
+            Logger.getLogger("creazione db file").log(Level.INFO, "\n creating files ..");
+
+            Files.copy(Path.of(UTENTEP), Path.of(LOCATIONU), REPLACE_EXISTING);
+
+            Logger.getLogger("crea db file").log(Level.SEVERE, "\n eccezione ottenuta nella modalità file.", eFile);
+        }
     }
 
 
@@ -124,7 +155,8 @@ public class CsvUtente extends PersistenzaUtente {
         try (CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(LOCATIONU, true)))) {
             String[] gVector = new String[8];
 
-            gVector[GETINDEXIDUSER] = String.valueOf(getIdMax() + 1);
+            if(vis.getTipoModifica().equals("im")) gVector[GETINDEXIDUSER] = String.valueOf(u.getId());
+            else if(vis.getTipoModifica().equals("insert")) gVector[GETINDEXIDUSER] = String.valueOf(getIdMax() + 1);
             gVector[GETINDEXRUOLO] = u.getIdRuoloT();
             gVector[GETINDEXNOME] = u.getNomeT();
             gVector[GETINDEXCOGNOME] = u.getCognomeT();

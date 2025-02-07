@@ -2,6 +2,7 @@ package laptop.view.primoucacquista;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -79,12 +80,12 @@ public class BoundaryCompravendita implements Initializable {
 
 
 	@FXML
-	private void prendiLista() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+	private void prendiLista() throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
 		 type=controllaPersistenza();
 		table.setItems(cCV.getLista(vis.getType(),type));
 	}
 	@FXML
-	private void mostra() throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+	private void mostra() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
 		int id=Integer.parseInt(idOggetto.getText());
 		type=controllaPersistenza();
 		if(id<=0 || id > cCV.getLista(vis.getType(), type).size())
@@ -104,7 +105,7 @@ public class BoundaryCompravendita implements Initializable {
 
 	}
 	@FXML
-	private void acquista() throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+	private void acquista() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
 		int id=Integer.parseInt(idOggetto.getText());
 		type=controllaPersistenza();
 		if(id<=0 || id > cCV.getLista(vis.getType(), type).size())

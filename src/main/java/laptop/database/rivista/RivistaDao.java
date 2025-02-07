@@ -9,9 +9,9 @@ import laptop.model.raccolta.Factory;
 import laptop.model.raccolta.Raccolta;
 import laptop.model.raccolta.Rivista;
 import laptop.utilities.ConnToDb;
+import org.apache.ibatis.jdbc.ScriptRunner;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,11 +22,9 @@ public class RivistaDao extends PersistenzaRivista{
     private  String query ;
 
 
-    private boolean state=false;
 
     private final ControllerSystemState vis=ControllerSystemState.getInstance();
     private  static final String RIVISTA="rivista";
-
     private static final String ECCEZIONE="eccezione generata:";
 
 
@@ -41,22 +39,10 @@ public class RivistaDao extends PersistenzaRivista{
 
     @Override
     public boolean inserisciRivista(Rivista r) throws CsvValidationException, IOException, SQLException {
-        int row;
+        int row=0;
 
 
-        query= "INSERT INTO `RIVISTA`"
-                + "(`titolo`,"
-                + "`categoria`,"
-                + "`autore`,"
-                + "`lingua`,"
-                + "`editore`,"
-                + "`descrizione`,"
-                + "`dataPubblicazione`,"
-                + "`copieRimanenti`,"
-                + "`disp`,"
-                + "`prezzo`)"
-                + "VALUES"
-                + "(?,?,?,?,?,?,?,?,?,?)";
+        query= "INSERT INTO `RIVISTA` VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         try(Connection conn= ConnToDb.connectionToDB();
             PreparedStatement prepQ=conn.prepareStatement(query))
         {
@@ -71,10 +57,12 @@ public class RivistaDao extends PersistenzaRivista{
             prepQ.setInt(8,r.getCopieRim());
             prepQ.setInt(9, r.getDisp());
             prepQ.setFloat(10, r.getPrezzo());
+            if(vis.getTipoModifica().equals("im")) prepQ.setInt(11,vis.getId());
+            else if(vis.getTipoModifica().equals("insert")) prepQ.setInt(11,0);
 
 
             row=prepQ.executeUpdate();
-            state= row == 1; // true
+
 
         }catch(SQLException e)
         {
@@ -82,7 +70,7 @@ public class RivistaDao extends PersistenzaRivista{
         }
 
 
-        return state;
+        return row==1;
 
     }
 
@@ -136,9 +124,8 @@ public class RivistaDao extends PersistenzaRivista{
     @Override
     public ObservableList<Rivista> getRiviste() throws CsvValidationException, IOException, IdException {
         ObservableList<Rivista> catalogo = FXCollections.observableArrayList();
-        String[] info=new String[7];
 
-        query = "select * from RIVISTA ";
+        query = "select * from RIVISTA";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ= conn.prepareStatement(query))  {
 
@@ -146,12 +133,15 @@ public class RivistaDao extends PersistenzaRivista{
             ResultSet rs=prepQ.executeQuery();
             while (rs.next())
             {
-                info[0]=rs.getString("titolo");
-                info[2]=rs.getString("editore");
-                info[3]=rs.getString("autore");
-                info[4]=rs.getString("lingua");
-                info[5]=rs.getString("categoria");
-                catalogo.add((Rivista)f.creaRivista(info,rs.getString("descrizione"),rs.getDate("dataPubblicazione").toLocalDate(),rs.getInt("disp"),rs.getFloat("prezzo"),rs.getInt("copieRimanenti"),rs.getInt("idRivista")));
+
+                f.createRaccoltaFinale1(RIVISTA, rs.getString(1), null, rs.getString(5), rs.getString(3), rs.getString(4), rs.getString(2));
+
+
+                f.createRaccoltaFinale2(RIVISTA,0, rs.getInt(10), rs.getInt(8), rs.getFloat(9), rs.getInt(11));
+
+
+                catalogo.add((Rivista) f.createRaccoltaFinaleCompleta(RIVISTA, rs.getDate(7).toLocalDate(), null, rs.getString(6)));
+
 
             }
         } catch (SQLException e) {
@@ -192,22 +182,43 @@ public class RivistaDao extends PersistenzaRivista{
     }
 
     @Override
-    public void initializza() throws IOException, CsvValidationException {
-        Logger.getLogger("crea db sql").log(Level.INFO, "\n creating tables ..");
-        try{
-            if(vis.isPopulated())
-            {
-                Logger.getLogger(" crea db if").log(Level.INFO, " database already populated");
-            }
-            else {
-                ConnToDb.creaPopolaDb();
-                vis.setPopulated(true);
-            }
-        }catch (FileNotFoundException e)
-        {
-            Logger.getLogger("crea db ").log(Level.SEVERE, "\n eccezione ottenuta .", e);
+    public void initializza() throws IOException, CsvValidationException, SQLException {
+        ConnToDb.generalConnection();
+        //creo tabella
+
+        try (Connection conn = ConnToDb.connectionToDB()) {
+
+
+            Reader reader = new BufferedReader(new FileReader("FileSql/" + RIVISTA + ".sql"));
+            ScriptRunner sr = new ScriptRunner(conn);
+            sr.setSendFullScript(false);
+            sr.runScript(reader);
+
 
         }
-    }
+
+        //vedo se tabella vuoita
+        int row=0;
+        try(Connection conn=ConnToDb.connectionToDB();
+            PreparedStatement preQ=conn.prepareStatement("select count(*) from ISPW.RIVISTA;"))
+        {
+            ResultSet rs= preQ.executeQuery();
+            if(rs.next())
+                row=rs.getInt(1);
+        }
+        if(row==0)
+        {
+            try(Connection conn=ConnToDb.connectionToDB())
+            {
+                Reader reader = new BufferedReader(new FileReader("FileSql/popolaRivista.sql"));
+                ScriptRunner sr = new ScriptRunner(conn);
+                sr.setSendFullScript(false);
+                sr.runScript(reader);
+            }
+        }
+
+        }
+
+
 
 }

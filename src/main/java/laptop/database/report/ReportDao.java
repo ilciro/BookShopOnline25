@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import laptop.model.Report;
 import laptop.model.user.TempUser;
 import laptop.utilities.ConnToDb;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -111,7 +112,7 @@ public class ReportDao extends PersistenzaReport {
 
     @Override
     public ObservableList<TempUser> reportU() throws SQLException {
-        ObservableList<TempUser> lista=FXCollections.emptyObservableList();
+        ObservableList<TempUser> lista=FXCollections.observableArrayList();
         query="select * from USERS";
         try(Connection conn=ConnToDb.connectionToDB();
         PreparedStatement prepQ= conn.prepareStatement(query))
@@ -119,15 +120,7 @@ public class ReportDao extends PersistenzaReport {
          ResultSet rs= prepQ.executeQuery();
              while (rs.next())
              {
-                 TempUser tu=new TempUser();
-                 tu.setId(rs.getInt(1));
-                 tu.setIdRuoloT(rs.getString(2));
-                 tu.setNomeT(rs.getString(3));
-                 tu.setCognomeT(rs.getString(4));
-                 tu.setEmailT(rs.getString(5));
-                 tu.setPasswordT(rs.getString(6));
-                 tu.setDescrizioneT(rs.getString(7));
-                 tu.setDataDiNascitaT(rs.getDate(8).toLocalDate());
+                 TempUser tu = getTempUser(rs);
                  lista.add(tu);
              }
         }
@@ -135,9 +128,24 @@ public class ReportDao extends PersistenzaReport {
 
     }
 
+    private static @NotNull TempUser getTempUser(ResultSet rs) throws SQLException {
+        TempUser tu=new TempUser();
+        tu.setId(rs.getInt(1));
+        tu.setIdRuoloT(rs.getString(2));
+        tu.setNomeT(rs.getString(3));
+        tu.setCognomeT(rs.getString(4));
+        tu.setEmailT(rs.getString(5));
+        tu.setPasswordT(rs.getString(6));
+        tu.setDescrizioneT(rs.getString(7));
+        tu.setDataDiNascitaT(rs.getDate(8).toLocalDate());
+        return tu;
+    }
+
     @Override
     public ObservableList<Report> returnReportIDTipoTitolo(int id, String tipo, String titolo) throws IOException, CsvValidationException {
         Logger.getLogger("reportByid").log(Level.INFO,"yet used by report");
         return FXCollections.emptyObservableList();
     }
+
+
 }

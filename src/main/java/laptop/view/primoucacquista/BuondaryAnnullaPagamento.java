@@ -83,6 +83,8 @@ public class BuondaryAnnullaPagamento implements Initializable {
 
     @FXML
     private void cancellaFattura() throws CsvValidationException, IOException, ClassNotFoundException {
+        System.out.println("tupo in cancella fattura :"+ returnPersistenza());
+
         if(cannP.cancellaFattura(idFattura.getText(),returnPersistenza())) {
             buttonGeneraFattura.setVisible(false);
             Logger.getLogger("cancella Pagamento ok ").log(Level.INFO, "payment deleted with success!!");
@@ -91,6 +93,8 @@ public class BuondaryAnnullaPagamento implements Initializable {
     }
     @FXML
     private void cancellaPagamento() throws CsvValidationException, IOException, ClassNotFoundException {
+        System.out.println("tupo in cancella pangameto :"+ returnPersistenza());
+
         if(cannP.cancellaPagamento(idPagamento.getText(),returnPersistenza())) {
             buttonGeneraPagamento.setVisible(false);
             Logger.getLogger("cancella Pagamento ok ").log(Level.INFO, "payment deleted with success!!");

@@ -9,9 +9,9 @@ import laptop.model.raccolta.Factory;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Raccolta;
 import laptop.utilities.ConnToDb;
+import org.apache.ibatis.jdbc.ScriptRunner;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.logging.Level;
@@ -34,6 +34,8 @@ public class GiornaleDao extends PersistenzaGiornale{
     public boolean inserisciGiornale(Giornale g)  {
         int row = 0;
 
+
+
         query = "INSERT INTO `GIORNALE`"
                 + "VALUES"
                 + "(?,?,?,?,?,?,?,?,?)";
@@ -48,7 +50,9 @@ public class GiornaleDao extends PersistenzaGiornale{
             prepQ.setInt(6, g.getCopieRimanenti());
             prepQ.setInt(7, g.getDisponibilita());
             prepQ.setFloat(8, g.getPrezzo());
-            prepQ.setInt(9,0);
+            //uso vis.get id perchè se no sarebbe 0-> quindiinserisci uno nuovo
+            if(vis.getTipoModifica().equals("im")) prepQ.setInt(9,vis.getId());
+            else if(vis.getTipoModifica().equals("insert")) prepQ.setInt(9,0);
 
 
             row = prepQ.executeUpdate();
@@ -67,12 +71,13 @@ public class GiornaleDao extends PersistenzaGiornale{
     public boolean removeGiornaleById(Giornale g) {
         int row = 0;
 
-        query="delete from GIORNALE where idGiornale=? or idGiornale=?";
+        query="delete from GIORNALE where idGiornale=? or idGiornale=? or titolo=?";
         try (Connection conn=ConnToDb.connectionToDB();
              PreparedStatement prepQ= conn.prepareStatement(query)){
 
             prepQ.setInt(1,g.getId());
             prepQ.setInt(2,vis.getId());
+            prepQ.setString(3,g.getTitolo());
 
             row= prepQ.executeUpdate();
 
@@ -112,7 +117,7 @@ public class GiornaleDao extends PersistenzaGiornale{
     @Override
     public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException {
         ObservableList<Raccolta> catalogo= FXCollections.observableArrayList();
-        query = "select * from GIORNALE";
+        query = "select  * from GIORNALE";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ = conn.prepareStatement(query)) {
 
@@ -181,21 +186,40 @@ public class GiornaleDao extends PersistenzaGiornale{
     }
 
     @Override
-    public void initializza()  {
-        Logger.getLogger("crea db sql").log(Level.INFO, "\n creating tables ..");
-        try{
-            if(vis.isPopulated())
-            {
-                Logger.getLogger(" crea db if").log(Level.INFO, " database already populated");
-            }
-            else {
-                ConnToDb.creaPopolaDb();
-                vis.setPopulated(true);
-            }
-        }catch (FileNotFoundException e)
-        {
-            Logger.getLogger("crea db ").log(Level.SEVERE, "\n eccezione ottenuta .", e);
+    public void initializza() throws FileNotFoundException, SQLException {
+
+
+        ConnToDb.generalConnection();
+        //creo tabella
+
+        try (Connection conn = ConnToDb.connectionToDB()) {
+
+
+            Reader reader = new BufferedReader(new FileReader("FileSql/" + GIORNALE + ".sql"));
+            ScriptRunner sr = new ScriptRunner(conn);
+            sr.setSendFullScript(false);
+            sr.runScript(reader);
+
 
         }
+
+        //vedo se tabella vuoita
+        int row = 0;
+        try (Connection conn = ConnToDb.connectionToDB();
+             PreparedStatement preQ = conn.prepareStatement("select count(*) from ISPW.GIORNALE;")) {
+            ResultSet rs = preQ.executeQuery();
+            if (rs.next())
+                row = rs.getInt(1);
+        }
+        if (row == 0) {
+            try (Connection conn = ConnToDb.connectionToDB()) {
+                Reader reader = new BufferedReader(new FileReader("FileSql/popolaGiornale.sql"));
+                ScriptRunner sr = new ScriptRunner(conn);
+                sr.setSendFullScript(false);
+                sr.runScript(reader);
+            }
+        }
     }
+
+
 }

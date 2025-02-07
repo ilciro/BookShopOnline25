@@ -52,7 +52,7 @@ public class ControllerGestione {
                 Libro appoggio=setLibro(param);
                 switch (persistenza)
                 {
-                    case LIBRO -> pL=new LibroDao();
+                    case DATABASE -> pL=new LibroDao();
                     case FILE -> pL=new CsvLibro();
                     case MEMORIA -> pL=new MemoriaLibro();
                     default -> Logger.getLogger("inserisci libro").log(Level.SEVERE,"persistency insert book error!!");
@@ -91,7 +91,7 @@ public class ControllerGestione {
         return status;
     }
 
-    public ControllerGestione() throws IOException {
+    public ControllerGestione() {
         l=new Libro();
         g=new Giornale();
         r=new Rivista();
@@ -100,7 +100,7 @@ public class ControllerGestione {
 
 
     public ObservableList<Libro>libroById(String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        l.setId(vis.getId());
+
 
         switch (persistenza)
         {
@@ -141,64 +141,15 @@ public class ControllerGestione {
 
     public boolean modifica(String[] dati,String persistenza) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
        boolean status=false;
-       vis.setTipoModifica("modifica");
+       vis.setTipoModifica("im");
 
        switch (vis.getType())
        {
-           case LIBRO -> {
-               l=setLibro(dati);
-               l.setId(vis.getId());
-               Logger.getLogger("modifLibro").log(Level.INFO,"id libro da modif:{0}",l.getId());
+           case LIBRO ->  status= modificaLibro(dati, persistenza);
 
-               switch (persistenza)
-               {
-                   case DATABASE -> pL=new LibroDao();
-                   case FILE -> pL=new CsvLibro();
-                   case MEMORIA -> pL=new MemoriaLibro();
-                   default -> Logger.getLogger("libro by id").log(Level.SEVERE,"persistency of book is wrong!!");
-               }
+           case GIORNALE -> status= modificaGiornale(dati, persistenza);
 
-               for(int i=0;i<pL.getLibri().size();i++)
-               {
-                   if(pL.getLibri().get(i).getId()==vis.getId())
-                   {
-
-                       pL.removeLibroById(l);
-                   }
-               }
-              l=setLibro(dati);
-               return pL.inserisciLibro(l);
-
-           }
-           case GIORNALE ->
-           {
-               g=setGiornale(dati);
-               g.setId(vis.getId());
-               Logger.getLogger("modifGiornale").log(Level.INFO,"id giornale da modif:{0}",g.getId());
-
-               switch (persistenza)
-               {
-                   case DATABASE -> pG=new GiornaleDao();
-                   case FILE -> pG=new CsvGiornale();
-                   case MEMORIA -> pG=new MemoriaGiornale();
-                   default -> Logger.getLogger("giornale by id").log(Level.SEVERE,"persistency of daily is wrong!!");
-               }
-               for(int i=0;i<pG.getGiornali().size();i++)
-               {
-                   if(pG.getGiornali().get(i).getId()==vis.getId())
-                   {
-
-                       pG.removeGiornaleById(g);
-                   }
-               }
-               g=setGiornale(dati);
-               return pG.inserisciGiornale(g);
-
-
-           }
            case RIVISTA ->  status= modificaRivista(dati,persistenza);
-
-
 
            default -> Logger.getLogger("modif").log(Level.SEVERE, "error in modif");
        }
@@ -207,6 +158,58 @@ public class ControllerGestione {
         return status;
     }
 
+    private boolean modificaLibro(String[] dati, String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+        l=setLibro(dati);
+        l.setId(vis.getId());
+        Logger.getLogger("modifLibro").log(Level.INFO,"id libro da modif:{0}",l.getId());
+
+        switch (persistenza)
+        {
+            case DATABASE -> pL=new LibroDao();
+            case FILE -> pL=new CsvLibro();
+            case MEMORIA -> pL=new MemoriaLibro();
+            default -> Logger.getLogger("libro by id").log(Level.SEVERE,"persistency of book is wrong!!");
+        }
+
+
+        for(int i=0;i<pL.getLibri().size();i++)
+        {
+            if(pL.getLibri().get(i).getId()==l.getId())
+            {
+
+                pL.removeLibroById(l);
+            }
+        }
+        l=setLibro(dati);
+
+        return pL.inserisciLibro(l);
+    }
+
+    private boolean modificaGiornale(String[] dati, String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
+        g=setGiornale(dati);
+        g.setId(vis.getId());
+
+
+        Logger.getLogger("modifGiornale").log(Level.INFO,"id giornale da modif:{0}",g.getId());
+
+        switch (persistenza)
+        {
+            case DATABASE -> pG=new GiornaleDao();
+            case FILE -> pG=new CsvGiornale();
+            case MEMORIA -> pG=new MemoriaGiornale();
+            default -> Logger.getLogger("giornale by id").log(Level.SEVERE,"persistency of daily is wrong!!");
+        }
+
+        for(int i=1;i<pG.getGiornali().size();i++)
+        {
+            if(i==(g.getId()-1))
+            {
+                pG.removeGiornaleById(g);
+            }
+        }
+        g=setGiornale(dati);
+        return pG.inserisciGiornale(g);
+    }
 
 
     private Libro setLibro(String []param)
@@ -260,9 +263,9 @@ public class ControllerGestione {
 
     private boolean modificaRivista(String[]dati,String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
 
-        r.setId(vis.getId());
         Logger.getLogger("modifRivista").log(Level.INFO,"id rivista da modif:{0}",r.getId());
-
+        r=setRivista(dati);
+        r.setId(vis.getId());
         switch (persistenza)
         {
             case DATABASE -> pR=new RivistaDao();

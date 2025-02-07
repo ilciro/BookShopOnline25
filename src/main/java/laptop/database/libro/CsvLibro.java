@@ -45,7 +45,6 @@ public class CsvLibro extends PersistenzaLibro{
 
     private static final String LIBROP="src/main/resources/csvfiles/libro.csv";
 
-
     private static final ControllerSystemState vis = ControllerSystemState.getInstance();
 
 
@@ -135,7 +134,8 @@ public class CsvLibro extends PersistenzaLibro{
             gVector[GETINDEXDESCL] = l.getDesc();
             gVector[GETINDEXDISPL] = String.valueOf(l.getDisponibilita());
             gVector[GETINDEXPREZZOL] = String.valueOf(l.getPrezzo());
-            gVector[GETINDEXIDL] = String.valueOf(getIdMax() + 1);
+            if(vis.getTipoModifica().equals("im")) gVector[GETINDEXIDL] = String.valueOf(vis.getId());
+            else if (vis.getTipoModifica().equals("insert"))gVector[GETINDEXIDL] = String.valueOf(getIdMax() + 1);
             csvWriter.writeNext(gVector);
             csvWriter.flush();
         }
@@ -213,16 +213,20 @@ public class CsvLibro extends PersistenzaLibro{
         //used for insert correct idOgg
 
         String []gVector;
-        int id=0;
+        int max=0;
         
     
         try (CSVReader reader = new CSVReader(new FileReader(LOCATIONL))) {
-            while ((gVector = reader.readNext()) != null)
-                id = Integer.parseInt(gVector[GETINDEXIDL]);
-        }          
+            while ((gVector = reader.readNext()) != null) {
+               if(Integer.parseInt(gVector[GETINDEXIDL])>max)
+                   max= Integer.parseInt(gVector[GETINDEXIDL]);
+            }
+        }
+
+
             
         
-        return id;
+        return max;
 
 
     }

@@ -5,7 +5,9 @@ import javafx.collections.ObservableList;
 import laptop.model.Pagamento;
 import laptop.model.user.User;
 import laptop.utilities.ConnToDb;
+import org.apache.ibatis.jdbc.ScriptRunner;
 
+import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,6 +21,7 @@ public class PagamentoDao extends PersistenzaPagamento{
 
     @Override
     public boolean inserisciPagamento(Pagamento p) {
+
         int row = 0;
         query = "INSERT INTO PAGAMENTO(metodo,nomeUtente,spesaTotale,eMail,tipoAcquisto,idProdotto) values (?,?,?,?,?,?)";
 
@@ -82,6 +85,20 @@ public class PagamentoDao extends PersistenzaPagamento{
         }
 
         return row==1;
+    }
+
+    @Override
+    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
+        ConnToDb.generalConnection();
+        try(Connection conn=ConnToDb.connectionToDB()) {
+
+
+                Reader reader = new BufferedReader(new FileReader("FileSql/pagamento.sql"));
+                ScriptRunner sr = new ScriptRunner(conn);
+                sr.setSendFullScript(false);
+                sr.runScript(reader);
+
+        }
     }
 
     @Override

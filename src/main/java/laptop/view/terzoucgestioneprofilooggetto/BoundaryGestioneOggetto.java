@@ -306,11 +306,9 @@ public class BoundaryGestioneOggetto implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
+
             cG=new ControllerGestione();
-        } catch (IOException e) {
-            Logger .getLogger("costruttore").log(Level.SEVERE," exception ",e);
-        }
+
         header.setText(header.getText() + vis.getType());
         ObservableList<String> list= FXCollections.observableArrayList();
 

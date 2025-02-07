@@ -76,7 +76,8 @@ public class CsvNegozio extends PersistenzaNegozio{
                     Negozio n=new Negozio();
                     n.setId(Integer.parseInt(gVector[GETINDEXNEGOZIOID]));
                     n.setNome(gVector[GETINDEXNEGOZIONOME]);
-                    n.setIsOpen(Boolean.parseBoolean(gVector[GETINDEXNEGOZIOISOPEN]));
+                    if(gVector[GETINDEXNEGOZIOISOPEN].equals("1"))
+                        n.setIsOpen(true);
                     if(Boolean.TRUE.equals(n.getIsOpen())) status=true;
 
                 }
@@ -105,8 +106,9 @@ public class CsvNegozio extends PersistenzaNegozio{
 
                     n.setId(Integer.parseInt(gVector[GETINDEXNEGOZIOID]));
                     n.setNome(gVector[GETINDEXNEGOZIONOME]);
-                    n.setIsValid(Boolean.parseBoolean(gVector[GETINDEXNEGOZIOISVALID]));
-                   if(Boolean.TRUE.equals(n.getIsValid())) status=true;
+                    if(gVector[GETINDEXNEGOZIOISVALID].equals("1"))
+                        n.setIsValid(true);
+                    if(Boolean.TRUE.equals(n.getIsValid())) status=true;
 
                 }
 

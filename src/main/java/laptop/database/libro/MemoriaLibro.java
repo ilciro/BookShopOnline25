@@ -3,6 +3,7 @@ package laptop.database.libro;
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.controller.ControllerSystemState;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 public class MemoriaLibro extends PersistenzaLibro{
     private static final String SERIALIZZAZIONE="memory/serializzazioneLibro.ser";
     private  ArrayList<Libro> list=new ArrayList<>();
+    private static final ControllerSystemState vis=ControllerSystemState.getInstance();
 
     @Override
     @SuppressWarnings("unchecked")
@@ -78,7 +80,9 @@ public class MemoriaLibro extends PersistenzaLibro{
             ObjectInputStream ois=new ObjectInputStream(fis)){
             list= (ArrayList<Libro>) ois.readObject();
         }
-        l.setId(list.size()+1);
+        if(vis.getTipoModifica().equals("im")) l.setId(vis.getId());
+        else if(vis.getTipoModifica().equals("insert")) l.setId(list.size()+1);
+        else throw new CsvValidationException(" type modif in csv is wrong!!");
         list.add(l);
 
         try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
@@ -106,16 +110,18 @@ public class MemoriaLibro extends PersistenzaLibro{
             ObjectInputStream ois=new ObjectInputStream(fis)){
             list= (ArrayList<Libro>) ois.readObject();
         }
+
         for(int i=0;i<list.size();i++)
         {
-            if(list.get(i).getId()==l.getId()
+            if(i==l.getId()-1
                     || list.get(i).getTitolo().equals(l.getTitolo())
-                    || list.get(i).getAutore().equals(l.getAutore())
-                    || list.get(i).getEditore().equals(l.getEditore()))
+                    || list.get(i).getEditore().equals(l.getEditore())
+                    || list.get(i).getAutore().equals(l.getAutore()))
             {
-
-                listaRecuperata=FXCollections.observableArrayList(list);
+                listaRecuperata=FXCollections.observableArrayList(list.get(i));
             }
+
+
         }
 
 
@@ -143,10 +149,16 @@ public class MemoriaLibro extends PersistenzaLibro{
         }
 
 
-        for(int i=1;i<=list.size();i++)
+        status = isStatus(l, status);
+
+        return status;
+    }
+
+    private boolean isStatus(Libro l, boolean status) throws IOException {
+        for(int i=0;i<list.size();i++)
         {
-            if(i==l.getId()) {
-                status = list.remove(list.get(i-1));
+            if(i== (l.getId()-1)) {
+                status = list.remove(list.get(i));
             }
         }
 
@@ -167,7 +179,6 @@ public class MemoriaLibro extends PersistenzaLibro{
                 oos.writeObject(list);
             }
         }
-
         return status;
     }
 }

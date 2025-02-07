@@ -7,6 +7,7 @@ import laptop.exception.IdException;
 import laptop.model.Negozio;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,6 +15,6 @@ public class PersistenzaNegozio {
      public ObservableList<Negozio> getNegozi() throws CsvValidationException, IOException, IdException, ClassNotFoundException {return FXCollections.emptyObservableList();}
      public boolean checkOpen(Negozio  shop) throws CsvValidationException, IOException, ClassNotFoundException {return false;}
      public boolean checkRitiro(Negozio shop) throws IOException, CsvValidationException, ClassNotFoundException {return false;}
-     public void initializza() throws IOException { Logger.getLogger("initializza").log(Level.INFO,"initialize");
+     public void initializza() throws IOException, SQLException { Logger.getLogger("initializza").log(Level.INFO,"initialize");
     }
 }

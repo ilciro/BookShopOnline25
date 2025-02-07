@@ -64,18 +64,18 @@ public class CsvGiornale extends PersistenzaGiornale{
         //used for insert correct idOgg
 
         String []gVector;
-        int id=0;
+        int max=0;
 
 
-
-            try (CSVReader reader = new CSVReader(new FileReader(LOCATIONG))) {
-                while ((gVector = reader.readNext()) != null)
-                    id = Integer.parseInt(gVector[GETINDEXIDG]);
+        try (CSVReader reader = new CSVReader(new FileReader(LOCATIONG))) {
+            while ((gVector = reader.readNext()) != null) {
+                if(Integer.parseInt(gVector[GETINDEXIDG])>max)
+                    max= Integer.parseInt(gVector[GETINDEXIDG]);
             }
+        }
+        return max;
 
 
-
-        return id;
 
 
     }
@@ -130,7 +130,9 @@ public class CsvGiornale extends PersistenzaGiornale{
             gVector[GETINDEXCOPIERG] = String.valueOf(g.getCopieRimanenti());
             gVector[GETINDEXDISPG] = String.valueOf(g.getDisponibilita());
             gVector[GETINDEXPREZZOG] = String.valueOf(g.getPrezzo());
-            gVector[GETINDEXIDG] = String.valueOf(getIdMax() + 1);
+            if(vis.getTipoModifica().equals("im")) gVector[GETINDEXIDG] = String.valueOf(vis.getId());
+            else if(vis.getTipoModifica().equals("insert"))gVector[GETINDEXIDG] = String.valueOf(getIdMax() + 1);
+            else throw new CsvValidationException("type of modif in daily files is wrong !!");
             csvWriter.writeNext(gVector);
             csvWriter.flush();
         }

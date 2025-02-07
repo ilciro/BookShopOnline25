@@ -3,9 +3,11 @@ package laptop.database.rivista;
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.controller.ControllerSystemState;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Raccolta;
 import laptop.model.raccolta.Rivista;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 public class MemoriaRivista extends PersistenzaRivista{
     private static final String SERIALIZZAZIONE="memory/serializzazioneRivista.ser";
     private   ArrayList<Rivista> list=new ArrayList<>();
+    private static final ControllerSystemState vis=ControllerSystemState.getInstance();
     @Override
     @SuppressWarnings("unchecked")
     public boolean inserisciRivista(Rivista r) throws IOException, ClassNotFoundException {
@@ -28,7 +31,8 @@ public class MemoriaRivista extends PersistenzaRivista{
             ObjectInputStream ois=new ObjectInputStream(fis)){
                 list= (ArrayList<Rivista>) ois.readObject();
         }
-        r.setId(list.size()+1);
+        if(vis.getTipoModifica().equals("im")) r.setId(vis.getId());
+        else if(vis.getTipoModifica().equals("insert")) r.setId(list.size()+1);
         list.add(r);
 
         try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
@@ -52,10 +56,18 @@ public class MemoriaRivista extends PersistenzaRivista{
 
         }
 
-        for(int i=1;i<=list.size();i++)
+
+        status = isStatus(r, status);
+
+        return status;
+    }
+
+    //levo -1 per inizio lista
+    private boolean isStatus(Rivista r, boolean status) throws IOException {
+        for(int i=0;i<=list.size();i++)
         {
-            if(i==r.getId()) {
-                status = list.remove(list.get(i-1));
+            if(i== (r.getId()-1)) {
+                status = list.remove(list.get(i));
             }
         }
 
@@ -65,9 +77,9 @@ public class MemoriaRivista extends PersistenzaRivista{
             if(!Files.exists(path))
             {
                 throw new IOException("file is deleted!!");
-                
+
             }
-            
+
         }catch (IOException e)
         {
             Files.createFile(path);
@@ -76,7 +88,6 @@ public class MemoriaRivista extends PersistenzaRivista{
                 oos.writeObject(list);
             }
         }
-
         return status;
     }
 
@@ -117,12 +128,15 @@ public class MemoriaRivista extends PersistenzaRivista{
             ObjectInputStream ois=new ObjectInputStream(fis)){
             list= (ArrayList<Rivista>) ois.readObject();
         }
-        for (Rivista rivista : list) {
-            if (rivista.getId() == r.getId()
-                    || rivista.getTitolo().equals(r.getTitolo())
-                    || rivista.getAutore().equals(r.getAutore())) {
-                listaRecuperata = FXCollections.observableArrayList(rivista);
-                break;
+
+        for(int i=0;i<list.size();i++)
+        {
+            if(i==r.getId()-1
+                    || list.get(i).getTitolo().equals(r.getTitolo())
+                    || list.get(i).getAutore().equals(r.getAutore()))
+            {
+
+                listaRecuperata=FXCollections.observableArrayList(list.get(i));
             }
 
         }
@@ -147,18 +161,7 @@ public class MemoriaRivista extends PersistenzaRivista{
 
                 }
             }
-            Rivista r=new Rivista();
-            r.setTitolo(listaR.get(0));
-            r.setCategoria(listaR.get(1));
-            r.setAutore(listaR.get(2));
-            r.setLingua(listaR.get(3));
-            r.setEditore(listaR.get(4));
-            r.setDescrizione(listaR.get(5));
-            r.setDataPubb(LocalDate.parse(listaR.get(6)));
-            r.setDisp(Integer.parseInt(listaR.get(7)));
-            r.setPrezzo(Float.parseFloat(listaR.get(8)));
-            r.setCopieRim(Integer.parseInt(listaR.get(9)));
-            r.setId(Integer.parseInt(listaR.get(10)));
+            Rivista r = getRivista(listaR);
             list.add(r);
         }
         try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
@@ -171,7 +174,21 @@ public class MemoriaRivista extends PersistenzaRivista{
 
     }
 
-
+    private static @NotNull Rivista getRivista(ArrayList<String> listaR) {
+        Rivista r=new Rivista();
+        r.setTitolo(listaR.get(0));
+        r.setCategoria(listaR.get(1));
+        r.setAutore(listaR.get(2));
+        r.setLingua(listaR.get(3));
+        r.setEditore(listaR.get(4));
+        r.setDescrizione(listaR.get(5));
+        r.setDataPubb(LocalDate.parse(listaR.get(6)));
+        r.setDisp(Integer.parseInt(listaR.get(7)));
+        r.setPrezzo(Float.parseFloat(listaR.get(8)));
+        r.setCopieRim(Integer.parseInt(listaR.get(9)));
+        r.setId(Integer.parseInt(listaR.get(10)));
+        return r;
+    }
 
 
 }

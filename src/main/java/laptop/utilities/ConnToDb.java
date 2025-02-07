@@ -1,11 +1,5 @@
 package laptop.utilities;
 
-import org.apache.ibatis.jdbc.ScriptRunner;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.Reader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,12 +7,12 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 
 
-public class ConnToDb 
+public class ConnToDb
 {
-	
+
 	protected static Connection conn = null;
 
-	
+
 	private static final String CONNESSIONE="Tentativo di conessione al server..........\\\\n";
 
 
@@ -99,23 +93,7 @@ public class ConnToDb
 
 
 
-	public static void creaPopolaDb() throws FileNotFoundException {
-		ConnToDb.generalConnection();
-		ConnToDb.connectionToDB();
-		boolean statusSys=ConnToDb.getStatusConnSys();
-		boolean statusDb=ConnToDb.getStatusConnDB();
-		boolean status=statusSys&&statusDb;
-		if(Boolean.FALSE.equals(status)) {
-			Reader reader = new BufferedReader(new FileReader("FileSql/export-db.sql"));
-			ScriptRunner sr = new ScriptRunner(conn);
-			sr.setSendFullScript(false);
-			sr.runScript(reader);
-		}
-		else {
-			java.util.logging.Logger.getLogger("creaPopolaDB").log(Level.INFO, "entrambi popolati");
 
-		}
-	}
 	private ConnToDb(){}
 
 
@@ -124,4 +102,3 @@ public class ConnToDb
 
 
 }
-

@@ -224,11 +224,9 @@ public class BoundaryRaccolta implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        try {
+
             cRacc=new ControllerRaccolta();
-        } catch (IOException e) {
-            Logger.getLogger("initialize ").log(Level.SEVERE," exception has occurred !!.",e);
-        }
+
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         titolo.setCellValueFactory(new PropertyValueFactory<>("titolo"));
         prezzo.setCellValueFactory(new PropertyValueFactory<>("prezzo"));

@@ -3,7 +3,9 @@ package laptop.database.fattura;
 import laptop.controller.ControllerSystemState;
 import laptop.model.Fattura;
 import laptop.utilities.ConnToDb;
+import org.apache.ibatis.jdbc.ScriptRunner;
 
+import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +21,7 @@ public class ContrassegnoDao extends PersistenzaFattura {
     
     @Override
     public boolean inserisciFattura(Fattura f) {
-        boolean success = false;
+        int row=0;
 
 
             query="insert into FATTURA (nome,cognome,via,comunicazioni,ammontare)values (?,?,?,?,?)";
@@ -32,14 +34,14 @@ public class ContrassegnoDao extends PersistenzaFattura {
                 prepQ.setString(3, f.getVia());
                 prepQ.setString(4,f.getCom());
                 prepQ.setFloat(5,vis.getSpesaT());
-               success= prepQ.execute();
+              row=prepQ.executeUpdate();
 
 
             }catch(SQLException e)
             {
                 Logger.getLogger("insert fattura").log(Level.INFO, ECCEZIONE, e);
             }
-            return success;
+            return row==1;
 
 
 
@@ -91,5 +93,18 @@ public class ContrassegnoDao extends PersistenzaFattura {
             java.util.logging.Logger.getLogger("return fattura").log(Level.INFO, ECCEZIONE, e);
         }
         return f;
+    }
+
+    @Override
+    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
+        ConnToDb.generalConnection();
+        try(Connection conn=ConnToDb.connectionToDB()) {
+
+                Reader reader = new BufferedReader(new FileReader("FileSql/fattura.sql"));
+                ScriptRunner sr = new ScriptRunner(conn);
+                sr.setSendFullScript(false);
+                sr.runScript(reader);
+            }
+
     }
 }

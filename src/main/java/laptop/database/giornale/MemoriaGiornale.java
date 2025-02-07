@@ -3,10 +3,10 @@ package laptop.database.giornale;
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.controller.ControllerSystemState;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Raccolta;
-import laptop.model.raccolta.Rivista;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -14,12 +14,15 @@ import java.nio.file.Path;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class MemoriaGiornale extends PersistenzaGiornale{
 
     private static final String SERIALIZZAZIONE="memory/serializzazioneGiornale.ser";
     private  ArrayList<Giornale> list=new ArrayList<>();
+    private static final ControllerSystemState vis=ControllerSystemState.getInstance();
 
 
     @Override
@@ -27,7 +30,7 @@ public class MemoriaGiornale extends PersistenzaGiornale{
     public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
 
 
-       for(int i=1;i<=12;i++) {
+       for(int i=1;i<13;i++) {
            String line;
 
 
@@ -66,6 +69,8 @@ public class MemoriaGiornale extends PersistenzaGiornale{
             list= (ArrayList<Giornale>) ois.readObject();
         }
 
+        Logger.getLogger("inizializzazione memoria giornale").log(Level.INFO,"records inserted :{0}",list.size());
+
 
 
     }
@@ -79,13 +84,16 @@ public class MemoriaGiornale extends PersistenzaGiornale{
             ObjectInputStream ois=new ObjectInputStream(fis)){
             list= (ArrayList<Giornale>) ois.readObject();
         }
-        g.setId(list.size()+1);
+        if(vis.getTipoModifica().equals("im")) g.setId(vis.getId());
+        else if(vis.getTipoModifica().equals("insert")) g.setId(list.size()+1);
+
         list.add(g);
 
         try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
             ObjectOutputStream oos=new ObjectOutputStream(fos)){
             oos.writeObject(list);
         }
+
         return true;
     }
 
@@ -107,14 +115,16 @@ public class MemoriaGiornale extends PersistenzaGiornale{
             ObjectInputStream ois=new ObjectInputStream(fis)){
             list= (ArrayList<Giornale>) ois.readObject();
         }
+
         for(int i=0;i<list.size();i++)
         {
-            if(list.get(i).getId()==g.getId()
+            if(i==g.getId()-1
             || list.get(i).getTitolo().equals(g.getTitolo())
             || list.get(i).getEditore().equals(g.getEditore()))
             {
-                listaRecuperata=FXCollections.observableArrayList(list);
+                listaRecuperata=FXCollections.observableArrayList(list.get(i));
             }
+
         }
 
 
@@ -133,7 +143,7 @@ public class MemoriaGiornale extends PersistenzaGiornale{
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean removeGiornaleById(Giornale g) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+    public boolean removeGiornaleById(Giornale g) throws  IOException,  ClassNotFoundException {
         boolean status=false;
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois=new ObjectInputStream(fis)){
@@ -141,10 +151,19 @@ public class MemoriaGiornale extends PersistenzaGiornale{
 
         }
 
-        for(int i=1;i<=list.size();i++)
+        status = isStatus(g, status);
+
+        return status;
+    }
+
+    private boolean isStatus(Giornale g, boolean status) throws IOException {
+
+
+
+        for(int i=0;i<list.size();i++)
         {
-            if(i==g.getId()) {
-                status = list.remove(list.get(i-1));
+            if(i== (g.getId()-1)) {
+                status = list.remove(list.get(i));
             }
         }
 
@@ -165,6 +184,7 @@ public class MemoriaGiornale extends PersistenzaGiornale{
                 oos.writeObject(list);
             }
         }
+
 
         return status;
     }

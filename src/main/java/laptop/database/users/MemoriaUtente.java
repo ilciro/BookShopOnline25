@@ -3,6 +3,7 @@ package laptop.database.users;
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.controller.ControllerSystemState;
 import laptop.exception.IdException;
 
 import laptop.model.user.TempUser;
@@ -20,6 +21,7 @@ public class MemoriaUtente extends PersistenzaUtente{
     private  ArrayList<TempUser> listaTU= new ArrayList<>();
 
     private static final String SERIALIZZAZIONE="memory/serializzazioneUtente.ser";
+    private static final ControllerSystemState vis=ControllerSystemState.getInstance();
     @Override
     @SuppressWarnings("unchecked")
     public boolean inserisciUtente(TempUser u) throws IOException, ClassNotFoundException {
@@ -29,7 +31,8 @@ public class MemoriaUtente extends PersistenzaUtente{
             ObjectInputStream ois=new ObjectInputStream(fis)){
             listaTU= (ArrayList<TempUser>) ois.readObject();
         }
-        u.setId(listaTU.size()+1);
+        if(vis.getTipoModifica().equals("im")) u.setId(u.getId());
+        else if(vis.getTipoModifica().equals("insert")) u.setId(listaTU.size()+1);
         listaTU.add(u);
 
         try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
@@ -67,9 +70,9 @@ public class MemoriaUtente extends PersistenzaUtente{
             Logger.getLogger("lista libri").log(Level.SEVERE,"exception .",e);
         }
 
-        for(int i=1;i<listaTU.size();i++)
+        for(int i=0;i<listaTU.size();i++)
         {
-            if (i==u.getId() || listaTU.get(i).getEmailT().equals(u.getEmailT())) {
+            if (i==(u.getId()-1) || listaTU.get(i).getEmailT().equals(u.getEmailT())) {
                 status = listaTU.remove(listaTU.get(i));
                 break;
             }

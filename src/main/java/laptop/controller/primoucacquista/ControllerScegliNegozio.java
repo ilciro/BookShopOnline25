@@ -13,6 +13,7 @@ import laptop.model.Negozio;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,14 +28,13 @@ public class ControllerScegliNegozio {
 	
 
 	
-	public ObservableList<Negozio> getNegozi(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+	public ObservableList<Negozio> getNegozi(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
 		switch (type) {
 			case DATABASE -> pN = new NegozioDao();
 			case FILE -> pN = new CsvNegozio();
 			case MEMORIA -> pN = new MemoriaNegozio();
 			default -> Logger.getLogger("get negozi").log(Level.SEVERE,"  empty list!!");
 		}
-		if(!Files.exists(Path.of("memory/serializzazioneNegozio.ser")))
 		 	pN.initializza();
 		return pN.getNegozi();
 	}

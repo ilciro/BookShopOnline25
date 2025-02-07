@@ -9,9 +9,9 @@ import laptop.model.raccolta.Factory;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
 import laptop.utilities.ConnToDb;
+import org.apache.ibatis.jdbc.ScriptRunner;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -57,7 +57,8 @@ public class LibroDao extends PersistenzaLibro{
             prepQ.setString(11, retLibro(l)[10]);
             prepQ.setInt(12, Integer.parseInt(retLibro(l)[11]));
             prepQ.setFloat(13, Float.parseFloat(retLibro(l)[12]));
-            prepQ.setInt(14, 0);
+            if(vis.getTipoModifica().equals("im")) prepQ.setInt(14,vis.getId());
+            else if(vis.getTipoModifica().equals("insert"))prepQ.setInt(14, 0);
 
             row=prepQ.executeUpdate();
 
@@ -197,23 +198,50 @@ public class LibroDao extends PersistenzaLibro{
     }
 
     @Override
-    public void initializza()  {
-        Logger.getLogger("crea db sql").log(Level.INFO, "\n creating tables ..");
-        try{
-            if(vis.isPopulated())
-            {
-                Logger.getLogger(" crea db if").log(Level.INFO, " database already populated");
-            }
-            else {
-                ConnToDb.creaPopolaDb();
-                vis.setPopulated(true);
-            }
-        }catch (FileNotFoundException e)
-        {
-            Logger.getLogger("crea db ").log(Level.SEVERE, "\n eccezione ottenuta .", e);
+    public void initializza() throws FileNotFoundException, SQLException {
 
-        }
+
+            ConnToDb.generalConnection();
+            //creo tabella
+
+               try (Connection conn = ConnToDb.connectionToDB()) {
+
+
+                    Reader reader = new BufferedReader(new FileReader("FileSql/" + LIBRO + ".sql"));
+                    ScriptRunner sr = new ScriptRunner(conn);
+                    sr.setSendFullScript(false);
+                    sr.runScript(reader);
+
+
+            }
+
+            //vedo se tabella vuoita
+            int row=0;
+            try(Connection conn=ConnToDb.connectionToDB();
+            PreparedStatement preQ=conn.prepareStatement("select count(*) from ISPW.LIBRO;"))
+            {
+                ResultSet rs= preQ.executeQuery();
+                if(rs.next())
+                    row=rs.getInt(1);
+            }
+            if(row==0)
+            {
+                try(Connection conn=ConnToDb.connectionToDB())
+                {
+                    Reader reader = new BufferedReader(new FileReader("FileSql/popolaLibro.sql"));
+                    ScriptRunner sr = new ScriptRunner(conn);
+                    sr.setSendFullScript(false);
+                    sr.runScript(reader);
+                }
+            }
+
     }
+
+
+
+
+
+
 
 
     private String[] retLibro(Libro l)

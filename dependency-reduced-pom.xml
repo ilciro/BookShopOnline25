@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>BookShopOnline</groupId>
-  <artifactId>BookShopOnline</artifactId>
+  <groupId>BookShopOnline25</groupId>
+  <artifactId>BookShopOnline25</artifactId>
   <packaging>war</packaging>
-  <name>BookShopOnline Maven Webapp</name>
+  <name>BookShopOnline25 Maven Webapp</name>
   <version>0.0.1-SNAPSHOT</version>
-  <url>https://github.com/ilciro/BookShopOnline.git</url>
+  <url>https://github.com/ilciro/BookShopOnline25.git</url>
   <build>
-    <finalName>BookShopOnline</finalName>
+    <finalName>BookShopOnline25</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-clean-plugin</artifactId>
@@ -31,7 +31,7 @@
         <version>3.0.0-M5</version>
         <configuration>
           <runOrder>alphabetical</runOrder>
-          <skipTests>true</skipTests>
+          <skipTests>false</skipTests>
         </configuration>
       </plugin>
       <plugin>
@@ -50,7 +50,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>BookShopOnline</mainClass>
+                  <mainClass>BookShopOnline25</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -187,6 +187,8 @@
     <sonar.language>java</sonar.language>
     <java.version>17</java.version>
     <maven.compiler.source>17</maven.compiler.source>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <sonar.organization>ilciro10</sonar.organization>
     <jacoco.version>0.8.7</jacoco.version>
     <maven.compiler>3.8.1</maven.compiler>
     <maven.shade>3.2.2</maven.shade>

@@ -17,5 +17,5 @@ public class PersistenzaUtente {
     public ObservableList<TempUser> getUserData() throws IOException, CsvValidationException, SQLException {return FXCollections.observableArrayList();}
     public boolean removeUserByIdEmailPwd(TempUser u) throws CsvValidationException, IOException, SQLException {return false;}
     public List<TempUser> userList(TempUser u) throws CsvValidationException, IOException, SQLException {return null;}
-    public void initializza() throws IOException, CsvValidationException, IdException, ClassNotFoundException {Logger.getLogger("inizializza").log(Level.INFO,"initialize");}
+    public void initializza() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {Logger.getLogger("inizializza").log(Level.INFO,"initialize");}
 }

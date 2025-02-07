@@ -24,7 +24,7 @@ public class Factory {
 
 	
 	
-	public String[] createRaccolta1(String titolo,String isbn,String editore,String autore,String lingua,String categoria)
+	private String[] createRaccolta1(String titolo,String isbn,String editore,String autore,String lingua,String categoria)
 	{
 		 String[] infoGenerali ;
 
@@ -34,7 +34,7 @@ public class Factory {
 		 return infoGenerali;
 		 
 	}
-	public String[] createRaccolta2(int numPag,int nrCopie,int disp,float prezzo,int id)
+	private String[] createRaccolta2(int numPag,int nrCopie,int disp,float prezzo,int id)
 	{
 		 String[] infoCosti;
 

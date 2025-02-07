@@ -4,9 +4,8 @@ package laptop.controller;
 // this is singelton battona 
 // know evreything about the system
 
-
 public class ControllerSystemState {
-	
+
 	 private int id;
 	 private String type;
 	 private boolean isLogged ;
@@ -136,4 +135,8 @@ public class ControllerSystemState {
     public void setTipoModifica(String tipoModifica) {
         this.tipoModifica = tipoModifica;
     }
+
+
+
+
 }

@@ -20,6 +20,7 @@ import laptop.model.CartaDiCredito;
 import java.io.IOException;
 import java.net.URL;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Objects;
@@ -90,7 +91,7 @@ public class BoundaryPagamentoCC implements Initializable {
 	private static final String MEMORIA="memoria";
 
 	@FXML
-	private void registraCC() throws CsvValidationException,  IOException,  ParseException, ClassNotFoundException {
+	private void registraCC() throws CsvValidationException, IOException, ParseException, ClassNotFoundException, SQLException {
 
 		String persistenza="";
 		if(databaseButton.isSelected()) persistenza=DATABASE;
@@ -114,7 +115,7 @@ public class BoundaryPagamentoCC implements Initializable {
 	}
 
 	@FXML
-	private void popolaTabella() throws IOException, ClassNotFoundException, CsvValidationException, IdException {
+	private void popolaTabella() throws IOException, ClassNotFoundException, CsvValidationException, IdException, SQLException {
 		String persistenza="";
 		if(databaseButton.isSelected()) persistenza=DATABASE;
 		if(fileButton.isSelected()) persistenza=FILE;
@@ -125,7 +126,7 @@ public class BoundaryPagamentoCC implements Initializable {
 	}
 
 	@FXML
-	private void procediCC() throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+	private void procediCC() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
 
 		Stage stage;
 
@@ -181,7 +182,7 @@ public class BoundaryPagamentoCC implements Initializable {
 	}
 
 	@FXML
-	private void completa() throws IOException, ClassNotFoundException, CsvValidationException, IdException {
+	private void completa() throws IOException, ClassNotFoundException, CsvValidationException, IdException, SQLException {
 		String persistenza="";
 		if(databaseButton.isSelected()) persistenza=DATABASE;
 		if(fileButton.isSelected()) persistenza=FILE;

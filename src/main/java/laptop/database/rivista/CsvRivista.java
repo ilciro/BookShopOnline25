@@ -109,8 +109,9 @@ public class CsvRivista extends PersistenzaRivista {
             gVector[GETINDEXDISPR] = String.valueOf(r.getDisp());
             gVector[GETINDEXPREZZOR] = String.valueOf(r.getPrezzo());
             gVector[GETINDEXCOPIER] = String.valueOf(r.getCopieRim());
-            gVector[GETINDEXIDR] = String.valueOf(getIdMax() + 1);
-
+            if(vis.getTipoModifica().equals("im")) gVector[GETINDEXIDR] = String.valueOf(vis.getId());
+            else if(vis.getTipoModifica().equals("insert")) gVector[GETINDEXIDR] = String.valueOf(getIdMax() + 1);
+            else throw new CsvValidationException(" type of modif at magazine is wrong !!");
             csvWriter.writeNext(gVector);
             csvWriter.flush();
         }
@@ -178,15 +179,19 @@ public class CsvRivista extends PersistenzaRivista {
     private static synchronized int getIdMax() throws IOException, CsvValidationException {
         //used for insert correct idOgg
 
-        String[] gVector;
-        int id = 0;
+        String []gVector;
+        int max=0;
+
 
         try (CSVReader reader = new CSVReader(new FileReader(LOCATIONR))) {
-            while ((gVector = reader.readNext()) != null)
-                id = Integer.parseInt(gVector[GETINDEXIDR]);
-
+            while ((gVector = reader.readNext()) != null) {
+                if(Integer.parseInt(gVector[GETINDEXIDR])>max)
+                    max= Integer.parseInt(gVector[GETINDEXIDR]);
+            }
         }
-        return id;
+
+
+        return max;
 
 
     }

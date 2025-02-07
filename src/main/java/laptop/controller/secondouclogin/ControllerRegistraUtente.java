@@ -1,8 +1,7 @@
 package laptop.controller.secondouclogin;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.Level;
@@ -11,6 +10,7 @@ import java.util.regex.Pattern;
 
 import com.opencsv.exceptions.CsvValidationException;
 
+import laptop.controller.ControllerSystemState;
 import laptop.database.users.CsvUtente;
 import laptop.database.users.MemoriaUtente;
 import laptop.database.users.PersistenzaUtente;
@@ -23,6 +23,8 @@ public class ControllerRegistraUtente {
 	private Boolean state=false;
 	private final TempUser tu;
 	private PersistenzaUtente pU;
+
+	private static final ControllerSystemState vis=ControllerSystemState.getInstance();
 
 
 	//usato per persistenza
@@ -40,6 +42,7 @@ public class ControllerRegistraUtente {
 
 	public Boolean registra(String n, String c, String email, String pwd,String desc, LocalDate localDate,String ruolo) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
 
+		vis.setTipoModifica("insert");
 		switch (getType())
 		{
 			case "database"->pU=new UsersDao();
@@ -47,8 +50,9 @@ public class ControllerRegistraUtente {
 			case "memoria"->pU=new MemoriaUtente();
 			default -> Logger.getLogger("registra").log(Level.SEVERE,"error in persistency");
 		}
-		if(!Files.exists(Path.of("memory/serializzazioneUtente.ser")))
 			pU.initializza();
+
+		//controllo se utente presente()
 
 		for (int i=0;i<pU.getUserData().size();i++)
 		{
@@ -66,7 +70,7 @@ public class ControllerRegistraUtente {
 			tu.setPasswordT(pwd);
 			tu.setDescrizioneT(desc);
 			tu.setDataDiNascitaT(localDate);
-			tu.setIdRuoloT(ruolo);
+			tu.setIdRuoloT(ruolo.substring(0,1));
 			state=pU.inserisciUtente(tu);
 
 

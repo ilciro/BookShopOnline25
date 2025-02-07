@@ -48,27 +48,38 @@ public class ControllerDownload {
 	private static final String FILE="file";
 
 
-	private void acquistaLibro(String persistenza) throws DocumentException, IOException, URISyntaxException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
+
+	private void acquistaLibro(String persistenza) throws DocumentException, IOException, URISyntaxException, CsvValidationException, IdException, ClassNotFoundException {
   		PersistenzaLibro pL;
 		l.setId(vis.getId());
 		l.scarica(vis.getId());
 		l.leggi(vis.getId());
+
+
 
 		if(persistenza.equals(DATABASE)) pL=new LibroDao();
 		else if(persistenza.equals(FILE)) pL=new CsvLibro();
 		else pL=new MemoriaLibro();
 
 		Libro tempLibro =new Libro();
-		for(int i=0;i<pL.getLibroByIdTitoloAutoreLibro(l).size();i++)
+
+
+		for(int i=0;i<pL.getLibri().size();i++)
 		{
-			if(pL.getLibroByIdTitoloAutoreLibro(l).get(i).getId()==l.getId())
+
+			if(i==l.getId())
 			{
-				tempLibro=pL.getLibroByIdTitoloAutoreLibro(l).get(i);
+				tempLibro=pL.getLibroByIdTitoloAutoreLibro(l).get(0);
 				pL.removeLibroById(l);
-				break;
+				Logger.getLogger("libro eliminato").log(Level.INFO," id eliminated book {0}",i);
+
 			}
+
+
+
 		}
 		tempLibro.setNrCopie(tempLibro.getNrCopie()-vis.getQuantita());
+		tempLibro.setId(vis.getId());
 
 		if(pL.inserisciLibro(tempLibro)) Logger.getLogger("aggiorno libro").log(Level.INFO,"update book succesfully!!");
 
@@ -82,16 +93,23 @@ public class ControllerDownload {
 		else if(persistenza.equals(FILE)) pG=new CsvGiornale();
 		else pG=new MemoriaGiornale();
 		Giornale tempG=new Giornale();
-		for (int i=0;i<pG.getGiornaleByIdTitoloAutoreLibro(g).size();i++)
+		for (int i=1;i<=pG.getGiornali().size();i++)
 		{
-			if(pG.getGiornaleByIdTitoloAutoreLibro(g).get(i).getId()==g.getId())
+
+			if(i==g.getId())
 			{
-				tempG=pG.getGiornaleByIdTitoloAutoreLibro(g).get(i);
+
+
+				tempG=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0);
 				pG.removeGiornaleById(g);
-				break;
+				Logger.getLogger("giornale eliminato").log(Level.INFO," id eliminated daily{0}",i);
+
 			}
+
+
 		}
 		tempG.setCopieRimanenti(tempG.getCopieRimanenti()-vis.getQuantita());
+		tempG.setId(vis.getId());
 		if(pG.inserisciGiornale(tempG)) Logger.getLogger("aggiorno giornale").log(Level.INFO,"update daily succesfully!!");
 
 	}
@@ -100,18 +118,24 @@ public class ControllerDownload {
 		r.setId(vis.getId());
 		r.scarica(vis.getId());
 		r.leggi(vis.getId());
+
 		if (persistenza.equals(DATABASE)) pR = new RivistaDao();
 		else if (persistenza.equals(FILE)) pR = new CsvRivista();
 		else pR=new MemoriaRivista();
+
 		Rivista tempR=new Rivista();
-		for(int i=0;i<pR.getRivistaByIdTitoloAutoreRivista(r).size();i++) {
-			if (pR.getRivistaByIdTitoloAutoreRivista(r).get(i).getId()==r.getId()) {
-				tempR=pR.getRivistaByIdTitoloAutoreRivista(r).get(i);
+		for(int i=1;i<=pR.getRiviste().size();i++) {
+			if (i==r.getId()) {
+
+				 tempR=pR.getRivistaByIdTitoloAutoreRivista(r).get(0);
 				pR.removeRivistaById(r);
-				break;
+				Logger.getLogger("rivista eliminata").log(Level.INFO," id eliminated magazine{0}",i);
+
 			}
+
 		}
 		tempR.setCopieRim(tempR.getCopieRim()-vis.getQuantita());
+
 		if (pR.inserisciRivista(tempR))Logger.getLogger("aggionro rivista").log(Level.INFO, "update magazine succesfully!!");
 
 	}
@@ -120,7 +144,10 @@ public class ControllerDownload {
 
 
 		public void scarica(String type,String persistenza) throws IOException, URISyntaxException, DocumentException, SQLException, CsvValidationException, IdException, ClassNotFoundException {
-		switch (type)
+
+			vis.setTipoModifica("im");
+
+			switch (type)
 		{
 			case LIBRO->acquistaLibro(persistenza);
 			case GIORNALE -> acquistaGiornale(persistenza);
@@ -132,7 +159,7 @@ public class ControllerDownload {
 	}
 
 
-	public ControllerDownload() throws IOException {
+	public ControllerDownload()  {
 
         l = new Libro();
 		g=new Giornale();

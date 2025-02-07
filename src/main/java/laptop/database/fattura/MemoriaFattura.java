@@ -6,6 +6,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,15 +55,16 @@ public class MemoriaFattura extends PersistenzaFattura  {
         try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             list = (ArrayList<Fattura>) ois.readObject();
-
-            for (int i = 1; i < list.size(); i++) {
-                if (i == f.getIdFattura()) {
-                    status = list.remove(list.get(i - 1));
-                }
-            }
-            return status;
-
         }
+        for (int i = 1; i <= list.size(); i++) {
+            if (i == f.getIdFattura()) {
+                System.out.println("id pagamento / i"+ f.getIdFattura() + i);
+
+                status = list.remove(list.get(i - 1));
+                break;
+            }
+        }
+        return status;
     }
 
     @Override
@@ -83,6 +86,9 @@ public class MemoriaFattura extends PersistenzaFattura  {
     @Override
     @SuppressWarnings("unchecked")
     public void inizializza() throws IOException, ClassNotFoundException {
+
+        Path path = Path.of(SERIALIZZAZIONE);
+        if(!Files.exists(path)) Files.createFile(path);
 
         Fattura f = getFattura();
 

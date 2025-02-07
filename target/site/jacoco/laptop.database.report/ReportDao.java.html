@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReportDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.report</a> &gt; <span class="el_source">ReportDao.java</span></div><h1>ReportDao.java</h1><pre class="source lang-java linenums">package laptop.database.report;
+
+import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.model.Report;
+import laptop.model.user.TempUser;
+import laptop.utilities.ConnToDb;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+<span class="fc" id="L19">public class ReportDao extends PersistenzaReport {</span>
+
+
+    private String query;
+
+    private static final String LIBRO = &quot;libro&quot;;
+    private static final String GIORNALE = &quot;giornale&quot;;
+    private static final String RIVISTA = &quot;rivista&quot;;
+
+    @Override
+    public boolean insertReport(Report r) throws CsvValidationException, IOException {
+<span class="fc" id="L30">        return true;</span>
+    }
+    private boolean reportL() {
+<span class="nc" id="L33">        int row = 0;</span>
+<span class="nc" id="L34">        query = &quot;create or replace view REPORTL (idProdotto,titolo,categoria,spesaTotale) as select l.idLibro,l.titolo,l.categoria,sum(p.spesaTotale) from LIBRO l join PAGAMENTO  p on l.idLibro=p.idProdotto group by l.idLibro;&quot;;</span>
+
+
+<span class="nc" id="L37">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="nc" id="L38">             PreparedStatement preQ = conn.prepareStatement(query)) {</span>
+<span class="nc" id="L39">            row = preQ.executeUpdate();</span>
+<span class="nc" id="L40">        } catch (SQLException e) {</span>
+<span class="nc" id="L41">            Logger.getLogger(&quot;crete view libro&quot;).log(Level.SEVERE, &quot; could not create book view  !!&quot;);</span>
+<span class="nc" id="L42">        }</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">        return row == 1;</span>
+    }
+    private boolean reportG() {
+<span class="nc" id="L46">        int row = 0;</span>
+<span class="nc" id="L47">        query = &quot;create or replace view REPORTG (idProdotto,titolo,categoria,spesaTotale) as select g.idLibro,g.titolo,g.categoria,sum(g.spesaTotale) from GIORNALE g join PAGAMENTO  p on g.idGiornale=p.idProdotto group by g.idGiornale;&quot;;</span>
+
+
+<span class="nc" id="L50">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="nc" id="L51">             PreparedStatement preQ = conn.prepareStatement(query)) {</span>
+<span class="nc" id="L52">            row = preQ.executeUpdate();</span>
+<span class="nc" id="L53">        } catch (SQLException e) {</span>
+<span class="nc" id="L54">            Logger.getLogger(&quot;crete view giornale &quot;).log(Level.SEVERE, &quot; could not create daily view !!&quot;);</span>
+<span class="nc" id="L55">        }</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        return row == 1;</span>
+    }
+    private boolean reportR() {
+<span class="nc" id="L59">        int row = 0;</span>
+<span class="nc" id="L60">        query = &quot;create or replace view REPORTR (idProdotto,titolo,categoria,spesaTotale) as select r.idRivista,r.titolo,r.categoria,sum(p.spesaTotale) from RIVISTA r join PAGAMENTO  p on r.idRivista=p.idProdotto group by r.idRivista;&quot;;</span>
+
+
+<span class="nc" id="L63">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="nc" id="L64">             PreparedStatement preQ = conn.prepareStatement(query)) {</span>
+<span class="nc" id="L65">            row = preQ.executeUpdate();        } catch (SQLException e) {</span>
+<span class="nc" id="L66">            Logger.getLogger(&quot;crete rivista view &quot;).log(Level.SEVERE, &quot; could not create magazine view !!&quot;);</span>
+<span class="nc" id="L67">        }</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">        return row == 1;</span>
+    }
+
+
+
+    @Override
+    public ObservableList&lt;Report&gt; report(String type) {
+<span class="nc" id="L75">        ObservableList&lt;Report&gt; list = FXCollections.observableArrayList();</span>
+<span class="nc bnc" id="L76" title="All 4 branches missed.">        switch (type) {</span>
+            case LIBRO -&gt;
+            {
+<span class="nc bnc" id="L79" title="All 2 branches missed.">                if(reportL())  query = &quot;select * from REPORTL&quot;;</span>
+            }
+            case GIORNALE -&gt;
+            {
+<span class="nc bnc" id="L83" title="All 2 branches missed.">                if(reportG()) query = &quot;select * from REPORTG&quot;;</span>
+            }
+            case RIVISTA -&gt; {
+<span class="nc bnc" id="L86" title="All 2 branches missed.">                if (reportR()) query = &quot;select * from REPORTR&quot;;</span>
+            }
+<span class="nc" id="L88">            default -&gt; Logger.getLogger(&quot;report&quot;).log(Level.SEVERE, &quot; type in cot correct !!&quot;);</span>
+        }
+<span class="nc" id="L90">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="nc" id="L91">             PreparedStatement prep = conn.prepareStatement(query)) {</span>
+
+<span class="nc" id="L93">            ResultSet rs = prep.executeQuery();</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">            while (rs.next()) {</span>
+
+<span class="nc" id="L96">                Report report = new Report();</span>
+
+<span class="nc" id="L98">                report.setIdReport(rs.getInt(1));</span>
+<span class="nc" id="L99">                report.setTitoloOggetto(rs.getString(2));</span>
+<span class="nc" id="L100">                report.setTipologiaOggetto(rs.getString(3));</span>
+<span class="nc" id="L101">                report.setTotale(rs.getFloat(4));</span>
+
+<span class="nc" id="L103">                list.add(report);</span>
+
+<span class="nc" id="L105">            }</span>
+
+<span class="nc" id="L107">        } catch (SQLException e) {</span>
+<span class="nc" id="L108">            Logger.getLogger(&quot; report &quot;).log(Level.SEVERE, &quot; REPORTL is empty&quot;);</span>
+<span class="nc" id="L109">        }</span>
+<span class="nc" id="L110">        return list;</span>
+    }
+
+    @Override
+    public ObservableList&lt;TempUser&gt; reportU() throws SQLException {
+<span class="nc" id="L115">        ObservableList&lt;TempUser&gt; lista=FXCollections.observableArrayList();</span>
+<span class="nc" id="L116">        query=&quot;select * from USERS&quot;;</span>
+<span class="nc" id="L117">        try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="nc" id="L118">        PreparedStatement prepQ= conn.prepareStatement(query))</span>
+        {
+<span class="nc" id="L120">         ResultSet rs= prepQ.executeQuery();</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">             while (rs.next())</span>
+             {
+<span class="nc" id="L123">                 TempUser tu = getTempUser(rs);</span>
+<span class="nc" id="L124">                 lista.add(tu);</span>
+<span class="nc" id="L125">             }</span>
+        }
+<span class="nc" id="L127">        return lista;</span>
+
+    }
+
+    private static @NotNull TempUser getTempUser(ResultSet rs) throws SQLException {
+<span class="nc" id="L132">        TempUser tu=new TempUser();</span>
+<span class="nc" id="L133">        tu.setId(rs.getInt(1));</span>
+<span class="nc" id="L134">        tu.setIdRuoloT(rs.getString(2));</span>
+<span class="nc" id="L135">        tu.setNomeT(rs.getString(3));</span>
+<span class="nc" id="L136">        tu.setCognomeT(rs.getString(4));</span>
+<span class="nc" id="L137">        tu.setEmailT(rs.getString(5));</span>
+<span class="nc" id="L138">        tu.setPasswordT(rs.getString(6));</span>
+<span class="nc" id="L139">        tu.setDescrizioneT(rs.getString(7));</span>
+<span class="nc" id="L140">        tu.setDataDiNascitaT(rs.getDate(8).toLocalDate());</span>
+<span class="nc" id="L141">        return tu;</span>
+    }
+
+    @Override
+    public ObservableList&lt;Report&gt; returnReportIDTipoTitolo(int id, String tipo, String titolo) throws IOException, CsvValidationException {
+<span class="nc" id="L146">        Logger.getLogger(&quot;reportByid&quot;).log(Level.INFO,&quot;yet used by report&quot;);</span>
+<span class="nc" id="L147">        return FXCollections.emptyObservableList();</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

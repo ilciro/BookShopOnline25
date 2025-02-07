@@ -55,7 +55,7 @@ public class CsvFattura extends PersistenzaFattura {
 
     @Override
     public boolean inserisciFattura(Fattura f) throws IOException {
-        boolean status=false;
+
 
         try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.fileFattura, true)))) {
 
@@ -75,8 +75,8 @@ public class CsvFattura extends PersistenzaFattura {
             Logger.getLogger("inset fattura").log(Level.SEVERE,"error in insert fattura csv");
         }
 
-        if(f.getIdFattura()!=0) status=true;
-        return status;
+
+        return true;
 
 
 

@@ -2,6 +2,7 @@ package laptop.controller.secondouclogin;
 
 import com.opencsv.exceptions.CsvValidationException;
 
+import laptop.controller.ControllerSystemState;
 import laptop.database.users.CsvUtente;
 import laptop.database.users.MemoriaUtente;
 import laptop.database.users.PersistenzaUtente;
@@ -17,6 +18,8 @@ import java.util.logging.Logger;
 
 public class ControllerAggiornaPassword {
 
+    private static final ControllerSystemState vis=ControllerSystemState.getInstance();
+
     private final User u= User.getInstance();
     private PersistenzaUtente pU;
     public String getEmail() {
@@ -29,7 +32,7 @@ public class ControllerAggiornaPassword {
     public boolean aggiorna( String nuovaP,String type) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
 
 
-
+        vis.setTipoModifica("im");
 
         TempUser tu;
         TempUser tu2 = new TempUser();

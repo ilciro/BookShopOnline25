@@ -50,6 +50,9 @@ public class ControllerGestioneUtente {
 
     public boolean inserisciUtente(String []data ,String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 
+
+        vis.setTipoModifica("insert");
+
         TempUser tu=new TempUser();
 
 
@@ -90,6 +93,7 @@ public class ControllerGestioneUtente {
 
     public boolean modifica(String[] data,String persistenza,String vecchiaMail) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
         TempUser tu=new TempUser();
+        vis.setTipoModifica("im");
 
         tu.setEmailT(vecchiaMail);
         tu.setId(vis.getId());
@@ -105,7 +109,8 @@ public class ControllerGestioneUtente {
 
         for (int i=0;i<pU.getUserData().size();i++)
         {
-            if(pU.getUserData().get(i).getId()==vis.getId())
+            if(pU.getUserData().get(i).getId()==vis.getId()
+            || pU.getUserData().get(i).getEmailT().equals(vecchiaMail))
             {
 
                 pU.removeUserByIdEmailPwd(tu);

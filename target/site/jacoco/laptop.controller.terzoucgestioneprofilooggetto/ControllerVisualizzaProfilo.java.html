@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerVisualizzaProfilo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.controller.terzoucgestioneprofilooggetto</a> &gt; <span class="el_source">ControllerVisualizzaProfilo.java</span></div><h1>ControllerVisualizzaProfilo.java</h1><pre class="source lang-java linenums">package laptop.controller.terzoucgestioneprofilooggetto;
+
+import com.opencsv.exceptions.CsvValidationException;
+import laptop.database.users.CsvUtente;
+import laptop.database.users.MemoriaUtente;
+import laptop.database.users.PersistenzaUtente;
+import laptop.database.users.UsersDao;
+import laptop.exception.IdException;
+import laptop.model.user.TempUser;
+import laptop.model.user.User;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+<span class="nc" id="L17">public class ControllerVisualizzaProfilo {</span>
+
+    private static final String DATABASE = &quot;database&quot;;
+    private static final String FILE = &quot;file&quot;;
+    private static final String MEMORIA = &quot;memoria&quot;;
+    private PersistenzaUtente pU;
+<span class="nc" id="L23">    private static final User u = User.getInstance();</span>
+
+    public String infoUtente(String persistenza) throws CsvValidationException, SQLException, IOException {
+<span class="nc" id="L26">        String utente = &quot;&quot;;</span>
+<span class="nc bnc" id="L27" title="All 4 branches missed.">        switch (persistenza) {</span>
+<span class="nc" id="L28">            case DATABASE -&gt; pU = new UsersDao();</span>
+<span class="nc" id="L29">            case FILE -&gt; pU = new CsvUtente();</span>
+<span class="nc" id="L30">            case MEMORIA -&gt; pU = new MemoriaUtente();</span>
+<span class="nc" id="L31">            default -&gt; Logger.getLogger(&quot;info utente&quot;).log(Level.SEVERE, &quot;persistency is wrong&quot;);</span>
+        }
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        for (int i = 1; i &lt; pU.getUserData().size(); i++) {</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">            if (pU.getUserData().get(i).getEmailT().equals(u.getEmail())</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">                    &amp;&amp; pU.getUserData().get(i).getPasswordT().equals(u.getPassword()))</span>
+<span class="nc" id="L36">                utente = pU.getUserData().get(i).toString();</span>
+        }
+<span class="nc" id="L38">        return utente;</span>
+    }
+
+
+    public boolean modifica(String[] dataU, String persistenza) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
+<span class="nc" id="L43">        boolean status = false;</span>
+<span class="nc" id="L44">        String vecchiaMail = u.getEmail();</span>
+
+<span class="nc bnc" id="L46" title="All 4 branches missed.">        switch (persistenza) {</span>
+<span class="nc" id="L47">            case DATABASE -&gt; pU = new UsersDao();</span>
+<span class="nc" id="L48">            case FILE -&gt; pU = new CsvUtente();</span>
+<span class="nc" id="L49">            case MEMORIA -&gt; pU = new MemoriaUtente();</span>
+<span class="nc" id="L50">            default -&gt; Logger.getLogger(&quot;modifica utente&quot;).log(Level.SEVERE, &quot;persistency is wrong&quot;);</span>
+        }
+<span class="nc" id="L52">        TempUser tu = new TempUser();</span>
+<span class="nc" id="L53">        tu.setEmailT(vecchiaMail);</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">        for (int i = 1; i &lt; pU.getUserData().size(); i++) {</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">            if (pU.getUserData().get(i).getEmailT().equals(tu.getEmailT())) {</span>
+<span class="nc" id="L56">                tu = pU.getUserData().get(i);</span>
+<span class="nc" id="L57">                setTemptoUser(tu);</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">                if (pU.removeUserByIdEmailPwd(tu)) {</span>
+
+<span class="nc" id="L60">                    Logger.getLogger(&quot;email utente rimosso&quot;).log(Level.INFO, &quot;email temp user deleted :{0}&quot;, tu.getEmailT());</span>
+                    //setto user
+
+<span class="nc" id="L63">                   modifUser(dataU);</span>
+<span class="nc" id="L64">                   status=pU.inserisciUtente(inserisciTempUser());</span>
+                }
+            }
+
+
+        }
+<span class="nc" id="L70">        return status;</span>
+    }
+
+    private void setTemptoUser(TempUser tu) {
+<span class="nc" id="L74">        u.setIdRuolo(tu.getIdRuoloT());</span>
+<span class="nc" id="L75">        u.setId(tu.getId());</span>
+<span class="nc" id="L76">        u.setNome(tu.getNomeT());</span>
+<span class="nc" id="L77">        u.setCognome(tu.getCognomeT());</span>
+<span class="nc" id="L78">        u.setEmail(tu.getEmailT());</span>
+<span class="nc" id="L79">        u.setPassword(tu.getPasswordT());</span>
+<span class="nc" id="L80">        u.setDescrizione(tu.getDescrizioneT());</span>
+<span class="nc" id="L81">        u.setDataDiNascita(tu.getDataDiNascitaT());</span>
+
+<span class="nc" id="L83">    }</span>
+    private void modifUser(String[] dataU)
+    {
+<span class="nc bnc" id="L86" title="All 2 branches missed.">        if (!dataU[0].isEmpty())</span>
+<span class="nc" id="L87">            u.setIdRuolo(dataU[0].substring(0, 1));</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">        if (!dataU[1].isEmpty())</span>
+<span class="nc" id="L89">            u.setNome(dataU[1]);</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">        if (!dataU[2].isEmpty())</span>
+<span class="nc" id="L91">            u.setCognome(dataU[2]);</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">        if (!dataU[3].isEmpty())</span>
+<span class="nc" id="L93">            u.setEmail(dataU[3]);</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">        if (!dataU[4].isEmpty())</span>
+<span class="nc" id="L95">            u.setPassword(dataU[4]);</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">        if (!dataU[5].isEmpty())</span>
+<span class="nc" id="L97">            u.setDescrizione(dataU[5]);</span>
+
+
+<span class="nc" id="L100">    }</span>
+    private TempUser inserisciTempUser()
+    {
+<span class="nc" id="L103">        TempUser tu=new TempUser();</span>
+<span class="nc" id="L104">        tu.setIdRuoloT(u.getIdRuolo());</span>
+<span class="nc" id="L105">        tu.setId(u.getId());</span>
+<span class="nc" id="L106">        tu.setNomeT(u.getNome());</span>
+<span class="nc" id="L107">        tu.setCognomeT(u.getCognome());</span>
+<span class="nc" id="L108">        tu.setEmailT(u.getEmail());</span>
+<span class="nc" id="L109">        tu.setPasswordT(u.getPassword());</span>
+<span class="nc" id="L110">        tu.setDescrizioneT(u.getDescrizione());</span>
+<span class="nc" id="L111">        tu.setDataDiNascitaT(u.getDataDiNascita());</span>
+<span class="nc" id="L112">        return tu;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

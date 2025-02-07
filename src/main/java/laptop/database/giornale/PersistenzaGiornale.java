@@ -13,10 +13,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PersistenzaGiornale {
-    public  boolean inserisciGiornale(Giornale g) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {return true;}
+    public  boolean inserisciGiornale(Giornale g) throws CsvValidationException, IOException,  ClassNotFoundException {return true;}
     public  boolean removeGiornaleById(Giornale g) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {return false;}
-    public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {return FXCollections.emptyObservableList();}
-    public ObservableList<Giornale> getGiornaleByIdTitoloAutoreLibro(Giornale g) throws CsvValidationException, IOException, IdException, ClassNotFoundException {return FXCollections.emptyObservableList();}
+    public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {return FXCollections.observableArrayList();}
+    public ObservableList<Giornale> getGiornaleByIdTitoloAutoreLibro(Giornale g) throws CsvValidationException, IOException, IdException, ClassNotFoundException {return FXCollections.observableArrayList();}
     public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException { Logger.getLogger("Persistenza giornale").log(Level.INFO,"initialize persistenza giornale");}
     public ObservableList<Giornale> getGiornali() throws CsvValidationException, IOException, IdException, ClassNotFoundException {return FXCollections.emptyObservableList();}
 

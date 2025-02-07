@@ -1,6 +1,7 @@
 package laptop.view.primoucacquista;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Optional;
 
 import com.opencsv.exceptions.CsvValidationException;
@@ -19,7 +20,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.ControllerScegliNegozio;
 import laptop.exception.IdException;
 import laptop.model.Negozio;
@@ -62,7 +62,6 @@ public class BoundaryScegliNegozio {
 	protected String warningHeaderText = "Il negozio seleziopnato non � al momento pronto per questo tipo di operazioni";
 	private static final String WARNINGCONTENTTEXT = "Torna indietro e seleziona un'altro negozio fra quelli che ti vengono mostrati ! ";
 	private static final String HOMEPAGE = "homePageFinale.fxml";
-	private final ControllerSystemState vis = ControllerSystemState.getInstance();
 	private String type = "";
 
 
@@ -77,7 +76,7 @@ public class BoundaryScegliNegozio {
 	}
 
 	@FXML
-	private void database() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+	private void database() throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
 		listOfNegozi = cSN.getNegozi("database");
 		radio1.setText(listOfNegozi.get(0).getNome());
 		radio2.setText(listOfNegozi.get(1).getNome());
@@ -86,7 +85,7 @@ public class BoundaryScegliNegozio {
 	}
 
 	@FXML
-	private void file() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+	private void file() throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
 		listOfNegozi = cSN.getNegozi("file");
 		radio1.setText(listOfNegozi.get(0).getNome());
 		radio2.setText(listOfNegozi.get(1).getNome());
@@ -95,7 +94,7 @@ public class BoundaryScegliNegozio {
 	}
 
 	@FXML
-	private void memoria() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+	private void memoria() throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
 		listOfNegozi = cSN.getNegozi("memoria");
 		radio1.setText(listOfNegozi.get(0).getNome());
 		radio2.setText(listOfNegozi.get(1).getNome());
@@ -104,7 +103,7 @@ public class BoundaryScegliNegozio {
 	}
 
 	@FXML
-	private void verifica() throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+	private void verifica() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
 
 		if (databaseButton.isSelected()) type = "database";
 		if (fileButton.isSelected()) type = "file";
@@ -145,7 +144,7 @@ public class BoundaryScegliNegozio {
 
 	}
 
-	public void checkNegozio2(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+	public void checkNegozio2(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
 		listOfNegozi = cSN.getNegozi(type);
 
 		boolean statusA;
@@ -173,7 +172,7 @@ public class BoundaryScegliNegozio {
 
 	}
 
-	public void checkNegozio3(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+	public void checkNegozio3(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
 		listOfNegozi = cSN.getNegozi(type);
 
 		boolean statusA;
@@ -199,7 +198,7 @@ public class BoundaryScegliNegozio {
 
 	}
 
-	public void checkNegozio4(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+	public void checkNegozio4(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
 
 		listOfNegozi = cSN.getNegozi(type);
 		boolean statusA;

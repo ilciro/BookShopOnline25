@@ -1,5 +1,5 @@
 package laptop.database.users;
-import java.io.IOException;
+import java.io.*;
 import java.sql.*;
 import java.time.LocalDate;
 
@@ -11,10 +11,13 @@ import java.util.logging.Logger;
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.controller.ControllerSystemState;
 import laptop.exception.IdException;
 import laptop.utilities.ConnToDb;
 import laptop.model.user.TempUser;
 import laptop.model.user.User;
+import org.apache.ibatis.jdbc.ScriptRunner;
+import org.jetbrains.annotations.NotNull;
 
 
 public class UsersDao extends PersistenzaUtente {
@@ -25,6 +28,7 @@ public class UsersDao extends PersistenzaUtente {
 	private  boolean state = false;
 	private  static final String ECCEZIONE = "errore in mysql :";
 	private  int row = 0;
+	private static final ControllerSystemState vis=ControllerSystemState.getInstance();
 
 
 
@@ -39,28 +43,22 @@ public class UsersDao extends PersistenzaUtente {
 		LocalDate d = tu.getDataDiNascitaT();
 
 
-		query = "INSERT INTO `USERS`"
-				+ "(`idRuolo`,"
-				+ "`Nome`,"
-				+ "`Cognome`,"
-				+ "`Email`,"
-				+ "`pwd`,"
-				+ " `descrizione`,"
-				+ "`DataNascita`)"
-				+ "VALUES"
-				+ "(?,?,?,?,?,?,?)";
+		query = "INSERT INTO `USERS` VALUES (?,?,?,?,?,?,?,?)";
 
 		try (Connection conn = ConnToDb.connectionToDB();
 			 PreparedStatement prepQ = conn.prepareStatement(query)) {
 
+			if(vis.getTipoModifica().equals("im")) prepQ.setInt(1,tu.getId());
+			else if (vis.getTipoModifica().equals("insert"))prepQ.setInt(1,0);
 
-			prepQ.setString(1,tu.getIdRuoloT().substring(0,1));
-			prepQ.setString(2, tu.getNomeT());
-			prepQ.setString(3, tu.getCognomeT());
-			prepQ.setString(4, tu.getEmailT());
-			prepQ.setString(5, tu.getPasswordT());
-			prepQ.setString(6, tu.getDescrizioneT());
-			prepQ.setDate(7,Date.valueOf(d));
+
+			prepQ.setString(2,tu.getIdRuoloT().substring(0,1));
+			prepQ.setString(3, tu.getNomeT());
+			prepQ.setString(4, tu.getCognomeT());
+			prepQ.setString(5, tu.getEmailT());
+			prepQ.setString(6, tu.getPasswordT());
+			prepQ.setString(7, tu.getDescrizioneT());
+			prepQ.setDate(8,Date.valueOf(d));
 			row=prepQ.executeUpdate();
 
 
@@ -76,7 +74,7 @@ public class UsersDao extends PersistenzaUtente {
 
 	@Override
 	public ObservableList<TempUser> getUserData() throws SQLException {
-		ObservableList<TempUser> lista=FXCollections.emptyObservableList();
+		ObservableList<TempUser> lista=FXCollections.observableArrayList();
 		query="select * from USERS";
 		try(Connection conn=ConnToDb.connectionToDB();
 		PreparedStatement preQ=conn.prepareStatement(query)){
@@ -84,20 +82,25 @@ public class UsersDao extends PersistenzaUtente {
 			ResultSet rs= preQ.executeQuery();
 			while (rs.next())
 			{
-				TempUser tu=new TempUser();
-				tu.setId(rs.getInt(1));
-				tu.setIdRuoloT(rs.getString(2));
-				tu.setNomeT(rs.getString(3));
-				tu.setCognomeT(rs.getString(4));
-				tu.setEmailT(rs.getString(5));
-				tu.setPasswordT(rs.getString(6));
-				tu.setDescrizioneT(rs.getString(7));
-				tu.setDataDiNascitaT(rs.getDate(8).toLocalDate());
+				TempUser tu = getTempUser(rs, rs.getDate(8).toLocalDate());
 				lista.add(tu);
 			}
 
 		}
 		return lista;
+	}
+
+	private static @NotNull TempUser getTempUser(ResultSet rs, LocalDate rs1) throws SQLException {
+		TempUser tu = new TempUser();
+		tu.setId(rs.getInt(1));
+		tu.setIdRuoloT(rs.getString(2));
+		tu.setNomeT(rs.getString(3));
+		tu.setCognomeT(rs.getString(4));
+		tu.setEmailT(rs.getString(5));
+		tu.setPasswordT(rs.getString(6));
+		tu.setDescrizioneT(rs.getString(7));
+		tu.setDataDiNascitaT(rs1);
+		return tu;
 	}
 
 	@Override
@@ -125,15 +128,7 @@ public class UsersDao extends PersistenzaUtente {
 			ResultSet rs= preQ.executeQuery();
 			while (rs.next())
 			{
-				TempUser tu=new TempUser();
-				tu.setId(rs.getInt(1));
-				tu.setIdRuoloT(rs.getString(2));
-				tu.setNomeT(rs.getString(3));
-				tu.setCognomeT(rs.getString(4));
-				tu.setEmailT(rs.getString(5));
-				tu.setPasswordT(rs.getString(6));
-				tu.setDescrizioneT(rs.getString(7));
-				tu.setDataDiNascitaT(rs.getDate(8).toLocalDate());
+				TempUser tu = getTempUser(rs, rs.getDate(8).toLocalDate());
 				lista.add(tu);
 			}
 
@@ -142,9 +137,41 @@ public class UsersDao extends PersistenzaUtente {
 	}
 
 	@Override
-	public void initializza() throws CsvValidationException, IOException, IdException {
-		Logger.getLogger("inizializza user dao").log(Level.INFO,"initialize user dao");
-	}
+	public void initializza() throws CsvValidationException, IOException, IdException, SQLException {
+
+		ConnToDb.generalConnection();
+		//creo tabella
+
+		try (Connection conn = ConnToDb.connectionToDB()) {
+
+
+			Reader reader = new BufferedReader(new FileReader("FileSql/users.sql"));
+			ScriptRunner sr = new ScriptRunner(conn);
+			sr.setSendFullScript(false);
+			sr.runScript(reader);
+
+
+		}
+
+		//vedo se tabella vuoita
+		try(Connection conn=ConnToDb.connectionToDB();
+			PreparedStatement preQ=conn.prepareStatement("select count(*) from ISPW.USERS;"))
+		{
+			ResultSet rs= preQ.executeQuery();
+			if(rs.next())
+				row=rs.getInt(1);
+		}
+		if(row==0)
+		{
+			try(Connection conn=ConnToDb.connectionToDB())
+			{
+				Reader reader = new BufferedReader(new FileReader("FileSql/popolaUsers.sql"));
+				ScriptRunner sr = new ScriptRunner(conn);
+				sr.setSendFullScript(false);
+				sr.runScript(reader);
+			}
+		}
+    }
 
 
 
@@ -309,18 +336,7 @@ public class UsersDao extends PersistenzaUtente {
 			 PreparedStatement prepQ = conn.prepareStatement(query)) {
 			ResultSet rs = prepQ.executeQuery();
 			while (rs.next()) {
-				TempUser tu=new TempUser();
-
-				tu.setId(rs.getInt(1));
-				tu.setIdRuoloT(rs.getString(2));
-				tu.setNomeT(rs.getString(3));
-				tu.setCognomeT(rs.getString(4));
-				tu.setEmailT(rs.getString(5));
-				tu.setPasswordT(rs.getString(6));
-				tu.setDescrizioneT(rs.getString(7));
-				tu.setDataDiNascitaT((rs.getDate(8).toLocalDate()));
-
-
+				TempUser tu = getTempUser(rs, (rs.getDate(8).toLocalDate()));
 
 
 				list.add(tu);

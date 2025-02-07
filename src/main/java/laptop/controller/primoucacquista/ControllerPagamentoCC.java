@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,6 +35,7 @@ public class ControllerPagamentoCC {
 	private PersistenzaCC pCC;
 	private CartaDiCredito cc;
 
+
 	private static final String SERIALIZZAZIONE="memory/serializzazioneCartaCredito.ser";
 	private static final String DATABASE="database";
 	private static final String FILE="file";
@@ -54,7 +56,7 @@ public class ControllerPagamentoCC {
 	}
 
 	public boolean aggiungiCartaDB(String n, String c, String cod, java.sql.Date data, String civ, float prezzo,String persistenza)
-            throws   CsvValidationException, IOException, ClassNotFoundException {
+            throws CsvValidationException, IOException, ClassNotFoundException, SQLException {
    			cc= new CartaDiCredito(n, c, cod,  data, civ, prezzo);
 
 
@@ -68,7 +70,6 @@ public class ControllerPagamentoCC {
 				case MEMORIA->pCC=new MemoriaCartaCredito();
 				default -> Logger.getLogger("aggiungi carta db").log(Level.SEVERE," error in persistency");
 			}
-			if (!Files.exists(Path.of(SERIALIZZAZIONE)))
 				pCC.inizializza();
 			return pCC.insCC(cc);
 
@@ -76,7 +77,7 @@ public class ControllerPagamentoCC {
 
 
 
-	public ObservableList<CartaDiCredito> ritornaElencoCC(String nomeU,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, IdException {
+	public ObservableList<CartaDiCredito> ritornaElencoCC(String nomeU,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, IdException, SQLException {
 
 		cc=new CartaDiCredito();
 		cc.setNomeUser(nomeU);
@@ -88,7 +89,6 @@ public class ControllerPagamentoCC {
 			case MEMORIA->pCC=new MemoriaCartaCredito();
 			default -> Logger.getLogger("elenco cc dal db").log(Level.SEVERE," list is empty");
 		}
-		if (!Files.exists(Path.of(SERIALIZZAZIONE)))
 			pCC.inizializza();
 
 		return pCC.getCarteDiCredito(cc);
@@ -100,8 +100,8 @@ public class ControllerPagamentoCC {
 
 
 
-	public void pagamentoCC(String nome,String database) throws IdException, IOException, CsvValidationException, ClassNotFoundException {
-  Pagamento p ;
+	public void pagamentoCC(String nome,String database) throws IdException, IOException, CsvValidationException, ClassNotFoundException, SQLException {
+  		Pagamento p ;
 		//effettuo pagamento
 		p=new Pagamento();
 		p.setIdPag(0);
@@ -111,6 +111,7 @@ public class ControllerPagamentoCC {
 		if(vis.getIsLogged())
 			p.setEmail(User.getInstance().getEmail());
 		else p.setEmail(null);
+
 
 
 		switch (vis.getType()) {
@@ -148,7 +149,7 @@ public class ControllerPagamentoCC {
 		return dati;
 	}
 
-	public ObservableList<CartaDiCredito> ritornaElencoCByNumero(String numero,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, IdException {
+	public ObservableList<CartaDiCredito> ritornaElencoCByNumero(String numero,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, IdException, SQLException {
 
 		cc=new CartaDiCredito();
 		cc.setNumeroCC(numero);
@@ -160,7 +161,6 @@ public class ControllerPagamentoCC {
 			case MEMORIA->pCC=new MemoriaCartaCredito();
 			default -> Logger.getLogger("elenco cc dal db").log(Level.SEVERE," list is empty");
 		}
-		if (!Files.exists(Path.of(SERIALIZZAZIONE)))
 			pCC.inizializza();
 
 		return pCC.getCarteDiCredito(cc);

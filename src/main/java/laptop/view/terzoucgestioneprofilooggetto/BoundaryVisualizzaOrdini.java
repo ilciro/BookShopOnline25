@@ -17,6 +17,7 @@ import laptop.model.Pagamento;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -62,7 +63,7 @@ public class BoundaryVisualizzaOrdini implements Initializable {
     protected Scene scene;
 
     @FXML
-    private void genera() throws CsvValidationException, IOException, ClassNotFoundException {
+    private void genera() throws CsvValidationException, IOException, ClassNotFoundException, SQLException {
 
 
 
