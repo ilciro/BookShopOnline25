@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import laptop.model.Negozio;
 import laptop.utilities.ConnToDb;

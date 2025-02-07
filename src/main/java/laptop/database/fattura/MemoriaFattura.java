@@ -58,7 +58,7 @@ public class MemoriaFattura extends PersistenzaFattura  {
         }
         for (int i = 1; i <= list.size(); i++) {
             if (i == f.getIdFattura()) {
-                System.out.println("id pagamento / i"+ f.getIdFattura() + i);
+                Logger.getLogger("cancella fattura").log(Level.INFO,"id fattura {0}.",f.getIdFattura());
 
                 status = list.remove(list.get(i - 1));
                 break;
@@ -85,7 +85,7 @@ public class MemoriaFattura extends PersistenzaFattura  {
 
     @Override
     @SuppressWarnings("unchecked")
-    public void inizializza() throws IOException, ClassNotFoundException {
+    public void inizializza(String persistenza) throws IOException, ClassNotFoundException {
 
         Path path = Path.of(SERIALIZZAZIONE);
         if(!Files.exists(path)) Files.createFile(path);

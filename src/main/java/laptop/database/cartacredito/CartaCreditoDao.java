@@ -14,15 +14,16 @@ import java.util.logging.Logger;
 public class CartaCreditoDao extends PersistenzaCC{
 
     @Override
-    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
-        ConnToDb.generalConnection();
-        try(Connection conn=ConnToDb.connectionToDB()) {
+    public void inizializza(String persistenza) throws IOException, ClassNotFoundException, SQLException {
+            ConnToDb.generalConnection();
+            try (Connection conn = ConnToDb.connectionToDB()) {
 
                 Reader reader = new BufferedReader(new FileReader("FileSql/cartacredito.sql"));
                 ScriptRunner sr = new ScriptRunner(conn);
                 sr.setSendFullScript(false);
                 sr.runScript(reader);
-            }
+
+        }
 
 
 

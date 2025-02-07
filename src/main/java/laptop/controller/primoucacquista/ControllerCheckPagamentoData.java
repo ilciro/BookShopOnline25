@@ -49,7 +49,6 @@ public class ControllerCheckPagamentoData {
     private static final String FILE ="file";
     private static final String MEMORIA="memoria";
     private static final String SERIALIZZAZIONEREPO="memory/serializzazioneReport.ser";
-    private static final String SERIALIZZAZIONEPAGAMENTO="memory/serializzazionePagamento.ser";
 
 
     private PersistenzaPagamento pP;

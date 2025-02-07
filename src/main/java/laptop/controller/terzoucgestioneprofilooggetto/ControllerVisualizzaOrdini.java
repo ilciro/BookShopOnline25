@@ -11,8 +11,6 @@ import laptop.model.Pagamento;
 import laptop.model.user.User;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

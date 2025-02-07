@@ -44,7 +44,7 @@ public class ControllerPagamentoCash {
 			tod sistemare qui
 			 */
 
-			pF.inizializza();
+			pF.inizializza("");
 
 
 			if(pF.inserisciFattura(f))

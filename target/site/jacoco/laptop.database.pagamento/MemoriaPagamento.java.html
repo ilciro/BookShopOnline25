@@ -68,7 +68,7 @@ import java.util.logging.Logger;
 
 <span class="fc bfc" id="L69" title="All 2 branches covered.">            if(i==p.getIdPag()) {</span>
 
-<span class="fc" id="L71">                System.out.println(&quot;id pagamento / i&quot;+ p.getIdPag() + i);</span>
+<span class="fc" id="L71">                Logger.getLogger(&quot;cancella pagamento&quot;).log(Level.INFO,&quot;id fattura {0}.&quot;,p.getIdPag());</span>
 
 <span class="fc" id="L73">                status = lista.remove(lista.get(i-1));</span>
 <span class="fc" id="L74">                break;</span>

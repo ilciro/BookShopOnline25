@@ -11,13 +11,11 @@ import laptop.exception.IdException;
 import laptop.model.Negozio;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L20">public class ControllerScegliNegozio {</span>
+<span class="fc" id="L18">public class ControllerScegliNegozio {</span>
 	private PersistenzaNegozio pN;
 	private static final String DATABASE=&quot;database&quot;;
 	private static final String FILE=&quot;file&quot;;
@@ -29,39 +27,39 @@ import java.util.logging.Logger;
 
 	
 	public ObservableList&lt;Negozio&gt; getNegozi(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
-<span class="pc bpc" id="L32" title="1 of 4 branches missed.">		switch (type) {</span>
-<span class="fc" id="L33">			case DATABASE -&gt; pN = new NegozioDao();</span>
-<span class="fc" id="L34">			case FILE -&gt; pN = new CsvNegozio();</span>
-<span class="fc" id="L35">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
-<span class="nc" id="L36">			default -&gt; Logger.getLogger(&quot;get negozi&quot;).log(Level.SEVERE,&quot;  empty list!!&quot;);</span>
+<span class="pc bpc" id="L30" title="1 of 4 branches missed.">		switch (type) {</span>
+<span class="fc" id="L31">			case DATABASE -&gt; pN = new NegozioDao();</span>
+<span class="fc" id="L32">			case FILE -&gt; pN = new CsvNegozio();</span>
+<span class="fc" id="L33">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
+<span class="nc" id="L34">			default -&gt; Logger.getLogger(&quot;get negozi&quot;).log(Level.SEVERE,&quot;  empty list!!&quot;);</span>
 		}
-<span class="fc" id="L38">		 	pN.initializza();</span>
-<span class="fc" id="L39">		return pN.getNegozi();</span>
+<span class="fc" id="L36">		 	pN.initializza();</span>
+<span class="fc" id="L37">		return pN.getNegozi();</span>
 	}
 
 	public boolean isOpen(String type,int id) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
 
-<span class="pc bpc" id="L44" title="1 of 4 branches missed.">		switch (type) {</span>
-<span class="fc" id="L45">			case DATABASE -&gt; pN = new NegozioDao();</span>
-<span class="fc" id="L46">			case FILE -&gt; pN = new CsvNegozio();</span>
-<span class="fc" id="L47">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
-<span class="nc" id="L48">			default -&gt; Logger.getLogger(&quot;is open&quot;).log(Level.SEVERE,&quot;  is open il null!!&quot;);</span>
+<span class="pc bpc" id="L42" title="1 of 4 branches missed.">		switch (type) {</span>
+<span class="fc" id="L43">			case DATABASE -&gt; pN = new NegozioDao();</span>
+<span class="fc" id="L44">			case FILE -&gt; pN = new CsvNegozio();</span>
+<span class="fc" id="L45">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
+<span class="nc" id="L46">			default -&gt; Logger.getLogger(&quot;is open&quot;).log(Level.SEVERE,&quot;  is open il null!!&quot;);</span>
 
 		}
-<span class="fc" id="L51">		Negozio n=pN.getNegozi().get(id-1);</span>
-<span class="fc" id="L52">		return pN.checkRitiro(n);</span>
+<span class="fc" id="L49">		Negozio n=pN.getNegozi().get(id-1);</span>
+<span class="fc" id="L50">		return pN.checkRitiro(n);</span>
 	}
 	public boolean isValid(String type,int id) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
 
-<span class="pc bpc" id="L56" title="1 of 4 branches missed.">		switch (type) {</span>
-<span class="fc" id="L57">			case DATABASE -&gt; pN = new NegozioDao();</span>
-<span class="fc" id="L58">			case FILE -&gt; pN = new CsvNegozio();</span>
-<span class="fc" id="L59">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
-<span class="nc" id="L60">			default -&gt; Logger.getLogger(&quot;is valid&quot;).log(Level.SEVERE,&quot;  is open il null!!&quot;);</span>
+<span class="pc bpc" id="L54" title="1 of 4 branches missed.">		switch (type) {</span>
+<span class="fc" id="L55">			case DATABASE -&gt; pN = new NegozioDao();</span>
+<span class="fc" id="L56">			case FILE -&gt; pN = new CsvNegozio();</span>
+<span class="fc" id="L57">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
+<span class="nc" id="L58">			default -&gt; Logger.getLogger(&quot;is valid&quot;).log(Level.SEVERE,&quot;  is open il null!!&quot;);</span>
 
 		}
-<span class="fc" id="L63">		Negozio n=pN.getNegozi().get(id-1);</span>
-<span class="fc" id="L64">		return pN.checkOpen(n);</span>
+<span class="fc" id="L61">		Negozio n=pN.getNegozi().get(id-1);</span>
+<span class="fc" id="L62">		return pN.checkOpen(n);</span>
 	}
 	
 

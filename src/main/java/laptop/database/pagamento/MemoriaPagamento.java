@@ -68,7 +68,7 @@ public class MemoriaPagamento extends PersistenzaPagamento{
 
             if(i==p.getIdPag()) {
 
-                System.out.println("id pagamento / i"+ p.getIdPag() + i);
+                Logger.getLogger("cancella pagamento").log(Level.INFO,"id fattura {0}.",p.getIdPag());
 
                 status = lista.remove(lista.get(i-1));
                 break;

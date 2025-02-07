@@ -12,6 +12,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -119,5 +120,16 @@ public class CsvCartaCredito extends PersistenzaCC{
         }
 
         return gList;
+    }
+
+    @Override
+    public void inizializza(String type) throws IOException, ClassNotFoundException, SQLException {
+
+        try{
+            if(!Files.exists(Path.of("report/reportPagamento.csv"))) throw new IOException("file not exists");
+        } catch (IOException e)
+        {
+            Files.createFile(Path.of("report/reportPagamento.csv"));
+        }
     }
 }

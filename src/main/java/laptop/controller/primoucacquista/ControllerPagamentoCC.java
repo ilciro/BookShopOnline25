@@ -2,8 +2,6 @@ package laptop.controller.primoucacquista;
 
 import java.io.IOException;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,7 +34,6 @@ public class ControllerPagamentoCC {
 	private CartaDiCredito cc;
 
 
-	private static final String SERIALIZZAZIONE="memory/serializzazioneCartaCredito.ser";
 	private static final String DATABASE="database";
 	private static final String FILE="file";
 	private static final String MEMORIA="memoria";
@@ -70,14 +67,14 @@ public class ControllerPagamentoCC {
 				case MEMORIA->pCC=new MemoriaCartaCredito();
 				default -> Logger.getLogger("aggiungi carta db").log(Level.SEVERE," error in persistency");
 			}
-				pCC.inizializza();
+				pCC.inizializza("");
 			return pCC.insCC(cc);
 
 	}
 
 
 
-	public ObservableList<CartaDiCredito> ritornaElencoCC(String nomeU,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, IdException, SQLException {
+	public ObservableList<CartaDiCredito> ritornaElencoCC(String nomeU,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, SQLException {
 
 		cc=new CartaDiCredito();
 		cc.setNomeUser(nomeU);
@@ -89,7 +86,7 @@ public class ControllerPagamentoCC {
 			case MEMORIA->pCC=new MemoriaCartaCredito();
 			default -> Logger.getLogger("elenco cc dal db").log(Level.SEVERE," list is empty");
 		}
-			pCC.inizializza();
+			pCC.inizializza(persistenza);
 
 		return pCC.getCarteDiCredito(cc);
 
@@ -149,7 +146,7 @@ public class ControllerPagamentoCC {
 		return dati;
 	}
 
-	public ObservableList<CartaDiCredito> ritornaElencoCByNumero(String numero,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, IdException, SQLException {
+	public ObservableList<CartaDiCredito> ritornaElencoCByNumero(String numero,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, SQLException {
 
 		cc=new CartaDiCredito();
 		cc.setNumeroCC(numero);
@@ -161,7 +158,7 @@ public class ControllerPagamentoCC {
 			case MEMORIA->pCC=new MemoriaCartaCredito();
 			default -> Logger.getLogger("elenco cc dal db").log(Level.SEVERE," list is empty");
 		}
-			pCC.inizializza();
+			pCC.inizializza("");
 
 		return pCC.getCarteDiCredito(cc);
 

@@ -53,50 +53,51 @@ public class MemoriaCartaCredito extends PersistenzaCC  {
 
     @Override
     @SuppressWarnings("unchecked")
-    public void inizializza() throws IOException, ClassNotFoundException {
-        for(int i=1;i<=6;i++) {
-            String line;
+    public void inizializza(String persistenza) throws IOException, ClassNotFoundException {
+
+            for (int i = 1; i <= 6; i++) {
+                String line;
 
 
-            ArrayList<String> listaG = new ArrayList<>();
+                ArrayList<String> listaG = new ArrayList<>();
 
 
-            try (FileReader fileReader = new FileReader("src/main/resources/tmpFiles/cartacredito" + i + ".txt");
-                 BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-                while ((line = bufferedReader.readLine()) != null) {
-                    listaG.add(line);
+                try (FileReader fileReader = new FileReader("src/main/resources/tmpFiles/cartacredito" + i + ".txt");
+                     BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+                    while ((line = bufferedReader.readLine()) != null) {
+                        listaG.add(line);
 
+                    }
                 }
+                CartaDiCredito cc = new CartaDiCredito();
+                cc.setNomeUser(listaG.get(0));
+                cc.setCognomeUser(listaG.get(1));
+                cc.setNumeroCC(listaG.get(2));
+
+
+                try {
+                    DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+                    Date sqlDate = new Date(df.parse(listaG.get(3)).getTime());
+                    cc.setScadenza(sqlDate);
+                } catch (ParseException e) {
+                    Logger.getLogger("data non valida").log(Level.SEVERE, " parse is incorrect!!");
+                }
+
+                cc.setCiv(listaG.get(4));
+                cc.setAmmontare(Double.parseDouble(listaG.get(5)));
+
+                lista.add(cc);
+
             }
-            CartaDiCredito cc=new CartaDiCredito();
-            cc.setNomeUser(listaG.get(0));
-            cc.setCognomeUser(listaG.get(1));
-            cc.setNumeroCC(listaG.get(2));
-
-
-            try {
-                DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-                Date sqlDate = new Date(df.parse(listaG.get(3)).getTime());
-                cc.setScadenza(sqlDate);
-            } catch (ParseException e) {
-                Logger.getLogger("data non valida").log(Level.SEVERE," parse is incorrect!!");
+            try (FileOutputStream fos = new FileOutputStream(SERIALIZZAZIONE);
+                 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+                oos.writeObject(lista);
             }
 
-            cc.setCiv(listaG.get(4));
-            cc.setAmmontare(Double.parseDouble(listaG.get(5)));
-
-            lista.add(cc);
-
-        }
-        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
-            ObjectOutputStream oos=new ObjectOutputStream(fos)){
-            oos.writeObject(lista);
-        }
-
-        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
-            ObjectInputStream ois=new ObjectInputStream(fis)){
-            lista= (ArrayList<CartaDiCredito>) ois.readObject();
-        }
+            try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
+                 ObjectInputStream ois = new ObjectInputStream(fis)) {
+                lista = (ArrayList<CartaDiCredito>) ois.readObject();
+            }
     }
 
     @Override

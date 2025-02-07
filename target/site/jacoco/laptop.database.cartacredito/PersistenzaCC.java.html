@@ -12,17 +12,42 @@ import java.util.logging.Logger;
 
 <span class="nc" id="L13">public class PersistenzaCC {</span>
     public boolean insCC(CartaDiCredito cc) throws IOException, CsvValidationException, ClassNotFoundException {
-<span class="nc" id="L15">        boolean status=false;</span>
-<span class="nc bnc" id="L16" title="All 2 branches missed.">        if(cc.getNumeroCC()==null) throw new IOException(&quot;numero carta sbagliato&quot;);</span>
-<span class="nc" id="L17">        return status;</span>
+
+        try {
+
+<span class="nc bnc" id="L18" title="All 2 branches missed.">            if (cc.getNumeroCC() == null) throw new IOException(&quot;numero carta null&quot;);</span>
+<span class="nc bnc" id="L19" title="All 2 branches missed.">            else if(cc.getNumeroCC().isEmpty()) throw new CsvValidationException(&quot;numero carta sbagliato&quot;);</span>
+<span class="nc" id="L20">            else throw new ClassNotFoundException(&quot;classe non trovata&quot;);</span>
+
+<span class="nc" id="L22">        }catch (IOException|CsvValidationException|ClassNotFoundException e)</span>
+        {
+<span class="nc" id="L24">            Logger.getLogger(&quot;ins cc&quot;).log(Level.SEVERE,&quot;could not insert a cc&quot;);</span>
+        }
+<span class="nc" id="L26">        return false;</span>
     }
     public ObservableList&lt;CartaDiCredito&gt; getCarteDiCredito(CartaDiCredito cc) throws IOException, ClassNotFoundException, CsvValidationException {
-<span class="nc" id="L20">        ObservableList&lt;CartaDiCredito&gt; lista= FXCollections.observableArrayList();</span>
-<span class="nc" id="L21">        lista.add(cc);</span>
-<span class="nc" id="L22">        return lista;</span>
-    }
-    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
-<span class="nc" id="L25">        Logger.getLogger(&quot;inizializza cc&quot;).log(Level.INFO,&quot;initialize cc&quot;);</span>
-<span class="nc" id="L26">    }</span>
+<span class="nc" id="L29">        ObservableList&lt;CartaDiCredito&gt; lista = FXCollections.observableArrayList();</span>
+        try {
+<span class="nc" id="L31">            lista.add(cc);</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">            if(lista.get(0).getScadenza()!=null) throw new IOException(&quot;lista is empty&quot;);</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">            if(cc.getNumeroCC()==null) throw new CsvValidationException(&quot;code is wrong!&quot;);</span>
+<span class="nc" id="L34">            else throw new ClassNotFoundException(&quot;class not found!!&quot;);</span>
+
+
+<span class="nc" id="L37">        }catch (IOException|CsvValidationException|ClassNotFoundException e)</span>
+        {
+<span class="nc" id="L39">            Logger.getLogger(&quot;get carte credito&quot;).log(Level.SEVERE,&quot;could not retrive list cc&quot;);</span>
+
+        }
+<span class="nc" id="L42">        return lista;    }</span>
+    public void inizializza(String type) throws IOException, ClassNotFoundException, SQLException {
+<span class="nc bnc" id="L44" title="All 4 branches missed.">        switch (type) {</span>
+<span class="nc" id="L45">            case &quot;database&quot; -&gt; throw new SQLException(&quot; cold not create table&quot;);</span>
+<span class="nc" id="L46">            case &quot;file&quot; -&gt; throw new IOException(&quot; cuold not create file&quot;);</span>
+<span class="nc" id="L47">            case &quot;memoria&quot; -&gt; throw new ClassNotFoundException(&quot;could not create class in memory&quot;);</span>
+<span class="nc" id="L48">            default -&gt; Logger.getLogger(&quot;inizializza persistenzaCC&quot;).log(Level.INFO,&quot; error in initialize&quot;);</span>
+        }
+
+<span class="nc" id="L51">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

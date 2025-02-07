@@ -2,8 +2,6 @@
 
 import java.io.IOException;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +26,7 @@ import laptop.model.raccolta.Rivista;
 public class ControllerPagamentoCC {
 
 
-<span class="fc" id="L31">	private final ControllerSystemState vis= ControllerSystemState.getInstance();</span>
+<span class="fc" id="L29">	private final ControllerSystemState vis= ControllerSystemState.getInstance();</span>
 
 	private final ControllerCheckPagamentoData cCPD;
 
@@ -36,7 +34,6 @@ public class ControllerPagamentoCC {
 	private CartaDiCredito cc;
 
 
-	private static final String SERIALIZZAZIONE=&quot;memory/serializzazioneCartaCredito.ser&quot;;
 	private static final String DATABASE=&quot;database&quot;;
 	private static final String FILE=&quot;file&quot;;
 	private static final String MEMORIA=&quot;memoria&quot;;
@@ -46,52 +43,52 @@ public class ControllerPagamentoCC {
 
 
 
-<span class="fc" id="L49">	public ControllerPagamentoCC()  {</span>
+<span class="fc" id="L46">	public ControllerPagamentoCC()  {</span>
 
 
-<span class="fc" id="L52">			cCPD = new ControllerCheckPagamentoData();</span>
+<span class="fc" id="L49">			cCPD = new ControllerCheckPagamentoData();</span>
 
 
 
-<span class="fc" id="L56">	}</span>
+<span class="fc" id="L53">	}</span>
 
 	public boolean aggiungiCartaDB(String n, String c, String cod, java.sql.Date data, String civ, float prezzo,String persistenza)
             throws CsvValidationException, IOException, ClassNotFoundException, SQLException {
-<span class="nc" id="L60">   			cc= new CartaDiCredito(n, c, cod,  data, civ, prezzo);</span>
+<span class="nc" id="L57">   			cc= new CartaDiCredito(n, c, cod,  data, civ, prezzo);</span>
 
 
-<span class="nc" id="L63">			cCPD.controllaPag(String.valueOf(data),c,civ);</span>
+<span class="nc" id="L60">			cCPD.controllaPag(String.valueOf(data),c,civ);</span>
 
 
-<span class="nc bnc" id="L66" title="All 4 branches missed.">			switch (persistenza)</span>
+<span class="nc bnc" id="L63" title="All 4 branches missed.">			switch (persistenza)</span>
 			{
-<span class="nc" id="L68">				case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
-<span class="nc" id="L69">				case FILE-&gt;pCC=new CsvCartaCredito();</span>
-<span class="nc" id="L70">				case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
-<span class="nc" id="L71">				default -&gt; Logger.getLogger(&quot;aggiungi carta db&quot;).log(Level.SEVERE,&quot; error in persistency&quot;);</span>
+<span class="nc" id="L65">				case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
+<span class="nc" id="L66">				case FILE-&gt;pCC=new CsvCartaCredito();</span>
+<span class="nc" id="L67">				case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
+<span class="nc" id="L68">				default -&gt; Logger.getLogger(&quot;aggiungi carta db&quot;).log(Level.SEVERE,&quot; error in persistency&quot;);</span>
 			}
-<span class="nc" id="L73">				pCC.inizializza();</span>
-<span class="nc" id="L74">			return pCC.insCC(cc);</span>
+<span class="nc" id="L70">				pCC.inizializza(&quot;&quot;);</span>
+<span class="nc" id="L71">			return pCC.insCC(cc);</span>
 
 	}
 
 
 
-	public ObservableList&lt;CartaDiCredito&gt; ritornaElencoCC(String nomeU,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, IdException, SQLException {
+	public ObservableList&lt;CartaDiCredito&gt; ritornaElencoCC(String nomeU,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, SQLException {
 
-<span class="nc" id="L82">		cc=new CartaDiCredito();</span>
-<span class="nc" id="L83">		cc.setNomeUser(nomeU);</span>
+<span class="nc" id="L79">		cc=new CartaDiCredito();</span>
+<span class="nc" id="L80">		cc.setNomeUser(nomeU);</span>
 
-<span class="nc bnc" id="L85" title="All 4 branches missed.">		switch (persistenza)</span>
+<span class="nc bnc" id="L82" title="All 4 branches missed.">		switch (persistenza)</span>
 		{
-<span class="nc" id="L87">			case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
-<span class="nc" id="L88">			case FILE-&gt;pCC=new CsvCartaCredito();</span>
-<span class="nc" id="L89">			case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
-<span class="nc" id="L90">			default -&gt; Logger.getLogger(&quot;elenco cc dal db&quot;).log(Level.SEVERE,&quot; list is empty&quot;);</span>
+<span class="nc" id="L84">			case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
+<span class="nc" id="L85">			case FILE-&gt;pCC=new CsvCartaCredito();</span>
+<span class="nc" id="L86">			case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
+<span class="nc" id="L87">			default -&gt; Logger.getLogger(&quot;elenco cc dal db&quot;).log(Level.SEVERE,&quot; list is empty&quot;);</span>
 		}
-<span class="nc" id="L92">			pCC.inizializza();</span>
+<span class="nc" id="L89">			pCC.inizializza(persistenza);</span>
 
-<span class="nc" id="L94">		return pCC.getCarteDiCredito(cc);</span>
+<span class="nc" id="L91">		return pCC.getCarteDiCredito(cc);</span>
 
 
 	}
@@ -103,67 +100,67 @@ public class ControllerPagamentoCC {
 	public void pagamentoCC(String nome,String database) throws IdException, IOException, CsvValidationException, ClassNotFoundException, SQLException {
   		Pagamento p ;
 		//effettuo pagamento
-<span class="fc" id="L106">		p=new Pagamento();</span>
-<span class="fc" id="L107">		p.setIdPag(0);</span>
-<span class="fc" id="L108">		p.setMetodo(&quot;cCredito&quot;);</span>
-<span class="fc" id="L109">		p.setNomeUtente(nome);</span>
-<span class="fc" id="L110">		p.setAmmontare(vis.getSpesaT());</span>
-<span class="pc bpc" id="L111" title="1 of 2 branches missed.">		if(vis.getIsLogged())</span>
-<span class="nc" id="L112">			p.setEmail(User.getInstance().getEmail());</span>
-<span class="fc" id="L113">		else p.setEmail(null);</span>
+<span class="fc" id="L103">		p=new Pagamento();</span>
+<span class="fc" id="L104">		p.setIdPag(0);</span>
+<span class="fc" id="L105">		p.setMetodo(&quot;cCredito&quot;);</span>
+<span class="fc" id="L106">		p.setNomeUtente(nome);</span>
+<span class="fc" id="L107">		p.setAmmontare(vis.getSpesaT());</span>
+<span class="pc bpc" id="L108" title="1 of 2 branches missed.">		if(vis.getIsLogged())</span>
+<span class="nc" id="L109">			p.setEmail(User.getInstance().getEmail());</span>
+<span class="fc" id="L110">		else p.setEmail(null);</span>
 
 
 
-<span class="pc bpc" id="L117" title="1 of 4 branches missed.">		switch (vis.getType()) {</span>
+<span class="pc bpc" id="L114" title="1 of 4 branches missed.">		switch (vis.getType()) {</span>
 			case &quot;libro&quot; -&gt; {
-<span class="fc" id="L119">				Libro l=new Libro();</span>
-<span class="fc" id="L120">				l.setId(vis.getId());</span>
-<span class="fc" id="L121">				cCPD.checkPagamentoData(nome,database);</span>
-<span class="fc" id="L122">			}</span>
+<span class="fc" id="L116">				Libro l=new Libro();</span>
+<span class="fc" id="L117">				l.setId(vis.getId());</span>
+<span class="fc" id="L118">				cCPD.checkPagamentoData(nome,database);</span>
+<span class="fc" id="L119">			}</span>
 			case &quot;giornale&quot; -&gt; {
-<span class="fc" id="L124">				Giornale g=new Giornale();</span>
-<span class="fc" id="L125">				g.setId(vis.getId());</span>
-<span class="fc" id="L126">				cCPD.checkPagamentoData(nome,database);</span>
-<span class="fc" id="L127">			}</span>
+<span class="fc" id="L121">				Giornale g=new Giornale();</span>
+<span class="fc" id="L122">				g.setId(vis.getId());</span>
+<span class="fc" id="L123">				cCPD.checkPagamentoData(nome,database);</span>
+<span class="fc" id="L124">			}</span>
 			case &quot;rivista&quot; -&gt; {
-<span class="fc" id="L129">					Rivista r=new Rivista();</span>
-<span class="fc" id="L130">					r.setId(vis.getId());</span>
-<span class="fc" id="L131">					cCPD.checkPagamentoData(nome,database);</span>
+<span class="fc" id="L126">					Rivista r=new Rivista();</span>
+<span class="fc" id="L127">					r.setId(vis.getId());</span>
+<span class="fc" id="L128">					cCPD.checkPagamentoData(nome,database);</span>
 
-<span class="fc" id="L133">			}</span>
-<span class="nc" id="L134">			default -&gt; throw new IdException(&quot; id not found&quot;);</span>
+<span class="fc" id="L130">			}</span>
+<span class="nc" id="L131">			default -&gt; throw new IdException(&quot; id not found&quot;);</span>
 
 		}
 
 
 
-<span class="fc" id="L140">		Logger.getLogger(&quot;Pagamento effettuato&quot;).log(Level.INFO, &quot;Payment  done!!&quot;);</span>
+<span class="fc" id="L137">		Logger.getLogger(&quot;Pagamento effettuato&quot;).log(Level.INFO, &quot;Payment  done!!&quot;);</span>
 
-<span class="fc" id="L142">	}</span>
+<span class="fc" id="L139">	}</span>
 
 	public String[] getInfo()
 	{
-<span class="nc" id="L146">		String [] dati=new String[2];</span>
-<span class="nc" id="L147">		dati[0]= User.getInstance().getNome();</span>
-<span class="nc" id="L148">		dati[1]=User.getInstance().getCognome();</span>
-<span class="nc" id="L149">		return dati;</span>
+<span class="nc" id="L143">		String [] dati=new String[2];</span>
+<span class="nc" id="L144">		dati[0]= User.getInstance().getNome();</span>
+<span class="nc" id="L145">		dati[1]=User.getInstance().getCognome();</span>
+<span class="nc" id="L146">		return dati;</span>
 	}
 
-	public ObservableList&lt;CartaDiCredito&gt; ritornaElencoCByNumero(String numero,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, IdException, SQLException {
+	public ObservableList&lt;CartaDiCredito&gt; ritornaElencoCByNumero(String numero,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, SQLException {
 
-<span class="nc" id="L154">		cc=new CartaDiCredito();</span>
-<span class="nc" id="L155">		cc.setNumeroCC(numero);</span>
+<span class="nc" id="L151">		cc=new CartaDiCredito();</span>
+<span class="nc" id="L152">		cc.setNumeroCC(numero);</span>
 
-<span class="nc bnc" id="L157" title="All 4 branches missed.">		switch (persistenza)</span>
+<span class="nc bnc" id="L154" title="All 4 branches missed.">		switch (persistenza)</span>
 		{
-<span class="nc" id="L159">			case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
-<span class="nc" id="L160">			case FILE-&gt;pCC=new CsvCartaCredito();</span>
-<span class="nc" id="L161">			case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
-<span class="nc" id="L162">			default -&gt; Logger.getLogger(&quot;elenco cc dal db&quot;).log(Level.SEVERE,&quot; list is empty&quot;);</span>
+<span class="nc" id="L156">			case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
+<span class="nc" id="L157">			case FILE-&gt;pCC=new CsvCartaCredito();</span>
+<span class="nc" id="L158">			case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
+<span class="nc" id="L159">			default -&gt; Logger.getLogger(&quot;elenco cc dal db&quot;).log(Level.SEVERE,&quot; list is empty&quot;);</span>
 		}
-<span class="nc" id="L164">			pCC.inizializza();</span>
+<span class="nc" id="L161">			pCC.inizializza(&quot;&quot;);</span>
 
-<span class="nc" id="L166">		return pCC.getCarteDiCredito(cc);</span>
+<span class="nc" id="L163">		return pCC.getCarteDiCredito(cc);</span>
 
 
 	}

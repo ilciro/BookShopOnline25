@@ -15,6 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.attribute.FileAttribute;
 import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.logging.Level;
@@ -54,6 +55,18 @@ public class CsvFattura extends PersistenzaFattura {
     }
 
     @Override
+    public void inizializza(String persistenza) throws IOException, ClassNotFoundException, SQLException {
+        Path path = Path.of(FATTURA);
+        try{
+            if(!Files.exists(path)) throw new IOException(" file is empty");
+
+        }catch (IOException e)
+        {
+            Files.createFile(path);
+        }
+    }
+
+    @Override
     public boolean inserisciFattura(Fattura f) throws IOException {
 
 
@@ -77,6 +90,7 @@ public class CsvFattura extends PersistenzaFattura {
 
 
         return true;
+
 
 
 

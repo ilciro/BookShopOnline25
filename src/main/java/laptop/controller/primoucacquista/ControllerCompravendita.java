@@ -1,9 +1,7 @@
 package laptop.controller.primoucacquista;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.sql.SQLException;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,7 +35,7 @@ public class ControllerCompravendita {
 	private PersistenzaGiornale pG;
 	private PersistenzaRivista pR;
 
-	public ObservableList<Raccolta> getLista(String type,String database) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
+	public ObservableList<Raccolta> getLista(String type,String database) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
 
 	 ObservableList <Raccolta> catalogo=FXCollections.observableArrayList();
 

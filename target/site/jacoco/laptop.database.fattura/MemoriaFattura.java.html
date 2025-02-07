@@ -58,7 +58,7 @@ import java.util.logging.Logger;
         }
 <span class="pc bpc" id="L59" title="1 of 2 branches missed.">        for (int i = 1; i &lt;= list.size(); i++) {</span>
 <span class="fc bfc" id="L60" title="All 2 branches covered.">            if (i == f.getIdFattura()) {</span>
-<span class="fc" id="L61">                System.out.println(&quot;id pagamento / i&quot;+ f.getIdFattura() + i);</span>
+<span class="fc" id="L61">                Logger.getLogger(&quot;cancella fattura&quot;).log(Level.INFO,&quot;id fattura {0}.&quot;,f.getIdFattura());</span>
 
 <span class="fc" id="L63">                status = list.remove(list.get(i - 1));</span>
 <span class="fc" id="L64">                break;</span>
@@ -85,7 +85,7 @@ import java.util.logging.Logger;
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
-    public void inizializza() throws IOException, ClassNotFoundException {
+    public void inizializza(String persistenza) throws IOException, ClassNotFoundException {
 
 <span class="fc" id="L90">        Path path = Path.of(SERIALIZZAZIONE);</span>
 <span class="fc bfc" id="L91" title="All 2 branches covered.">        if(!Files.exists(path)) Files.createFile(path);</span>
