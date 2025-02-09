@@ -67,7 +67,7 @@ public class ControllerPagamentoCC {
 <span class="nc" id="L67">				case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
 <span class="nc" id="L68">				default -&gt; Logger.getLogger(&quot;aggiungi carta db&quot;).log(Level.SEVERE,&quot; error in persistency&quot;);</span>
 			}
-<span class="nc" id="L70">				pCC.inizializza(&quot;&quot;);</span>
+<span class="nc" id="L70">				pCC.inizializza();</span>
 <span class="nc" id="L71">			return pCC.insCC(cc);</span>
 
 	}
@@ -86,7 +86,7 @@ public class ControllerPagamentoCC {
 <span class="nc" id="L86">			case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
 <span class="nc" id="L87">			default -&gt; Logger.getLogger(&quot;elenco cc dal db&quot;).log(Level.SEVERE,&quot; list is empty&quot;);</span>
 		}
-<span class="nc" id="L89">			pCC.inizializza(persistenza);</span>
+<span class="nc" id="L89">			pCC.inizializza();</span>
 
 <span class="nc" id="L91">		return pCC.getCarteDiCredito(cc);</span>
 
@@ -158,7 +158,7 @@ public class ControllerPagamentoCC {
 <span class="nc" id="L158">			case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
 <span class="nc" id="L159">			default -&gt; Logger.getLogger(&quot;elenco cc dal db&quot;).log(Level.SEVERE,&quot; list is empty&quot;);</span>
 		}
-<span class="nc" id="L161">			pCC.inizializza(&quot;&quot;);</span>
+<span class="nc" id="L161">			pCC.inizializza();</span>
 
 <span class="nc" id="L163">		return pCC.getCarteDiCredito(cc);</span>
 

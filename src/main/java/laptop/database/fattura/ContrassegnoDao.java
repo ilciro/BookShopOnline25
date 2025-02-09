@@ -96,7 +96,7 @@ public class ContrassegnoDao extends PersistenzaFattura {
     }
 
     @Override
-    public void inizializza(String persitenza) throws IOException, ClassNotFoundException, SQLException {
+    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
         ConnToDb.generalConnection();
         try(Connection conn=ConnToDb.connectionToDB()) {
 

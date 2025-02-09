@@ -290,7 +290,7 @@ public class CsvLibro extends PersistenzaLibro{
 
 
     @Override
-    public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException {
+    public ObservableList<Raccolta> retrieveRaccoltaData() throws IOException, IdException, CsvValidationException {
         return retrieveData(this.fdL);
     }
     private static synchronized ObservableList<Raccolta> retrieveData(File fd) throws CsvValidationException, IOException, IdException {

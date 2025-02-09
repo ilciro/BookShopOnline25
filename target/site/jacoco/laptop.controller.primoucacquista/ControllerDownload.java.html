@@ -67,7 +67,7 @@ public class ControllerDownload {
 <span class="fc bfc" id="L67" title="All 2 branches covered.">		for(int i=0;i&lt;pL.getLibri().size();i++)</span>
 		{
 
-<span class="fc bfc" id="L70" title="All 2 branches covered.">			if(i==l.getId())</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">			if(i==l.getId()-1)</span>
 			{
 <span class="fc" id="L72">				tempLibro=pL.getLibroByIdTitoloAutoreLibro(l).get(0);</span>
 <span class="fc" id="L73">				pL.removeLibroById(l);</span>
@@ -93,10 +93,10 @@ public class ControllerDownload {
 <span class="fc bfc" id="L93" title="All 2 branches covered.">		else if(persistenza.equals(FILE)) pG=new CsvGiornale();</span>
 <span class="fc" id="L94">		else pG=new MemoriaGiornale();</span>
 <span class="fc" id="L95">		Giornale tempG=new Giornale();</span>
-<span class="fc bfc" id="L96" title="All 2 branches covered.">		for (int i=1;i&lt;=pG.getGiornali().size();i++)</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">		for (int i=0;i&lt;=pG.getGiornali().size();i++)</span>
 		{
 
-<span class="fc bfc" id="L99" title="All 2 branches covered.">			if(i==g.getId())</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">			if(i==g.getId()-1)</span>
 			{
 
 
@@ -124,8 +124,8 @@ public class ControllerDownload {
 <span class="fc" id="L124">		else pR=new MemoriaRivista();</span>
 
 <span class="fc" id="L126">		Rivista tempR=new Rivista();</span>
-<span class="fc bfc" id="L127" title="All 2 branches covered.">		for(int i=1;i&lt;=pR.getRiviste().size();i++) {</span>
-<span class="fc bfc" id="L128" title="All 2 branches covered.">			if (i==r.getId()) {</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">		for(int i=0;i&lt;=pR.getRiviste().size();i++) {</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">			if (i==r.getId()-1) {</span>
 
 <span class="fc" id="L130">				 tempR=pR.getRivistaByIdTitoloAutoreRivista(r).get(0);</span>
 <span class="fc" id="L131">				pR.removeRivistaById(r);</span>

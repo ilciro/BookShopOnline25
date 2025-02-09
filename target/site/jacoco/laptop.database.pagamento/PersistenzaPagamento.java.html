@@ -4,22 +4,50 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.model.Pagamento;
-import laptop.model.user.User;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-<span class="fc" id="L15">public class PersistenzaPagamento {</span>
-<span class="nc" id="L16">    public boolean inserisciPagamento(Pagamento p) throws CsvValidationException, IOException, ClassNotFoundException {return true;}</span>
-<span class="nc" id="L17">    public Pagamento ultimoPagamento() throws CsvValidationException, IOException, ClassNotFoundException {return null;}</span>
-<span class="nc" id="L18">    public boolean cancellaPagamento(Pagamento p) throws IOException, CsvValidationException, ClassNotFoundException {return true;}</span>
+<span class="fc" id="L13">public class PersistenzaPagamento {</span>
+    private static final String DATABASE=&quot;FileSql/pagamento.sql&quot;;
+    private static final String FILE=&quot;report/reportPagamento.csv&quot;;
+    private static final String MEMORIA=&quot;memory/serializzazionePagamento.ser&quot;;
+    private static final String DATABASEXCEPTION=&quot;file sql not exists&quot;;
+    private static final String FILEXCEPTION=&quot;file csv not exists&quot;;
+    private static final String MEMORIAEXCEPTION=&quot;class not in memory&quot;;
+
+    public boolean inserisciPagamento(Pagamento p) throws CsvValidationException, IOException, ClassNotFoundException {
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        if(p.getIdPag()==0) throw new IOException(&quot; file not found or id null&quot;);</span>
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        if(p.getAmmontare()==0f) throw new CsvValidationException(&quot; codice isbn insert book is null&quot;);</span>
+<span class="nc bnc" id="L24" title="All 2 branches missed.">        if(p.getIdOggetto()==0) throw new ClassNotFoundException(&quot;class not found or id object is null&quot;);</span>
+<span class="nc" id="L25">        return true;</span>
+    }
+    public Pagamento ultimoPagamento() throws CsvValidationException, IOException, ClassNotFoundException {
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
+<span class="nc" id="L31">        return new Pagamento();</span>
+    }
+    public boolean cancellaPagamento(Pagamento p) throws IOException, CsvValidationException, ClassNotFoundException {
+<span class="nc bnc" id="L34" title="All 2 branches missed.">        if(p.getIdPag()==0) throw new IOException(&quot; file not found or id null&quot;);</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        if(p.getIdOggetto()==0) throw new CsvValidationException(&quot; id oggetto is null&quot;);</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        if(p.getAmmontare()==0f) throw new ClassNotFoundException(&quot;class not found or payment is null&quot;);</span>
+
+<span class="nc" id="L38">        return true;}</span>
     public void inizializza() throws IOException, ClassNotFoundException, SQLException {
-<span class="fc" id="L20">        Logger.getLogger(&quot;inizializza pagamento&quot;).log(Level.INFO,&quot;initialize payment&quot;);</span>
-<span class="fc" id="L21">    }</span>
-<span class="nc" id="L22">    public ObservableList&lt;Pagamento&gt; listPagamentiByUser(Pagamento p) throws CsvValidationException, IOException, ClassNotFoundException {return FXCollections.emptyObservableList();}</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        if (!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASEXCEPTION);</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">        if (!Files.exists(Path.of(FILE))) throw new IOException(FILEXCEPTION);</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        if (!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
+
+<span class="nc" id="L44">    }</span>
+    public ObservableList&lt;Pagamento&gt; listPagamentiByUser (Pagamento p) throws CsvValidationException, IOException, ClassNotFoundException {
+<span class="nc bnc" id="L46" title="All 2 branches missed.">           if(p.getIdPag()==0)throw new IOException(DATABASEXCEPTION);</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">           if(p.getAmmontare()==0) throw new CsvValidationException(FILEXCEPTION);</span>
+<span class="nc" id="L48">           return FXCollections.observableArrayList();</span>
+    }
+
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

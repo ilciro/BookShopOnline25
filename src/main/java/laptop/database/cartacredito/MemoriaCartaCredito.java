@@ -53,7 +53,7 @@ public class MemoriaCartaCredito extends PersistenzaCC  {
 
     @Override
     @SuppressWarnings("unchecked")
-    public void inizializza(String persistenza) throws IOException, ClassNotFoundException {
+    public void inizializza() throws IOException, ClassNotFoundException {
 
             for (int i = 1; i <= 6; i++) {
                 String line;

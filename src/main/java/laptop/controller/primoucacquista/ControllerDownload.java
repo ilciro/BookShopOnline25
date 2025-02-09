@@ -67,7 +67,7 @@ public class ControllerDownload {
 		for(int i=0;i<pL.getLibri().size();i++)
 		{
 
-			if(i==l.getId())
+			if(i==l.getId()-1)
 			{
 				tempLibro=pL.getLibroByIdTitoloAutoreLibro(l).get(0);
 				pL.removeLibroById(l);
@@ -93,10 +93,10 @@ public class ControllerDownload {
 		else if(persistenza.equals(FILE)) pG=new CsvGiornale();
 		else pG=new MemoriaGiornale();
 		Giornale tempG=new Giornale();
-		for (int i=1;i<=pG.getGiornali().size();i++)
+		for (int i=0;i<=pG.getGiornali().size();i++)
 		{
 
-			if(i==g.getId())
+			if(i==g.getId()-1)
 			{
 
 
@@ -124,8 +124,8 @@ public class ControllerDownload {
 		else pR=new MemoriaRivista();
 
 		Rivista tempR=new Rivista();
-		for(int i=1;i<=pR.getRiviste().size();i++) {
-			if (i==r.getId()) {
+		for(int i=0;i<=pR.getRiviste().size();i++) {
+			if (i==r.getId()-1) {
 
 				 tempR=pR.getRivistaByIdTitoloAutoreRivista(r).get(0);
 				pR.removeRivistaById(r);

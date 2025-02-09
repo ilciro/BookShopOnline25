@@ -8,15 +8,57 @@ import laptop.model.raccolta.Raccolta;
 import laptop.model.raccolta.Rivista;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class PersistenzaRivista {
-    public  boolean inserisciRivista(Rivista r) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {return true;}
-    public  boolean removeRivistaById(Rivista r) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {return false;}
-    public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {return FXCollections.observableArrayList();}
-    public ObservableList<Rivista> getRivistaByIdTitoloAutoreRivista(Rivista r) throws CsvValidationException, IOException, IdException, ClassNotFoundException {return FXCollections.observableArrayList();}
-    public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {Logger.getLogger("Persistenza rivista").log(Level.INFO,"initialize persistenza rivista");}
-    public ObservableList<Rivista> getRiviste() throws CsvValidationException, IOException, IdException, ClassNotFoundException {return FXCollections.emptyObservableList();}
+    private static final String DATABASE="FileSql/rivista.sql";
+    private static final String FILE="report/reportRivista.csv";
+    private static final String MEMORIA="memory/serializzazioneRivista.ser";
+    private static final String DATABASEXCEPTION="file sql not exists";
+    private static final String FILEXCEPTION="file csv not exists";
+    private static final String MEMORIAEXCEPTION="class not in memory";
+    private static final String IDEXCEPTIONMESSAGE=" id is null or is zero";
+
+    public  boolean inserisciRivista(Rivista r) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+        if(r.getId()==0) throw new IOException(" file not found or id null");
+        if(r.getAutore().isEmpty()) throw new CsvValidationException(" codice isbn insert book is null");
+        if(r.getTitolo().isEmpty()) throw new ClassNotFoundException("class not found or titolo insert book is null");
+        if(r.getId()<0) throw new SQLException("id rivista is lower than 0");
+        return true;
+    }
+    public  boolean removeRivistaById(Rivista r) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+        if(r.getId()==0) throw new IOException(" file not found or id null");
+        if(r.getAutore().isEmpty()) throw new CsvValidationException(" codice isbn is null");
+        if(r.getTitolo().isEmpty()) throw new ClassNotFoundException("class not found or titolo is null");
+        if(r.getEditore().isEmpty()) throw new SQLException(" editore is null");
+        return false;}
+
+    public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);
+        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);
+        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
+        else throw new IdException(IDEXCEPTIONMESSAGE);
+    }
+    public ObservableList<Rivista> getRivistaByIdTitoloAutoreRivista(Rivista r) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+        if(r.getId()==0) throw new IOException(" file not found or id 0");
+        if(r.getAutore().isEmpty()) throw new CsvValidationException(" codice isbn is null");
+        if(r.getEditore().isEmpty()) throw new ClassNotFoundException("class not found or titolo is null");
+        if(r.getId()<0) throw new IdException(" id is lower than 0");
+        return FXCollections.observableArrayList();
+    }
+    public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
+        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);
+        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);
+        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
+        else throw new SQLException(IDEXCEPTIONMESSAGE);
+    }
+    public ObservableList<Rivista> getRiviste() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+        if(!Files.exists(Path.of(DATABASE))) throw new IdException(DATABASEXCEPTION);
+        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);
+        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
+        else throw new IOException(IDEXCEPTIONMESSAGE);
+    }
 }

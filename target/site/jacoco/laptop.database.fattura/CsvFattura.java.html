@@ -55,7 +55,7 @@ public class CsvFattura extends PersistenzaFattura {
 <span class="nc" id="L55">    }</span>
 
     @Override
-    public void inizializza(String persistenza) throws IOException, ClassNotFoundException, SQLException {
+    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
 <span class="fc" id="L59">        Path path = Path.of(FATTURA);</span>
         try{
 <span class="pc bpc" id="L61" title="1 of 2 branches missed.">            if(!Files.exists(path)) throw new IOException(&quot; file is empty&quot;);</span>

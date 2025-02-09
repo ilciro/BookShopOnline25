@@ -85,7 +85,7 @@ import java.util.logging.Logger;
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
-    public void inizializza(String persistenza) throws IOException, ClassNotFoundException {
+    public void inizializza() throws IOException, ClassNotFoundException {
 
 <span class="fc" id="L90">        Path path = Path.of(SERIALIZZAZIONE);</span>
 <span class="fc bfc" id="L91" title="All 2 branches covered.">        if(!Files.exists(path)) Files.createFile(path);</span>

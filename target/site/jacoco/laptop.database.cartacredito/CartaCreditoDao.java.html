@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 <span class="nc" id="L14">public class CartaCreditoDao extends PersistenzaCC{</span>
 
     @Override
-    public void inizializza(String persistenza) throws IOException, ClassNotFoundException, SQLException {
+    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
 <span class="nc" id="L18">            ConnToDb.generalConnection();</span>
 <span class="nc" id="L19">            try (Connection conn = ConnToDb.connectionToDB()) {</span>
 

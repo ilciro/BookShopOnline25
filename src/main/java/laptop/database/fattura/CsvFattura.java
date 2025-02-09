@@ -55,7 +55,7 @@ public class CsvFattura extends PersistenzaFattura {
     }
 
     @Override
-    public void inizializza(String persistenza) throws IOException, ClassNotFoundException, SQLException {
+    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
         Path path = Path.of(FATTURA);
         try{
             if(!Files.exists(path)) throw new IOException(" file is empty");

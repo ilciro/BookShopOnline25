@@ -8,17 +8,61 @@ import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public  class PersistenzaLibro {
-     public  boolean inserisciLibro(Libro l) throws CsvValidationException, IOException, ClassNotFoundException {return true;}
-     public  boolean removeLibroById(Libro l) throws CsvValidationException, IOException, ClassNotFoundException {return false;}
-    public  ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {return FXCollections.observableArrayList();}
-     public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l) throws CsvValidationException, IOException, IdException, ClassNotFoundException {return FXCollections.observableArrayList();}
-    public void initializza() throws IOException, CsvValidationException, ClassNotFoundException, SQLException { Logger.getLogger("Persistenza Libro").log(Level.INFO,"initialize persistenza libro");}
-    public ObservableList<Libro> getLibri() throws CsvValidationException, IOException, IdException, ClassNotFoundException {return FXCollections.emptyObservableList();}
+    private static final String DATABASE="FileSql/libro.sql";
+    private static final String FILE="report/reportLibro.csv";
+    private static final String MEMORIA="memory/serializzazioneLibro.ser";
+    private static final String DATABASEXCEPTION="file sql not exists";
+    private static final String FILEXCEPTION="file csv not exists";
+    private static final String MEMORIAEXCEPTION="class not in memory";
+    private static final String IDEXCEPTIONMESSAGE=" id is null or is zero";
+
+
+     public  boolean inserisciLibro(Libro l) throws CsvValidationException, IOException, ClassNotFoundException {
+
+         if(l.getId()==0) throw new IOException(" file not found or id null");
+         if(l.getCodIsbn().isEmpty()) throw new CsvValidationException(" codice isbn insert book is null");
+         if(l.getTitolo().isEmpty()) throw new ClassNotFoundException("class not found or titolo insert book is null");
+         return true;}
+     public  boolean removeLibroById(Libro l) throws CsvValidationException, IOException, ClassNotFoundException {
+         if(l.getId()==0) throw new IOException(" file not found or id null");
+         if(l.getCodIsbn().isEmpty()) throw new CsvValidationException(" codice isbn is null");
+         if(l.getTitolo().isEmpty()) throw new ClassNotFoundException("class not found or titolo is null");
+
+         return false;}
+    public  ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);
+        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);
+        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
+        else throw new IdException(IDEXCEPTIONMESSAGE);
+
+    }
+     public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+
+         if(l.getId()==0) throw new IOException(" file not found or id 0");
+         if(l.getCodIsbn().isEmpty()) throw new CsvValidationException(" codice isbn is null");
+         if(l.getTitolo().isEmpty()) throw new ClassNotFoundException("class not found or titolo is null");
+         if(l.getId()<0) throw new IdException(" id is lower than 0");
+         return FXCollections.observableArrayList();
+
+     }
+    public void initializza() throws IOException, CsvValidationException, ClassNotFoundException, SQLException {
+        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);
+        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);
+        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
+        else throw new SQLException(IDEXCEPTIONMESSAGE);
+    }
+    public ObservableList<Libro> getLibri() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+        if(!Files.exists(Path.of(DATABASE))) throw new IdException(DATABASEXCEPTION);
+        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);
+        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
+        else throw new IOException(IDEXCEPTIONMESSAGE);
+     }
 
 
 

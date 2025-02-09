@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class CartaCreditoDao extends PersistenzaCC{
 
     @Override
-    public void inizializza(String persistenza) throws IOException, ClassNotFoundException, SQLException {
+    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
             ConnToDb.generalConnection();
             try (Connection conn = ConnToDb.connectionToDB()) {
 

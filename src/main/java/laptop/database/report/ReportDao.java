@@ -141,11 +141,17 @@ public class ReportDao extends PersistenzaReport {
         return tu;
     }
 
+    /*
+    todo fixare qui
+     */
     @Override
     public ObservableList<Report> returnReportIDTipoTitolo(int id, String tipo, String titolo) throws IOException, CsvValidationException {
         Logger.getLogger("reportByid").log(Level.INFO,"yet used by report");
         return FXCollections.emptyObservableList();
     }
 
-
+    @Override
+    public void inizializza() throws IOException, ClassNotFoundException {
+        Logger.getLogger("inizializza reportDao").log(Level.INFO,"initialize report dao");
+    }
 }

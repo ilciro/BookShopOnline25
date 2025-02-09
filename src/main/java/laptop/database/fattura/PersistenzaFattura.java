@@ -4,6 +4,8 @@ import com.opencsv.exceptions.CsvValidationException;
 import laptop.model.Fattura;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.SQLException;
 
 public class PersistenzaFattura {
@@ -18,9 +20,9 @@ public class PersistenzaFattura {
         if(f.getNome() == null)throw new ClassNotFoundException(" fattura is null");
         return false;}
     public Fattura ultimaFattura() throws CsvValidationException, IOException, ClassNotFoundException {return null;}
-    public void inizializza(String persistenza) throws IOException, ClassNotFoundException, SQLException {
-        if(persistenza.equals("database")) throw new SQLException(" table not created");
-        else if(persistenza.equals("file")) throw new IOException(" file not find");
-        else throw new ClassNotFoundException(" memory error");
+    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
+       if(!Files.exists(Path.of("FileSql/fattura.sql"))) throw new SQLException("file db not exits");
+       if(!Files.exists(Path.of("report/reportFattura.csv"))) throw new IOException(" file csv not exists");
+       if(!Files.exists(Path.of("memory/serializzazioneFattura.ser"))) throw new ClassNotFoundException(" class not found in memory");
     }
 }

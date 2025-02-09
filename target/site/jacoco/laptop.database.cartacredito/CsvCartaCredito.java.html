@@ -123,13 +123,13 @@ public class CsvCartaCredito extends PersistenzaCC{
     }
 
     @Override
-    public void inizializza(String type) throws IOException, ClassNotFoundException, SQLException {
+    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
 
         try{
-<span class="nc bnc" id="L129" title="All 2 branches missed.">            if(!Files.exists(Path.of(&quot;report/reportPagamento.csv&quot;))) throw new IOException(&quot;file not exists&quot;);</span>
+<span class="nc bnc" id="L129" title="All 2 branches missed.">            if(!Files.exists(Path.of(CARTACREDITO))) throw new IOException(&quot;file not exists&quot;);</span>
 <span class="nc" id="L130">        } catch (IOException e)</span>
         {
-<span class="nc" id="L132">            Files.createFile(Path.of(&quot;report/reportPagamento.csv&quot;));</span>
+<span class="nc" id="L132">            Files.createFile(Path.of(CARTACREDITO  ));</span>
 <span class="nc" id="L133">        }</span>
 <span class="nc" id="L134">    }</span>
 }

@@ -17,6 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.attribute.FileAttribute;
 import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -145,6 +146,12 @@ public class CsvPagamento extends PersistenzaPagamento{
         return status;
 
     }
+
+    @Override
+    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
+        if(!Files.exists(Path.of(PAGAMENTO))) Files.createFile(Path.of(PAGAMENTO));
+    }
+
     private static boolean isFound(Pagamento p, File tmpFile) throws IOException, CsvValidationException {
         boolean found = false;
 

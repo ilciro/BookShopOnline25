@@ -290,7 +290,7 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 
     @Override
-    public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException {
+    public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws IOException, IdException, CsvValidationException {
 <span class="fc" id="L294">        return retrieveData(this.fdL);</span>
     }
     private static synchronized ObservableList&lt;Raccolta&gt; retrieveData(File fd) throws CsvValidationException, IOException, IdException {

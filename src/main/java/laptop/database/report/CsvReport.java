@@ -11,6 +11,8 @@ import laptop.model.user.TempUser;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -60,6 +62,11 @@ public class CsvReport extends PersistenzaReport{
         }
         return id;
 
+    }
+
+    @Override
+    public void inizializza() throws IOException, ClassNotFoundException {
+        if(!Files.exists(Path.of(LOCATIONR))) Files.createFile(Path.of(LOCATIONR));
     }
 
     @Override

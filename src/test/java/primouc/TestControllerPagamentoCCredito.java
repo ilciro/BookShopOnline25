@@ -52,9 +52,9 @@ class TestControllerPagamentoCCredito {
         vis.setMetodoP("cCredito");
         vis.setTypeAsMagazine();
         vis.setSpesaT(Float.parseFloat(RBOGGETTO.getString("prezzoG")));
-        vis.setId(Integer.parseInt(RBOGGETTO.getString("idG")));
+        vis.setId(Integer.parseInt(RBOGGETTO.getString("idR")));
         cPCC.pagamentoCC("francesca",strings);
-        assertEquals(1,vis.getId());
+        assertEquals(5,vis.getId());
 
     }
 

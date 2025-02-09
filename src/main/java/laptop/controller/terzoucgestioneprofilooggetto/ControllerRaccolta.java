@@ -70,15 +70,9 @@ public class ControllerRaccolta {
                 default -> Logger.getLogger("prendi riviste").log(Level.SEVERE," list magazine is empty");
 
             }
-            try{
-                if(pR.getRiviste().isEmpty()) throw new IOException("file  magazine not exists!");
-            }catch (IOException | CsvValidationException e)
-            {
-                Logger.getLogger("prendi riviste" ).log(Level.SEVERE," file magazines not exists");
-                pR.initializza();
-                Logger.getLogger("prendi riviste creo" ).log(Level.INFO," file magazines created ");
+            pR.initializza();
 
-            }
+
 
 
             return pR.retrieveRaccoltaData();
@@ -94,15 +88,9 @@ public class ControllerRaccolta {
             default -> Logger.getLogger("prendi libri").log(Level.SEVERE," list book is empty");
 
         }
-        try{
-            if(pL.getLibri().isEmpty()) throw new IOException("file books not exists!");
-        }catch (IOException | CsvValidationException e)
-        {
-            Logger.getLogger("prendi libri" ).log(Level.SEVERE," file books not exists");
-            pL.initializza();
-            Logger.getLogger("prendi libri creo" ).log(Level.INFO," file books created ");
+       pL.initializza();
 
-        }
+
 
         return pL.retrieveRaccoltaData();
     }
@@ -114,15 +102,9 @@ public class ControllerRaccolta {
             default -> Logger.getLogger("prendi giornali").log(Level.SEVERE," list daily is empty");
 
         }
-        try{
-            if(pG.getGiornali().isEmpty()) throw new IOException("file daily not exists!");
-        }catch (IOException | CsvValidationException e)
-        {
-            Logger.getLogger("prendi giornale" ).log(Level.SEVERE," file daily not exists");
             pG.initializza();
-            Logger.getLogger("prendi giornale creo" ).log(Level.INFO," file daily created ");
 
-        }
+
         return pG.retrieveRaccoltaData();
     }
 

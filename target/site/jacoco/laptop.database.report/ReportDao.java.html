@@ -141,12 +141,18 @@ import java.util.logging.Logger;
 <span class="nc" id="L141">        return tu;</span>
     }
 
+    /*
+    todo fixare qui
+     */
     @Override
     public ObservableList&lt;Report&gt; returnReportIDTipoTitolo(int id, String tipo, String titolo) throws IOException, CsvValidationException {
-<span class="nc" id="L146">        Logger.getLogger(&quot;reportByid&quot;).log(Level.INFO,&quot;yet used by report&quot;);</span>
-<span class="nc" id="L147">        return FXCollections.emptyObservableList();</span>
+<span class="nc" id="L149">        Logger.getLogger(&quot;reportByid&quot;).log(Level.INFO,&quot;yet used by report&quot;);</span>
+<span class="nc" id="L150">        return FXCollections.emptyObservableList();</span>
     }
 
-
+    @Override
+    public void inizializza() throws IOException, ClassNotFoundException {
+<span class="fc" id="L155">        Logger.getLogger(&quot;inizializza reportDao&quot;).log(Level.INFO,&quot;initialize report dao&quot;);</span>
+<span class="fc" id="L156">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

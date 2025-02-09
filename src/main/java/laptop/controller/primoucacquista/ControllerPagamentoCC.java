@@ -67,7 +67,7 @@ public class ControllerPagamentoCC {
 				case MEMORIA->pCC=new MemoriaCartaCredito();
 				default -> Logger.getLogger("aggiungi carta db").log(Level.SEVERE," error in persistency");
 			}
-				pCC.inizializza("");
+				pCC.inizializza();
 			return pCC.insCC(cc);
 
 	}
@@ -86,7 +86,7 @@ public class ControllerPagamentoCC {
 			case MEMORIA->pCC=new MemoriaCartaCredito();
 			default -> Logger.getLogger("elenco cc dal db").log(Level.SEVERE," list is empty");
 		}
-			pCC.inizializza(persistenza);
+			pCC.inizializza();
 
 		return pCC.getCarteDiCredito(cc);
 
@@ -158,7 +158,7 @@ public class ControllerPagamentoCC {
 			case MEMORIA->pCC=new MemoriaCartaCredito();
 			default -> Logger.getLogger("elenco cc dal db").log(Level.SEVERE," list is empty");
 		}
-			pCC.inizializza("");
+			pCC.inizializza();
 
 		return pCC.getCarteDiCredito(cc);
 

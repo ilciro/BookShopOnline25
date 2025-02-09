@@ -11,11 +11,13 @@ import laptop.model.user.TempUser;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-<span class="fc" id="L18">public class CsvReport extends PersistenzaReport{</span>
+<span class="fc" id="L20">public class CsvReport extends PersistenzaReport{</span>
     private static final String LOCATIONR = &quot;report/reportFinale.csv&quot;;
     private static final int GETINDEXIDR = 0;
     private static final int GETINDEXTIPOOGG = 1;
@@ -26,87 +28,92 @@ import java.util.logging.Logger;
 
 
 
-<span class="fc" id="L29">    private static final File fileReport=new File(LOCATIONR);</span>
+<span class="fc" id="L31">    private static final File fileReport=new File(LOCATIONR);</span>
 
     @Override
     public boolean insertReport(Report r) throws CsvValidationException, IOException {
-<span class="fc" id="L33">        boolean status=false;</span>
-<span class="fc" id="L34">        try (CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(fileReport, true)))) {</span>
+<span class="fc" id="L35">        boolean status=false;</span>
+<span class="fc" id="L36">        try (CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(fileReport, true)))) {</span>
 
-<span class="fc" id="L36">            String[] gVectore = new String[6];</span>
+<span class="fc" id="L38">            String[] gVectore = new String[6];</span>
 
-<span class="fc" id="L38">            gVectore[GETINDEXIDR] = String.valueOf(getIdMax() + 1);</span>
-<span class="fc" id="L39">            gVectore[GETINDEXTIPOOGG] = r.getTipologiaOggetto();</span>
-<span class="fc" id="L40">            gVectore[GETINDEXTITOLOOGG] = r.getTitoloOggetto();</span>
-<span class="fc" id="L41">            gVectore[GETINDEXNRPEZZI] = String.valueOf(r.getNrPezzi());</span>
-<span class="fc" id="L42">            gVectore[GETINDEXPREZZO] = String.valueOf(r.getPrezzo());</span>
-<span class="fc" id="L43">            gVectore[GETINDEXTOTALE] = String.valueOf(r.getTotale());</span>
-<span class="fc" id="L44">            writer.writeNext(gVectore);</span>
+<span class="fc" id="L40">            gVectore[GETINDEXIDR] = String.valueOf(getIdMax() + 1);</span>
+<span class="fc" id="L41">            gVectore[GETINDEXTIPOOGG] = r.getTipologiaOggetto();</span>
+<span class="fc" id="L42">            gVectore[GETINDEXTITOLOOGG] = r.getTitoloOggetto();</span>
+<span class="fc" id="L43">            gVectore[GETINDEXNRPEZZI] = String.valueOf(r.getNrPezzi());</span>
+<span class="fc" id="L44">            gVectore[GETINDEXPREZZO] = String.valueOf(r.getPrezzo());</span>
+<span class="fc" id="L45">            gVectore[GETINDEXTOTALE] = String.valueOf(r.getTotale());</span>
+<span class="fc" id="L46">            writer.writeNext(gVectore);</span>
 
-<span class="fc" id="L46">            writer.flush();</span>
+<span class="fc" id="L48">            writer.flush();</span>
 
         }
-<span class="pc bpc" id="L49" title="1 of 2 branches missed.">        if (r.getIdReport()!=0) status=true;</span>
-<span class="fc" id="L50">        return status;</span>
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">        if (r.getIdReport()!=0) status=true;</span>
+<span class="fc" id="L52">        return status;</span>
     }
     private static  int getIdMax() throws IOException, CsvValidationException {
         //used for insert correct idOgg
         String[] gVector;
-<span class="fc" id="L55">        int id = 0;</span>
-<span class="fc" id="L56">        try (CSVReader reader = new CSVReader(new FileReader(LOCATIONR))) {</span>
-<span class="fc bfc" id="L57" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
-<span class="fc" id="L58">                id = Integer.parseInt(gVector[GETINDEXIDR]);</span>
+<span class="fc" id="L57">        int id = 0;</span>
+<span class="fc" id="L58">        try (CSVReader reader = new CSVReader(new FileReader(LOCATIONR))) {</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
+<span class="fc" id="L60">                id = Integer.parseInt(gVector[GETINDEXIDR]);</span>
             }
         }
-<span class="fc" id="L61">        return id;</span>
+<span class="fc" id="L63">        return id;</span>
 
     }
 
     @Override
+    public void inizializza() throws IOException, ClassNotFoundException {
+<span class="pc bpc" id="L69" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(LOCATIONR))) Files.createFile(Path.of(LOCATIONR));</span>
+<span class="fc" id="L70">    }</span>
+
+    @Override
     public ObservableList&lt;Report&gt; report(String type) {
-<span class="nc" id="L67">        Logger.getLogger(&quot;getReport&quot;).log(Level.INFO,&quot;yet used by reportIdTitolo&quot;);</span>
-<span class="nc" id="L68">        return FXCollections.emptyObservableList();</span>
+<span class="nc" id="L74">        Logger.getLogger(&quot;getReport&quot;).log(Level.INFO,&quot;yet used by reportIdTitolo&quot;);</span>
+<span class="nc" id="L75">        return FXCollections.emptyObservableList();</span>
     }
 
     @Override
     public ObservableList&lt;Report&gt; returnReportIDTipoTitolo(int id, String tipo, String titolo) throws IOException, CsvValidationException {
-<span class="nc" id="L73">        ObservableList&lt;Report&gt; list= FXCollections.observableArrayList();</span>
-<span class="nc" id="L74">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fileReport)))) {</span>
+<span class="nc" id="L80">        ObservableList&lt;Report&gt; list= FXCollections.observableArrayList();</span>
+<span class="nc" id="L81">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fileReport)))) {</span>
             String[] gVector;
             boolean recordFound;
-<span class="nc bnc" id="L77" title="All 2 branches missed.">            while ((gVector = reader.readNext()) != null) {</span>
-<span class="nc bnc" id="L78" title="All 2 branches missed.">                if (tipo == null) {</span>
-<span class="nc" id="L79">                    Report report = getReport(gVector);</span>
-<span class="nc" id="L80">                    list.add(report);</span>
-<span class="nc" id="L81">                } else {</span>
-<span class="nc bnc" id="L82" title="All 4 branches missed.">                    recordFound = gVector[GETINDEXIDR].equals(String.valueOf(id)) || gVector[GETINDEXTIPOOGG].equals(tipo)</span>
-<span class="nc bnc" id="L83" title="All 2 branches missed.">                            || gVector[GETINDEXTITOLOOGG].equals(titolo);</span>
-<span class="nc bnc" id="L84" title="All 2 branches missed.">                    if (recordFound) {</span>
-<span class="nc" id="L85">                        Report report = getReport(gVector);</span>
-<span class="nc" id="L86">                        list.add(report);</span>
-<span class="nc" id="L87">                    }</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">            while ((gVector = reader.readNext()) != null) {</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">                if (tipo == null) {</span>
+<span class="nc" id="L86">                    Report report = getReport(gVector);</span>
+<span class="nc" id="L87">                    list.add(report);</span>
+<span class="nc" id="L88">                } else {</span>
+<span class="nc bnc" id="L89" title="All 4 branches missed.">                    recordFound = gVector[GETINDEXIDR].equals(String.valueOf(id)) || gVector[GETINDEXTIPOOGG].equals(tipo)</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">                            || gVector[GETINDEXTITOLOOGG].equals(titolo);</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">                    if (recordFound) {</span>
+<span class="nc" id="L92">                        Report report = getReport(gVector);</span>
+<span class="nc" id="L93">                        list.add(report);</span>
+<span class="nc" id="L94">                    }</span>
                 }
             }
         }
-<span class="nc" id="L91">        return list;</span>
+<span class="nc" id="L98">        return list;</span>
     }
 
     private static @NotNull Report getReport(String[] gVector) {
-<span class="nc" id="L95">        Report report=new Report();</span>
-<span class="nc" id="L96">        report.setIdReport(Integer.parseInt(gVector[GETINDEXIDR]));</span>
-<span class="nc" id="L97">        report.setTipologiaOggetto(gVector[GETINDEXTIPOOGG]);</span>
-<span class="nc" id="L98">        report.setTitoloOggetto(gVector[GETINDEXTITOLOOGG]);</span>
-<span class="nc" id="L99">        report.setNrPezzi(Integer.parseInt(gVector[GETINDEXNRPEZZI]));</span>
-<span class="nc" id="L100">        report.setPrezzo(Float.parseFloat(gVector[GETINDEXPREZZO]));</span>
-<span class="nc" id="L101">        report.setTotale(Float.parseFloat(gVector[GETINDEXNRPEZZI])*Float.parseFloat(gVector[GETINDEXPREZZO]));</span>
-<span class="nc" id="L102">        return report;</span>
+<span class="nc" id="L102">        Report report=new Report();</span>
+<span class="nc" id="L103">        report.setIdReport(Integer.parseInt(gVector[GETINDEXIDR]));</span>
+<span class="nc" id="L104">        report.setTipologiaOggetto(gVector[GETINDEXTIPOOGG]);</span>
+<span class="nc" id="L105">        report.setTitoloOggetto(gVector[GETINDEXTITOLOOGG]);</span>
+<span class="nc" id="L106">        report.setNrPezzi(Integer.parseInt(gVector[GETINDEXNRPEZZI]));</span>
+<span class="nc" id="L107">        report.setPrezzo(Float.parseFloat(gVector[GETINDEXPREZZO]));</span>
+<span class="nc" id="L108">        report.setTotale(Float.parseFloat(gVector[GETINDEXNRPEZZI])*Float.parseFloat(gVector[GETINDEXPREZZO]));</span>
+<span class="nc" id="L109">        return report;</span>
     }
 
     @Override
     public ObservableList&lt;TempUser&gt; reportU() throws  IOException, CsvValidationException {
 
-<span class="nc" id="L108">        CsvUtente csv=new CsvUtente();</span>
-<span class="nc" id="L109">        return FXCollections.observableArrayList(csv.getUserData());</span>
+<span class="nc" id="L115">        CsvUtente csv=new CsvUtente();</span>
+<span class="nc" id="L116">        return FXCollections.observableArrayList(csv.getUserData());</span>
     }
 
 

@@ -85,7 +85,7 @@ public class MemoriaFattura extends PersistenzaFattura  {
 
     @Override
     @SuppressWarnings("unchecked")
-    public void inizializza(String persistenza) throws IOException, ClassNotFoundException {
+    public void inizializza() throws IOException, ClassNotFoundException {
 
         Path path = Path.of(SERIALIZZAZIONE);
         if(!Files.exists(path)) Files.createFile(path);
