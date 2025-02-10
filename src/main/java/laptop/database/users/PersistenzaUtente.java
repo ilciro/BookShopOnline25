@@ -7,15 +7,45 @@ import laptop.exception.IdException;
 import laptop.model.user.TempUser;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class PersistenzaUtente {
-    public boolean inserisciUtente(TempUser tu) throws IOException, CsvValidationException, IdException, ClassNotFoundException { return false;}
-    public ObservableList<TempUser> getUserData() throws IOException, CsvValidationException, SQLException {return FXCollections.observableArrayList();}
-    public boolean removeUserByIdEmailPwd(TempUser u) throws CsvValidationException, IOException, SQLException {return false;}
-    public List<TempUser> userList(TempUser u) throws CsvValidationException, IOException, SQLException {return null;}
-    public void initializza() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {Logger.getLogger("inizializza").log(Level.INFO,"initialize");}
+    private static final String DATABASE="FileSql/users.sql";
+    private static final String FILE="report/reportUtenti.csv";
+    private static final String MEMORIA="memory/serializzazioneUtenti.ser";
+    private static final String DATABASEXCEPTION="file sql not exists";
+    private static final String FILEXCEPTION="file csv not exists";
+    private static final String MEMORIAEXCEPTION="class not in memory";
+    private static final String IDEXCEPTIONMESSAGE=" id is null or is zero";
+    public boolean inserisciUtente(TempUser tu) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);
+        if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);
+        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
+        if(tu.getId()<=0) throw new IdException(IDEXCEPTIONMESSAGE);
+        return false;}
+    public ObservableList<TempUser> getUserData() throws IOException, CsvValidationException, SQLException {
+        if(!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASEXCEPTION);
+        if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);
+        if(!Files.exists(Path.of(MEMORIA))) throw new IOException(MEMORIAEXCEPTION);
+        return FXCollections.observableArrayList();}
+    public boolean removeUserByIdEmailPwd(TempUser tu) throws CsvValidationException, IOException, SQLException {
+        if(tu.getId()<=0) throw new SQLException("id in db is wrong");
+        if(tu.getEmailT().isEmpty()) throw new CsvValidationException(FILEXCEPTION);
+        if(tu.getPasswordT().isEmpty()) throw new IOException("password memory is empty");
+        return false;}
+    public List<TempUser> userList(TempUser tu) throws CsvValidationException, IOException, SQLException {
+        if(tu.getId()<=0) throw new SQLException(DATABASEXCEPTION);
+        if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);
+        if(!Files.exists(Path.of(MEMORIA))) throw new IOException(MEMORIAEXCEPTION);
+        return FXCollections.observableArrayList();}
+    public void initializza() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
+        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);
+        if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);
+        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
+        if(!Files.exists(Path.of("FileSql/popolaUser.sql"))) throw new SQLException("file fo populate db users not found!");
+        else throw new IdException(IDEXCEPTIONMESSAGE);
+    }
 }
