@@ -4,7 +4,6 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.ObservableList;
 import laptop.exception.IdException;
 import laptop.model.Negozio;
-import org.apache.ibatis.jdbc.SQL;
 
 import java.io.IOException;
 import java.nio.file.Files;

@@ -17,10 +17,10 @@ import java.sql.SQLException;
     private static final String DATABASE=&quot;FileSql/libro.sql&quot;;
     private static final String FILE=&quot;report/reportLibro.csv&quot;;
     private static final String MEMORIA=&quot;memory/serializzazioneLibro.ser&quot;;
-    private static final String DATABASEXCEPTION=&quot;file sql not exists&quot;;
-    private static final String FILEXCEPTION=&quot;file csv not exists&quot;;
-    private static final String MEMORIAEXCEPTION=&quot;class not in memory&quot;;
-    private static final String IDEXCEPTIONMESSAGE=&quot; id is null or is zero&quot;;
+    private static final String DATABASEXCEPTION=&quot;file book sql not exists&quot;;
+    private static final String FILEXCEPTION=&quot;file book csv not exists&quot;;
+    private static final String MEMORIAEXCEPTION=&quot;class book not in memory&quot;;
+    private static final String IDEXCEPTIONMESSAGE=&quot; id book is null or is zero&quot;;
 
 
      public  boolean inserisciLibro(Libro l) throws CsvValidationException, IOException, ClassNotFoundException {

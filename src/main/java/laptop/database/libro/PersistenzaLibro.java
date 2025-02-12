@@ -17,10 +17,10 @@ public  class PersistenzaLibro {
     private static final String DATABASE="FileSql/libro.sql";
     private static final String FILE="report/reportLibro.csv";
     private static final String MEMORIA="memory/serializzazioneLibro.ser";
-    private static final String DATABASEXCEPTION="file sql not exists";
-    private static final String FILEXCEPTION="file csv not exists";
-    private static final String MEMORIAEXCEPTION="class not in memory";
-    private static final String IDEXCEPTIONMESSAGE=" id is null or is zero";
+    private static final String DATABASEXCEPTION="file book sql not exists";
+    private static final String FILEXCEPTION="file book csv not exists";
+    private static final String MEMORIAEXCEPTION="class book not in memory";
+    private static final String IDEXCEPTIONMESSAGE=" id book is null or is zero";
 
 
      public  boolean inserisciLibro(Libro l) throws CsvValidationException, IOException, ClassNotFoundException {

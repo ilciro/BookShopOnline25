@@ -18,10 +18,10 @@ import java.sql.SQLException;
     private static final String DATABASE=&quot;FileSql/giornale.sql&quot;;
     private static final String FILE=&quot;report/reportGiornale.csv&quot;;
     private static final String MEMORIA=&quot;memory/serializzazioneGiornale.ser&quot;;
-    private static final String DATABASEXCEPTION=&quot;file sql not exists&quot;;
-    private static final String FILEXCEPTION=&quot;file csv not exists&quot;;
-    private static final String MEMORIAEXCEPTION=&quot;class not in memory&quot;;
-    private static final String IDEXCEPTIONMESSAGE=&quot; id is null or is zero&quot;;
+    private static final String DATABASEXCEPTION=&quot;file daily sql not exists&quot;;
+    private static final String FILEXCEPTION=&quot;file daily csv not exists&quot;;
+    private static final String MEMORIAEXCEPTION=&quot;class daily not in memory&quot;;
+    private static final String IDEXCEPTIONMESSAGE=&quot; id  daiy is null or is zero&quot;;
 
 
     public  boolean inserisciGiornale(Giornale g) throws CsvValidationException, IOException,  ClassNotFoundException {
@@ -50,7 +50,7 @@ import java.sql.SQLException;
 <span class="nc" id="L50">        return FXCollections.observableArrayList();}</span>
     public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
 
-<span class="nc bnc" id="L53" title="All 2 branches missed.">        if(!Files.exists(Path.of(&quot;FileSql/giornale.sql&quot;))) throw new IOException(DATABASEXCEPTION);</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);</span>
 <span class="nc bnc" id="L54" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);</span>
 <span class="nc bnc" id="L55" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
 <span class="nc" id="L56">        else throw new SQLException(IDEXCEPTIONMESSAGE);</span>

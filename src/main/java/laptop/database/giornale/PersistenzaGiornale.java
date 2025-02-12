@@ -18,10 +18,10 @@ public class PersistenzaGiornale {
     private static final String DATABASE="FileSql/giornale.sql";
     private static final String FILE="report/reportGiornale.csv";
     private static final String MEMORIA="memory/serializzazioneGiornale.ser";
-    private static final String DATABASEXCEPTION="file sql not exists";
-    private static final String FILEXCEPTION="file csv not exists";
-    private static final String MEMORIAEXCEPTION="class not in memory";
-    private static final String IDEXCEPTIONMESSAGE=" id is null or is zero";
+    private static final String DATABASEXCEPTION="file daily sql not exists";
+    private static final String FILEXCEPTION="file daily csv not exists";
+    private static final String MEMORIAEXCEPTION="class daily not in memory";
+    private static final String IDEXCEPTIONMESSAGE=" id  daiy is null or is zero";
 
 
     public  boolean inserisciGiornale(Giornale g) throws CsvValidationException, IOException,  ClassNotFoundException {
@@ -50,7 +50,7 @@ public class PersistenzaGiornale {
         return FXCollections.observableArrayList();}
     public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
 
-        if(!Files.exists(Path.of("FileSql/giornale.sql"))) throw new IOException(DATABASEXCEPTION);
+        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);
         if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);
         if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
         else throw new SQLException(IDEXCEPTIONMESSAGE);
