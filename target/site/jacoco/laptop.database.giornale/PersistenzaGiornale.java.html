@@ -29,7 +29,7 @@ import java.sql.SQLException;
 <span class="nc bnc" id="L29" title="All 2 branches missed.">        if(g.getEditore().isEmpty()) throw new CsvValidationException(&quot; autore insert daily book is null&quot;);</span>
 <span class="nc bnc" id="L30" title="All 2 branches missed.">        if(g.getTitolo().isEmpty()) throw new ClassNotFoundException(&quot;class not found or titolo insert book is null&quot;);</span>
 
-<span class="nc" id="L32">        return true;}</span>
+<span class="nc" id="L32">        return false;}</span>
     public  boolean removeGiornaleById(Giornale g) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
 <span class="nc bnc" id="L34" title="All 2 branches missed.">        if(g.getId()==0) throw new IOException(&quot; file not found or id null&quot;);</span>
 <span class="nc bnc" id="L35" title="All 2 branches missed.">        if(g.getEditore().isEmpty()) throw new CsvValidationException(&quot; codice isbn is null&quot;);</span>
@@ -50,7 +50,7 @@ import java.sql.SQLException;
 <span class="nc" id="L50">        return FXCollections.observableArrayList();}</span>
     public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
 
-<span class="nc bnc" id="L53" title="All 2 branches missed.">        if(!Files.exists(Path.of(&quot;FileSql/giornale&quot;))) throw new IOException(DATABASEXCEPTION);</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        if(!Files.exists(Path.of(&quot;FileSql/giornale.sql&quot;))) throw new IOException(DATABASEXCEPTION);</span>
 <span class="nc bnc" id="L54" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);</span>
 <span class="nc bnc" id="L55" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
 <span class="nc" id="L56">        else throw new SQLException(IDEXCEPTIONMESSAGE);</span>

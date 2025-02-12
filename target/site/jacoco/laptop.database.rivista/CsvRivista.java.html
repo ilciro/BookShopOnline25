@@ -78,9 +78,9 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 
 <span class="fc" id="L80">        }</span>
-<span class="pc bpc" id="L81" title="1 of 2 branches missed.">        if (!duplicatedR) {</span>
-<span class="nc" id="L82">            List&lt;Rivista&gt; list = returnRivistaByTAE(this.fdR, r.getTitolo(), r.getAutore(), r.getEditore());</span>
-<span class="nc bnc" id="L83" title="All 2 branches missed.">            duplicatedR = (!list.isEmpty());</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        if (!duplicatedR) {</span>
+<span class="fc" id="L82">            List&lt;Rivista&gt; list = returnRivistaByTAE(this.fdR, r.getTitolo(), r.getAutore(), r.getEditore());</span>
+<span class="pc bpc" id="L83" title="1 of 2 branches missed.">            duplicatedR = (!list.isEmpty());</span>
         }
 <span class="pc bpc" id="L85" title="1 of 2 branches missed.">        if (duplicatedR)</span>
             try {
@@ -109,8 +109,8 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 <span class="fc" id="L109">            gVector[GETINDEXDISPR] = String.valueOf(r.getDisp());</span>
 <span class="fc" id="L110">            gVector[GETINDEXPREZZOR] = String.valueOf(r.getPrezzo());</span>
 <span class="fc" id="L111">            gVector[GETINDEXCOPIER] = String.valueOf(r.getCopieRim());</span>
-<span class="pc bpc" id="L112" title="1 of 2 branches missed.">            if(vis.getTipoModifica().equals(&quot;im&quot;)) gVector[GETINDEXIDR] = String.valueOf(vis.getId());</span>
-<span class="nc bnc" id="L113" title="All 2 branches missed.">            else if(vis.getTipoModifica().equals(&quot;insert&quot;)) gVector[GETINDEXIDR] = String.valueOf(getIdMax() + 1);</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">            if(vis.getTipoModifica().equals(&quot;im&quot;)) gVector[GETINDEXIDR] = String.valueOf(vis.getId());</span>
+<span class="pc bpc" id="L113" title="1 of 2 branches missed.">            else if(vis.getTipoModifica().equals(&quot;insert&quot;)) gVector[GETINDEXIDR] = String.valueOf(getIdMax() + 1);</span>
 <span class="nc" id="L114">            else throw new CsvValidationException(&quot; type of modif at magazine is wrong !!&quot;);</span>
 <span class="fc" id="L115">            csvWriter.writeNext(gVector);</span>
 <span class="fc" id="L116">            csvWriter.flush();</span>
@@ -120,27 +120,27 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
     private static synchronized List&lt;Rivista&gt; returnRivistaByTAE(File fd, String tit, String autor, String edit) throws IOException, CsvValidationException {
         List&lt;Rivista&gt; rivistaList;
-<span class="nc" id="L123">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
+<span class="fc" id="L123">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
             String[] gVector;
             boolean recordFound;
 
-<span class="nc" id="L127">            rivistaList = new ArrayList&lt;&gt;();</span>
-<span class="nc bnc" id="L128" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="fc" id="L127">            rivistaList = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
 
-<span class="nc bnc" id="L130" title="All 4 branches missed.">                recordFound = gVector[GETINDEXTITOLOR].equals(tit) || gVector[GETINDEXAUTORER].equals(autor)</span>
-<span class="nc bnc" id="L131" title="All 4 branches missed.">                        || gVector[GETINDEXEDITORER].equals(edit) || gVector[GETINDEXIDR].equals(String.valueOf(vis.getId()));</span>
-<span class="nc bnc" id="L132" title="All 2 branches missed.">                if (recordFound) {</span>
-
-
-<span class="nc" id="L135">                    Rivista r = getRivista(gVector);</span>
+<span class="pc bpc" id="L130" title="1 of 4 branches missed.">                recordFound = gVector[GETINDEXTITOLOR].equals(tit) || gVector[GETINDEXAUTORER].equals(autor)</span>
+<span class="pc bpc" id="L131" title="1 of 4 branches missed.">                        || gVector[GETINDEXEDITORER].equals(edit) || gVector[GETINDEXIDR].equals(String.valueOf(vis.getId()));</span>
+<span class="fc bfc" id="L132" title="All 2 branches covered.">                if (recordFound) {</span>
 
 
-<span class="nc" id="L138">                    rivistaList.add(r);</span>
+<span class="fc" id="L135">                    Rivista r = getRivista(gVector);</span>
 
-<span class="nc" id="L140">                }</span>
+
+<span class="fc" id="L138">                    rivistaList.add(r);</span>
+
+<span class="fc" id="L140">                }</span>
             }
         }
-<span class="nc" id="L143">        return rivistaList;</span>
+<span class="fc" id="L143">        return rivistaList;</span>
 
 
     }
@@ -185,7 +185,7 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 <span class="fc" id="L186">        try (CSVReader reader = new CSVReader(new FileReader(LOCATIONR))) {</span>
 <span class="fc bfc" id="L187" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
-<span class="pc bpc" id="L188" title="1 of 2 branches missed.">                if(Integer.parseInt(gVector[GETINDEXIDR])&gt;max)</span>
+<span class="fc bfc" id="L188" title="All 2 branches covered.">                if(Integer.parseInt(gVector[GETINDEXIDR])&gt;max)</span>
 <span class="fc" id="L189">                    max= Integer.parseInt(gVector[GETINDEXIDR]);</span>
             }
         }

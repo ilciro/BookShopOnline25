@@ -21,24 +21,24 @@ public class CartaDiCredito implements Serializable {
 	private String cognomeUser; 
 	private String civ;
 
-<span class="nc" id="L24">	private static final String[] types = {&quot;No Card:Cash Only&quot;,&quot;DINER'S&quot;,&quot;JCB&quot;,&quot;MASTER&quot;,&quot;VISA&quot;};</span>
+<span class="fc" id="L24">	private static final String[] types = {&quot;No Card:Cash Only&quot;,&quot;DINER'S&quot;,&quot;JCB&quot;,&quot;MASTER&quot;,&quot;VISA&quot;};</span>
 
-<span class="nc" id="L26">	public CartaDiCredito() {</span>
-<span class="nc" id="L27">	}</span>
+<span class="fc" id="L26">	public CartaDiCredito() {</span>
+<span class="fc" id="L27">	}</span>
 	
 
 
 	public CartaDiCredito(String n,String c,String cod,java.util.Date date,String civ,float prezzo)
-<span class="nc" id="L32">	{</span>
+<span class="fc" id="L32">	{</span>
 		
-<span class="nc" id="L34">		this.nomeUser=n;</span>
-<span class="nc" id="L35">		this.cognomeUser=c;</span>
-<span class="nc" id="L36">		this.numeroCC=cod;</span>
-<span class="nc" id="L37">		this.ammontare=1000.0;</span>
-<span class="nc" id="L38">		this.scadenza=date;</span>
-<span class="nc" id="L39">		this.civ=civ;</span>
-<span class="nc" id="L40">		this.prezzoTransazine=prezzo;</span>
-<span class="nc" id="L41">	}</span>
+<span class="fc" id="L34">		this.nomeUser=n;</span>
+<span class="fc" id="L35">		this.cognomeUser=c;</span>
+<span class="fc" id="L36">		this.numeroCC=cod;</span>
+<span class="fc" id="L37">		this.ammontare=1000.0;</span>
+<span class="fc" id="L38">		this.scadenza=date;</span>
+<span class="fc" id="L39">		this.civ=civ;</span>
+<span class="fc" id="L40">		this.prezzoTransazine=prezzo;</span>
+<span class="fc" id="L41">	}</span>
 
 	public int getTipo() {
 <span class="nc" id="L44">		return tipo;</span>
@@ -48,12 +48,12 @@ public class CartaDiCredito implements Serializable {
 <span class="nc" id="L48">		this.tipo = tipo;</span>
 <span class="nc" id="L49">	}</span>
 	public String getNumeroCC() {
-<span class="nc" id="L51">		return numeroCC;</span>
+<span class="fc" id="L51">		return numeroCC;</span>
 	}
 	public void setNumeroCC(String numeroCC)  {
 
-<span class="nc" id="L55">		this.numeroCC = numeroCC;</span>
-<span class="nc" id="L56">	}</span>
+<span class="fc" id="L55">		this.numeroCC = numeroCC;</span>
+<span class="fc" id="L56">	}</span>
 	public double getLimite() {
 <span class="nc" id="L58">		return limite;</span>
 	}
@@ -66,24 +66,24 @@ public class CartaDiCredito implements Serializable {
 	}
 	public void setAmmontare(double ammontare)  {
 
-<span class="nc" id="L69">		this.ammontare = ammontare;</span>
-<span class="nc" id="L70">	}</span>
+<span class="fc" id="L69">		this.ammontare = ammontare;</span>
+<span class="fc" id="L70">	}</span>
 	public java.util.Date getScadenza() {
-<span class="nc" id="L72">		return scadenza;</span>
+<span class="fc" id="L72">		return scadenza;</span>
 	}
 	public void setScadenza(Date scadenza)  {
 
-<span class="nc" id="L76">		this.scadenza = scadenza;</span>
-<span class="nc" id="L77">	}</span>
+<span class="fc" id="L76">		this.scadenza = scadenza;</span>
+<span class="fc" id="L77">	}</span>
 	public String getNomeUser() {
-<span class="nc" id="L79">		return nomeUser;</span>
+<span class="fc" id="L79">		return nomeUser;</span>
 	}
 	public void setNomeUser(String nomeUser)  {
 
-<span class="nc" id="L83">		this.nomeUser = nomeUser;</span>
-<span class="nc" id="L84">	}</span>
+<span class="fc" id="L83">		this.nomeUser = nomeUser;</span>
+<span class="fc" id="L84">	}</span>
 	public float getPrezzoTransazine() {
-<span class="nc" id="L86">		return prezzoTransazine;</span>
+<span class="fc" id="L86">		return prezzoTransazine;</span>
 	}
 	public void setPrezzoTransazine(float prezzoTransazine)  {
 
@@ -91,22 +91,22 @@ public class CartaDiCredito implements Serializable {
 <span class="nc" id="L91">	}</span>
 
 	public String getCognomeUser() {
-<span class="nc" id="L94">		return cognomeUser;</span>
+<span class="fc" id="L94">		return cognomeUser;</span>
 	}
 
 	public void setCognomeUser(String cognomeUser)  {
 
-<span class="nc" id="L99">		this.cognomeUser = cognomeUser;</span>
-<span class="nc" id="L100">	}</span>
+<span class="fc" id="L99">		this.cognomeUser = cognomeUser;</span>
+<span class="fc" id="L100">	}</span>
 
 	public String getCiv() { 
-<span class="nc" id="L103">		return civ;</span>
+<span class="fc" id="L103">		return civ;</span>
 	}
 
 	public void setCiv(String civ) {
 
-<span class="nc" id="L108">		this.civ = civ;</span>
-<span class="nc" id="L109">	}</span>
+<span class="fc" id="L108">		this.civ = civ;</span>
+<span class="fc" id="L109">	}</span>
 
 	public static String[] getTypes() {
 <span class="nc" id="L112">		return types;</span>

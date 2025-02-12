@@ -34,7 +34,6 @@ public class ControllerAggiornaPassword {
 
         vis.setTipoModifica("im");
 
-        TempUser tu;
         TempUser tu2 = new TempUser();
 
         switch (type)
@@ -46,14 +45,12 @@ public class ControllerAggiornaPassword {
         }
         for(int i=0;i<pU.getUserData().size();i++)
         {
-            if(pU.getUserData().get(i).getEmailT().equals(u.getEmail())
-            && pU.getUserData().get(i).getPasswordT().equals(u.getPassword()))
+            if(pU.getUserData().get(i).getEmailT().equals(getEmail())
+            && pU.getUserData().get(i).getPasswordT().equals(getPass()))
             {
-                tu=pU.getUserData().get(i);
-                tu2=tu;
-                pU.removeUserByIdEmailPwd(tu);
+                tu2=pU.getUserData().get(i);
+                pU.removeUserByIdEmailPwd(pU.getUserData().get(i));
 
-                break;
             }
         }
         tu2.setPasswordT(nuovaP);

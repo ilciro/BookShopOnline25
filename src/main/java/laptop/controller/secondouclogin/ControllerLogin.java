@@ -47,15 +47,6 @@ public class ControllerLogin {
         int id=0;
 
 
-        switch (type) {
-            case DATABASE->pU=new UsersDao();
-            case FILE -> pU = new CsvUtente();
-            case MEMORIA -> pU = new MemoriaUtente();
-            default -> Logger.getLogger("login").log(Level.SEVERE,"persistency error!!");
-        }
-        pU.initializza();
-
-
         //uso tempUSer
 
 

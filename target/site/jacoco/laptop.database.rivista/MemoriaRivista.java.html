@@ -31,8 +31,8 @@ import java.util.ArrayList;
 <span class="fc" id="L31">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
 <span class="fc" id="L32">                list= (ArrayList&lt;Rivista&gt;) ois.readObject();</span>
         }
-<span class="pc bpc" id="L34" title="1 of 2 branches missed.">        if(vis.getTipoModifica().equals(&quot;im&quot;)) r.setId(vis.getId());</span>
-<span class="nc bnc" id="L35" title="All 2 branches missed.">        else if(vis.getTipoModifica().equals(&quot;insert&quot;)) r.setId(list.size()+1);</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if(vis.getTipoModifica().equals(&quot;im&quot;)) r.setId(vis.getId());</span>
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        else if(vis.getTipoModifica().equals(&quot;insert&quot;)) r.setId(list.size()+1);</span>
 <span class="fc" id="L36">        list.add(r);</span>
 
 <span class="fc" id="L38">        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>

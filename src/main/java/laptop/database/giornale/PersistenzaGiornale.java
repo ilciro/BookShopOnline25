@@ -29,7 +29,7 @@ public class PersistenzaGiornale {
         if(g.getEditore().isEmpty()) throw new CsvValidationException(" autore insert daily book is null");
         if(g.getTitolo().isEmpty()) throw new ClassNotFoundException("class not found or titolo insert book is null");
 
-        return true;}
+        return false;}
     public  boolean removeGiornaleById(Giornale g) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
         if(g.getId()==0) throw new IOException(" file not found or id null");
         if(g.getEditore().isEmpty()) throw new CsvValidationException(" codice isbn is null");
@@ -50,7 +50,7 @@ public class PersistenzaGiornale {
         return FXCollections.observableArrayList();}
     public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
 
-        if(!Files.exists(Path.of("FileSql/giornale"))) throw new IOException(DATABASEXCEPTION);
+        if(!Files.exists(Path.of("FileSql/giornale.sql"))) throw new IOException(DATABASEXCEPTION);
         if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);
         if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
         else throw new SQLException(IDEXCEPTIONMESSAGE);

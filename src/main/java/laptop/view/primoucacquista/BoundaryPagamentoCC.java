@@ -115,7 +115,7 @@ public class BoundaryPagamentoCC implements Initializable {
 	}
 
 	@FXML
-	private void popolaTabella() throws IOException, ClassNotFoundException, CsvValidationException, IdException, SQLException {
+	private void popolaTabella() throws IOException, ClassNotFoundException, CsvValidationException,  SQLException {
 		String persistenza="";
 		if(databaseButton.isSelected()) persistenza=DATABASE;
 		if(fileButton.isSelected()) persistenza=FILE;
@@ -182,7 +182,7 @@ public class BoundaryPagamentoCC implements Initializable {
 	}
 
 	@FXML
-	private void completa() throws IOException, ClassNotFoundException, CsvValidationException, IdException, SQLException {
+	private void completa() throws IOException, ClassNotFoundException, CsvValidationException, SQLException {
 		String persistenza="";
 		if(databaseButton.isSelected()) persistenza=DATABASE;
 		if(fileButton.isSelected()) persistenza=FILE;

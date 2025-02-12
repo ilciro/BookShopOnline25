@@ -247,14 +247,14 @@ public class BoundaryGestioneOggetto implements Initializable {
                     recensioneTF.setVisible(false);
                     pagineTF.setVisible(false);
 
-                    titoloTF.setText(cG.giornaleById(type).get(0).getTitolo());
-                    editoreTF.setText(cG.giornaleById(type).get(0).getEditore());
-                    linguaTF.setText(cG.giornaleById(type).get(0).getLingua());
-                    categoriaTF.setText(cG.giornaleById(type).get(0).getCategoria());
-                    dataTF.setText(String.valueOf(cG.giornaleById(type).get(0).getDataPubb()));
-                    copieTF.setText(String.valueOf(cG.giornaleById(type).get(0).getCopieRimanenti()));
-                    dispTF.setText(String.valueOf(cG.giornaleById(type).get(0).getDisponibilita()));
-                    prezzoTF.setText(String.valueOf(cG.giornaleById(type).get(0).getPrezzo()));
+                    titoloTF.setText(cG.giornaleById(type,"","").get(0).getTitolo());
+                    editoreTF.setText(cG.giornaleById(type,"","").get(0).getEditore());
+                    linguaTF.setText(cG.giornaleById(type,"","").get(0).getLingua());
+                    categoriaTF.setText(cG.giornaleById(type,"","").get(0).getCategoria());
+                    dataTF.setText(String.valueOf(cG.giornaleById(type,"","").get(0).getDataPubb()));
+                    copieTF.setText(String.valueOf(cG.giornaleById(type,"","").get(0).getCopieRimanenti()));
+                    dispTF.setText(String.valueOf(cG.giornaleById(type,"","").get(0).getDisponibilita()));
+                    prezzoTF.setText(String.valueOf(cG.giornaleById(type,"","").get(0).getPrezzo()));
                 }
                 case RIVISTA -> {
                     codiceTF1.setVisible(false);

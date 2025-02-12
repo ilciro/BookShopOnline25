@@ -99,6 +99,23 @@ public class ControllerCheckPagamentoData {
 
         inserisciReport(type,pL,null,null);
 
+        //modifico qui
+        Libro temp;
+        vis.setTipoModifica("im");
+        switch (type)
+        {
+            case DATABASE -> pL=new LibroDao();
+            case FILE -> pL=new CsvLibro();
+            case MEMORIA -> pL=new MemoriaLibro();
+            default -> Logger.getLogger("pagamento libro cc").log(Level.INFO,"im paying book {0}",l.getId());
+
+        }
+
+        temp=pL.getLibroByIdTitoloAutoreLibro(l).get(0);
+        pL.removeLibroById(l);
+        temp.setNrCopie(temp.getNrCopie()-vis.getQuantita());
+        pL.inserisciLibro(temp);
+
 
     }
 
@@ -114,6 +131,8 @@ public class ControllerCheckPagamentoData {
         p.setTipo(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria());
 
 
+
+
         switch (type) {
             case DATABASE -> pP = new PagamentoDao();
             case FILE -> pP = new CsvPagamento();
@@ -125,7 +144,25 @@ public class ControllerCheckPagamentoData {
             pP.inizializza();
         pP.inserisciPagamento(p);
 
+
         inserisciReport(type,null,pG,null);
+
+        //modifico qui
+        Giornale temp;
+        vis.setTipoModifica("im");
+         switch (type)
+        {
+            case DATABASE -> pG=new GiornaleDao();
+            case FILE -> pG=new CsvGiornale();
+            case MEMORIA -> pG=new MemoriaGiornale();
+            default -> Logger.getLogger("pagamento giornale cc").log(Level.INFO,"im paying daily {0}",g.getId());
+
+        }
+
+        temp=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0);
+        pG.removeGiornaleById(g);
+        temp.setCopieRimanenti(temp.getCopieRimanenti()-vis.getQuantita());
+        pG.inserisciGiornale(temp);
     }
 
     private void pagamentoRivista(String type,Pagamento p) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
@@ -154,6 +191,23 @@ public class ControllerCheckPagamentoData {
 
         //fare report
         inserisciReport(type,null,null,pRiv);
+
+        //modifico qui
+        Rivista temp;
+        vis.setTipoModifica("im");
+        switch (type)
+        {
+            case DATABASE -> pRiv=new RivistaDao();
+            case FILE -> pRiv=new CsvRivista();
+            case MEMORIA -> pRiv=new MemoriaRivista();
+            default -> Logger.getLogger("pagamento rivista cc").log(Level.INFO,"im paying magazine {0}",r.getId());
+
+        }
+
+        temp=pRiv.getRivistaByIdTitoloAutoreRivista(r).get(0);
+        pRiv.removeRivistaById(r);
+        temp.setCopieRim(temp.getCopieRim()-vis.getQuantita());
+        pRiv.inserisciRivista(temp);
 
 
     }

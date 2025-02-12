@@ -436,12 +436,8 @@ public class CsvLibro extends PersistenzaLibro{
 
 
                 assert files != null;
-                if ( files.length == 0 || !this.fdL.exists()) {
+                if ( files.length == 0 || !this.fdL.exists())
                     throw new IOException("cartella vuota");
-                }
-
-
-
 
             }
 

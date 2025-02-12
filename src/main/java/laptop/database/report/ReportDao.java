@@ -146,7 +146,7 @@ public class ReportDao extends PersistenzaReport {
      */
     @Override
     public ObservableList<Report> returnReportIDTipoTitolo(int id, String tipo, String titolo) throws IOException, CsvValidationException {
-        Logger.getLogger("reportByid").log(Level.INFO,"yet used by report");
+
         return FXCollections.emptyObservableList();
     }
 

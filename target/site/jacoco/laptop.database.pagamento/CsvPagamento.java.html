@@ -106,44 +106,44 @@ public class CsvPagamento extends PersistenzaPagamento{
     @Override
     public Pagamento ultimoPagamento() throws CsvValidationException,IOException {
         ObservableList&lt;Pagamento&gt; list;
-<span class="fc" id="L109">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(this.filePagamento)))) {</span>
-<span class="fc" id="L110">            list= FXCollections.observableArrayList();</span>
+<span class="nc" id="L109">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(this.filePagamento)))) {</span>
+<span class="nc" id="L110">            list= FXCollections.observableArrayList();</span>
             String[] gVector;
 
-<span class="fc bfc" id="L113" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
-<span class="fc" id="L114">                Pagamento p = new Pagamento();</span>
-<span class="fc" id="L115">                p.setIdPag(Integer.parseInt(gVector[GETINDEXIDP]));</span>
-<span class="fc" id="L116">                p.setMetodo(gVector[GETINDEXMETODOP]);</span>
-<span class="fc" id="L117">                p.setNomeUtente(gVector[GETINDEXNOMEP]);</span>
-<span class="fc" id="L118">                p.setAmmontare(Float.parseFloat(gVector[GETINDEXSPESAP]));</span>
-<span class="fc" id="L119">                p.setEmail(gVector[GETINDEXEIAMILP]);</span>
-<span class="fc" id="L120">                p.setTipo(gVector[GETINDEXACQUISTOP]);</span>
-<span class="fc" id="L121">                p.setIdOggetto(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));</span>
-<span class="fc" id="L122">                list.add(p);</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">            while ((gVector = reader.readNext()) != null) {</span>
+<span class="nc" id="L114">                Pagamento p = new Pagamento();</span>
+<span class="nc" id="L115">                p.setIdPag(Integer.parseInt(gVector[GETINDEXIDP]));</span>
+<span class="nc" id="L116">                p.setMetodo(gVector[GETINDEXMETODOP]);</span>
+<span class="nc" id="L117">                p.setNomeUtente(gVector[GETINDEXNOMEP]);</span>
+<span class="nc" id="L118">                p.setAmmontare(Float.parseFloat(gVector[GETINDEXSPESAP]));</span>
+<span class="nc" id="L119">                p.setEmail(gVector[GETINDEXEIAMILP]);</span>
+<span class="nc" id="L120">                p.setTipo(gVector[GETINDEXACQUISTOP]);</span>
+<span class="nc" id="L121">                p.setIdOggetto(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));</span>
+<span class="nc" id="L122">                list.add(p);</span>
 
 
-<span class="fc" id="L125">            }</span>
+<span class="nc" id="L125">            }</span>
         }
 
-<span class="fc" id="L128">        return list.get(list.size()-1);</span>
+<span class="nc" id="L128">        return list.get(list.size()-1);</span>
     }
 
     @Override
     public boolean cancellaPagamento(Pagamento p) throws IOException, CsvValidationException {
-<span class="fc" id="L133">        boolean status = false;</span>
-<span class="pc bpc" id="L134" title="1 of 2 branches missed.">        if (SystemUtils.IS_OS_UNIX) {</span>
-<span class="fc" id="L135">            FileAttribute&lt;Set&lt;PosixFilePermission&gt;&gt; attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));</span>
-<span class="fc" id="L136">            Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant</span>
+<span class="nc" id="L133">        boolean status = false;</span>
+<span class="nc bnc" id="L134" title="All 2 branches missed.">        if (SystemUtils.IS_OS_UNIX) {</span>
+<span class="nc" id="L135">            FileAttribute&lt;Set&lt;PosixFilePermission&gt;&gt; attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));</span>
+<span class="nc" id="L136">            Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant</span>
         }
-<span class="fc" id="L138">        File tmpFile = new File(APPOGGIO);</span>
-<span class="fc" id="L139">        boolean found = isFound(p, tmpFile);</span>
-<span class="pc bpc" id="L140" title="1 of 2 branches missed.">        if (found) {</span>
-<span class="fc" id="L141">            Files.move(tmpFile.toPath(), Path.of(PAGAMENTO), REPLACE_EXISTING);</span>
-<span class="fc" id="L142">            status=true;</span>
+<span class="nc" id="L138">        File tmpFile = new File(APPOGGIO);</span>
+<span class="nc" id="L139">        boolean found = isFound(p, tmpFile);</span>
+<span class="nc bnc" id="L140" title="All 2 branches missed.">        if (found) {</span>
+<span class="nc" id="L141">            Files.move(tmpFile.toPath(), Path.of(PAGAMENTO), REPLACE_EXISTING);</span>
+<span class="nc" id="L142">            status=true;</span>
         } else {
 <span class="nc" id="L144">            cleanUp(Path.of(tmpFile.toURI()));</span>
         }
-<span class="fc" id="L146">        return status;</span>
+<span class="nc" id="L146">        return status;</span>
 
     }
 
@@ -153,28 +153,28 @@ public class CsvPagamento extends PersistenzaPagamento{
 <span class="fc" id="L153">    }</span>
 
     private static boolean isFound(Pagamento p, File tmpFile) throws IOException, CsvValidationException {
-<span class="fc" id="L156">        boolean found = false;</span>
+<span class="nc" id="L156">        boolean found = false;</span>
 
-<span class="fc" id="L158">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(PAGAMENTO)))) {</span>
+<span class="nc" id="L158">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(PAGAMENTO)))) {</span>
             String[] gVector;
-<span class="fc" id="L160">            try (CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true)))</span>
+<span class="nc" id="L160">            try (CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true)))</span>
             ) {
                 boolean recordFound;
-<span class="fc bfc" id="L163" title="All 2 branches covered.">                while ((gVector = reader.readNext()) != null) {</span>
+<span class="nc bnc" id="L163" title="All 2 branches missed.">                while ((gVector = reader.readNext()) != null) {</span>
 
-<span class="fc bfc" id="L165" title="All 2 branches covered.">                    recordFound = gVector[GETINDEXIDP].equals(String.valueOf(p.getIdPag()))</span>
-<span class="pc bpc" id="L166" title="1 of 2 branches missed.">                            || gVector[GETINDEXEIAMILP].equals(p.getEmail());</span>
+<span class="nc bnc" id="L165" title="All 2 branches missed.">                    recordFound = gVector[GETINDEXIDP].equals(String.valueOf(p.getIdPag()))</span>
+<span class="nc bnc" id="L166" title="All 2 branches missed.">                            || gVector[GETINDEXEIAMILP].equals(p.getEmail());</span>
 
 
-<span class="fc bfc" id="L169" title="All 2 branches covered.">                    if (!recordFound)</span>
-<span class="fc" id="L170">                        writer.writeNext(gVector);</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">                    if (!recordFound)</span>
+<span class="nc" id="L170">                        writer.writeNext(gVector);</span>
                     else
-<span class="fc" id="L172">                        found = true;</span>
+<span class="nc" id="L172">                        found = true;</span>
                 }
-<span class="fc" id="L174">                writer.flush();</span>
+<span class="nc" id="L174">                writer.flush();</span>
             }
         }
-<span class="fc" id="L177">        return found;</span>
+<span class="nc" id="L177">        return found;</span>
     }
 
     @Override

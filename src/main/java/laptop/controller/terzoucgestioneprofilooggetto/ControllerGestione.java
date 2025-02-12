@@ -28,7 +28,7 @@ import java.util.logging.Logger;
 
 public class ControllerGestione {
     private Libro l;
-    private Giornale g;
+    private Giornale g=new Giornale();
     private Rivista r;
     private final ControllerSystemState vis=ControllerSystemState.getInstance();
     private static final String LIBRO="libro";
@@ -112,7 +112,7 @@ public class ControllerGestione {
         l.setId(vis.getId());
         return pL.getLibroByIdTitoloAutoreLibro(l);
     }
-    public ObservableList<Giornale> giornaleById(String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public ObservableList<Giornale> giornaleById(String persistenza,String titolo,String editore) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
         switch (persistenza)
         {
             case DATABASE -> pG=new GiornaleDao();
@@ -121,6 +121,8 @@ public class ControllerGestione {
             default -> Logger.getLogger("giornali by id").log(Level.SEVERE,"persistency of daily is wrong!!");
         }
         g.setId(vis.getId());
+        g.setTitolo(titolo);
+        g.setEditore(editore);
         return pG.getGiornaleByIdTitoloAutoreLibro(g);
 
     }
@@ -174,7 +176,7 @@ public class ControllerGestione {
 
         for(int i=0;i<pL.getLibri().size();i++)
         {
-            if(pL.getLibri().get(i).getId()==l.getId())
+            if(i==l.getId()-1)
             {
 
                 pL.removeLibroById(l);
@@ -187,10 +189,10 @@ public class ControllerGestione {
 
     private boolean modificaGiornale(String[] dati, String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
         g=setGiornale(dati);
-        g.setId(vis.getId());
 
 
         Logger.getLogger("modifGiornale").log(Level.INFO,"id giornale da modif:{0}",g.getId());
+        Logger.getLogger("modifGiornale").log(Level.INFO,"vis da modif:{0}",vis.getId());
 
         switch (persistenza)
         {
@@ -200,12 +202,13 @@ public class ControllerGestione {
             default -> Logger.getLogger("giornale by id").log(Level.SEVERE,"persistency of daily is wrong!!");
         }
 
-        for(int i=1;i<pG.getGiornali().size();i++)
+        for(int i=0;i<pG.getGiornali().size();i++)
         {
-            if(i==(g.getId()-1))
+            if(i== g.getId()-1)
             {
                 pG.removeGiornaleById(g);
             }
+
         }
         g=setGiornale(dati);
         return pG.inserisciGiornale(g);
@@ -228,13 +231,13 @@ public class ControllerGestione {
         l.setNrCopie(Integer.parseInt(param[10]));
         l.setDisponibilita(Integer.parseInt(param[11]));
         l.setPrezzo(Float.parseFloat(param[12]));
+        l.setId(vis.getId());
         return l;
 
 
     }
     private Giornale setGiornale(String[] param)
     {
-        g=new Giornale();
         g.setTitolo(param[0]);
         g.setEditore(param[2]);
         g.setLingua(param[4]);
@@ -243,6 +246,7 @@ public class ControllerGestione {
         g.setCopieRimanenti(Integer.parseInt(param[10]));
         g.setDisponibilita(Integer.parseInt(param[11]));
         g.setPrezzo(Float.parseFloat(param[12]));
+        g.setId(vis.getId());
         return g;
     }
     private Rivista setRivista(String []param)
@@ -258,6 +262,7 @@ public class ControllerGestione {
         r.setCopieRim(Integer.parseInt(param[10]));
         r.setDisp(Integer.parseInt(param[11]));
         r.setPrezzo(Float.parseFloat(param[12]));
+        r.setId(vis.getId());
         return r;
     }
 
@@ -276,7 +281,7 @@ public class ControllerGestione {
 
         for(int i=0;i<pR.getRiviste().size();i++)
         {
-            if(pR.getRiviste().get(i).getId()==r.getId())
+            if(i==r.getId()-1)
             {
 
                 pR.removeRivistaById(r);

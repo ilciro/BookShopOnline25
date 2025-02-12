@@ -134,6 +134,7 @@ public class ControllerRaccolta {
                 }
                 case GIORNALE -> {
                     g.setId(vis.getId());
+                    Logger.getLogger("elimina giornale").log(Level.INFO,"id daily to delete .{0}",g.getId());
                     switch (type)
                     {
                         case DATABASE -> pG=new GiornaleDao();

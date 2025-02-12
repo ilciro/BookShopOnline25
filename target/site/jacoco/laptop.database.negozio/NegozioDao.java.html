@@ -14,7 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.apache.ibatis.jdbc.ScriptRunner;
 
-<span class="fc" id="L17">public class NegozioDao extends PersistenzaNegozio{</span>
+<span class="nc" id="L17">public class NegozioDao extends PersistenzaNegozio{</span>
 	private String query;
 	private static final String ECCEZIONE=&quot;eccezione ottenuta:&quot;;
 
@@ -22,27 +22,27 @@ import org.apache.ibatis.jdbc.ScriptRunner;
 	public ObservableList&lt;Negozio&gt; getNegozi() {
 		Negozio shop;
 		 ObservableList&lt;Negozio&gt; listOfNegozi;
-<span class="fc" id="L25">		listOfNegozi=FXCollections.observableArrayList();</span>
+<span class="nc" id="L25">		listOfNegozi=FXCollections.observableArrayList();</span>
 
-<span class="fc" id="L27">		query=&quot;SELECT  nome,via,isValid,isOpen from NEGOZIO&quot;;</span>
+<span class="nc" id="L27">		query=&quot;SELECT  nome,via,isValid,isOpen from NEGOZIO&quot;;</span>
 				
 
-<span class="fc" id="L30">			 try(Connection conn= ConnToDb.connectionToDB();</span>
-<span class="fc" id="L31">			 PreparedStatement prepQ=conn.prepareStatement(query))</span>
+<span class="nc" id="L30">			 try(Connection conn= ConnToDb.connectionToDB();</span>
+<span class="nc" id="L31">			 PreparedStatement prepQ=conn.prepareStatement(query))</span>
 			 {
-<span class="fc" id="L33">	 			ResultSet rs=prepQ.executeQuery();</span>
+<span class="nc" id="L33">	 			ResultSet rs=prepQ.executeQuery();</span>
 			
-<span class="fc bfc" id="L35" title="All 2 branches covered.">				while (rs.next())</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">				while (rs.next())</span>
 				{
-<span class="fc" id="L37">					shop = new Negozio(rs.getString(1),rs.getString(2),rs.getBoolean(3),rs.getBoolean(4));</span>
-<span class="fc" id="L38">					listOfNegozi.add(shop);</span>
+<span class="nc" id="L37">					shop = new Negozio(rs.getString(1),rs.getString(2),rs.getBoolean(3),rs.getBoolean(4));</span>
+<span class="nc" id="L38">					listOfNegozi.add(shop);</span>
 				}
 <span class="nc" id="L40">			 }catch(SQLException e)</span>
 			 {
 <span class="nc" id="L42">				java.util.logging.Logger.getLogger(&quot;get negozi&quot;).log(Level.INFO, ECCEZIONE, e);</span>
-<span class="fc" id="L43">			 }</span>
+<span class="nc" id="L43">			 }</span>
 		
-<span class="fc" id="L45">		return listOfNegozi;</span>
+<span class="nc" id="L45">		return listOfNegozi;</span>
 	}
 	
 
@@ -52,27 +52,27 @@ import org.apache.ibatis.jdbc.ScriptRunner;
 	// controllo che il negozio sia aperto
 	public boolean checkOpen(Negozio  shop) {
 		int aperto;
-<span class="fc" id="L55">		boolean state=false;</span>
-<span class="fc" id="L56">		query=&quot;select isOpen from NEGOZIO where nome=?&quot;;</span>
-<span class="fc" id="L57">		try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L58">				PreparedStatement prepQ=conn.prepareCall(query))</span>
+<span class="nc" id="L55">		boolean state=false;</span>
+<span class="nc" id="L56">		query=&quot;select isOpen from NEGOZIO where nome=?&quot;;</span>
+<span class="nc" id="L57">		try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="nc" id="L58">				PreparedStatement prepQ=conn.prepareCall(query))</span>
 		{
-<span class="fc" id="L60">			prepQ.setString(1, shop.getNome());</span>
-<span class="fc" id="L61">			ResultSet rs=prepQ.executeQuery();</span>
-<span class="fc bfc" id="L62" title="All 2 branches covered.">			while(rs.next()){</span>
-<span class="fc" id="L63">				aperto=rs.getInt(1);</span>
-<span class="pc bpc" id="L64" title="1 of 2 branches missed.">				if(aperto==1)</span>
-<span class="fc" id="L65">					state=true;</span>
+<span class="nc" id="L60">			prepQ.setString(1, shop.getNome());</span>
+<span class="nc" id="L61">			ResultSet rs=prepQ.executeQuery();</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">			while(rs.next()){</span>
+<span class="nc" id="L63">				aperto=rs.getInt(1);</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">				if(aperto==1)</span>
+<span class="nc" id="L65">					state=true;</span>
 				
 			}
 <span class="nc" id="L68">		}catch(SQLException e)</span>
 		{
 <span class="nc" id="L70">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, ECCEZIONE, e);</span>
-<span class="fc" id="L71">		}</span>
+<span class="nc" id="L71">		}</span>
 			 
 			
 		
-<span class="fc" id="L75">		return state;</span>
+<span class="nc" id="L75">		return state;</span>
 	}
 
 	
@@ -80,20 +80,20 @@ import org.apache.ibatis.jdbc.ScriptRunner;
 	@Override
 	public boolean checkRitiro(Negozio shop)
 	{
-<span class="fc" id="L83">		query=&quot;select isValid from NEGOZIO where nome=?&quot;;</span>
-<span class="fc" id="L84">		boolean state=false;</span>
+<span class="nc" id="L83">		query=&quot;select isValid from NEGOZIO where nome=?&quot;;</span>
+<span class="nc" id="L84">		boolean state=false;</span>
 		int disp;
 		
-<span class="fc" id="L87">		try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L88">				PreparedStatement prepQ=conn.prepareStatement(query))</span>
+<span class="nc" id="L87">		try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="nc" id="L88">				PreparedStatement prepQ=conn.prepareStatement(query))</span>
 		{
-<span class="fc" id="L90">			prepQ.setString(1, shop.getNome());</span>
-<span class="fc" id="L91">			ResultSet rs=prepQ.executeQuery();</span>
-<span class="fc bfc" id="L92" title="All 2 branches covered.">			while ( rs.next() ) {</span>
+<span class="nc" id="L90">			prepQ.setString(1, shop.getNome());</span>
+<span class="nc" id="L91">			ResultSet rs=prepQ.executeQuery();</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">			while ( rs.next() ) {</span>
 
-<span class="fc" id="L94">					disp=rs.getInt(1);</span>
-<span class="pc bpc" id="L95" title="1 of 2 branches missed.">					if (disp==1)</span>
-<span class="fc" id="L96">						state=true;</span>
+<span class="nc" id="L94">					disp=rs.getInt(1);</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">					if (disp==1)</span>
+<span class="nc" id="L96">						state=true;</span>
 				
 						
 			}
@@ -101,46 +101,46 @@ import org.apache.ibatis.jdbc.ScriptRunner;
 <span class="nc" id="L101">		}catch(SQLException e)</span>
 		{
 <span class="nc" id="L103">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, ECCEZIONE, e);</span>
-<span class="fc" id="L104">		}</span>
+<span class="nc" id="L104">		}</span>
 			
-<span class="fc" id="L106">		return state;</span>
+<span class="nc" id="L106">		return state;</span>
 	}
 
 	@Override
 	public void initializza() throws IOException, SQLException {
-<span class="fc" id="L111">		ConnToDb.generalConnection();</span>
+<span class="nc" id="L111">		ConnToDb.generalConnection();</span>
 		//creo tabella
 
-<span class="fc" id="L114">		try (Connection conn = ConnToDb.connectionToDB()) {</span>
+<span class="nc" id="L114">		try (Connection conn = ConnToDb.connectionToDB()) {</span>
 
 
-<span class="fc" id="L117">			Reader reader = new BufferedReader(new FileReader(&quot;FileSql/negozio.sql&quot;));</span>
-<span class="fc" id="L118">			ScriptRunner sr = new ScriptRunner(conn);</span>
-<span class="fc" id="L119">			sr.setSendFullScript(false);</span>
-<span class="fc" id="L120">			sr.runScript(reader);</span>
+<span class="nc" id="L117">			Reader reader = new BufferedReader(new FileReader(&quot;FileSql/negozio.sql&quot;));</span>
+<span class="nc" id="L118">			ScriptRunner sr = new ScriptRunner(conn);</span>
+<span class="nc" id="L119">			sr.setSendFullScript(false);</span>
+<span class="nc" id="L120">			sr.runScript(reader);</span>
 
 
 		}
 
 		//vedo se tabella vuoita
-<span class="fc" id="L126">		int row=0;</span>
-<span class="fc" id="L127">		try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L128">			PreparedStatement preQ=conn.prepareStatement(&quot;select count(*) from ISPW.NEGOZIO;&quot;))</span>
+<span class="nc" id="L126">		int row=0;</span>
+<span class="nc" id="L127">		try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="nc" id="L128">			PreparedStatement preQ=conn.prepareStatement(&quot;select count(*) from ISPW.NEGOZIO;&quot;))</span>
 		{
-<span class="fc" id="L130">			ResultSet rs= preQ.executeQuery();</span>
-<span class="pc bpc" id="L131" title="1 of 2 branches missed.">			if(rs.next())</span>
-<span class="fc" id="L132">				row=rs.getInt(1);</span>
+<span class="nc" id="L130">			ResultSet rs= preQ.executeQuery();</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">			if(rs.next())</span>
+<span class="nc" id="L132">				row=rs.getInt(1);</span>
 		}
-<span class="pc bpc" id="L134" title="1 of 2 branches missed.">		if(row==0)</span>
+<span class="nc bnc" id="L134" title="All 2 branches missed.">		if(row==0)</span>
 		{
-<span class="fc" id="L136">			try(Connection conn=ConnToDb.connectionToDB())</span>
+<span class="nc" id="L136">			try(Connection conn=ConnToDb.connectionToDB())</span>
 			{
-<span class="fc" id="L138">				Reader reader = new BufferedReader(new FileReader(&quot;FileSql/popolaNegozio.sql&quot;));</span>
-<span class="fc" id="L139">				ScriptRunner sr = new ScriptRunner(conn);</span>
-<span class="fc" id="L140">				sr.setSendFullScript(false);</span>
-<span class="fc" id="L141">				sr.runScript(reader);</span>
+<span class="nc" id="L138">				Reader reader = new BufferedReader(new FileReader(&quot;FileSql/popolaNegozio.sql&quot;));</span>
+<span class="nc" id="L139">				ScriptRunner sr = new ScriptRunner(conn);</span>
+<span class="nc" id="L140">				sr.setSendFullScript(false);</span>
+<span class="nc" id="L141">				sr.runScript(reader);</span>
 			}
 		}
-<span class="fc" id="L144">	}</span>
+<span class="nc" id="L144">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

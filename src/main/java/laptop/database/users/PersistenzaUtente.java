@@ -41,6 +41,8 @@ public class PersistenzaUtente {
         if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);
         if(!Files.exists(Path.of(MEMORIA))) throw new IOException(MEMORIAEXCEPTION);
         return FXCollections.observableArrayList();}
+
+
     public void initializza() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
         if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);
         if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);

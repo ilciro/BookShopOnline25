@@ -9,39 +9,39 @@ import java.io.*;
 import java.util.ArrayList;
 
 
-<span class="fc" id="L12">public class MemoriaNegozio extends PersistenzaNegozio{</span>
+<span class="nc" id="L12">public class MemoriaNegozio extends PersistenzaNegozio{</span>
     private static final String SERIALIZZAZIONE=&quot;memory/serializzazioneNegozio.ser&quot;;
-<span class="fc" id="L14">    private ArrayList&lt;Negozio&gt; lista=new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L14">    private ArrayList&lt;Negozio&gt; lista=new ArrayList&lt;&gt;();</span>
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public ObservableList&lt;Negozio&gt; getNegozi() throws IOException, ClassNotFoundException {
 
-<span class="fc" id="L20">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L21">            ObjectInputStream ois = new ObjectInputStream(fis)){</span>
-<span class="fc" id="L22">            lista= (ArrayList&lt;Negozio&gt;) ois.readObject();</span>
+<span class="nc" id="L20">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L21">            ObjectInputStream ois = new ObjectInputStream(fis)){</span>
+<span class="nc" id="L22">            lista= (ArrayList&lt;Negozio&gt;) ois.readObject();</span>
            }
-<span class="fc" id="L24">        return FXCollections.observableArrayList(lista);</span>
+<span class="nc" id="L24">        return FXCollections.observableArrayList(lista);</span>
     }
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public boolean checkOpen(Negozio shop) throws IOException, ClassNotFoundException {
 
-<span class="fc" id="L31">        boolean status=false;</span>
+<span class="nc" id="L31">        boolean status=false;</span>
 
-<span class="fc" id="L33">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L34">            ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
-<span class="fc" id="L35">            lista = (ArrayList&lt;Negozio&gt;) ois.readObject();</span>
+<span class="nc" id="L33">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L34">            ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
+<span class="nc" id="L35">            lista = (ArrayList&lt;Negozio&gt;) ois.readObject();</span>
         }
 
-<span class="fc bfc" id="L38" title="All 2 branches covered.">        for (Negozio negozio : lista) {</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">            if (negozio.getNome().equals(shop.getNome()))</span>
-<span class="fc" id="L40">                status = negozio.getIsOpen();</span>
-<span class="fc" id="L41">        }</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        for (Negozio negozio : lista) {</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">            if (negozio.getNome().equals(shop.getNome()))</span>
+<span class="nc" id="L40">                status = negozio.getIsOpen();</span>
+<span class="nc" id="L41">        }</span>
 
 
-<span class="fc" id="L44">        return status;</span>
+<span class="nc" id="L44">        return status;</span>
 
 
 
@@ -50,58 +50,58 @@ import java.util.ArrayList;
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public boolean checkRitiro(Negozio shop) throws IOException, CsvValidationException, ClassNotFoundException {
-<span class="fc" id="L53">        boolean status=false;</span>
-<span class="fc" id="L54">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L55">            ObjectInputStream ois = new ObjectInputStream(fis)){</span>
-<span class="fc" id="L56">            lista=(ArrayList&lt;Negozio&gt;) ois.readObject();</span>
+<span class="nc" id="L53">        boolean status=false;</span>
+<span class="nc" id="L54">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L55">            ObjectInputStream ois = new ObjectInputStream(fis)){</span>
+<span class="nc" id="L56">            lista=(ArrayList&lt;Negozio&gt;) ois.readObject();</span>
 
         }
-<span class="fc bfc" id="L59" title="All 2 branches covered.">        for (Negozio negozio : lista) {</span>
-<span class="fc bfc" id="L60" title="All 2 branches covered.">            if (negozio.getNome().equals(shop.getNome()))</span>
-<span class="fc" id="L61">                status = negozio.getIsValid();</span>
-<span class="fc" id="L62">        }</span>
-<span class="fc" id="L63">        return status;</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        for (Negozio negozio : lista) {</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">            if (negozio.getNome().equals(shop.getNome()))</span>
+<span class="nc" id="L61">                status = negozio.getIsValid();</span>
+<span class="nc" id="L62">        }</span>
+<span class="nc" id="L63">        return status;</span>
     }
 
     @Override
     public void initializza() throws IOException {
-<span class="fc bfc" id="L68" title="All 2 branches covered.">        for(int i=1;i&lt;=4;i++) {</span>
-<span class="fc" id="L69">            lista.add(leggiNegozio(i));</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">        for(int i=1;i&lt;=4;i++) {</span>
+<span class="nc" id="L69">            lista.add(leggiNegozio(i));</span>
 
         }
-<span class="fc" id="L72">        inserisciNegozio();</span>
-<span class="fc" id="L73">    }</span>
+<span class="nc" id="L72">        inserisciNegozio();</span>
+<span class="nc" id="L73">    }</span>
 
     private void inserisciNegozio() throws IOException {
         //inserisco lista a posto di libro
-<span class="fc" id="L77">        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L78">            ObjectOutputStream oos=new ObjectOutputStream(fos))</span>
+<span class="nc" id="L77">        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L78">            ObjectOutputStream oos=new ObjectOutputStream(fos))</span>
         {
-<span class="fc" id="L80">            oos.writeObject(new ArrayList&lt;&gt;(lista));</span>
+<span class="nc" id="L80">            oos.writeObject(new ArrayList&lt;&gt;(lista));</span>
         }
 
-<span class="fc" id="L83">    }</span>
+<span class="nc" id="L83">    }</span>
 
     private Negozio leggiNegozio(int i) throws IOException {
         String line;
-<span class="fc" id="L87">        ArrayList&lt;String&gt; listaR = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L88">        try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/negozio&quot;+ i +&quot;.txt&quot;);</span>
-<span class="fc" id="L89">             BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
-<span class="fc bfc" id="L90" title="All 2 branches covered.">            while ((line = bufferedReader.readLine()) != null) {</span>
-<span class="fc" id="L91">                listaR.add(line);</span>
+<span class="nc" id="L87">        ArrayList&lt;String&gt; listaR = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L88">        try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/negozio&quot;+ i +&quot;.txt&quot;);</span>
+<span class="nc" id="L89">             BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">            while ((line = bufferedReader.readLine()) != null) {</span>
+<span class="nc" id="L91">                listaR.add(line);</span>
 
             }
         }
-<span class="fc" id="L95">            Negozio n=new Negozio();</span>
-<span class="fc" id="L96">            n.setId(Integer.parseInt(listaR.get(0)));</span>
-<span class="fc" id="L97">            n.setNome(listaR.get(1));</span>
-<span class="fc" id="L98">            n.setVia(listaR.get(2));</span>
-<span class="fc" id="L99">            n.setIsValid(listaR.get(3).equals(String.valueOf(1)));</span>
+<span class="nc" id="L95">            Negozio n=new Negozio();</span>
+<span class="nc" id="L96">            n.setId(Integer.parseInt(listaR.get(0)));</span>
+<span class="nc" id="L97">            n.setNome(listaR.get(1));</span>
+<span class="nc" id="L98">            n.setVia(listaR.get(2));</span>
+<span class="nc" id="L99">            n.setIsValid(listaR.get(3).equals(String.valueOf(1)));</span>
 
-<span class="fc" id="L101">             n.setIsOpen(listaR.get(4).equals(String.valueOf(1)));</span>
+<span class="nc" id="L101">             n.setIsOpen(listaR.get(4).equals(String.valueOf(1)));</span>
 
 
-<span class="fc" id="L104">            return n;</span>
+<span class="nc" id="L104">            return n;</span>
         }
 
 

@@ -93,7 +93,7 @@ public class ControllerDownload {
 		else if(persistenza.equals(FILE)) pG=new CsvGiornale();
 		else pG=new MemoriaGiornale();
 		Giornale tempG=new Giornale();
-		for (int i=0;i<=pG.getGiornali().size();i++)
+		for (int i=0;i<pG.getGiornali().size();i++)
 		{
 
 			if(i==g.getId()-1)
@@ -124,7 +124,7 @@ public class ControllerDownload {
 		else pR=new MemoriaRivista();
 
 		Rivista tempR=new Rivista();
-		for(int i=0;i<=pR.getRiviste().size();i++) {
+		for(int i=0;i<pR.getRiviste().size();i++) {
 			if (i==r.getId()-1) {
 
 				 tempR=pR.getRivistaByIdTitoloAutoreRivista(r).get(0);

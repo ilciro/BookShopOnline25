@@ -40,9 +40,6 @@ public class ControllerPagamentoCash {
 			}
 
 
-			/*
-			tod sistemare qui
-			 */
 
 			pF.inizializza();
 
