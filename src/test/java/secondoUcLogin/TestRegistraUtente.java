@@ -24,7 +24,7 @@ class TestRegistraUtente {
     void testRegistraUtente(String strings) throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException {
         cRU.setType(strings);
          cRU.registra(RBUTENTE.getString("nome2"),RBUTENTE.getString("cognome2"),RBUTENTE.getString("email2"),
-                RBUTENTE.getString("pwd2"),RBUTENTE.getString("desc2"), LocalDate.parse(RBUTENTE.getString("data2")),RBUTENTE.getString("ruolo2"));
+                RBUTENTE.getString("pwd2"),RBUTENTE.getString("desc2"), LocalDate.parse(RBUTENTE.getString("data2")),RBUTENTE.getString("ruolo2").substring(0,1));
         assertTrue(cA.logout(strings));
      }
 }

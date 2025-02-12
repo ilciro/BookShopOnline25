@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="nc" id="L17">public class ControllerUtenti {</span>
+<span class="fc" id="L17">public class ControllerUtenti {</span>
 
 
     private PersistenzaUtente pU;
@@ -22,21 +22,21 @@ import java.util.logging.Logger;
     private static final String FILE=&quot;file&quot;;
     private static final String MEMORIA=&quot;memoria&quot;;
 
-<span class="nc" id="L25">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+<span class="fc" id="L25">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
 
 
 
     public ObservableList&lt;TempUser&gt; getList(String persistenza) throws SQLException, CsvValidationException, IOException {
         ObservableList&lt;TempUser&gt; list;
 
-<span class="nc bnc" id="L32" title="All 4 branches missed.">        switch (persistenza){</span>
-<span class="nc" id="L33">            case DATABASE -&gt; pU=new UsersDao();</span>
-<span class="nc" id="L34">            case FILE -&gt; pU=new CsvUtente();</span>
-<span class="nc" id="L35">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
+<span class="pc bpc" id="L32" title="1 of 4 branches missed.">        switch (persistenza){</span>
+<span class="fc" id="L33">            case DATABASE -&gt; pU=new UsersDao();</span>
+<span class="fc" id="L34">            case FILE -&gt; pU=new CsvUtente();</span>
+<span class="fc" id="L35">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
 <span class="nc" id="L36">            default -&gt; Logger.getLogger(&quot;get list&quot;).log(Level.SEVERE,&quot;persistency not correct&quot;);</span>
         }
-<span class="nc" id="L38">        list=pU.getUserData();</span>
-<span class="nc" id="L39">        return list;</span>
+<span class="fc" id="L38">        list=pU.getUserData();</span>
+<span class="fc" id="L39">        return list;</span>
     }
 
 
@@ -45,18 +45,18 @@ import java.util.logging.Logger;
         boolean status ;
 
 
-<span class="nc bnc" id="L48" title="All 4 branches missed.">        switch (persistenza){</span>
-<span class="nc" id="L49">            case DATABASE -&gt; pU=new UsersDao();</span>
-<span class="nc" id="L50">            case FILE -&gt; pU=new CsvUtente();</span>
-<span class="nc" id="L51">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
+<span class="pc bpc" id="L48" title="1 of 4 branches missed.">        switch (persistenza){</span>
+<span class="fc" id="L49">            case DATABASE -&gt; pU=new UsersDao();</span>
+<span class="fc" id="L50">            case FILE -&gt; pU=new CsvUtente();</span>
+<span class="fc" id="L51">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
 <span class="nc" id="L52">            default -&gt; Logger.getLogger(&quot;elimina&quot;).log(Level.SEVERE,&quot;persistency not correct&quot;);</span>
         }
-<span class="nc" id="L54">        TempUser tu=new TempUser();</span>
-<span class="nc" id="L55">        tu.setId(vis.getId());</span>
-<span class="nc" id="L56">        tu.setEmailT(emailT);</span>
-<span class="nc" id="L57">        status=pU.removeUserByIdEmailPwd(tu);</span>
+<span class="fc" id="L54">        TempUser tu=new TempUser();</span>
+<span class="fc" id="L55">        tu.setId(vis.getId());</span>
+<span class="fc" id="L56">        tu.setEmailT(emailT);</span>
+<span class="fc" id="L57">        status=pU.removeUserByIdEmailPwd(tu);</span>
 
-<span class="nc" id="L59">        return status;</span>
+<span class="fc" id="L59">        return status;</span>
     }
 
 

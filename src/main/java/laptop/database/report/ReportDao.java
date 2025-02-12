@@ -141,13 +141,40 @@ public class ReportDao extends PersistenzaReport {
         return tu;
     }
 
-    /*
-    todo fixare qui
-     */
-    @Override
-    public ObservableList<Report> returnReportIDTipoTitolo(int id, String tipo, String titolo) throws IOException, CsvValidationException {
 
-        return FXCollections.emptyObservableList();
+    @Override
+    public ObservableList<Report> returnReportIDTipoTitolo(int id, String tipo, String titolo)  {
+
+        ObservableList<Report> lista=FXCollections.observableArrayList();
+        //tipo libro ecc ecc group by titolo
+       switch (tipo){
+           case LIBRO -> query="select * from REPORTL group by=?";
+           case GIORNALE -> query="select * from REPORTG group by=?";
+           case RIVISTA -> query="select * from REPORTR group by=?";
+           default -> Logger.getLogger("report by id titolo ").log(Level.SEVERE," report is empty");
+
+
+       }
+        try (Connection conn=ConnToDb.connectionToDB();
+             PreparedStatement prepQ=conn.prepareStatement(query)){
+            prepQ.setString(1,titolo);
+            ResultSet rs=prepQ.executeQuery();
+            while(rs.next())
+            {
+                Report report = new Report();
+
+                report.setIdReport(rs.getInt(1));
+                report.setTitoloOggetto(rs.getString(2));
+                report.setTipologiaOggetto(rs.getString(3));
+                report.setTotale(rs.getFloat(4));
+
+                lista.add(report);
+            }
+
+        } catch (SQLException e) {
+            Logger.getLogger(" generazione report").log(Level.SEVERE," exceptionin report {0}.",e.getMessage());
+        }
+        return lista;
     }
 
     @Override

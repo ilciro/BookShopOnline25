@@ -71,8 +71,8 @@ import java.util.logging.Logger;
 
     @Override
     public ObservableList&lt;Report&gt; report(String type) {
-<span class="nc" id="L74">        Logger.getLogger(&quot;getReport&quot;).log(Level.INFO,&quot;yet used by reportIdTitolo&quot;);</span>
-<span class="nc" id="L75">        return FXCollections.emptyObservableList();</span>
+<span class="fc" id="L74">        Logger.getLogger(&quot;getReport&quot;).log(Level.INFO,&quot;yet used by reportIdTitolo&quot;);</span>
+<span class="fc" id="L75">        return FXCollections.emptyObservableList();</span>
     }
 
     @Override
@@ -112,8 +112,8 @@ import java.util.logging.Logger;
     @Override
     public ObservableList&lt;TempUser&gt; reportU() throws  IOException, CsvValidationException {
 
-<span class="nc" id="L115">        CsvUtente csv=new CsvUtente();</span>
-<span class="nc" id="L116">        return FXCollections.observableArrayList(csv.getUserData());</span>
+<span class="fc" id="L115">        CsvUtente csv=new CsvUtente();</span>
+<span class="fc" id="L116">        return FXCollections.observableArrayList(csv.getUserData());</span>
     }
 
 
