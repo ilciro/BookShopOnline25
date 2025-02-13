@@ -2,6 +2,7 @@ package laptop.database.pagamento;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.controller.ControllerSystemState;
 import laptop.model.Pagamento;
 
 import java.io.*;
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
 public class MemoriaPagamento extends PersistenzaPagamento{
     private  ArrayList<Pagamento> lista= new ArrayList<>();
     private static final String SERIALIZZAZIONE="memory/serializzazionePagamento.ser";
-
+    private static final ControllerSystemState vis=ControllerSystemState.getInstance();
 
 
     @Override
@@ -27,8 +28,11 @@ public class MemoriaPagamento extends PersistenzaPagamento{
             lista = (ArrayList<Pagamento>) ois.readObject();
 
         }
-        p.setIdPag(lista.size()+1);
+        if(vis.getTipoModifica().equals("im")) p.setIdPag(p.getIdPag());
+        else if(vis.getTipoModifica().equals("insert")) p.setIdPag(lista.size()+1);
+
         lista.add(p);
+
         try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
             ObjectOutputStream oos=new ObjectOutputStream(fos))
         {
@@ -62,11 +66,11 @@ public class MemoriaPagamento extends PersistenzaPagamento{
             lista= (ArrayList<Pagamento>) ois.readObject();
 
         }
-        for(int i=1;i<=lista.size();i++)
+        for(int i=0;i<lista.size();i++)
         {
 
 
-            if(i==p.getIdPag()) {
+            if(i-1==p.getIdPag()) {
 
                 Logger.getLogger("cancella pagamento").log(Level.INFO,"id fattura {0}.",p.getIdPag());
 
@@ -108,28 +112,15 @@ public class MemoriaPagamento extends PersistenzaPagamento{
         }
 
 
-          try {
-              if (lista.size() == 1) throw new IOException("errore nella lista!!");
+        for (Pagamento pagamento : lista) {
 
 
-              int j = 0;
-
-              for (int i = 0; i < lista.size(); i++) {
-
-                  if (lista.get(i).getEmail().equals(p.getEmail()) && j == i)
-                          listaRecuperata.add(lista.get(i));
+            if (pagamento.getEmail().equals(p.getEmail()))
+                listaRecuperata.add(pagamento);
 
 
-                  j++;
+        }
 
-
-              }
-          }catch (IOException e)
-          {
-              Logger.getLogger("la lista non è vuota ma non ci sono ordini" +
-                      "assocati ad utente").log(Level.INFO," user's order list is empty, but not " +
-                      "the complete list!!!");
-          }
 
             return listaRecuperata;
 

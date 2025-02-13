@@ -1,8 +1,8 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 BookShopOnline25 Maven Webapp,laptop.model.user,TempUser.RuoliT,0,33,0,0,0,6,0,1,0,1
-BookShopOnline25 Maven Webapp,laptop.model.user,User,70,91,0,7,19,25,8,17,8,12
+BookShopOnline25 Maven Webapp,laptop.model.user,User,50,111,0,7,11,33,2,23,2,18
 BookShopOnline25 Maven Webapp,laptop.model.user,User.Ruoli,0,33,0,0,0,6,0,1,0,1
-BookShopOnline25 Maven Webapp,laptop.model.user,TempUser,12,88,0,5,1,30,1,21,1,17
+BookShopOnline25 Maven Webapp,laptop.model.user,TempUser,0,100,0,5,0,31,0,22,0,18
 BookShopOnline25 Maven Webapp,laptop.database.negozio,NegozioDao,204,0,14,0,60,0,12,0,5,0
 BookShopOnline25 Maven Webapp,laptop.database.negozio,MemoriaNegozio,214,0,12,0,44,0,13,0,7,0
 BookShopOnline25 Maven Webapp,laptop.database.negozio,PersistenzaNegozio,153,3,28,0,17,1,18,1,4,1
@@ -19,13 +19,13 @@ BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,Co
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerGestione,177,676,20,36,31,115,20,31,3,9
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerReport,72,159,8,12,14,30,8,13,1,5
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerRaccolta,79,250,14,18,14,49,14,17,0,7
-BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerVisualizzaOrdini,96,0,8,0,19,0,10,0,4,0
+BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerVisualizzaOrdini,22,74,4,4,4,15,4,6,0,4
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerUtenti,10,82,2,6,2,17,2,8,0,4
-BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerVisualizzaProfilo,313,0,32,0,63,0,25,0,7,0
-BookShopOnline25 Maven Webapp,laptop.database.pagamento,CsvPagamento,344,151,30,8,67,34,22,9,6,6
-BookShopOnline25 Maven Webapp,laptop.database.pagamento,MemoriaPagamento,70,272,10,6,16,55,7,7,1,5
+BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerVisualizzaProfilo,10,308,10,22,2,63,10,15,0,7
+BookShopOnline25 Maven Webapp,laptop.database.pagamento,CsvPagamento,113,382,13,25,21,80,12,19,2,10
+BookShopOnline25 Maven Webapp,laptop.database.pagamento,MemoriaPagamento,73,261,9,7,14,53,7,8,1,6
 BookShopOnline25 Maven Webapp,laptop.database.pagamento,PersistenzaPagamento,159,3,28,0,19,1,19,1,5,1
-BookShopOnline25 Maven Webapp,laptop.database.pagamento,PagamentoDao,176,78,7,1,48,21,7,3,3,3
+BookShopOnline25 Maven Webapp,laptop.database.pagamento,PagamentoDao,89,165,4,4,23,46,4,6,1,5
 BookShopOnline25 Maven Webapp,laptop.exception,IdException,0,4,0,0,0,2,0,1,0,1
 BookShopOnline25 Maven Webapp,laptop.exception,AcquistaException,4,0,0,0,2,0,1,0,1,0
 BookShopOnline25 Maven Webapp,laptop.exception,LogoutException,4,0,0,0,2,0,1,0,1,0
@@ -53,7 +53,7 @@ BookShopOnline25 Maven Webapp,laptop.model,CartaDiCredito,23,93,0,0,10,30,7,15,7
 BookShopOnline25 Maven Webapp,laptop.model,Fattura,3,77,0,0,1,27,1,14,1,14
 BookShopOnline25 Maven Webapp,laptop.model,Negozio,16,51,0,0,3,21,3,10,3,10
 BookShopOnline25 Maven Webapp,laptop.model,Report,0,45,0,0,0,19,0,13,0,13
-BookShopOnline25 Maven Webapp,laptop.model,Pagamento,3,87,0,0,1,31,1,16,1,16
+BookShopOnline25 Maven Webapp,laptop.model,Pagamento,0,90,0,0,0,32,0,17,0,17
 BookShopOnline25 Maven Webapp,laptop.model.raccolta,Factory,14,275,1,15,4,43,1,17,0,9
 BookShopOnline25 Maven Webapp,laptop.model.raccolta,MatchParam,0,62,0,0,0,16,0,3,0,3
 BookShopOnline25 Maven Webapp,laptop.model.raccolta,Giornale,12,252,1,3,3,72,1,27,0,26

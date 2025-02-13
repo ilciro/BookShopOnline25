@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="nc" id="L18">public class ControllerVisualizzaOrdini {</span>
+<span class="fc" id="L18">public class ControllerVisualizzaOrdini {</span>
     private PersistenzaPagamento pP;
     private static final String DATABASE=&quot;database&quot;;
     private static final String FILE=&quot;file&quot;;
@@ -25,42 +25,42 @@ import java.util.logging.Logger;
 
     public String getEmail()
     {
-<span class="nc" id="L28">        return User.getInstance().getEmail();</span>
+<span class="fc" id="L28">        return User.getInstance().getEmail();</span>
     }
 
     public ObservableList&lt;Pagamento&gt; getLista(String persistenza) throws CsvValidationException, IOException, ClassNotFoundException, SQLException {
 
 
 
-<span class="nc bnc" id="L35" title="All 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L35" title="2 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="nc" id="L37">            case DATABASE-&gt;pP=new PagamentoDao();</span>
-<span class="nc" id="L38">            case FILE-&gt;pP=new CsvPagamento();</span>
+<span class="fc" id="L37">            case DATABASE-&gt;pP=new PagamentoDao();</span>
+<span class="fc" id="L38">            case FILE-&gt;pP=new CsvPagamento();</span>
 <span class="nc" id="L39">            case MEMORIA-&gt;pP=new MemoriaPagamento();</span>
 <span class="nc" id="L40">            default -&gt; Logger.getLogger(&quot;getLista pagamenti&quot;).log(Level.SEVERE,&quot;list pf payment is empty!!&quot;);</span>
         }
 
-<span class="nc" id="L43">        Pagamento p=new Pagamento();</span>
-<span class="nc" id="L44">        p.setEmail(getEmail());</span>
+<span class="fc" id="L43">        Pagamento p=new Pagamento();</span>
+<span class="fc" id="L44">        p.setEmail(getEmail());</span>
 
-<span class="nc" id="L46">            pP.inizializza();</span>
+<span class="fc" id="L46">            pP.inizializza();</span>
 
-<span class="nc" id="L48">        return pP.listPagamentiByUser(p);</span>
+<span class="fc" id="L48">        return pP.listPagamentiByUser(p);</span>
     }
     public boolean cancellaPagamento(int id,String persistenza) throws CsvValidationException, IOException, ClassNotFoundException {
 
-<span class="nc" id="L52">        Pagamento p=new Pagamento();</span>
-<span class="nc" id="L53">        p.setIdPag(id);</span>
+<span class="fc" id="L52">        Pagamento p=new Pagamento();</span>
+<span class="fc" id="L53">        p.setIdPag(id);</span>
 
-<span class="nc bnc" id="L55" title="All 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L55" title="2 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="nc" id="L57">            case DATABASE-&gt;pP=new PagamentoDao();</span>
-<span class="nc" id="L58">            case FILE-&gt;pP=new CsvPagamento();</span>
+<span class="fc" id="L57">            case DATABASE-&gt;pP=new PagamentoDao();</span>
+<span class="fc" id="L58">            case FILE-&gt;pP=new CsvPagamento();</span>
 <span class="nc" id="L59">            case MEMORIA-&gt;pP=new MemoriaPagamento();</span>
 <span class="nc" id="L60">            default -&gt; Logger.getLogger(&quot;cancella pagamento&quot;).log(Level.SEVERE,&quot;delete payment has not occurred&quot;);</span>
         }
 
-<span class="nc" id="L63">        return pP.cancellaPagamento(p);</span>
+<span class="fc" id="L63">        return pP.cancellaPagamento(p);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

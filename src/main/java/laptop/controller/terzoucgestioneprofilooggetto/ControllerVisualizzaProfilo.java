@@ -1,6 +1,7 @@
 package laptop.controller.terzoucgestioneprofilooggetto;
 
 import com.opencsv.exceptions.CsvValidationException;
+import laptop.controller.ControllerSystemState;
 import laptop.database.users.CsvUtente;
 import laptop.database.users.MemoriaUtente;
 import laptop.database.users.PersistenzaUtente;
@@ -21,6 +22,7 @@ public class ControllerVisualizzaProfilo {
     private static final String MEMORIA = "memoria";
     private PersistenzaUtente pU;
     private static final User u = User.getInstance();
+    private static final ControllerSystemState vis=ControllerSystemState.getInstance();
 
     public String infoUtente(String persistenza) throws CsvValidationException, SQLException, IOException {
         String utente = "";
@@ -30,7 +32,7 @@ public class ControllerVisualizzaProfilo {
             case MEMORIA -> pU = new MemoriaUtente();
             default -> Logger.getLogger("info utente").log(Level.SEVERE, "persistency is wrong");
         }
-        for (int i = 1; i < pU.getUserData().size(); i++) {
+        for (int i = 0; i < pU.getUserData().size(); i++) {
             if (pU.getUserData().get(i).getEmailT().equals(u.getEmail())
                     && pU.getUserData().get(i).getPasswordT().equals(u.getPassword()))
                 utente = pU.getUserData().get(i).toString();
@@ -43,6 +45,8 @@ public class ControllerVisualizzaProfilo {
         boolean status = false;
         String vecchiaMail = u.getEmail();
 
+        vis.setTipoModifica("im");
+
         switch (persistenza) {
             case DATABASE -> pU = new UsersDao();
             case FILE -> pU = new CsvUtente();
@@ -51,7 +55,7 @@ public class ControllerVisualizzaProfilo {
         }
         TempUser tu = new TempUser();
         tu.setEmailT(vecchiaMail);
-        for (int i = 1; i < pU.getUserData().size(); i++) {
+        for (int i = 0; i < pU.getUserData().size(); i++) {
             if (pU.getUserData().get(i).getEmailT().equals(tu.getEmailT())) {
                 tu = pU.getUserData().get(i);
                 setTemptoUser(tu);
@@ -60,9 +64,10 @@ public class ControllerVisualizzaProfilo {
                     Logger.getLogger("email utente rimosso").log(Level.INFO, "email temp user deleted :{0}", tu.getEmailT());
                     //setto user
 
-                   modifUser(dataU);
-                   status=pU.inserisciUtente(inserisciTempUser());
+
                 }
+                modifUser(dataU);
+                status=pU.inserisciUtente(inserisciTempUser());
             }
 
 

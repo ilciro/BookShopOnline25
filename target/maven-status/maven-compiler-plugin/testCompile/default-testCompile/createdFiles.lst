@@ -12,6 +12,7 @@ secondoUcLogin/TestLogin.class
 primoUcAcquista/testGiornale/TestAcquistaGiornaleDB.class
 primoUcRicerca/TestControllerRicercaGiornale.class
 secondoUcLogin/TestRegistraUtente.class
+terzoUcGestione/visualizzaProfiloModifica/TestControllerVisualizzaProfilo.class
 terzoUcGestione/gestioneOggetto/TestControllerGestioneLibro.class
 primoUcAcquista/testRivista/TestAcquistaRivistaMemoriaAnnulla.class
 primoUcAcquista/testLibro/TestAcquistaLibroFile.class
@@ -20,3 +21,4 @@ primoUcVisualizza/TestControllerVisualizza.class
 primoUcAcquista/testLibro/TestAcquistaLibroMemoriaAnnulla.class
 primoUcRicerca/TestControllerRicercaRivista.class
 terzoUcGestione/gestioneOggetto/TestControllerGestioneGiornale.class
+terzoUcGestione/ordine/TestControllerVisualizzaOrdini.class
