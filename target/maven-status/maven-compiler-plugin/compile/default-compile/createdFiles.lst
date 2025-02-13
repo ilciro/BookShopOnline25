@@ -7,6 +7,7 @@ laptop/controller/terzoucgestioneprofilooggetto/ControllerVisualizzaOrdini.class
 laptop/database/report/PersistenzaReport.class
 laptop/database/libro/LibroDao.class
 laptop/model/user/User$Ruoli.class
+laptop/database/MemoryInitialize.class
 laptop/view/terzoucgestioneprofilooggetto/BoundaryVisualizzaOrdini.class
 laptop/view/primoucacquista/BoundaryPagamentoCC.class
 laptop/exception/IdException.class

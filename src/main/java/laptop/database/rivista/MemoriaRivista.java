@@ -4,14 +4,14 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
+import laptop.database.MemoryInitialize;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Raccolta;
 import laptop.model.raccolta.Rivista;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
+
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -46,50 +46,13 @@ public class MemoriaRivista extends PersistenzaRivista{
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public boolean removeRivistaById(Rivista r) throws IOException, ClassNotFoundException {
 
-        boolean status=false;
-        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
-            ObjectInputStream ois=new ObjectInputStream(fis)){
-            list= (ArrayList<Rivista>) ois.readObject();
-
-        }
-
-
-        status = isStatus(r, status);
-
-        return status;
+        MemoryInitialize mI=new MemoryInitialize();
+        return mI.cancellaRivista(r);
     }
 
-    //levo -1 per inizio lista
-    private boolean isStatus(Rivista r, boolean status) throws IOException {
-        for(int i=0;i<=list.size();i++)
-        {
-            if(i== (r.getId()-1)) {
-                status = list.remove(list.get(i));
-            }
-        }
 
-        Path path = Path.of(SERIALIZZAZIONE);
-        try {
-            Files.delete(path);
-            if(!Files.exists(path))
-            {
-                throw new IOException("file is deleted!!");
-
-            }
-
-        }catch (IOException e)
-        {
-            Files.createFile(path);
-            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
-                ObjectOutputStream oos=new ObjectOutputStream(fos)){
-                oos.writeObject(list);
-            }
-        }
-        return status;
-    }
 
     @Override
     @SuppressWarnings("unchecked")

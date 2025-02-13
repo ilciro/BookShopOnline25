@@ -4,13 +4,13 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
+import laptop.database.MemoryInitialize;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Raccolta;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
+
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -142,51 +142,11 @@ import java.util.logging.Logger;
     }
 
     @Override
-    @SuppressWarnings(&quot;unchecked&quot;)
     public boolean removeGiornaleById(Giornale g) throws  IOException,  ClassNotFoundException {
-<span class="fc" id="L147">        boolean status=false;</span>
-<span class="fc" id="L148">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L149">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
-<span class="fc" id="L150">            list= (ArrayList&lt;Giornale&gt;) ois.readObject();</span>
-
-        }
-
-<span class="fc" id="L154">        status = isStatus(g, status);</span>
-
-<span class="fc" id="L156">        return status;</span>
+<span class="fc" id="L146">        MemoryInitialize mI=new MemoryInitialize();</span>
+<span class="fc" id="L147">        return mI.cancellaGiornale(g);</span>
     }
 
-    private boolean isStatus(Giornale g, boolean status) throws IOException {
 
-
-
-<span class="fc bfc" id="L163" title="All 2 branches covered.">        for(int i=0;i&lt;list.size();i++)</span>
-        {
-<span class="fc bfc" id="L165" title="All 2 branches covered.">            if(i== (g.getId()-1)) {</span>
-<span class="fc" id="L166">                status = list.remove(list.get(i));</span>
-            }
-        }
-
-<span class="fc" id="L170">        Path path = Path.of(SERIALIZZAZIONE);</span>
-        try {
-<span class="fc" id="L172">            Files.delete(path);</span>
-<span class="pc bpc" id="L173" title="1 of 2 branches missed.">            if(!Files.exists(path))</span>
-            {
-<span class="fc" id="L175">                throw new IOException(&quot;file is deleted!!&quot;);</span>
-
-            }
-
-<span class="fc" id="L179">        }catch (IOException e)</span>
-        {
-<span class="fc" id="L181">            Files.createFile(path);</span>
-<span class="fc" id="L182">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L183">                ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
-<span class="fc" id="L184">                oos.writeObject(list);</span>
-            }
-<span class="nc" id="L186">        }</span>
-
-
-<span class="fc" id="L189">        return status;</span>
-    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

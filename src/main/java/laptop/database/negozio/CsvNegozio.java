@@ -61,62 +61,13 @@ public class CsvNegozio extends PersistenzaNegozio{
 
     @Override
     public boolean checkOpen(Negozio shop) throws CsvValidationException, IOException {
-        boolean status=false;
-        String[] gVector;
-
-        boolean recordFound;
-
-        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(this.fdn)))) {
-
-            while ((gVector = csvReader.readNext()) != null) {
-
-                recordFound = gVector[GETINDEXNEGOZIONOME].equals(shop.getNome());
-                if (recordFound) {
-
-                    Negozio n=new Negozio();
-                    n.setId(Integer.parseInt(gVector[GETINDEXNEGOZIOID]));
-                    n.setNome(gVector[GETINDEXNEGOZIONOME]);
-                    if(gVector[GETINDEXNEGOZIOISOPEN].equals("1"))
-                        n.setIsOpen(true);
-                    if(Boolean.TRUE.equals(n.getIsOpen())) status=true;
-
-                }
-
-
-            }
-        }
-
-        return status;
+        return checkOpenIsValid(shop,"isOpen");
 
     }
 
     @Override
    public boolean checkRitiro(Negozio shop) throws IOException, CsvValidationException {
-        boolean status=false;
-        String[] gVector;
-        boolean recordFound;
-        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(this.fdn)))) {
-
-            while ((gVector = csvReader.readNext()) != null) {
-
-                recordFound = gVector[GETINDEXNEGOZIONOME].equals(shop.getNome());
-                if (recordFound) {
-
-                    Negozio n=new Negozio();
-
-                    n.setId(Integer.parseInt(gVector[GETINDEXNEGOZIOID]));
-                    n.setNome(gVector[GETINDEXNEGOZIONOME]);
-                    if(gVector[GETINDEXNEGOZIOISVALID].equals("1"))
-                        n.setIsValid(true);
-                    if(Boolean.TRUE.equals(n.getIsValid())) status=true;
-
-                }
-
-
-            }
-        }
-
-        return status;
+        return checkOpenIsValid(shop,"isValid");
     }
 
     @Override
@@ -131,5 +82,44 @@ public class CsvNegozio extends PersistenzaNegozio{
             Logger.getLogger("crea negpzio file").log(Level.SEVERE, "\n eccezione ottenuta nella modalità file.", e);
 
         }
+    }
+
+
+    private boolean checkOpenIsValid(Negozio shop,String s) throws CsvValidationException, IOException {
+        // s o per il valid o per isopen
+        boolean status=false;
+        String[] gVector;
+        boolean recordFound;
+        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(this.fdn)))) {
+
+            while ((gVector = csvReader.readNext()) != null) {
+
+                recordFound = gVector[GETINDEXNEGOZIONOME].equals(shop.getNome());
+                if (recordFound) {
+
+                    Negozio n=new Negozio();
+
+                    n.setId(Integer.parseInt(gVector[GETINDEXNEGOZIOID]));
+                    n.setNome(gVector[GETINDEXNEGOZIONOME]);
+                    if(s.equals("isValid")) {
+                        if (gVector[GETINDEXNEGOZIOISVALID].equals("1")) {
+                            n.setIsValid(true);
+                            status = n.getIsValid();
+                        }
+                    }
+                    else if(s.equals("isOpen") && gVector[GETINDEXNEGOZIOISOPEN].equals("1")) {
+                            n.setIsOpen(true);
+                             status = n.getIsOpen();
+                        }
+
+
+                }
+
+
+            }
+        }
+
+        return status;
+
     }
 }
