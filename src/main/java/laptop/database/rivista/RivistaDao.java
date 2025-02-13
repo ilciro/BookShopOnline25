@@ -4,12 +4,12 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
+import laptop.database.DaoInitialize;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Factory;
 import laptop.model.raccolta.Raccolta;
 import laptop.model.raccolta.Rivista;
 import laptop.utilities.ConnToDb;
-import org.apache.ibatis.jdbc.ScriptRunner;
 
 import java.io.*;
 import java.sql.*;
@@ -183,40 +183,8 @@ public class RivistaDao extends PersistenzaRivista{
 
     @Override
     public void initializza() throws IOException, CsvValidationException, SQLException {
-        ConnToDb.generalConnection();
-        //creo tabella
-
-        try (Connection conn = ConnToDb.connectionToDB()) {
-
-
-            Reader reader = new BufferedReader(new FileReader("FileSql/" + RIVISTA + ".sql"));
-            ScriptRunner sr = new ScriptRunner(conn);
-            sr.setSendFullScript(false);
-            sr.runScript(reader);
-
-
-        }
-
-        //vedo se tabella vuoita
-        int row=0;
-        try(Connection conn=ConnToDb.connectionToDB();
-            PreparedStatement preQ=conn.prepareStatement("select count(*) from ISPW.RIVISTA;"))
-        {
-            ResultSet rs= preQ.executeQuery();
-            if(rs.next())
-                row=rs.getInt(1);
-        }
-        if(row==0)
-        {
-            try(Connection conn=ConnToDb.connectionToDB())
-            {
-                Reader reader = new BufferedReader(new FileReader("FileSql/popolaRivista.sql"));
-                ScriptRunner sr = new ScriptRunner(conn);
-                sr.setSendFullScript(false);
-                sr.runScript(reader);
-            }
-        }
-
+        DaoInitialize daoI=new DaoInitialize();
+        daoI.inizializza(RIVISTA);
         }
 
 

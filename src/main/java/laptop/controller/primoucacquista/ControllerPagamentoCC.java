@@ -109,6 +109,7 @@ public class ControllerPagamentoCC {
 			p.setEmail(User.getInstance().getEmail());
 		else p.setEmail(null);
 
+		vis.setTipoModifica("insert");
 
 
 		switch (vis.getType()) {

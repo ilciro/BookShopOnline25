@@ -67,6 +67,7 @@ laptop/view/primoucacquista/BoundaryHomePage.class
 laptop/controller/primoucacquista/ControllerAcquista.class
 laptop/view/secondouclogin/BoundaryAggiornaPassword.class
 laptop/model/Pagamento.class
+laptop/database/DaoInitialize.class
 laptop/model/raccolta/CategorieRivista.class
 laptop/view/primoucacquista/BoundaryCompravendita.class
 laptop/controller/terzoucgestioneprofilooggetto/ControllerVisualizzaProfilo.class

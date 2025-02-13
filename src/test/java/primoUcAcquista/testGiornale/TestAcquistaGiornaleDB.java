@@ -13,8 +13,9 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
- class TestAcquistaGiornaleDB {
+class TestAcquistaGiornaleDB {
 
     private final ControllerHomePage cHP=new ControllerHomePage();
     private final ControllerCompravendita cCopravendita=new ControllerCompravendita();
@@ -25,10 +26,12 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
     private static final String DATABASE="database";
     private static final String GIORNALE="giornale";
     private static final ResourceBundle RBUTENTE=ResourceBundle.getBundle("configurations/users");
+    private final ControllerPagamentoCC cPCC=new ControllerPagamentoCC();
+    private final ControllerScegliNegozio cSN=new ControllerScegliNegozio();
 
 
-    @Test
-    void testAcquistaGiornale() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException, DocumentException, URISyntaxException {
+     @Test
+    void testAcquistaGiornaleCash() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException, DocumentException, URISyntaxException {
         //inizializzo tabella giornale
         vis.setTypeAsDaily();
         cHP.persistenza(DATABASE);
@@ -44,6 +47,24 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
         cD.scarica(GIORNALE,DATABASE);
         assertNotEquals(0,vis.getId());
     }
+     @Test
+     void testAcquistaGiornaleCredito() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
+         //inizializzo tabella giornale
+         vis.setTypeAsDaily();
+         cHP.persistenza(DATABASE);
+         //prendo lista oggetti
+         cCopravendita.getLista(GIORNALE,DATABASE);
+         vis.setId(6);
+         //acquisto
+         cA.getPrezzo("2",DATABASE);
+         //pagamento cc
+         vis.setMetodoP("cCredito");
+         cPCC.pagamentoCC(RBUTENTE.getString("nome"),DATABASE);
+         //negozio
+         cSN.getNegozi(DATABASE);
+         boolean status=cSN.isOpen(DATABASE,2)&&cSN.isValid(DATABASE,2);
+         assertTrue(status);
+     }
 
 
 }

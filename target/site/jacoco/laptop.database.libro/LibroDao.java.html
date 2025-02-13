@@ -4,12 +4,12 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
+import laptop.database.DaoInitialize;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Factory;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
 import laptop.utilities.ConnToDb;
-import org.apache.ibatis.jdbc.ScriptRunner;
 
 import java.io.*;
 import java.sql.*;
@@ -201,41 +201,10 @@ public class LibroDao extends PersistenzaLibro{
     public void initializza() throws FileNotFoundException, SQLException {
 
 
-<span class="fc" id="L204">            ConnToDb.generalConnection();</span>
-            //creo tabella
+<span class="fc" id="L204">        DaoInitialize daoI=new DaoInitialize();</span>
+<span class="fc" id="L205">        daoI.inizializza(LIBRO);</span>
 
-<span class="fc" id="L207">               try (Connection conn = ConnToDb.connectionToDB()) {</span>
-
-
-<span class="fc" id="L210">                    Reader reader = new BufferedReader(new FileReader(&quot;FileSql/&quot; + LIBRO + &quot;.sql&quot;));</span>
-<span class="fc" id="L211">                    ScriptRunner sr = new ScriptRunner(conn);</span>
-<span class="fc" id="L212">                    sr.setSendFullScript(false);</span>
-<span class="fc" id="L213">                    sr.runScript(reader);</span>
-
-
-            }
-
-            //vedo se tabella vuoita
-<span class="fc" id="L219">            int row=0;</span>
-<span class="fc" id="L220">            try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L221">            PreparedStatement preQ=conn.prepareStatement(&quot;select count(*) from ISPW.LIBRO;&quot;))</span>
-            {
-<span class="fc" id="L223">                ResultSet rs= preQ.executeQuery();</span>
-<span class="pc bpc" id="L224" title="1 of 2 branches missed.">                if(rs.next())</span>
-<span class="fc" id="L225">                    row=rs.getInt(1);</span>
-            }
-<span class="fc bfc" id="L227" title="All 2 branches covered.">            if(row==0)</span>
-            {
-<span class="fc" id="L229">                try(Connection conn=ConnToDb.connectionToDB())</span>
-                {
-<span class="fc" id="L231">                    Reader reader = new BufferedReader(new FileReader(&quot;FileSql/popolaLibro.sql&quot;));</span>
-<span class="fc" id="L232">                    ScriptRunner sr = new ScriptRunner(conn);</span>
-<span class="fc" id="L233">                    sr.setSendFullScript(false);</span>
-<span class="fc" id="L234">                    sr.runScript(reader);</span>
-                }
-            }
-
-<span class="fc" id="L238">    }</span>
+<span class="fc" id="L207">    }</span>
 
 
 
@@ -246,22 +215,22 @@ public class LibroDao extends PersistenzaLibro{
 
     private String[] retLibro(Libro l)
     {
-<span class="fc" id="L249">        String [] roba=new String[13];</span>
-<span class="fc" id="L250">        roba[0]=l.getTitolo();</span>
-<span class="fc" id="L251">        roba[1]= String.valueOf(l.getNrPagine());</span>
-<span class="fc" id="L252">        roba[2]=l.getCodIsbn();</span>
-<span class="fc" id="L253">        roba[3]=l.getEditore();</span>
-<span class="fc" id="L254">        roba[4]=l.getAutore();</span>
-<span class="fc" id="L255">        roba[5]=l.getLingua();</span>
-<span class="fc" id="L256">        roba[6]=l.getCategoria();</span>
-<span class="fc" id="L257">        roba[7]= String.valueOf(l.getDataPubb());</span>
-<span class="fc" id="L258">        roba[8]=l.getRecensione();</span>
-<span class="fc" id="L259">        roba[9]= String.valueOf(l.getNrCopie());</span>
-<span class="fc" id="L260">        roba[10]=l.getDesc();</span>
-<span class="fc" id="L261">        roba[11]= String.valueOf(l.getDisponibilita());</span>
-<span class="fc" id="L262">        roba[12]= String.valueOf(l.getPrezzo());</span>
+<span class="fc" id="L218">        String [] roba=new String[13];</span>
+<span class="fc" id="L219">        roba[0]=l.getTitolo();</span>
+<span class="fc" id="L220">        roba[1]= String.valueOf(l.getNrPagine());</span>
+<span class="fc" id="L221">        roba[2]=l.getCodIsbn();</span>
+<span class="fc" id="L222">        roba[3]=l.getEditore();</span>
+<span class="fc" id="L223">        roba[4]=l.getAutore();</span>
+<span class="fc" id="L224">        roba[5]=l.getLingua();</span>
+<span class="fc" id="L225">        roba[6]=l.getCategoria();</span>
+<span class="fc" id="L226">        roba[7]= String.valueOf(l.getDataPubb());</span>
+<span class="fc" id="L227">        roba[8]=l.getRecensione();</span>
+<span class="fc" id="L228">        roba[9]= String.valueOf(l.getNrCopie());</span>
+<span class="fc" id="L229">        roba[10]=l.getDesc();</span>
+<span class="fc" id="L230">        roba[11]= String.valueOf(l.getDisponibilita());</span>
+<span class="fc" id="L231">        roba[12]= String.valueOf(l.getPrezzo());</span>
 
-<span class="fc" id="L264">        return  roba;</span>
+<span class="fc" id="L233">        return  roba;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

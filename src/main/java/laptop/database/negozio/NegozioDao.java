@@ -8,11 +8,11 @@ import java.sql.SQLException;
 
 import java.util.logging.Level;
 
+import laptop.database.DaoInitialize;
 import laptop.model.Negozio;
 import laptop.utilities.ConnToDb;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.apache.ibatis.jdbc.ScriptRunner;
 
 public class NegozioDao extends PersistenzaNegozio{
 	private String query;
@@ -108,38 +108,7 @@ public class NegozioDao extends PersistenzaNegozio{
 
 	@Override
 	public void initializza() throws IOException, SQLException {
-		ConnToDb.generalConnection();
-		//creo tabella
-
-		try (Connection conn = ConnToDb.connectionToDB()) {
-
-
-			Reader reader = new BufferedReader(new FileReader("FileSql/negozio.sql"));
-			ScriptRunner sr = new ScriptRunner(conn);
-			sr.setSendFullScript(false);
-			sr.runScript(reader);
-
-
-		}
-
-		//vedo se tabella vuoita
-		int row=0;
-		try(Connection conn=ConnToDb.connectionToDB();
-			PreparedStatement preQ=conn.prepareStatement("select count(*) from ISPW.NEGOZIO;"))
-		{
-			ResultSet rs= preQ.executeQuery();
-			if(rs.next())
-				row=rs.getInt(1);
-		}
-		if(row==0)
-		{
-			try(Connection conn=ConnToDb.connectionToDB())
-			{
-				Reader reader = new BufferedReader(new FileReader("FileSql/popolaNegozio.sql"));
-				ScriptRunner sr = new ScriptRunner(conn);
-				sr.setSendFullScript(false);
-				sr.runScript(reader);
-			}
-		}
+		DaoInitialize daoI=new DaoInitialize();
+		daoI.inizializza("negozio");
 	}
 }

@@ -2,9 +2,9 @@ package laptop.database.cartacredito;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.database.DaoInitialize;
 import laptop.model.CartaDiCredito;
 import laptop.utilities.ConnToDb;
-import org.apache.ibatis.jdbc.ScriptRunner;
 
 import java.io.*;
 import java.sql.*;
@@ -15,22 +15,15 @@ public class CartaCreditoDao extends PersistenzaCC{
 
     @Override
     public void inizializza() throws IOException, ClassNotFoundException, SQLException {
-            ConnToDb.generalConnection();
-            try (Connection conn = ConnToDb.connectionToDB()) {
-
-                Reader reader = new BufferedReader(new FileReader("FileSql/cartacredito.sql"));
-                ScriptRunner sr = new ScriptRunner(conn);
-                sr.setSendFullScript(false);
-                sr.runScript(reader);
-
-        }
-
+        DaoInitialize daoI=new DaoInitialize();
+        daoI.inizializza("cartacredito");
 
 
     }
 
     private String query;
     private static final String ECCEZIONE="eccezione ottenuta :";
+
 
     @Override
     public boolean insCC(CartaDiCredito cc) {

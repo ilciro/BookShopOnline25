@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DaoInitialize.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database</a> &gt; <span class="el_source">DaoInitialize.java</span></div><h1>DaoInitialize.java</h1><pre class="source lang-java linenums">package laptop.database;
+
+import laptop.utilities.ConnToDb;
+import org.apache.ibatis.jdbc.ScriptRunner;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+<span class="fc" id="L17">public class DaoInitialize {</span>
+    //class used for reduce duplication
+
+    private static final String LIBRO = &quot;libro&quot;;
+    private static final String GIORNALE = &quot;giornale&quot;;
+    private static final String RIVISTA = &quot;rivista&quot;;
+    private static final String UTENTE=&quot;users&quot;;
+    private static final String NEGOZIO=&quot;negozio&quot;;
+    private static final String FATTURA=&quot;fattura&quot;;
+    private static final String PAGAMENTO=&quot;pagamento&quot;;
+    private static final String CARTACREDITO=&quot;cartacredito&quot;;
+    private static final String FILESQL=&quot;FileSql/&quot;;
+
+    private   String query ;
+<span class="fc" id="L31">    private  String filePopola = &quot;&quot;;</span>
+
+
+
+    public void inizializza(String type) throws SQLException,FileNotFoundException {
+        String nomeFile;
+
+
+
+
+
+<span class="pc bpc" id="L42" title="1 of 9 branches missed.">        switch (type) {</span>
+            case LIBRO -&gt; {
+<span class="fc" id="L44">                nomeFile = FILESQL + LIBRO + &quot;.sql&quot;;</span>
+<span class="fc" id="L45">                query = &quot;select count(*) from ISPW.LIBRO;&quot;;</span>
+<span class="fc" id="L46">                filePopola = FILESQL + &quot;popolaLibro.sql&quot;;</span>
+<span class="fc" id="L47">            }</span>
+            case GIORNALE -&gt; {
+<span class="fc" id="L49">                nomeFile = FILESQL + GIORNALE + &quot;.sql&quot;;</span>
+<span class="fc" id="L50">                query = &quot;select count(*) from ISPW.GIORNALE;&quot;;</span>
+<span class="fc" id="L51">                filePopola = FILESQL + &quot;popolaGiornale.sql&quot;;</span>
+
+<span class="fc" id="L53">            }</span>
+            case RIVISTA -&gt; {
+<span class="fc" id="L55">                nomeFile = FILESQL + RIVISTA + &quot;.sql&quot;;</span>
+<span class="fc" id="L56">                query = &quot;select count(*) from ISPW.RIVISTA;&quot;;</span>
+<span class="fc" id="L57">                filePopola = FILESQL + &quot;popolaRivista.sql&quot;;</span>
+
+<span class="fc" id="L59">            }</span>
+            case UTENTE -&gt; {
+<span class="fc" id="L61">                nomeFile = FILESQL + UTENTE + &quot;.sql&quot;;</span>
+<span class="fc" id="L62">                query = &quot;select count(*) from ISPW.USERS;&quot;;</span>
+<span class="fc" id="L63">                filePopola = FILESQL + &quot;popolaUsers.sql&quot;;</span>
+<span class="fc" id="L64">            }</span>
+            case NEGOZIO -&gt; {
+<span class="fc" id="L66">                nomeFile = FILESQL + NEGOZIO + &quot;.sql&quot;;</span>
+<span class="fc" id="L67">                query = &quot;select count(*) from ISPW.NEGOZIO;&quot;;</span>
+<span class="fc" id="L68">                filePopola = FILESQL + &quot;popolaNegozio.sql&quot;;</span>
+<span class="fc" id="L69">            }</span>
+<span class="fc" id="L70">            case FATTURA -&gt;  nomeFile = FILESQL + FATTURA + &quot;.sql&quot;;</span>
+<span class="fc" id="L71">            case PAGAMENTO -&gt;   nomeFile = FILESQL + PAGAMENTO + &quot;.sql&quot;;</span>
+<span class="fc" id="L72">            case CARTACREDITO -&gt; nomeFile = FILESQL + CARTACREDITO + &quot;.sql&quot;;</span>
+
+            default -&gt; {
+<span class="nc" id="L75">                return;</span>
+            }
+
+        }
+
+        //type is libro,giornale,rivista
+<span class="fc" id="L81">        ConnToDb.generalConnection();</span>
+        //creo tabella
+
+
+<span class="fc" id="L85">        try (Connection conn = ConnToDb.connectionToDB()) {</span>
+
+
+<span class="fc" id="L88">            Reader reader = new BufferedReader(new FileReader(nomeFile));</span>
+<span class="fc" id="L89">            ScriptRunner sr = new ScriptRunner(conn);</span>
+<span class="fc" id="L90">            sr.setSendFullScript(false);</span>
+<span class="fc" id="L91">            sr.runScript(reader);</span>
+
+
+        }
+<span class="fc bfc" id="L95" title="All 6 branches covered.">        if (type.equals(FATTURA) || type.equals(PAGAMENTO)|| type.equals(CARTACREDITO)){</span>
+<span class="fc" id="L96">            Logger.getLogger(&quot;inizializza db pagamento/fattura/cartacredito&quot;).log(Level.INFO,&quot; tables not pupulated&quot;);</span>
+        }
+        else {
+
+            //vedo se tabella vuoita
+<span class="fc" id="L101">            int row = 0;</span>
+<span class="fc" id="L102">            try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="fc" id="L103">                 PreparedStatement preQ = conn.prepareStatement(query)) {</span>
+<span class="fc" id="L104">                ResultSet rs = preQ.executeQuery();</span>
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">                if (rs.next())</span>
+<span class="fc" id="L106">                    row = rs.getInt(1);</span>
+            }
+<span class="fc bfc" id="L108" title="All 2 branches covered.">            if (row == 0) {</span>
+<span class="fc" id="L109">                try (Connection conn = ConnToDb.connectionToDB()) {</span>
+<span class="fc" id="L110">                    Reader reader = new BufferedReader(new FileReader(filePopola));</span>
+<span class="fc" id="L111">                    ScriptRunner sr = new ScriptRunner(conn);</span>
+<span class="fc" id="L112">                    sr.setSendFullScript(false);</span>
+<span class="fc" id="L113">                    sr.runScript(reader);</span>
+                }
+            }
+
+        }
+<span class="fc" id="L118">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

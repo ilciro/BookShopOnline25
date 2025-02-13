@@ -1,9 +1,9 @@
 package laptop.database.fattura;
 
 import laptop.controller.ControllerSystemState;
+import laptop.database.DaoInitialize;
 import laptop.model.Fattura;
 import laptop.utilities.ConnToDb;
-import org.apache.ibatis.jdbc.ScriptRunner;
 
 import java.io.*;
 import java.sql.Connection;
@@ -97,14 +97,8 @@ public class ContrassegnoDao extends PersistenzaFattura {
 
     @Override
     public void inizializza() throws IOException, ClassNotFoundException, SQLException {
-        ConnToDb.generalConnection();
-        try(Connection conn=ConnToDb.connectionToDB()) {
-
-                Reader reader = new BufferedReader(new FileReader("FileSql/fattura.sql"));
-                ScriptRunner sr = new ScriptRunner(conn);
-                sr.setSendFullScript(false);
-                sr.runScript(reader);
-            }
+        DaoInitialize daoI=new DaoInitialize();
+        daoI.inizializza("fattura");
 
     }
 }

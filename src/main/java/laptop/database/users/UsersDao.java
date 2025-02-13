@@ -12,11 +12,11 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
+import laptop.database.DaoInitialize;
 import laptop.exception.IdException;
 import laptop.utilities.ConnToDb;
 import laptop.model.user.TempUser;
 import laptop.model.user.User;
-import org.apache.ibatis.jdbc.ScriptRunner;
 import org.jetbrains.annotations.NotNull;
 
 
@@ -139,38 +139,8 @@ public class UsersDao extends PersistenzaUtente {
 	@Override
 	public void initializza() throws CsvValidationException, IOException, IdException, SQLException {
 
-		ConnToDb.generalConnection();
-		//creo tabella
-
-		try (Connection conn = ConnToDb.connectionToDB()) {
-
-
-			Reader reader = new BufferedReader(new FileReader("FileSql/users.sql"));
-			ScriptRunner sr = new ScriptRunner(conn);
-			sr.setSendFullScript(false);
-			sr.runScript(reader);
-
-
-		}
-
-		//vedo se tabella vuoita
-		try(Connection conn=ConnToDb.connectionToDB();
-			PreparedStatement preQ=conn.prepareStatement("select count(*) from ISPW.USERS;"))
-		{
-			ResultSet rs= preQ.executeQuery();
-			if(rs.next())
-				row=rs.getInt(1);
-		}
-		if(row==0)
-		{
-			try(Connection conn=ConnToDb.connectionToDB())
-			{
-				Reader reader = new BufferedReader(new FileReader("FileSql/popolaUsers.sql"));
-				ScriptRunner sr = new ScriptRunner(conn);
-				sr.setSendFullScript(false);
-				sr.runScript(reader);
-			}
-		}
+		DaoInitialize daoI=new DaoInitialize();
+		daoI.inizializza("users");
     }
 
 

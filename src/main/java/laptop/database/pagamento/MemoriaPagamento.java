@@ -52,6 +52,7 @@ public class MemoriaPagamento extends PersistenzaPagamento{
 
         }
 
+
         return lista.get(lista.size()-1);
     }
 
@@ -70,7 +71,7 @@ public class MemoriaPagamento extends PersistenzaPagamento{
         {
 
 
-            if(i-1==p.getIdPag()) {
+            if(i==p.getIdPag()-1) {
 
                 Logger.getLogger("cancella pagamento").log(Level.INFO,"id fattura {0}.",p.getIdPag());
 

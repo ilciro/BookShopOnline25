@@ -27,8 +27,8 @@ import java.util.logging.Logger;
 
 	
 	public ObservableList&lt;Negozio&gt; getNegozi(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
-<span class="pc bpc" id="L30" title="3 of 4 branches missed.">		switch (type) {</span>
-<span class="nc" id="L31">			case DATABASE -&gt; pN = new NegozioDao();</span>
+<span class="pc bpc" id="L30" title="2 of 4 branches missed.">		switch (type) {</span>
+<span class="fc" id="L31">			case DATABASE -&gt; pN = new NegozioDao();</span>
 <span class="fc" id="L32">			case FILE -&gt; pN = new CsvNegozio();</span>
 <span class="nc" id="L33">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
 <span class="nc" id="L34">			default -&gt; Logger.getLogger(&quot;get negozi&quot;).log(Level.SEVERE,&quot;  empty list!!&quot;);</span>
@@ -39,8 +39,8 @@ import java.util.logging.Logger;
 
 	public boolean isOpen(String type,int id) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
 
-<span class="pc bpc" id="L42" title="3 of 4 branches missed.">		switch (type) {</span>
-<span class="nc" id="L43">			case DATABASE -&gt; pN = new NegozioDao();</span>
+<span class="pc bpc" id="L42" title="2 of 4 branches missed.">		switch (type) {</span>
+<span class="fc" id="L43">			case DATABASE -&gt; pN = new NegozioDao();</span>
 <span class="fc" id="L44">			case FILE -&gt; pN = new CsvNegozio();</span>
 <span class="nc" id="L45">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
 <span class="nc" id="L46">			default -&gt; Logger.getLogger(&quot;is open&quot;).log(Level.SEVERE,&quot;  is open il null!!&quot;);</span>
@@ -51,8 +51,8 @@ import java.util.logging.Logger;
 	}
 	public boolean isValid(String type,int id) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
 
-<span class="pc bpc" id="L54" title="3 of 4 branches missed.">		switch (type) {</span>
-<span class="nc" id="L55">			case DATABASE -&gt; pN = new NegozioDao();</span>
+<span class="pc bpc" id="L54" title="2 of 4 branches missed.">		switch (type) {</span>
+<span class="fc" id="L55">			case DATABASE -&gt; pN = new NegozioDao();</span>
 <span class="fc" id="L56">			case FILE -&gt; pN = new CsvNegozio();</span>
 <span class="nc" id="L57">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
 <span class="nc" id="L58">			default -&gt; Logger.getLogger(&quot;is valid&quot;).log(Level.SEVERE,&quot;  is open il null!!&quot;);</span>

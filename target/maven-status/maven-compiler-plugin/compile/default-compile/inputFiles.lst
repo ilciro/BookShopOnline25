@@ -21,6 +21,7 @@
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/terzoucgestioneprofilooggetto/ControllerUtenti.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/terzoucgestioneprofilooggetto/ControllerVisualizzaOrdini.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/terzoucgestioneprofilooggetto/ControllerVisualizzaProfilo.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/DaoInitialize.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/cartacredito/CartaCreditoDao.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/cartacredito/CsvCartaCredito.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/cartacredito/MemoriaCartaCredito.java

@@ -76,9 +76,9 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 <span class="fc" id="L76">                    Negozio n=new Negozio();</span>
 <span class="fc" id="L77">                    n.setId(Integer.parseInt(gVector[GETINDEXNEGOZIOID]));</span>
 <span class="fc" id="L78">                    n.setNome(gVector[GETINDEXNEGOZIONOME]);</span>
-<span class="pc bpc" id="L79" title="1 of 2 branches missed.">                    if(gVector[GETINDEXNEGOZIOISOPEN].equals(&quot;1&quot;))</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">                    if(gVector[GETINDEXNEGOZIOISOPEN].equals(&quot;1&quot;))</span>
 <span class="fc" id="L80">                        n.setIsOpen(true);</span>
-<span class="pc bpc" id="L81" title="1 of 2 branches missed.">                    if(Boolean.TRUE.equals(n.getIsOpen())) status=true;</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">                    if(Boolean.TRUE.equals(n.getIsOpen())) status=true;</span>
 
 <span class="fc" id="L83">                }</span>
 

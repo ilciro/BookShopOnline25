@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: terzoUcGestione.visualizzaProfiloModifica.TestControllerVisualizzaProfilo
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.801 s - in terzoUcGestione.visualizzaProfiloModifica.TestControllerVisualizzaProfilo
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.016 s - in terzoUcGestione.visualizzaProfiloModifica.TestControllerVisualizzaProfilo

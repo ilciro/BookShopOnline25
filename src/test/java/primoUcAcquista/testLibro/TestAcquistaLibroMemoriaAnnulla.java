@@ -20,15 +20,18 @@ class TestAcquistaLibroMemoriaAnnulla {
     private final ControllerAnnullaPagamento cAP=new ControllerAnnullaPagamento();
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
     private static final String MEMORIA="memoria";
+    private static final String LIBRO="libro";
     private static final ResourceBundle RBUTENTE=ResourceBundle.getBundle("configurations/users");
+    private final ControllerPagamentoCC cPCC=new ControllerPagamentoCC();
 
     @Test
-    void testAcquistaLibro() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
+    void testAcquistaLibroCash() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
         //inizializzo tabella giornale
         vis.setTypeAsBook();
+        vis.setTipoModifica("insert");
         cHP.persistenza(MEMORIA);
         //prendo lista oggetti
-        cCopravendita.getLista("libro",MEMORIA);
+        cCopravendita.getLista(LIBRO,MEMORIA);
         vis.setId(2);
         //acquisto
         cA.getPrezzo("3",MEMORIA);
@@ -63,6 +66,38 @@ class TestAcquistaLibroMemoriaAnnulla {
 
         assertTrue(cAP.cancellaFattura(String.valueOf(numeroFattura),MEMORIA));
 
+
+    }
+
+    @Test
+    void testAcquistaLibroCredito() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
+        //inizializzo tabella giornale
+        vis.setTypeAsBook();
+        cHP.persistenza(MEMORIA);
+        vis.setTipoModifica("insert");
+        //prendo lista oggetti
+        cCopravendita.getLista(LIBRO,MEMORIA);
+        vis.setId(2);
+        //acquisto
+        cA.getPrezzo("3",MEMORIA);
+        //pagamento cc
+        vis.setMetodoP("cCredito");
+        cPCC.pagamentoCC(RBUTENTE.getString("nome"),MEMORIA);
+        //anulla pagamento
+
+        int numeroPagamento=0;
+        String[] arrP=cAP.getPagamento(MEMORIA).split(", ");
+
+
+        for(String s1:arrP)
+        {
+            if(s1.contains("[id"))
+            {
+                String[] bb = s1.split("=");
+                numeroPagamento=Integer.parseInt(bb[1]);
+            }
+        }
+        assertTrue(cAP.cancellaPagamento(String.valueOf(numeroPagamento),MEMORIA));
 
     }
 }

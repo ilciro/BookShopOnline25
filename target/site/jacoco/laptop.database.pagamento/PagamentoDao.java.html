@@ -2,10 +2,10 @@
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.database.DaoInitialize;
 import laptop.model.Pagamento;
 import laptop.model.user.User;
 import laptop.utilities.ConnToDb;
-import org.apache.ibatis.jdbc.ScriptRunner;
 
 import java.io.*;
 import java.sql.Connection;
@@ -89,44 +89,36 @@ import java.util.logging.Logger;
 
     @Override
     public void inizializza() throws IOException, ClassNotFoundException, SQLException {
-<span class="fc" id="L92">        ConnToDb.generalConnection();</span>
-<span class="fc" id="L93">        try(Connection conn=ConnToDb.connectionToDB()) {</span>
-
-
-<span class="fc" id="L96">                Reader reader = new BufferedReader(new FileReader(&quot;FileSql/pagamento.sql&quot;));</span>
-<span class="fc" id="L97">                ScriptRunner sr = new ScriptRunner(conn);</span>
-<span class="fc" id="L98">                sr.setSendFullScript(false);</span>
-<span class="fc" id="L99">                sr.runScript(reader);</span>
-
-        }
-<span class="fc" id="L102">    }</span>
+<span class="fc" id="L92">        DaoInitialize daoI=new DaoInitialize();</span>
+<span class="fc" id="L93">        daoI.inizializza(&quot;pagamento&quot;);</span>
+<span class="fc" id="L94">    }</span>
 
     @Override
     public ObservableList&lt;Pagamento&gt; listPagamentiByUser(Pagamento pag) {
-<span class="fc" id="L106">        ObservableList&lt;Pagamento&gt; list= FXCollections.observableArrayList();</span>
+<span class="fc" id="L98">        ObservableList&lt;Pagamento&gt; list= FXCollections.observableArrayList();</span>
 
-<span class="fc" id="L108">        query=&quot;select  idPagamento,metodo,spesaTotale,tipoAcquisto,idProdotto from PAGAMENTO where email=?&quot;;</span>
-<span class="fc" id="L109">        try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L110">            PreparedStatement prepQ=conn.prepareStatement(query)){</span>
-<span class="fc" id="L111">            prepQ.setString(1,pag.getEmail());</span>
+<span class="fc" id="L100">        query=&quot;select  idPagamento,metodo,spesaTotale,tipoAcquisto,idProdotto from PAGAMENTO where email=?&quot;;</span>
+<span class="fc" id="L101">        try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L102">            PreparedStatement prepQ=conn.prepareStatement(query)){</span>
+<span class="fc" id="L103">            prepQ.setString(1,pag.getEmail());</span>
 
-<span class="fc" id="L113">            ResultSet rs=prepQ.executeQuery();</span>
-<span class="fc bfc" id="L114" title="All 2 branches covered.">            while (rs.next())</span>
+<span class="fc" id="L105">            ResultSet rs=prepQ.executeQuery();</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">            while (rs.next())</span>
             {
-<span class="fc" id="L116">                Pagamento p=new Pagamento();</span>
-<span class="fc" id="L117">                p.setIdPag(rs.getInt(1));</span>
-<span class="fc" id="L118">                p.setMetodo(rs.getString(2));</span>
-<span class="fc" id="L119">                p.setAmmontare(rs.getFloat(3));</span>
-<span class="fc" id="L120">                p.setTipo(rs.getString(4));</span>
-<span class="fc" id="L121">                p.setIdOggetto(rs.getInt(5));</span>
-<span class="fc" id="L122">                list.add(p);</span>
-<span class="fc" id="L123">            }</span>
+<span class="fc" id="L108">                Pagamento p=new Pagamento();</span>
+<span class="fc" id="L109">                p.setIdPag(rs.getInt(1));</span>
+<span class="fc" id="L110">                p.setMetodo(rs.getString(2));</span>
+<span class="fc" id="L111">                p.setAmmontare(rs.getFloat(3));</span>
+<span class="fc" id="L112">                p.setTipo(rs.getString(4));</span>
+<span class="fc" id="L113">                p.setIdOggetto(rs.getInt(5));</span>
+<span class="fc" id="L114">                list.add(p);</span>
+<span class="fc" id="L115">            }</span>
 
-<span class="nc" id="L125">        }catch(SQLException e)</span>
+<span class="nc" id="L117">        }catch(SQLException e)</span>
         {
-<span class="nc" id="L127">            java.util.logging.Logger.getLogger(&quot;return pagamento&quot;).log(Level.INFO, ECCEZIONE, e);</span>
-<span class="fc" id="L128">        }</span>
-<span class="fc" id="L129">        return list;</span>
+<span class="nc" id="L119">            java.util.logging.Logger.getLogger(&quot;return pagamento&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+<span class="fc" id="L120">        }</span>
+<span class="fc" id="L121">        return list;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

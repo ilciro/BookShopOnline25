@@ -26,6 +26,7 @@ class TestAcquistaRivistaMemoriaAnnulla {
     void testAcquistaRivista() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
         //inizializzo tabella giornale
         vis.setTypeAsMagazine();
+        vis.setTipoModifica("insert");
         cHP.persistenza(MEMORIA);
         //prendo lista oggetti
         cCopravendita.getLista("rivista",MEMORIA);

@@ -4,12 +4,12 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
+import laptop.database.DaoInitialize;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Factory;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Raccolta;
 import laptop.utilities.ConnToDb;
-import org.apache.ibatis.jdbc.ScriptRunner;
 
 import java.io.*;
 import java.sql.*;
@@ -189,37 +189,9 @@ public class GiornaleDao extends PersistenzaGiornale{
     public void initializza() throws FileNotFoundException, SQLException {
 
 
-<span class="fc" id="L192">        ConnToDb.generalConnection();</span>
-        //creo tabella
-
-<span class="fc" id="L195">        try (Connection conn = ConnToDb.connectionToDB()) {</span>
-
-
-<span class="fc" id="L198">            Reader reader = new BufferedReader(new FileReader(&quot;FileSql/&quot; + GIORNALE + &quot;.sql&quot;));</span>
-<span class="fc" id="L199">            ScriptRunner sr = new ScriptRunner(conn);</span>
-<span class="fc" id="L200">            sr.setSendFullScript(false);</span>
-<span class="fc" id="L201">            sr.runScript(reader);</span>
-
-
-        }
-
-        //vedo se tabella vuoita
-<span class="fc" id="L207">        int row = 0;</span>
-<span class="fc" id="L208">        try (Connection conn = ConnToDb.connectionToDB();</span>
-<span class="fc" id="L209">             PreparedStatement preQ = conn.prepareStatement(&quot;select count(*) from ISPW.GIORNALE;&quot;)) {</span>
-<span class="fc" id="L210">            ResultSet rs = preQ.executeQuery();</span>
-<span class="pc bpc" id="L211" title="1 of 2 branches missed.">            if (rs.next())</span>
-<span class="fc" id="L212">                row = rs.getInt(1);</span>
-        }
-<span class="fc bfc" id="L214" title="All 2 branches covered.">        if (row == 0) {</span>
-<span class="fc" id="L215">            try (Connection conn = ConnToDb.connectionToDB()) {</span>
-<span class="fc" id="L216">                Reader reader = new BufferedReader(new FileReader(&quot;FileSql/popolaGiornale.sql&quot;));</span>
-<span class="fc" id="L217">                ScriptRunner sr = new ScriptRunner(conn);</span>
-<span class="fc" id="L218">                sr.setSendFullScript(false);</span>
-<span class="fc" id="L219">                sr.runScript(reader);</span>
-            }
-        }
-<span class="fc" id="L222">    }</span>
+<span class="fc" id="L192">        DaoInitialize daoI=new DaoInitialize();</span>
+<span class="fc" id="L193">        daoI.inizializza(GIORNALE);</span>
+<span class="fc" id="L194">    }</span>
 
 
 }
