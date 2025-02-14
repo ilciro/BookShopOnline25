@@ -14,8 +14,8 @@ import java.util.List;
 
 public class PersistenzaUtente {
     private static final String DATABASE="FileSql/users.sql";
-    private static final String FILE="report/reportUtenti.csv";
-    private static final String MEMORIA="memory/serializzazioneUtenti.ser";
+    private static final String FILE="report/reportUtente.csv";
+    private static final String MEMORIA="memory/serializzazioneUtente.ser";
     private static final String DATABASEXCEPTION="file sql not exists";
     private static final String FILEXCEPTION="file csv not exists";
     private static final String MEMORIAEXCEPTION="class not in memory";
@@ -47,7 +47,8 @@ public class PersistenzaUtente {
         if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);
         if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);
         if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
-        if(!Files.exists(Path.of("FileSql/popolaUser.sql"))) throw new SQLException("file fo populate db users not found!");
-        else throw new IdException(IDEXCEPTIONMESSAGE);
+        if(!Files.exists(Path.of("FileSql/popolaUsers.sql"))) throw new SQLException("file fo populate db users not found!");
+        if(!Files.exists(Path.of(DATABASE))) throw new IdException(IDEXCEPTIONMESSAGE);
+
     }
 }

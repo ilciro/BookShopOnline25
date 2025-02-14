@@ -3,6 +3,7 @@
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.database.PersistenzaInitialize;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
@@ -13,7 +14,7 @@ import java.nio.file.Path;
 import java.sql.SQLException;
 
 
-<span class="fc" id="L16">public  class PersistenzaLibro {</span>
+<span class="fc" id="L17">public  class PersistenzaLibro {</span>
     private static final String DATABASE=&quot;FileSql/libro.sql&quot;;
     private static final String FILE=&quot;report/reportLibro.csv&quot;;
     private static final String MEMORIA=&quot;memory/serializzazioneLibro.ser&quot;;
@@ -25,43 +26,41 @@ import java.sql.SQLException;
 
      public  boolean inserisciLibro(Libro l) throws CsvValidationException, IOException, ClassNotFoundException {
 
-<span class="nc bnc" id="L28" title="All 2 branches missed.">         if(l.getId()==0) throw new IOException(&quot; file not found or id null&quot;);</span>
-<span class="nc bnc" id="L29" title="All 2 branches missed.">         if(l.getCodIsbn().isEmpty()) throw new CsvValidationException(&quot; codice isbn insert book is null&quot;);</span>
-<span class="nc bnc" id="L30" title="All 2 branches missed.">         if(l.getTitolo().isEmpty()) throw new ClassNotFoundException(&quot;class not found or titolo insert book is null&quot;);</span>
-<span class="nc" id="L31">         return true;}</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">         if(l.getId()==0) throw new IOException(&quot; file not found or id null&quot;);</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">         if(l.getCodIsbn().isEmpty()) throw new CsvValidationException(&quot; codice isbn insert book is null&quot;);</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">         if(l.getTitolo().isEmpty()) throw new ClassNotFoundException(&quot;class not found or titolo insert book is null&quot;);</span>
+<span class="nc" id="L32">         return true;}</span>
      public  boolean removeLibroById(Libro l) throws CsvValidationException, IOException, ClassNotFoundException {
-<span class="nc bnc" id="L33" title="All 2 branches missed.">         if(l.getId()==0) throw new IOException(&quot; file not found or id null&quot;);</span>
-<span class="nc bnc" id="L34" title="All 2 branches missed.">         if(l.getCodIsbn().isEmpty()) throw new CsvValidationException(&quot; codice isbn is null&quot;);</span>
-<span class="nc bnc" id="L35" title="All 2 branches missed.">         if(l.getTitolo().isEmpty()) throw new ClassNotFoundException(&quot;class not found or titolo is null&quot;);</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">         if(l.getId()==0) throw new IOException(&quot; file not found or id null&quot;);</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">         if(l.getCodIsbn().isEmpty()) throw new CsvValidationException(&quot; codice isbn is null&quot;);</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">         if(l.getTitolo().isEmpty()) throw new ClassNotFoundException(&quot;class not found or titolo is null&quot;);</span>
 
-<span class="nc" id="L37">         return false;}</span>
+<span class="nc" id="L38">         return false;}</span>
     public  ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="nc bnc" id="L39" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);</span>
-<span class="nc bnc" id="L40" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);</span>
-<span class="nc bnc" id="L41" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
-<span class="nc" id="L42">        else throw new IdException(IDEXCEPTIONMESSAGE);</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
+<span class="nc" id="L43">        else throw new IdException(IDEXCEPTIONMESSAGE);</span>
 
     }
      public ObservableList&lt;Libro&gt; getLibroByIdTitoloAutoreLibro(Libro l) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 
-<span class="nc bnc" id="L47" title="All 2 branches missed.">         if(l.getId()==0) throw new IOException(&quot; file not found or id 0&quot;);</span>
-<span class="nc bnc" id="L48" title="All 2 branches missed.">         if(l.getCodIsbn().isEmpty()) throw new CsvValidationException(&quot; codice isbn is null&quot;);</span>
-<span class="nc bnc" id="L49" title="All 2 branches missed.">         if(l.getTitolo().isEmpty()) throw new ClassNotFoundException(&quot;class not found or titolo is null&quot;);</span>
-<span class="nc bnc" id="L50" title="All 2 branches missed.">         if(l.getId()&lt;0) throw new IdException(&quot; id is lower than 0&quot;);</span>
-<span class="nc" id="L51">         return FXCollections.observableArrayList();</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">         if(l.getId()==0) throw new IOException(&quot; file not found or id 0&quot;);</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">         if(l.getCodIsbn().isEmpty()) throw new CsvValidationException(&quot; codice isbn is null&quot;);</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">         if(l.getTitolo().isEmpty()) throw new ClassNotFoundException(&quot;class not found or titolo is null&quot;);</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">         if(l.getId()&lt;0) throw new IdException(&quot; id book is lower than 0&quot;);</span>
+<span class="nc" id="L52">         return FXCollections.observableArrayList();</span>
 
      }
     public void initializza() throws IOException, CsvValidationException, ClassNotFoundException, SQLException {
-<span class="nc bnc" id="L55" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);</span>
-<span class="nc bnc" id="L56" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);</span>
-<span class="nc bnc" id="L57" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
-<span class="nc" id="L58">        else throw new SQLException(IDEXCEPTIONMESSAGE);</span>
-    }
+<span class="fc" id="L56">        PersistenzaInitialize pI=new PersistenzaInitialize();</span>
+<span class="fc" id="L57">        pI.initializza(&quot;libro&quot;);</span>
+<span class="fc" id="L58">    }</span>
     public ObservableList&lt;Libro&gt; getLibri() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="nc bnc" id="L61" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IdException(DATABASEXCEPTION);</span>
-<span class="nc bnc" id="L62" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);</span>
-<span class="nc bnc" id="L63" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
-<span class="nc" id="L64">        else throw new IOException(IDEXCEPTIONMESSAGE);</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IdException(DATABASEXCEPTION);</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
+<span class="nc" id="L63">        else throw new IOException(IDEXCEPTIONMESSAGE);</span>
      }
 
 

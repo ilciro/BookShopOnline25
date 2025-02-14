@@ -3,6 +3,7 @@ package laptop.database.rivista;
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.database.PersistenzaInitialize;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Raccolta;
 import laptop.model.raccolta.Rivista;
@@ -46,14 +47,12 @@ public class PersistenzaRivista {
         if(r.getId()==0) throw new IOException(" file not found or id 0");
         if(r.getAutore().isEmpty()) throw new CsvValidationException(" codice isbn is null");
         if(r.getEditore().isEmpty()) throw new ClassNotFoundException("class not found or titolo is null");
-        if(r.getId()<0) throw new IdException(" id is lower than 0");
+        if(r.getId()<=-1) throw new IdException(" id magazine is lower than 0");
         return FXCollections.observableArrayList();
     }
     public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
-        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);
-        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);
-        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
-        else throw new SQLException(IDEXCEPTIONMESSAGE);
+        PersistenzaInitialize pI=new PersistenzaInitialize();
+        pI.initializza("rivista");
     }
     public ObservableList<Rivista> getRiviste() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
         if(!Files.exists(Path.of(DATABASE))) throw new IdException(DATABASEXCEPTION);

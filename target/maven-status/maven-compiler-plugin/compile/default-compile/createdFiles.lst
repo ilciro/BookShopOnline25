@@ -16,6 +16,7 @@ laptop/database/pagamento/PersistenzaPagamento.class
 laptop/controller/primoucacquista/ControllerScegliNegozio.class
 laptop/database/rivista/MemoriaRivista.class
 laptop/view/secondouclogin/BoundaryRegistra.class
+laptop/database/PersistenzaInitialize.class
 laptop/database/fattura/CsvFattura.class
 laptop/view/primoucacquista/BoundaryVisualizza.class
 laptop/database/negozio/CsvNegozio.class

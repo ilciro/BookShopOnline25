@@ -34,7 +34,7 @@ public class PersistenzaReport {
 
 
     public void inizializza() throws IOException, ClassNotFoundException {
-        if(!Files.exists(Path.of("FileSql/report.sql"))|| !Files.exists(Path.of("report/report.csv"))) throw new IOException(" file not exists");
+        if( !Files.exists(Path.of("report/reportFinale.csv"))) throw new IOException(" file not exists");
         if(!Files.exists(Path.of("memory/serializzazioneReport.ser"))) throw new ClassNotFoundException(" class in memory not found");
     }
 }

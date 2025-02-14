@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PersistenzaInitialize.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database</a> &gt; <span class="el_source">PersistenzaInitialize.java</span></div><h1>PersistenzaInitialize.java</h1><pre class="source lang-java linenums">package laptop.database;
+
+import com.opencsv.exceptions.CsvValidationException;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+<span class="fc" id="L12">public class PersistenzaInitialize {</span>
+
+    //class used for reduce duplication
+
+    private static final String DATABASEXCEPTION=&quot;file book sql not exists&quot;;
+    private static final String FILEXCEPTION=&quot;file book csv not exists&quot;;
+    private static final String MEMORIAEXCEPTION=&quot;class book not in memory&quot;;
+    private static final String IDEXCEPTIONMESSAGE=&quot; id book is null or is zero&quot;;
+
+    public void initializza(String type) throws IOException, CsvValidationException, ClassNotFoundException, SQLException {
+<span class="fc" id="L22">        String databasePath=&quot;&quot;;</span>
+<span class="fc" id="L23">        String filePath=&quot;&quot;;</span>
+<span class="fc" id="L24">        String memoriaPath=&quot;&quot;;</span>
+<span class="fc" id="L25">        String popolaDb=&quot;&quot;;</span>
+<span class="pc bpc" id="L26" title="1 of 4 branches missed.">        switch (type)</span>
+        {
+            case &quot;libro&quot;-&gt;
+            {
+<span class="fc" id="L30">                databasePath=&quot;FileSql/libro.sql&quot;;</span>
+<span class="fc" id="L31">                filePath=&quot;report/reportLibro.csv&quot;;</span>
+<span class="fc" id="L32">                memoriaPath=&quot;memory/serializzazioneLibro.ser&quot;;</span>
+<span class="fc" id="L33">                popolaDb=&quot;FileSql/popolaLibro.sql&quot;;</span>
+<span class="fc" id="L34">            }</span>
+            case &quot;giornale&quot;-&gt;
+            {
+<span class="fc" id="L37">                databasePath=&quot;FileSql/giornale.sql&quot;;</span>
+<span class="fc" id="L38">                filePath=&quot;report/reportGiornale.csv&quot;;</span>
+<span class="fc" id="L39">                memoriaPath=&quot;memory/serializzazioneGiornale.ser&quot;;</span>
+<span class="fc" id="L40">                popolaDb=&quot;FileSql/popolaGiornale.sql&quot;;</span>
+<span class="fc" id="L41">            }</span>
+            case &quot;rivista&quot;-&gt;{
+<span class="fc" id="L43">                databasePath=&quot;FileSql/rivista.sql&quot;;</span>
+<span class="fc" id="L44">                filePath=&quot;report/reportRivista.csv&quot;;</span>
+<span class="fc" id="L45">                memoriaPath=&quot;memory/serializzazioneRivista.ser&quot;;</span>
+<span class="fc" id="L46">                popolaDb=&quot;FileSql/popolaRivista.sql&quot;;</span>
+<span class="fc" id="L47">            }</span>
+<span class="nc" id="L48">            default -&gt; Logger.getLogger(&quot;initialize persistenza&quot;).log(Level.SEVERE,&quot; persistenct error&quot;);</span>
+
+        }
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(databasePath))) throw new IOException(DATABASEXCEPTION);</span>
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(filePath))) throw new CsvValidationException(FILEXCEPTION);</span>
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(memoriaPath))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(popolaDb))) throw new SQLException(IDEXCEPTIONMESSAGE);</span>
+<span class="fc" id="L55">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

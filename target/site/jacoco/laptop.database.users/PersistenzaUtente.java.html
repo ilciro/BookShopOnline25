@@ -14,8 +14,8 @@ import java.util.List;
 
 <span class="fc" id="L15">public class PersistenzaUtente {</span>
     private static final String DATABASE=&quot;FileSql/users.sql&quot;;
-    private static final String FILE=&quot;report/reportUtenti.csv&quot;;
-    private static final String MEMORIA=&quot;memory/serializzazioneUtenti.ser&quot;;
+    private static final String FILE=&quot;report/reportUtente.csv&quot;;
+    private static final String MEMORIA=&quot;memory/serializzazioneUtente.ser&quot;;
     private static final String DATABASEXCEPTION=&quot;file sql not exists&quot;;
     private static final String FILEXCEPTION=&quot;file csv not exists&quot;;
     private static final String MEMORIAEXCEPTION=&quot;class not in memory&quot;;
@@ -44,11 +44,12 @@ import java.util.List;
 
 
     public void initializza() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
-<span class="nc bnc" id="L47" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);</span>
-<span class="nc bnc" id="L48" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);</span>
-<span class="nc bnc" id="L49" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
-<span class="nc bnc" id="L50" title="All 2 branches missed.">        if(!Files.exists(Path.of(&quot;FileSql/popolaUser.sql&quot;))) throw new SQLException(&quot;file fo populate db users not found!&quot;);</span>
-<span class="nc" id="L51">        else throw new IdException(IDEXCEPTIONMESSAGE);</span>
-    }
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(&quot;FileSql/popolaUsers.sql&quot;))) throw new SQLException(&quot;file fo populate db users not found!&quot;);</span>
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IdException(IDEXCEPTIONMESSAGE);</span>
+
+<span class="fc" id="L53">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
