@@ -5,14 +5,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Raccolta;
+import org.codehaus.plexus.util.StringUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-<span class="fc" id="L15">public class PersistenzaInitialize {</span>
+<span class="fc" id="L14">public class PersistenzaInitialize {</span>
 
     //class used for reduce duplication
 
@@ -20,56 +19,33 @@ import java.util.logging.Logger;
     private static final String FILEXCEPTION=&quot;file book csv not exists&quot;;
     private static final String MEMORIAEXCEPTION=&quot;class book not in memory&quot;;
     private static final String IDEXCEPTIONMESSAGE=&quot; id book is null or is zero&quot;;
-<span class="fc" id="L23">    private String databasePath=&quot;&quot;;</span>
-<span class="fc" id="L24">    private String filePath=&quot;&quot;;</span>
-<span class="fc" id="L25">    private String memoriaPath=&quot;&quot;;</span>
-<span class="fc" id="L26">    private String popolaDb=&quot;&quot;;</span>
 
 
     public void initializza(String type) throws IOException, CsvValidationException, ClassNotFoundException, IdException {
 
-<span class="fc" id="L31">       tipo(type);</span>
-<span class="fc" id="L32">        }</span>
+<span class="fc" id="L26">        String []paths=new String[4];</span>
+
+<span class="fc" id="L28">        paths[0]=&quot;FileSql/&quot;+type+&quot;.sql&quot;;</span>
+        //solo prima lettere
+<span class="fc" id="L30">        String appoggio= StringUtils.capitalizeFirstLetter(type);</span>
+<span class="fc" id="L31">        paths[1]=&quot;report/report&quot;+appoggio+&quot;.csv&quot;;</span>
+<span class="fc" id="L32">        paths[2]=&quot;memory/serializzazione&quot;+appoggio+&quot;.ser&quot;;</span>
+<span class="fc" id="L33">        paths[3]=&quot;FileSql/popola&quot;+appoggio+&quot;.sql&quot;;</span>
+
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(paths[0]))) throw new IOException(DATABASEXCEPTION);</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(paths[1]))) throw new  CsvValidationException(FILEXCEPTION);</span>
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(paths[2]))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(paths[3]))) throw new IdException(IDEXCEPTIONMESSAGE);</span>
+<span class="fc" id="L39">        }</span>
 
     public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData(String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="nc" id="L35">      tipo(type);</span>
-<span class="nc" id="L36">        return FXCollections.observableArrayList();</span>
+<span class="nc" id="L42">       initializza(type);</span>
+<span class="nc" id="L43">        return FXCollections.observableArrayList();</span>
 
 
     }
 
-    private void tipo(String type) throws IOException, CsvValidationException, ClassNotFoundException, IdException {
 
-<span class="pc bpc" id="L43" title="1 of 4 branches missed.">        switch (type)</span>
-        {
-            case &quot;libro&quot;-&gt;
-            {
-<span class="fc" id="L47">                databasePath=&quot;FileSql/libro.sql&quot;;</span>
-<span class="fc" id="L48">                filePath=&quot;report/reportLibro.csv&quot;;</span>
-<span class="fc" id="L49">                memoriaPath=&quot;memory/serializzazioneLibro.ser&quot;;</span>
-<span class="fc" id="L50">                popolaDb=&quot;FileSql/popolaLibro.sql&quot;;</span>
-<span class="fc" id="L51">            }</span>
-            case &quot;giornale&quot;-&gt;
-            {
-<span class="fc" id="L54">                databasePath=&quot;FileSql/giornale.sql&quot;;</span>
-<span class="fc" id="L55">                filePath=&quot;report/reportGiornale.csv&quot;;</span>
-<span class="fc" id="L56">                memoriaPath=&quot;memory/serializzazioneGiornale.ser&quot;;</span>
-<span class="fc" id="L57">                popolaDb=&quot;FileSql/popolaGiornale.sql&quot;;</span>
-<span class="fc" id="L58">            }</span>
-            case &quot;rivista&quot;-&gt;{
-<span class="fc" id="L60">                databasePath=&quot;FileSql/rivista.sql&quot;;</span>
-<span class="fc" id="L61">                filePath=&quot;report/reportRivista.csv&quot;;</span>
-<span class="fc" id="L62">                memoriaPath=&quot;memory/serializzazioneRivista.ser&quot;;</span>
-<span class="fc" id="L63">                popolaDb=&quot;FileSql/popolaRivista.sql&quot;;</span>
-<span class="fc" id="L64">            }</span>
-<span class="nc" id="L65">            default -&gt; Logger.getLogger(&quot;initialize persistenza&quot;).log(Level.SEVERE,&quot; persistenct error&quot;);</span>
-
-        }
-<span class="pc bpc" id="L68" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(databasePath))) throw new IOException(DATABASEXCEPTION);</span>
-<span class="pc bpc" id="L69" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(filePath))) throw new  CsvValidationException(FILEXCEPTION);</span>
-<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(memoriaPath))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
-<span class="pc bpc" id="L71" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(popolaDb))) throw new IdException(IDEXCEPTIONMESSAGE);</span>
-<span class="fc" id="L72">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

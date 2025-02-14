@@ -5,12 +5,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Raccolta;
+import org.codehaus.plexus.util.StringUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class PersistenzaInitialize {
 
@@ -20,55 +19,32 @@ public class PersistenzaInitialize {
     private static final String FILEXCEPTION="file book csv not exists";
     private static final String MEMORIAEXCEPTION="class book not in memory";
     private static final String IDEXCEPTIONMESSAGE=" id book is null or is zero";
-    private String databasePath="";
-    private String filePath="";
-    private String memoriaPath="";
-    private String popolaDb="";
 
 
     public void initializza(String type) throws IOException, CsvValidationException, ClassNotFoundException, IdException {
 
-       tipo(type);
+        String []paths=new String[4];
+
+        paths[0]="FileSql/"+type+".sql";
+        //solo prima lettere
+        String appoggio= StringUtils.capitalizeFirstLetter(type);
+        paths[1]="report/report"+appoggio+".csv";
+        paths[2]="memory/serializzazione"+appoggio+".ser";
+        paths[3]="FileSql/popola"+appoggio+".sql";
+
+        if(!Files.exists(Path.of(paths[0]))) throw new IOException(DATABASEXCEPTION);
+        if(!Files.exists(Path.of(paths[1]))) throw new  CsvValidationException(FILEXCEPTION);
+        if(!Files.exists(Path.of(paths[2]))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
+        if(!Files.exists(Path.of(paths[3]))) throw new IdException(IDEXCEPTIONMESSAGE);
         }
 
     public ObservableList<Raccolta> retrieveRaccoltaData(String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-      tipo(type);
+       initializza(type);
         return FXCollections.observableArrayList();
 
 
     }
 
-    private void tipo(String type) throws IOException, CsvValidationException, ClassNotFoundException, IdException {
 
-        switch (type)
-        {
-            case "libro"->
-            {
-                databasePath="FileSql/libro.sql";
-                filePath="report/reportLibro.csv";
-                memoriaPath="memory/serializzazioneLibro.ser";
-                popolaDb="FileSql/popolaLibro.sql";
-            }
-            case "giornale"->
-            {
-                databasePath="FileSql/giornale.sql";
-                filePath="report/reportGiornale.csv";
-                memoriaPath="memory/serializzazioneGiornale.ser";
-                popolaDb="FileSql/popolaGiornale.sql";
-            }
-            case "rivista"->{
-                databasePath="FileSql/rivista.sql";
-                filePath="report/reportRivista.csv";
-                memoriaPath="memory/serializzazioneRivista.ser";
-                popolaDb="FileSql/popolaRivista.sql";
-            }
-            default -> Logger.getLogger("initialize persistenza").log(Level.SEVERE," persistenct error");
-
-        }
-        if(!Files.exists(Path.of(databasePath))) throw new IOException(DATABASEXCEPTION);
-        if(!Files.exists(Path.of(filePath))) throw new  CsvValidationException(FILEXCEPTION);
-        if(!Files.exists(Path.of(memoriaPath))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
-        if(!Files.exists(Path.of(popolaDb))) throw new IdException(IDEXCEPTIONMESSAGE);
-    }
 
 }
