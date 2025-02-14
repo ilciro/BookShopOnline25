@@ -129,6 +129,7 @@ public class CsvReport extends PersistenzaReport{
         catR.add("TELEVISIVO");
         catR.add("MILITARE");
         catR.add("INFORMATICA");
+
         return catR;
     }
 

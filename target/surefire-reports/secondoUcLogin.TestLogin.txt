@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: secondoUcLogin.TestLogin
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.623 s - in secondoUcLogin.TestLogin
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.414 s - in secondoUcLogin.TestLogin

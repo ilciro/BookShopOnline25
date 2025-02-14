@@ -112,7 +112,7 @@ public class ControllerGestione {
         l.setId(vis.getId());
         return pL.getLibroByIdTitoloAutoreLibro(l);
     }
-    public ObservableList<Giornale> giornaleById(String persistenza,String titolo,String editore) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public ObservableList<Giornale> giornaleById(String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
         switch (persistenza)
         {
             case DATABASE -> pG=new GiornaleDao();
@@ -121,8 +121,7 @@ public class ControllerGestione {
             default -> Logger.getLogger("giornali by id").log(Level.SEVERE,"persistency of daily is wrong!!");
         }
         g.setId(vis.getId());
-        g.setTitolo(titolo);
-        g.setEditore(editore);
+
         return pG.getGiornaleByIdTitoloAutoreLibro(g);
 
     }

@@ -6,6 +6,7 @@ import laptop.controller.ControllerSystemState;
 import laptop.database.giornale.MemoriaGiornale;
 import laptop.database.libro.MemoriaLibro;
 import laptop.database.rivista.MemoriaRivista;
+import laptop.exception.IdException;
 import laptop.exception.LogoutException;
 import laptop.model.user.User;
 import laptop.database.giornale.CsvGiornale;
@@ -30,7 +31,7 @@ public class ControllerHomePage {
     private static final String FILE="file";
 
 
-    private void inizializzaLibro(String type) throws CsvValidationException, IOException, ClassNotFoundException, SQLException {
+    private void inizializzaLibro(String type) throws CsvValidationException, IOException, ClassNotFoundException, SQLException, IdException {
         PersistenzaLibro pL;
         if(type.equals(DATABASE)) pL =new LibroDao();
         else if(type.equals(FILE)) pL =new CsvLibro();
@@ -38,14 +39,14 @@ public class ControllerHomePage {
 
             pL.initializza();
     }
-    private void inizializzaGiornale(String type) throws CsvValidationException, SQLException, IOException, ClassNotFoundException {
+    private void inizializzaGiornale(String type) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
         PersistenzaGiornale pG;
         if(type.equals(DATABASE)) pG =new GiornaleDao();
         else if(type.equals(FILE))pG =new CsvGiornale();
         else pG=new MemoriaGiornale();
             pG.initializza();
     }
-    private void inizializzaRivista(String type) throws CsvValidationException, SQLException, IOException, ClassNotFoundException {
+    private void inizializzaRivista(String type) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
         PersistenzaRivista pR;
         if(type.equals(DATABASE)) pR =new RivistaDao();
         else if(type.equals(FILE)) pR =new CsvRivista();
@@ -54,7 +55,7 @@ public class ControllerHomePage {
     }
 
 
-    public void persistenza(String type) throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
+    public void persistenza(String type) throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException {
 
         switch (vis.getType())
         {

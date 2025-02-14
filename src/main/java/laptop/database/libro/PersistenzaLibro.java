@@ -37,10 +37,8 @@ public  class PersistenzaLibro {
 
          return false;}
     public  ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);
-        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);
-        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
-        else throw new IdException(IDEXCEPTIONMESSAGE);
+        PersistenzaInitialize pI=new PersistenzaInitialize();
+        return pI.retrieveRaccoltaData("libro");
 
     }
      public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
@@ -48,11 +46,11 @@ public  class PersistenzaLibro {
          if(l.getId()==0) throw new IOException(" file not found or id 0");
          if(l.getCodIsbn().isEmpty()) throw new CsvValidationException(" codice isbn is null");
          if(l.getTitolo().isEmpty()) throw new ClassNotFoundException("class not found or titolo is null");
-         if(l.getId()<0) throw new IdException(" id book is lower than 0");
+         if(l.getId()<=0) throw new IdException(" id book is lower than 0");
          return FXCollections.observableArrayList();
 
      }
-    public void initializza() throws IOException, CsvValidationException, ClassNotFoundException, SQLException {
+    public void initializza() throws IOException, CsvValidationException, ClassNotFoundException, SQLException, IdException {
         PersistenzaInitialize pI=new PersistenzaInitialize();
         pI.initializza("libro");
     }

@@ -281,7 +281,7 @@ public class ControllerCheckPagamentoData {
 
 
 
-        pR.insertReport(report);
+        if(pR.insertReport(report))  Logger.getLogger("report inserito").log(Level.INFO," report inserted");
     }
 
 

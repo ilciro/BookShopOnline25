@@ -38,10 +38,9 @@ public class PersistenzaRivista {
         return false;}
 
     public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);
-        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);
-        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
-        else throw new IdException(IDEXCEPTIONMESSAGE);
+        PersistenzaInitialize pI=new PersistenzaInitialize();
+        return pI.retrieveRaccoltaData("rivista");
+
     }
     public ObservableList<Rivista> getRivistaByIdTitoloAutoreRivista(Rivista r) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
         if(r.getId()==0) throw new IOException(" file not found or id 0");
@@ -50,7 +49,7 @@ public class PersistenzaRivista {
         if(r.getId()<=-1) throw new IdException(" id magazine is lower than 0");
         return FXCollections.observableArrayList();
     }
-    public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
+    public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException {
         PersistenzaInitialize pI=new PersistenzaInitialize();
         pI.initializza("rivista");
     }

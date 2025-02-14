@@ -21,6 +21,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.ControllerHomePage;
+import laptop.exception.IdException;
 
 public class BoundaryHomePage implements Initializable {
 	@FXML
@@ -89,7 +90,7 @@ public class BoundaryHomePage implements Initializable {
 
 
 	@FXML
-	private void getListaGiornali() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
+	private void getListaGiornali() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException {
 		if (checkPersitenza()) {
 			vis.setIsSearch(false);
 			vis.setTypeAsDaily();
@@ -106,7 +107,7 @@ public class BoundaryHomePage implements Initializable {
 	}
 
 	@FXML
-	private void getListaRiviste() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
+	private void getListaRiviste() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException {
 		if (checkPersitenza()) {
 			vis.setIsSearch(false);
 			vis.setTypeAsMagazine();
@@ -123,7 +124,7 @@ public class BoundaryHomePage implements Initializable {
 	}
 
 	@FXML
-	private void getListaLibri() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
+	private void getListaLibri() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException {
 
 		if (checkPersitenza()) {
 			vis.setIsSearch(false);
@@ -179,7 +180,7 @@ public class BoundaryHomePage implements Initializable {
 
 
 
-	private void getPersistency() throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+	private void getPersistency() throws CsvValidationException, IOException, SQLException, ClassNotFoundException, IdException {
 		tArea.clear();
 
 		String type = "";

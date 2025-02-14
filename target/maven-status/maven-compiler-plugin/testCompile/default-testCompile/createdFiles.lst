@@ -8,6 +8,7 @@ secondoUcLogin/TestUserLoggedPagamento.class
 primoUcAcquista/testRivista/TestAcquistaRivista.class
 terzoUcGestione/report/TestControllerReport.class
 secondoUcLogin/TestLogin.class
+testFinali/TestFinaliVari.class
 primoUcRicerca/TestControllerRicercaGiornale.class
 secondoUcLogin/TestRegistraUtente.class
 primoUcAcquista/testGiornale/TestAcquistaGiornale.class

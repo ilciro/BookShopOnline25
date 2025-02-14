@@ -102,196 +102,195 @@ public class ControllerGestione {
     public ObservableList&lt;Libro&gt;libroById(String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 
 
-<span class="nc bnc" id="L105" title="All 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L105" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="nc" id="L107">            case DATABASE -&gt; pL=new LibroDao();</span>
-<span class="nc" id="L108">            case FILE -&gt; pL=new CsvLibro();</span>
-<span class="nc" id="L109">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
+<span class="fc" id="L107">            case DATABASE -&gt; pL=new LibroDao();</span>
+<span class="fc" id="L108">            case FILE -&gt; pL=new CsvLibro();</span>
+<span class="fc" id="L109">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
 <span class="nc" id="L110">            default -&gt; Logger.getLogger(&quot;libro by id&quot;).log(Level.SEVERE,&quot;persistency of book is wrong!!&quot;);</span>
         }
-<span class="nc" id="L112">        l.setId(vis.getId());</span>
-<span class="nc" id="L113">        return pL.getLibroByIdTitoloAutoreLibro(l);</span>
+<span class="fc" id="L112">        l.setId(vis.getId());</span>
+<span class="fc" id="L113">        return pL.getLibroByIdTitoloAutoreLibro(l);</span>
     }
-    public ObservableList&lt;Giornale&gt; giornaleById(String persistenza,String titolo,String editore) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="nc bnc" id="L116" title="All 4 branches missed.">        switch (persistenza)</span>
+    public ObservableList&lt;Giornale&gt; giornaleById(String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+<span class="pc bpc" id="L116" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="nc" id="L118">            case DATABASE -&gt; pG=new GiornaleDao();</span>
-<span class="nc" id="L119">            case FILE -&gt; pG=new CsvGiornale();</span>
-<span class="nc" id="L120">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
+<span class="fc" id="L118">            case DATABASE -&gt; pG=new GiornaleDao();</span>
+<span class="fc" id="L119">            case FILE -&gt; pG=new CsvGiornale();</span>
+<span class="fc" id="L120">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
 <span class="nc" id="L121">            default -&gt; Logger.getLogger(&quot;giornali by id&quot;).log(Level.SEVERE,&quot;persistency of daily is wrong!!&quot;);</span>
         }
-<span class="nc" id="L123">        g.setId(vis.getId());</span>
-<span class="nc" id="L124">        g.setTitolo(titolo);</span>
-<span class="nc" id="L125">        g.setEditore(editore);</span>
-<span class="nc" id="L126">        return pG.getGiornaleByIdTitoloAutoreLibro(g);</span>
+<span class="fc" id="L123">        g.setId(vis.getId());</span>
+
+<span class="fc" id="L125">        return pG.getGiornaleByIdTitoloAutoreLibro(g);</span>
 
     }
     public ObservableList&lt;Rivista&gt; rivistaById(String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="nc bnc" id="L130" title="All 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L129" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="nc" id="L132">            case DATABASE -&gt; pR=new RivistaDao();</span>
-<span class="nc" id="L133">            case FILE -&gt; pR=new CsvRivista();</span>
-<span class="nc" id="L134">            case MEMORIA -&gt; pR=new MemoriaRivista();</span>
-<span class="nc" id="L135">            default -&gt; Logger.getLogger(&quot;rivista by id&quot;).log(Level.SEVERE,&quot;persistency of magazine is wrong!!&quot;);</span>
+<span class="fc" id="L131">            case DATABASE -&gt; pR=new RivistaDao();</span>
+<span class="fc" id="L132">            case FILE -&gt; pR=new CsvRivista();</span>
+<span class="fc" id="L133">            case MEMORIA -&gt; pR=new MemoriaRivista();</span>
+<span class="nc" id="L134">            default -&gt; Logger.getLogger(&quot;rivista by id&quot;).log(Level.SEVERE,&quot;persistency of magazine is wrong!!&quot;);</span>
         }
-<span class="nc" id="L137">        r.setId(vis.getId());</span>
-<span class="nc" id="L138">        return pR.getRivistaByIdTitoloAutoreRivista(r);</span>
+<span class="fc" id="L136">        r.setId(vis.getId());</span>
+<span class="fc" id="L137">        return pR.getRivistaByIdTitoloAutoreRivista(r);</span>
 
     }
 
 
 
     public boolean modifica(String[] dati,String persistenza) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
-<span class="fc" id="L145">       boolean status=false;</span>
-<span class="fc" id="L146">       vis.setTipoModifica(&quot;im&quot;);</span>
+<span class="fc" id="L144">       boolean status=false;</span>
+<span class="fc" id="L145">       vis.setTipoModifica(&quot;im&quot;);</span>
 
-<span class="pc bpc" id="L148" title="1 of 4 branches missed.">       switch (vis.getType())</span>
+<span class="pc bpc" id="L147" title="1 of 4 branches missed.">       switch (vis.getType())</span>
        {
-<span class="fc" id="L150">           case LIBRO -&gt;  status= modificaLibro(dati, persistenza);</span>
+<span class="fc" id="L149">           case LIBRO -&gt;  status= modificaLibro(dati, persistenza);</span>
 
-<span class="fc" id="L152">           case GIORNALE -&gt; status= modificaGiornale(dati, persistenza);</span>
+<span class="fc" id="L151">           case GIORNALE -&gt; status= modificaGiornale(dati, persistenza);</span>
 
-<span class="fc" id="L154">           case RIVISTA -&gt;  status= modificaRivista(dati,persistenza);</span>
+<span class="fc" id="L153">           case RIVISTA -&gt;  status= modificaRivista(dati,persistenza);</span>
 
-<span class="nc" id="L156">           default -&gt; Logger.getLogger(&quot;modif&quot;).log(Level.SEVERE, &quot;error in modif&quot;);</span>
+<span class="nc" id="L155">           default -&gt; Logger.getLogger(&quot;modif&quot;).log(Level.SEVERE, &quot;error in modif&quot;);</span>
        }
 
 
-<span class="fc" id="L160">        return status;</span>
+<span class="fc" id="L159">        return status;</span>
     }
 
     private boolean modificaLibro(String[] dati, String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="fc" id="L164">        l=setLibro(dati);</span>
-<span class="fc" id="L165">        l.setId(vis.getId());</span>
-<span class="fc" id="L166">        Logger.getLogger(&quot;modifLibro&quot;).log(Level.INFO,&quot;id libro da modif:{0}&quot;,l.getId());</span>
+<span class="fc" id="L163">        l=setLibro(dati);</span>
+<span class="fc" id="L164">        l.setId(vis.getId());</span>
+<span class="fc" id="L165">        Logger.getLogger(&quot;modifLibro&quot;).log(Level.INFO,&quot;id libro da modif:{0}&quot;,l.getId());</span>
 
-<span class="pc bpc" id="L168" title="1 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L167" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="fc" id="L170">            case DATABASE -&gt; pL=new LibroDao();</span>
-<span class="fc" id="L171">            case FILE -&gt; pL=new CsvLibro();</span>
-<span class="fc" id="L172">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
-<span class="nc" id="L173">            default -&gt; Logger.getLogger(&quot;libro by id&quot;).log(Level.SEVERE,&quot;persistency of book is wrong!!&quot;);</span>
+<span class="fc" id="L169">            case DATABASE -&gt; pL=new LibroDao();</span>
+<span class="fc" id="L170">            case FILE -&gt; pL=new CsvLibro();</span>
+<span class="fc" id="L171">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
+<span class="nc" id="L172">            default -&gt; Logger.getLogger(&quot;libro by id&quot;).log(Level.SEVERE,&quot;persistency of book is wrong!!&quot;);</span>
         }
 
 
-<span class="fc bfc" id="L177" title="All 2 branches covered.">        for(int i=0;i&lt;pL.getLibri().size();i++)</span>
+<span class="fc bfc" id="L176" title="All 2 branches covered.">        for(int i=0;i&lt;pL.getLibri().size();i++)</span>
         {
-<span class="fc bfc" id="L179" title="All 2 branches covered.">            if(i==l.getId()-1)</span>
+<span class="fc bfc" id="L178" title="All 2 branches covered.">            if(i==l.getId()-1)</span>
             {
 
-<span class="fc" id="L182">                pL.removeLibroById(l);</span>
+<span class="fc" id="L181">                pL.removeLibroById(l);</span>
             }
         }
-<span class="fc" id="L185">        l=setLibro(dati);</span>
+<span class="fc" id="L184">        l=setLibro(dati);</span>
 
-<span class="fc" id="L187">        return pL.inserisciLibro(l);</span>
+<span class="fc" id="L186">        return pL.inserisciLibro(l);</span>
     }
 
     private boolean modificaGiornale(String[] dati, String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
-<span class="fc" id="L191">        g=setGiornale(dati);</span>
+<span class="fc" id="L190">        g=setGiornale(dati);</span>
 
 
-<span class="fc" id="L194">        Logger.getLogger(&quot;modifGiornale&quot;).log(Level.INFO,&quot;id giornale da modif:{0}&quot;,g.getId());</span>
-<span class="fc" id="L195">        Logger.getLogger(&quot;modifGiornale&quot;).log(Level.INFO,&quot;vis da modif:{0}&quot;,vis.getId());</span>
+<span class="fc" id="L193">        Logger.getLogger(&quot;modifGiornale&quot;).log(Level.INFO,&quot;id giornale da modif:{0}&quot;,g.getId());</span>
+<span class="fc" id="L194">        Logger.getLogger(&quot;modifGiornale&quot;).log(Level.INFO,&quot;vis da modif:{0}&quot;,vis.getId());</span>
 
-<span class="pc bpc" id="L197" title="1 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L196" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="fc" id="L199">            case DATABASE -&gt; pG=new GiornaleDao();</span>
-<span class="fc" id="L200">            case FILE -&gt; pG=new CsvGiornale();</span>
-<span class="fc" id="L201">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
-<span class="nc" id="L202">            default -&gt; Logger.getLogger(&quot;giornale by id&quot;).log(Level.SEVERE,&quot;persistency of daily is wrong!!&quot;);</span>
+<span class="fc" id="L198">            case DATABASE -&gt; pG=new GiornaleDao();</span>
+<span class="fc" id="L199">            case FILE -&gt; pG=new CsvGiornale();</span>
+<span class="fc" id="L200">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
+<span class="nc" id="L201">            default -&gt; Logger.getLogger(&quot;giornale by id&quot;).log(Level.SEVERE,&quot;persistency of daily is wrong!!&quot;);</span>
         }
 
-<span class="fc bfc" id="L205" title="All 2 branches covered.">        for(int i=0;i&lt;pG.getGiornali().size();i++)</span>
+<span class="fc bfc" id="L204" title="All 2 branches covered.">        for(int i=0;i&lt;pG.getGiornali().size();i++)</span>
         {
-<span class="fc bfc" id="L207" title="All 2 branches covered.">            if(i== g.getId()-1)</span>
+<span class="fc bfc" id="L206" title="All 2 branches covered.">            if(i== g.getId()-1)</span>
             {
-<span class="fc" id="L209">                pG.removeGiornaleById(g);</span>
+<span class="fc" id="L208">                pG.removeGiornaleById(g);</span>
             }
 
         }
-<span class="fc" id="L213">        g=setGiornale(dati);</span>
-<span class="fc" id="L214">        return pG.inserisciGiornale(g);</span>
+<span class="fc" id="L212">        g=setGiornale(dati);</span>
+<span class="fc" id="L213">        return pG.inserisciGiornale(g);</span>
     }
 
 
     private Libro setLibro(String []param)
     {
-<span class="fc" id="L220">        l=new Libro();</span>
-<span class="fc" id="L221">        l.setTitolo(param[0]);</span>
-<span class="fc" id="L222">        l.setCodIsbn(param[1]);</span>
-<span class="fc" id="L223">        l.setEditore(param[2]);</span>
-<span class="fc" id="L224">        l.setAutore(param[3]);</span>
-<span class="fc" id="L225">        l.setLingua(param[4]);</span>
-<span class="fc" id="L226">        l.setCategoria(param[5]);</span>
-<span class="fc" id="L227">        l.setDesc(param[6]);</span>
-<span class="fc" id="L228">        l.setDataPubb(LocalDate.parse(param[7]));</span>
-<span class="fc" id="L229">        l.setRecensione(param[8]);</span>
-<span class="fc" id="L230">        l.setNrPagine(Integer.parseInt(param[9]));</span>
-<span class="fc" id="L231">        l.setNrCopie(Integer.parseInt(param[10]));</span>
-<span class="fc" id="L232">        l.setDisponibilita(Integer.parseInt(param[11]));</span>
-<span class="fc" id="L233">        l.setPrezzo(Float.parseFloat(param[12]));</span>
-<span class="fc" id="L234">        l.setId(vis.getId());</span>
-<span class="fc" id="L235">        return l;</span>
+<span class="fc" id="L219">        l=new Libro();</span>
+<span class="fc" id="L220">        l.setTitolo(param[0]);</span>
+<span class="fc" id="L221">        l.setCodIsbn(param[1]);</span>
+<span class="fc" id="L222">        l.setEditore(param[2]);</span>
+<span class="fc" id="L223">        l.setAutore(param[3]);</span>
+<span class="fc" id="L224">        l.setLingua(param[4]);</span>
+<span class="fc" id="L225">        l.setCategoria(param[5]);</span>
+<span class="fc" id="L226">        l.setDesc(param[6]);</span>
+<span class="fc" id="L227">        l.setDataPubb(LocalDate.parse(param[7]));</span>
+<span class="fc" id="L228">        l.setRecensione(param[8]);</span>
+<span class="fc" id="L229">        l.setNrPagine(Integer.parseInt(param[9]));</span>
+<span class="fc" id="L230">        l.setNrCopie(Integer.parseInt(param[10]));</span>
+<span class="fc" id="L231">        l.setDisponibilita(Integer.parseInt(param[11]));</span>
+<span class="fc" id="L232">        l.setPrezzo(Float.parseFloat(param[12]));</span>
+<span class="fc" id="L233">        l.setId(vis.getId());</span>
+<span class="fc" id="L234">        return l;</span>
 
 
     }
     private Giornale setGiornale(String[] param)
     {
-<span class="fc" id="L241">        g.setTitolo(param[0]);</span>
-<span class="fc" id="L242">        g.setEditore(param[2]);</span>
-<span class="fc" id="L243">        g.setLingua(param[4]);</span>
-<span class="fc" id="L244">        g.setCategoria(param[5]);</span>
-<span class="fc" id="L245">        g.setDataPubb(LocalDate.parse(param[7]));</span>
-<span class="fc" id="L246">        g.setCopieRimanenti(Integer.parseInt(param[10]));</span>
-<span class="fc" id="L247">        g.setDisponibilita(Integer.parseInt(param[11]));</span>
-<span class="fc" id="L248">        g.setPrezzo(Float.parseFloat(param[12]));</span>
-<span class="fc" id="L249">        g.setId(vis.getId());</span>
-<span class="fc" id="L250">        return g;</span>
+<span class="fc" id="L240">        g.setTitolo(param[0]);</span>
+<span class="fc" id="L241">        g.setEditore(param[2]);</span>
+<span class="fc" id="L242">        g.setLingua(param[4]);</span>
+<span class="fc" id="L243">        g.setCategoria(param[5]);</span>
+<span class="fc" id="L244">        g.setDataPubb(LocalDate.parse(param[7]));</span>
+<span class="fc" id="L245">        g.setCopieRimanenti(Integer.parseInt(param[10]));</span>
+<span class="fc" id="L246">        g.setDisponibilita(Integer.parseInt(param[11]));</span>
+<span class="fc" id="L247">        g.setPrezzo(Float.parseFloat(param[12]));</span>
+<span class="fc" id="L248">        g.setId(vis.getId());</span>
+<span class="fc" id="L249">        return g;</span>
     }
     private Rivista setRivista(String []param)
     {
-<span class="fc" id="L254">        r=new Rivista();</span>
-<span class="fc" id="L255">        r.setTitolo(param[0]);</span>
-<span class="fc" id="L256">        r.setEditore(param[2]);</span>
-<span class="fc" id="L257">        r.setAutore(param[3]);</span>
-<span class="fc" id="L258">        r.setLingua(param[4]);</span>
-<span class="fc" id="L259">        r.setCategoria(param[5]);</span>
-<span class="fc" id="L260">        r.setDescrizione(param[6]);</span>
-<span class="fc" id="L261">        r.setDataPubb(LocalDate.parse(param[7]));</span>
-<span class="fc" id="L262">        r.setCopieRim(Integer.parseInt(param[10]));</span>
-<span class="fc" id="L263">        r.setDisp(Integer.parseInt(param[11]));</span>
-<span class="fc" id="L264">        r.setPrezzo(Float.parseFloat(param[12]));</span>
-<span class="fc" id="L265">        r.setId(vis.getId());</span>
-<span class="fc" id="L266">        return r;</span>
+<span class="fc" id="L253">        r=new Rivista();</span>
+<span class="fc" id="L254">        r.setTitolo(param[0]);</span>
+<span class="fc" id="L255">        r.setEditore(param[2]);</span>
+<span class="fc" id="L256">        r.setAutore(param[3]);</span>
+<span class="fc" id="L257">        r.setLingua(param[4]);</span>
+<span class="fc" id="L258">        r.setCategoria(param[5]);</span>
+<span class="fc" id="L259">        r.setDescrizione(param[6]);</span>
+<span class="fc" id="L260">        r.setDataPubb(LocalDate.parse(param[7]));</span>
+<span class="fc" id="L261">        r.setCopieRim(Integer.parseInt(param[10]));</span>
+<span class="fc" id="L262">        r.setDisp(Integer.parseInt(param[11]));</span>
+<span class="fc" id="L263">        r.setPrezzo(Float.parseFloat(param[12]));</span>
+<span class="fc" id="L264">        r.setId(vis.getId());</span>
+<span class="fc" id="L265">        return r;</span>
     }
 
     private boolean modificaRivista(String[]dati,String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
 
-<span class="fc" id="L271">        Logger.getLogger(&quot;modifRivista&quot;).log(Level.INFO,&quot;id rivista da modif:{0}&quot;,r.getId());</span>
-<span class="fc" id="L272">        r=setRivista(dati);</span>
-<span class="fc" id="L273">        r.setId(vis.getId());</span>
-<span class="pc bpc" id="L274" title="1 of 4 branches missed.">        switch (persistenza)</span>
+<span class="fc" id="L270">        Logger.getLogger(&quot;modifRivista&quot;).log(Level.INFO,&quot;id rivista da modif:{0}&quot;,r.getId());</span>
+<span class="fc" id="L271">        r=setRivista(dati);</span>
+<span class="fc" id="L272">        r.setId(vis.getId());</span>
+<span class="pc bpc" id="L273" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="fc" id="L276">            case DATABASE -&gt; pR=new RivistaDao();</span>
-<span class="fc" id="L277">            case FILE -&gt; pR=new CsvRivista();</span>
-<span class="fc" id="L278">            case MEMORIA -&gt; pR=new MemoriaRivista();</span>
-<span class="nc" id="L279">            default -&gt; Logger.getLogger(&quot;rivista by id&quot;).log(Level.SEVERE,&quot;persistency of magazine is wrong!!&quot;);</span>
+<span class="fc" id="L275">            case DATABASE -&gt; pR=new RivistaDao();</span>
+<span class="fc" id="L276">            case FILE -&gt; pR=new CsvRivista();</span>
+<span class="fc" id="L277">            case MEMORIA -&gt; pR=new MemoriaRivista();</span>
+<span class="nc" id="L278">            default -&gt; Logger.getLogger(&quot;rivista by id&quot;).log(Level.SEVERE,&quot;persistency of magazine is wrong!!&quot;);</span>
         }
 
-<span class="fc bfc" id="L282" title="All 2 branches covered.">        for(int i=0;i&lt;pR.getRiviste().size();i++)</span>
+<span class="fc bfc" id="L281" title="All 2 branches covered.">        for(int i=0;i&lt;pR.getRiviste().size();i++)</span>
         {
-<span class="fc bfc" id="L284" title="All 2 branches covered.">            if(i==r.getId()-1)</span>
+<span class="fc bfc" id="L283" title="All 2 branches covered.">            if(i==r.getId()-1)</span>
             {
 
-<span class="fc" id="L287">                pR.removeRivistaById(r);</span>
-<span class="fc" id="L288">                Logger.getLogger(&quot;modifica&quot;).log(Level.INFO,&quot;id rivista eliminato:{0}&quot;,r.getId());</span>
+<span class="fc" id="L286">                pR.removeRivistaById(r);</span>
+<span class="fc" id="L287">                Logger.getLogger(&quot;modifica&quot;).log(Level.INFO,&quot;id rivista eliminato:{0}&quot;,r.getId());</span>
 
             }
         }
-<span class="fc" id="L292">        r=setRivista(dati);</span>
+<span class="fc" id="L291">        r=setRivista(dati);</span>
 
-<span class="fc" id="L294">        return pR.inserisciRivista(r);</span>
+<span class="fc" id="L293">        return pR.inserisciRivista(r);</span>
 
     }
 }

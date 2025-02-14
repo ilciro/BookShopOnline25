@@ -129,60 +129,61 @@ import java.util.logging.Logger;
 <span class="fc" id="L129">        catR.add(&quot;TELEVISIVO&quot;);</span>
 <span class="fc" id="L130">        catR.add(&quot;MILITARE&quot;);</span>
 <span class="fc" id="L131">        catR.add(&quot;INFORMATICA&quot;);</span>
-<span class="fc" id="L132">        return catR;</span>
+
+<span class="fc" id="L133">        return catR;</span>
     }
 
     private static @NotNull ObservableList&lt;String&gt; getStrings() {
-<span class="fc" id="L136">        ObservableList&lt;String&gt; catL=FXCollections.observableArrayList();</span>
-<span class="fc" id="L137">        catL.add(&quot;ADOLESCENTI_RAGAZZI&quot;);</span>
-<span class="fc" id="L138">        catL.add(&quot;ARTE&quot;);</span>
-<span class="fc" id="L139">        catL.add(&quot;CINEMA_FOTOGRAFIA&quot;);</span>
-<span class="fc" id="L140">        catL.add(&quot;BIOGRAFIE&quot;);</span>
-<span class="fc" id="L141">        catL.add(&quot;DIARI_MEMORIE&quot;);</span>
-<span class="fc" id="L142">        catL.add(&quot;CALENDARI_AGENDE&quot;);</span>
-<span class="fc" id="L143">        catL.add(&quot;DIRITTO&quot;);</span>
-<span class="fc" id="L144">        catL.add(&quot;DIZINARI_OPERE&quot;);</span>
-<span class="fc" id="L145">        catL.add(&quot;ECONOMIA&quot;);</span>
-<span class="fc" id="L146">        catL.add(&quot;FAMIGLIA&quot;);</span>
-<span class="fc" id="L147">        catL.add(&quot;FANTASCIENZA_FANTASY&quot;);</span>
-<span class="fc" id="L148">        catL.add(&quot;FUMETTI_MANGA&quot;);</span>
-<span class="fc" id="L149">        catL.add(&quot;GIALLI_THRILLER&quot;);</span>
-<span class="fc" id="L150">        catL.add(&quot;COMPUTER_GIOCHI&quot;);</span>
-<span class="fc" id="L151">        catL.add(&quot;HUMOR&quot;);</span>
-<span class="fc" id="L152">        catL.add(&quot;INFORMATICA&quot;);</span>
-<span class="fc" id="L153">        catL.add(&quot;WEB_DIGITAL_MEDIA&quot;);</span>
-<span class="fc" id="L154">        catL.add(&quot;LETTERATURA_NARRATIVA&quot;);</span>
-<span class="fc" id="L155">        catL.add(&quot;LIBRI_BAMBINI&quot;);</span>
-<span class="fc" id="L156">        catL.add(&quot;LIBRI_SCOLASTICI&quot;);</span>
-<span class="fc" id="L157">        catL.add(&quot;LIBRI_UNIVERSITARI&quot;);</span>
-<span class="fc" id="L158">        catL.add(&quot;RICETTARI_GENERALI&quot;);</span>
-<span class="fc" id="L159">        catL.add(&quot;LINGUISTICA_SCRITTURA&quot;);</span>
-<span class="fc" id="L160">        catL.add(&quot;POLITICA&quot;);</span>
-<span class="fc" id="L161">        catL.add(&quot;RELIGIONE&quot;);</span>
-<span class="fc" id="L162">        catL.add(&quot;ROMANZI_ROSA&quot;);</span>
-<span class="fc" id="L163">        catL.add(&quot;SCIENZE&quot;);</span>
-<span class="fc" id="L164">        catL.add(&quot;TECNOLOGIA_MEDICINA&quot;);</span>
-<span class="fc" id="L165">        catL.add(&quot;ALTRO&quot;);</span>
-<span class="fc" id="L166">        return catL;</span>
+<span class="fc" id="L137">        ObservableList&lt;String&gt; catL=FXCollections.observableArrayList();</span>
+<span class="fc" id="L138">        catL.add(&quot;ADOLESCENTI_RAGAZZI&quot;);</span>
+<span class="fc" id="L139">        catL.add(&quot;ARTE&quot;);</span>
+<span class="fc" id="L140">        catL.add(&quot;CINEMA_FOTOGRAFIA&quot;);</span>
+<span class="fc" id="L141">        catL.add(&quot;BIOGRAFIE&quot;);</span>
+<span class="fc" id="L142">        catL.add(&quot;DIARI_MEMORIE&quot;);</span>
+<span class="fc" id="L143">        catL.add(&quot;CALENDARI_AGENDE&quot;);</span>
+<span class="fc" id="L144">        catL.add(&quot;DIRITTO&quot;);</span>
+<span class="fc" id="L145">        catL.add(&quot;DIZINARI_OPERE&quot;);</span>
+<span class="fc" id="L146">        catL.add(&quot;ECONOMIA&quot;);</span>
+<span class="fc" id="L147">        catL.add(&quot;FAMIGLIA&quot;);</span>
+<span class="fc" id="L148">        catL.add(&quot;FANTASCIENZA_FANTASY&quot;);</span>
+<span class="fc" id="L149">        catL.add(&quot;FUMETTI_MANGA&quot;);</span>
+<span class="fc" id="L150">        catL.add(&quot;GIALLI_THRILLER&quot;);</span>
+<span class="fc" id="L151">        catL.add(&quot;COMPUTER_GIOCHI&quot;);</span>
+<span class="fc" id="L152">        catL.add(&quot;HUMOR&quot;);</span>
+<span class="fc" id="L153">        catL.add(&quot;INFORMATICA&quot;);</span>
+<span class="fc" id="L154">        catL.add(&quot;WEB_DIGITAL_MEDIA&quot;);</span>
+<span class="fc" id="L155">        catL.add(&quot;LETTERATURA_NARRATIVA&quot;);</span>
+<span class="fc" id="L156">        catL.add(&quot;LIBRI_BAMBINI&quot;);</span>
+<span class="fc" id="L157">        catL.add(&quot;LIBRI_SCOLASTICI&quot;);</span>
+<span class="fc" id="L158">        catL.add(&quot;LIBRI_UNIVERSITARI&quot;);</span>
+<span class="fc" id="L159">        catL.add(&quot;RICETTARI_GENERALI&quot;);</span>
+<span class="fc" id="L160">        catL.add(&quot;LINGUISTICA_SCRITTURA&quot;);</span>
+<span class="fc" id="L161">        catL.add(&quot;POLITICA&quot;);</span>
+<span class="fc" id="L162">        catL.add(&quot;RELIGIONE&quot;);</span>
+<span class="fc" id="L163">        catL.add(&quot;ROMANZI_ROSA&quot;);</span>
+<span class="fc" id="L164">        catL.add(&quot;SCIENZE&quot;);</span>
+<span class="fc" id="L165">        catL.add(&quot;TECNOLOGIA_MEDICINA&quot;);</span>
+<span class="fc" id="L166">        catL.add(&quot;ALTRO&quot;);</span>
+<span class="fc" id="L167">        return catL;</span>
     }
 
 
     private static @NotNull Report getReport(String[] gVector) {
-<span class="fc" id="L171">        Report report=new Report();</span>
-<span class="fc" id="L172">        report.setIdReport(Integer.parseInt(gVector[GETINDEXIDR]));</span>
-<span class="fc" id="L173">        report.setTipologiaOggetto(gVector[GETINDEXTIPOOGG]);</span>
-<span class="fc" id="L174">        report.setTitoloOggetto(gVector[GETINDEXTITOLOOGG]);</span>
-<span class="fc" id="L175">        report.setNrPezzi(Integer.parseInt(gVector[GETINDEXNRPEZZI]));</span>
-<span class="fc" id="L176">        report.setPrezzo(Float.parseFloat(gVector[GETINDEXPREZZO]));</span>
-<span class="fc" id="L177">        report.setTotale(Float.parseFloat(gVector[GETINDEXNRPEZZI])*Float.parseFloat(gVector[GETINDEXPREZZO]));</span>
-<span class="fc" id="L178">        return report;</span>
+<span class="fc" id="L172">        Report report=new Report();</span>
+<span class="fc" id="L173">        report.setIdReport(Integer.parseInt(gVector[GETINDEXIDR]));</span>
+<span class="fc" id="L174">        report.setTipologiaOggetto(gVector[GETINDEXTIPOOGG]);</span>
+<span class="fc" id="L175">        report.setTitoloOggetto(gVector[GETINDEXTITOLOOGG]);</span>
+<span class="fc" id="L176">        report.setNrPezzi(Integer.parseInt(gVector[GETINDEXNRPEZZI]));</span>
+<span class="fc" id="L177">        report.setPrezzo(Float.parseFloat(gVector[GETINDEXPREZZO]));</span>
+<span class="fc" id="L178">        report.setTotale(Float.parseFloat(gVector[GETINDEXNRPEZZI])*Float.parseFloat(gVector[GETINDEXPREZZO]));</span>
+<span class="fc" id="L179">        return report;</span>
     }
 
     @Override
     public ObservableList&lt;TempUser&gt; reportU() throws  IOException, CsvValidationException {
 
-<span class="fc" id="L184">        CsvUtente csv=new CsvUtente();</span>
-<span class="fc" id="L185">        return FXCollections.observableArrayList(csv.getUserData());</span>
+<span class="fc" id="L185">        CsvUtente csv=new CsvUtente();</span>
+<span class="fc" id="L186">        return FXCollections.observableArrayList(csv.getUserData());</span>
     }
 
 
