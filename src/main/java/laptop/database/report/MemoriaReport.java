@@ -54,25 +54,21 @@ public class MemoriaReport extends PersistenzaReport{
             ObjectInputStream ois=new ObjectInputStream(fis)){
             list= (ArrayList<Report>) ois.readObject();
         }
-        for(int i=1;i<list.size();i++)
-        {
+        for (Report report : list) {
             switch (type) {
-                case "libro" ->
-                        {
-                            repoLibri.add(list.get(i));
-                            reportFinale=FXCollections.observableArrayList(repoLibri);
-                        }
-                case "giornale" ->
-                        {
-                            repoGiornali.add(list.get(i));
-                            reportFinale=FXCollections.observableArrayList(repoGiornali);
-                        }
-                case "rivista" ->
-                        {
-                            repoRiviste.add(list.get(i));
-                            reportFinale=FXCollections.observableArrayList(repoRiviste);
-                        }
-                default -> Logger.getLogger("report").log(Level.SEVERE," report persistency is wrong!!");
+                case "libro" -> {
+                    repoLibri.add(report);
+                    reportFinale = FXCollections.observableArrayList(repoLibri);
+                }
+                case "giornale" -> {
+                    repoGiornali.add(report);
+                    reportFinale = FXCollections.observableArrayList(repoGiornali);
+                }
+                case "rivista" -> {
+                    repoRiviste.add(report);
+                    reportFinale = FXCollections.observableArrayList(repoRiviste);
+                }
+                default -> Logger.getLogger("report").log(Level.SEVERE, " report persistency is wrong!!");
             }
         }
 
@@ -86,10 +82,7 @@ public class MemoriaReport extends PersistenzaReport{
         return mU.getUserData();
     }
 
-    @Override
-    public ObservableList<Report> returnReportIDTipoTitolo(int id, String tipo, String titolo) throws IOException, CsvValidationException {
-        return FXCollections.observableArrayList();
-    }
+
 
     @Override
     @SuppressWarnings("unchecked")

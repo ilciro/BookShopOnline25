@@ -11,103 +11,108 @@ import laptop.database.report.PersistenzaReport;
 import laptop.database.report.ReportDao;
 import laptop.model.Report;
 import laptop.model.user.TempUser;
+import laptop.model.user.User;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L20">public class ControllerReport {</span>
+<span class="fc" id="L21">public class ControllerReport {</span>
     private static final String DATABASE=&quot;database&quot;;
     private static final String FILE=&quot;file&quot;;
     private static final String MEMEORIA=&quot;memoria&quot;;
-<span class="fc" id="L24">    private final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+<span class="fc" id="L25">    private final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
     private PersistenzaReport pRepo;
 
 
 
 
-    public ObservableList&lt;Report&gt; reportTotale(String persistenza) throws IOException, ClassNotFoundException {
+    public ObservableList&lt;Report&gt; reportTotale(String persistenza) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
 
-<span class="nc" id="L32">        ObservableList&lt;Report&gt; list=FXCollections.observableArrayList();</span>
+<span class="nc" id="L33">        ObservableList&lt;Report&gt; list=FXCollections.observableArrayList();</span>
 
-<span class="nc bnc" id="L34" title="All 4 branches missed.">        switch (persistenza)</span>
+<span class="nc bnc" id="L35" title="All 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="nc" id="L36">            case DATABASE -&gt; pRepo=new ReportDao();</span>
-<span class="nc" id="L37">            case FILE -&gt; pRepo=new CsvReport();</span>
-<span class="nc" id="L38">            case MEMEORIA -&gt; new MemoriaReport();</span>
-<span class="nc" id="L39">            default -&gt; Logger.getLogger(&quot;report totale&quot;).log(Level.SEVERE,&quot; error in persitency!!&quot;);</span>
+<span class="nc" id="L37">            case DATABASE -&gt; pRepo=new ReportDao();</span>
+<span class="nc" id="L38">            case FILE -&gt; pRepo=new CsvReport();</span>
+<span class="nc" id="L39">            case MEMEORIA -&gt; pRepo=new MemoriaReport();</span>
+<span class="nc" id="L40">            default -&gt; Logger.getLogger(&quot;report totale&quot;).log(Level.SEVERE,&quot; error in persitency!!&quot;);</span>
         }
-<span class="nc" id="L41">        list.addAll(reportL(persistenza));</span>
-<span class="nc" id="L42">        list.addAll(reportG(persistenza));</span>
-<span class="nc" id="L43">        list.addAll(reportR(persistenza));</span>
-<span class="nc" id="L44">        return list;</span>
+<span class="nc" id="L42">        list.addAll(reportL(persistenza));</span>
+<span class="nc" id="L43">        list.addAll(reportG(persistenza));</span>
+<span class="nc" id="L44">        list.addAll(reportR(persistenza));</span>
+<span class="nc" id="L45">        return list;</span>
 
     }
 
 
 
 
-    public ObservableList&lt;Report&gt; reportL(String persistenza) throws IOException, ClassNotFoundException {
+    public ObservableList&lt;Report&gt; reportL(String persistenza) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
 
 
-<span class="fc" id="L54">        ObservableList&lt;Report&gt; list= FXCollections.observableArrayList();</span>
+<span class="fc" id="L55">        ObservableList&lt;Report&gt; list= FXCollections.observableArrayList();</span>
 
-<span class="pc bpc" id="L56" title="1 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L57" title="1 of 4 branches missed.">        switch (persistenza)</span>
        {
-<span class="fc" id="L58">           case DATABASE-&gt;pRepo=new ReportDao();</span>
-<span class="fc" id="L59">           case FILE -&gt; pRepo=new CsvReport();</span>
-<span class="fc" id="L60">           case MEMEORIA -&gt; pRepo=new MemoriaReport();</span>
-<span class="nc" id="L61">           default -&gt; Logger.getLogger(&quot;reportL&quot;).log(Level.SEVERE,&quot;report book not created!!&quot;);</span>
+<span class="fc" id="L59">           case DATABASE-&gt;pRepo=new ReportDao();</span>
+<span class="fc" id="L60">           case FILE -&gt; pRepo=new CsvReport();</span>
+<span class="fc" id="L61">           case MEMEORIA -&gt; pRepo=new MemoriaReport();</span>
+<span class="nc" id="L62">           default -&gt; Logger.getLogger(&quot;reportL&quot;).log(Level.SEVERE,&quot;report book not created!!&quot;);</span>
        }
 
-<span class="fc" id="L64">        list.addAll(pRepo.report(vis.getType()));</span>
-<span class="fc" id="L65">        return list;</span>
+
+<span class="fc" id="L66">        list.addAll(pRepo.report(vis.getType()));</span>
+<span class="fc" id="L67">        return list;</span>
 
 
     }
 
-    public ObservableList&lt;Report&gt; reportG(String persistenza) throws IOException, ClassNotFoundException {
-<span class="fc" id="L71">        ObservableList&lt;Report&gt; list= FXCollections.observableArrayList();</span>
+    public ObservableList&lt;Report&gt; reportG(String persistenza) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
+<span class="fc" id="L73">        ObservableList&lt;Report&gt; list= FXCollections.observableArrayList();</span>
 
-<span class="pc bpc" id="L73" title="1 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L75" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="fc" id="L75">            case DATABASE-&gt;pRepo=new ReportDao();</span>
-<span class="fc" id="L76">            case FILE -&gt; pRepo=new CsvReport();</span>
-<span class="fc" id="L77">            case MEMEORIA -&gt; pRepo=new MemoriaReport();</span>
-<span class="nc" id="L78">            default -&gt; Logger.getLogger(&quot;reportG&quot;).log(Level.SEVERE,&quot;report daily not created!!&quot;);</span>
+<span class="fc" id="L77">            case DATABASE-&gt;pRepo=new ReportDao();</span>
+<span class="fc" id="L78">            case FILE -&gt; pRepo=new CsvReport();</span>
+<span class="fc" id="L79">            case MEMEORIA -&gt; pRepo=new MemoriaReport();</span>
+<span class="nc" id="L80">            default -&gt; Logger.getLogger(&quot;reportG&quot;).log(Level.SEVERE,&quot;report daily not created!!&quot;);</span>
         }
-<span class="fc" id="L80">        list.addAll(pRepo.report(vis.getType()));</span>
-<span class="fc" id="L81">        return list;</span>
+
+<span class="fc" id="L83">        list.addAll(pRepo.report(vis.getType()));</span>
+
+
+<span class="fc" id="L86">        return list;</span>
 
 
     }
-    public ObservableList&lt;Report&gt; reportR(String persistenza) throws IOException, ClassNotFoundException {
-<span class="fc" id="L86">        ObservableList&lt;Report&gt; list= FXCollections.observableArrayList();</span>
+    public ObservableList&lt;Report&gt; reportR(String persistenza) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
+<span class="fc" id="L91">        ObservableList&lt;Report&gt; list= FXCollections.observableArrayList();</span>
 
-<span class="pc bpc" id="L88" title="1 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L93" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="fc" id="L90">            case DATABASE-&gt;pRepo=new ReportDao();</span>
-<span class="fc" id="L91">            case FILE -&gt; pRepo=new CsvReport();</span>
-<span class="fc" id="L92">            case MEMEORIA -&gt; pRepo=new MemoriaReport();</span>
-<span class="nc" id="L93">            default -&gt; Logger.getLogger(&quot;reportR&quot;).log(Level.SEVERE,&quot;report magazine not created!!&quot;);</span>
+<span class="fc" id="L95">            case DATABASE-&gt;pRepo=new ReportDao();</span>
+<span class="fc" id="L96">            case FILE -&gt; pRepo=new CsvReport();</span>
+<span class="fc" id="L97">            case MEMEORIA -&gt; pRepo=new MemoriaReport();</span>
+<span class="nc" id="L98">            default -&gt; Logger.getLogger(&quot;reportR&quot;).log(Level.SEVERE,&quot;report magazine not created!!&quot;);</span>
         }
-<span class="fc" id="L95">        list.addAll(pRepo.report(vis.getType()));</span>
-<span class="fc" id="L96">        return list;</span>
+<span class="fc" id="L100">        list.addAll(pRepo.report(vis.getType()));</span>
+<span class="fc" id="L101">        return list;</span>
 
 
     }
     public ObservableList&lt;TempUser&gt; reportUser(String persistenza) throws SQLException, CsvValidationException, IOException {
-<span class="fc" id="L101">        ObservableList&lt;TempUser&gt; list=FXCollections.observableArrayList();</span>
-<span class="pc bpc" id="L102" title="1 of 4 branches missed.">        switch (persistenza)</span>
+<span class="fc" id="L106">        ObservableList&lt;TempUser&gt; list=FXCollections.observableArrayList();</span>
+<span class="pc bpc" id="L107" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="fc" id="L104">            case DATABASE-&gt;pRepo=new ReportDao();</span>
-<span class="fc" id="L105">            case FILE -&gt; pRepo=new CsvReport();</span>
-<span class="fc" id="L106">            case MEMEORIA -&gt; pRepo=new MemoriaReport();</span>
-<span class="nc" id="L107">            default -&gt; Logger.getLogger(&quot;reportR&quot;).log(Level.SEVERE,&quot;report user not created!!&quot;);</span>
+<span class="fc" id="L109">            case DATABASE-&gt;pRepo=new ReportDao();</span>
+<span class="fc" id="L110">            case FILE -&gt; pRepo=new CsvReport();</span>
+<span class="fc" id="L111">            case MEMEORIA -&gt; pRepo=new MemoriaReport();</span>
+<span class="nc" id="L112">            default -&gt; Logger.getLogger(&quot;reportR&quot;).log(Level.SEVERE,&quot;report user not created!!&quot;);</span>
         }
-<span class="fc" id="L109">       list.addAll(pRepo.reportU());</span>
-<span class="fc" id="L110">        return list;</span>
+<span class="fc" id="L114">       list.addAll(pRepo.reportU());</span>
+<span class="fc" id="L115">        return list;</span>
     }
 
 

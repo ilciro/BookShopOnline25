@@ -29,18 +29,17 @@ public class ReportDao extends PersistenzaReport {
     public boolean insertReport(Report r) throws CsvValidationException, IOException {
         return true;
     }
-    private boolean reportL() {
-        int row = 0;
-        query = "create or replace view REPORTL (idProdotto,titolo,categoria,spesaTotale) as select l.idLibro,l.titolo,l.categoria,sum(p.spesaTotale) from LIBRO l join PAGAMENTO  p on l.idLibro=p.idProdotto group by l.idLibro;";
+    private boolean reportL() throws SQLException {
+        int row;
+        query = "create or replace view ISPW.REPORTL (idProdotto,titolo,categoria,spesaTotale) as select l.idLibro,l.titolo,l.categoria,sum(p.spesaTotale) from LIBRO l join PAGAMENTO  p on l.idLibro=p.idProdotto group by l.idLibro;";
 
 
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement preQ = conn.prepareStatement(query)) {
             row = preQ.executeUpdate();
-        } catch (SQLException e) {
-            Logger.getLogger("crete view libro").log(Level.SEVERE, " could not create book view  !!");
         }
-        return row == 1;
+
+        return row==0 ;
     }
     private boolean reportG() {
         int row = 0;
@@ -53,7 +52,7 @@ public class ReportDao extends PersistenzaReport {
         } catch (SQLException e) {
             Logger.getLogger("crete view giornale ").log(Level.SEVERE, " could not create daily view !!");
         }
-        return row == 1;
+        return row == 0;
     }
     private boolean reportR() {
         int row = 0;
@@ -65,13 +64,13 @@ public class ReportDao extends PersistenzaReport {
             row = preQ.executeUpdate();        } catch (SQLException e) {
             Logger.getLogger("crete rivista view ").log(Level.SEVERE, " could not create magazine view !!");
         }
-        return row == 1;
+        return row == 0;
     }
 
 
 
     @Override
-    public ObservableList<Report> report(String type) {
+    public ObservableList<Report> report(String type) throws SQLException {
         ObservableList<Report> list = FXCollections.observableArrayList();
         switch (type) {
             case LIBRO ->
@@ -90,7 +89,7 @@ public class ReportDao extends PersistenzaReport {
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prep = conn.prepareStatement(query)) {
 
-            ResultSet rs = prep.executeQuery();
+            ResultSet rs = prep.executeQuery(query);
             while (rs.next()) {
 
                 Report report = new Report();
@@ -105,7 +104,7 @@ public class ReportDao extends PersistenzaReport {
             }
 
         } catch (SQLException e) {
-            Logger.getLogger(" report ").log(Level.SEVERE, " REPORTL is empty");
+            Logger.getLogger(" report ").log(Level.SEVERE, " REPORTL is empty {0}",e.getMessage());
         }
         return list;
     }
@@ -142,40 +141,7 @@ public class ReportDao extends PersistenzaReport {
     }
 
 
-    @Override
-    public ObservableList<Report> returnReportIDTipoTitolo(int id, String tipo, String titolo)  {
 
-        ObservableList<Report> lista=FXCollections.observableArrayList();
-        //tipo libro ecc ecc group by titolo
-       switch (tipo){
-           case LIBRO -> query="select * from REPORTL group by=?";
-           case GIORNALE -> query="select * from REPORTG group by=?";
-           case RIVISTA -> query="select * from REPORTR group by=?";
-           default -> Logger.getLogger("report by id titolo ").log(Level.SEVERE," report is empty");
-
-
-       }
-        try (Connection conn=ConnToDb.connectionToDB();
-             PreparedStatement prepQ=conn.prepareStatement(query)){
-            prepQ.setString(1,titolo);
-            ResultSet rs=prepQ.executeQuery();
-            while(rs.next())
-            {
-                Report report = new Report();
-
-                report.setIdReport(rs.getInt(1));
-                report.setTitoloOggetto(rs.getString(2));
-                report.setTipologiaOggetto(rs.getString(3));
-                report.setTotale(rs.getFloat(4));
-
-                lista.add(report);
-            }
-
-        } catch (SQLException e) {
-            Logger.getLogger(" generazione report").log(Level.SEVERE," exceptionin report {0}.",e.getMessage());
-        }
-        return lista;
-    }
 
     @Override
     public void inizializza() throws IOException, ClassNotFoundException {

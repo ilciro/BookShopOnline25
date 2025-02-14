@@ -66,54 +66,120 @@ import java.util.logging.Logger;
 
     @Override
     public void inizializza() throws IOException, ClassNotFoundException {
-<span class="fc bfc" id="L69" title="All 2 branches covered.">        if(!Files.exists(Path.of(LOCATIONR))) Files.createFile(Path.of(LOCATIONR));</span>
-<span class="fc" id="L70">    }</span>
+<span class="fc" id="L69">        Path path = Path.of(LOCATIONR);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        if(!Files.exists(path)) Files.createFile(path);</span>
+<span class="fc" id="L71">    }</span>
 
     @Override
-    public ObservableList&lt;Report&gt; report(String type) {
-<span class="fc" id="L74">        Logger.getLogger(&quot;getReport&quot;).log(Level.INFO,&quot;yet used by reportIdTitolo&quot;);</span>
-<span class="fc" id="L75">        return FXCollections.emptyObservableList();</span>
-    }
-
-    @Override
-    public ObservableList&lt;Report&gt; returnReportIDTipoTitolo(int id, String tipo, String titolo) throws IOException, CsvValidationException {
-<span class="nc" id="L80">        ObservableList&lt;Report&gt; list= FXCollections.observableArrayList();</span>
-<span class="nc" id="L81">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fileReport)))) {</span>
+    public ObservableList&lt;Report&gt; report(String type) throws IOException, CsvValidationException {
+<span class="fc" id="L75">        ObservableList&lt;Report&gt; list = FXCollections.observableArrayList();</span>
+<span class="fc" id="L76">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fileReport)))) {</span>
             String[] gVector;
-            boolean recordFound;
-<span class="nc bnc" id="L84" title="All 2 branches missed.">            while ((gVector = reader.readNext()) != null) {</span>
-<span class="nc bnc" id="L85" title="All 2 branches missed.">                if (tipo == null) {</span>
-<span class="nc" id="L86">                    Report report = getReport(gVector);</span>
-<span class="nc" id="L87">                    list.add(report);</span>
-<span class="nc" id="L88">                } else {</span>
-<span class="nc bnc" id="L89" title="All 4 branches missed.">                    recordFound = gVector[GETINDEXIDR].equals(String.valueOf(id)) || gVector[GETINDEXTIPOOGG].equals(tipo)</span>
-<span class="nc bnc" id="L90" title="All 2 branches missed.">                            || gVector[GETINDEXTITOLOOGG].equals(titolo);</span>
-<span class="nc bnc" id="L91" title="All 2 branches missed.">                    if (recordFound) {</span>
-<span class="nc" id="L92">                        Report report = getReport(gVector);</span>
-<span class="nc" id="L93">                        list.add(report);</span>
-<span class="nc" id="L94">                    }</span>
+<span class="fc" id="L78">            boolean found = false;</span>
+
+<span class="fc bfc" id="L80" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
+
+                //vedere come prendere le categorie
+<span class="pc bpc" id="L83" title="1 of 4 branches missed.">                switch (type) {</span>
+<span class="fc" id="L84">                    case &quot;giornale&quot; -&gt; found = gVector[GETINDEXTIPOOGG].equals(&quot;QUOTIDIANO&quot;);</span>
+
+
+                    case &quot;libro&quot; -&gt;
+<span class="fc" id="L88">                        found= getStrings().contains(gVector[GETINDEXTIPOOGG]);</span>
+
+
+                    case &quot;rivista&quot; -&gt;
+
+<span class="fc" id="L93">                            found = getCatR().contains(gVector[GETINDEXTIPOOGG]);</span>
+
+
+<span class="nc" id="L96">                    default -&gt; Logger.getLogger(&quot;report csv&quot;).log(Level.SEVERE, &quot;error in report csv&quot;);</span>
+
                 }
+<span class="fc bfc" id="L99" title="All 2 branches covered.">                if (found) {</span>
+<span class="fc" id="L100">                    Report r = getReport(gVector);</span>
+<span class="fc" id="L101">                    list.add(r);</span>
+<span class="fc" id="L102">                }</span>
+
+
             }
+
+<span class="fc" id="L107">            return list;</span>
         }
-<span class="nc" id="L98">        return list;</span>
     }
+
+
+
+    private static @NotNull ObservableList&lt;String&gt; getCatR() {
+<span class="fc" id="L114">        ObservableList&lt;String&gt; catR=FXCollections.observableArrayList();</span>
+<span class="fc" id="L115">        catR.add(&quot;SETTIMANALE&quot;);</span>
+<span class="fc" id="L116">        catR.add(&quot;BISETTIMANALE&quot;);</span>
+<span class="fc" id="L117">        catR.add(&quot;MENSILE&quot;);</span>
+<span class="fc" id="L118">        catR.add(&quot;BIMESTRALE&quot;);</span>
+<span class="fc" id="L119">        catR.add(&quot;TRIMESTRALE&quot;);</span>
+<span class="fc" id="L120">        catR.add(&quot;ANNUALE&quot;);</span>
+<span class="fc" id="L121">        catR.add(&quot;ESTIVO&quot;);</span>
+<span class="fc" id="L122">        catR.add(&quot;INVERNALE&quot;);</span>
+<span class="fc" id="L123">        catR.add(&quot;SPORTIVO&quot;);</span>
+<span class="fc" id="L124">        catR.add(&quot;CINEMATOGRAFICA&quot;);</span>
+<span class="fc" id="L125">        catR.add(&quot;GOSSIP&quot;);</span>
+<span class="fc" id="L126">        catR.add(&quot;TELEVISIVO&quot;);</span>
+<span class="fc" id="L127">        catR.add(&quot;MILITARE&quot;);</span>
+<span class="fc" id="L128">        catR.add(&quot;INFORMATICA&quot;);</span>
+<span class="fc" id="L129">        return catR;</span>
+    }
+
+    private static @NotNull ObservableList&lt;String&gt; getStrings() {
+<span class="fc" id="L133">        ObservableList&lt;String&gt; catL=FXCollections.observableArrayList();</span>
+<span class="fc" id="L134">        catL.add(&quot;ADOLESCENTI_RAGAZZI&quot;);</span>
+<span class="fc" id="L135">        catL.add(&quot;ARTE&quot;);</span>
+<span class="fc" id="L136">        catL.add(&quot;CINEMA_FOTOGRAFIA&quot;);</span>
+<span class="fc" id="L137">        catL.add(&quot;BIOGRAFIE&quot;);</span>
+<span class="fc" id="L138">        catL.add(&quot;DIARI_MEMORIE&quot;);</span>
+<span class="fc" id="L139">        catL.add(&quot;CALENDARI_AGENDE&quot;);</span>
+<span class="fc" id="L140">        catL.add(&quot;DIRITTO&quot;);</span>
+<span class="fc" id="L141">        catL.add(&quot;DIZINARI_OPERE&quot;);</span>
+<span class="fc" id="L142">        catL.add(&quot;ECONOMIA&quot;);</span>
+<span class="fc" id="L143">        catL.add(&quot;FAMIGLIA&quot;);</span>
+<span class="fc" id="L144">        catL.add(&quot;FANTASCIENZA_FANTASY&quot;);</span>
+<span class="fc" id="L145">        catL.add(&quot;FUMETTI_MANGA&quot;);</span>
+<span class="fc" id="L146">        catL.add(&quot;GIALLI_THRILLER&quot;);</span>
+<span class="fc" id="L147">        catL.add(&quot;COMPUTER_GIOCHI&quot;);</span>
+<span class="fc" id="L148">        catL.add(&quot;HUMOR&quot;);</span>
+<span class="fc" id="L149">        catL.add(&quot;INFORMATICA&quot;);</span>
+<span class="fc" id="L150">        catL.add(&quot;WEB_DIGITAL_MEDIA&quot;);</span>
+<span class="fc" id="L151">        catL.add(&quot;LETTERATURA_NARRATIVA&quot;);</span>
+<span class="fc" id="L152">        catL.add(&quot;LIBRI_BAMBINI&quot;);</span>
+<span class="fc" id="L153">        catL.add(&quot;LIBRI_SCOLASTICI&quot;);</span>
+<span class="fc" id="L154">        catL.add(&quot;LIBRI_UNIVERSITARI&quot;);</span>
+<span class="fc" id="L155">        catL.add(&quot;RICETTARI_GENERALI&quot;);</span>
+<span class="fc" id="L156">        catL.add(&quot;LINGUISTICA_SCRITTURA&quot;);</span>
+<span class="fc" id="L157">        catL.add(&quot;POLITICA&quot;);</span>
+<span class="fc" id="L158">        catL.add(&quot;RELIGIONE&quot;);</span>
+<span class="fc" id="L159">        catL.add(&quot;ROMANZI_ROSA&quot;);</span>
+<span class="fc" id="L160">        catL.add(&quot;SCIENZE&quot;);</span>
+<span class="fc" id="L161">        catL.add(&quot;TECNOLOGIA_MEDICINA&quot;);</span>
+<span class="fc" id="L162">        catL.add(&quot;ALTRO&quot;);</span>
+<span class="fc" id="L163">        return catL;</span>
+    }
+
 
     private static @NotNull Report getReport(String[] gVector) {
-<span class="nc" id="L102">        Report report=new Report();</span>
-<span class="nc" id="L103">        report.setIdReport(Integer.parseInt(gVector[GETINDEXIDR]));</span>
-<span class="nc" id="L104">        report.setTipologiaOggetto(gVector[GETINDEXTIPOOGG]);</span>
-<span class="nc" id="L105">        report.setTitoloOggetto(gVector[GETINDEXTITOLOOGG]);</span>
-<span class="nc" id="L106">        report.setNrPezzi(Integer.parseInt(gVector[GETINDEXNRPEZZI]));</span>
-<span class="nc" id="L107">        report.setPrezzo(Float.parseFloat(gVector[GETINDEXPREZZO]));</span>
-<span class="nc" id="L108">        report.setTotale(Float.parseFloat(gVector[GETINDEXNRPEZZI])*Float.parseFloat(gVector[GETINDEXPREZZO]));</span>
-<span class="nc" id="L109">        return report;</span>
+<span class="fc" id="L168">        Report report=new Report();</span>
+<span class="fc" id="L169">        report.setIdReport(Integer.parseInt(gVector[GETINDEXIDR]));</span>
+<span class="fc" id="L170">        report.setTipologiaOggetto(gVector[GETINDEXTIPOOGG]);</span>
+<span class="fc" id="L171">        report.setTitoloOggetto(gVector[GETINDEXTITOLOOGG]);</span>
+<span class="fc" id="L172">        report.setNrPezzi(Integer.parseInt(gVector[GETINDEXNRPEZZI]));</span>
+<span class="fc" id="L173">        report.setPrezzo(Float.parseFloat(gVector[GETINDEXPREZZO]));</span>
+<span class="fc" id="L174">        report.setTotale(Float.parseFloat(gVector[GETINDEXNRPEZZI])*Float.parseFloat(gVector[GETINDEXPREZZO]));</span>
+<span class="fc" id="L175">        return report;</span>
     }
 
     @Override
     public ObservableList&lt;TempUser&gt; reportU() throws  IOException, CsvValidationException {
 
-<span class="fc" id="L115">        CsvUtente csv=new CsvUtente();</span>
-<span class="fc" id="L116">        return FXCollections.observableArrayList(csv.getUserData());</span>
+<span class="fc" id="L181">        CsvUtente csv=new CsvUtente();</span>
+<span class="fc" id="L182">        return FXCollections.observableArrayList(csv.getUserData());</span>
     }
 
 

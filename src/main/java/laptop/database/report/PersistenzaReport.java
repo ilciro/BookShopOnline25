@@ -20,7 +20,7 @@ public class PersistenzaReport {
        return FXCollections.observableArrayList();
     }
 
-    public ObservableList<Report> report(String type) throws IOException, ClassNotFoundException {
+    public ObservableList<Report> report(String type) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
         if(type.isEmpty()) throw new IOException(" type is wrong!!");
         else throw new ClassNotFoundException("report class not found!");
     }
@@ -31,11 +31,7 @@ public class PersistenzaReport {
         else throw new ClassNotFoundException(" report class not created");
     }
 
-    public ObservableList<Report> returnReportIDTipoTitolo(int id, String tipo, String titolo) throws IOException, CsvValidationException {
-        if(id<=0) throw new IOException("id is <=0!!");
-        if(tipo.isEmpty() || titolo.isEmpty()) throw new CsvValidationException(" file not found");
-        return FXCollections.observableArrayList();
-    }
+
 
     public void inizializza() throws IOException, ClassNotFoundException {
         if(!Files.exists(Path.of("FileSql/report.sql"))|| !Files.exists(Path.of("report/report.csv"))) throw new IOException(" file not exists");

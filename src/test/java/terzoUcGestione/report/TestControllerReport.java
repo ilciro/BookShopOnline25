@@ -18,19 +18,19 @@ class TestControllerReport {
 
      @ParameterizedTest
     @ValueSource(strings = {"database","file","memoria"})
-    void testReportL(String strings) throws IOException, ClassNotFoundException {
+    void testReportL(String strings) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
          vis.setTypeAsBook();
             assertNotNull(cR.reportL(strings));
      }
     @ParameterizedTest
     @ValueSource(strings = {"database","file","memoria"})
-    void testReportG(String strings) throws IOException, ClassNotFoundException {
+    void testReportG(String strings) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
         vis.setTypeAsDaily();
         assertNotNull(cR.reportG(strings));
     }
     @ParameterizedTest
     @ValueSource(strings = {"database","file","memoria"})
-    void testReportR(String strings) throws IOException, ClassNotFoundException {
+    void testReportR(String strings) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
         vis.setTypeAsMagazine();
         assertNotNull(cR.reportR(strings));
     }

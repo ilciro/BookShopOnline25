@@ -11,6 +11,7 @@ import laptop.database.report.PersistenzaReport;
 import laptop.database.report.ReportDao;
 import laptop.model.Report;
 import laptop.model.user.TempUser;
+import laptop.model.user.User;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -27,7 +28,7 @@ public class ControllerReport {
 
 
 
-    public ObservableList<Report> reportTotale(String persistenza) throws IOException, ClassNotFoundException {
+    public ObservableList<Report> reportTotale(String persistenza) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
 
         ObservableList<Report> list=FXCollections.observableArrayList();
 
@@ -35,7 +36,7 @@ public class ControllerReport {
         {
             case DATABASE -> pRepo=new ReportDao();
             case FILE -> pRepo=new CsvReport();
-            case MEMEORIA -> new MemoriaReport();
+            case MEMEORIA -> pRepo=new MemoriaReport();
             default -> Logger.getLogger("report totale").log(Level.SEVERE," error in persitency!!");
         }
         list.addAll(reportL(persistenza));
@@ -48,7 +49,7 @@ public class ControllerReport {
 
 
 
-    public ObservableList<Report> reportL(String persistenza) throws IOException, ClassNotFoundException {
+    public ObservableList<Report> reportL(String persistenza) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
 
 
         ObservableList<Report> list= FXCollections.observableArrayList();
@@ -61,13 +62,14 @@ public class ControllerReport {
            default -> Logger.getLogger("reportL").log(Level.SEVERE,"report book not created!!");
        }
 
+
         list.addAll(pRepo.report(vis.getType()));
         return list;
 
 
     }
 
-    public ObservableList<Report> reportG(String persistenza) throws IOException, ClassNotFoundException {
+    public ObservableList<Report> reportG(String persistenza) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
         ObservableList<Report> list= FXCollections.observableArrayList();
 
         switch (persistenza)
@@ -77,12 +79,15 @@ public class ControllerReport {
             case MEMEORIA -> pRepo=new MemoriaReport();
             default -> Logger.getLogger("reportG").log(Level.SEVERE,"report daily not created!!");
         }
+
         list.addAll(pRepo.report(vis.getType()));
+
+
         return list;
 
 
     }
-    public ObservableList<Report> reportR(String persistenza) throws IOException, ClassNotFoundException {
+    public ObservableList<Report> reportR(String persistenza) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
         ObservableList<Report> list= FXCollections.observableArrayList();
 
         switch (persistenza)

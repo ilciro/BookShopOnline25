@@ -66,37 +66,103 @@ public class CsvReport extends PersistenzaReport{
 
     @Override
     public void inizializza() throws IOException, ClassNotFoundException {
-        if(!Files.exists(Path.of(LOCATIONR))) Files.createFile(Path.of(LOCATIONR));
+        Path path = Path.of(LOCATIONR);
+        if(!Files.exists(path)) Files.createFile(path);
     }
 
     @Override
-    public ObservableList<Report> report(String type) {
-        Logger.getLogger("getReport").log(Level.INFO,"yet used by reportIdTitolo");
-        return FXCollections.emptyObservableList();
-    }
-
-    @Override
-    public ObservableList<Report> returnReportIDTipoTitolo(int id, String tipo, String titolo) throws IOException, CsvValidationException {
-        ObservableList<Report> list= FXCollections.observableArrayList();
+    public ObservableList<Report> report(String type) throws IOException, CsvValidationException {
+        ObservableList<Report> list = FXCollections.observableArrayList();
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fileReport)))) {
             String[] gVector;
-            boolean recordFound;
+            boolean found = false;
+
             while ((gVector = reader.readNext()) != null) {
-                if (tipo == null) {
-                    Report report = getReport(gVector);
-                    list.add(report);
-                } else {
-                    recordFound = gVector[GETINDEXIDR].equals(String.valueOf(id)) || gVector[GETINDEXTIPOOGG].equals(tipo)
-                            || gVector[GETINDEXTITOLOOGG].equals(titolo);
-                    if (recordFound) {
-                        Report report = getReport(gVector);
-                        list.add(report);
-                    }
+
+                //vedere come prendere le categorie
+                switch (type) {
+                    case "giornale" -> found = gVector[GETINDEXTIPOOGG].equals("QUOTIDIANO");
+
+
+                    case "libro" ->
+                        found= getStrings().contains(gVector[GETINDEXTIPOOGG]);
+
+
+                    case "rivista" ->
+
+                            found = getCatR().contains(gVector[GETINDEXTIPOOGG]);
+
+
+                    default -> Logger.getLogger("report csv").log(Level.SEVERE, "error in report csv");
+
                 }
+                if (found) {
+                    Report r = getReport(gVector);
+                    list.add(r);
+                }
+
+
             }
+
+            return list;
         }
-        return list;
     }
+
+
+
+    private static @NotNull ObservableList<String> getCatR() {
+        ObservableList<String> catR=FXCollections.observableArrayList();
+        catR.add("SETTIMANALE");
+        catR.add("BISETTIMANALE");
+        catR.add("MENSILE");
+        catR.add("BIMESTRALE");
+        catR.add("TRIMESTRALE");
+        catR.add("ANNUALE");
+        catR.add("ESTIVO");
+        catR.add("INVERNALE");
+        catR.add("SPORTIVO");
+        catR.add("CINEMATOGRAFICA");
+        catR.add("GOSSIP");
+        catR.add("TELEVISIVO");
+        catR.add("MILITARE");
+        catR.add("INFORMATICA");
+        return catR;
+    }
+
+    private static @NotNull ObservableList<String> getStrings() {
+        ObservableList<String> catL=FXCollections.observableArrayList();
+        catL.add("ADOLESCENTI_RAGAZZI");
+        catL.add("ARTE");
+        catL.add("CINEMA_FOTOGRAFIA");
+        catL.add("BIOGRAFIE");
+        catL.add("DIARI_MEMORIE");
+        catL.add("CALENDARI_AGENDE");
+        catL.add("DIRITTO");
+        catL.add("DIZINARI_OPERE");
+        catL.add("ECONOMIA");
+        catL.add("FAMIGLIA");
+        catL.add("FANTASCIENZA_FANTASY");
+        catL.add("FUMETTI_MANGA");
+        catL.add("GIALLI_THRILLER");
+        catL.add("COMPUTER_GIOCHI");
+        catL.add("HUMOR");
+        catL.add("INFORMATICA");
+        catL.add("WEB_DIGITAL_MEDIA");
+        catL.add("LETTERATURA_NARRATIVA");
+        catL.add("LIBRI_BAMBINI");
+        catL.add("LIBRI_SCOLASTICI");
+        catL.add("LIBRI_UNIVERSITARI");
+        catL.add("RICETTARI_GENERALI");
+        catL.add("LINGUISTICA_SCRITTURA");
+        catL.add("POLITICA");
+        catL.add("RELIGIONE");
+        catL.add("ROMANZI_ROSA");
+        catL.add("SCIENZE");
+        catL.add("TECNOLOGIA_MEDICINA");
+        catL.add("ALTRO");
+        return catL;
+    }
+
 
     private static @NotNull Report getReport(String[] gVector) {
         Report report=new Report();
