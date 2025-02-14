@@ -17,7 +17,6 @@ public class ControllerSystemState {
 
 	private int idOggetto; //usato nel pagamento
 
-	private boolean populated;
 
 
 
@@ -118,15 +117,6 @@ public class ControllerSystemState {
 		this.idOggetto = idOggetto;
 	}
 
-
-
-    public boolean isPopulated() {
-        return populated;
-    }
-
-    public void setPopulated(boolean populated) {
-        this.populated = populated;
-    }
 
     public String getTipoModifica() {
         return tipoModifica;

@@ -20,7 +20,7 @@ import java.sql.SQLException;
 <span class="nc" id="L20">       return FXCollections.observableArrayList();</span>
     }
 
-    public ObservableList&lt;Report&gt; report(String type) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
+    public ObservableList&lt;Report&gt; report(String type) throws IOException, ClassNotFoundException {
 <span class="nc bnc" id="L24" title="All 2 branches missed.">        if(type.isEmpty()) throw new IOException(&quot; type is wrong!!&quot;);</span>
 <span class="nc" id="L25">        else throw new ClassNotFoundException(&quot;report class not found!&quot;);</span>
     }

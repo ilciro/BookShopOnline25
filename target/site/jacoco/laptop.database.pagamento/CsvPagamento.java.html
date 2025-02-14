@@ -106,26 +106,26 @@ public class CsvPagamento extends PersistenzaPagamento{
     @Override
     public Pagamento ultimoPagamento() throws CsvValidationException,IOException {
         ObservableList&lt;Pagamento&gt; list;
-<span class="nc" id="L109">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(this.filePagamento)))) {</span>
-<span class="nc" id="L110">            list= FXCollections.observableArrayList();</span>
+<span class="fc" id="L109">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(this.filePagamento)))) {</span>
+<span class="fc" id="L110">            list= FXCollections.observableArrayList();</span>
             String[] gVector;
 
-<span class="nc bnc" id="L113" title="All 2 branches missed.">            while ((gVector = reader.readNext()) != null) {</span>
-<span class="nc" id="L114">                Pagamento p = new Pagamento();</span>
-<span class="nc" id="L115">                p.setIdPag(Integer.parseInt(gVector[GETINDEXIDP]));</span>
-<span class="nc" id="L116">                p.setMetodo(gVector[GETINDEXMETODOP]);</span>
-<span class="nc" id="L117">                p.setNomeUtente(gVector[GETINDEXNOMEP]);</span>
-<span class="nc" id="L118">                p.setAmmontare(Float.parseFloat(gVector[GETINDEXSPESAP]));</span>
-<span class="nc" id="L119">                p.setEmail(gVector[GETINDEXEIAMILP]);</span>
-<span class="nc" id="L120">                p.setTipo(gVector[GETINDEXACQUISTOP]);</span>
-<span class="nc" id="L121">                p.setIdOggetto(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));</span>
-<span class="nc" id="L122">                list.add(p);</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
+<span class="fc" id="L114">                Pagamento p = new Pagamento();</span>
+<span class="fc" id="L115">                p.setIdPag(Integer.parseInt(gVector[GETINDEXIDP]));</span>
+<span class="fc" id="L116">                p.setMetodo(gVector[GETINDEXMETODOP]);</span>
+<span class="fc" id="L117">                p.setNomeUtente(gVector[GETINDEXNOMEP]);</span>
+<span class="fc" id="L118">                p.setAmmontare(Float.parseFloat(gVector[GETINDEXSPESAP]));</span>
+<span class="fc" id="L119">                p.setEmail(gVector[GETINDEXEIAMILP]);</span>
+<span class="fc" id="L120">                p.setTipo(gVector[GETINDEXACQUISTOP]);</span>
+<span class="fc" id="L121">                p.setIdOggetto(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));</span>
+<span class="fc" id="L122">                list.add(p);</span>
 
 
-<span class="nc" id="L125">            }</span>
+<span class="fc" id="L125">            }</span>
         }
 
-<span class="nc" id="L128">        return list.get(list.size()-1);</span>
+<span class="fc" id="L128">        return list.get(list.size()-1);</span>
     }
 
     @Override

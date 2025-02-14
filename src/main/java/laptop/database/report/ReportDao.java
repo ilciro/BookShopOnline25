@@ -29,14 +29,18 @@ public class ReportDao extends PersistenzaReport {
     public boolean insertReport(Report r) throws CsvValidationException, IOException {
         return true;
     }
-    private boolean reportL() throws SQLException {
-        int row;
+    private boolean reportL()  {
+        int row=-1;
         query = "create or replace view ISPW.REPORTL (idProdotto,titolo,categoria,spesaTotale) as select l.idLibro,l.titolo,l.categoria,sum(p.spesaTotale) from LIBRO l join PAGAMENTO  p on l.idLibro=p.idProdotto group by l.idLibro;";
 
 
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement preQ = conn.prepareStatement(query)) {
             row = preQ.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            Logger.getLogger("report libri view").log(Level.SEVERE," error");
         }
 
         return row==0 ;
@@ -70,7 +74,7 @@ public class ReportDao extends PersistenzaReport {
 
 
     @Override
-    public ObservableList<Report> report(String type) throws SQLException {
+    public ObservableList<Report> report(String type) {
         ObservableList<Report> list = FXCollections.observableArrayList();
         switch (type) {
             case LIBRO ->

@@ -45,28 +45,28 @@ import java.util.logging.Logger;
 
     @Override
     public Pagamento ultimoPagamento() {
-<span class="nc" id="L48">        Pagamento p=new Pagamento();</span>
-<span class="nc" id="L49">        query=&quot;select * from PAGAMENTO order by idPagamento desc limit 1&quot;;</span>
-<span class="nc" id="L50">        try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="nc" id="L51">            PreparedStatement prepQ=conn.prepareStatement(query)){</span>
+<span class="fc" id="L48">        Pagamento p=new Pagamento();</span>
+<span class="fc" id="L49">        query=&quot;select * from PAGAMENTO order by idPagamento desc limit 1&quot;;</span>
+<span class="fc" id="L50">        try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L51">            PreparedStatement prepQ=conn.prepareStatement(query)){</span>
 
-<span class="nc" id="L53">            ResultSet rs=prepQ.executeQuery();</span>
-<span class="nc bnc" id="L54" title="All 2 branches missed.">            while (rs.next())</span>
+<span class="fc" id="L53">            ResultSet rs=prepQ.executeQuery();</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">            while (rs.next())</span>
             {
-<span class="nc" id="L56">                p.setIdPag(rs.getInt(1));</span>
-<span class="nc" id="L57">                p.setMetodo(rs.getString(2));</span>
-<span class="nc" id="L58">                p.setNomeUtente(rs.getString(3));</span>
-<span class="nc" id="L59">                p.setAmmontare(rs.getFloat(4));</span>
-<span class="nc" id="L60">                p.setEmail(rs.getString(5));</span>
-<span class="nc" id="L61">                p.setTipo(rs.getString(6));</span>
-<span class="nc" id="L62">                p.setIdOggetto(rs.getInt(7));</span>
+<span class="fc" id="L56">                p.setIdPag(rs.getInt(1));</span>
+<span class="fc" id="L57">                p.setMetodo(rs.getString(2));</span>
+<span class="fc" id="L58">                p.setNomeUtente(rs.getString(3));</span>
+<span class="fc" id="L59">                p.setAmmontare(rs.getFloat(4));</span>
+<span class="fc" id="L60">                p.setEmail(rs.getString(5));</span>
+<span class="fc" id="L61">                p.setTipo(rs.getString(6));</span>
+<span class="fc" id="L62">                p.setIdOggetto(rs.getInt(7));</span>
             }
 
 <span class="nc" id="L65">        }catch(SQLException e)</span>
         {
 <span class="nc" id="L67">            java.util.logging.Logger.getLogger(&quot;return pagamento&quot;).log(Level.INFO, ECCEZIONE, e);</span>
-<span class="nc" id="L68">        }</span>
-<span class="nc" id="L69">        return p;</span>
+<span class="fc" id="L68">        }</span>
+<span class="fc" id="L69">        return p;</span>
     }
 
     @Override

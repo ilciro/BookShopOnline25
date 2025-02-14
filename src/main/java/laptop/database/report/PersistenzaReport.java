@@ -20,7 +20,7 @@ public class PersistenzaReport {
        return FXCollections.observableArrayList();
     }
 
-    public ObservableList<Report> report(String type) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
+    public ObservableList<Report> report(String type) throws IOException, ClassNotFoundException {
         if(type.isEmpty()) throw new IOException(" type is wrong!!");
         else throw new ClassNotFoundException("report class not found!");
     }

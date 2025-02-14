@@ -1,12 +1,6 @@
-/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcAcquista/testGiornale/TestAcquistaGiornaleDB.java
-/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcAcquista/testGiornale/TestAcquistaGiornaleFile.java
-/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcAcquista/testGiornale/TestAcquistaGiornaleMemoriaAnnulla.java
-/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcAcquista/testLibro/TestAcquistaLibroDB.java
-/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcAcquista/testLibro/TestAcquistaLibroFile.java
-/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcAcquista/testLibro/TestAcquistaLibroMemoriaAnnulla.java
-/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcAcquista/testRivista/TestAcquistaRivistaDB.java
-/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcAcquista/testRivista/TestAcquistaRivistaFile.java
-/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcAcquista/testRivista/TestAcquistaRivistaMemoriaAnnulla.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcAcquista/testGiornale/TestAcquistaGiornale.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcAcquista/testLibro/TestAcquistaLibro.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcAcquista/testRivista/TestAcquistaRivista.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcRicerca/TestControllerRicercaGiornale.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcRicerca/TestControllerRicercaLibro.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcRicerca/TestControllerRicercaRivista.java

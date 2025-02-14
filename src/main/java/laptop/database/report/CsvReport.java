@@ -71,7 +71,7 @@ public class CsvReport extends PersistenzaReport{
     }
 
     @Override
-    public ObservableList<Report> report(String type) throws IOException, CsvValidationException {
+    public ObservableList<Report> report(String type) throws IOException {
         ObservableList<Report> list = FXCollections.observableArrayList();
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fileReport)))) {
             String[] gVector;
@@ -104,8 +104,11 @@ public class CsvReport extends PersistenzaReport{
 
             }
 
-            return list;
+
+        } catch (CsvValidationException e) {
+            Logger.getLogger("csv report eccexione").log(Level.SEVERE,"csv file not exists!");
         }
+        return list;
     }
 
 

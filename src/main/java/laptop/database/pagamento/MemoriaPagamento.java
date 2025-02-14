@@ -75,7 +75,7 @@ public class MemoriaPagamento extends PersistenzaPagamento{
 
                 Logger.getLogger("cancella pagamento").log(Level.INFO,"id fattura {0}.",p.getIdPag());
 
-                status = lista.remove(lista.get(i-1));
+                status = lista.remove(lista.get(i));
                 break;
             }
 
