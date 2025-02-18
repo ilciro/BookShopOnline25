@@ -1,6 +1,5 @@
 laptop/database/report/CsvReport.class
 laptop/view/terzoucgestioneprofilooggetto/BoundaryGestioneOggetto.class
-web/bean/RicercaBean.class
 web/bean/PagamentoBean.class
 laptop/controller/terzoucgestioneprofilooggetto/ControllerGestioneUtente.class
 laptop/model/raccolta/Giornale.class
