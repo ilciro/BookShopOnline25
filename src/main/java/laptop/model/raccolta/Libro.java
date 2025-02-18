@@ -14,7 +14,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 
 
-public class Libro implements Raccolta , Serializable  {
+public class 	Libro implements Raccolta , Serializable  {
 	@Serial
 	private static final long serialVersionUID = 2L;
 

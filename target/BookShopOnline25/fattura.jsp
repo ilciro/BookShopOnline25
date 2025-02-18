@@ -13,7 +13,10 @@
 <body>
 
 
-
+<p> id libro ${beanL.getIdB()}</p>
+<p> id gironale ${beanG.getIdB()}</p>
+<p> id rivista ${beanR.getIdB()}</p>
+<p> id bean :${beanS.getIdB()}</p>
 
 
 
@@ -68,9 +71,7 @@ inserire eventuali comunicazioni :
 <td>
 <input type="submit" id="buttonC" name="buttonC" value="procedi" class="invia">
 </td>
-<td>
-<input type="submit" class="indietro" id="annulla" name="annulla" value="annulla" >
-</td>
+
 </tr>
 </table>
 </form>

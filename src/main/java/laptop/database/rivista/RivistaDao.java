@@ -162,7 +162,7 @@ public class RivistaDao extends PersistenzaRivista{
             prepQ.setInt(1,r.getId());
             prepQ.setInt(2,vis.getId());
             prepQ.setString(3,r.getTitolo());
-            prepQ.setString(4,r.getEditore());
+            prepQ.setString(4,r.getAutore());
 
             ResultSet rs=prepQ.executeQuery();
             while (rs.next())

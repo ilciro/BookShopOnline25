@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SystemBean.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">web.bean</a> &gt; <span class="el_source">SystemBean.java</span></div><h1>SystemBean.java</h1><pre class="source lang-java linenums">package web.bean;
+
+
+public class SystemBean {
+
+		
+		 private int idB;
+		 private String typeB;
+		 private boolean isLoggedB ;
+		 private boolean isSearchB;
+		 private boolean isPickupB;
+		 private float spesaTB;// usato per avere importo totale 
+		 private int quantitaB; //usato per avere quantita oggetto che compro
+		 private String metodoPB; //usato per vedere se contanti o cc
+		 private boolean negozioSelezionatoB;// per vedere se download o negozio
+		 private String titoloB;
+		 private String tipoModifica;
+		 
+		 
+<span class="fc" id="L20">		 private static SystemBean userInstance = null;</span>
+
+		    private SystemBean() {}
+
+		    public static SystemBean getInstance() {
+<span class="fc bfc" id="L25" title="All 2 branches covered.">		        if (userInstance == null) {</span>
+		          
+<span class="fc" id="L27">		        	userInstance = new SystemBean();</span>
+		                }
+		       
+<span class="fc" id="L30">		        return userInstance;</span>
+		    }
+			
+		 
+		public int getIdB() {
+<span class="fc" id="L35">			return idB;</span>
+		}
+
+		public void setIdB(int idB) {
+<span class="fc" id="L39">			this.idB = idB;</span>
+<span class="fc" id="L40">		}</span>
+
+		public String getTypeB() {
+<span class="nc" id="L43">			return typeB;</span>
+		}
+
+		public void setTypeB(String typeB) {
+<span class="fc" id="L47">			this.typeB = typeB;</span>
+<span class="fc" id="L48">		}</span>
+
+		public boolean isLoggedB() {
+<span class="nc" id="L51">			return isLoggedB;</span>
+		}
+
+		public void setLoggedB(boolean isLoggedB) {
+<span class="nc" id="L55">			this.isLoggedB = isLoggedB;</span>
+<span class="nc" id="L56">		}</span>
+
+		public boolean isSearchB() {
+<span class="nc" id="L59">			return isSearchB;</span>
+		}
+
+		public void setSearchB(boolean isSearchB) {
+<span class="nc" id="L63">			this.isSearchB = isSearchB;</span>
+<span class="nc" id="L64">		}</span>
+
+		public boolean isPickupB() {
+<span class="nc" id="L67">			return isPickupB;</span>
+		}
+
+		public void setPickupB(boolean isPickupB) {
+<span class="nc" id="L71">			this.isPickupB = isPickupB;</span>
+<span class="nc" id="L72">		}</span>
+
+		public float getSpesaTB() {
+<span class="fc" id="L75">			return spesaTB;</span>
+		}
+
+		public void setSpesaTB(float spesaTB) {
+<span class="fc" id="L79">			this.spesaTB = spesaTB;</span>
+<span class="fc" id="L80">		}</span>
+
+		public int getQuantitaB() {
+<span class="nc" id="L83">			return quantitaB;</span>
+		}
+
+		public void setQuantitaB(int quantitaB) {
+<span class="fc" id="L87">			this.quantitaB = quantitaB;</span>
+<span class="fc" id="L88">		}</span>
+
+		public String getMetodoPB() {
+<span class="fc" id="L91">			return metodoPB;</span>
+		}
+
+		public void setMetodoPB(String metodoPB) {
+<span class="fc" id="L95">			this.metodoPB = metodoPB;</span>
+<span class="fc" id="L96">		}</span>
+
+		public boolean isNegozioSelezionatoB() {
+<span class="nc" id="L99">			return negozioSelezionatoB;</span>
+		}
+
+		public void setNegozioSelezionatoB(boolean negozioSelezionatoB) {
+<span class="nc" id="L103">			this.negozioSelezionatoB = negozioSelezionatoB;</span>
+<span class="nc" id="L104">		}</span>
+
+		public String getTitoloB() {
+<span class="nc" id="L107">			return titoloB;</span>
+		}
+
+		public void setTitoloB(String titoloB) {
+<span class="nc" id="L111">			this.titoloB = titoloB;</span>
+<span class="nc" id="L112">		}</span>
+
+		
+
+		public void setTypeAsBook() {
+<span class="nc" id="L117">			this.typeB=&quot;libro&quot;;</span>
+			
+<span class="nc" id="L119">		}</span>
+
+		public void setTypeAsDaily() {
+<span class="nc" id="L122">			this.typeB=&quot;giornale&quot;;</span>
+			
+<span class="nc" id="L124">		}</span>
+
+		public void setTypeAsMagazine() {
+<span class="nc" id="L127">			this.typeB=&quot;rivista&quot;;</span>
+			
+<span class="nc" id="L129">		}</span>
+
+
+    public String getTipoModifica() {
+<span class="nc" id="L133">        return tipoModifica;</span>
+    }
+
+    public void setTipoModifica(String tipoModifica) {
+<span class="fc" id="L137">        this.tipoModifica = tipoModifica;</span>
+<span class="fc" id="L138">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

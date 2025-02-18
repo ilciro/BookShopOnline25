@@ -46,8 +46,7 @@ public class ControllerScegliNegozio {
 			default -> Logger.getLogger("is open").log(Level.SEVERE,"  is open il null!!");
 
 		}
-		Negozio n=pN.getNegozi().get(id-1);
-		return pN.checkRitiro(n);
+		return pN.checkRitiro(pN.getNegozi().get(id-1));
 	}
 	public boolean isValid(String type,int id) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
 
@@ -58,8 +57,7 @@ public class ControllerScegliNegozio {
 			default -> Logger.getLogger("is valid").log(Level.SEVERE,"  is open il null!!");
 
 		}
-		Negozio n=pN.getNegozi().get(id-1);
-		return pN.checkOpen(n);
+		return pN.checkOpen(pN.getNegozi().get(id-1));
 	}
 	
 

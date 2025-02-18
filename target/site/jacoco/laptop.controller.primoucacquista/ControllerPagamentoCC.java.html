@@ -33,42 +33,37 @@ public class ControllerPagamentoCC {
 	private PersistenzaCC pCC;
 	private CartaDiCredito cc;
 
-
 	private static final String DATABASE=&quot;database&quot;;
 	private static final String FILE=&quot;file&quot;;
 	private static final String MEMORIA=&quot;memoria&quot;;
 
 
+<span class="fc" id="L41">	public ControllerPagamentoCC()  {</span>
+
+
+<span class="fc" id="L44">			cCPD = new ControllerCheckPagamentoData();</span>
 
 
 
-
-<span class="fc" id="L46">	public ControllerPagamentoCC()  {</span>
-
-
-<span class="fc" id="L49">			cCPD = new ControllerCheckPagamentoData();</span>
-
-
-
-<span class="fc" id="L53">	}</span>
+<span class="fc" id="L48">	}</span>
 
 	public boolean aggiungiCartaDB(String n, String c, String cod, java.sql.Date data, String civ, float prezzo,String persistenza)
             throws CsvValidationException, IOException, ClassNotFoundException, SQLException {
-<span class="fc" id="L57">   			cc= new CartaDiCredito(n, c, cod,  data, civ, prezzo);</span>
+<span class="fc" id="L52">   			cc= new CartaDiCredito(n, c, cod,  data, civ, prezzo);</span>
 
 
-<span class="fc" id="L60">			cCPD.controllaPag(String.valueOf(data),c,civ);</span>
+<span class="fc" id="L55">			cCPD.controllaPag(String.valueOf(data),c,civ);</span>
 
 
-<span class="pc bpc" id="L63" title="1 of 4 branches missed.">			switch (persistenza)</span>
+<span class="pc bpc" id="L58" title="1 of 4 branches missed.">			switch (persistenza)</span>
 			{
-<span class="fc" id="L65">				case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
-<span class="fc" id="L66">				case FILE-&gt;pCC=new CsvCartaCredito();</span>
-<span class="fc" id="L67">				case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
-<span class="nc" id="L68">				default -&gt; Logger.getLogger(&quot;aggiungi carta db&quot;).log(Level.SEVERE,&quot; error in persistency&quot;);</span>
+<span class="fc" id="L60">				case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
+<span class="fc" id="L61">				case FILE-&gt;pCC=new CsvCartaCredito();</span>
+<span class="fc" id="L62">				case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
+<span class="nc" id="L63">				default -&gt; Logger.getLogger(&quot;aggiungi carta db&quot;).log(Level.SEVERE,&quot; error in persistency&quot;);</span>
 			}
-<span class="fc" id="L70">				pCC.inizializza();</span>
-<span class="fc" id="L71">			return pCC.insCC(cc);</span>
+<span class="fc" id="L65">				pCC.inizializza();</span>
+<span class="fc" id="L66">			return pCC.insCC(cc);</span>
 
 	}
 
@@ -76,19 +71,19 @@ public class ControllerPagamentoCC {
 
 	public ObservableList&lt;CartaDiCredito&gt; ritornaElencoCC(String nomeU,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, SQLException {
 
-<span class="fc" id="L79">		cc=new CartaDiCredito();</span>
-<span class="fc" id="L80">		cc.setNomeUser(nomeU);</span>
+<span class="fc" id="L74">		cc=new CartaDiCredito();</span>
+<span class="fc" id="L75">		cc.setNomeUser(nomeU);</span>
 
-<span class="pc bpc" id="L82" title="3 of 4 branches missed.">		switch (persistenza)</span>
+<span class="pc bpc" id="L77" title="3 of 4 branches missed.">		switch (persistenza)</span>
 		{
-<span class="fc" id="L84">			case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
-<span class="nc" id="L85">			case FILE-&gt;pCC=new CsvCartaCredito();</span>
-<span class="nc" id="L86">			case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
-<span class="nc" id="L87">			default -&gt; Logger.getLogger(&quot;elenco cc dal db&quot;).log(Level.SEVERE,&quot; list is empty&quot;);</span>
+<span class="fc" id="L79">			case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
+<span class="nc" id="L80">			case FILE-&gt;pCC=new CsvCartaCredito();</span>
+<span class="nc" id="L81">			case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
+<span class="nc" id="L82">			default -&gt; Logger.getLogger(&quot;elenco cc dal db&quot;).log(Level.SEVERE,&quot; list is empty&quot;);</span>
 		}
-<span class="fc" id="L89">			pCC.inizializza();</span>
+<span class="fc" id="L84">			pCC.inizializza();</span>
 
-<span class="fc" id="L91">		return pCC.getCarteDiCredito(cc);</span>
+<span class="fc" id="L86">		return pCC.getCarteDiCredito(cc);</span>
 
 
 	}
@@ -100,68 +95,68 @@ public class ControllerPagamentoCC {
 	public void pagamentoCC(String nome,String database) throws IdException, IOException, CsvValidationException, ClassNotFoundException, SQLException {
   		Pagamento p ;
 		//effettuo pagamento
-<span class="fc" id="L103">		p=new Pagamento();</span>
-<span class="fc" id="L104">		p.setIdPag(0);</span>
-<span class="fc" id="L105">		p.setMetodo(&quot;cCredito&quot;);</span>
-<span class="fc" id="L106">		p.setNomeUtente(nome);</span>
-<span class="fc" id="L107">		p.setAmmontare(vis.getSpesaT());</span>
-<span class="pc bpc" id="L108" title="1 of 2 branches missed.">		if(vis.getIsLogged())</span>
-<span class="nc" id="L109">			p.setEmail(User.getInstance().getEmail());</span>
-<span class="fc" id="L110">		else p.setEmail(null);</span>
+<span class="fc" id="L98">		p=new Pagamento();</span>
+<span class="fc" id="L99">		p.setIdPag(0);</span>
+<span class="fc" id="L100">		p.setMetodo(&quot;cCredito&quot;);</span>
+<span class="fc" id="L101">		p.setNomeUtente(nome);</span>
+<span class="fc" id="L102">		p.setAmmontare(vis.getSpesaT());</span>
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">		if(vis.getIsLogged())</span>
+<span class="nc" id="L104">			p.setEmail(User.getInstance().getEmail());</span>
+<span class="fc" id="L105">		else p.setEmail(null);</span>
 
-<span class="fc" id="L112">		vis.setTipoModifica(&quot;insert&quot;);</span>
+<span class="fc" id="L107">		vis.setTipoModifica(&quot;insert&quot;);</span>
 
 
-<span class="pc bpc" id="L115" title="1 of 4 branches missed.">		switch (vis.getType()) {</span>
+<span class="pc bpc" id="L110" title="1 of 4 branches missed.">		switch (vis.getType()) {</span>
 			case &quot;libro&quot; -&gt; {
-<span class="fc" id="L117">				Libro l=new Libro();</span>
-<span class="fc" id="L118">				l.setId(vis.getId());</span>
+<span class="fc" id="L112">				Libro l=new Libro();</span>
+<span class="fc" id="L113">				l.setId(vis.getId());</span>
+<span class="fc" id="L114">				cCPD.checkPagamentoData(nome,database);</span>
+<span class="fc" id="L115">			}</span>
+			case &quot;giornale&quot; -&gt; {
+<span class="fc" id="L117">				Giornale g=new Giornale();</span>
+<span class="fc" id="L118">				g.setId(vis.getId());</span>
 <span class="fc" id="L119">				cCPD.checkPagamentoData(nome,database);</span>
 <span class="fc" id="L120">			}</span>
-			case &quot;giornale&quot; -&gt; {
-<span class="fc" id="L122">				Giornale g=new Giornale();</span>
-<span class="fc" id="L123">				g.setId(vis.getId());</span>
-<span class="fc" id="L124">				cCPD.checkPagamentoData(nome,database);</span>
-<span class="fc" id="L125">			}</span>
 			case &quot;rivista&quot; -&gt; {
-<span class="fc" id="L127">					Rivista r=new Rivista();</span>
-<span class="fc" id="L128">					r.setId(vis.getId());</span>
-<span class="fc" id="L129">					cCPD.checkPagamentoData(nome,database);</span>
+<span class="fc" id="L122">					Rivista r=new Rivista();</span>
+<span class="fc" id="L123">					r.setId(vis.getId());</span>
+<span class="fc" id="L124">					cCPD.checkPagamentoData(nome,database);</span>
 
-<span class="fc" id="L131">			}</span>
-<span class="nc" id="L132">			default -&gt; throw new IdException(&quot; id not found&quot;);</span>
+<span class="fc" id="L126">			}</span>
+<span class="nc" id="L127">			default -&gt; throw new IdException(&quot; id not found&quot;);</span>
 
 		}
 
 
 
-<span class="fc" id="L138">		Logger.getLogger(&quot;Pagamento effettuato&quot;).log(Level.INFO, &quot;Payment  done!!&quot;);</span>
+<span class="fc" id="L133">		Logger.getLogger(&quot;Pagamento effettuato&quot;).log(Level.INFO, &quot;Payment  done!!&quot;);</span>
 
-<span class="fc" id="L140">	}</span>
+<span class="fc" id="L135">	}</span>
 
 	public String[] getInfo()
 	{
-<span class="nc" id="L144">		String [] dati=new String[2];</span>
-<span class="nc" id="L145">		dati[0]= User.getInstance().getNome();</span>
-<span class="nc" id="L146">		dati[1]=User.getInstance().getCognome();</span>
-<span class="nc" id="L147">		return dati;</span>
+<span class="nc" id="L139">		String [] dati=new String[2];</span>
+<span class="nc" id="L140">		dati[0]= User.getInstance().getNome();</span>
+<span class="nc" id="L141">		dati[1]=User.getInstance().getCognome();</span>
+<span class="nc" id="L142">		return dati;</span>
 	}
 
 	public ObservableList&lt;CartaDiCredito&gt; ritornaElencoCByNumero(String numero,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, SQLException {
 
-<span class="fc" id="L152">		cc=new CartaDiCredito();</span>
-<span class="fc" id="L153">		cc.setNumeroCC(numero);</span>
+<span class="fc" id="L147">		cc=new CartaDiCredito();</span>
+<span class="fc" id="L148">		cc.setNumeroCC(numero);</span>
 
-<span class="pc bpc" id="L155" title="1 of 4 branches missed.">		switch (persistenza)</span>
+<span class="pc bpc" id="L150" title="1 of 4 branches missed.">		switch (persistenza)</span>
 		{
-<span class="fc" id="L157">			case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
-<span class="fc" id="L158">			case FILE-&gt;pCC=new CsvCartaCredito();</span>
-<span class="fc" id="L159">			case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
-<span class="nc" id="L160">			default -&gt; Logger.getLogger(&quot;elenco cc dal db&quot;).log(Level.SEVERE,&quot; list is empty&quot;);</span>
+<span class="fc" id="L152">			case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
+<span class="fc" id="L153">			case FILE-&gt;pCC=new CsvCartaCredito();</span>
+<span class="fc" id="L154">			case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
+<span class="nc" id="L155">			default -&gt; Logger.getLogger(&quot;elenco cc dal db&quot;).log(Level.SEVERE,&quot; list is empty&quot;);</span>
 		}
-<span class="fc" id="L162">			pCC.inizializza();</span>
+<span class="fc" id="L157">			pCC.inizializza();</span>
 
-<span class="fc" id="L164">		return pCC.getCarteDiCredito(cc);</span>
+<span class="fc" id="L159">		return pCC.getCarteDiCredito(cc);</span>
 
 
 	}

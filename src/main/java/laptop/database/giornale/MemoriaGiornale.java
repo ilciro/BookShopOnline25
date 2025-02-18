@@ -18,7 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class MemoriaGiornale extends PersistenzaGiornale{
+public class    MemoriaGiornale extends PersistenzaGiornale{
 
     private static final String SERIALIZZAZIONE="memory/serializzazioneGiornale.ser";
     private  ArrayList<Giornale> list=new ArrayList<>();

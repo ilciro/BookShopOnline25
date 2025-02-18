@@ -8,6 +8,17 @@ public class Pagamento implements Serializable {
 	@Serial
 	private static final long serialVersionUID = 2L;
 
+	public Pagamento(int i, String metodoP, String nome, float spesaT, String email, String categoria, int id) {
+	this.idPag=i;
+	this.metodo=metodoP;
+	this.nomeUtente=nome;
+	this.setAmmontare(spesaT);
+	this.email=email;
+	this.idOggetto=id;
+	this.tipo=categoria;
+	}
+	public Pagamento(){}
+
 
 	public int getIdPag() {
 		return idPag;
@@ -79,17 +90,11 @@ public class Pagamento implements Serializable {
 				+ ", ammontare=" + ammontare + ", tipo=" + tipo + ", idOggetto="+idOggetto+"]";
 	}
 
-	public Pagamento(int idPag,String metodo,String nomeUtente,float spesaTotale,String email,String tipoAcquisto,int idProdotto)
-	{
-		this.idPag=idPag;
-		this.metodo=metodo;
-		this.nomeUtente=nomeUtente;
-		this.ammontare=spesaTotale;
-		this.email=email;
-		this.tipo=tipoAcquisto;
-		this.idOggetto=idProdotto;
-	}
-	public Pagamento(){}
+
+
+
+
+
 
 
 

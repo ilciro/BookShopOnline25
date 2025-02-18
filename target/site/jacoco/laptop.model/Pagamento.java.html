@@ -8,14 +8,25 @@ public class Pagamento implements Serializable {
 	@Serial
 	private static final long serialVersionUID = 2L;
 
+<span class="fc" id="L11">	public Pagamento(int i, String metodoP, String nome, float spesaT, String email, String categoria, int id) {</span>
+<span class="fc" id="L12">	this.idPag=i;</span>
+<span class="fc" id="L13">	this.metodo=metodoP;</span>
+<span class="fc" id="L14">	this.nomeUtente=nome;</span>
+<span class="fc" id="L15">	this.setAmmontare(spesaT);</span>
+<span class="fc" id="L16">	this.email=email;</span>
+<span class="fc" id="L17">	this.idOggetto=id;</span>
+<span class="fc" id="L18">	this.tipo=categoria;</span>
+<span class="fc" id="L19">	}</span>
+<span class="fc" id="L20">	public Pagamento(){}</span>
+
 
 	public int getIdPag() {
-<span class="fc" id="L13">		return idPag;</span>
+<span class="fc" id="L24">		return idPag;</span>
 	}
 
 	public void setIdPag(int idPag) {
-<span class="fc" id="L17">		this.idPag = idPag;</span>
-<span class="fc" id="L18">	}</span>
+<span class="fc" id="L28">		this.idPag = idPag;</span>
+<span class="fc" id="L29">	}</span>
 
 	private int idPag;
 	private String metodo;
@@ -26,70 +37,64 @@ public class Pagamento implements Serializable {
 	private int idOggetto;
 
 	public float getAmmontare() {
-<span class="fc" id="L29">		return ammontare;</span>
+<span class="fc" id="L40">		return ammontare;</span>
 	}
 
 	public void setAmmontare(float ammontare) {
-<span class="fc" id="L33">		this.ammontare = ammontare;</span>
-<span class="fc" id="L34">	}</span>
+<span class="fc" id="L44">		this.ammontare = ammontare;</span>
+<span class="fc" id="L45">	}</span>
 
 	public String getEmail() {
-<span class="fc" id="L37">		return email;</span>
+<span class="fc" id="L48">		return email;</span>
 	}
 
 	public void setEmail(String email) {
-<span class="fc" id="L41">		this.email = email;</span>
-<span class="fc" id="L42">	}</span>
+<span class="fc" id="L52">		this.email = email;</span>
+<span class="fc" id="L53">	}</span>
 
 	public int getIdOggetto() {
-<span class="fc" id="L45">		return idOggetto;</span>
+<span class="fc" id="L56">		return idOggetto;</span>
 	}
 
 	public void setIdOggetto(int idOggetto) {
-<span class="fc" id="L49">		this.idOggetto = idOggetto;</span>
-<span class="fc" id="L50">	}</span>
+<span class="fc" id="L60">		this.idOggetto = idOggetto;</span>
+<span class="fc" id="L61">	}</span>
 
 	public String getMetodo() {
-<span class="fc" id="L53">		return metodo;</span>
+<span class="fc" id="L64">		return metodo;</span>
 	}
 
 	public void setMetodo(String metodo) {
-<span class="fc" id="L57">		this.metodo = metodo;</span>
-<span class="fc" id="L58">	}</span>
+<span class="fc" id="L68">		this.metodo = metodo;</span>
+<span class="fc" id="L69">	}</span>
 
 	public String getNomeUtente() {
-<span class="fc" id="L61">		return nomeUtente;</span>
+<span class="fc" id="L72">		return nomeUtente;</span>
 	}
 
 	public void setNomeUtente(String nomeUtente) {
-<span class="fc" id="L65">		this.nomeUtente = nomeUtente;</span>
-<span class="fc" id="L66">	}</span>
+<span class="fc" id="L76">		this.nomeUtente = nomeUtente;</span>
+<span class="fc" id="L77">	}</span>
 
 	public String getTipo() {
-<span class="fc" id="L69">		return tipo;</span>
+<span class="fc" id="L80">		return tipo;</span>
 	}
 
 	public void setTipo(String tipo) {
-<span class="fc" id="L73">		this.tipo = tipo;</span>
-<span class="fc" id="L74">	}</span>
+<span class="fc" id="L84">		this.tipo = tipo;</span>
+<span class="fc" id="L85">	}</span>
 
 	@Override
 	public String toString() {
-<span class="fc" id="L78">		return &quot;Pagamento [id=&quot; + idPag + &quot;, metodo=&quot; + metodo + &quot;, nomeUtente=&quot; + nomeUtente</span>
+<span class="fc" id="L89">		return &quot;Pagamento [id=&quot; + idPag + &quot;, metodo=&quot; + metodo + &quot;, nomeUtente=&quot; + nomeUtente</span>
 				+ &quot;, ammontare=&quot; + ammontare + &quot;, tipo=&quot; + tipo + &quot;, idOggetto=&quot;+idOggetto+&quot;]&quot;;
 	}
 
-	public Pagamento(int idPag,String metodo,String nomeUtente,float spesaTotale,String email,String tipoAcquisto,int idProdotto)
-<span class="fc" id="L83">	{</span>
-<span class="fc" id="L84">		this.idPag=idPag;</span>
-<span class="fc" id="L85">		this.metodo=metodo;</span>
-<span class="fc" id="L86">		this.nomeUtente=nomeUtente;</span>
-<span class="fc" id="L87">		this.ammontare=spesaTotale;</span>
-<span class="fc" id="L88">		this.email=email;</span>
-<span class="fc" id="L89">		this.tipo=tipoAcquisto;</span>
-<span class="fc" id="L90">		this.idOggetto=idProdotto;</span>
-<span class="fc" id="L91">	}</span>
-<span class="fc" id="L92">	public Pagamento(){}</span>
+
+
+
+
+
 
 
 

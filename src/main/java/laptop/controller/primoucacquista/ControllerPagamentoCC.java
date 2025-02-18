@@ -33,14 +33,9 @@ public class ControllerPagamentoCC {
 	private PersistenzaCC pCC;
 	private CartaDiCredito cc;
 
-
 	private static final String DATABASE="database";
 	private static final String FILE="file";
 	private static final String MEMORIA="memoria";
-
-
-
-
 
 
 	public ControllerPagamentoCC()  {

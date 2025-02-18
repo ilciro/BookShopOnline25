@@ -77,7 +77,7 @@ id prodotto
 </tr>
 
 
-<c:forEach items="#{beanL.elencoLibriB}" var="lista">
+<c:forEach items="#{beanL.listaLibriB}" var="lista">
 
 
 <tr>
@@ -138,7 +138,6 @@ Inserire id di oggetto scelto:
 <input type="text" id="idOgg" name="idOgg" value="idOgg">
 <br>
 <br>
-
 
 
 <input type="submit" class="invia" id="procedi" name="procedi" value="procedi">

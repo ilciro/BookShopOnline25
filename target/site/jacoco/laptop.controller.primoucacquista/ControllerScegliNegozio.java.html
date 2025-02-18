@@ -46,20 +46,18 @@ import java.util.logging.Logger;
 <span class="nc" id="L46">			default -&gt; Logger.getLogger(&quot;is open&quot;).log(Level.SEVERE,&quot;  is open il null!!&quot;);</span>
 
 		}
-<span class="fc" id="L49">		Negozio n=pN.getNegozi().get(id-1);</span>
-<span class="fc" id="L50">		return pN.checkRitiro(n);</span>
+<span class="fc" id="L49">		return pN.checkRitiro(pN.getNegozi().get(id-1));</span>
 	}
 	public boolean isValid(String type,int id) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
 
-<span class="pc bpc" id="L54" title="1 of 4 branches missed.">		switch (type) {</span>
-<span class="fc" id="L55">			case DATABASE -&gt; pN = new NegozioDao();</span>
-<span class="fc" id="L56">			case FILE -&gt; pN = new CsvNegozio();</span>
-<span class="fc" id="L57">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
-<span class="nc" id="L58">			default -&gt; Logger.getLogger(&quot;is valid&quot;).log(Level.SEVERE,&quot;  is open il null!!&quot;);</span>
+<span class="pc bpc" id="L53" title="1 of 4 branches missed.">		switch (type) {</span>
+<span class="fc" id="L54">			case DATABASE -&gt; pN = new NegozioDao();</span>
+<span class="fc" id="L55">			case FILE -&gt; pN = new CsvNegozio();</span>
+<span class="fc" id="L56">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
+<span class="nc" id="L57">			default -&gt; Logger.getLogger(&quot;is valid&quot;).log(Level.SEVERE,&quot;  is open il null!!&quot;);</span>
 
 		}
-<span class="fc" id="L61">		Negozio n=pN.getNegozi().get(id-1);</span>
-<span class="fc" id="L62">		return pN.checkOpen(n);</span>
+<span class="fc" id="L60">		return pN.checkOpen(pN.getNegozi().get(id-1));</span>
 	}
 	
 

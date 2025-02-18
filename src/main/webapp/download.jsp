@@ -16,7 +16,7 @@
 <br>
 
 
-<c:set var = "tipo" scope = "session" value = "${bean1.getTypeB() }"/>
+<c:set var = "tipo" scope = "session" value = "${beanS.getTypeB() }"/>
 
 <form action="DownloadServlet" method="post">
 
@@ -24,7 +24,7 @@
 <c:when test="${ tipo=='libro'}">
 <div>
 titolo del libro da scaricare:
-<input type="text" id="titoloL" name="titoloL" value="${bean1.getTitoloB()}">
+<input type="text" id="titoloL" name="titoloL" value="${beanS.getTitoloB()}">
 </div>
 <br>
 <div>
@@ -35,7 +35,7 @@ titolo del libro da scaricare:
 <c:when test="${ tipo=='giornale'}">
 <div>
 titolo del giornale da scaricare:
-<input type="text" id="titoloL" name="titoloL" value="${bean1.getTitoloB()}">
+<input type="text" id="titoloL" name="titoloL" value="${beanS.getTitoloB()}">
 </div>
 <br>
 <div>
@@ -46,12 +46,11 @@ titolo del giornale da scaricare:
 <c:when test="${tipo=='rivista'}">
 <div>
 titolo della rivista da scaricare:
-<input type="text" id="titoloL" name="titoloL" value="${bean1.getTitoloB()}">
+<input type="text" id="titoloL" name="titoloL" value="${beanS.getTitoloB()}">
 </div>
 <br>
 <div>
 <input type="submit" class="invia" id="downloadB" name="downloadB" value="scarica e leggi">
-<input type="submit" class="annulla" id="annullaB" name="annullaB" value="annulla">
 </div>
 
 </c:when>

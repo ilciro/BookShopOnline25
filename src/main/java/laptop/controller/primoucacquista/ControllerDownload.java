@@ -114,7 +114,7 @@ public class ControllerDownload {
 
 	}
 	private void acquistaRivista(String persistenza) throws IOException, DocumentException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
-  PersistenzaRivista pR;
+  	PersistenzaRivista pR;
 		r.setId(vis.getId());
 		r.scarica(vis.getId());
 		r.leggi(vis.getId());

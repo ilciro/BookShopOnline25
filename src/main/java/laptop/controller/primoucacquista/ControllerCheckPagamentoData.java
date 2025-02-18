@@ -285,9 +285,6 @@ public class ControllerCheckPagamentoData {
     }
 
 
-
-
-
     public void controllaPag(String d, String c,String civ) {
 
         String appoggio="";

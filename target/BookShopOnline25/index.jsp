@@ -22,8 +22,6 @@
             <a href="libri.jsp" id="libri" >Libri</a>
             <a href="giornali.jsp" id="giornali">Giornali</a>
             <a href="riviste.jsp" id="riviste">Riviste</a>
-            <a href="login.jsp" id="login">Login</a>
-            <a href="ricerca.jsp" id="ricerca">Ricerca</a>
 
 
         </div>

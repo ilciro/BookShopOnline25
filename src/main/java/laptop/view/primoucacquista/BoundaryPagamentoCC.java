@@ -79,10 +79,10 @@ public class BoundaryPagamentoCC implements Initializable {
 	private ToggleGroup toggleGroup;
 	@FXML
 	private RadioButton completa;
-
-
 	@FXML
 	private Button buttonI;
+
+
 	protected Scene scene;
 	private ControllerPagamentoCC cPCC;
 	private final ControllerSystemState vis=ControllerSystemState.getInstance();
