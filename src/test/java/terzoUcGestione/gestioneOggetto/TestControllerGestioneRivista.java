@@ -106,7 +106,7 @@ class TestControllerGestioneRivista {
 
         //prendo id
        vis.setId(4);
-        assertTrue(cR.elimina(RIVISTA));
+        assertTrue(cR.elimina(strings));
         cA.logout(strings);
     }
 

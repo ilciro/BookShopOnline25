@@ -110,7 +110,7 @@ class TestControllerGestioneLibro {
 
         //prendo id
         vis.setId(16);
-        assertTrue(cR.elimina(LIBRO));
+        assertTrue(cR.elimina(strings));
         cA.logout(strings);
     }
 

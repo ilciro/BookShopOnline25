@@ -31,7 +31,7 @@ BookShopOnline25 Maven Webapp,laptop.controller.secondouclogin,ControllerLogin,1
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerGestioneUtente,75,218,11,11,12,39,9,10,1,4
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerGestione,55,790,11,45,11,133,11,40,0,12
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerReport,73,159,8,12,14,30,8,13,1,5
-BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerRaccolta,79,250,14,18,14,49,14,17,0,7
+BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerRaccolta,40,289,8,24,8,55,8,23,0,7
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerVisualizzaOrdini,22,74,4,4,4,15,4,6,0,4
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerUtenti,10,82,2,6,2,17,2,8,0,4
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofilooggetto,ControllerVisualizzaProfilo,10,308,10,22,2,63,10,15,0,7
