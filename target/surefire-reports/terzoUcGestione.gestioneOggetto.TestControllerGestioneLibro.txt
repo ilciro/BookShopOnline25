@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: terzoUcGestione.gestioneOggetto.TestControllerGestioneLibro
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.716 s - in terzoUcGestione.gestioneOggetto.TestControllerGestioneLibro
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.462 s - in terzoUcGestione.gestioneOggetto.TestControllerGestioneLibro

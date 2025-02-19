@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: secondoUcLogin.TestUserLoggedPagamento
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.727 s - in secondoUcLogin.TestUserLoggedPagamento
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.645 s - in secondoUcLogin.TestUserLoggedPagamento

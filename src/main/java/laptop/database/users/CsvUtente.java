@@ -85,29 +85,7 @@ public class CsvUtente extends PersistenzaUtente {
     }
 
 
-    @Override
-    public List<TempUser> userList(TempUser u) throws CsvValidationException, IOException {
-        List<TempUser> list = new ArrayList<>();
-        synchronized (this.cacheU) {
-            for (Map.Entry<String, TempUser> entry : this.cacheU.entrySet()) {
-                TempUser recordInCache = this.cacheU.get(entry.getKey());
-                boolean recordP = recordInCache.getEmailT().equals(u.getEmailT());
-                boolean recordM = recordInCache.getPasswordT().equals(u.getPasswordT());
-                boolean recordFound = recordP && recordM;
-                if (recordFound)
-                    list.add(recordInCache);
-            }
-        }
-        if (list.isEmpty()) {
-            list = getUserData(this.fdU, u.getId(), u.getEmailT(), u.getPasswordT());
-            synchronized (this.cacheU) {
-                for (TempUser user : list)
-                    this.cacheU.put(String.valueOf(u.getId()), user);
-            }
 
-        }
-        return list;
-    }
 
     @Override
     public void initializza() throws CsvValidationException, IOException, IdException, ClassNotFoundException {

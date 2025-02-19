@@ -11,7 +11,6 @@ import laptop.database.report.PersistenzaReport;
 import laptop.database.report.ReportDao;
 import laptop.model.Report;
 import laptop.model.user.TempUser;
-import laptop.model.user.User;
 
 import java.io.IOException;
 import java.sql.SQLException;

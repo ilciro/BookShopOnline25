@@ -116,23 +116,7 @@ public class UsersDao extends PersistenzaUtente {
 		return row==1;
 	}
 
-	@Override
-	public List<TempUser> userList(TempUser u) throws CsvValidationException, IOException, SQLException {
-		List<TempUser> lista=FXCollections.emptyObservableList();
-		query="select * from USERS";
-		try(Connection conn=ConnToDb.connectionToDB();
-			PreparedStatement preQ=conn.prepareStatement(query)){
 
-			ResultSet rs= preQ.executeQuery();
-			while (rs.next())
-			{
-				TempUser tu = getTempUser(rs, rs.getDate(8).toLocalDate());
-				lista.add(tu);
-			}
-
-		}
-		return lista;
-	}
 
 	@Override
 	public void initializza() throws CsvValidationException, IOException, IdException, SQLException {

@@ -36,11 +36,7 @@ public class PersistenzaUtente {
         if(tu.getEmailT().isEmpty()) throw new CsvValidationException(FILEXCEPTION);
         if(tu.getPasswordT().isEmpty()) throw new IOException("password memory is empty");
         return false;}
-    public List<TempUser> userList(TempUser tu) throws CsvValidationException, IOException, SQLException {
-        if(tu.getId()<=0) throw new SQLException(DATABASEXCEPTION);
-        if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);
-        if(!Files.exists(Path.of(MEMORIA))) throw new IOException(MEMORIAEXCEPTION);
-        return FXCollections.observableArrayList();}
+
 
 
     public void initializza() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {

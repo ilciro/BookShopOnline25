@@ -46,20 +46,20 @@ import java.util.logging.Logger;
 <span class="pc bpc" id="L46" title="1 of 2 branches missed.">        return row==0 ;</span>
     }
     private boolean reportG() {
-<span class="fc" id="L49">        int row = 0;</span>
-<span class="fc" id="L50">        query = &quot;create or replace view REPORTG (idProdotto,titolo,categoria,spesaTotale) as select g.idLibro,g.titolo,g.categoria,sum(g.spesaTotale) from GIORNALE g join PAGAMENTO  p on g.idGiornale=p.idProdotto group by g.idGiornale;&quot;;</span>
+<span class="fc" id="L49">        int row = -1;</span>
+<span class="fc" id="L50">        query = &quot;create or replace view REPORTG (idProdotto,titolo,categoria,spesaTotale) as select g.idGiornale,g.titolo,g.categoria,sum(g.prezzo) from GIORNALE g join PAGAMENTO  p on g.idGiornale=p.idProdotto group by g.idGiornale;&quot;;</span>
 
 
 <span class="fc" id="L53">        try (Connection conn = ConnToDb.connectionToDB();</span>
 <span class="fc" id="L54">             PreparedStatement preQ = conn.prepareStatement(query)) {</span>
-<span class="nc" id="L55">            row = preQ.executeUpdate();</span>
-<span class="fc" id="L56">        } catch (SQLException e) {</span>
-<span class="fc" id="L57">            Logger.getLogger(&quot;crete view giornale &quot;).log(Level.SEVERE, &quot; could not create daily view !!&quot;);</span>
-<span class="nc" id="L58">        }</span>
+<span class="fc" id="L55">            row = preQ.executeUpdate();</span>
+<span class="nc" id="L56">        } catch (SQLException e) {</span>
+<span class="nc" id="L57">            Logger.getLogger(&quot;crete view giornale &quot;).log(Level.SEVERE, &quot; could not create daily view !!&quot;);</span>
+<span class="fc" id="L58">        }</span>
 <span class="pc bpc" id="L59" title="1 of 2 branches missed.">        return row == 0;</span>
     }
     private boolean reportR() {
-<span class="fc" id="L62">        int row = 0;</span>
+<span class="fc" id="L62">        int row = -1;</span>
 <span class="fc" id="L63">        query = &quot;create or replace view REPORTR (idProdotto,titolo,categoria,spesaTotale) as select r.idRivista,r.titolo,r.categoria,sum(p.spesaTotale) from RIVISTA r join PAGAMENTO  p on r.idRivista=p.idProdotto group by r.idRivista;&quot;;</span>
 
 
@@ -107,8 +107,8 @@ import java.util.logging.Logger;
 
 <span class="fc" id="L108">            }</span>
 
-<span class="fc" id="L110">        } catch (SQLException e) {</span>
-<span class="fc" id="L111">            Logger.getLogger(&quot; report &quot;).log(Level.SEVERE, &quot; REPORTL is empty {0}&quot;,e.getMessage());</span>
+<span class="nc" id="L110">        } catch (SQLException e) {</span>
+<span class="nc" id="L111">            Logger.getLogger(&quot; report &quot;).log(Level.SEVERE, &quot; REPORTL is empty {0}&quot;,e.getMessage());</span>
 <span class="fc" id="L112">        }</span>
 <span class="fc" id="L113">        return list;</span>
     }

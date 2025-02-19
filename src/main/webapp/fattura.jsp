@@ -13,13 +13,6 @@
 <body>
 
 
-<p> id libro ${beanL.getIdB()}</p>
-<p> id gironale ${beanG.getIdB()}</p>
-<p> id rivista ${beanR.getIdB()}</p>
-<p> id bean :${beanS.getIdB()}</p>
-
-
-
 <h1> Benvenuto nella schermata del pagamento con fattura</h1>
 
 

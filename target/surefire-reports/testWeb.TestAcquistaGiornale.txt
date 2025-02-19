@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: testWeb.TestAcquistaGiornale
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 68.527 s - in testWeb.TestAcquistaGiornale
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 48.573 s - in testWeb.TestAcquistaGiornale

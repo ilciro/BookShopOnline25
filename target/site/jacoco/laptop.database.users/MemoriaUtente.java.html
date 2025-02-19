@@ -100,64 +100,51 @@ import java.util.logging.Logger;
 
     }
 
-    @Override
-    @SuppressWarnings(&quot;unchecked&quot;)
-    public List&lt;TempUser&gt; userList(TempUser u) throws CsvValidationException, IOException {
-<span class="nc" id="L106">        List&lt;TempUser&gt; listaRec=FXCollections.emptyObservableList();</span>
-<span class="nc" id="L107">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="nc" id="L108">            ObjectInputStream ois = new ObjectInputStream(fis)){</span>
-<span class="nc" id="L109">            listaRec=(List&lt;TempUser&gt;) ois.readObject();</span>
 
-<span class="nc" id="L111">        }  catch (ClassNotFoundException e) {</span>
-<span class="nc" id="L112">            Logger.getLogger(&quot;lista libri&quot;).log(Level.SEVERE,&quot;exception .&quot;,e);</span>
-<span class="nc" id="L113">        }</span>
-
-<span class="nc" id="L115">        return listaRec;</span>
-    }
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public void initializza() throws IOException, CsvValidationException, IdException, ClassNotFoundException {
 
-<span class="fc bfc" id="L122" title="All 2 branches covered.">        for(int i=1;i&lt;=7;i++)</span>
+<span class="fc bfc" id="L109" title="All 2 branches covered.">        for(int i=1;i&lt;=7;i++)</span>
         {
             String line;
 
 
-<span class="fc" id="L127">            ArrayList&lt;String&gt; listaR = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L114">            ArrayList&lt;String&gt; listaR = new ArrayList&lt;&gt;();</span>
 
 
-<span class="fc" id="L130">            try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/utente&quot; + i + &quot;.txt&quot;);</span>
-<span class="fc" id="L131">                 BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
-<span class="fc bfc" id="L132" title="All 2 branches covered.">                while ((line = bufferedReader.readLine()) != null) {</span>
-<span class="fc" id="L133">                    listaR.add(line);</span>
+<span class="fc" id="L117">            try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/utente&quot; + i + &quot;.txt&quot;);</span>
+<span class="fc" id="L118">                 BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
+<span class="fc bfc" id="L119" title="All 2 branches covered.">                while ((line = bufferedReader.readLine()) != null) {</span>
+<span class="fc" id="L120">                    listaR.add(line);</span>
 
                 }
             }
-<span class="fc" id="L137">            TempUser tu=new TempUser();</span>
-<span class="fc" id="L138">            tu.setId(Integer.parseInt(listaR.get(0)));</span>
-<span class="fc" id="L139">            tu.setIdRuoloT(listaR.get(1));</span>
-<span class="fc" id="L140">            tu.setNomeT(listaR.get(2));</span>
-<span class="fc" id="L141">            tu.setCognomeT(listaR.get(3));</span>
-<span class="fc" id="L142">            tu.setEmailT(listaR.get(4));</span>
-<span class="fc" id="L143">            tu.setPasswordT(listaR.get(5));</span>
-<span class="fc" id="L144">            tu.setDescrizioneT(listaR.get(6));</span>
-<span class="fc" id="L145">            tu.setDataDiNascitaT(LocalDate.parse(listaR.get(7)));</span>
-<span class="fc" id="L146">            listaTU.add(tu);</span>
+<span class="fc" id="L124">            TempUser tu=new TempUser();</span>
+<span class="fc" id="L125">            tu.setId(Integer.parseInt(listaR.get(0)));</span>
+<span class="fc" id="L126">            tu.setIdRuoloT(listaR.get(1));</span>
+<span class="fc" id="L127">            tu.setNomeT(listaR.get(2));</span>
+<span class="fc" id="L128">            tu.setCognomeT(listaR.get(3));</span>
+<span class="fc" id="L129">            tu.setEmailT(listaR.get(4));</span>
+<span class="fc" id="L130">            tu.setPasswordT(listaR.get(5));</span>
+<span class="fc" id="L131">            tu.setDescrizioneT(listaR.get(6));</span>
+<span class="fc" id="L132">            tu.setDataDiNascitaT(LocalDate.parse(listaR.get(7)));</span>
+<span class="fc" id="L133">            listaTU.add(tu);</span>
 
         }
-<span class="fc" id="L149">        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L150">            ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
-<span class="fc" id="L151">            oos.writeObject(listaTU);</span>
+<span class="fc" id="L136">        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L137">            ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
+<span class="fc" id="L138">            oos.writeObject(listaTU);</span>
         }
 
-<span class="fc" id="L154">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L155">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
-<span class="fc" id="L156">            listaTU= (ArrayList&lt;TempUser&gt;) ois.readObject();</span>
+<span class="fc" id="L141">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L142">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="fc" id="L143">            listaTU= (ArrayList&lt;TempUser&gt;) ois.readObject();</span>
         }
 
 
-<span class="fc" id="L160">    }</span>
+<span class="fc" id="L147">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

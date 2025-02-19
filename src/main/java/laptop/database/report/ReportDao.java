@@ -46,8 +46,8 @@ public class ReportDao extends PersistenzaReport {
         return row==0 ;
     }
     private boolean reportG() {
-        int row = 0;
-        query = "create or replace view REPORTG (idProdotto,titolo,categoria,spesaTotale) as select g.idLibro,g.titolo,g.categoria,sum(g.spesaTotale) from GIORNALE g join PAGAMENTO  p on g.idGiornale=p.idProdotto group by g.idGiornale;";
+        int row = -1;
+        query = "create or replace view REPORTG (idProdotto,titolo,categoria,spesaTotale) as select g.idGiornale,g.titolo,g.categoria,sum(g.prezzo) from GIORNALE g join PAGAMENTO  p on g.idGiornale=p.idProdotto group by g.idGiornale;";
 
 
         try (Connection conn = ConnToDb.connectionToDB();
@@ -59,7 +59,7 @@ public class ReportDao extends PersistenzaReport {
         return row == 0;
     }
     private boolean reportR() {
-        int row = 0;
+        int row = -1;
         query = "create or replace view REPORTR (idProdotto,titolo,categoria,spesaTotale) as select r.idRivista,r.titolo,r.categoria,sum(p.spesaTotale) from RIVISTA r join PAGAMENTO  p on r.idRivista=p.idProdotto group by r.idRivista;";
 
 

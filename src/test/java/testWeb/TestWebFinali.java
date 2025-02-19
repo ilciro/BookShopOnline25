@@ -59,6 +59,7 @@ class TestWebFinali {
           PropertyUtils.setProperty(rB,"autoreB",r.getAutore());
           PropertyUtils.setProperty(rB,"linguaB",r.getLingua());
           PropertyUtils.setProperty(rB,"dataPubbB",r.getDataPubb());
+          PropertyUtils.setProperty(rB,"prezzoB",3.54f);
 
 
 

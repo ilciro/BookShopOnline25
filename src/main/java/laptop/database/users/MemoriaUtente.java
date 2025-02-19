@@ -100,20 +100,7 @@ public class MemoriaUtente extends PersistenzaUtente{
 
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public List<TempUser> userList(TempUser u) throws CsvValidationException, IOException {
-        List<TempUser> listaRec=FXCollections.emptyObservableList();
-        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
-            ObjectInputStream ois = new ObjectInputStream(fis)){
-            listaRec=(List<TempUser>) ois.readObject();
 
-        }  catch (ClassNotFoundException e) {
-            Logger.getLogger("lista libri").log(Level.SEVERE,"exception .",e);
-        }
-
-        return listaRec;
-    }
 
     @Override
     @SuppressWarnings("unchecked")

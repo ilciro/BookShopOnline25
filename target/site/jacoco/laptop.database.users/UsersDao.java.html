@@ -116,30 +116,14 @@ import org.jetbrains.annotations.NotNull;
 <span class="pc bpc" id="L116" title="1 of 2 branches missed.">		return row==1;</span>
 	}
 
-	@Override
-	public List&lt;TempUser&gt; userList(TempUser u) throws CsvValidationException, IOException, SQLException {
-<span class="nc" id="L121">		List&lt;TempUser&gt; lista=FXCollections.emptyObservableList();</span>
-<span class="nc" id="L122">		query=&quot;select * from USERS&quot;;</span>
-<span class="nc" id="L123">		try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="nc" id="L124">			PreparedStatement preQ=conn.prepareStatement(query)){</span>
 
-<span class="nc" id="L126">			ResultSet rs= preQ.executeQuery();</span>
-<span class="nc bnc" id="L127" title="All 2 branches missed.">			while (rs.next())</span>
-			{
-<span class="nc" id="L129">				TempUser tu = getTempUser(rs, rs.getDate(8).toLocalDate());</span>
-<span class="nc" id="L130">				lista.add(tu);</span>
-<span class="nc" id="L131">			}</span>
-
-		}
-<span class="nc" id="L134">		return lista;</span>
-	}
 
 	@Override
 	public void initializza() throws CsvValidationException, IOException, IdException, SQLException {
 
-<span class="fc" id="L140">		DaoInitialize daoI=new DaoInitialize();</span>
-<span class="fc" id="L141">		daoI.inizializza(&quot;users&quot;);</span>
-<span class="fc" id="L142">    }</span>
+<span class="fc" id="L124">		DaoInitialize daoI=new DaoInitialize();</span>
+<span class="fc" id="L125">		daoI.inizializza(&quot;users&quot;);</span>
+<span class="fc" id="L126">    }</span>
 
 
 
