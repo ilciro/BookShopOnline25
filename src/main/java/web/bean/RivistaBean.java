@@ -226,43 +226,27 @@ public class RivistaBean {
 	
 	public String elencoCategorie()
 	{
-		String s= "SETTIMANALE";
-		s+="\n";
-		s+="BISETTIMANALE" ;
-		s+="\n";
-		s+= "MENSILE";
-		s+="\n";
-		s+= "BIMESTRALE" ;
-		s+="\n";
-		s+="TRIMESTRALE" ;	
-		s+="\n";
-		s+= "ANNUALE" ;
-		s+="\n";
+		String s= "SETTIMANALE"+"\n";
+		s+="BISETTIMANALE" +"\n";
+		s+= "MENSILE" +"\n";
+		s+="TRIMESTRALE"+"\n" ;
+		s+= "ANNUALE"+"\n" ;
 
-		s+= "ESTIVO" ;
-		s+="\n";
+		s+= "ESTIVO"+"\n" ;
 
-		s+= "INVERNALE" ;
-		s+="\n";
+		s+= "INVERNALE"+"\n" ;
 
-		s+= "SPORTIVO" ;
-		s+="\n";
+		s+= "SPORTIVO"+"\n" ;
 
-		s+= "CINEMATOGRAFICA" ; 
-		s+="\n";
+		s+= "CINEMATOGRAFICA" +"\n";
 
-		s+= "GOSSIP" ;
-		s+="\n";
+		s+= "GOSSIP"+"\n" ;
 
-		s+= "TELEVISIVO" ;
-		s+="\n";
+		s+= "TELEVISIVO"+"\n" ;
 
-		s+= "MILITARE" ;
-		s+="\n";
+		s+= "MILITARE"+"\n" ;
 
-		s+= "INFORMATICA";
-		s+="\n";
-
+		s+= "INFORMATICA" +"\n";
 		return s;
 	}
 

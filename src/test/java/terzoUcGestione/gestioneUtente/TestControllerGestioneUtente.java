@@ -7,12 +7,13 @@ import laptop.controller.secondouclogin.ControllerLogin;
 import laptop.controller.terzoucgestioneprofilooggetto.ControllerGestioneUtente;
 import laptop.controller.terzoucgestioneprofilooggetto.ControllerUtenti;
 import laptop.exception.IdException;
+import laptop.model.user.TempUser;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -86,6 +87,8 @@ class TestControllerGestioneUtente {
         assertTrue(cU.elimina("giannni@gmail.com",strings));
         cA.logout(strings);
     }
+
+
 
 
 }

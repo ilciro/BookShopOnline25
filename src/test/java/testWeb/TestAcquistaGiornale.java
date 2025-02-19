@@ -79,6 +79,7 @@ class TestAcquistaGiornale {
         PropertyUtils.setProperty(ccB, "numeroCCB",  driver.findElement(By.id("cartaL")).getDomProperty("value"));
         PropertyUtils.setProperty(ccB, "dataScadB", utilDate);
         PropertyUtils.setProperty(ccB, "civB",  driver.findElement(By.id("passL")).getDomProperty("value"));
+        PropertyUtils.setProperty(ccB,"prezzoTransazioneB",PropertyUtils.getProperty(sB,"spesaTB"));
         driver.findElement(By.id("buttonI")).click();
         //negozio
         driver.findElement(By.id("buttonNeg2")).click();
