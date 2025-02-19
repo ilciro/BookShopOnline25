@@ -3,6 +3,7 @@ package primoUcRicerca;
 import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.primoucacquista.ControllerRicerca;
 import laptop.exception.IdException;
+import laptop.model.user.User;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -31,4 +32,7 @@ class TestControllerRicercaRivista {
     void testRicercaRivistaAutore(String strings) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
         assertNotEquals(0,cR.listaRiviste(RBOGGETTO.getString("autoreR"),strings).size());
     }
+
+
+
 }

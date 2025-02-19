@@ -2,24 +2,30 @@ package testFinali;
 
 import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
+import laptop.controller.primoucacquista.ControllerRicerca;
 import laptop.controller.terzoucgestioneprofilooggetto.ControllerGestione;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Rivista;
+import laptop.model.user.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class TestFinaliVari {
 
     private final ControllerGestione cG=new ControllerGestione();
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
+    private static final ResourceBundle RBUTENTE=ResourceBundle.getBundle("configurations/users");
+    private final ControllerRicerca cR=new ControllerRicerca();
+
 
     @ParameterizedTest
     @ValueSource(strings = {"database","file","memoria"})
@@ -101,5 +107,15 @@ class TestFinaliVari {
         Rivista r=new Rivista();
         for (String string : catR) r.setCategoria(string);
         assertNotEquals("",r.getCategoria());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"database","file","memoria"})
+    void testLogoutRicerca(String strings) throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException {
+
+        User u= User.getInstance();
+        u.setEmail(RBUTENTE.getString("emailA"));
+        u.setPassword(RBUTENTE.getString("passA"));
+        assertTrue(cR.logout(strings));
     }
 }

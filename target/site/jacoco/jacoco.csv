@@ -57,7 +57,7 @@ BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerDownlo
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerPagamentoCC,52,230,7,11,11,49,8,11,1,5
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerVisualizza,15,151,3,9,3,29,3,11,0,5
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerCompravendita,20,114,4,12,4,22,4,10,0,2
-BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerRicerca,151,319,22,34,31,51,17,22,2,5
+BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerRicerca,109,361,17,39,23,59,14,25,1,6
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerHomePage,40,103,7,15,9,22,7,14,3,6
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerAnnullaPagamento,20,147,4,12,4,27,4,13,0,5
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerAcquista,20,266,4,12,4,41,4,12,0,4
