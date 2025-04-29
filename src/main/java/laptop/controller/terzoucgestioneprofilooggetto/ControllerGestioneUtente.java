@@ -38,7 +38,7 @@ public class ControllerGestioneUtente {
             default -> Logger.getLogger("inserisci utente").log(Level.SEVERE,"error in persistency data user");
         }
         for(int i=0;i<pU.getUserData().size();i++) {
-            if(pU.getUserData().get(i).getId()==vis.getId()-1)
+            if(pU.getUserData().get(i).getId()==vis.getIdUtente()-1)
                 tu=pU.getUserData().get(i);
 
         }
@@ -86,7 +86,7 @@ public class ControllerGestioneUtente {
         tu.setPasswordT(data[4]);
         tu.setDescrizioneT(data[5]);
         tu.setDataDiNascitaT(LocalDate.parse(data[6]));
-        tu.setId(vis.getId());
+        tu.setId(vis.getIdUtente());
         return tu;
     }
 
@@ -110,7 +110,7 @@ public class ControllerGestioneUtente {
 
         for (int i=0;i<pU.getUserData().size();i++)
         {
-            if(pU.getUserData().get(i).getId()==vis.getId()-1
+            if(pU.getUserData().get(i).getId()==vis.getIdUtente()-1
             || pU.getUserData().get(i).getEmailT().equals(vecchiaMail))
             {
 

@@ -51,9 +51,17 @@ public class ControllerVisualizza {
 
 	public int getID()
 	{
-		Logger.getLogger("Test getId").log(Level.INFO, "id {0}",vis.getId());
+		int id=0;
+		switch (vis.getType())
+		{
+			case "libro"-> id=vis.getIdLibro();
+			case "giornale"->id=vis.getIdGiornale();
+			case "rivista"->id=vis.getIdRivista();
+			default -> Logger.getLogger("id").log(Level.SEVERE,"get id error!!");
 
-		return vis.getId();
+		}
+
+		return id;
 	}
 
 	public ObservableList<Libro> getListLibro(String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {

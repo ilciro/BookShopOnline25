@@ -51,9 +51,9 @@ public class ControllerDownload {
 
 	private void acquistaLibro(String persistenza) throws DocumentException, IOException, URISyntaxException, CsvValidationException, IdException, ClassNotFoundException {
   		PersistenzaLibro pL;
-		l.setId(vis.getId());
-		l.scarica(vis.getId());
-		l.leggi(vis.getId());
+		l.setId(vis.getIdLibro());
+		l.scarica(vis.getIdLibro());
+		l.leggi(vis.getIdLibro());
 
 
 
@@ -79,16 +79,16 @@ public class ControllerDownload {
 
 		}
 		tempLibro.setNrCopie(tempLibro.getNrCopie()-vis.getQuantita());
-		tempLibro.setId(vis.getId());
+		tempLibro.setId(vis.getIdLibro());
 
 		if(pL.inserisciLibro(tempLibro)) Logger.getLogger("aggiorno libro").log(Level.INFO,"update book succesfully!!");
 
 	}
 	private void acquistaGiornale(String persistenza) throws IOException, DocumentException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
   PersistenzaGiornale pG;
-		g.setId(vis.getId());
-		g.scarica(vis.getId());
-		g.leggi(vis.getId());
+		g.setId(vis.getIdGiornale());
+		g.scarica(vis.getIdGiornale());
+		g.leggi(vis.getIdGiornale());
 		if(persistenza.equals(DATABASE))  pG=new GiornaleDao();
 		else if(persistenza.equals(FILE)) pG=new CsvGiornale();
 		else pG=new MemoriaGiornale();
@@ -109,15 +109,15 @@ public class ControllerDownload {
 
 		}
 		tempG.setCopieRimanenti(tempG.getCopieRimanenti()-vis.getQuantita());
-		tempG.setId(vis.getId());
+		tempG.setId(vis.getIdGiornale());
 		if(pG.inserisciGiornale(tempG)) Logger.getLogger("aggiorno giornale").log(Level.INFO,"update daily succesfully!!");
 
 	}
 	private void acquistaRivista(String persistenza) throws IOException, DocumentException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
   	PersistenzaRivista pR;
-		r.setId(vis.getId());
-		r.scarica(vis.getId());
-		r.leggi(vis.getId());
+		r.setId(vis.getIdRivista());
+		r.scarica(vis.getIdRivista());
+		r.leggi(vis.getIdRivista());
 
 		if (persistenza.equals(DATABASE)) pR = new RivistaDao();
 		else if (persistenza.equals(FILE)) pR = new CsvRivista();

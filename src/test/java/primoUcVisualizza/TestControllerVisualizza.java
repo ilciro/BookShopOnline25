@@ -20,19 +20,19 @@ class TestControllerVisualizza {
      @ParameterizedTest
     @ValueSource(strings = {"database","file","memoria"})
     void testVisualizzaGiornale(String strings) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-         vis.setId(Integer.parseInt(RBOGGETTO.getString("idG")));
+         vis.setIdGiornale(Integer.parseInt(RBOGGETTO.getString("idG")));
          assertEquals(1,cV.getListGiornale(strings).size());
      }
     @ParameterizedTest
     @ValueSource(strings = {"database","file","memoria"})
     void testVisualizzaLibro(String strings) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        vis.setId(Integer.parseInt(RBOGGETTO.getString("idL")));
+        vis.setIdLibro(Integer.parseInt(RBOGGETTO.getString("idL")));
         assertEquals(1,cV.getListLibro(strings).size());
     }
     @ParameterizedTest
     @ValueSource(strings = {"database","file","memoria"})
     void testVisualizzaRivista(String strings) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        vis.setId(Integer.parseInt(RBOGGETTO.getString("idR")));
+        vis.setIdRivista(Integer.parseInt(RBOGGETTO.getString("idR")));
         assertEquals(1,cV.getListRivista(strings).size());
     }
 }

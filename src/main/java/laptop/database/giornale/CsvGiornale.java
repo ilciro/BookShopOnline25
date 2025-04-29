@@ -130,7 +130,7 @@ public class CsvGiornale extends PersistenzaGiornale{
             gVector[GETINDEXCOPIERG] = String.valueOf(g.getCopieRimanenti());
             gVector[GETINDEXDISPG] = String.valueOf(g.getDisponibilita());
             gVector[GETINDEXPREZZOG] = String.valueOf(g.getPrezzo());
-            if(vis.getTipoModifica().equals("im")) gVector[GETINDEXIDG] = String.valueOf(vis.getId());
+            if(vis.getTipoModifica().equals("im")) gVector[GETINDEXIDG] = String.valueOf(vis.getIdGiornale());
             else if(vis.getTipoModifica().equals("insert"))gVector[GETINDEXIDG] = String.valueOf(getIdMax() + 1);
             else throw new CsvValidationException("type of modif in daily files is wrong !!");
             csvWriter.writeNext(gVector);
@@ -151,7 +151,7 @@ public class CsvGiornale extends PersistenzaGiornale{
             while ((gVector = csvReader.readNext()) != null) {
 
                 recordFound = gVector[GETINDEXTITOLOG].equals(tit) || gVector[GETINDEXEDITOREG].equals(edit) || gVector[GETINDEXIDG].equals(String.valueOf(id))
-                        || gVector[GETINDEXIDG].equals(String.valueOf(vis.getId()));
+                        || gVector[GETINDEXIDG].equals(String.valueOf(vis.getIdGiornale()));
 
                 if (recordFound) {
 
@@ -231,7 +231,7 @@ public class CsvGiornale extends PersistenzaGiornale{
 
 
                     recordFound = gVector[GETINDEXIDG].equals(String.valueOf(g.getId()))
-                            || gVector[GETINDEXIDG].equals(String.valueOf(vis.getId()))
+                            || gVector[GETINDEXIDG].equals(String.valueOf(vis.getIdGiornale()))
                             || gVector[GETINDEXTITOLOG].equals(g.getTitolo());
 
 
@@ -360,7 +360,7 @@ public class CsvGiornale extends PersistenzaGiornale{
 
             while ((gVector = csvReader.readNext()) != null) {
 
-                boolean recordFound = gVector[GETINDEXIDG].equals(String.valueOf(giornale.getId())) || gVector[GETINDEXIDG].equals(String.valueOf(vis.getId()))
+                boolean recordFound = gVector[GETINDEXIDG].equals(String.valueOf(giornale.getId())) || gVector[GETINDEXIDG].equals(String.valueOf(vis.getIdGiornale()))
                         || gVector[GETINDEXTITOLOG].equals(giornale.getTitolo()) || gVector[GETINDEXEDITOREG].equals(giornale.getEditore());
                 if (recordFound) {
 

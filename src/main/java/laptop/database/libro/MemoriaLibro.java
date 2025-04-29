@@ -80,7 +80,7 @@ public class MemoriaLibro extends PersistenzaLibro{
             ObjectInputStream ois=new ObjectInputStream(fis)){
             list= (ArrayList<Libro>) ois.readObject();
         }
-        if(vis.getTipoModifica().equals("im")) l.setId(vis.getId());
+        if(vis.getTipoModifica().equals("im")) l.setId(vis.getIdLibro());
         else if(vis.getTipoModifica().equals("insert")) l.setId(list.size()+1);
         else throw new CsvValidationException(" type modif in csv is wrong!!");
         list.add(l);

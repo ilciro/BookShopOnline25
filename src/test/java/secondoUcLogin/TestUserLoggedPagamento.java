@@ -38,7 +38,7 @@ class TestUserLoggedPagamento {
         //home page after login -> compro un libro
         cHP.persistenza("libro");
         //scelgo di acquistare libro 1
-        vis.setId(1);
+        vis.setIdUtente(1);
         cAcquista.getPrezzo("10",strings);
         vis.setMetodoP("cCredito");
         //pagamento cc , aggiugendo carta

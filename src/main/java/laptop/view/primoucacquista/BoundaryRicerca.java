@@ -24,7 +24,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class BoundaryRicerca implements Initializable {
@@ -132,7 +133,18 @@ public class BoundaryRicerca implements Initializable {
     private void mostra() throws IOException {
         if(checkPersistenza()) {
 
-            vis.setId(Integer.parseInt(idTF.getText()));
+
+
+
+
+                switch (vis.getType()) {
+                    case "libro" -> vis.setIdLibro(Integer.parseInt(idTF.getText()));
+                    case "giornale" -> vis.setIdGiornale(Integer.parseInt(idTF.getText()));
+                    case "rivista" -> vis.setIdRivista(Integer.parseInt(idTF.getText()));
+                    default -> Logger.getLogger("check tipologia riverca").log(Level.SEVERE, "id ricerca not correct assigned!!");
+
+                }
+
             Stage stage;
             Parent root;
             stage = (Stage) mostraB.getScene().getWindow();

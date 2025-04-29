@@ -2,11 +2,11 @@ testFinali/TestFinali.class
 testWeb/TestAcquistaLibro.class
 secondoUcLogin/TestResetPassword.class
 primoUcAcquista/testLibro/TestAcquistaLibro.class
-primoUcRicerca/TestControllerRicercaLibro.class
 terzoUcGestione/gestioneOggetto/TestControllerGestioneRivista.class
+primoUcRicerca/TestControllerRicercaLibro.class
 terzoUcGestione/gestioneUtente/TestControllerGestioneUtente.class
-secondoUcLogin/TestUserLoggedPagamento.class
 primoUcAcquista/testRivista/TestAcquistaRivista.class
+secondoUcLogin/TestUserLoggedPagamento.class
 terzoUcGestione/report/TestControllerReport.class
 secondoUcLogin/TestLogin.class
 testFinali/TestFinaliVari.class
@@ -18,6 +18,6 @@ terzoUcGestione/gestioneOggetto/TestControllerGestioneLibro.class
 primoUcVisualizza/TestControllerVisualizza.class
 testWeb/TestAcquistaGiornale.class
 testWeb/TestWebFinali.class
-primoUcRicerca/TestControllerRicercaRivista.class
-terzoUcGestione/gestioneOggetto/TestControllerGestioneGiornale.class
 terzoUcGestione/ordine/TestControllerVisualizzaOrdini.class
+terzoUcGestione/gestioneOggetto/TestControllerGestioneGiornale.class
+primoUcRicerca/TestControllerRicercaRivista.class

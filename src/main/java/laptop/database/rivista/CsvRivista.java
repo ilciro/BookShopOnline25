@@ -109,7 +109,7 @@ public class CsvRivista extends PersistenzaRivista {
             gVector[GETINDEXDISPR] = String.valueOf(r.getDisp());
             gVector[GETINDEXPREZZOR] = String.valueOf(r.getPrezzo());
             gVector[GETINDEXCOPIER] = String.valueOf(r.getCopieRim());
-            if(vis.getTipoModifica().equals("im")) gVector[GETINDEXIDR] = String.valueOf(vis.getId());
+            if(vis.getTipoModifica().equals("im")) gVector[GETINDEXIDR] = String.valueOf(vis.getIdRivista());
             else if(vis.getTipoModifica().equals("insert")) gVector[GETINDEXIDR] = String.valueOf(getIdMax() + 1);
             else throw new CsvValidationException(" type of modif at magazine is wrong !!");
             csvWriter.writeNext(gVector);
@@ -128,7 +128,7 @@ public class CsvRivista extends PersistenzaRivista {
             while ((gVector = csvReader.readNext()) != null) {
 
                 recordFound = gVector[GETINDEXTITOLOR].equals(tit) || gVector[GETINDEXAUTORER].equals(autor)
-                        || gVector[GETINDEXEDITORER].equals(edit) || gVector[GETINDEXIDR].equals(String.valueOf(vis.getId()));
+                        || gVector[GETINDEXEDITORER].equals(edit) || gVector[GETINDEXIDR].equals(String.valueOf(vis.getIdRivista()));
                 if (recordFound) {
 
 
@@ -236,7 +236,7 @@ public class CsvRivista extends PersistenzaRivista {
             while ((gVector = reader.readNext()) != null) {
 
                 recordFound = gVector[GETINDEXIDR].equals(String.valueOf(r.getId()))
-                        || gVector[GETINDEXIDR].equals(String.valueOf(vis.getId()))
+                        || gVector[GETINDEXIDR].equals(String.valueOf(vis.getIdRivista()))
                         || gVector[GETINDEXTITOLOR].equals(r.getTitolo());
 
                 if (!recordFound)
@@ -349,7 +349,7 @@ public class CsvRivista extends PersistenzaRivista {
 
             rivistaList = FXCollections.observableArrayList();
             while ((gVector = csvReader.readNext()) != null) {
-                boolean recordFound = gVector[GETINDEXIDR].equals(String.valueOf(rivista.getId())) || gVector[GETINDEXIDR].equals(String.valueOf(vis.getId()))
+                boolean recordFound = gVector[GETINDEXIDR].equals(String.valueOf(rivista.getId())) || gVector[GETINDEXIDR].equals(String.valueOf(vis.getIdRivista()))
                         || gVector[GETINDEXTITOLOR].equals(rivista.getTitolo()) || gVector[GETINDEXAUTORER].equals(rivista.getAutore());
                 if (recordFound) {
 

@@ -57,7 +57,7 @@ public class RivistaDao extends PersistenzaRivista{
             prepQ.setInt(8,r.getCopieRim());
             prepQ.setInt(9, r.getDisp());
             prepQ.setFloat(10, r.getPrezzo());
-            if(vis.getTipoModifica().equals("im")) prepQ.setInt(11,vis.getId());
+            if(vis.getTipoModifica().equals("im")) prepQ.setInt(11,vis.getIdRivista());
             else if(vis.getTipoModifica().equals("insert")) prepQ.setInt(11,0);
 
 
@@ -83,7 +83,7 @@ public class RivistaDao extends PersistenzaRivista{
              PreparedStatement prepQ= conn.prepareStatement(query)){
 
             prepQ.setInt(1,r.getId());
-            prepQ.setInt(2,vis.getId());
+            prepQ.setInt(2,vis.getIdRivista());
 
             row= prepQ.executeUpdate();
 
@@ -160,7 +160,7 @@ public class RivistaDao extends PersistenzaRivista{
              PreparedStatement prepQ= conn.prepareStatement(query))  {
 
             prepQ.setInt(1,r.getId());
-            prepQ.setInt(2,vis.getId());
+            prepQ.setInt(2,vis.getIdRivista());
             prepQ.setString(3,r.getTitolo());
             prepQ.setString(4,r.getAutore());
 

@@ -75,7 +75,7 @@ class TestControllerGestioneLibro {
         cR.getRaccoltaLista(LIBRO, strings);
         //prendo id
 
-        vis.setId(15);
+        vis.setIdLibro(15);
 
         param[0]=RBOGGETTO.getString("titoloModL");
         param[1]=RBOGGETTO.getString("isbnModL");
@@ -109,7 +109,7 @@ class TestControllerGestioneLibro {
         cR.getRaccoltaLista(LIBRO,strings );
 
         //prendo id
-        vis.setId(16);
+        vis.setIdLibro(16);
         assertTrue(cR.elimina(strings));
         cA.logout(strings);
     }

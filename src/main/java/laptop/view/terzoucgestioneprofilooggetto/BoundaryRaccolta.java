@@ -132,7 +132,7 @@ public class BoundaryRaccolta implements Initializable
                 if (Integer.parseInt(idTF.getText()) <= 0 || (Integer.parseInt(idTF.getText()) > cRacc.getRaccoltaLista(vis.getType(),type).size()))
                     throw new IdException(" id is null or not in list");
                 else {
-                    vis.setId(Integer.parseInt(idTF.getText()));
+                   checkTipologia(Integer.parseInt(idTF.getText()));
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("gestioneOggetto.fxml")));
                     Stage stage = (Stage) modificaB.getScene().getWindow();
                     stage.setTitle("Benvenuto nella schermata della gestione");
@@ -156,7 +156,7 @@ public class BoundaryRaccolta implements Initializable
     }
     @FXML
     private void elimina() throws IOException {
-        vis.setId(Integer.parseInt(idTF.getText()));
+        checkTipologia(Integer.parseInt(idTF.getText()));
 
         String type="";
         if(databaseButton.isSelected()) type=DATABASE;
@@ -235,5 +235,17 @@ public class BoundaryRaccolta implements Initializable
     private boolean checkPersistenza()
     {
         return databaseButton.isSelected()|| fileButton.isSelected()||memoriaButton.isSelected();
+    }
+
+    private void checkTipologia(int id)
+    {
+        switch (vis.getType())
+        {
+            case "libro"->vis.setIdLibro(id);
+            case "giornale"->vis.setIdGiornale(id);
+            case "rivista"->vis.setIdRivista(id);
+            default -> Logger.getLogger("check tipologia").log(Level.SEVERE,"id not correct assigned!!");
+
+        }
     }
 }

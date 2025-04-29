@@ -31,7 +31,7 @@ public class MemoriaRivista extends PersistenzaRivista{
             ObjectInputStream ois=new ObjectInputStream(fis)){
                 list= (ArrayList<Rivista>) ois.readObject();
         }
-        if(vis.getTipoModifica().equals("im")) r.setId(vis.getId());
+        if(vis.getTipoModifica().equals("im")) r.setId(vis.getIdRivista());
         else if(vis.getTipoModifica().equals("insert")) r.setId(list.size()+1);
         list.add(r);
 

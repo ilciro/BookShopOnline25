@@ -51,7 +51,7 @@ public class GiornaleDao extends PersistenzaGiornale{
             prepQ.setInt(7, g.getDisponibilita());
             prepQ.setFloat(8, g.getPrezzo());
             //uso vis.get id perchè se no sarebbe 0-> quindiinserisci uno nuovo
-            if(vis.getTipoModifica().equals("im")) prepQ.setInt(9,vis.getId());
+            if(vis.getTipoModifica().equals("im")) prepQ.setInt(9,vis.getIdGiornale());
             else if(vis.getTipoModifica().equals("insert")) prepQ.setInt(9,0);
 
 
@@ -76,7 +76,7 @@ public class GiornaleDao extends PersistenzaGiornale{
              PreparedStatement prepQ= conn.prepareStatement(query)){
 
             prepQ.setInt(1,g.getId());
-            prepQ.setInt(2,vis.getId());
+            prepQ.setInt(2,vis.getIdGiornale());
             prepQ.setString(3,g.getTitolo());
 
             row= prepQ.executeUpdate();
@@ -154,7 +154,7 @@ public class GiornaleDao extends PersistenzaGiornale{
              PreparedStatement prepQ = conn.prepareStatement(query)) {
 
             prepQ.setInt(1, g.getId());
-            prepQ.setInt(2, vis.getId());
+            prepQ.setInt(2, vis.getIdGiornale());
             prepQ.setString(3, g.getTitolo());
             prepQ.setString(4, g.getEditore());
 

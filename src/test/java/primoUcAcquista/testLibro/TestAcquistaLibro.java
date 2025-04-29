@@ -37,7 +37,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         cHP.persistenza(strings);
         //prendo lista oggetti
         cCopravendita.getLista(LIBRO,strings);
-        vis.setId(2);
+        vis.setIdLibro(2);
         //acquisto
         cA.getPrezzo("3",strings);
         //fattura
@@ -45,7 +45,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         cPCash.controlla(RBUTENTE.getString("nome"),RBUTENTE.getString("cognome"),RBUTENTE.getString("via"),RBUTENTE.getString("com"),strings);
         //download
         cD.scarica(LIBRO,strings);
-        assertEquals(2,vis.getId());
+        assertEquals(2,vis.getIdLibro());
     }
 
     @ParameterizedTest
@@ -56,7 +56,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         cHP.persistenza(strings);
         //prendo lista oggetti
         cCopravendita.getLista(LIBRO,strings);
-        vis.setId(2);
+        vis.setIdLibro(2);
         //acquisto
         cA.getPrezzo("3",strings);
         //pagamento cc
@@ -77,7 +77,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         cHP.persistenza(strings);
         //prendo lista oggetti
         cCopravendita.getLista(LIBRO,strings);
-        vis.setId(2);
+        vis.setIdLibro(2);
         //acquisto
         cA.getPrezzo("3",strings);
         //fattura

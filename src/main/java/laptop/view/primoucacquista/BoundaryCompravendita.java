@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.beans.property.SimpleFloatProperty;
@@ -89,7 +91,7 @@ public class BoundaryCompravendita implements Initializable {
 		type=controllaPersistenza();
 		if(id<=0 || id > cCV.getLista(vis.getType(), type).size())
 			throw new IdException(" id is wrong!! grater than size");
-		vis.setId(id);
+		checkTipologiaCompravendita(id);
 
 
 		Stage stage;
@@ -109,7 +111,7 @@ public class BoundaryCompravendita implements Initializable {
 		type=controllaPersistenza();
 		if(id<=0 || id > cCV.getLista(vis.getType(), type).size())
 			throw new IdException(" id is wrong!! grater than size");
-		vis.setId(id);
+		checkTipologiaCompravendita(id);
 
 
 		Stage stage;
@@ -181,6 +183,19 @@ public class BoundaryCompravendita implements Initializable {
 		else throw new IOException("persistency non scelta");
 		return type;
 	}
+
+	private void checkTipologiaCompravendita(int id)
+	{
+		switch (vis.getType())
+		{
+			case "libro"->vis.setIdLibro(id);
+			case "giornale"->vis.setIdGiornale(id);
+			case "rivista"->vis.setIdRivista(id);
+			default -> Logger.getLogger("check tipologia").log(Level.SEVERE,"id not correct assigned!!");
+
+		}
+	}
+
 
 
 

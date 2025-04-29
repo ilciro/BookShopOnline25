@@ -74,7 +74,7 @@ class TestControllerGestioneRivista {
         cR.getRaccoltaLista(RIVISTA, strings);
         //prendo id
 
-        vis.setId(3);
+        vis.setIdRivista(3);
 
         param[0]=RBOGGETTO.getString("titoloModR");
         param[2]=RBOGGETTO.getString("editoreModR");
@@ -105,7 +105,7 @@ class TestControllerGestioneRivista {
         cR.getRaccoltaLista(RIVISTA,strings );
 
         //prendo id
-       vis.setId(4);
+       vis.setIdRivista(4);
         assertTrue(cR.elimina(strings));
         cA.logout(strings);
     }

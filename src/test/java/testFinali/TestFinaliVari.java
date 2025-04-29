@@ -30,22 +30,19 @@ class TestFinaliVari {
     @ParameterizedTest
     @ValueSource(strings = {"database","file","memoria"})
     void testLibroById(String strings) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        vis.setIdOggetto(6);
-        vis.setId(vis.getIdOggetto());
+        vis.setIdLibro(6);
         assertEquals(1,cG.libroById(strings).size());
     }
     @ParameterizedTest
     @ValueSource(strings = {"database","file","memoria"})
     void testGiornaleById(String strings) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        vis.setIdOggetto(8);
-        vis.setId(vis.getIdOggetto());
+        vis.setIdGiornale(8);
         assertEquals(1,cG.giornaleById(strings).size());
     }
     @ParameterizedTest
     @ValueSource(strings = {"database","file","memoria"})
     void testRivistaById(String strings) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        vis.setIdOggetto(1);
-        vis.setId(vis.getIdOggetto());
+        vis.setIdRivista(1);
         assertEquals(1,cG.rivistaById(strings).size());
     }
 

@@ -6,16 +6,50 @@ package laptop.controller;
 
 public class ControllerSystemState {
 
-	 private int id;
-	 private String type;
+	 private int idLibro;
+	 private int idGiornale;
+	 private int idRivista;
+	 private int idUtente;
+
+	public int getIdLibro() {
+		return idLibro;
+	}
+
+	public void setIdLibro(int idLibro) {
+		this.idLibro = idLibro;
+	}
+
+	public int getIdGiornale() {
+		return idGiornale;
+	}
+
+	public void setIdGiornale(int idGiornale) {
+		this.idGiornale = idGiornale;
+	}
+
+	public int getIdRivista() {
+		return idRivista;
+	}
+
+	public void setIdRivista(int idRivista) {
+		this.idRivista = idRivista;
+	}
+
+	public int getIdUtente() {
+		return idUtente;
+	}
+
+	public void setIdUtente(int idUtente) {
+		this.idUtente = idUtente;
+	}
+
+	private String type;
 	 private boolean isLogged ;
 	 private boolean isSearch;
 	 private boolean isPickup;
 	 private float spesaT;// usato per avere importo totale 
 	 private int quantita; //usato per avere quantita oggetto che compro
 	 private String metodoP; //usato per vedere se contanti o cc
-
-	private int idOggetto; //usato nel pagamento
 
 
 
@@ -52,13 +86,7 @@ public class ControllerSystemState {
 
 	
 
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
 	public void setTypeAsBook()
 	{
 		this.type = "libro";
@@ -109,13 +137,7 @@ public class ControllerSystemState {
 	}
 
 
-	public int getIdOggetto() {
-		return idOggetto;
-	}
 
-	public void setIdOggetto(int idOggetto) {
-		this.idOggetto = idOggetto;
-	}
 
 
     public String getTipoModifica() {

@@ -134,7 +134,7 @@ public class CsvLibro extends PersistenzaLibro{
             gVector[GETINDEXDESCL] = l.getDesc();
             gVector[GETINDEXDISPL] = String.valueOf(l.getDisponibilita());
             gVector[GETINDEXPREZZOL] = String.valueOf(l.getPrezzo());
-            if(vis.getTipoModifica().equals("im")) gVector[GETINDEXIDL] = String.valueOf(vis.getId());
+            if(vis.getTipoModifica().equals("im")) gVector[GETINDEXIDL] = String.valueOf(vis.getIdLibro());
             else if (vis.getTipoModifica().equals("insert"))gVector[GETINDEXIDL] = String.valueOf(getIdMax() + 1);
             csvWriter.writeNext(gVector);
             csvWriter.flush();
@@ -152,7 +152,7 @@ public class CsvLibro extends PersistenzaLibro{
             while ((gVector = csvReader.readNext()) != null) {
 
                 recordFound = gVector[GETINDEXTITOLOL].equals(tit) || gVector[GETINDEXAUTOREL].equals(aut) || gVector[GETINDEXEDITOREL].equals(edit)
-                        || gVector[GETINDEXIDL].equals(String.valueOf(id)) || gVector[GETINDEXIDL].equals(String.valueOf(vis.getId()));
+                        || gVector[GETINDEXIDL].equals(String.valueOf(id)) || gVector[GETINDEXIDL].equals(String.valueOf(vis.getIdLibro()));
 
                 if (recordFound) {
 
@@ -275,7 +275,7 @@ public class CsvLibro extends PersistenzaLibro{
 
                  recordFound = gVector[GETINDEXIDL].equals(String.valueOf(l.getId())) ||
                             gVector[GETINDEXTITOLOL].equals(l.getTitolo()) ||
-                            gVector[GETINDEXIDL].equals(String.valueOf(vis.getId()));
+                            gVector[GETINDEXIDL].equals(String.valueOf(vis.getIdLibro()));
 
 
                 if (!recordFound)
@@ -356,7 +356,7 @@ public class CsvLibro extends PersistenzaLibro{
             while ((gVector = csvReader.readNext()) != null) {
 
 
-                boolean recordFound = gVector[GETINDEXIDL].equals(String.valueOf(libro.getId())) || gVector[GETINDEXIDL].equals(String.valueOf(vis.getId()))
+                boolean recordFound = gVector[GETINDEXIDL].equals(String.valueOf(libro.getId())) || gVector[GETINDEXIDL].equals(String.valueOf(vis.getIdLibro()))
                         || gVector[GETINDEXTITOLOL].equals(libro.getTitolo()) || gVector[GETINDEXAUTOREL].equals(libro.getAutore())
                         || gVector[GETINDEXEDITOREL].equals(libro.getEditore());
                 if (recordFound) {

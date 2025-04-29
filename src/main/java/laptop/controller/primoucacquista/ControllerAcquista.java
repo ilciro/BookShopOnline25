@@ -66,7 +66,7 @@ public class ControllerAcquista {
 		{
 			case LIBRO->
 			{
-				l.setId(vis.getId());
+				l.setId(vis.getIdLibro());
                 switch (string) {
                     case DATABASE -> pL = new LibroDao();
                     case FILE -> pL = new CsvLibro();
@@ -82,7 +82,7 @@ public class ControllerAcquista {
 
 			case GIORNALE->
 			{
-				g.setId(vis.getId());
+				g.setId(vis.getIdGiornale());
 
                 switch (string) {
                     case DATABASE -> pG = new GiornaleDao();
@@ -99,7 +99,7 @@ public class ControllerAcquista {
 			}
 
 			case RIVISTA->{
-				r.setId(vis.getId());
+				r.setId(vis.getIdRivista());
                 switch (string) {
                     case DATABASE -> pR = new RivistaDao();
                     case FILE -> pR = new CsvRivista();

@@ -87,7 +87,7 @@ public class BoundaryUtenti implements Initializable {
     private void modifica() throws IOException,IdException {
         int idM=tableview.getSelectionModel().getSelectedItem().getId();
         if(idM==0 )throw new IdException("id is wrong");
-        vis.setId(idM);
+        vis.setIdUtente(idM);
         vis.setTipoModifica("modifica");
         Stage stage;
         Parent root;
@@ -113,8 +113,8 @@ public class BoundaryUtenti implements Initializable {
             if(databaseButton.isSelected()) type="database";
             if(fileButton.isSelected()) type="file";
             if(memoriaButton.isSelected()) type="memoria";
-            vis.setId(idC);
-            Logger.getLogger(CANCELLA).log(Level.INFO," id : {0}", vis.getId());
+            vis.setIdUtente(idC);
+            Logger.getLogger(CANCELLA).log(Level.INFO," id : {0}", vis.getIdUtente());
             if (cU.elimina(tableview.getSelectionModel().getSelectedItem().getEmailT(),type))
             {
                 Logger.getLogger(CANCELLA).log(Level.INFO," deleted successfully");

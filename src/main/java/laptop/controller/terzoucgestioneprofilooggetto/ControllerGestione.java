@@ -109,7 +109,7 @@ public class ControllerGestione {
             case MEMORIA -> pL=new MemoriaLibro();
             default -> Logger.getLogger("libro by id").log(Level.SEVERE,"persistency of book is wrong!!");
         }
-        l.setId(vis.getId());
+        l.setId(vis.getIdLibro());
         return pL.getLibroByIdTitoloAutoreLibro(l);
     }
     public ObservableList<Giornale> giornaleById(String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
@@ -120,7 +120,7 @@ public class ControllerGestione {
             case MEMORIA -> pG=new MemoriaGiornale();
             default -> Logger.getLogger("giornali by id").log(Level.SEVERE,"persistency of daily is wrong!!");
         }
-        g.setId(vis.getId());
+        g.setId(vis.getIdGiornale());
 
         return pG.getGiornaleByIdTitoloAutoreLibro(g);
 
@@ -133,7 +133,7 @@ public class ControllerGestione {
             case MEMORIA -> pR=new MemoriaRivista();
             default -> Logger.getLogger("rivista by id").log(Level.SEVERE,"persistency of magazine is wrong!!");
         }
-        r.setId(vis.getId());
+        r.setId(vis.getIdRivista());
         return pR.getRivistaByIdTitoloAutoreRivista(r);
 
     }
@@ -161,7 +161,7 @@ public class ControllerGestione {
 
     private boolean modificaLibro(String[] dati, String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
         l=setLibro(dati);
-        l.setId(vis.getId());
+        l.setId(vis.getIdLibro());
         Logger.getLogger("modifLibro").log(Level.INFO,"id libro da modif:{0}",l.getId());
 
         switch (persistenza)
@@ -191,7 +191,7 @@ public class ControllerGestione {
 
 
         Logger.getLogger("modifGiornale").log(Level.INFO,"id giornale da modif:{0}",g.getId());
-        Logger.getLogger("modifGiornale").log(Level.INFO,"vis da modif:{0}",vis.getId());
+        Logger.getLogger("modifGiornale").log(Level.INFO,"vis da modif:{0}",vis.getIdGiornale());
 
         switch (persistenza)
         {
@@ -230,7 +230,7 @@ public class ControllerGestione {
         l.setNrCopie(Integer.parseInt(param[10]));
         l.setDisponibilita(Integer.parseInt(param[11]));
         l.setPrezzo(Float.parseFloat(param[12]));
-        l.setId(vis.getId());
+        l.setId(vis.getIdLibro());
         return l;
 
 
@@ -245,7 +245,7 @@ public class ControllerGestione {
         g.setCopieRimanenti(Integer.parseInt(param[10]));
         g.setDisponibilita(Integer.parseInt(param[11]));
         g.setPrezzo(Float.parseFloat(param[12]));
-        g.setId(vis.getId());
+        g.setId(vis.getIdGiornale());
         return g;
     }
     private Rivista setRivista(String []param)
@@ -261,7 +261,7 @@ public class ControllerGestione {
         r.setCopieRim(Integer.parseInt(param[10]));
         r.setDisp(Integer.parseInt(param[11]));
         r.setPrezzo(Float.parseFloat(param[12]));
-        r.setId(vis.getId());
+        r.setId(vis.getIdRivista());
         return r;
     }
 
@@ -269,7 +269,7 @@ public class ControllerGestione {
 
         Logger.getLogger("modifRivista").log(Level.INFO,"id rivista da modif:{0}",r.getId());
         r=setRivista(dati);
-        r.setId(vis.getId());
+        r.setId(vis.getIdRivista());
         switch (persistenza)
         {
             case DATABASE -> pR=new RivistaDao();

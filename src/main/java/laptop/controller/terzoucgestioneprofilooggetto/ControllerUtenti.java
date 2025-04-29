@@ -52,7 +52,7 @@ public class ControllerUtenti {
             default -> Logger.getLogger("elimina").log(Level.SEVERE,"persistency not correct");
         }
         TempUser tu=new TempUser();
-        tu.setId(vis.getId());
+        tu.setId(vis.getIdUtente());
         tu.setEmailT(emailT);
         status=pU.removeUserByIdEmailPwd(tu);
 

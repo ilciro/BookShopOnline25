@@ -57,7 +57,7 @@ public class LibroDao extends PersistenzaLibro{
             prepQ.setString(11, retLibro(l)[10]);
             prepQ.setInt(12, Integer.parseInt(retLibro(l)[11]));
             prepQ.setFloat(13, Float.parseFloat(retLibro(l)[12]));
-            if(vis.getTipoModifica().equals("im")) prepQ.setInt(14,vis.getId());
+            if(vis.getTipoModifica().equals("im")) prepQ.setInt(14,vis.getIdLibro());
             else if(vis.getTipoModifica().equals("insert"))prepQ.setInt(14, 0);
 
             row=prepQ.executeUpdate();
@@ -81,7 +81,7 @@ public class LibroDao extends PersistenzaLibro{
              PreparedStatement prepQ = conn.prepareStatement(query)) {
 
             prepQ.setInt(1, l.getId());
-            prepQ.setInt(2, vis.getId());
+            prepQ.setInt(2, vis.getIdLibro());
 
             row = prepQ.executeUpdate();
 
@@ -161,7 +161,7 @@ public class LibroDao extends PersistenzaLibro{
              PreparedStatement prepQ = conn.prepareStatement(query)) {
 
             prepQ.setInt(1, l.getId());
-            prepQ.setInt(2, vis.getId());
+            prepQ.setInt(2, vis.getIdLibro());
             prepQ.setString(3, l.getTitolo());
             prepQ.setString(4, l.getAutore());
             prepQ.setString(5, l.getEditore());

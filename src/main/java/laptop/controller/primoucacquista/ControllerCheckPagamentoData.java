@@ -70,7 +70,7 @@ public class ControllerCheckPagamentoData {
 
 
 
-        l.setId(vis.getId());
+        l.setId(vis.getIdLibro());
 
         switch (type) {
             case DATABASE -> pL = new LibroDao();
@@ -120,7 +120,7 @@ public class ControllerCheckPagamentoData {
     }
 
     private void pagamentoGiornale(String type,Pagamento p) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
-        g.setId(vis.getId());
+        g.setId(vis.getIdGiornale());
         switch (type) {
             case DATABASE -> pG = new GiornaleDao();
             case FILE -> pG = new CsvGiornale();
@@ -166,7 +166,7 @@ public class ControllerCheckPagamentoData {
     }
 
     private void pagamentoRivista(String type,Pagamento p) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
-        r.setId(vis.getId());
+        r.setId(vis.getIdRivista());
         switch (type) {
             case DATABASE -> pRiv = new RivistaDao();
             case FILE -> pRiv = new CsvRivista();
@@ -219,18 +219,18 @@ public class ControllerCheckPagamentoData {
             case "libro" ->
                     {
 
-                        p = new Pagamento(1, vis.getMetodoP(), nome, vis.getSpesaT(), User.getInstance().getEmail(), null, vis.getId());
+                        p = new Pagamento(1, vis.getMetodoP(), nome, vis.getSpesaT(), User.getInstance().getEmail(), null, vis.getIdLibro());
                         pagamentoLibro(type,p);
                     }
             case "giornale" ->
 
                     {
-                        p = new Pagamento(1, vis.getMetodoP(), nome, vis.getSpesaT(), User.getInstance().getEmail(), null, vis.getId());
+                        p = new Pagamento(1, vis.getMetodoP(), nome, vis.getSpesaT(), User.getInstance().getEmail(), null, vis.getIdGiornale());
                         pagamentoGiornale(type,p);
                     }
             case "rivista" ->
                     {
-                        p = new Pagamento(1, vis.getMetodoP(), nome, vis.getSpesaT(), User.getInstance().getEmail(), null, vis.getId());
+                        p = new Pagamento(1, vis.getMetodoP(), nome, vis.getSpesaT(), User.getInstance().getEmail(), null, vis.getIdRivista());
 
                         pagamentoRivista(type,p);
                     }

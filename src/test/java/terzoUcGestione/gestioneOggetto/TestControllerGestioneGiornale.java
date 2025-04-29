@@ -73,7 +73,7 @@ class TestControllerGestioneGiornale {
         cR.getRaccoltaLista(GIORNALE, strings);
         //prendo id
 
-        vis.setId(2);
+        vis.setIdGiornale(2);
 
         param[0]=RBOGGETTO.getString("titoloModG");
         param[2]=RBOGGETTO.getString("editoreModG");
@@ -102,7 +102,7 @@ class TestControllerGestioneGiornale {
         cR.getRaccoltaLista(GIORNALE,strings );
 
         //prendo id
-       vis.setId(4);
+       vis.setIdGiornale(4);
         assertTrue(cR.elimina(strings));
         cA.logout(strings);
     }

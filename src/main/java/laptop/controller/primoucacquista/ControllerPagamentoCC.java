@@ -110,17 +110,17 @@ public class ControllerPagamentoCC {
 		switch (vis.getType()) {
 			case "libro" -> {
 				Libro l=new Libro();
-				l.setId(vis.getId());
+				l.setId(vis.getIdLibro());
 				cCPD.checkPagamentoData(nome,database);
 			}
 			case "giornale" -> {
 				Giornale g=new Giornale();
-				g.setId(vis.getId());
+				g.setId(vis.getIdGiornale());
 				cCPD.checkPagamentoData(nome,database);
 			}
 			case "rivista" -> {
 					Rivista r=new Rivista();
-					r.setId(vis.getId());
+					r.setId(vis.getIdRivista());
 					cCPD.checkPagamentoData(nome,database);
 
 			}

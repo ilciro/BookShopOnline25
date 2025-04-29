@@ -122,7 +122,7 @@ public class ControllerRaccolta {
             switch (vis.getType())
             {
                 case LIBRO -> {
-                    l.setId(vis.getId());
+                    l.setId(vis.getIdLibro());
                     switch (type)
                     {
                         case DATABASE -> pL=new LibroDao();
@@ -133,7 +133,7 @@ public class ControllerRaccolta {
                     status=pL.removeLibroById(l);
                 }
                 case GIORNALE -> {
-                    g.setId(vis.getId());
+                    g.setId(vis.getIdGiornale());
                     Logger.getLogger("elimina giornale").log(Level.INFO,"id daily to delete .{0}",g.getId());
                     switch (type)
                     {
@@ -146,7 +146,7 @@ public class ControllerRaccolta {
 
                 }
                 case RIVISTA ->{
-                    r.setId(vis.getId());
+                    r.setId(vis.getIdRivista());
                     switch (type)
                     {
                         case DATABASE -> pR=new RivistaDao();

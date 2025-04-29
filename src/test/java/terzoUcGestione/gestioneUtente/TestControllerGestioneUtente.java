@@ -68,7 +68,7 @@ class TestControllerGestioneUtente {
         dati[5]=RBUTENTE.getString("descInsM");
         dati[6]=RBUTENTE.getString("dataIns");
 
-        vis.setId(7);
+        vis.setIdUtente(7);
 
         assertTrue(cGU.modifica(dati,strings,"editore185@gmail.com"));
         cA.logout(strings);
@@ -83,7 +83,7 @@ class TestControllerGestioneUtente {
         //prendo lista
         cU.getList(strings);
         //setto id
-        vis.setId(2);
+        vis.setIdUtente(2);
         assertTrue(cU.elimina("giannni@gmail.com",strings));
         cA.logout(strings);
     }

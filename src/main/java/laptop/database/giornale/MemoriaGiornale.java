@@ -84,7 +84,7 @@ public class    MemoriaGiornale extends PersistenzaGiornale{
             ObjectInputStream ois=new ObjectInputStream(fis)){
             list= (ArrayList<Giornale>) ois.readObject();
         }
-        if(vis.getTipoModifica().equals("im")) g.setId(vis.getId());
+        if(vis.getTipoModifica().equals("im")) g.setId(vis.getIdGiornale());
         else if(vis.getTipoModifica().equals("insert")) g.setId(list.size()+1);
 
         list.add(g);
