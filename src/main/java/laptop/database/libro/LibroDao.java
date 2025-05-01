@@ -202,7 +202,9 @@ public class LibroDao extends PersistenzaLibro{
 
 
         DaoInitialize daoI=new DaoInitialize();
-        daoI.inizializza(LIBRO);
+       daoI.inizializza(LIBRO);
+
+
 
     }
 
