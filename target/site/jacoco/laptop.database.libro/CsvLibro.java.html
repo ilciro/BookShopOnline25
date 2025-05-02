@@ -436,19 +436,19 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 
 <span class="pc bpc" id="L438" title="2 of 4 branches missed.">                assert files != null;</span>
-<span class="pc bpc" id="L439" title="2 of 4 branches missed.">                if ( files.length == 0 || !this.fdL.exists())</span>
-<span class="nc" id="L440">                    throw new IOException(&quot;cartella vuota&quot;);</span>
+<span class="pc bpc" id="L439" title="1 of 4 branches missed.">                if ( files.length == 0 || !this.fdL.exists())</span>
+<span class="fc" id="L440">                    throw new IOException(&quot;cartella vuota&quot;);</span>
 
             }
 
 
-<span class="nc" id="L445">        } catch (IOException eFile) {</span>
+<span class="fc" id="L445">        } catch (IOException eFile) {</span>
 
-<span class="nc" id="L447">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
+<span class="fc" id="L447">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
 
-<span class="nc" id="L449">            Files.copy(Path.of(LIBROP), Path.of(LOCATIONL), REPLACE_EXISTING);</span>
+<span class="fc" id="L449">            Files.copy(Path.of(LIBROP), Path.of(LOCATIONL), REPLACE_EXISTING);</span>
 
-<span class="nc" id="L451">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
+<span class="fc" id="L451">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
 <span class="fc" id="L452">        }</span>
 
 <span class="fc" id="L454">    }</span>

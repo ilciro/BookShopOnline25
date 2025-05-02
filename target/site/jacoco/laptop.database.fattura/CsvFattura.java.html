@@ -44,8 +44,8 @@ public class CsvFattura extends PersistenzaFattura {
 
 <span class="fc" id="L45">    public CsvFattura() throws IOException {</span>
 <span class="fc" id="L46">        this.fileFattura=new File(FATTURA);</span>
-<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        if(!this.fileFattura.exists())</span>
-<span class="nc" id="L48">            Files.createFile(Path.of(this.fileFattura.toURI()));</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if(!this.fileFattura.exists())</span>
+<span class="fc" id="L48">            Files.createFile(Path.of(this.fileFattura.toURI()));</span>
 <span class="fc" id="L49">        this.cacheFattura=new HashMap&lt;&gt;();</span>
 
 <span class="fc" id="L51">    }</span>
@@ -117,13 +117,13 @@ public class CsvFattura extends PersistenzaFattura {
 
 
 
-<span class="pc bpc" id="L120" title="1 of 2 branches missed.">            if (id == 0)</span>
-<span class="nc" id="L121">                throw new IdException(&quot;id == 0 &quot;);</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">            if (id == 0)</span>
+<span class="fc" id="L121">                throw new IdException(&quot;id == 0 &quot;);</span>
 
-<span class="nc" id="L123">        }catch (IdException  e)</span>
+<span class="fc" id="L123">        }catch (IdException  e)</span>
         {
 
-<span class="nc" id="L126">            Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR);</span>
+<span class="fc" id="L126">            Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR);</span>
 
 <span class="fc" id="L128">        }</span>
 
