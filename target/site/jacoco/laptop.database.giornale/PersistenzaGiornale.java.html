@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PersistenzaGiornale.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.giornale</a> &gt; <span class="el_source">PersistenzaGiornale.java</span></div><h1>PersistenzaGiornale.java</h1><pre class="source lang-java linenums">package laptop.database.giornale;
+
+import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.database.PersistenzaInitialize;
+import laptop.exception.IdException;
+import laptop.model.raccolta.Giornale;
+import laptop.model.raccolta.Raccolta;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.sql.SQLException;
+
+
+<span class="fc" id="L17">public class PersistenzaGiornale {</span>
+
+    private static final String DATABASE=&quot;FileSql/giornale.sql&quot;;
+    private static final String FILE=&quot;report/reportGiornale.csv&quot;;
+    private static final String MEMORIA=&quot;memory/serializzazioneGiornale.ser&quot;;
+    private static final String DATABASEXCEPTION=&quot;file daily sql not exists&quot;;
+    private static final String FILEXCEPTION=&quot;file daily csv not exists&quot;;
+    private static final String MEMORIAEXCEPTION=&quot;class daily not in memory&quot;;
+    private static final String IDEXCEPTIONMESSAGE=&quot; id  daiy is null or is zero&quot;;
+
+
+    public  boolean inserisciGiornale(Giornale g) throws CsvValidationException, IOException,  ClassNotFoundException {
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        if(g.getId()==0) throw new IOException(&quot; file not found or id null&quot;);</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        if(g.getEditore().isEmpty()) throw new CsvValidationException(&quot; autore insert daily book is null&quot;);</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        if(g.getTitolo().isEmpty()) throw new ClassNotFoundException(&quot;class not found or titolo insert book is null&quot;);</span>
+
+<span class="nc" id="L33">        return false;}</span>
+    public  boolean removeGiornaleById(Giornale g) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        if(g.getId()==0) throw new IOException(&quot; file not found or id null&quot;);</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        if(g.getEditore().isEmpty()) throw new CsvValidationException(&quot; codice isbn is null&quot;);</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        if(g.getTitolo().isEmpty()) throw new ClassNotFoundException(&quot;class not found or titolo is null&quot;);</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        if(g.getId()&lt;-1) throw new SQLException(&quot;removed daily id is wrong&quot;);</span>
+<span class="nc" id="L39">        return false;}</span>
+    public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+<span class="nc" id="L41">        PersistenzaInitialize pI=new PersistenzaInitialize();</span>
+<span class="nc" id="L42">       return pI.retrieveRaccoltaData(&quot;giornale&quot;);</span>
+    }
+    public ObservableList&lt;Giornale&gt; getGiornaleByIdTitoloAutoreLibro(Giornale g) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+<span class="nc bnc" id="L45" title="All 2 branches missed.">        if(g.getId()==0) throw new IOException(&quot; file not found or id 0&quot;);</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        if(g.getEditore().isEmpty()) throw new CsvValidationException(&quot; codice isbn is null&quot;);</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if(g.getTitolo().isEmpty()) throw new ClassNotFoundException(&quot;class not found or titolo is null&quot;);</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        if(g.getId()&lt;=-1) throw new IdException(&quot; id daily is lower than 0&quot;);</span>
+<span class="nc" id="L49">        return FXCollections.observableArrayList();}</span>
+    public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException {
+
+<span class="nc" id="L52">        PersistenzaInitialize pI=new PersistenzaInitialize();</span>
+<span class="nc" id="L53">        pI.initializza(&quot;giornale&quot;);</span>
+<span class="nc" id="L54">        }</span>
+    public ObservableList&lt;Giornale&gt; getGiornali() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IdException(DATABASEXCEPTION);</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
+<span class="nc" id="L59">        else throw new IOException(IDEXCEPTIONMESSAGE);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
