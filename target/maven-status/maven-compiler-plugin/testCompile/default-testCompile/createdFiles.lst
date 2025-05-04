@@ -6,3 +6,4 @@ primoUcAcquista/testRivista/TestAcquistaRivista.class
 secondoUcLogin/TestUserLoggedPagamento.class
 primoUcVisualizza/TestControllerVisualizza.class
 secondoUcLogin/TestLogin.class
+terzoUcGestione/gestioneOggetto/TestControllerGestioneGiornale.class

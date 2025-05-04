@@ -50,7 +50,7 @@ public class GiornaleDao extends PersistenzaGiornale{
             prepQ.setInt(6, g.getCopieRimanenti());
             prepQ.setInt(7, g.getDisponibilita());
             prepQ.setFloat(8, g.getPrezzo());
-            //uso vis.get id perchè se no sarebbe 0-> quindiinserisci uno nuovo
+            //uso vis.get id perchè se no sarebbe 0-> quindi inserisci uno nuovo
             if(vis.getTipoModifica().equals("im")) prepQ.setInt(9,vis.getIdGiornale());
             else if(vis.getTipoModifica().equals("insert")) prepQ.setInt(9,0);
 

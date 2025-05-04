@@ -6,12 +6,15 @@ import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 import laptop.database.MemoryInitialize;
 import laptop.exception.IdException;
+import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
 import laptop.model.raccolta.Rivista;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,29 +22,54 @@ import java.util.ArrayList;
 
 public class MemoriaRivista extends PersistenzaRivista{
     private static final String SERIALIZZAZIONE="memory/serializzazioneRivista.ser";
-    private   ArrayList<Rivista> list=new ArrayList<>();
+    private static final String SERIALIZZAZIONEAPPOGGIO="memory/serializzazioneRivistaAppoggio.ser";
+
+    private transient   ArrayList<Rivista> list=new ArrayList<>();
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
     @Override
     @SuppressWarnings("unchecked")
     public boolean inserisciRivista(Rivista r) throws IOException, ClassNotFoundException {
 
+        Path path = Path.of(SERIALIZZAZIONEAPPOGGIO);
+        if (!Files.exists(path))
+        {
+            Files.createFile(path);
+        }
 
-        //leggo
+
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois=new ObjectInputStream(fis)){
-                list= (ArrayList<Rivista>) ois.readObject();
+            list= (ArrayList<Rivista>) ois.readObject();
         }
-        if(vis.getTipoModifica().equals("im")) r.setId(vis.getIdRivista());
-        else if(vis.getTipoModifica().equals("insert")) r.setId(list.size()+1);
-        list.add(r);
 
-        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
-            ObjectOutputStream oos=new ObjectOutputStream(fos)){
+
+        if (vis.getTipoModifica().equals("im")) r.setId(vis.getIdRivista());
+        else if (vis.getTipoModifica().equals("insert")) r.setId(list.size() + 1);
+        list.add(r);
+        //scrivo lista in appoggio
+        try (FileOutputStream fos = new FileOutputStream(SERIALIZZAZIONEAPPOGGIO, true);
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(list);
+
+        }
+
+
+        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONEAPPOGGIO);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            list = (ArrayList<Rivista>) ois.readObject();
+        }
+        System.out.println("lista after write on appoggio" + list.size());
+
+
+        try (FileOutputStream fos = new FileOutputStream(SERIALIZZAZIONE);
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(list);
         }
 
 
-       return true;
+
+
+        return true;
 
     }
 

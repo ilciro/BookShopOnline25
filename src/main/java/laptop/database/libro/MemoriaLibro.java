@@ -6,19 +6,24 @@ import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 import laptop.database.MemoryInitialize;
 import laptop.exception.IdException;
+import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 
 public class MemoriaLibro extends PersistenzaLibro{
     private static final String SERIALIZZAZIONE="memory/serializzazioneLibro.ser";
-    private  ArrayList<Libro> list=new ArrayList<>();
+    private static final String SERIALIZZAZIONEAPPOGGIO="memory/serializzazioneLibroAppoggio.ser";
+
+    private  transient ArrayList<Libro> list=new ArrayList<>();
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
 
     @Override
@@ -75,20 +80,43 @@ public class MemoriaLibro extends PersistenzaLibro{
     @Override
     @SuppressWarnings("unchecked")
     public boolean inserisciLibro(Libro l) throws CsvValidationException, IOException, ClassNotFoundException {
-        //leggo
+        Path path = Path.of(SERIALIZZAZIONEAPPOGGIO);
+        if (!Files.exists(path))
+        {
+            Files.createFile(path);
+        }
+
+
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois=new ObjectInputStream(fis)){
             list= (ArrayList<Libro>) ois.readObject();
         }
-        if(vis.getTipoModifica().equals("im")) l.setId(vis.getIdLibro());
-        else if(vis.getTipoModifica().equals("insert")) l.setId(list.size()+1);
-        else throw new CsvValidationException(" type modif in csv is wrong!!");
-        list.add(l);
 
-        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
-            ObjectOutputStream oos=new ObjectOutputStream(fos)){
+
+        if (vis.getTipoModifica().equals("im")) l.setId(vis.getIdLibro());
+        else if (vis.getTipoModifica().equals("insert")) l.setId(list.size() + 1);
+        list.add(l);
+        //scrivo lista in appoggio
+        try (FileOutputStream fos = new FileOutputStream(SERIALIZZAZIONEAPPOGGIO, true);
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(list);
+
+        }
+
+
+        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONEAPPOGGIO);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            list = (ArrayList<Libro>) ois.readObject();
+        }
+        System.out.println("lista after write on appoggio" + list.size());
+
+
+        try (FileOutputStream fos = new FileOutputStream(SERIALIZZAZIONE);
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(list);
         }
+
+
         return true;
     }
 

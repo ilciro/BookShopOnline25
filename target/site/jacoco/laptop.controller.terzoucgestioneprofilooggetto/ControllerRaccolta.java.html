@@ -30,7 +30,7 @@ import java.util.logging.Logger;
 
 public class ControllerRaccolta {
 
-<span class="nc" id="L33">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+<span class="fc" id="L33">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
     private static final String LIBRO = &quot;libro&quot;;
     private static final String RIVISTA = &quot;rivista&quot;;
     private static final String GIORNALE = &quot;giornale&quot;;
@@ -49,17 +49,17 @@ public class ControllerRaccolta {
 
     public ObservableList&lt;Raccolta&gt; getRaccoltaLista(String type,String persistenza) throws IOException, CsvValidationException, IdException, SQLException, ClassNotFoundException {
 
-<span class="nc" id="L52">        ObservableList &lt;Raccolta&gt; catalogo= FXCollections.observableArrayList();</span>
+<span class="fc" id="L52">        ObservableList &lt;Raccolta&gt; catalogo= FXCollections.observableArrayList();</span>
 
-<span class="nc bnc" id="L54" title="All 4 branches missed.">        switch (type) {</span>
+<span class="pc bpc" id="L54" title="3 of 4 branches missed.">        switch (type) {</span>
 <span class="nc" id="L55">            case LIBRO-&gt;catalogo.addAll(prendiLibri(persistenza));</span>
-<span class="nc" id="L56">            case GIORNALE-&gt;catalogo.addAll(prendiGiornali(persistenza));</span>
+<span class="fc" id="L56">            case GIORNALE-&gt;catalogo.addAll(prendiGiornali(persistenza));</span>
 <span class="nc" id="L57">            case RIVISTA-&gt;catalogo.addAll(prendiRiviste(persistenza));</span>
 <span class="nc" id="L58">            default-&gt;Logger.getLogger(&quot;Test getId db&quot;).log(Level.INFO, &quot;error !! list empty&quot;);</span>
 
         }
 
-<span class="nc" id="L62">        return catalogo;</span>
+<span class="fc" id="L62">        return catalogo;</span>
     }
 
     private ObservableList&lt;Raccolta&gt; prendiRiviste(String persistenza) throws IOException, CsvValidationException, IdException, SQLException, ClassNotFoundException {
@@ -95,26 +95,26 @@ public class ControllerRaccolta {
 <span class="nc" id="L95">        return pL.retrieveRaccoltaData();</span>
     }
     private ObservableList&lt;Raccolta&gt; prendiGiornali(String persistenza) throws IOException, CsvValidationException, IdException, SQLException, ClassNotFoundException {
-<span class="nc bnc" id="L98" title="All 4 branches missed.">        switch (persistenza){</span>
-<span class="nc" id="L99">            case DATABASE -&gt; pG=new GiornaleDao();</span>
-<span class="nc" id="L100">            case FILE -&gt; pG=new CsvGiornale();</span>
-<span class="nc" id="L101">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
+<span class="pc bpc" id="L98" title="1 of 4 branches missed.">        switch (persistenza){</span>
+<span class="fc" id="L99">            case DATABASE -&gt; pG=new GiornaleDao();</span>
+<span class="fc" id="L100">            case FILE -&gt; pG=new CsvGiornale();</span>
+<span class="fc" id="L101">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
 <span class="nc" id="L102">            default -&gt; Logger.getLogger(&quot;prendi giornali&quot;).log(Level.SEVERE,&quot; list daily is empty&quot;);</span>
 
         }
-<span class="nc" id="L105">            pG.initializza();</span>
+<span class="fc" id="L105">            pG.initializza();</span>
 
 
-<span class="nc" id="L108">        return pG.retrieveRaccoltaData();</span>
+<span class="fc" id="L108">        return pG.retrieveRaccoltaData();</span>
     }
 
-<span class="nc" id="L111">    public ControllerRaccolta()  {</span>
+<span class="fc" id="L111">    public ControllerRaccolta()  {</span>
 
-<span class="nc" id="L113">        l=new Libro();</span>
-<span class="nc" id="L114">        g=new Giornale();</span>
-<span class="nc" id="L115">        r=new Rivista();</span>
+<span class="fc" id="L113">        l=new Libro();</span>
+<span class="fc" id="L114">        g=new Giornale();</span>
+<span class="fc" id="L115">        r=new Rivista();</span>
 
-<span class="nc" id="L117">    }</span>
+<span class="fc" id="L117">    }</span>
 
     public boolean elimina(String type) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
 <span class="nc" id="L120">        boolean status = false;</span>
