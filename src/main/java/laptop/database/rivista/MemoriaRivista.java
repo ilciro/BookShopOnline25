@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 import laptop.database.MemoryInitialize;
 import laptop.exception.IdException;
+import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
 import laptop.model.raccolta.Rivista;
@@ -27,44 +28,45 @@ public class MemoriaRivista extends PersistenzaRivista{
     private transient   ArrayList<Rivista> list=new ArrayList<>();
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
     @Override
-    @SuppressWarnings("unchecked")
     public boolean inserisciRivista(Rivista r) throws IOException, ClassNotFoundException {
 
-        Path path = Path.of(SERIALIZZAZIONEAPPOGGIO);
-        if (!Files.exists(path))
+        Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);
+        if (!Files.exists(path2))
         {
-            Files.createFile(path);
+            Files.createFile(path2);
         }
 
 
-        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
-            ObjectInputStream ois=new ObjectInputStream(fis)){
-            list= (ArrayList<Rivista>) ois.readObject();
-        }
+        leggiDaFile(SERIALIZZAZIONE);
+
 
 
         if (vis.getTipoModifica().equals("im")) r.setId(vis.getIdRivista());
         else if (vis.getTipoModifica().equals("insert")) r.setId(list.size() + 1);
         list.add(r);
+
         //scrivo lista in appoggio
-        try (FileOutputStream fos = new FileOutputStream(SERIALIZZAZIONEAPPOGGIO, true);
-             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-            oos.writeObject(list);
 
-        }
+        scriviInFile(SERIALIZZAZIONEAPPOGGIO,list);
 
 
-        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONEAPPOGGIO);
-             ObjectInputStream ois = new ObjectInputStream(fis)) {
-            list = (ArrayList<Rivista>) ois.readObject();
-        }
-        System.out.println("lista after write on appoggio" + list.size());
+        list=leggiDaFile(SERIALIZZAZIONEAPPOGGIO);
+
+        Path path1 = Path.of(SERIALIZZAZIONE);
+        Files.delete(path1);
+        Files.createFile(path1);
 
 
-        try (FileOutputStream fos = new FileOutputStream(SERIALIZZAZIONE);
-             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-            oos.writeObject(list);
-        }
+
+
+        scriviInFile(SERIALIZZAZIONE,list);
+
+
+
+
+        Files.delete(path2);
+
+
 
 
 
@@ -83,27 +85,18 @@ public class MemoriaRivista extends PersistenzaRivista{
 
 
     @Override
-    @SuppressWarnings("unchecked")
     public ObservableList<Rivista> getRiviste() throws IOException, ClassNotFoundException {
-       
 
-        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
-            ObjectInputStream ois=new ObjectInputStream(fis)){
-            list= (ArrayList<Rivista>) ois.readObject();
-        }
+
+        list=leggiDaFile(SERIALIZZAZIONE);
         return FXCollections.observableList(list);
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-       
-        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
-            ObjectInputStream ois=new ObjectInputStream(fis)){
 
-           list= (ArrayList<Rivista>) ois.readObject();
-        }
-        return FXCollections.observableArrayList(list);
+        return FXCollections.observableArrayList(leggiDaFile(SERIALIZZAZIONE));
+
 
     }
 
@@ -155,10 +148,8 @@ public class MemoriaRivista extends PersistenzaRivista{
             Rivista r = getRivista(listaR);
             list.add(r);
         }
-        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
-            ObjectOutputStream oos=new ObjectOutputStream(fos)){
-            oos.writeObject(list);
-        }
+        scriviInFile(SERIALIZZAZIONE,list);
+
 
 
 
@@ -180,6 +171,30 @@ public class MemoriaRivista extends PersistenzaRivista{
         r.setId(Integer.parseInt(listaR.get(10)));
         return r;
     }
+
+    private void scriviInFile(String nome,ArrayList<Rivista> lista) throws IOException
+    {
+        try(FileOutputStream fos=new FileOutputStream(nome,true);
+            ObjectOutputStream oos=new ObjectOutputStream(fos)) {
+
+
+            oos.writeObject(lista);
+            oos.flush();
+
+        }
+
+
+
+    }
+    @SuppressWarnings("unchecked")
+    private ArrayList<Rivista> leggiDaFile(String nome) throws IOException ,ClassNotFoundException{
+        try(FileInputStream fis=new FileInputStream(nome);
+            ObjectInputStream ois=new ObjectInputStream(fis)){
+            list=(ArrayList<Rivista>) ois.readObject();
+        }
+        return list;
+    }
+
 
 
 }

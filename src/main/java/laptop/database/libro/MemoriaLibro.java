@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 import laptop.database.MemoryInitialize;
 import laptop.exception.IdException;
-import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
 import org.jetbrains.annotations.NotNull;
@@ -78,56 +77,55 @@ public class MemoriaLibro extends PersistenzaLibro{
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public boolean inserisciLibro(Libro l) throws CsvValidationException, IOException, ClassNotFoundException {
-        Path path = Path.of(SERIALIZZAZIONEAPPOGGIO);
-        if (!Files.exists(path))
+        Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);
+        if (!Files.exists(path2))
         {
-            Files.createFile(path);
+            Files.createFile(path2);
         }
 
 
-        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
-            ObjectInputStream ois=new ObjectInputStream(fis)){
-            list= (ArrayList<Libro>) ois.readObject();
-        }
+        leggiDaFile(SERIALIZZAZIONE);
+
 
 
         if (vis.getTipoModifica().equals("im")) l.setId(vis.getIdLibro());
         else if (vis.getTipoModifica().equals("insert")) l.setId(list.size() + 1);
         list.add(l);
+
         //scrivo lista in appoggio
-        try (FileOutputStream fos = new FileOutputStream(SERIALIZZAZIONEAPPOGGIO, true);
-             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-            oos.writeObject(list);
 
-        }
+        scriviInFile(SERIALIZZAZIONEAPPOGGIO,list);
 
 
-        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONEAPPOGGIO);
-             ObjectInputStream ois = new ObjectInputStream(fis)) {
-            list = (ArrayList<Libro>) ois.readObject();
-        }
-        System.out.println("lista after write on appoggio" + list.size());
+        list=leggiDaFile(SERIALIZZAZIONEAPPOGGIO);
+
+        Path path1 = Path.of(SERIALIZZAZIONE);
+        Files.delete(path1);
+        Files.createFile(path1);
 
 
-        try (FileOutputStream fos = new FileOutputStream(SERIALIZZAZIONE);
-             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-            oos.writeObject(list);
-        }
+
+
+        scriviInFile(SERIALIZZAZIONE,list);
+
+
+
+
+        Files.delete(path2);
+
+
+
+
 
 
         return true;
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
-            ObjectInputStream ois=new ObjectInputStream(fis)){
-            list= (ArrayList<Libro>) ois.readObject();
-        }
-        return FXCollections.observableArrayList(list);
+
+        return FXCollections.observableArrayList(leggiDaFile(SERIALIZZAZIONE));
     }
 
     @Override
@@ -157,12 +155,8 @@ public class MemoriaLibro extends PersistenzaLibro{
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public ObservableList<Libro> getLibri() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
-            ObjectInputStream ois=new ObjectInputStream(fis)){
-            list= (ArrayList<Libro>) ois.readObject();
-        }
+        list=leggiDaFile(SERIALIZZAZIONE);
         return FXCollections.observableList(list);
     }
 
@@ -172,6 +166,31 @@ public class MemoriaLibro extends PersistenzaLibro{
         MemoryInitialize mI=new MemoryInitialize();
         return mI.cancellaLibro(l);
     }
+    private void scriviInFile(String nome,ArrayList<Libro> lista) throws IOException
+    {
+        try(FileOutputStream fos=new FileOutputStream(nome,true);
+            ObjectOutputStream oos=new ObjectOutputStream(fos)) {
+
+
+            oos.writeObject(lista);
+            oos.flush();
+
+        }
+
+
+
+    }
+    @SuppressWarnings("unchecked")
+    private ArrayList<Libro> leggiDaFile(String nome) throws IOException ,ClassNotFoundException{
+        try(FileInputStream fis=new FileInputStream(nome);
+            ObjectInputStream ois=new ObjectInputStream(fis)){
+            list=(ArrayList<Libro>) ois.readObject();
+        }
+        return list;
+    }
+
+
+
 
 
 }

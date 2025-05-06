@@ -17,8 +17,6 @@ import java.nio.file.Path;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class  MemoriaGiornale extends PersistenzaGiornale{
@@ -33,7 +31,6 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
 
 
     @Override
-    @SuppressWarnings("unchecked")
     public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
 
 
@@ -43,19 +40,9 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
            list.add(g);
 
 
+
        }
-        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE,true);
-            ObjectOutputStream oos=new ObjectOutputStream(fos)){
-            oos.writeObject(list);
-            oos.flush();
-        }
-        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
-            ObjectInputStream ois=new ObjectInputStream(fis)){
-            list= (ArrayList<Giornale>) ois.readObject();
-        }
-
-
-
+        scriviInFile(SERIALIZZAZIONE,list);
 
     }
 
@@ -86,45 +73,49 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
         return g;
     }
 
+
+
     @Override
-    @SuppressWarnings("unchecked")
+
     public boolean inserisciGiornale(Giornale g) throws IOException, ClassNotFoundException {
 
-        Path path = Path.of(SERIALIZZAZIONEAPPOGGIO);
-        if (!Files.exists(path))
+        Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);
+        if (!Files.exists(path2))
         {
-            Files.createFile(path);
+            Files.createFile(path2);
         }
 
 
-        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
-            ObjectInputStream ois=new ObjectInputStream(fis)){
-            list= (ArrayList<Giornale>) ois.readObject();
-        }
+        leggiDaFile(SERIALIZZAZIONE);
+
 
 
             if (vis.getTipoModifica().equals("im")) g.setId(vis.getIdGiornale());
             else if (vis.getTipoModifica().equals("insert")) g.setId(list.size() + 1);
             list.add(g);
+
             //scrivo lista in appoggio
-            try (FileOutputStream fos = new FileOutputStream(SERIALIZZAZIONEAPPOGGIO, true);
-                 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-                oos.writeObject(list);
 
-            }
+              scriviInFile(SERIALIZZAZIONEAPPOGGIO,list);
 
 
-            try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONEAPPOGGIO);
-                 ObjectInputStream ois = new ObjectInputStream(fis)) {
-                list = (ArrayList<Giornale>) ois.readObject();
-            }
-            System.out.println("lista after write on appoggio" + list.size());
+           list=leggiDaFile(SERIALIZZAZIONEAPPOGGIO);
+
+        Path path1 = Path.of(SERIALIZZAZIONE);
+        Files.delete(path1);
+        Files.createFile(path1);
 
 
-            try (FileOutputStream fos = new FileOutputStream(SERIALIZZAZIONE);
-                 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-                oos.writeObject(list);
-            }
+
+
+        scriviInFile(SERIALIZZAZIONE,list);
+
+
+
+
+        Files.delete(path2);
+
+
 
 
 
@@ -135,17 +126,10 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
 
 
     @Override
-    @SuppressWarnings("unchecked")
+
     public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 
-        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
-            ObjectInputStream ois=new ObjectInputStream(fis)){
-            list= (ArrayList<Giornale>) ois.readObject();
-        }
-        System.out.println("lunghezza lista in retrieve"+list.size());
-
-
-        return FXCollections.observableArrayList(list);
+        return FXCollections.observableArrayList(leggiDaFile(SERIALIZZAZIONE));
     }
 
     @Override
@@ -174,12 +158,8 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public ObservableList<Giornale> getGiornali() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
-            ObjectInputStream ois=new ObjectInputStream(fis)){
-            list= (ArrayList<Giornale>) ois.readObject();
-        }
+        list=leggiDaFile(SERIALIZZAZIONE);
         return FXCollections.observableList(list);
     }
 
@@ -188,6 +168,31 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
         MemoryInitialize mI=new MemoryInitialize();
         return mI.cancellaGiornale(g);
     }
+
+
+    private void scriviInFile(String nome,ArrayList<Giornale> lista) throws IOException
+    {
+        try(FileOutputStream fos=new FileOutputStream(nome,true);
+            ObjectOutputStream oos=new ObjectOutputStream(fos)) {
+
+
+                oos.writeObject(lista);
+                oos.flush();
+
+        }
+
+
+
+    }
+    @SuppressWarnings("unchecked")
+    private ArrayList<Giornale> leggiDaFile(String nome) throws IOException ,ClassNotFoundException{
+        try(FileInputStream fis=new FileInputStream(nome);
+            ObjectInputStream ois=new ObjectInputStream(fis)){
+            list=(ArrayList<Giornale>) ois.readObject();
+        }
+        return list;
+    }
+
 
 
 
