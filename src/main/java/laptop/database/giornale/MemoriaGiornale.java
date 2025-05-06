@@ -172,7 +172,7 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
 
     private void scriviInFile(String nome,ArrayList<Giornale> lista) throws IOException
     {
-        try(FileOutputStream fos=new FileOutputStream(nome,true);
+        try(FileOutputStream fos=new FileOutputStream(nome);
             ObjectOutputStream oos=new ObjectOutputStream(fos)) {
 
 

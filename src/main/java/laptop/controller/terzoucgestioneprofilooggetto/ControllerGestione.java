@@ -37,6 +37,7 @@ public class ControllerGestione {
     private static final String DATABASE="database";
     private static final String FILE="file";
     private static final String MEMORIA="memoria";
+    private static final String PERSISTENCYDAILY="persistency of daily is wrong!!";
     private PersistenzaLibro pL;
     private PersistenzaGiornale pG;
     private PersistenzaRivista pR;
@@ -60,7 +61,6 @@ public class ControllerGestione {
                status=pL.inserisciLibro(appoggio);
             }
             case GIORNALE -> {
-               // Giornale appoggio=setGiornale(param);
                 switch (persistenza){
                     case DATABASE -> pG=new GiornaleDao();
                     case FILE -> pG=new CsvGiornale();
@@ -118,7 +118,7 @@ public class ControllerGestione {
             case DATABASE -> pG=new GiornaleDao();
             case FILE -> pG=new CsvGiornale();
             case MEMORIA -> pG=new MemoriaGiornale();
-            default -> Logger.getLogger("giornali by id").log(Level.SEVERE,"persistency of daily is wrong!!");
+            default -> Logger.getLogger("giornali by id").log(Level.SEVERE,PERSISTENCYDAILY);
         }
         g.setId(vis.getIdGiornale());
         return pG.getGiornaleByIdTitoloAutoreLibro(g);
@@ -164,7 +164,7 @@ public class ControllerGestione {
         //prendo giornale
         Libro appoggio=libroById(persistenza).get(0);
 
-        System.out.println("id gionale preso :"+ appoggio.getId());
+       Logger.getLogger("modif libro ").log(Level.INFO,"id libro preso : {0}.", appoggio.getId());
 
         vis.setIdLibro(appoggio.getId());
 
@@ -173,18 +173,17 @@ public class ControllerGestione {
             case DATABASE -> pL=new LibroDao();
             case FILE -> pL=new CsvLibro();
             case MEMORIA -> pL=new MemoriaLibro();
-            default -> Logger.getLogger("libro by id").log(Level.SEVERE,"persistency of daily is wrong!!");
+            default -> Logger.getLogger("libro by id").log(Level.SEVERE,PERSISTENCYDAILY);
         }
 
 
         if(pL.removeLibroById(appoggio))
         {
-            System.out.println("ho cancellato titolo"+appoggio.getTitolo());
+            Logger.getLogger("cancella in modif libro").log(Level.INFO,"ho cancellato titolo libro {0}.",appoggio.getTitolo());
             l=setLibro(dati);
-            System.out.println("titolo da inserire"+g.getTitolo());
+           Logger.getLogger("titolo libro da inserire in modif").log(Level.INFO,"sto inserendo libro con titolo{0}.",l.getTitolo());
 
         }
-        System.out.println("tupo modifica:"+ vis.getTipoModifica());
         return pL.inserisciLibro(l);
 
 
@@ -197,7 +196,7 @@ public class ControllerGestione {
         //prendo giornale
         Giornale appoggio=giornaleById(persistenza).get(0);
 
-        System.out.println("id gionale preso :"+ appoggio.getId());
+       Logger.getLogger("id gionale preso ").log(Level.INFO, "i d:{0}", appoggio.getId());
 
         vis.setIdGiornale(appoggio.getId());
 
@@ -206,18 +205,17 @@ public class ControllerGestione {
             case DATABASE -> pG=new GiornaleDao();
             case FILE -> pG=new CsvGiornale();
             case MEMORIA -> pG=new MemoriaGiornale();
-            default -> Logger.getLogger("giornale by id").log(Level.SEVERE,"persistency of daily is wrong!!");
+            default -> Logger.getLogger("giornale by id").log(Level.SEVERE,PERSISTENCYDAILY);
         }
 
 
         if(pG.removeGiornaleById(appoggio))
         {
-            System.out.println("ho cancellato titolo"+appoggio.getTitolo());
+           Logger.getLogger("ho cancellato titolo giornale").log(Level.INFO," titolo : {0}",appoggio.getTitolo());
             g=setGiornale(dati);
-            System.out.println("titolo da inserire"+g.getTitolo());
+           Logger.getLogger("titolo da inserire").log(Level.INFO," titolo giornale da inserire {0}",g.getTitolo());
 
         }
-        System.out.println("tupo modifica:"+ vis.getTipoModifica());
         return pG.inserisciGiornale(g);
 
 
@@ -282,7 +280,7 @@ public class ControllerGestione {
         //prendo giornale
         Rivista appoggio=rivistaById(persistenza).get(0);
 
-        System.out.println("id rivista preso :"+ appoggio.getId());
+       Logger.getLogger("id rivista preso :").log(Level.INFO,"id rivista :{0}.", appoggio.getId());
 
         vis.setIdRivista(appoggio.getId());
 
@@ -291,18 +289,17 @@ public class ControllerGestione {
             case DATABASE -> pR=new RivistaDao();
             case FILE -> pR=new CsvRivista();
             case MEMORIA -> pR=new MemoriaRivista();
-            default -> Logger.getLogger("rivista by id").log(Level.SEVERE,"persistency of daily is wrong!!");
+            default -> Logger.getLogger("rivista by id").log(Level.SEVERE,PERSISTENCYDAILY);
         }
 
 
         if(pR.removeRivistaById(appoggio))
         {
-            System.out.println("ho cancellato titolo"+appoggio.getTitolo());
+           Logger.getLogger("ho cancellato titolo rivista").log(Level.INFO,"cancello rivista titolo :{0}.",appoggio.getTitolo());
             r=setRivista(dati);
-            System.out.println("titolo da inserire"+r.getTitolo());
+           Logger.getLogger("titolo rivista da inserire").log(Level.INFO," inserisco rivista con titolo : {0}.",r.getTitolo());
 
         }
-        System.out.println("tupo modifica:"+ vis.getTipoModifica());
         return pR.inserisciRivista(r);
 
 

@@ -37,30 +37,30 @@ public class ControllerGestione {
     private static final String DATABASE=&quot;database&quot;;
     private static final String FILE=&quot;file&quot;;
     private static final String MEMORIA=&quot;memoria&quot;;
+    private static final String PERSISTENCYDAILY=&quot;persistency of daily is wrong!!&quot;;
     private PersistenzaLibro pL;
     private PersistenzaGiornale pG;
     private PersistenzaRivista pR;
 
 
     public boolean inserisci(String[] param,String persistenza) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
-<span class="fc" id="L46">        boolean status = false;</span>
-<span class="fc" id="L47">        vis.setTipoModifica(&quot;insert&quot;);</span>
+<span class="fc" id="L47">        boolean status = false;</span>
+<span class="fc" id="L48">        vis.setTipoModifica(&quot;insert&quot;);</span>
 
-<span class="pc bpc" id="L49" title="3 of 4 branches missed.">        switch (vis.getType())</span>
+<span class="pc bpc" id="L50" title="3 of 4 branches missed.">        switch (vis.getType())</span>
         {
             case LIBRO -&gt; {
-<span class="nc" id="L52">                Libro appoggio=setLibro(param);</span>
-<span class="nc bnc" id="L53" title="All 4 branches missed.">                switch (persistenza)</span>
+<span class="nc" id="L53">                Libro appoggio=setLibro(param);</span>
+<span class="nc bnc" id="L54" title="All 4 branches missed.">                switch (persistenza)</span>
                 {
-<span class="nc" id="L55">                    case DATABASE -&gt; pL=new LibroDao();</span>
-<span class="nc" id="L56">                    case FILE -&gt; pL=new CsvLibro();</span>
-<span class="nc" id="L57">                    case MEMORIA -&gt; pL=new MemoriaLibro();</span>
-<span class="nc" id="L58">                    default -&gt; Logger.getLogger(&quot;inserisci libro&quot;).log(Level.SEVERE,&quot;persistency insert book error!!&quot;);</span>
+<span class="nc" id="L56">                    case DATABASE -&gt; pL=new LibroDao();</span>
+<span class="nc" id="L57">                    case FILE -&gt; pL=new CsvLibro();</span>
+<span class="nc" id="L58">                    case MEMORIA -&gt; pL=new MemoriaLibro();</span>
+<span class="nc" id="L59">                    default -&gt; Logger.getLogger(&quot;inserisci libro&quot;).log(Level.SEVERE,&quot;persistency insert book error!!&quot;);</span>
                 }
-<span class="nc" id="L60">               status=pL.inserisciLibro(appoggio);</span>
-<span class="nc" id="L61">            }</span>
+<span class="nc" id="L61">               status=pL.inserisciLibro(appoggio);</span>
+<span class="nc" id="L62">            }</span>
             case GIORNALE -&gt; {
-               // Giornale appoggio=setGiornale(param);
 <span class="pc bpc" id="L64" title="1 of 4 branches missed.">                switch (persistenza){</span>
 <span class="fc" id="L65">                    case DATABASE -&gt; pG=new GiornaleDao();</span>
 <span class="fc" id="L66">                    case FILE -&gt; pG=new CsvGiornale();</span>
@@ -118,7 +118,7 @@ public class ControllerGestione {
 <span class="nc" id="L118">            case DATABASE -&gt; pG=new GiornaleDao();</span>
 <span class="nc" id="L119">            case FILE -&gt; pG=new CsvGiornale();</span>
 <span class="nc" id="L120">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
-<span class="nc" id="L121">            default -&gt; Logger.getLogger(&quot;giornali by id&quot;).log(Level.SEVERE,&quot;persistency of daily is wrong!!&quot;);</span>
+<span class="nc" id="L121">            default -&gt; Logger.getLogger(&quot;giornali by id&quot;).log(Level.SEVERE,PERSISTENCYDAILY);</span>
         }
 <span class="nc" id="L123">        g.setId(vis.getIdGiornale());</span>
 <span class="nc" id="L124">        return pG.getGiornaleByIdTitoloAutoreLibro(g);</span>
@@ -164,7 +164,7 @@ public class ControllerGestione {
         //prendo giornale
 <span class="nc" id="L165">        Libro appoggio=libroById(persistenza).get(0);</span>
 
-<span class="nc" id="L167">        System.out.println(&quot;id gionale preso :&quot;+ appoggio.getId());</span>
+<span class="nc" id="L167">       Logger.getLogger(&quot;modif libro &quot;).log(Level.INFO,&quot;id libro preso : {0}.&quot;, appoggio.getId());</span>
 
 <span class="nc" id="L169">        vis.setIdLibro(appoggio.getId());</span>
 
@@ -173,52 +173,50 @@ public class ControllerGestione {
 <span class="nc" id="L173">            case DATABASE -&gt; pL=new LibroDao();</span>
 <span class="nc" id="L174">            case FILE -&gt; pL=new CsvLibro();</span>
 <span class="nc" id="L175">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
-<span class="nc" id="L176">            default -&gt; Logger.getLogger(&quot;libro by id&quot;).log(Level.SEVERE,&quot;persistency of daily is wrong!!&quot;);</span>
+<span class="nc" id="L176">            default -&gt; Logger.getLogger(&quot;libro by id&quot;).log(Level.SEVERE,PERSISTENCYDAILY);</span>
         }
 
 
 <span class="nc bnc" id="L180" title="All 2 branches missed.">        if(pL.removeLibroById(appoggio))</span>
         {
-<span class="nc" id="L182">            System.out.println(&quot;ho cancellato titolo&quot;+appoggio.getTitolo());</span>
+<span class="nc" id="L182">            Logger.getLogger(&quot;cancella in modif libro&quot;).log(Level.INFO,&quot;ho cancellato titolo libro {0}.&quot;,appoggio.getTitolo());</span>
 <span class="nc" id="L183">            l=setLibro(dati);</span>
-<span class="nc" id="L184">            System.out.println(&quot;titolo da inserire&quot;+g.getTitolo());</span>
+<span class="nc" id="L184">           Logger.getLogger(&quot;titolo libro da inserire in modif&quot;).log(Level.INFO,&quot;sto inserendo libro con titolo{0}.&quot;,l.getTitolo());</span>
 
         }
-<span class="nc" id="L187">        System.out.println(&quot;tupo modifica:&quot;+ vis.getTipoModifica());</span>
-<span class="nc" id="L188">        return pL.inserisciLibro(l);</span>
+<span class="nc" id="L187">        return pL.inserisciLibro(l);</span>
 
 
     }
 
     private boolean modificaGiornale(String[] dati, String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
 
-<span class="nc" id="L195">        vis.setTipoModifica(&quot;im&quot;);</span>
+<span class="nc" id="L194">        vis.setTipoModifica(&quot;im&quot;);</span>
 
         //prendo giornale
-<span class="nc" id="L198">        Giornale appoggio=giornaleById(persistenza).get(0);</span>
+<span class="nc" id="L197">        Giornale appoggio=giornaleById(persistenza).get(0);</span>
 
-<span class="nc" id="L200">        System.out.println(&quot;id gionale preso :&quot;+ appoggio.getId());</span>
+<span class="nc" id="L199">       Logger.getLogger(&quot;id gionale preso &quot;).log(Level.INFO, &quot;i d:{0}&quot;, appoggio.getId());</span>
 
-<span class="nc" id="L202">        vis.setIdGiornale(appoggio.getId());</span>
+<span class="nc" id="L201">        vis.setIdGiornale(appoggio.getId());</span>
 
-<span class="nc bnc" id="L204" title="All 4 branches missed.">        switch (persistenza)</span>
+<span class="nc bnc" id="L203" title="All 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="nc" id="L206">            case DATABASE -&gt; pG=new GiornaleDao();</span>
-<span class="nc" id="L207">            case FILE -&gt; pG=new CsvGiornale();</span>
-<span class="nc" id="L208">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
-<span class="nc" id="L209">            default -&gt; Logger.getLogger(&quot;giornale by id&quot;).log(Level.SEVERE,&quot;persistency of daily is wrong!!&quot;);</span>
+<span class="nc" id="L205">            case DATABASE -&gt; pG=new GiornaleDao();</span>
+<span class="nc" id="L206">            case FILE -&gt; pG=new CsvGiornale();</span>
+<span class="nc" id="L207">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
+<span class="nc" id="L208">            default -&gt; Logger.getLogger(&quot;giornale by id&quot;).log(Level.SEVERE,PERSISTENCYDAILY);</span>
         }
 
 
-<span class="nc bnc" id="L213" title="All 2 branches missed.">        if(pG.removeGiornaleById(appoggio))</span>
+<span class="nc bnc" id="L212" title="All 2 branches missed.">        if(pG.removeGiornaleById(appoggio))</span>
         {
-<span class="nc" id="L215">            System.out.println(&quot;ho cancellato titolo&quot;+appoggio.getTitolo());</span>
-<span class="nc" id="L216">            g=setGiornale(dati);</span>
-<span class="nc" id="L217">            System.out.println(&quot;titolo da inserire&quot;+g.getTitolo());</span>
+<span class="nc" id="L214">           Logger.getLogger(&quot;ho cancellato titolo giornale&quot;).log(Level.INFO,&quot; titolo : {0}&quot;,appoggio.getTitolo());</span>
+<span class="nc" id="L215">            g=setGiornale(dati);</span>
+<span class="nc" id="L216">           Logger.getLogger(&quot;titolo da inserire&quot;).log(Level.INFO,&quot; titolo giornale da inserire {0}&quot;,g.getTitolo());</span>
 
         }
-<span class="nc" id="L220">        System.out.println(&quot;tupo modifica:&quot;+ vis.getTipoModifica());</span>
-<span class="nc" id="L221">        return pG.inserisciGiornale(g);</span>
+<span class="nc" id="L219">        return pG.inserisciGiornale(g);</span>
 
 
     }
@@ -226,84 +224,83 @@ public class ControllerGestione {
 
     private Libro setLibro(String []param)
     {
-<span class="nc" id="L229">        l=new Libro();</span>
-<span class="nc" id="L230">        l.setTitolo(param[0]);</span>
-<span class="nc" id="L231">        l.setCodIsbn(param[1]);</span>
-<span class="nc" id="L232">        l.setEditore(param[2]);</span>
-<span class="nc" id="L233">        l.setAutore(param[3]);</span>
-<span class="nc" id="L234">        l.setLingua(param[4]);</span>
-<span class="nc" id="L235">        l.setCategoria(param[5]);</span>
-<span class="nc" id="L236">        l.setDesc(param[6]);</span>
-<span class="nc" id="L237">        l.setDataPubb(LocalDate.parse(param[7]));</span>
-<span class="nc" id="L238">        l.setRecensione(param[8]);</span>
-<span class="nc" id="L239">        l.setNrPagine(Integer.parseInt(param[9]));</span>
-<span class="nc" id="L240">        l.setNrCopie(Integer.parseInt(param[10]));</span>
-<span class="nc" id="L241">        l.setDisponibilita(Integer.parseInt(param[11]));</span>
-<span class="nc" id="L242">        l.setPrezzo(Float.parseFloat(param[12]));</span>
-<span class="nc" id="L243">        l.setId(vis.getIdLibro());</span>
-<span class="nc" id="L244">        return l;</span>
+<span class="nc" id="L227">        l=new Libro();</span>
+<span class="nc" id="L228">        l.setTitolo(param[0]);</span>
+<span class="nc" id="L229">        l.setCodIsbn(param[1]);</span>
+<span class="nc" id="L230">        l.setEditore(param[2]);</span>
+<span class="nc" id="L231">        l.setAutore(param[3]);</span>
+<span class="nc" id="L232">        l.setLingua(param[4]);</span>
+<span class="nc" id="L233">        l.setCategoria(param[5]);</span>
+<span class="nc" id="L234">        l.setDesc(param[6]);</span>
+<span class="nc" id="L235">        l.setDataPubb(LocalDate.parse(param[7]));</span>
+<span class="nc" id="L236">        l.setRecensione(param[8]);</span>
+<span class="nc" id="L237">        l.setNrPagine(Integer.parseInt(param[9]));</span>
+<span class="nc" id="L238">        l.setNrCopie(Integer.parseInt(param[10]));</span>
+<span class="nc" id="L239">        l.setDisponibilita(Integer.parseInt(param[11]));</span>
+<span class="nc" id="L240">        l.setPrezzo(Float.parseFloat(param[12]));</span>
+<span class="nc" id="L241">        l.setId(vis.getIdLibro());</span>
+<span class="nc" id="L242">        return l;</span>
 
 
     }
     private Giornale setGiornale(String[] param)
     {
-<span class="fc" id="L250">        g.setTitolo(param[0]);</span>
-<span class="fc" id="L251">        g.setEditore(param[2]);</span>
-<span class="fc" id="L252">        g.setLingua(param[4]);</span>
-<span class="fc" id="L253">        g.setCategoria(param[5]);</span>
-<span class="fc" id="L254">        g.setDataPubb(LocalDate.parse(param[7]));</span>
-<span class="fc" id="L255">        g.setCopieRimanenti(Integer.parseInt(param[10]));</span>
-<span class="fc" id="L256">        g.setDisponibilita(Integer.parseInt(param[11]));</span>
-<span class="fc" id="L257">        g.setPrezzo(Float.parseFloat(param[12]));</span>
-<span class="fc" id="L258">        g.setId(vis.getIdGiornale());</span>
-<span class="fc" id="L259">        return g;</span>
+<span class="fc" id="L248">        g.setTitolo(param[0]);</span>
+<span class="fc" id="L249">        g.setEditore(param[2]);</span>
+<span class="fc" id="L250">        g.setLingua(param[4]);</span>
+<span class="fc" id="L251">        g.setCategoria(param[5]);</span>
+<span class="fc" id="L252">        g.setDataPubb(LocalDate.parse(param[7]));</span>
+<span class="fc" id="L253">        g.setCopieRimanenti(Integer.parseInt(param[10]));</span>
+<span class="fc" id="L254">        g.setDisponibilita(Integer.parseInt(param[11]));</span>
+<span class="fc" id="L255">        g.setPrezzo(Float.parseFloat(param[12]));</span>
+<span class="fc" id="L256">        g.setId(vis.getIdGiornale());</span>
+<span class="fc" id="L257">        return g;</span>
     }
     private Rivista setRivista(String []param)
     {
-<span class="nc" id="L263">        r=new Rivista();</span>
-<span class="nc" id="L264">        r.setTitolo(param[0]);</span>
-<span class="nc" id="L265">        r.setEditore(param[2]);</span>
-<span class="nc" id="L266">        r.setAutore(param[3]);</span>
-<span class="nc" id="L267">        r.setLingua(param[4]);</span>
-<span class="nc" id="L268">        r.setCategoria(param[5]);</span>
-<span class="nc" id="L269">        r.setDescrizione(param[6]);</span>
-<span class="nc" id="L270">        r.setDataPubb(LocalDate.parse(param[7]));</span>
-<span class="nc" id="L271">        r.setCopieRim(Integer.parseInt(param[10]));</span>
-<span class="nc" id="L272">        r.setDisp(Integer.parseInt(param[11]));</span>
-<span class="nc" id="L273">        r.setPrezzo(Float.parseFloat(param[12]));</span>
-<span class="nc" id="L274">        r.setId(vis.getIdRivista());</span>
-<span class="nc" id="L275">        return r;</span>
+<span class="nc" id="L261">        r=new Rivista();</span>
+<span class="nc" id="L262">        r.setTitolo(param[0]);</span>
+<span class="nc" id="L263">        r.setEditore(param[2]);</span>
+<span class="nc" id="L264">        r.setAutore(param[3]);</span>
+<span class="nc" id="L265">        r.setLingua(param[4]);</span>
+<span class="nc" id="L266">        r.setCategoria(param[5]);</span>
+<span class="nc" id="L267">        r.setDescrizione(param[6]);</span>
+<span class="nc" id="L268">        r.setDataPubb(LocalDate.parse(param[7]));</span>
+<span class="nc" id="L269">        r.setCopieRim(Integer.parseInt(param[10]));</span>
+<span class="nc" id="L270">        r.setDisp(Integer.parseInt(param[11]));</span>
+<span class="nc" id="L271">        r.setPrezzo(Float.parseFloat(param[12]));</span>
+<span class="nc" id="L272">        r.setId(vis.getIdRivista());</span>
+<span class="nc" id="L273">        return r;</span>
     }
 
     private boolean modificaRivista(String[]dati,String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
 
-<span class="nc" id="L280">        vis.setTipoModifica(&quot;im&quot;);</span>
+<span class="nc" id="L278">        vis.setTipoModifica(&quot;im&quot;);</span>
 
         //prendo giornale
-<span class="nc" id="L283">        Rivista appoggio=rivistaById(persistenza).get(0);</span>
+<span class="nc" id="L281">        Rivista appoggio=rivistaById(persistenza).get(0);</span>
 
-<span class="nc" id="L285">        System.out.println(&quot;id rivista preso :&quot;+ appoggio.getId());</span>
+<span class="nc" id="L283">       Logger.getLogger(&quot;id rivista preso :&quot;).log(Level.INFO,&quot;id rivista :{0}.&quot;, appoggio.getId());</span>
 
-<span class="nc" id="L287">        vis.setIdRivista(appoggio.getId());</span>
+<span class="nc" id="L285">        vis.setIdRivista(appoggio.getId());</span>
 
-<span class="nc bnc" id="L289" title="All 4 branches missed.">        switch (persistenza)</span>
+<span class="nc bnc" id="L287" title="All 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="nc" id="L291">            case DATABASE -&gt; pR=new RivistaDao();</span>
-<span class="nc" id="L292">            case FILE -&gt; pR=new CsvRivista();</span>
-<span class="nc" id="L293">            case MEMORIA -&gt; pR=new MemoriaRivista();</span>
-<span class="nc" id="L294">            default -&gt; Logger.getLogger(&quot;rivista by id&quot;).log(Level.SEVERE,&quot;persistency of daily is wrong!!&quot;);</span>
+<span class="nc" id="L289">            case DATABASE -&gt; pR=new RivistaDao();</span>
+<span class="nc" id="L290">            case FILE -&gt; pR=new CsvRivista();</span>
+<span class="nc" id="L291">            case MEMORIA -&gt; pR=new MemoriaRivista();</span>
+<span class="nc" id="L292">            default -&gt; Logger.getLogger(&quot;rivista by id&quot;).log(Level.SEVERE,PERSISTENCYDAILY);</span>
         }
 
 
-<span class="nc bnc" id="L298" title="All 2 branches missed.">        if(pR.removeRivistaById(appoggio))</span>
+<span class="nc bnc" id="L296" title="All 2 branches missed.">        if(pR.removeRivistaById(appoggio))</span>
         {
-<span class="nc" id="L300">            System.out.println(&quot;ho cancellato titolo&quot;+appoggio.getTitolo());</span>
-<span class="nc" id="L301">            r=setRivista(dati);</span>
-<span class="nc" id="L302">            System.out.println(&quot;titolo da inserire&quot;+r.getTitolo());</span>
+<span class="nc" id="L298">           Logger.getLogger(&quot;ho cancellato titolo rivista&quot;).log(Level.INFO,&quot;cancello rivista titolo :{0}.&quot;,appoggio.getTitolo());</span>
+<span class="nc" id="L299">            r=setRivista(dati);</span>
+<span class="nc" id="L300">           Logger.getLogger(&quot;titolo rivista da inserire&quot;).log(Level.INFO,&quot; inserisco rivista con titolo : {0}.&quot;,r.getTitolo());</span>
 
         }
-<span class="nc" id="L305">        System.out.println(&quot;tupo modifica:&quot;+ vis.getTipoModifica());</span>
-<span class="nc" id="L306">        return pR.inserisciRivista(r);</span>
+<span class="nc" id="L303">        return pR.inserisciRivista(r);</span>
 
 
     }

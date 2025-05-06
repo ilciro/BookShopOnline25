@@ -174,7 +174,7 @@ public class MemoriaRivista extends PersistenzaRivista{
 
     private void scriviInFile(String nome,ArrayList<Rivista> lista) throws IOException
     {
-        try(FileOutputStream fos=new FileOutputStream(nome,true);
+        try(FileOutputStream fos=new FileOutputStream(nome);
             ObjectOutputStream oos=new ObjectOutputStream(fos)) {
 
 
