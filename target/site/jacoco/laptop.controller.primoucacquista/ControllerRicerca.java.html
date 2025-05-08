@@ -35,7 +35,7 @@ import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="nc" id="L38">public class ControllerRicerca {</span>
+<span class="fc" id="L38">public class ControllerRicerca {</span>
 
 
     private static final String DATABASE=&quot;database&quot;;
@@ -48,7 +48,7 @@ import java.util.logging.Logger;
     private PersistenzaRivista pR;
     private PersistenzaUtente pU;
 
-<span class="nc" id="L51">    private static final User u= User.getInstance();</span>
+<span class="fc" id="L51">    private static final User u= User.getInstance();</span>
 
 
     public ObservableList&lt;Raccolta&gt; listaLibri(String nome, String persistenza) throws CsvValidationException, IOException, ClassNotFoundException, IdException, SQLException {
@@ -140,22 +140,22 @@ import java.util.logging.Logger;
     }
 
     public boolean logout(String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
-<span class="nc" id="L143">        boolean status=false;</span>
-<span class="nc bnc" id="L144" title="All 4 branches missed.">        switch (persistenza)</span>
+<span class="fc" id="L143">        boolean status=false;</span>
+<span class="pc bpc" id="L144" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="nc" id="L146">            case DATABASE -&gt; pU=new UsersDao();</span>
-<span class="nc" id="L147">            case FILE -&gt; pU=new CsvUtente();</span>
-<span class="nc" id="L148">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
+<span class="fc" id="L146">            case DATABASE -&gt; pU=new UsersDao();</span>
+<span class="fc" id="L147">            case FILE -&gt; pU=new CsvUtente();</span>
+<span class="fc" id="L148">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
 <span class="nc" id="L149">            default -&gt; Logger.getLogger(&quot;logout&quot;).log(Level.SEVERE,&quot; persistency logout is wrong!!&quot;);</span>
         }
-<span class="nc" id="L151">        pU.initializza();</span>
-<span class="nc bnc" id="L152" title="All 4 branches missed.">        if(u.getEmail()!=null &amp;&amp; u.getPassword()!=null) status=true;</span>
+<span class="fc" id="L151">        pU.initializza();</span>
+<span class="pc bpc" id="L152" title="2 of 4 branches missed.">        if(u.getEmail()!=null &amp;&amp; u.getPassword()!=null) status=true;</span>
         else {
 <span class="nc" id="L154">            TempUser tu = getTempUser();</span>
 <span class="nc bnc" id="L155" title="All 2 branches missed.">            if(tu.getEmailT()==null) status=true;</span>
 
         }
-<span class="nc" id="L158">        return status;</span>
+<span class="fc" id="L158">        return status;</span>
 
     }
 

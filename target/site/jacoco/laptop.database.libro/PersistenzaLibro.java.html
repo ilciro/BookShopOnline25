@@ -51,9 +51,9 @@ import java.sql.SQLException;
 
      }
     public void initializza() throws IOException, CsvValidationException, ClassNotFoundException, SQLException, IdException {
-<span class="nc" id="L54">        PersistenzaInitialize pI=new PersistenzaInitialize();</span>
-<span class="nc" id="L55">        pI.initializza(&quot;libro&quot;);</span>
-<span class="nc" id="L56">    }</span>
+<span class="fc" id="L54">        PersistenzaInitialize pI=new PersistenzaInitialize();</span>
+<span class="fc" id="L55">        pI.initializza(&quot;libro&quot;);</span>
+<span class="fc" id="L56">    }</span>
     public ObservableList&lt;Libro&gt; getLibri() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 <span class="nc bnc" id="L58" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IdException(DATABASEXCEPTION);</span>
 <span class="nc bnc" id="L59" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);</span>
