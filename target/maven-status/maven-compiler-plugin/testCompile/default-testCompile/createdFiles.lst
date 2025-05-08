@@ -2,6 +2,7 @@ testFinali/TestFinali.class
 testWeb/TestAcquistaLibro.class
 secondoUcLogin/TestResetPassword.class
 primoUcAcquista/testLibro/TestAcquistaLibro.class
+terzoUcGestione/ricerca/TestControllerRicerca.class
 terzoUcGestione/gestioneOggetto/TestControllerGestioneRivista.class
 terzoUcGestione/gestioneUtente/TestControllerGestioneUtente.class
 primoUcAcquista/testRivista/TestAcquistaRivista.class

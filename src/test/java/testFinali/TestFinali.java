@@ -19,7 +19,7 @@ class TestFinali {
      private final PersistenzaLibro pL=new PersistenzaLibro();
      private final PersistenzaRivista pR=new PersistenzaRivista();
      private final PersistenzaFattura pF=new PersistenzaFattura();
-     private final PersistenzaPagamento pP=new PagamentoDao();
+     private final PersistenzaPagamento pP=new PersistenzaPagamento();
      private final PersistenzaUtente pU=new PersistenzaUtente();
      private final PersistenzaReport pRepo=new PersistenzaReport();
      private final PersistenzaNegozio pN=new PersistenzaNegozio();

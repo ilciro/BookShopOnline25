@@ -37,11 +37,11 @@ import java.sql.SQLException;
 
 <span class="nc" id="L38">        return true;}</span>
     public void inizializza() throws IOException, ClassNotFoundException, SQLException {
-<span class="nc bnc" id="L40" title="All 2 branches missed.">        if (!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASEXCEPTION);</span>
-<span class="nc bnc" id="L41" title="All 2 branches missed.">        if (!Files.exists(Path.of(FILE))) throw new IOException(FILEXCEPTION);</span>
-<span class="nc bnc" id="L42" title="All 2 branches missed.">        if (!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        if (!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASEXCEPTION);</span>
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">        if (!Files.exists(Path.of(FILE))) throw new IOException(FILEXCEPTION);</span>
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        if (!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
 
-<span class="nc" id="L44">    }</span>
+<span class="fc" id="L44">    }</span>
     public ObservableList&lt;Pagamento&gt; listPagamentiByUser (Pagamento p) throws CsvValidationException, IOException, ClassNotFoundException {
 <span class="nc bnc" id="L46" title="All 2 branches missed.">           if(p.getIdPag()==0)throw new IOException(DATABASEXCEPTION);</span>
 <span class="nc bnc" id="L47" title="All 2 branches missed.">           if(p.getAmmontare()==0) throw new CsvValidationException(FILEXCEPTION);</span>
