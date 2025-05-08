@@ -117,9 +117,9 @@ public class ControllerRaccolta {
 <span class="fc" id="L117">    }</span>
 
     public boolean elimina(String type) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
-<span class="nc" id="L120">        boolean status = false;</span>
+<span class="fc" id="L120">        boolean status = false;</span>
 
-<span class="nc bnc" id="L122" title="All 4 branches missed.">            switch (vis.getType())</span>
+<span class="pc bpc" id="L122" title="3 of 4 branches missed.">            switch (vis.getType())</span>
             {
                 case LIBRO -&gt; {
 <span class="nc" id="L125">                    l.setId(vis.getIdLibro());</span>
@@ -133,18 +133,18 @@ public class ControllerRaccolta {
 <span class="nc" id="L133">                    status=pL.removeLibroById(l);</span>
 <span class="nc" id="L134">                }</span>
                 case GIORNALE -&gt; {
-<span class="nc" id="L136">                    g.setId(vis.getIdGiornale());</span>
-<span class="nc" id="L137">                    Logger.getLogger(&quot;elimina giornale&quot;).log(Level.INFO,&quot;id daily to delete .{0}&quot;,g.getId());</span>
-<span class="nc bnc" id="L138" title="All 4 branches missed.">                    switch (type)</span>
+<span class="fc" id="L136">                    g.setId(vis.getIdGiornale());</span>
+<span class="fc" id="L137">                    Logger.getLogger(&quot;elimina giornale&quot;).log(Level.INFO,&quot;id daily to delete .{0}&quot;,g.getId());</span>
+<span class="pc bpc" id="L138" title="1 of 4 branches missed.">                    switch (type)</span>
                     {
-<span class="nc" id="L140">                        case DATABASE -&gt; pG=new GiornaleDao();</span>
-<span class="nc" id="L141">                        case FILE -&gt; pG=new CsvGiornale();</span>
-<span class="nc" id="L142">                        case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
+<span class="fc" id="L140">                        case DATABASE -&gt; pG=new GiornaleDao();</span>
+<span class="fc" id="L141">                        case FILE -&gt; pG=new CsvGiornale();</span>
+<span class="fc" id="L142">                        case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
 <span class="nc" id="L143">                        default -&gt; Logger.getLogger(&quot;elimina giornale&quot;).log(Level.SEVERE,&quot;error deleting a daily&quot;);</span>
                     }
-<span class="nc" id="L145">                    status=pG.removeGiornaleById(g);</span>
+<span class="fc" id="L145">                    status=pG.removeGiornaleById(g);</span>
 
-<span class="nc" id="L147">                }</span>
+<span class="fc" id="L147">                }</span>
                 case RIVISTA -&gt;{
 <span class="nc" id="L149">                    r.setId(vis.getIdRivista());</span>
 <span class="nc bnc" id="L150" title="All 4 branches missed.">                    switch (type)</span>
@@ -163,7 +163,7 @@ public class ControllerRaccolta {
 
 
 
-<span class="nc" id="L166">        return status;</span>
+<span class="fc" id="L166">        return status;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

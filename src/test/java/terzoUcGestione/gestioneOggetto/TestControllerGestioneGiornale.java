@@ -8,12 +8,14 @@ import laptop.controller.terzoucgestioneprofilooggetto.ControllerGestione;
 import laptop.controller.terzoucgestioneprofilooggetto.ControllerRaccolta;
 import laptop.exception.IdException;
 
+import laptop.model.raccolta.Giornale;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -59,7 +61,7 @@ class TestControllerGestioneGiornale {
 
     }
 
-    /*
+
 
     @ParameterizedTest
     @ValueSource(strings = {"database","file","memoria"})
@@ -75,10 +77,20 @@ class TestControllerGestioneGiornale {
         // prendo lista
 
         System.out.println("titolo da modificare :"+RBOGGETTO.getString("titoloGI"));
+
+        ArrayList<Giornale> list=new ArrayList<>();
+
         for (int i=0;i<cR.getRaccoltaLista(GIORNALE,strings).size();i++)
         {
-            if(((Giornale) cR.getRaccoltaLista(GIORNALE,strings).get(i)).getTitolo().equals(RBOGGETTO.getString("titoloGI")))
-                vis.setIdGiornale(i+1);
+
+
+            list.add((Giornale) cR.getRaccoltaLista(GIORNALE,strings).get(i));
+        }
+
+
+        for (Giornale giornale : list) {
+            if (giornale.getTitolo().equals(RBOGGETTO.getString("titoloGI")))
+                vis.setIdGiornale(giornale.getId());
         }
 
         System.out.println("i vale dopo ciclo :"+vis.getIdGiornale());
@@ -98,21 +110,13 @@ class TestControllerGestioneGiornale {
         assertTrue(cG.modifica(param,strings));
         cA.logout(strings);
 
-
-
-
-
-
-
-
-
-
     }
 
 
 
 
-/*
+
+
     @ParameterizedTest
     @ValueSource(strings = {"database","file","memoria"})
     void testRemove(String strings) throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException {
@@ -121,16 +125,25 @@ class TestControllerGestioneGiornale {
         //login as admin
         cL.login(RBUTENTE.getString("emailA"), RBUTENTE.getString("passA"), strings);
         // prendo lista
-        cR.getRaccoltaLista(GIORNALE,strings );
+        ArrayList<Giornale> list=new ArrayList<>();
 
+        for (int i=0;i<cR.getRaccoltaLista(GIORNALE,strings).size();i++)
+        {
+            list.add((Giornale) cR.getRaccoltaLista(GIORNALE,strings).get(i));
+        }
         //prendo id
-       vis.setIdGiornale(4);
+        for (Giornale giornale : list) {
+            if (giornale.getTitolo().equals(RBOGGETTO.getString("titoloModG")))
+                vis.setIdGiornale(giornale.getId());
+        }
+
+
         assertTrue(cR.elimina(strings));
         cA.logout(strings);
     }
 
 
- */
+
 
 
 }

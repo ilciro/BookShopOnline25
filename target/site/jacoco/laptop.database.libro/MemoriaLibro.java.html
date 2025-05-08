@@ -3,191 +3,87 @@
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import laptop.controller.ControllerSystemState;
 import laptop.database.MemoryInitialize;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 
-<span class="fc" id="L21">public class MemoriaLibro extends PersistenzaLibro{</span>
+<span class="fc" id="L18">public class MemoriaLibro extends PersistenzaLibro{</span>
     private static final String SERIALIZZAZIONE=&quot;memory/serializzazioneLibro.ser&quot;;
     private static final String SERIALIZZAZIONEAPPOGGIO=&quot;memory/serializzazioneLibroAppoggio.ser&quot;;
 
-<span class="fc" id="L25">    private  transient ArrayList&lt;Libro&gt; list=new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L26">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+<span class="fc" id="L22">    private static final MemoryInitialize mI = new MemoryInitialize();</span>
 
     @Override
-    @SuppressWarnings(&quot;unchecked&quot;)
     public void initializza() throws IOException, CsvValidationException, ClassNotFoundException {
-<span class="fc bfc" id="L31" title="All 2 branches covered.">        for(int i=1;i&lt;=19;i++) {</span>
-            String line;
+<span class="fc" id="L26">     mI.inizializza(SERIALIZZAZIONE);</span>
+<span class="fc" id="L27">    }</span>
 
-
-<span class="fc" id="L35">            ArrayList&lt;String&gt; listaR = new ArrayList&lt;&gt;();</span>
-
-
-<span class="fc" id="L38">            try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/libro&quot; + i + &quot;.txt&quot;);</span>
-<span class="fc" id="L39">                 BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
-<span class="fc bfc" id="L40" title="All 2 branches covered.">                while ((line = bufferedReader.readLine()) != null) {</span>
-<span class="fc" id="L41">                    listaR.add(line);</span>
-
-                }
-            }
-<span class="fc" id="L45">            Libro l = getLibro(listaR);</span>
-
-<span class="fc" id="L47">            list.add(l);</span>
-        }
-<span class="fc" id="L49">        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L50">            ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
-<span class="fc" id="L51">            oos.writeObject(list);</span>
-        }
-
-<span class="fc" id="L54">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L55">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
-<span class="fc" id="L56">            list= (ArrayList&lt;Libro&gt;) ois.readObject();</span>
-        }
-<span class="fc" id="L58">    }</span>
-
-    private static @NotNull Libro getLibro(ArrayList&lt;String&gt; listaR) {
-<span class="fc" id="L61">        Libro l = new Libro();</span>
-<span class="fc" id="L62">        l.setTitolo(listaR.get(0));</span>
-<span class="fc" id="L63">        l.setNrPagine(Integer.parseInt(listaR.get(1)));</span>
-<span class="fc" id="L64">        l.setCodIsbn(listaR.get(2));</span>
-<span class="fc" id="L65">        l.setEditore(listaR.get(3));</span>
-<span class="fc" id="L66">        l.setAutore(listaR.get(4));</span>
-<span class="fc" id="L67">        l.setLingua(listaR.get(5));</span>
-<span class="fc" id="L68">        l.setCategoria(listaR.get(6));</span>
-<span class="fc" id="L69">        l.setDataPubb(LocalDate.parse(listaR.get(7)));</span>
-<span class="fc" id="L70">        l.setRecensione(listaR.get(8));</span>
-<span class="fc" id="L71">        l.setNrCopie(Integer.parseInt(listaR.get(9)));</span>
-<span class="fc" id="L72">        l.setDesc(listaR.get(10));</span>
-<span class="fc" id="L73">        l.setDisponibilita(Integer.parseInt(listaR.get(11)));</span>
-<span class="fc" id="L74">        l.setPrezzo(Float.parseFloat(listaR.get(12)));</span>
-<span class="fc" id="L75">        l.setId(Integer.parseInt(listaR.get(13)));</span>
-<span class="fc" id="L76">        return l;</span>
-    }
 
     @Override
     public boolean inserisciLibro(Libro l) throws CsvValidationException, IOException, ClassNotFoundException {
-<span class="fc" id="L81">        Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);</span>
-<span class="pc bpc" id="L82" title="1 of 2 branches missed.">        if (!Files.exists(path2))</span>
+<span class="fc" id="L32">        Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);</span>
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">        if (!Files.exists(path2))</span>
         {
-<span class="fc" id="L84">            Files.createFile(path2);</span>
+<span class="fc" id="L35">            Files.createFile(path2);</span>
         }
 
 
-<span class="fc" id="L88">        leggiDaFile(SERIALIZZAZIONE);</span>
+<span class="fc" id="L39">        return mI.inserisci(l,null,null,SERIALIZZAZIONE,SERIALIZZAZIONEAPPOGGIO);</span>
 
-
-
-<span class="pc bpc" id="L92" title="1 of 2 branches missed.">        if (vis.getTipoModifica().equals(&quot;im&quot;)) l.setId(vis.getIdLibro());</span>
-<span class="nc bnc" id="L93" title="All 2 branches missed.">        else if (vis.getTipoModifica().equals(&quot;insert&quot;)) l.setId(list.size() + 1);</span>
-<span class="fc" id="L94">        list.add(l);</span>
-
-        //scrivo lista in appoggio
-
-<span class="fc" id="L98">        scriviInFile(SERIALIZZAZIONEAPPOGGIO,list);</span>
-
-
-<span class="fc" id="L101">        list=leggiDaFile(SERIALIZZAZIONEAPPOGGIO);</span>
-
-<span class="fc" id="L103">        Path path1 = Path.of(SERIALIZZAZIONE);</span>
-<span class="fc" id="L104">        Files.delete(path1);</span>
-<span class="fc" id="L105">        Files.createFile(path1);</span>
-
-
-
-
-<span class="fc" id="L110">        scriviInFile(SERIALIZZAZIONE,list);</span>
-
-
-
-
-<span class="fc" id="L115">        Files.delete(path2);</span>
-
-
-
-
-
-
-<span class="fc" id="L122">        return true;</span>
     }
 
     @Override
     public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 
-<span class="fc" id="L128">        return FXCollections.observableArrayList(leggiDaFile(SERIALIZZAZIONE));</span>
+
+<span class="fc" id="L47">        return FXCollections.observableArrayList(mI.listaLibri(SERIALIZZAZIONE));</span>
     }
 
     @Override
-    @SuppressWarnings(&quot;unchecked&quot;)
     public ObservableList&lt;Libro&gt; getLibroByIdTitoloAutoreLibro(Libro l) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="fc" id="L134">        ObservableList&lt;Libro&gt; listaRecuperata = FXCollections.observableArrayList();</span>
-<span class="fc" id="L135">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L136">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
-<span class="fc" id="L137">            list= (ArrayList&lt;Libro&gt;) ois.readObject();</span>
-        }
+<span class="fc" id="L52">        ObservableList&lt;Libro&gt; listaRecuperata = FXCollections.observableArrayList();</span>
 
-<span class="fc bfc" id="L140" title="All 2 branches covered.">        for(int i=0;i&lt;list.size();i++)</span>
+<span class="fc" id="L54">        ArrayList&lt;Libro&gt; list=mI.listaLibri(SERIALIZZAZIONE);</span>
+
+
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        for(int i=0;i&lt;list.size();i++)</span>
         {
-<span class="fc bfc" id="L142" title="All 2 branches covered.">            if(i==l.getId()-1</span>
-<span class="pc bpc" id="L143" title="1 of 2 branches missed.">                    || list.get(i).getTitolo().equals(l.getTitolo())</span>
-<span class="pc bpc" id="L144" title="1 of 2 branches missed.">                    || list.get(i).getEditore().equals(l.getEditore())</span>
-<span class="pc bpc" id="L145" title="1 of 2 branches missed.">                    || list.get(i).getAutore().equals(l.getAutore()))</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">            if(i==l.getId()-1</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">                    || list.get(i).getTitolo().equals(l.getTitolo())</span>
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">                    || list.get(i).getEditore().equals(l.getEditore())</span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">                    || list.get(i).getAutore().equals(l.getAutore()))</span>
             {
-<span class="fc" id="L147">                listaRecuperata=FXCollections.observableArrayList(list.get(i));</span>
+<span class="fc" id="L64">                listaRecuperata=FXCollections.observableArrayList(list.get(i));</span>
             }
 
 
         }
 
 
-<span class="fc" id="L154">        return listaRecuperata;</span>
+<span class="fc" id="L71">        return listaRecuperata;</span>
     }
 
     @Override
     public ObservableList&lt;Libro&gt; getLibri() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="fc" id="L159">        list=leggiDaFile(SERIALIZZAZIONE);</span>
-<span class="fc" id="L160">        return FXCollections.observableList(list);</span>
+<span class="fc" id="L76">        ArrayList&lt;Libro&gt; list=mI.listaLibri(SERIALIZZAZIONE);</span>
+<span class="fc" id="L77">        return FXCollections.observableList(list);</span>
     }
 
     @Override
 
     public boolean removeLibroById(Libro l) throws  IOException, ClassNotFoundException {
-<span class="fc" id="L166">        MemoryInitialize mI=new MemoryInitialize();</span>
-<span class="fc" id="L167">        return mI.cancellaLibro(l);</span>
+<span class="fc" id="L83">        MemoryInitialize mI=new MemoryInitialize();</span>
+<span class="fc" id="L84">        return mI.cancellaLibro(l);</span>
     }
-    private void scriviInFile(String nome,ArrayList&lt;Libro&gt; lista) throws IOException
-    {
-<span class="fc" id="L171">        try(FileOutputStream fos=new FileOutputStream(nome,true);</span>
-<span class="fc" id="L172">            ObjectOutputStream oos=new ObjectOutputStream(fos)) {</span>
 
-
-<span class="fc" id="L175">            oos.writeObject(lista);</span>
-<span class="fc" id="L176">            oos.flush();</span>
-
-        }
-
-
-
-<span class="fc" id="L182">    }</span>
-    @SuppressWarnings(&quot;unchecked&quot;)
-    private ArrayList&lt;Libro&gt; leggiDaFile(String nome) throws IOException ,ClassNotFoundException{
-<span class="fc" id="L185">        try(FileInputStream fis=new FileInputStream(nome);</span>
-<span class="fc" id="L186">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
-<span class="fc" id="L187">            list=(ArrayList&lt;Libro&gt;) ois.readObject();</span>
-        }
-<span class="fc" id="L189">        return list;</span>
-    }
 
 
 

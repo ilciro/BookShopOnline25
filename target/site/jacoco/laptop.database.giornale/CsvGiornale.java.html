@@ -102,9 +102,9 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 <span class="fc bfc" id="L102" title="All 2 branches covered.">        if(!duplicatedG)</span>
         {
 <span class="fc" id="L104">            List&lt;Giornale&gt; list=returnGiornaleByTE(this.fdG,g.getTitolo(),g.getEditore(),g.getId());</span>
-<span class="pc bpc" id="L105" title="1 of 2 branches missed.">            duplicatedG=(!list.isEmpty());</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">            duplicatedG=(!list.isEmpty());</span>
         }
-<span class="pc bpc" id="L107" title="1 of 2 branches missed.">        if(duplicatedG)</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">        if(duplicatedG)</span>
             try{
 <span class="fc" id="L109">                Logger.getLogger(&quot;try giornale&quot;).log(Level.INFO,&quot;id giornale sbagliato !!&quot;);</span>
 <span class="fc" id="L110">                throw new IdException(&quot; id giornale sbagliato or duplicated&quot;);</span>

@@ -91,10 +91,7 @@ public class ControllerSystemState {
 	{
 		this.type = "libro";
 	}
-	public void setTypeAsMagazine()
-	{
-		this.type = "rivista";
-	}
+	public void setTypeAsMagazine() { this.type = "rivista";	}
 	public void setTypeAsDaily()
 	{
 		this.type = "giornale";

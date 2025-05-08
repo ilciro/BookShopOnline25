@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class TestFinali {
 
     @AfterAll
-    static void init() throws SQLException {
+    static void cleanup() throws SQLException {
         String query="drop schema ISPW;";
         int i;
         try(Connection conn= ConnToDb.connectionToDB();
