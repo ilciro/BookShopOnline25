@@ -120,7 +120,6 @@ class TestControllerGestioneGiornale {
     @ValueSource(strings = {"database","file","memoria"})
     void test3(String strings) throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException {
 
-        System.out.println("-----Sto levando ----");
 
        //giornale
         vis.setTypeAsDaily();

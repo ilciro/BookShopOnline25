@@ -4,6 +4,7 @@ primoUcAcquista/testLibro/TestAcquistaLibro.class
 primoUcAcquista/testGiornale/TestAcquistaGiornale.class
 terzoUcGestione/gestioneOggetto/TestControllerGestioneLibro.class
 terzoUcGestione/gestioneOggetto/TestControllerGestioneRivista.class
+terzoUcGestione/gestioneUtente/TestControllerGestioneUtente.class
 primoUcAcquista/testRivista/TestAcquistaRivista.class
 secondoUcLogin/TestUserLoggedPagamento.class
 primoUcVisualizza/TestControllerVisualizza.class
