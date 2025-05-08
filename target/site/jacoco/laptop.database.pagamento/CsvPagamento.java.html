@@ -179,52 +179,52 @@ public class CsvPagamento extends PersistenzaPagamento{
 
     @Override
     public ObservableList&lt;Pagamento&gt; listPagamentiByUser(Pagamento p) throws CsvValidationException, IOException {
-<span class="nc" id="L182">        ObservableList&lt;Pagamento&gt; list= FXCollections.observableArrayList();</span>
-<span class="nc" id="L183">        synchronized (this.cachePagamento)</span>
+<span class="fc" id="L182">        ObservableList&lt;Pagamento&gt; list= FXCollections.observableArrayList();</span>
+<span class="fc" id="L183">        synchronized (this.cachePagamento)</span>
         {
 
 
-<span class="nc bnc" id="L187" title="All 2 branches missed.">            for(Map.Entry&lt;String,Pagamento&gt; id:cachePagamento.entrySet())</span>
+<span class="pc bpc" id="L187" title="1 of 2 branches missed.">            for(Map.Entry&lt;String,Pagamento&gt; id:cachePagamento.entrySet())</span>
             {
 <span class="nc bnc" id="L189" title="All 2 branches missed.">                boolean recordFound=(id.getValue().getIdPag()==p.getIdPag());</span>
 <span class="nc bnc" id="L190" title="All 2 branches missed.">                if(recordFound)</span>
 <span class="nc" id="L191">                    list.add(id.getValue());</span>
 <span class="nc" id="L192">            }</span>
-<span class="nc" id="L193">        }</span>
-<span class="nc bnc" id="L194" title="All 2 branches missed.">        if(list.isEmpty())</span>
+<span class="fc" id="L193">        }</span>
+<span class="pc bpc" id="L194" title="1 of 2 branches missed.">        if(list.isEmpty())</span>
         {
-<span class="nc" id="L196">            list=retriveListPagamento(this.filePagamento,p);</span>
-<span class="nc" id="L197">            synchronized (this.cachePagamento)</span>
+<span class="fc" id="L196">            list=retriveListPagamento(this.filePagamento,p);</span>
+<span class="fc" id="L197">            synchronized (this.cachePagamento)</span>
             {
-<span class="nc bnc" id="L199" title="All 2 branches missed.">                for(Pagamento pagamento : list)</span>
-<span class="nc" id="L200">                    this.cachePagamento.put(String.valueOf(p.getEmail()),pagamento);</span>
-<span class="nc" id="L201">            }</span>
+<span class="fc bfc" id="L199" title="All 2 branches covered.">                for(Pagamento pagamento : list)</span>
+<span class="fc" id="L200">                    this.cachePagamento.put(String.valueOf(p.getEmail()),pagamento);</span>
+<span class="fc" id="L201">            }</span>
 
         }
-<span class="nc" id="L204">        return list;</span>
+<span class="fc" id="L204">        return list;</span>
     }
     private static  synchronized  ObservableList&lt;Pagamento&gt; retriveListPagamento(File fd, Pagamento p) throws IOException, CsvValidationException {
         ObservableList&lt;Pagamento&gt; list;
-<span class="nc" id="L208">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
+<span class="fc" id="L208">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
             String[] gVector;
-<span class="nc" id="L210">            list = FXCollections.observableArrayList();</span>
-<span class="nc bnc" id="L211" title="All 2 branches missed.">            while ((gVector = reader.readNext()) != null) {</span>
-<span class="nc" id="L212">                boolean recordFound = gVector[GETINDEXEIAMILP].equals(p.getEmail());</span>
-<span class="nc bnc" id="L213" title="All 2 branches missed.">                if (recordFound) {</span>
-<span class="nc" id="L214">                    Pagamento pag = new Pagamento();</span>
-<span class="nc" id="L215">                    pag.setIdPag(Integer.parseInt(gVector[GETINDEXIDP]));</span>
-<span class="nc" id="L216">                    pag.setMetodo(gVector[GETINDEXMETODOP]);</span>
-<span class="nc" id="L217">                    pag.setAmmontare(Float.parseFloat(gVector[GETINDEXSPESAP]));</span>
-<span class="nc" id="L218">                    pag.setTipo(gVector[GETINDEXACQUISTOP]);</span>
-<span class="nc" id="L219">                    pag.setIdOggetto(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));</span>
-<span class="nc" id="L220">                    list.add(pag);</span>
+<span class="fc" id="L210">            list = FXCollections.observableArrayList();</span>
+<span class="fc bfc" id="L211" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
+<span class="fc" id="L212">                boolean recordFound = gVector[GETINDEXEIAMILP].equals(p.getEmail());</span>
+<span class="fc bfc" id="L213" title="All 2 branches covered.">                if (recordFound) {</span>
+<span class="fc" id="L214">                    Pagamento pag = new Pagamento();</span>
+<span class="fc" id="L215">                    pag.setIdPag(Integer.parseInt(gVector[GETINDEXIDP]));</span>
+<span class="fc" id="L216">                    pag.setMetodo(gVector[GETINDEXMETODOP]);</span>
+<span class="fc" id="L217">                    pag.setAmmontare(Float.parseFloat(gVector[GETINDEXSPESAP]));</span>
+<span class="fc" id="L218">                    pag.setTipo(gVector[GETINDEXACQUISTOP]);</span>
+<span class="fc" id="L219">                    pag.setIdOggetto(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));</span>
+<span class="fc" id="L220">                    list.add(pag);</span>
 
 
                 }
-<span class="nc" id="L224">            }</span>
+<span class="fc" id="L224">            }</span>
         }
 
-<span class="nc" id="L227">        return list;</span>
+<span class="fc" id="L227">        return list;</span>
 
     }
 }
