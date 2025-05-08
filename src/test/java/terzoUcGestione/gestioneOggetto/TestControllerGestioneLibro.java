@@ -90,7 +90,6 @@ class TestControllerGestioneLibro {
                 vis.setIdLibro(libro.getId());
         }
 
-        System.out.println("i vale dopo ciclo :"+vis.getIdLibro());
 
 
 
@@ -139,7 +138,6 @@ class TestControllerGestioneLibro {
         for (Libro libro : list) {
             if (libro.getTitolo().equals(RBOGGETTO.getString("titoloModL"))) {
                 id = libro.getId();
-                System.out.println("id vale" + id);
             }
         }
         vis.setIdGiornale(id);

@@ -133,7 +133,6 @@ public class ControllerRaccolta {
                     status=pL.removeLibroById(l);
                 }
                 case GIORNALE -> {
-                    System.out.println("id nel controller raccolta elimina"+vis.getIdGiornale());
                     g.setId(vis.getIdGiornale());
                     Logger.getLogger("elimina giornale").log(Level.INFO,"id daily to delete .{0}",g.getId());
                     switch (type)

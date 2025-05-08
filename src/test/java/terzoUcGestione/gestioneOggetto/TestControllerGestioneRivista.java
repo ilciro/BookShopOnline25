@@ -82,7 +82,6 @@ class TestControllerGestioneRivista {
             list.add((Rivista) cR.getRaccoltaLista(RIVISTA,strings).get(i));
         }
 
-        System.out.println("i dopo lista presa :"+list.size());
 
 
         for (Rivista rivista : list) {
@@ -90,7 +89,6 @@ class TestControllerGestioneRivista {
                 vis.setIdRivista(rivista.getId());
         }
 
-        System.out.println("i vale dopo ciclo :"+vis.getIdRivista());
 
         param[0]=RBOGGETTO.getString("titoloModR");
         param[2]=RBOGGETTO.getString("editoreModR");
@@ -130,7 +128,6 @@ class TestControllerGestioneRivista {
         for (Rivista rivista : list) {
             if (rivista.getTitolo().equals(RBOGGETTO.getString("titoloModR"))) {
                 id = rivista.getId();
-                System.out.println("id vale" + id);
             }
         }
         vis.setIdRivista(id);

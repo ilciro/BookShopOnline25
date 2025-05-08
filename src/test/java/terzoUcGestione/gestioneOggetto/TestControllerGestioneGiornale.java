@@ -92,7 +92,6 @@ class TestControllerGestioneGiornale {
                 vis.setIdGiornale(giornale.getId());
         }
 
-        System.out.println("i vale dopo ciclo :"+vis.getIdGiornale());
 
 
 
@@ -137,7 +136,6 @@ class TestControllerGestioneGiornale {
         for (Giornale giornale : list) {
             if (giornale.getTitolo().equals(RBOGGETTO.getString("titoloModG"))) {
                 id = giornale.getId();
-                System.out.println("id vale" + id);
             }
         }
         vis.setIdGiornale(id);
