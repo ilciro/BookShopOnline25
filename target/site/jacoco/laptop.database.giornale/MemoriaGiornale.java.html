@@ -14,25 +14,26 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 
-<span class="fc" id="L19">public class  MemoriaGiornale extends PersistenzaGiornale{</span>
+<span class="fc" id="L20">public class  MemoriaGiornale extends PersistenzaGiornale{</span>
 
     private static final String SERIALIZZAZIONE=&quot;memory/serializzazioneGiornale.ser&quot;;
     private static final String SERIALIZZAZIONEAPPOGGIO=&quot;memory/serializzazioneGiornaleAppoggio.ser&quot;;
 
 
 
-<span class="fc" id="L26">    private static final MemoryInitialize mI=new MemoryInitialize() ;</span>
+<span class="fc" id="L27">    private static final MemoryInitialize mI=new MemoryInitialize() ;</span>
 
     @Override
     public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
 
-<span class="fc" id="L31">        mI.inizializza(SERIALIZZAZIONE);</span>
+<span class="fc" id="L32">        mI.inizializza(SERIALIZZAZIONE);</span>
 
 
 
-<span class="fc" id="L35">    }</span>
+<span class="fc" id="L36">    }</span>
 
 
 
@@ -41,12 +42,12 @@ import java.util.ArrayList;
 
     public boolean inserisciGiornale(Giornale g) throws IOException, ClassNotFoundException {
 
-<span class="fc" id="L44">        Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);</span>
-<span class="pc bpc" id="L45" title="1 of 2 branches missed.">        if (!Files.exists(path2))</span>
+<span class="fc" id="L45">        Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">        if (!Files.exists(path2))</span>
         {
-<span class="fc" id="L47">            Files.createFile(path2);</span>
+<span class="fc" id="L48">            Files.createFile(path2);</span>
         }
-<span class="fc" id="L49">        return mI.inserisci(null,g,null,SERIALIZZAZIONE,SERIALIZZAZIONEAPPOGGIO);</span>
+<span class="fc" id="L50">        return mI.inserisci(null,g,null,SERIALIZZAZIONE,SERIALIZZAZIONEAPPOGGIO);</span>
 
     }
 
@@ -56,41 +57,41 @@ import java.util.ArrayList;
 
     public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 
-<span class="fc" id="L59">        return FXCollections.observableArrayList(mI.listaGiornali(SERIALIZZAZIONE));</span>
+<span class="fc" id="L60">        return FXCollections.observableArrayList(mI.listaGiornali(SERIALIZZAZIONE));</span>
     }
 
     @Override
 
     public ObservableList&lt;Giornale&gt; getGiornaleByIdTitoloAutoreLibro(Giornale g) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="fc" id="L65">        ObservableList&lt;Giornale&gt; listaRecuperata = FXCollections.observableArrayList();</span>
+<span class="fc" id="L66">        ObservableList&lt;Giornale&gt; listaRecuperata = FXCollections.observableArrayList();</span>
 
-<span class="fc" id="L67">        ArrayList&lt;Giornale&gt; list=mI.listaGiornali(SERIALIZZAZIONE);</span>
+<span class="fc" id="L68">        List&lt;Giornale&gt; list=mI.listaGiornali(SERIALIZZAZIONE);</span>
 
-<span class="fc bfc" id="L69" title="All 2 branches covered.">        for(int i=0;i&lt;list.size();i++)</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        for(int i=0;i&lt;list.size();i++)</span>
         {
-<span class="fc bfc" id="L71" title="All 2 branches covered.">            if(i==g.getId()-1</span>
-<span class="pc bpc" id="L72" title="1 of 2 branches missed.">            || list.get(i).getTitolo().equals(g.getTitolo())</span>
-<span class="pc bpc" id="L73" title="1 of 2 branches missed.">            || list.get(i).getEditore().equals(g.getEditore()))</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">            if(i==g.getId()-1</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">            || list.get(i).getTitolo().equals(g.getTitolo())</span>
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">            || list.get(i).getEditore().equals(g.getEditore()))</span>
             {
-<span class="fc" id="L75">                listaRecuperata=FXCollections.observableArrayList(list.get(i));</span>
+<span class="fc" id="L76">                listaRecuperata=FXCollections.observableArrayList(list.get(i));</span>
             }
 
         }
 
 
-<span class="fc" id="L81">        return listaRecuperata;</span>
+<span class="fc" id="L82">        return listaRecuperata;</span>
     }
 
     @Override
     public ObservableList&lt;Giornale&gt; getGiornali() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 
-<span class="fc" id="L87">        ArrayList&lt;Giornale&gt; list=mI.listaGiornali(SERIALIZZAZIONE);</span>
-<span class="fc" id="L88">        return FXCollections.observableList(list);</span>
+<span class="fc" id="L88">        List&lt;Giornale&gt; list=mI.listaGiornali(SERIALIZZAZIONE);</span>
+<span class="fc" id="L89">        return FXCollections.observableList(list);</span>
     }
 
     @Override
     public boolean removeGiornaleById(Giornale g) throws  IOException,  ClassNotFoundException {
-<span class="fc" id="L93">        return mI.cancellaGiornale(g);</span>
+<span class="fc" id="L94">        return mI.cancellaGiornale(g);</span>
     }
 
 

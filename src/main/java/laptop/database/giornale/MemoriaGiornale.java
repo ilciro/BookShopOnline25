@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class  MemoriaGiornale extends PersistenzaGiornale{
@@ -64,7 +65,7 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
     public ObservableList<Giornale> getGiornaleByIdTitoloAutoreLibro(Giornale g) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
         ObservableList<Giornale> listaRecuperata = FXCollections.observableArrayList();
 
-        ArrayList<Giornale> list=mI.listaGiornali(SERIALIZZAZIONE);
+        List<Giornale> list=mI.listaGiornali(SERIALIZZAZIONE);
 
         for(int i=0;i<list.size();i++)
         {
@@ -84,7 +85,7 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
     @Override
     public ObservableList<Giornale> getGiornali() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 
-        ArrayList<Giornale> list=mI.listaGiornali(SERIALIZZAZIONE);
+        List<Giornale> list=mI.listaGiornali(SERIALIZZAZIONE);
         return FXCollections.observableList(list);
     }
 

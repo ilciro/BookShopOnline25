@@ -1,4 +1,3 @@
-/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/TestFinali.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcAcquista/testGiornale/TestAcquistaGiornale.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcAcquista/testLibro/TestAcquistaLibro.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoUcAcquista/testRivista/TestAcquistaRivista.java
@@ -8,3 +7,5 @@
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/secondoUcLogin/TestResetPassword.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/secondoUcLogin/TestUserLoggedPagamento.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/terzoUcGestione/gestioneOggetto/TestControllerGestioneGiornale.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/terzoUcGestione/gestioneOggetto/TestControllerGestioneLibro.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/terzoUcGestione/gestioneOggetto/TestControllerGestioneRivista.java

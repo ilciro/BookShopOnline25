@@ -36,7 +36,7 @@ class TestControllerGestioneGiornale {
 
    @ParameterizedTest
    @ValueSource(strings = {"database","file","memoria"})
-    void testInsert(String strings) throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException {
+    void test1(String strings) throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException {
         //giornale
         vis.setTypeAsDaily();
         //login as admin
@@ -65,7 +65,7 @@ class TestControllerGestioneGiornale {
 
     @ParameterizedTest
     @ValueSource(strings = {"database","file","memoria"})
-    void testModif(String strings) throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException {
+    void test2(String strings) throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException {
 
 
         String []param=new String[13];
@@ -76,7 +76,6 @@ class TestControllerGestioneGiornale {
         cL.login(RBUTENTE.getString("emailA"), RBUTENTE.getString("passA"), strings);
         // prendo lista
 
-        System.out.println("titolo da modificare :"+RBOGGETTO.getString("titoloGI"));
 
         ArrayList<Giornale> list=new ArrayList<>();
 
@@ -119,8 +118,11 @@ class TestControllerGestioneGiornale {
 
     @ParameterizedTest
     @ValueSource(strings = {"database","file","memoria"})
-    void testRemove(String strings) throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException {
-        //giornale
+    void test3(String strings) throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException {
+
+        System.out.println("-----Sto levando ----");
+
+       //giornale
         vis.setTypeAsDaily();
         //login as admin
         cL.login(RBUTENTE.getString("emailA"), RBUTENTE.getString("passA"), strings);
@@ -132,10 +134,14 @@ class TestControllerGestioneGiornale {
             list.add((Giornale) cR.getRaccoltaLista(GIORNALE,strings).get(i));
         }
         //prendo id
+        int id=0;
         for (Giornale giornale : list) {
-            if (giornale.getTitolo().equals(RBOGGETTO.getString("titoloModG")))
-                vis.setIdGiornale(giornale.getId());
+            if (giornale.getTitolo().equals(RBOGGETTO.getString("titoloModG"))) {
+                id = giornale.getId();
+                System.out.println("id vale" + id);
+            }
         }
+        vis.setIdGiornale(id);
 
 
         assertTrue(cR.elimina(strings));

@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,9 +24,10 @@ public class MemoryInitialize {
     private static final String GIORNALE="giornale";
     private static final String LIBRO="libro";
     private static final String RIVISTA="rivista";
-    private static ArrayList<Giornale> listG=new ArrayList<>();
-    private static ArrayList<Libro> listL=new ArrayList<>();
-    private static ArrayList<Rivista> listR=new ArrayList<>();
+    private static final String INSERT="insert";
+    private  ArrayList<Giornale> listG=new ArrayList<>();
+    private  ArrayList<Libro> listL=new ArrayList<>();
+    private  ArrayList<Rivista> listR=new ArrayList<>();
 
 
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
@@ -172,7 +174,7 @@ public class MemoryInitialize {
         Path path1=Path.of(file);
         if(l!=null){
             if (vis.getTipoModifica().equals("im")) l.setId(vis.getIdLibro());
-            else if (vis.getTipoModifica().equals("insert")) l.setId(listL.size() + 1);
+            else if (vis.getTipoModifica().equals(INSERT)) l.setId(listL.size() + 1);
             listL.add(l);
             //scrivo lista in appoggio
 
@@ -186,7 +188,7 @@ public class MemoryInitialize {
         }
         if(g!=null){
             if (vis.getTipoModifica().equals("im")) g.setId(vis.getIdGiornale());
-            else if (vis.getTipoModifica().equals("insert")) g.setId(listG.size() + 1);
+            else if (vis.getTipoModifica().equals(INSERT)) g.setId(listG.size() + 1);
             listG.add(g);
             //scrivo lista in appoggio
 
@@ -200,7 +202,7 @@ public class MemoryInitialize {
         }
         if(r!=null){
             if (vis.getTipoModifica().equals("im")) r.setId(vis.getIdRivista());
-            else if (vis.getTipoModifica().equals("insert")) r.setId(listR.size() + 1);
+            else if (vis.getTipoModifica().equals(INSERT)) r.setId(listR.size() + 1);
             listR.add(r);
             //scrivo lista in appoggio
 
@@ -261,14 +263,14 @@ public class MemoryInitialize {
     }
 
 
-    public ArrayList<Giornale> listaGiornali(String file) throws IOException, ClassNotFoundException {
+    public List<Giornale> listaGiornali(String file) throws IOException, ClassNotFoundException {
         return  leggiDaFileGiornale(file);
     }
 
-    public ArrayList<Libro> listaLibri(String file) throws IOException, ClassNotFoundException {
+    public List<Libro> listaLibri(String file) throws IOException, ClassNotFoundException {
         return  leggiDaFileLibro(file);
     }
-    public ArrayList<Rivista> listaRiviste(String file) throws IOException, ClassNotFoundException {
+    public List<Rivista> listaRiviste(String file) throws IOException, ClassNotFoundException {
         return  leggiDaFileRivista(file);
     }
 
@@ -301,7 +303,7 @@ public class MemoryInitialize {
         return g;
     }
 
-    private static @NotNull Libro getLibro(int i) throws FileNotFoundException ,IOException {
+    private static @NotNull Libro getLibro(int i) throws IOException {
         String line;
 
 

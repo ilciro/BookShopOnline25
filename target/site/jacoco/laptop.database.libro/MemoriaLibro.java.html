@@ -12,7 +12,7 @@ import java.io.*;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
+import java.util.List;
 
 
 <span class="fc" id="L18">public class MemoriaLibro extends PersistenzaLibro{</span>
@@ -51,7 +51,7 @@ import java.util.ArrayList;
     public ObservableList&lt;Libro&gt; getLibroByIdTitoloAutoreLibro(Libro l) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 <span class="fc" id="L52">        ObservableList&lt;Libro&gt; listaRecuperata = FXCollections.observableArrayList();</span>
 
-<span class="fc" id="L54">        ArrayList&lt;Libro&gt; list=mI.listaLibri(SERIALIZZAZIONE);</span>
+<span class="fc" id="L54">        List&lt;Libro&gt; list=mI.listaLibri(SERIALIZZAZIONE);</span>
 
 
 <span class="fc bfc" id="L57" title="All 2 branches covered.">        for(int i=0;i&lt;list.size();i++)</span>
@@ -73,15 +73,14 @@ import java.util.ArrayList;
 
     @Override
     public ObservableList&lt;Libro&gt; getLibri() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="fc" id="L76">        ArrayList&lt;Libro&gt; list=mI.listaLibri(SERIALIZZAZIONE);</span>
+<span class="fc" id="L76">        List&lt;Libro&gt; list=mI.listaLibri(SERIALIZZAZIONE);</span>
 <span class="fc" id="L77">        return FXCollections.observableList(list);</span>
     }
 
     @Override
 
     public boolean removeLibroById(Libro l) throws  IOException, ClassNotFoundException {
-<span class="fc" id="L83">        MemoryInitialize mI=new MemoryInitialize();</span>
-<span class="fc" id="L84">        return mI.cancellaLibro(l);</span>
+<span class="fc" id="L83">        return mI.cancellaLibro(l);</span>
     }
 
 

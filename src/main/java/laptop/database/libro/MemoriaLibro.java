@@ -12,7 +12,7 @@ import java.io.*;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
+import java.util.List;
 
 
 public class MemoriaLibro extends PersistenzaLibro{
@@ -51,7 +51,7 @@ public class MemoriaLibro extends PersistenzaLibro{
     public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
         ObservableList<Libro> listaRecuperata = FXCollections.observableArrayList();
 
-        ArrayList<Libro> list=mI.listaLibri(SERIALIZZAZIONE);
+        List<Libro> list=mI.listaLibri(SERIALIZZAZIONE);
 
 
         for(int i=0;i<list.size();i++)
@@ -73,14 +73,13 @@ public class MemoriaLibro extends PersistenzaLibro{
 
     @Override
     public ObservableList<Libro> getLibri() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        ArrayList<Libro> list=mI.listaLibri(SERIALIZZAZIONE);
+        List<Libro> list=mI.listaLibri(SERIALIZZAZIONE);
         return FXCollections.observableList(list);
     }
 
     @Override
 
     public boolean removeLibroById(Libro l) throws  IOException, ClassNotFoundException {
-        MemoryInitialize mI=new MemoryInitialize();
         return mI.cancellaLibro(l);
     }
 

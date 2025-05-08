@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MemoriaRivista extends PersistenzaRivista{
@@ -65,7 +66,7 @@ public class MemoriaRivista extends PersistenzaRivista{
 
 
         ObservableList<Rivista> listaRecuperata = FXCollections.observableArrayList();
-        ArrayList<Rivista> list=mI.listaRiviste(SERIALIZZAZIONE);
+        List<Rivista> list=mI.listaRiviste(SERIALIZZAZIONE);
 
         for(int i=0;i<list.size();i++)
         {
