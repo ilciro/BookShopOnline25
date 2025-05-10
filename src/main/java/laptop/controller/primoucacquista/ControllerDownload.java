@@ -78,7 +78,6 @@ public class ControllerDownload {
 
 
 		}
-		tempLibro.setNrCopie(tempLibro.getNrCopie()-vis.getQuantita());
 		tempLibro.setId(vis.getIdLibro());
 
 		if(pL.inserisciLibro(tempLibro)) Logger.getLogger("aggiorno libro").log(Level.INFO,"update book succesfully!!");
@@ -108,7 +107,6 @@ public class ControllerDownload {
 
 
 		}
-		tempG.setCopieRimanenti(tempG.getCopieRimanenti()-vis.getQuantita());
 		tempG.setId(vis.getIdGiornale());
 		if(pG.inserisciGiornale(tempG)) Logger.getLogger("aggiorno giornale").log(Level.INFO,"update daily succesfully!!");
 
@@ -134,7 +132,6 @@ public class ControllerDownload {
 			}
 
 		}
-		tempR.setCopieRim(tempR.getCopieRim()-vis.getQuantita());
 
 		if (pR.inserisciRivista(tempR))Logger.getLogger("aggionro rivista").log(Level.INFO, "update magazine succesfully!!");
 

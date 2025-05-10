@@ -24,8 +24,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
     private final ControllerDownload cD=new ControllerDownload();
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
     private static final String LIBRO="libro";
-    private static final ResourceBundle RBUTENTE=ResourceBundle.getBundle("configurations/users");
-    private final ControllerPagamentoCC cPCC=new ControllerPagamentoCC();
+    private static final ResourceBundle RBUTENTE=ResourceBundle.getBundle(  "configurations/users");
+     private static final ResourceBundle RBOGGETTO=ResourceBundle.getBundle("configurations/objects");
+     private final ControllerPagamentoCC cPCC=new ControllerPagamentoCC();
     private final ControllerScegliNegozio cSN=new ControllerScegliNegozio();
     private final ControllerAnnullaPagamento cAP=new ControllerAnnullaPagamento();
 
@@ -37,7 +38,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         cHP.persistenza(strings);
         //prendo lista oggetti
         cCopravendita.getLista(LIBRO,strings);
-        vis.setIdLibro(2);
+        vis.setIdLibro(Integer.parseInt(RBOGGETTO.getString("idL")));
         //acquisto
         cA.getPrezzo("3",strings);
         //fattura
@@ -45,7 +46,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         cPCash.controlla(RBUTENTE.getString("nome"),RBUTENTE.getString("cognome"),RBUTENTE.getString("via"),RBUTENTE.getString("com"),strings);
         //download
         cD.scarica(LIBRO,strings);
-        assertEquals(2,vis.getIdLibro());
+        assertEquals(Integer.parseInt(RBOGGETTO.getString("idL")),vis.getIdLibro());
     }
 
     @ParameterizedTest
@@ -56,7 +57,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         cHP.persistenza(strings);
         //prendo lista oggetti
         cCopravendita.getLista(LIBRO,strings);
-        vis.setIdLibro(2);
+        vis.setIdLibro(Integer.parseInt(RBOGGETTO.getString("idL")));
         //acquisto
         cA.getPrezzo("3",strings);
         //pagamento cc
@@ -77,7 +78,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         cHP.persistenza(strings);
         //prendo lista oggetti
         cCopravendita.getLista(LIBRO,strings);
-        vis.setIdLibro(2);
+        vis.setIdLibro(Integer.parseInt(RBOGGETTO.getString("idL")));
         //acquisto
         cA.getPrezzo("3",strings);
         //fattura

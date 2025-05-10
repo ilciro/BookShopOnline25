@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: terzoUcGestione.ricerca.TestControllerRicerca
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.683 s - in terzoUcGestione.ricerca.TestControllerRicerca
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.536 s - in terzoUcGestione.ricerca.TestControllerRicerca

@@ -25,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
     private static final String RIVISTA="rivista";
     private static final ResourceBundle RBUTENTE=ResourceBundle.getBundle("configurations/users");
+    private static final ResourceBundle RBOGGETTO=ResourceBundle.getBundle("configurations/objects");
     private final ControllerPagamentoCC cPCC=new ControllerPagamentoCC();
     private final ControllerScegliNegozio cSN=new ControllerScegliNegozio();
     private final ControllerAnnullaPagamento cAP=new ControllerAnnullaPagamento();
@@ -38,7 +39,7 @@ import static org.junit.jupiter.api.Assertions.*;
         cHP.persistenza(strings);
         //prendo lista oggetti
         cCopravendita.getLista(RIVISTA,strings);
-        vis.setIdRivista(5);
+        vis.setIdRivista(Integer.parseInt(RBOGGETTO.getString("idR")));
         //acquisto
         cA.getPrezzo("7",strings);
         //fattura
@@ -46,7 +47,7 @@ import static org.junit.jupiter.api.Assertions.*;
         cPCash.controlla(RBUTENTE.getString("nome"),RBUTENTE.getString("cognome"),RBUTENTE.getString("via"),RBUTENTE.getString("com"),strings);
         //download
         cD.scarica(RIVISTA,strings);
-        assertEquals(5,vis.getIdRivista());
+        assertEquals(Integer.parseInt(RBOGGETTO.getString("idR")),vis.getIdRivista());
     }
 
     @ParameterizedTest
@@ -57,7 +58,7 @@ import static org.junit.jupiter.api.Assertions.*;
         cHP.persistenza(strings);
         //prendo lista oggetti
         cCopravendita.getLista(RIVISTA,strings);
-        vis.setIdRivista(5);
+        vis.setIdRivista(Integer.parseInt(RBOGGETTO.getString("idR")));
         //acquisto
         cA.getPrezzo("7",strings);
         //pagamento cc
@@ -78,7 +79,7 @@ import static org.junit.jupiter.api.Assertions.*;
         cHP.persistenza(strings);
         //prendo lista oggetti
         cCopravendita.getLista(RIVISTA,strings);
-        vis.setIdRivista(5);
+        vis.setIdRivista(Integer.parseInt(RBOGGETTO.getString("idL")));
         //acquisto
         cA.getPrezzo("7",strings);
         //fattura
