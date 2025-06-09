@@ -24,7 +24,7 @@ public class ContrassegnoDao extends PersistenzaFattura {
         int row=0;
 
 
-            query="insert into FATTURA (nome,cognome,via,comunicazioni,ammontare)values (?,?,?,?,?)";
+            query="insert into fattura (nome,cognome,via,comunicazioni,ammontare)values (?,?,?,?,?)";
 
             try(Connection conn= ConnToDb.connectionToDB();
                 PreparedStatement prepQ=conn.prepareStatement(query)){
@@ -54,7 +54,7 @@ public class ContrassegnoDao extends PersistenzaFattura {
     public boolean cancellaFattura(Fattura f) {
         boolean state=false;
         int row;
-        query="delete from FATTURA where idFattura=?";
+        query="delete from fattura where idFattura=?";
         try(Connection conn=ConnToDb.connectionToDB();
             PreparedStatement prepQ=conn.prepareStatement(query))
         {
@@ -73,7 +73,7 @@ public class ContrassegnoDao extends PersistenzaFattura {
     @Override
     public Fattura ultimaFattura() {
         Fattura f=new Fattura();
-        query="select * from FATTURA order by idFattura desc limit 1";
+        query="select * from fattura order by idFattura desc limit 1";
         try(Connection conn=ConnToDb.connectionToDB();
             PreparedStatement prepQ=conn.prepareStatement(query)){
 

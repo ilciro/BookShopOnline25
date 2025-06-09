@@ -23,7 +23,7 @@ public class PagamentoDao extends PersistenzaPagamento{
     public boolean inserisciPagamento(Pagamento p) {
 
         int row = 0;
-        query = "INSERT INTO PAGAMENTO(metodo,nomeUtente,spesaTotale,eMail,tipoAcquisto,idProdotto) values (?,?,?,?,?,?)";
+        query = "INSERT INTO pagamento(metodo,nomeUtente,spesaTotale,eMail,tipoAcquisto,idProdotto) values (?,?,?,?,?,?)";
 
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ = conn.prepareStatement(query)) {
@@ -46,7 +46,7 @@ public class PagamentoDao extends PersistenzaPagamento{
     @Override
     public Pagamento ultimoPagamento() {
         Pagamento p=new Pagamento();
-        query="select * from PAGAMENTO order by idPagamento desc limit 1";
+        query="select * from pagamento order by idPagamento desc limit 1";
         try(Connection conn=ConnToDb.connectionToDB();
             PreparedStatement prepQ=conn.prepareStatement(query)){
 
@@ -72,7 +72,7 @@ public class PagamentoDao extends PersistenzaPagamento{
     @Override
     public boolean cancellaPagamento(Pagamento p) {
         int row=0;
-        query="delete from PAGAMENTO where idPagamento=?";
+        query="delete from pagamento where idPagamento=?";
         try(Connection conn=ConnToDb.connectionToDB();
             PreparedStatement prepQ=conn.prepareStatement(query))
         {
@@ -97,7 +97,7 @@ public class PagamentoDao extends PersistenzaPagamento{
     public ObservableList<Pagamento> listPagamentiByUser(Pagamento pag) {
         ObservableList<Pagamento> list= FXCollections.observableArrayList();
 
-        query="select  idPagamento,metodo,spesaTotale,tipoAcquisto,idProdotto from PAGAMENTO where email=?";
+        query="select  idPagamento,metodo,spesaTotale,tipoAcquisto,idProdotto from pagamento where email=?";
         try(Connection conn=ConnToDb.connectionToDB();
             PreparedStatement prepQ=conn.prepareStatement(query)){
             prepQ.setString(1,pag.getEmail());

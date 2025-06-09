@@ -31,7 +31,7 @@ public class ReportDao extends PersistenzaReport {
     }
     private boolean reportL()  {
         int row=-1;
-        query = "create or replace view ISPW.REPORTL (idProdotto,titolo,categoria,spesaTotale) as select l.idLibro,l.titolo,l.categoria,sum(p.spesaTotale) from LIBRO l join PAGAMENTO  p on l.idLibro=p.idProdotto group by l.idLibro;";
+        query = "create or replace view REPORTL (idProdotto,titolo,categoria,spesaTotale) as select l.idLibro,l.titolo,l.categoria,sum(p.spesaTotale) from libro l join pagemento  p on l.idLibro=p.idProdotto group by l.idLibro;";
 
 
         try (Connection conn = ConnToDb.connectionToDB();
@@ -47,7 +47,7 @@ public class ReportDao extends PersistenzaReport {
     }
     private boolean reportG() {
         int row = -1;
-        query = "create or replace view REPORTG (idProdotto,titolo,categoria,spesaTotale) as select g.idGiornale,g.titolo,g.categoria,sum(g.prezzo) from GIORNALE g join PAGAMENTO  p on g.idGiornale=p.idProdotto group by g.idGiornale;";
+        query = "create or replace view REPORTG (idProdotto,titolo,categoria,spesaTotale) as select g.idGiornale,g.titolo,g.categoria,sum(g.prezzo) from giornale g join pagamento  p on g.idGiornale=p.idProdotto group by g.idGiornale;";
 
 
         try (Connection conn = ConnToDb.connectionToDB();
@@ -60,7 +60,7 @@ public class ReportDao extends PersistenzaReport {
     }
     private boolean reportR() {
         int row = -1;
-        query = "create or replace view REPORTR (idProdotto,titolo,categoria,spesaTotale) as select r.idRivista,r.titolo,r.categoria,sum(p.spesaTotale) from RIVISTA r join PAGAMENTO  p on r.idRivista=p.idProdotto group by r.idRivista;";
+        query = "create or replace view REPORTR (idProdotto,titolo,categoria,spesaTotale) as select r.idRivista,r.titolo,r.categoria,sum(p.spesaTotale) from rivista r join pagaemnto  p on r.idRivista=p.idProdotto group by r.idRivista;";
 
 
         try (Connection conn = ConnToDb.connectionToDB();

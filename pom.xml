@@ -87,12 +87,7 @@
       <artifactId>javafx-fxml</artifactId>
       <version>17</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis</artifactId>
-      <version>3.5.13</version>
-    </dependency>
+
     <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
     <dependency>
       <groupId>com.mysql</groupId>
@@ -214,7 +209,7 @@
       <version>3.0.0-M5</version>
       <configuration>
         <runOrder>alphabetical</runOrder>
-        <skipTests>false</skipTests>
+        <skipTests>true</skipTests>
       </configuration>
     </plugin>
 

@@ -42,7 +42,7 @@ public class RivistaDao extends PersistenzaRivista{
         int row=0;
 
 
-        query= "INSERT INTO `RIVISTA` VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        query= "INSERT INTO `rivista` VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         try(Connection conn= ConnToDb.connectionToDB();
             PreparedStatement prepQ=conn.prepareStatement(query))
         {
@@ -78,7 +78,7 @@ public class RivistaDao extends PersistenzaRivista{
     public boolean removeRivistaById(Rivista r) throws CsvValidationException, IOException, SQLException {
         int row = 0;
 
-        query="delete from RIVISTA where idRivista=? or idRivista=?";
+        query="delete from rivista where idRivista=? or idRivista=?";
         try (Connection conn=ConnToDb.connectionToDB();
              PreparedStatement prepQ= conn.prepareStatement(query)){
 
@@ -98,7 +98,7 @@ public class RivistaDao extends PersistenzaRivista{
     public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException {
         ObservableList<Raccolta> catalogo = FXCollections.observableArrayList();
 
-        query = "select * from RIVISTA";
+        query = "select * from rivista";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ = conn.prepareStatement(query);
              ResultSet rs = prepQ.executeQuery()) {
@@ -125,7 +125,7 @@ public class RivistaDao extends PersistenzaRivista{
     public ObservableList<Rivista> getRiviste() throws CsvValidationException, IOException, IdException {
         ObservableList<Rivista> catalogo = FXCollections.observableArrayList();
 
-        query = "select * from RIVISTA";
+        query = "select * from rivista";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ= conn.prepareStatement(query))  {
 
@@ -155,7 +155,7 @@ public class RivistaDao extends PersistenzaRivista{
         ObservableList<Rivista> catalogo = FXCollections.observableArrayList();
         String[] info=new String[7];
 
-        query = "select * from RIVISTA where idRivista=? or idRivista=? or titolo=? or autore=?";
+        query = "select * from rivista where idRivista=? or idRivista=? or titolo=? or autore=?";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ= conn.prepareStatement(query))  {
 

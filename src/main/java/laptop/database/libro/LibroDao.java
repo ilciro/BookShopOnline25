@@ -37,7 +37,7 @@ public class LibroDao extends PersistenzaLibro{
     @Override
     public boolean inserisciLibro(Libro l) throws IOException, CsvValidationException{
         int row=0;
-        query="insert into LIBRO values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        query="insert into libro values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try(Connection conn= ConnToDb.connectionToDB();
             PreparedStatement prepQ= conn.prepareStatement(query);
@@ -76,7 +76,7 @@ public class LibroDao extends PersistenzaLibro{
     @Override
    public boolean removeLibroById(Libro l) throws CsvValidationException, IOException {
         int row=0;
-        query = "delete from LIBRO where idLibro=? or idLibro=?";
+        query = "delete from libro where idLibro=? or idLibro=?";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ = conn.prepareStatement(query)) {
 
@@ -99,7 +99,7 @@ public class LibroDao extends PersistenzaLibro{
     public ObservableList<Libro> getLibri() throws CsvValidationException, IOException, IdException {
         ObservableList<Libro> catalogo = FXCollections.observableArrayList();
 
-        query = "select * from LIBRO ";
+        query = "select * from libro ";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ = conn.prepareStatement(query);
              ResultSet rs = prepQ.executeQuery()) {
@@ -126,7 +126,7 @@ public class LibroDao extends PersistenzaLibro{
     public ObservableList<Raccolta> retrieveRaccoltaData()  {
         ObservableList<Raccolta> catalogo = FXCollections.observableArrayList();
 
-        query = "select * from LIBRO ";
+        query = "select * from libro ";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ = conn.prepareStatement(query);
              ResultSet rs = prepQ.executeQuery()) {
@@ -156,7 +156,7 @@ public class LibroDao extends PersistenzaLibro{
 
         ObservableList<Libro> catalogo = FXCollections.observableArrayList();
 
-        query = "select * from LIBRO where idLibro=? or idLibro=? or titolo=? or autore=? or editore=?";
+        query = "select * from libro where idLibro=? or idLibro=? or titolo=? or autore=? or editore=?";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ = conn.prepareStatement(query)) {
 

@@ -28,7 +28,7 @@ public class CartaCreditoDao extends PersistenzaCC{
     @Override
     public boolean insCC(CartaDiCredito cc) {
         long row=0;
-        query = "insert into CARTACREDITO (nomeP,cognomeP,codiceCarta,scadenza,pin,ammontare)  values(?,?,?,?,?,?)";
+        query = "insert into cartacredito (nomeP,cognomeP,codiceCarta,scadenza,pin,ammontare)  values(?,?,?,?,?,?)";
 
 
         try (Connection conn = ConnToDb.connectionToDB();
@@ -52,7 +52,7 @@ public class CartaCreditoDao extends PersistenzaCC{
     @Override
     public ObservableList<CartaDiCredito> getCarteDiCredito(CartaDiCredito cc) {
         String cod;
-        query="select nomeP,cognomeP,codiceCarta from CARTACREDITO where nomeP=?";
+        query="select nomeP,cognomeP,codiceCarta from cartacredito where nomeP=?";
 
         ObservableList<CartaDiCredito> catalogo= FXCollections.observableArrayList();
 

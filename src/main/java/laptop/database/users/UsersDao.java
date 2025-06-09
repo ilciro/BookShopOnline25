@@ -41,7 +41,7 @@ public class UsersDao extends PersistenzaUtente {
 		LocalDate d = tu.getDataDiNascitaT();
 
 
-		query = "INSERT INTO `USERS` VALUES (?,?,?,?,?,?,?,?)";
+		query = "INSERT INTO `utenti` VALUES (?,?,?,?,?,?,?,?)";
 
 		try (Connection conn = ConnToDb.connectionToDB();
 			 PreparedStatement prepQ = conn.prepareStatement(query)) {
@@ -73,7 +73,7 @@ public class UsersDao extends PersistenzaUtente {
 	@Override
 	public ObservableList<TempUser> getUserData() throws SQLException {
 		ObservableList<TempUser> lista=FXCollections.observableArrayList();
-		query="select * from USERS";
+		query="select * from utenti";
 		try(Connection conn=ConnToDb.connectionToDB();
 		PreparedStatement preQ=conn.prepareStatement(query)){
 
@@ -103,7 +103,7 @@ public class UsersDao extends PersistenzaUtente {
 
 	@Override
 	public boolean removeUserByIdEmailPwd(TempUser u) throws SQLException {
-		query="delete from USERS where idUser=? or email=? or pwd=?";
+		query="delete from utenti where idUser=? or email=? or pwd=?";
 
 		try(Connection conn=ConnToDb.connectionToDB();
 		PreparedStatement prepQ=conn.prepareStatement(query))
@@ -122,7 +122,7 @@ public class UsersDao extends PersistenzaUtente {
 	public void initializza() throws CsvValidationException, IOException, IdException, SQLException {
 
 		DaoInitialize daoI=new DaoInitialize();
-		daoI.inizializza("users");
+		daoI.inizializza("utenti");
     }
 
 

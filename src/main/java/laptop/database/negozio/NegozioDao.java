@@ -24,7 +24,7 @@ public class NegozioDao extends PersistenzaNegozio{
 		 ObservableList<Negozio> listOfNegozi;
 		listOfNegozi=FXCollections.observableArrayList();
 
-		query="SELECT  nome,via,isValid,isOpen from NEGOZIO";
+		query="SELECT  nome,via,isValid,isOpen from negozio";
 				
 
 			 try(Connection conn= ConnToDb.connectionToDB();
@@ -53,7 +53,7 @@ public class NegozioDao extends PersistenzaNegozio{
 	public boolean checkOpen(Negozio  shop) {
 		int aperto;
 		boolean state=false;
-		query="select isOpen from NEGOZIO where nome=?";
+		query="select isOpen from negozio where nome=?";
 		try(Connection conn=ConnToDb.connectionToDB();
 				PreparedStatement prepQ=conn.prepareCall(query))
 		{
@@ -80,7 +80,7 @@ public class NegozioDao extends PersistenzaNegozio{
 	@Override
 	public boolean checkRitiro(Negozio shop)
 	{
-		query="select isValid from NEGOZIO where nome=?";
+		query="select isValid from negozio where nome=?";
 		boolean state=false;
 		int disp;
 		

@@ -36,7 +36,7 @@ public class GiornaleDao extends PersistenzaGiornale{
 
 
 
-        query = "INSERT INTO `GIORNALE`"
+        query = "INSERT INTO `giornale`"
                 + "VALUES"
                 + "(?,?,?,?,?,?,?,?,?)";
         try (Connection conn = ConnToDb.connectionToDB();
@@ -71,7 +71,7 @@ public class GiornaleDao extends PersistenzaGiornale{
     public boolean removeGiornaleById(Giornale g) {
         int row = 0;
 
-        query="delete from GIORNALE where idGiornale=? or idGiornale=? or titolo=?";
+        query="delete from giornale where idGiornale=? or idGiornale=? or titolo=?";
         try (Connection conn=ConnToDb.connectionToDB();
              PreparedStatement prepQ= conn.prepareStatement(query)){
 
@@ -92,7 +92,7 @@ public class GiornaleDao extends PersistenzaGiornale{
     @Override
     public ObservableList<Giornale> getGiornali()  {
         ObservableList<Giornale> catalogo= FXCollections.observableArrayList();
-        query = "select * from GIORNALE";
+        query = "select * from giornale";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ = conn.prepareStatement(query)) {
 
@@ -117,7 +117,7 @@ public class GiornaleDao extends PersistenzaGiornale{
     @Override
     public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException {
         ObservableList<Raccolta> catalogo= FXCollections.observableArrayList();
-        query = "select  * from GIORNALE";
+        query = "select  * from giornale";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ = conn.prepareStatement(query)) {
 
@@ -149,7 +149,7 @@ public class GiornaleDao extends PersistenzaGiornale{
 
 
 
-        query = "select * from GIORNALE where idGiornale=? or idGiornale=? or titolo=? or editore=?";
+        query = "select * from giornale where idGiornale=? or idGiornale=? or titolo=? or editore=?";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ = conn.prepareStatement(query)) {
 
