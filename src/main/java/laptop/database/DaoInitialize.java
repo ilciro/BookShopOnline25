@@ -21,6 +21,7 @@ public class DaoInitialize {
     private static final String CREA="crea";
     private static final String ESISTE="esiste";
     private static final String POPOLA="popola";
+    private static final String QUERY="query";
 
 
     private static final ResourceBundle RBQUERYCREATE = ResourceBundle.getBundle("sql/tableCreate");
@@ -39,30 +40,30 @@ public class DaoInitialize {
         DaoInitialize.presente = presente;
     }
 
-    private void creaProcedura(String nome, String type) {
+    private void creaProcedura(String nome) {
 
         switch (nome) {
-            case "esiste" -> {
+            case ESISTE -> {
                 try (Connection conn = ConnToDb.connectionToDB();
-                     PreparedStatement prepQ = conn.prepareStatement(RBQUERYEXISTS.getString("query"))) {
+                     PreparedStatement prepQ = conn.prepareStatement(RBQUERYEXISTS.getString(QUERY))) {
                     prepQ.execute();
                 } catch (SQLException e) {
                     Logger.getLogger("esiste procedura ").log(Level.SEVERE, " exists stored error .{0} or yet created", e.getCause());
                 }
 
             }
-            case "crea" -> {
+            case CREA -> {
                 try (Connection conn = ConnToDb.connectionToDB();
-                     PreparedStatement prepQ = conn.prepareStatement(RBQUERYCREATE.getString("query"))) {
+                     PreparedStatement prepQ = conn.prepareStatement(RBQUERYCREATE.getString(QUERY))) {
                     prepQ.execute();
                 } catch (SQLException e) {
                     Logger.getLogger("crea procedura ").log(Level.SEVERE, " create stored error .{0} or yet created", e.getCause());
                 }
 
             }
-            case "popola" -> {
+            case POPOLA -> {
                 try (Connection conn = ConnToDb.connectionToDB();
-                     PreparedStatement prepQ = conn.prepareStatement(RBQUERYPOPOLUATED.getString("query"))) {
+                     PreparedStatement prepQ = conn.prepareStatement(RBQUERYPOPOLUATED.getString(QUERY))) {
                     prepQ.execute();
                 } catch (SQLException e) {
                     Logger.getLogger("popola procedura ").log(Level.SEVERE, " polpulated stored error .{0} or yet created", e.getCause());
@@ -81,7 +82,7 @@ public class DaoInitialize {
         int presente;
             switch (nome)
             {
-                case "esiste"->{
+                case ESISTE->{
                     try(Connection conn=ConnToDb.connectionToDB();
                         CallableStatement callQ= conn.prepareCall("{call tabellaEsiste(?,?)}"))
                     {
@@ -97,10 +98,10 @@ public class DaoInitialize {
                     {
                         Logger.getLogger("esegui esiste").log(Level.SEVERE,"exists procedure called badly {0}",e.getMessage());
                     }
-                    Logger.getLogger("tabella"+ type + "presente :").log(Level.INFO," is present :{0}", getPresente());
+                    Logger.getLogger("tabella presente :").log(Level.INFO," type is present :{0}", getPresente());
 
                 }
-                case "crea"->{
+                case CREA->{
 
                     if(getPresente()==0){
                         try(Connection conn=ConnToDb.connectionToDB();
@@ -113,10 +114,10 @@ public class DaoInitialize {
                         {
                             Logger.getLogger("crea tabella errore").log(Level.SEVERE," create table error .{0}",e.getMessage());
                         }
-                    }else Logger.getLogger("tabella"+type+"creata").log(Level.WARNING,"table"+type+"already created");
+                    }else Logger.getLogger("tabella creata").log(Level.WARNING,"table already created .{0}",type);
 
                 }
-                case "popola"->{
+                case POPOLA->{
                     try(Connection conn=ConnToDb.connectionToDB();
                         CallableStatement callQ= conn.prepareCall("{call popolaTabella(?)}"))
                     {
@@ -124,7 +125,7 @@ public class DaoInitialize {
 
                         callQ.execute();
                     }catch (SQLException e){
-                        System.out.println("table "+type+" already populated");
+                       Logger.getLogger("popola query").log(Level.SEVERE," error with populate table");
                     }
                 }
 
@@ -154,9 +155,9 @@ public class DaoInitialize {
         switch (type) {
             case LIBRO -> {
                 //creo
-                creaProcedura(ESISTE, LIBRO);
-                creaProcedura(CREA, LIBRO);
-                creaProcedura(POPOLA, LIBRO);
+                creaProcedura(ESISTE);
+                creaProcedura(CREA);
+                creaProcedura(POPOLA);
                 //richiamo
                 eseguiProcedura(ESISTE, LIBRO);
                 eseguiProcedura(CREA, LIBRO);
@@ -164,9 +165,9 @@ public class DaoInitialize {
             }
             case GIORNALE -> {
                 //creo
-                creaProcedura(ESISTE, GIORNALE);
-                creaProcedura(CREA, GIORNALE);
-                creaProcedura(POPOLA, GIORNALE);
+                creaProcedura(ESISTE );
+                creaProcedura(CREA);
+                creaProcedura(POPOLA);
                 //richiamo
                 eseguiProcedura(ESISTE, GIORNALE);
                 eseguiProcedura(CREA, GIORNALE);
@@ -174,9 +175,9 @@ public class DaoInitialize {
             }
             case RIVISTA -> {
                 //creo
-                creaProcedura(ESISTE, RIVISTA);
-                creaProcedura(CREA, RIVISTA);
-                creaProcedura(POPOLA, RIVISTA);
+                creaProcedura(ESISTE);
+                creaProcedura(CREA);
+                creaProcedura(POPOLA);
                 //richiamo
                 eseguiProcedura(ESISTE, RIVISTA);
                 eseguiProcedura(CREA, RIVISTA);
@@ -184,9 +185,9 @@ public class DaoInitialize {
             }
             case NEGOZIO -> {
                 //creo
-                creaProcedura(ESISTE, NEGOZIO);
-                creaProcedura(CREA, NEGOZIO);
-                creaProcedura(POPOLA, NEGOZIO);
+                creaProcedura(ESISTE);
+                creaProcedura(CREA);
+                creaProcedura(POPOLA);
                 //richiamo
                 eseguiProcedura(ESISTE, NEGOZIO);
                 eseguiProcedura(CREA, NEGOZIO);
@@ -194,9 +195,9 @@ public class DaoInitialize {
             }
             case UTENTE -> {
                 //creo
-                creaProcedura(ESISTE, UTENTE);
-                creaProcedura(CREA, UTENTE);
-                creaProcedura(POPOLA, UTENTE);
+                creaProcedura(ESISTE);
+                creaProcedura(CREA);
+                creaProcedura(POPOLA);
                 //richiamo
                 eseguiProcedura(ESISTE, UTENTE);
                 eseguiProcedura(CREA, UTENTE);
@@ -204,24 +205,24 @@ public class DaoInitialize {
             }
             case FATTURA -> {
                 //creo
-                creaProcedura(ESISTE, FATTURA);
-                creaProcedura(CREA, FATTURA);
+                creaProcedura(ESISTE);
+                creaProcedura(CREA);
                 //richiamo
                 eseguiProcedura(ESISTE, FATTURA);
                 eseguiProcedura(CREA, FATTURA);
             }
             case PAGAMENTO -> {
                 //creo
-                creaProcedura(ESISTE, PAGAMENTO);
-                creaProcedura(CREA, PAGAMENTO);
+                creaProcedura(ESISTE);
+                creaProcedura(CREA);
                 //richiamo
                 eseguiProcedura(ESISTE, PAGAMENTO);
                 eseguiProcedura(CREA, PAGAMENTO);
             }
             case CARTACREDITO -> {
                 //creo
-                creaProcedura(ESISTE, CARTACREDITO);
-                creaProcedura(CREA, CARTACREDITO);
+                creaProcedura(ESISTE);
+                creaProcedura(CREA);
                 //richiamo
                 eseguiProcedura(ESISTE, CARTACREDITO);
                 eseguiProcedura(CREA, CARTACREDITO);
