@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Rivista.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.model.raccolta</a> &gt; <span class="el_source">Rivista.java</span></div><h1>Rivista.java</h1><pre class="source lang-java linenums">package laptop.model.raccolta;
+
+import java.awt.Desktop;
+import java.io.*;
+import java.time.LocalDate;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfCopy;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfWriter;
+
+
+
+public class Rivista implements Raccolta, Serializable {
+	@Serial
+	private static final long serialVersionUID = 2L;
+
+
+	private String titolo;
+	private String categoria;
+	private String autore;
+	private String lingua;
+	private String editore;
+	private String descrizione;
+	private LocalDate dataPubb;
+	private int disp;
+	private float prezzo;
+	private int copieRim;
+	private int id;
+
+<span class="fc" id="L36">	private final transient ResourceBundle rbTitoli=ResourceBundle.getBundle(&quot;configurations/titles&quot;);</span>
+<span class="fc" id="L37">	private String [] infoGenerali=new String[5];</span>
+	private static final String TITOLOR=&quot;titolo15&quot;;
+	private static final String DSTPATH=&quot;dstPath&quot;;
+
+
+
+
+<span class="fc" id="L44">    public Rivista(String [] info,String descrizione, LocalDate dataPubb2, int disp, float prezzo, int copieRim,int id) {</span>
+<span class="fc" id="L45">		this.setInfoGenerali(info);</span>
+<span class="fc" id="L46">		this.descrizione = descrizione;</span>
+<span class="fc" id="L47">		this.dataPubb = dataPubb2;</span>
+<span class="fc" id="L48">		this.disp = disp;</span>
+<span class="fc" id="L49">		this.prezzo = prezzo;</span>
+<span class="fc" id="L50">		this.copieRim = copieRim;</span>
+<span class="fc" id="L51">		this.id = id;</span>
+<span class="fc" id="L52">		this.titolo=info[0];</span>
+<span class="fc" id="L53">		this.categoria=info[5];</span>
+<span class="fc" id="L54">		this.editore=info[2];</span>
+<span class="fc" id="L55">		this.lingua=info[4];</span>
+<span class="fc" id="L56">		this.autore=info[3];</span>
+<span class="fc" id="L57">	}</span>
+
+<span class="fc" id="L59">	public Rivista() {}</span>
+
+	public String getTitolo() {
+<span class="fc" id="L62">		return this.titolo;</span>
+	}
+	public String getAutore() {
+<span class="fc" id="L65">		return this.autore;</span>
+	}
+	public String getLingua() {
+<span class="fc" id="L68">		return this.lingua;</span>
+	}
+	public String getEditore() {
+<span class="fc" id="L71">		return this.editore;</span>
+	}
+	public String getDescrizione() {
+<span class="fc" id="L74">		return this.descrizione;</span>
+	}
+	public LocalDate getDataPubb() {
+<span class="fc" id="L77">		return this.dataPubb;</span>
+	}
+<span class="fc" id="L79">	public String getCategoria(){return this.categoria;}</span>
+	public int getDisp() {
+<span class="fc" id="L81">		return this.disp;</span>
+	}
+	public float getPrezzo() {
+<span class="fc" id="L84">		return this.prezzo;</span>
+	}
+	public int getCopieRim() {
+<span class="fc" id="L87">		return this.copieRim;</span>
+	}
+	public int getId() {
+<span class="fc" id="L90">		return this.id;</span>
+	}
+	public void setTitolo(String titolo) {
+<span class="fc" id="L93">		this.titolo = titolo;</span>
+<span class="fc" id="L94">	}</span>
+	public void setCategoria(String categoria) {
+<span class="pc bpc" id="L96" title="12 of 15 branches missed.">		switch (categoria){</span>
+		
+		case &quot;SETTIMANALE&quot;: 
+<span class="fc" id="L99">			this.categoria = CategorieRivista.SETTIMANALE.toString();</span>
+<span class="fc" id="L100">			break;</span>
+
+		case &quot;BISETTIMANALE&quot;: 
+<span class="nc" id="L103">			this.categoria = CategorieRivista.BISETTIMANALE.toString();</span>
+<span class="nc" id="L104">			break;</span>
+
+		case &quot;MENSILE&quot; : 
+<span class="fc" id="L107">			this.categoria = CategorieRivista.MENSILE.toString();</span>
+<span class="fc" id="L108">			break;</span>
+
+		case &quot;BIMESTRALE&quot; : 
+<span class="nc" id="L111">			this.categoria = CategorieRivista.BIMESTRALE.toString();</span>
+<span class="nc" id="L112">			break;</span>
+
+		case &quot;TRIMESTRALE&quot; : 
+<span class="nc" id="L115">			this.categoria = CategorieRivista.TRIMESTRALE.toString();</span>
+<span class="nc" id="L116">			break;</span>
+
+		case &quot;ANNUALE&quot; : 
+<span class="nc" id="L119">			this.categoria = CategorieRivista.ANNUALE.toString();</span>
+<span class="nc" id="L120">			break;</span>
+
+		case &quot;ESTIVO&quot; : 
+<span class="nc" id="L123">			this.categoria = CategorieRivista.ESTIVO.toString();</span>
+<span class="nc" id="L124">			break;</span>
+
+		case &quot;INVERNALE&quot; : 
+<span class="nc" id="L127">			this.categoria = CategorieRivista.INVERNALE.toString();</span>
+<span class="nc" id="L128">			break;</span>
+
+		case &quot;SPORTIVO&quot; : 
+<span class="fc" id="L131">			this.categoria = CategorieRivista.SPORTIVO.toString();</span>
+<span class="fc" id="L132">			break;</span>
+
+		case &quot;CINEMATOGRAFICA&quot; : 
+<span class="nc" id="L135">			this.categoria = CategorieRivista.CINEMATOGRAFICA.toString();</span>
+<span class="nc" id="L136">			break;</span>
+
+		case &quot;GOSSIP&quot; : 
+<span class="nc" id="L139">			this.categoria = CategorieRivista.GOSSIP.toString();</span>
+<span class="nc" id="L140">			break;</span>
+
+		case &quot;TELEVISIVO&quot; : 
+<span class="nc" id="L143">			this.categoria = CategorieRivista.TELEVISIVO.toString();</span>
+<span class="nc" id="L144">			break;</span>
+
+		case &quot;MILITARE&quot; : 
+<span class="nc" id="L147">			this.categoria = CategorieRivista.MILITARE.toString();</span>
+<span class="nc" id="L148">			break;</span>
+
+		case &quot;INFORMATICA&quot; : 
+<span class="nc" id="L151">			this.categoria = CategorieRivista.INFORMATICA.toString();</span>
+<span class="nc" id="L152">			break;</span>
+
+		default :
+<span class="nc" id="L155">			this.categoria = null;</span>
+			break;
+		}
+<span class="fc" id="L158">	}</span>
+	public void setAutore(String autore) {
+<span class="fc" id="L160">		this.autore = autore;</span>
+<span class="fc" id="L161">	}</span>
+	public void setLingua(String lingua) {
+<span class="fc" id="L163">		this.lingua = lingua;</span>
+<span class="fc" id="L164">	}</span>
+	public void setEditore(String editore) {
+<span class="fc" id="L166">		this.editore = editore;</span>
+<span class="fc" id="L167">	}</span>
+	public void setDescrizione(String descrizione) {
+<span class="fc" id="L169">		this.descrizione = descrizione;</span>
+<span class="fc" id="L170">	}</span>
+	public void setDataPubb(LocalDate dataPubb) {
+<span class="fc" id="L172">		this.dataPubb = dataPubb;</span>
+<span class="fc" id="L173">	}</span>
+	public void setDisp(int disp) {
+<span class="fc" id="L175">		this.disp = disp;</span>
+<span class="fc" id="L176">	}</span>
+	public void setPrezzo(float prezzo) {
+<span class="fc" id="L178">		this.prezzo = prezzo;</span>
+<span class="fc" id="L179">	}</span>
+	public void setCopieRim(int copieRim) {
+<span class="fc" id="L181">		this.copieRim = copieRim;</span>
+<span class="fc" id="L182">	}</span>
+	public void setId(int id) {
+<span class="fc" id="L184">		this.id = id;</span>
+<span class="fc" id="L185">	}</span>
+	
+	@Override
+	public void scarica(int i) throws IOException {
+<span class="fc" id="L189">		Document document=new Document();</span>
+		try{
+<span class="fc" id="L191">			PdfWriter writer=PdfWriter.getInstance(document,new FileOutputStream(rbTitoli.getString(DSTPATH)+ rbTitoli.getString(TITOLOR)));</span>
+<span class="fc" id="L192">			document.open();</span>
+<span class="fc" id="L193">			document.addTitle(&quot;Rivista &quot;);</span>
+<span class="fc" id="L194">			document.add(new Paragraph(&quot;&quot;&quot;</span>
+                    Rivista/Magazine not avalaible
+                    Nam ultricies efficitur magna, sit amet luctus magna luctus volutpat
+                    Pellentesque facilisis lacinia mi, nec posuere justo pharetra non:
+                    Nulla vel risus sit amet risus aliquam auctor.
+                    Nunc viverra felis sit amet nulla faucibus, sed euismod neque lacinia.
+                    Integer pharetra sapien sed odio mattis, sed efficitur justo blandit.
+                    Praesent in quam non neque hendrerit pulvinar ut quis tortor.
+                    Maecenas nec convallis nunc.
+                    Donec ultricies malesuada mauris ac accumsan.
+                    Vestibulum auctor est ac laoreet egestas.
+                    Nam malesuada in massa eu venenatis.&quot;&quot;&quot;));
+
+<span class="fc" id="L207">			readPdf();</span>
+<span class="fc" id="L208">			document.close();</span>
+<span class="fc" id="L209">			writer.close();</span>
+
+
+
+
+<span class="nc" id="L214">		}catch (DocumentException | IOException e)</span>
+		{
+<span class="nc" id="L216">			Logger.getLogger(&quot;create pdf&quot;).log(Level.SEVERE,&quot;pdf not created&quot;);</span>
+<span class="fc" id="L217">		}</span>
+<span class="fc" id="L218">	}</span>
+	@Override
+	public void leggi(int i) throws IOException, DocumentException {
+<span class="pc bpc" id="L221" title="1 of 2 branches missed.">		if (Desktop.isDesktopSupported()) {</span>
+<span class="nc" id="L222">			new Thread(() -&gt; {</span>
+				try {
+<span class="nc" id="L224">					Desktop.getDesktop().open(new File(rbTitoli.getString(DSTPATH)+rbTitoli.getString(TITOLOR)));</span>
+<span class="nc" id="L225">				} catch (IOException e) {</span>
+<span class="nc" id="L226">					Logger.getLogger(&quot;open file&quot;).log(Level.SEVERE, &quot;open error&quot;);				}</span>
+<span class="nc" id="L227">			}).start();</span>
+		}
+
+
+		
+<span class="fc" id="L232">	}</span>
+	public String [] getInfoGenerali() {
+<span class="fc" id="L234">		return infoGenerali;</span>
+	}
+	public void setInfoGenerali(String [] infoGenerali) {
+<span class="fc" id="L237">		this.infoGenerali = infoGenerali;</span>
+<span class="fc" id="L238">	}</span>
+
+	private void readPdf() throws IOException, DocumentException {
+
+<span class="fc" id="L242">		Document document = new Document();</span>
+
+<span class="fc" id="L244">		PdfReader reader = new PdfReader(rbTitoli.getString(&quot;srcPath&quot;) + rbTitoli.getString(TITOLOR));</span>
+<span class="fc" id="L245">		PdfCopy copy=new PdfCopy(document,new FileOutputStream(rbTitoli.getString(DSTPATH)+ rbTitoli.getString(TITOLOR)));</span>
+<span class="fc" id="L246">		document.open();</span>
+
+<span class="fc" id="L248">		int pages = reader.getNumberOfPages();</span>
+<span class="fc bfc" id="L249" title="All 2 branches covered.">		for (int i = 1; i &lt;= pages; i++) {</span>
+<span class="fc" id="L250">			copy.addPage(copy.getImportedPage(reader,i));</span>
+
+		}
+
+
+<span class="fc" id="L255">		reader.close();</span>
+<span class="fc" id="L256">		document.close();</span>
+
+<span class="fc" id="L258">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

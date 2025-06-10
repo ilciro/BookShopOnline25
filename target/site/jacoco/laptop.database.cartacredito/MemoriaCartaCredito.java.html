@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MemoriaCartaCredito.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.cartacredito</a> &gt; <span class="el_source">MemoriaCartaCredito.java</span></div><h1>MemoriaCartaCredito.java</h1><pre class="source lang-java linenums">package laptop.database.cartacredito;
+
+import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.model.CartaDiCredito;
+
+import java.io.*;
+
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+<span class="nc" id="L18">public class MemoriaCartaCredito extends PersistenzaCC  {</span>
+
+
+    private static final String SERIALIZZAZIONE=&quot;memory/serializzazioneCartaCredito.ser&quot;;
+<span class="nc" id="L22">    private ArrayList&lt;CartaDiCredito&gt; lista=new ArrayList&lt;&gt;();</span>
+
+
+
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public boolean insCC(CartaDiCredito cc) throws IOException, CsvValidationException, ClassNotFoundException {
+<span class="nc" id="L30">        boolean status=false;</span>
+
+<span class="nc" id="L32">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L33">        ObjectInputStream ois=new ObjectInputStream(fis))</span>
+        {
+<span class="nc" id="L35">            lista= (ArrayList&lt;CartaDiCredito&gt;) ois.readObject();</span>
+        }
+<span class="nc" id="L37">        lista.add(cc);</span>
+
+
+<span class="nc" id="L40">        try (FileOutputStream fout = new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L41">             ObjectOutputStream oos = new ObjectOutputStream(fout)) {</span>
+<span class="nc" id="L42">            oos.writeObject(lista);</span>
+        }
+
+
+<span class="nc" id="L46">        Logger.getLogger(&quot;insert fattura in memory&quot;).log(Level.INFO, &quot;fattura is wrote&quot;);</span>
+
+
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        if (cc.getNumeroCC() != null) status = true;</span>
+<span class="nc" id="L50">        return status;</span>
+    }
+
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public void inizializza() throws IOException, ClassNotFoundException {
+
+<span class="nc bnc" id="L58" title="All 2 branches missed.">            for (int i = 1; i &lt;= 6; i++) {</span>
+                String line;
+
+
+<span class="nc" id="L62">                ArrayList&lt;String&gt; listaG = new ArrayList&lt;&gt;();</span>
+
+
+<span class="nc" id="L65">                try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/cartacredito&quot; + i + &quot;.txt&quot;);</span>
+<span class="nc" id="L66">                     BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">                    while ((line = bufferedReader.readLine()) != null) {</span>
+<span class="nc" id="L68">                        listaG.add(line);</span>
+
+                    }
+                }
+<span class="nc" id="L72">                CartaDiCredito cc = new CartaDiCredito();</span>
+<span class="nc" id="L73">                cc.setNomeUser(listaG.get(0));</span>
+<span class="nc" id="L74">                cc.setCognomeUser(listaG.get(1));</span>
+<span class="nc" id="L75">                cc.setNumeroCC(listaG.get(2));</span>
+
+
+                try {
+<span class="nc" id="L79">                    DateFormat df = new SimpleDateFormat(&quot;yyyy/MM/dd&quot;);</span>
+<span class="nc" id="L80">                    Date sqlDate = new Date(df.parse(listaG.get(3)).getTime());</span>
+<span class="nc" id="L81">                    cc.setScadenza(sqlDate);</span>
+<span class="nc" id="L82">                } catch (ParseException e) {</span>
+<span class="nc" id="L83">                    Logger.getLogger(&quot;data non valida&quot;).log(Level.SEVERE, &quot; parse is incorrect!!&quot;);</span>
+<span class="nc" id="L84">                }</span>
+
+<span class="nc" id="L86">                cc.setCiv(listaG.get(4));</span>
+<span class="nc" id="L87">                cc.setAmmontare(Double.parseDouble(listaG.get(5)));</span>
+
+<span class="nc" id="L89">                lista.add(cc);</span>
+
+            }
+<span class="nc" id="L92">            try (FileOutputStream fos = new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L93">                 ObjectOutputStream oos = new ObjectOutputStream(fos)) {</span>
+<span class="nc" id="L94">                oos.writeObject(lista);</span>
+            }
+
+<span class="nc" id="L97">            try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L98">                 ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
+<span class="nc" id="L99">                lista = (ArrayList&lt;CartaDiCredito&gt;) ois.readObject();</span>
+            }
+<span class="nc" id="L101">    }</span>
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public ObservableList&lt;CartaDiCredito&gt; getCarteDiCredito(CartaDiCredito cc) throws IOException, ClassNotFoundException {
+<span class="nc" id="L106">        ObservableList&lt;CartaDiCredito&gt; listaRec= FXCollections.observableArrayList();</span>
+<span class="nc" id="L107">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L108">            ObjectInputStream ois=new ObjectInputStream(fis))</span>
+        {
+<span class="nc" id="L110">            lista= (ArrayList&lt;CartaDiCredito&gt;) ois.readObject();</span>
+        }
+<span class="nc bnc" id="L112" title="All 2 branches missed.">        if(cc.getNomeUser()!=null) {</span>
+<span class="nc" id="L113">            int j = 0;</span>
+
+<span class="nc bnc" id="L115" title="All 2 branches missed.">            for (int i = 0; i &lt; lista.size(); i++) {</span>
+<span class="nc bnc" id="L116" title="All 4 branches missed.">                if (lista.get(i).getNomeUser().equals(cc.getNomeUser()) &amp;&amp; j == i) {</span>
+<span class="nc" id="L117">                    listaRec.add(lista.get(i));</span>
+
+                }
+<span class="nc" id="L120">                j++;</span>
+            }
+        }
+<span class="nc bnc" id="L123" title="All 2 branches missed.">        if(cc.getNumeroCC()!=null)</span>
+        {
+<span class="nc" id="L125">            int j = 0;</span>
+
+<span class="nc bnc" id="L127" title="All 2 branches missed.">            for (int i = 0; i &lt; lista.size(); i++) {</span>
+<span class="nc bnc" id="L128" title="All 4 branches missed.">                if (lista.get(i).getNumeroCC().equals(cc.getNumeroCC()) &amp;&amp; j == i) {</span>
+<span class="nc" id="L129">                    listaRec.add(lista.get(i));</span>
+
+                }
+<span class="nc" id="L132">                j++;</span>
+            }
+        }
+<span class="nc" id="L135">        return listaRec;</span>
+    }
+
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

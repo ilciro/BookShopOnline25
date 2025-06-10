@@ -16,6 +16,7 @@ import web.bean.LibroBean;
 import web.bean.SystemBean;
 
 import java.io.*;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,6 +44,9 @@ public class LibriServlet extends HttpServlet {
 
 
             if (g != null && g.equals("genera lista")) {
+
+                if(lB.getListaLibriB()==null)
+                    pL.initializza();
 
 
                 lB.setListaLibriB(pL.retrieveRaccoltaData());
@@ -80,13 +84,13 @@ public class LibriServlet extends HttpServlet {
             }
 
 
-        } catch (CsvValidationException | IdException | ClassNotFoundException  e) {
+        } catch (CsvValidationException | IdException | ClassNotFoundException | SQLException e) {
             lB.setMexB(new IdException("id nullo o eccede lista"));
             req.setAttribute(BEANL, lB);
             RequestDispatcher view = getServletContext().getRequestDispatcher(LIBRI);
             try {
                 view.forward(req, resp);
-            }catch (ServletException|IOException e1)
+            }catch (ServletException|IOException  e1)
             {
                 Logger.getLogger("eccezione  in libro").log(Level.SEVERE,"error in book",e1);
             }

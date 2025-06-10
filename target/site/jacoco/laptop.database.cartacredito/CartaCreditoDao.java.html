@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CartaCreditoDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.cartacredito</a> &gt; <span class="el_source">CartaCreditoDao.java</span></div><h1>CartaCreditoDao.java</h1><pre class="source lang-java linenums">package laptop.database.cartacredito;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.database.DaoInitialize;
+import laptop.model.CartaDiCredito;
+import laptop.utilities.ConnToDb;
+
+import java.io.*;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+<span class="nc" id="L14">public class CartaCreditoDao extends PersistenzaCC{</span>
+
+    @Override
+    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
+<span class="nc" id="L18">        DaoInitialize daoI=new DaoInitialize();</span>
+<span class="nc" id="L19">        daoI.inizializza(&quot;cartacredito&quot;);</span>
+
+
+<span class="nc" id="L22">    }</span>
+
+    private String query;
+    private static final String ECCEZIONE=&quot;eccezione ottenuta :&quot;;
+
+
+    @Override
+    public boolean insCC(CartaDiCredito cc) {
+<span class="nc" id="L30">        long row=0;</span>
+<span class="nc" id="L31">        query = &quot;insert into cartacredito (nomeP,cognomeP,codiceCarta,scadenza,pin,ammontare)  values(?,?,?,?,?,?)&quot;;</span>
+
+
+<span class="nc" id="L34">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="nc" id="L35">             PreparedStatement prepQ = conn.prepareStatement(query)) {</span>
+<span class="nc" id="L36">            prepQ.setString(1, cc.getNomeUser());</span>
+<span class="nc" id="L37">            prepQ.setString(2, cc.getCognomeUser());</span>
+<span class="nc" id="L38">            prepQ.setString(3, cc.getNumeroCC());</span>
+<span class="nc" id="L39">            prepQ.setDate(4, (Date) cc.getScadenza());</span>
+<span class="nc" id="L40">            prepQ.setString(5, cc.getCiv());</span>
+            //in alternativa vis.getSpesa
+<span class="nc" id="L42">            prepQ.setFloat(6, cc.getPrezzoTransazine());</span>
+<span class="nc" id="L43">            row=prepQ.executeLargeUpdate();</span>
+<span class="nc" id="L44">        } catch (SQLException e) {</span>
+<span class="nc" id="L45">            Logger.getLogger(&quot;report libro&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta .&quot;, e);</span>
+
+<span class="nc" id="L47">        }</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        return row==1;</span>
+    }
+
+
+    @Override
+    public ObservableList&lt;CartaDiCredito&gt; getCarteDiCredito(CartaDiCredito cc) {
+        String cod;
+<span class="nc" id="L55">        query=&quot;select nomeP,cognomeP,codiceCarta from cartacredito where nomeP=?&quot;;</span>
+
+<span class="nc" id="L57">        ObservableList&lt;CartaDiCredito&gt; catalogo= FXCollections.observableArrayList();</span>
+
+<span class="nc" id="L59">        try(Connection conn= ConnToDb.connectionToDB();</span>
+<span class="nc" id="L60">            PreparedStatement prepQ=conn.prepareStatement(query))</span>
+        {
+<span class="nc" id="L62">            prepQ.setString(1, cc.getNomeUser());</span>
+<span class="nc" id="L63">            ResultSet rs=prepQ.executeQuery();</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">            while(rs.next())</span>
+            {
+<span class="nc" id="L66">                String n=rs.getString(1);</span>
+<span class="nc" id="L67">                String cog=rs.getString(2);</span>
+<span class="nc" id="L68">                cod=rs.getString(3);</span>
+
+
+<span class="nc" id="L71">                catalogo.add(new CartaDiCredito(n,cog,cod, null, cod,0));</span>
+
+
+<span class="nc" id="L74">            }</span>
+<span class="nc" id="L75">        }catch(SQLException e)</span>
+        {
+<span class="nc" id="L77">            Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+<span class="nc" id="L78">        }</span>
+
+
+<span class="nc" id="L81">        return catalogo;    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 
 import com.opencsv.exceptions.CsvValidationException;
+import jakarta.servlet.ServletConfig;
 import laptop.database.negozio.NegozioDao;
 import laptop.database.negozio.PersistenzaNegozio;
 import web.bean.NegozioBean;
@@ -26,6 +27,13 @@ public class NegozioServlet extends HttpServlet {
 	private static final Negozio n=new Negozio();
 	private static final String INDEX="/index.jsp";
 	private static final PersistenzaNegozio pN=new NegozioDao();
+
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		super.init(config);
+
+
+	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

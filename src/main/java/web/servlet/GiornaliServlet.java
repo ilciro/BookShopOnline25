@@ -1,6 +1,7 @@
 package web.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,7 +45,9 @@ public class GiornaliServlet extends HttpServlet{
 		try {
 			if(g!=null && g.equals("genera lista"))
 			{
-			
+
+				if(gB.getListaGiornaliB()==null)
+					pG.initializza();
 					
 				gB.setListaGiornaliB(pG.retrieveRaccoltaData());
 				
@@ -85,7 +88,7 @@ public class GiornaliServlet extends HttpServlet{
 			}
 			
 		
-		} catch ( CsvValidationException | IdException | ClassNotFoundException e) {
+		} catch (CsvValidationException | IdException | ClassNotFoundException | SQLException e) {
 			gB.setMexB(new IdException("id nullo o eccede lista"));
 			req.setAttribute(BEANG,gB);
 			RequestDispatcher view = getServletContext().getRequestDispatcher(GIORNALI);

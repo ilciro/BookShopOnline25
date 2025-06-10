@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerVisualizzaProfilo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.controller.terzoucgestioneprofilooggetto</a> &gt; <span class="el_source">ControllerVisualizzaProfilo.java</span></div><h1>ControllerVisualizzaProfilo.java</h1><pre class="source lang-java linenums">package laptop.controller.terzoucgestioneprofilooggetto;
+
+import com.opencsv.exceptions.CsvValidationException;
+import laptop.controller.ControllerSystemState;
+import laptop.database.users.CsvUtente;
+import laptop.database.users.MemoriaUtente;
+import laptop.database.users.PersistenzaUtente;
+import laptop.database.users.UsersDao;
+import laptop.exception.IdException;
+import laptop.model.user.TempUser;
+import laptop.model.user.User;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+<span class="nc" id="L18">public class ControllerVisualizzaProfilo {</span>
+
+    private static final String DATABASE = &quot;database&quot;;
+    private static final String FILE = &quot;file&quot;;
+    private static final String MEMORIA = &quot;memoria&quot;;
+    private PersistenzaUtente pU;
+<span class="nc" id="L24">    private static final User u = User.getInstance();</span>
+<span class="nc" id="L25">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+
+    public String infoUtente(String persistenza) throws CsvValidationException, SQLException, IOException {
+<span class="nc" id="L28">        String utente = &quot;&quot;;</span>
+<span class="nc bnc" id="L29" title="All 4 branches missed.">        switch (persistenza) {</span>
+<span class="nc" id="L30">            case DATABASE -&gt; pU = new UsersDao();</span>
+<span class="nc" id="L31">            case FILE -&gt; pU = new CsvUtente();</span>
+<span class="nc" id="L32">            case MEMORIA -&gt; pU = new MemoriaUtente();</span>
+<span class="nc" id="L33">            default -&gt; Logger.getLogger(&quot;info utente&quot;).log(Level.SEVERE, &quot;persistency is wrong&quot;);</span>
+        }
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        for (int i = 0; i &lt; pU.getUserData().size(); i++) {</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">            if (pU.getUserData().get(i).getEmailT().equals(u.getEmail())</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">                    &amp;&amp; pU.getUserData().get(i).getPasswordT().equals(u.getPassword()))</span>
+<span class="nc" id="L38">                utente = pU.getUserData().get(i).toString();</span>
+        }
+<span class="nc" id="L40">        return utente;</span>
+    }
+
+
+    public boolean modifica(String[] dataU, String persistenza) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
+<span class="nc" id="L45">        boolean status = false;</span>
+<span class="nc" id="L46">        String vecchiaMail = u.getEmail();</span>
+
+<span class="nc" id="L48">        vis.setTipoModifica(&quot;im&quot;);</span>
+
+<span class="nc bnc" id="L50" title="All 4 branches missed.">        switch (persistenza) {</span>
+<span class="nc" id="L51">            case DATABASE -&gt; pU = new UsersDao();</span>
+<span class="nc" id="L52">            case FILE -&gt; pU = new CsvUtente();</span>
+<span class="nc" id="L53">            case MEMORIA -&gt; pU = new MemoriaUtente();</span>
+<span class="nc" id="L54">            default -&gt; Logger.getLogger(&quot;modifica utente&quot;).log(Level.SEVERE, &quot;persistency is wrong&quot;);</span>
+        }
+<span class="nc" id="L56">        TempUser tu = new TempUser();</span>
+<span class="nc" id="L57">        tu.setEmailT(vecchiaMail);</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        for (int i = 0; i &lt; pU.getUserData().size(); i++) {</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">            if (pU.getUserData().get(i).getEmailT().equals(tu.getEmailT())) {</span>
+<span class="nc" id="L60">                tu = pU.getUserData().get(i);</span>
+<span class="nc" id="L61">                setTemptoUser(tu);</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">                if (pU.removeUserByIdEmailPwd(tu)) {</span>
+
+<span class="nc" id="L64">                    Logger.getLogger(&quot;email utente rimosso&quot;).log(Level.INFO, &quot;email temp user deleted :{0}&quot;, tu.getEmailT());</span>
+                    //setto user
+
+
+                }
+<span class="nc" id="L69">                modifUser(dataU);</span>
+<span class="nc" id="L70">                status=pU.inserisciUtente(inserisciTempUser());</span>
+            }
+
+
+        }
+<span class="nc" id="L75">        return status;</span>
+    }
+
+    private void setTemptoUser(TempUser tu) {
+<span class="nc" id="L79">        u.setIdRuolo(tu.getIdRuoloT());</span>
+<span class="nc" id="L80">        u.setId(tu.getId());</span>
+<span class="nc" id="L81">        u.setNome(tu.getNomeT());</span>
+<span class="nc" id="L82">        u.setCognome(tu.getCognomeT());</span>
+<span class="nc" id="L83">        u.setEmail(tu.getEmailT());</span>
+<span class="nc" id="L84">        u.setPassword(tu.getPasswordT());</span>
+<span class="nc" id="L85">        u.setDescrizione(tu.getDescrizioneT());</span>
+<span class="nc" id="L86">        u.setDataDiNascita(tu.getDataDiNascitaT());</span>
+
+<span class="nc" id="L88">    }</span>
+    private void modifUser(String[] dataU)
+    {
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        if (!dataU[0].isEmpty())</span>
+<span class="nc" id="L92">            u.setIdRuolo(dataU[0].substring(0, 1));</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">        if (!dataU[1].isEmpty())</span>
+<span class="nc" id="L94">            u.setNome(dataU[1]);</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">        if (!dataU[2].isEmpty())</span>
+<span class="nc" id="L96">            u.setCognome(dataU[2]);</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">        if (!dataU[3].isEmpty())</span>
+<span class="nc" id="L98">            u.setEmail(dataU[3]);</span>
+<span class="nc bnc" id="L99" title="All 2 branches missed.">        if (!dataU[4].isEmpty())</span>
+<span class="nc" id="L100">            u.setPassword(dataU[4]);</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">        if (!dataU[5].isEmpty())</span>
+<span class="nc" id="L102">            u.setDescrizione(dataU[5]);</span>
+
+
+<span class="nc" id="L105">    }</span>
+    private TempUser inserisciTempUser()
+    {
+<span class="nc" id="L108">        TempUser tu=new TempUser();</span>
+<span class="nc" id="L109">        tu.setIdRuoloT(u.getIdRuolo());</span>
+<span class="nc" id="L110">        tu.setId(u.getId());</span>
+<span class="nc" id="L111">        tu.setNomeT(u.getNome());</span>
+<span class="nc" id="L112">        tu.setCognomeT(u.getCognome());</span>
+<span class="nc" id="L113">        tu.setEmailT(u.getEmail());</span>
+<span class="nc" id="L114">        tu.setPasswordT(u.getPassword());</span>
+<span class="nc" id="L115">        tu.setDescrizioneT(u.getDescrizione());</span>
+<span class="nc" id="L116">        tu.setDataDiNascitaT(u.getDataDiNascita());</span>
+<span class="nc" id="L117">        return tu;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PersistenzaCC.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.cartacredito</a> &gt; <span class="el_source">PersistenzaCC.java</span></div><h1>PersistenzaCC.java</h1><pre class="source lang-java linenums">package laptop.database.cartacredito;
+
+import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.model.CartaDiCredito;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.sql.SQLException;
+
+
+<span class="nc" id="L14">public class PersistenzaCC {</span>
+    public boolean insCC(CartaDiCredito cc) throws IOException, CsvValidationException, ClassNotFoundException {
+
+
+
+<span class="nc bnc" id="L19" title="All 2 branches missed.">            if (cc.getNumeroCC() == null) throw new IOException(&quot;numero carta null&quot;);</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">            else if(cc.getNumeroCC().isEmpty()) throw new CsvValidationException(&quot;numero carta sbagliato&quot;);</span>
+<span class="nc" id="L21">            else throw new ClassNotFoundException(&quot;classe non trovata&quot;);</span>
+
+
+    }
+    public ObservableList&lt;CartaDiCredito&gt; getCarteDiCredito(CartaDiCredito cc) throws IOException, ClassNotFoundException, CsvValidationException {
+<span class="nc" id="L26">        ObservableList&lt;CartaDiCredito&gt; lista = FXCollections.observableArrayList();</span>
+
+<span class="nc" id="L28">            lista.add(cc);</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">            if(lista.get(0).getScadenza()!=null) throw new IOException(&quot;lista is empty&quot;);</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">            if(cc.getNumeroCC()==null) throw new CsvValidationException(&quot;code is wrong!&quot;);</span>
+<span class="nc" id="L31">            else throw new ClassNotFoundException(&quot;class not found!!&quot;);</span>
+
+
+         }
+    public void inizializza()throws IOException, ClassNotFoundException, SQLException {
+
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        if(!Files.exists(Path.of(&quot;FileSql/cartacredito.sql&quot;))) throw new SQLException(&quot;db file not found&quot;);</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        if(!Files.exists(Path.of(&quot;report/reportCartaCredito.csv&quot;))) throw new IOException(&quot; file csv not exists&quot;);</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        if(!Files.exists(Path.of(&quot;memory/serializzazioneCartaCredito.ser&quot;))) throw new ClassNotFoundException(&quot;class not loaded in memory&quot;);</span>
+
+<span class="nc" id="L41">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

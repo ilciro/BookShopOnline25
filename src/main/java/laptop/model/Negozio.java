@@ -17,7 +17,7 @@ public class Negozio implements Serializable {
 
 	
 	public Negozio(String nome, String via, Boolean isValid, Boolean isOpen) {
-		super();
+
 		this.nome = nome;
 		this.via = via;
 		this.isValid = isValid;

@@ -1,6 +1,7 @@
 package web.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,10 +45,13 @@ public class RivisteServlet extends HttpServlet {
 			if(g!=null && g.equals("genera lista"))
 			{
 
-					rB.setListaRivisteB(pR.retrieveRaccoltaData());
-					req.setAttribute(BEANR, rB);
-					RequestDispatcher view = getServletContext().getRequestDispatcher(RIVISTE);
-					view.forward(req, resp);
+				if(rB.getListaRivisteB()==null)
+					pR.initializza();
+
+				rB.setListaRivisteB(pR.retrieveRaccoltaData());
+				req.setAttribute(BEANR, rB);
+				RequestDispatcher view = getServletContext().getRequestDispatcher(RIVISTE);
+				view.forward(req, resp);
 
 				
 				
@@ -85,7 +89,7 @@ public class RivisteServlet extends HttpServlet {
 			}
 			
 		
-		} catch ( CsvValidationException | IdException | ClassNotFoundException e) {
+		} catch (CsvValidationException | IdException | ClassNotFoundException | SQLException e) {
 			rB.setMexB(new IdException("id nullo o eccede lista"));
 			req.setAttribute(BEANR,rB);
 			RequestDispatcher view = getServletContext().getRequestDispatcher(RIVISTE);

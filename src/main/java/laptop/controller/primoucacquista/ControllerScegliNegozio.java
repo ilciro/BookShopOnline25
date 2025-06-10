@@ -59,6 +59,8 @@ public class ControllerScegliNegozio {
 		}
 		return pN.checkOpen(pN.getNegozi().get(id-1));
 	}
+
+
 	
 
 }
