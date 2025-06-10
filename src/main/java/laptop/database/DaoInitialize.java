@@ -30,14 +30,14 @@ public class DaoInitialize {
     private static final ResourceBundle RBQUERYCREATEDB = ResourceBundle.getBundle("sql/dbCreate");
 
 
-    private static int presente;
+    private  int presente;
 
-    public static int getPresente() {
+    public  int getPresente() {
         return presente;
     }
 
-    public static void setPresente(int presente) {
-        DaoInitialize.presente = presente;
+    public  void setPresente(int presente) {
+        this.presente = presente;
     }
 
     private void creaProcedura(String nome) {
@@ -48,7 +48,7 @@ public class DaoInitialize {
                      PreparedStatement prepQ = conn.prepareStatement(RBQUERYEXISTS.getString(QUERY))) {
                     prepQ.execute();
                 } catch (SQLException e) {
-                    Logger.getLogger("esiste procedura ").log(Level.SEVERE, " exists stored error  or yet created .{0}", e);
+                    Logger.getLogger("esiste procedura ").log(Level.SEVERE, " exists stored error  or yet created :", e);
                 }
 
             }
@@ -57,7 +57,7 @@ public class DaoInitialize {
                      PreparedStatement prepQ = conn.prepareStatement(RBQUERYCREATE.getString(QUERY))) {
                     prepQ.execute();
                 } catch (SQLException e) {
-                    Logger.getLogger("crea procedura ").log(Level.SEVERE, " create stored error or yet created .{0}", e);
+                    Logger.getLogger("crea procedura ").log(Level.SEVERE, " create stored error or yet created :", e);
                 }
 
             }
@@ -66,7 +66,7 @@ public class DaoInitialize {
                      PreparedStatement prepQ = conn.prepareStatement(RBQUERYPOPOLUATED.getString(QUERY))) {
                     prepQ.execute();
                 } catch (SQLException e) {
-                    Logger.getLogger("popola procedura ").log(Level.SEVERE, " polpulated stored error or yet created .{0}", e);
+                    Logger.getLogger("popola procedura ").log(Level.SEVERE, " polpulated stored error or yet created :", e);
                 }
 
             }
