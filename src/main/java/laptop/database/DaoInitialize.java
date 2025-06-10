@@ -48,7 +48,7 @@ public class DaoInitialize {
                      PreparedStatement prepQ = conn.prepareStatement(RBQUERYEXISTS.getString(QUERY))) {
                     prepQ.execute();
                 } catch (SQLException e) {
-                    Logger.getLogger("esiste procedura ").log(Level.SEVERE, " exists stored error .{0} or yet created", e.getCause());
+                    Logger.getLogger("esiste procedura ").log(Level.SEVERE, " exists stored error  or yet created .{0}", e);
                 }
 
             }
@@ -57,7 +57,7 @@ public class DaoInitialize {
                      PreparedStatement prepQ = conn.prepareStatement(RBQUERYCREATE.getString(QUERY))) {
                     prepQ.execute();
                 } catch (SQLException e) {
-                    Logger.getLogger("crea procedura ").log(Level.SEVERE, " create stored error .{0} or yet created", e.getCause());
+                    Logger.getLogger("crea procedura ").log(Level.SEVERE, " create stored error or yet created .{0}", e);
                 }
 
             }
@@ -66,7 +66,7 @@ public class DaoInitialize {
                      PreparedStatement prepQ = conn.prepareStatement(RBQUERYPOPOLUATED.getString(QUERY))) {
                     prepQ.execute();
                 } catch (SQLException e) {
-                    Logger.getLogger("popola procedura ").log(Level.SEVERE, " polpulated stored error .{0} or yet created", e.getCause());
+                    Logger.getLogger("popola procedura ").log(Level.SEVERE, " polpulated stored error or yet created .{0}", e);
                 }
 
             }
@@ -79,7 +79,7 @@ public class DaoInitialize {
 
     private void eseguiProcedura(String nome,String type)
     {
-        int presente;
+
             switch (nome)
             {
                 case ESISTE->{
@@ -128,6 +128,7 @@ public class DaoInitialize {
                        Logger.getLogger("popola query").log(Level.SEVERE," error with populate table");
                     }
                 }
+                default -> Logger.getLogger("errore ad esegire procedura").log(Level.SEVERE,"erroro while execute procedure with type .{0}",type);
 
             }
     }
@@ -139,7 +140,7 @@ public class DaoInitialize {
         ConnToDb.generalConnection();
         // connetto al mio e creo db
         try (Connection conn = ConnToDb.connectionToDB();
-             PreparedStatement prepQ = conn.prepareStatement(RBQUERYCREATEDB.getString("query"))) {
+             PreparedStatement prepQ = conn.prepareStatement(RBQUERYCREATEDB.getString(QUERY))) {
             prepQ.execute();
         } catch (SQLException e) {
             Logger.getLogger("create schema ispw ").log(Level.SEVERE, "error with create schema ispw->reuse");
