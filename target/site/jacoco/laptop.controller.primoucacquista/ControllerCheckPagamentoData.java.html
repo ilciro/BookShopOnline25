@@ -287,8 +287,8 @@ public class ControllerCheckPagamentoData {
 
     public void controllaPag(String d, String c,String civ) {
 
-<span class="nc" id="L290">        String appoggio=&quot;&quot;;</span>
-<span class="nc" id="L291">        int cont=0;</span>
+<span class="fc" id="L290">        String appoggio=&quot;&quot;;</span>
+<span class="fc" id="L291">        int cont=0;</span>
         try {
             int x;
 
@@ -298,23 +298,23 @@ public class ControllerCheckPagamentoData {
             String[] verifica;
 
 
-<span class="nc" id="L301">            appoggio = appoggio + d;</span>
-<span class="nc" id="L302">            anno = Integer.parseInt((String) appoggio.subSequence(0, 4));</span>
-<span class="nc" id="L303">            mese = Integer.parseInt((String) appoggio.subSequence(5, 7));</span>
-<span class="nc" id="L304">            giorno = Integer.parseInt((String) appoggio.subSequence(8, 10));</span>
+<span class="fc" id="L301">            appoggio = appoggio + d;</span>
+<span class="fc" id="L302">            anno = Integer.parseInt((String) appoggio.subSequence(0, 4));</span>
+<span class="fc" id="L303">            mese = Integer.parseInt((String) appoggio.subSequence(5, 7));</span>
+<span class="fc" id="L304">            giorno = Integer.parseInt((String) appoggio.subSequence(8, 10));</span>
 
 
-<span class="nc bnc" id="L307" title="All 14 branches missed.">            if (anno &gt; 2020 &amp;&amp; (mese &gt;= 1 &amp;&amp; mese &lt;= 12) &amp;&amp; (giorno &gt;= 1 &amp;&amp; giorno &lt;= 31) &amp;&amp; c.length() &lt;= 20 &amp;&amp; civ.length() == 3) {</span>
+<span class="pc bpc" id="L307" title="7 of 14 branches missed.">            if (anno &gt; 2020 &amp;&amp; (mese &gt;= 1 &amp;&amp; mese &lt;= 12) &amp;&amp; (giorno &gt;= 1 &amp;&amp; giorno &lt;= 31) &amp;&amp; c.length() &lt;= 20 &amp;&amp; civ.length() == 3) {</span>
 
 
-<span class="nc" id="L310">                verifica = c.split(&quot;-&quot;);</span>
+<span class="fc" id="L310">                verifica = c.split(&quot;-&quot;);</span>
 
-<span class="nc bnc" id="L312" title="All 2 branches missed.">                for (x = 0; x &lt; verifica.length; x++) {</span>
-<span class="nc bnc" id="L313" title="All 2 branches missed.">                    if (verifica[x].length() == 4) {</span>
+<span class="fc bfc" id="L312" title="All 2 branches covered.">                for (x = 0; x &lt; verifica.length; x++) {</span>
+<span class="pc bpc" id="L313" title="1 of 2 branches missed.">                    if (verifica[x].length() == 4) {</span>
 <span class="nc" id="L314">                        cont++;</span>
                     }
                 }
-<span class="nc bnc" id="L317" title="All 2 branches missed.">                if (cont == 4) {</span>
+<span class="pc bpc" id="L317" title="1 of 2 branches missed.">                if (cont == 4) {</span>
 <span class="nc" id="L318">                    Logger.getLogger(&quot;procedi cach check data&quot;).log(Level.INFO,&quot; data is correct !!&quot;);</span>
                 }
 
@@ -323,10 +323,10 @@ public class ControllerCheckPagamentoData {
 <span class="nc" id="L323">        }catch (NumberFormatException | IllegalFormatException e)</span>
         {
 <span class="nc" id="L325">            Logger.getLogger(&quot;procedi cash&quot;).log(Level.SEVERE,&quot;\n errore nel pagamento .&quot;,e);</span>
-<span class="nc" id="L326">        }</span>
+<span class="fc" id="L326">        }</span>
 
 
-<span class="nc" id="L329">    }</span>
+<span class="fc" id="L329">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

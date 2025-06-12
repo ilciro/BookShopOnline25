@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: secondoUcLogin.TestLogin
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.784 s - in secondoUcLogin.TestLogin

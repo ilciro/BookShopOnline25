@@ -1,4 +1,8 @@
-primoUcAcquista/testRivista/TestAcquistaRivista.class
-primoUcVisualizza/TestControllerVisualizza.class
+secondoUcLogin/TestResetPassword.class
+secondoUcLogin/TestRegistraUtente.class
 primoUcAcquista/testLibro/TestAcquistaLibro.class
 primoUcAcquista/testGiornale/TestAcquistaGiornale.class
+secondoUcLogin/TestUserLoggedPagamento.class
+primoUcAcquista/testRivista/TestAcquistaRivista.class
+primoUcVisualizza/TestControllerVisualizza.class
+secondoUcLogin/TestLogin.class

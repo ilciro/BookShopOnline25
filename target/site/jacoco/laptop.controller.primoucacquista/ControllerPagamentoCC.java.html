@@ -49,21 +49,21 @@ public class ControllerPagamentoCC {
 
 	public boolean aggiungiCartaDB(String n, String c, String cod, java.sql.Date data, String civ, float prezzo,String persistenza)
             throws CsvValidationException, IOException, ClassNotFoundException, SQLException {
-<span class="nc" id="L52">   			cc= new CartaDiCredito(n, c, cod,  data, civ, prezzo);</span>
+<span class="fc" id="L52">   			cc= new CartaDiCredito(n, c, cod,  data, civ, prezzo);</span>
 
 
-<span class="nc" id="L55">			cCPD.controllaPag(String.valueOf(data),c,civ);</span>
+<span class="fc" id="L55">			cCPD.controllaPag(String.valueOf(data),c,civ);</span>
 
 
-<span class="nc bnc" id="L58" title="All 4 branches missed.">			switch (persistenza)</span>
+<span class="pc bpc" id="L58" title="1 of 4 branches missed.">			switch (persistenza)</span>
 			{
-<span class="nc" id="L60">				case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
-<span class="nc" id="L61">				case FILE-&gt;pCC=new CsvCartaCredito();</span>
-<span class="nc" id="L62">				case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
+<span class="fc" id="L60">				case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
+<span class="fc" id="L61">				case FILE-&gt;pCC=new CsvCartaCredito();</span>
+<span class="fc" id="L62">				case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
 <span class="nc" id="L63">				default -&gt; Logger.getLogger(&quot;aggiungi carta db&quot;).log(Level.SEVERE,&quot; error in persistency&quot;);</span>
 			}
-<span class="nc" id="L65">				pCC.inizializza();</span>
-<span class="nc" id="L66">			return pCC.insCC(cc);</span>
+<span class="fc" id="L65">				pCC.inizializza();</span>
+<span class="fc" id="L66">			return pCC.insCC(cc);</span>
 
 	}
 
@@ -71,19 +71,19 @@ public class ControllerPagamentoCC {
 
 	public ObservableList&lt;CartaDiCredito&gt; ritornaElencoCC(String nomeU,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, SQLException {
 
-<span class="nc" id="L74">		cc=new CartaDiCredito();</span>
-<span class="nc" id="L75">		cc.setNomeUser(nomeU);</span>
+<span class="fc" id="L74">		cc=new CartaDiCredito();</span>
+<span class="fc" id="L75">		cc.setNomeUser(nomeU);</span>
 
-<span class="nc bnc" id="L77" title="All 4 branches missed.">		switch (persistenza)</span>
+<span class="pc bpc" id="L77" title="3 of 4 branches missed.">		switch (persistenza)</span>
 		{
-<span class="nc" id="L79">			case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
+<span class="fc" id="L79">			case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
 <span class="nc" id="L80">			case FILE-&gt;pCC=new CsvCartaCredito();</span>
 <span class="nc" id="L81">			case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
 <span class="nc" id="L82">			default -&gt; Logger.getLogger(&quot;elenco cc dal db&quot;).log(Level.SEVERE,&quot; list is empty&quot;);</span>
 		}
-<span class="nc" id="L84">			pCC.inizializza();</span>
+<span class="fc" id="L84">			pCC.inizializza();</span>
 
-<span class="nc" id="L86">		return pCC.getCarteDiCredito(cc);</span>
+<span class="fc" id="L86">		return pCC.getCarteDiCredito(cc);</span>
 
 
 	}
@@ -144,19 +144,19 @@ public class ControllerPagamentoCC {
 
 	public ObservableList&lt;CartaDiCredito&gt; ritornaElencoCByNumero(String numero,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, SQLException {
 
-<span class="nc" id="L147">		cc=new CartaDiCredito();</span>
-<span class="nc" id="L148">		cc.setNumeroCC(numero);</span>
+<span class="fc" id="L147">		cc=new CartaDiCredito();</span>
+<span class="fc" id="L148">		cc.setNumeroCC(numero);</span>
 
-<span class="nc bnc" id="L150" title="All 4 branches missed.">		switch (persistenza)</span>
+<span class="pc bpc" id="L150" title="1 of 4 branches missed.">		switch (persistenza)</span>
 		{
-<span class="nc" id="L152">			case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
-<span class="nc" id="L153">			case FILE-&gt;pCC=new CsvCartaCredito();</span>
-<span class="nc" id="L154">			case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
+<span class="fc" id="L152">			case DATABASE-&gt;pCC=new CartaCreditoDao();</span>
+<span class="fc" id="L153">			case FILE-&gt;pCC=new CsvCartaCredito();</span>
+<span class="fc" id="L154">			case MEMORIA-&gt;pCC=new MemoriaCartaCredito();</span>
 <span class="nc" id="L155">			default -&gt; Logger.getLogger(&quot;elenco cc dal db&quot;).log(Level.SEVERE,&quot; list is empty&quot;);</span>
 		}
-<span class="nc" id="L157">			pCC.inizializza();</span>
+<span class="fc" id="L157">			pCC.inizializza();</span>
 
-<span class="nc" id="L159">		return pCC.getCarteDiCredito(cc);</span>
+<span class="fc" id="L159">		return pCC.getCarteDiCredito(cc);</span>
 
 
 	}
