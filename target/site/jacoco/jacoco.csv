@@ -1,6 +1,6 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 BookShopOnline25 Maven Webapp,laptop.database,MemoryInitialize,6,919,6,52,2,177,6,43,0,18
-BookShopOnline25 Maven Webapp,laptop.database,DaoInitialize,46,374,4,19,11,120,4,20,0,7
+BookShopOnline25 Maven Webapp,laptop.database,DaoInitialize,46,378,4,19,11,122,4,21,0,8
 BookShopOnline25 Maven Webapp,laptop.database,PersistenzaInitialize,25,68,4,4,2,12,5,2,1,2
 BookShopOnline25 Maven Webapp,laptop.model.user,TempUser.RuoliT,0,33,0,0,0,6,0,1,0,1
 BookShopOnline25 Maven Webapp,laptop.model.user,User,50,111,0,7,11,33,2,23,2,18

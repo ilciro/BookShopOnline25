@@ -83,22 +83,7 @@ public class DaoInitialize {
             switch (nome)
             {
                 case ESISTE->{
-                    try(Connection conn=ConnToDb.connectionToDB();
-                        CallableStatement callQ= conn.prepareCall("{call tabellaEsiste(?,?)}"))
-                    {
-                        callQ.setString(1,type);
-                        callQ.setInt(2,0);
-                        if(callQ.executeQuery().next()) {
-                            presente = callQ.getInt(2);
-                            setPresente(presente);
-                        }
-
-
-                    }catch (SQLException e)
-                    {
-                        Logger.getLogger("esegui esiste").log(Level.SEVERE,"exists procedure called badly {0}",e.getMessage());
-                    }
-                    Logger.getLogger("tabella presente :").log(Level.INFO," type is present :{0}", getPresente());
+                    esiste(type);
 
                 }
                 case CREA->{
@@ -134,6 +119,26 @@ public class DaoInitialize {
                 default -> Logger.getLogger("errore ad esegire procedura").log(Level.SEVERE,"erroro while execute procedure with type .{0}",type);
 
             }
+    }
+
+    private void esiste(String type)
+    {
+        try(Connection conn=ConnToDb.connectionToDB();
+            CallableStatement callQ= conn.prepareCall("{call tabellaEsiste(?,?)}"))
+        {
+            callQ.setString(1,type);
+            callQ.setInt(2,0);
+            if(callQ.executeQuery().next()) {
+                presente = callQ.getInt(2);
+                setPresente(presente);
+            }
+
+
+        }catch (SQLException e)
+        {
+            Logger.getLogger("esegui esiste").log(Level.SEVERE,"exists procedure called badly {0}",e.getMessage());
+        }
+        Logger.getLogger("tabella presente :").log(Level.INFO," type is present :{0}", getPresente());
     }
 
 
