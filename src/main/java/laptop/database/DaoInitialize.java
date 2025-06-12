@@ -118,14 +118,17 @@ public class DaoInitialize {
 
                 }
                 case POPOLA->{
-                    try(Connection conn=ConnToDb.connectionToDB();
-                        CallableStatement callQ= conn.prepareCall("{call popolaTabella(?)}"))
-                    {
-                        callQ.setString(1,type);
+                    if(getPresente()==0) {
 
-                        callQ.execute();
-                    }catch (SQLException e){
-                       Logger.getLogger("popola query").log(Level.SEVERE," error with populate table");
+
+                        try (Connection conn = ConnToDb.connectionToDB();
+                             CallableStatement callQ = conn.prepareCall("{call popolaTabella(?)}")) {
+                            callQ.setString(1, type);
+
+                            callQ.execute();
+                        } catch (SQLException e) {
+                            Logger.getLogger("popola query").log(Level.SEVERE, " error with populate table");
+                        }
                     }
                 }
                 default -> Logger.getLogger("errore ad esegire procedura").log(Level.SEVERE,"erroro while execute procedure with type .{0}",type);

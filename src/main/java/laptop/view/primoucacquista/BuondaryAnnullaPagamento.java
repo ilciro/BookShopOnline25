@@ -122,7 +122,7 @@ public class BuondaryAnnullaPagamento implements Initializable {
             Stage stage;
             Parent root;
             stage = (Stage) buttonI.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("homePageFinale.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
             stage.setTitle("Benvenuto nella schermata del riepilogo ordine");
             scene = new Scene(root);
             stage.setScene(scene);

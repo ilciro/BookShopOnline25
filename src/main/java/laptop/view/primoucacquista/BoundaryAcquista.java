@@ -121,7 +121,7 @@ public class BoundaryAcquista implements Initializable {
 		Stage stage;
 		Parent root;
 		stage = (Stage) link.getScene().getWindow();
-		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("compravendita.fxml")));
+		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/compravendita.fxml")));
 		stage.setTitle("Benvenuto nella schermata della compravendita");
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -137,7 +137,7 @@ public class BoundaryAcquista implements Initializable {
 		Stage stage;
 		Parent root;
 		stage = (Stage) buttonCC.getScene().getWindow();
-		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("pagamentoCCFinale.fxml")));
+		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/pagamentoCCFinale.fxml")));
 		stage.setTitle("Benvenuto nella schermata del riepilogo cartaCredito");
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -154,7 +154,7 @@ public class BoundaryAcquista implements Initializable {
 		Stage stage;
 		Parent root;
 		stage = (Stage) buttonCash.getScene().getWindow();
-		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("pagamentoContrassegno.fxml")));
+		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/pagamentoContrassegno.fxml")));
 		stage.setTitle("Benvenuto nella schermata del riepilogo fattura");
 		scene = new Scene(root);
 		stage.setScene(scene);

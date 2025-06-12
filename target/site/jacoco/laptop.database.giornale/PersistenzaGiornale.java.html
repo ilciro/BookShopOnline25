@@ -16,7 +16,7 @@ import java.sql.SQLException;
 
 <span class="fc" id="L17">public class PersistenzaGiornale {</span>
 
-    private static final String DATABASE=&quot;FileSql/giornale.sql&quot;;
+    private static final String DATABASE=&quot;sql/tablePopulate.sql&quot;;
     private static final String FILE=&quot;report/reportGiornale.csv&quot;;
     private static final String MEMORIA=&quot;memory/serializzazioneGiornale.ser&quot;;
     private static final String DATABASEXCEPTION=&quot;file daily sql not exists&quot;;
@@ -49,9 +49,9 @@ import java.sql.SQLException;
 <span class="nc" id="L49">        return FXCollections.observableArrayList();}</span>
     public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException {
 
-<span class="nc" id="L52">        PersistenzaInitialize pI=new PersistenzaInitialize();</span>
-<span class="nc" id="L53">        pI.initializza(&quot;giornale&quot;);</span>
-<span class="nc" id="L54">        }</span>
+<span class="fc" id="L52">        PersistenzaInitialize pI=new PersistenzaInitialize();</span>
+<span class="fc" id="L53">        pI.initializza(&quot;giornale&quot;);</span>
+<span class="fc" id="L54">        }</span>
     public ObservableList&lt;Giornale&gt; getGiornali() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 <span class="nc bnc" id="L56" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IdException(DATABASEXCEPTION);</span>
 <span class="nc bnc" id="L57" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);</span>

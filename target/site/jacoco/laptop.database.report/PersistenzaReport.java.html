@@ -14,7 +14,7 @@ import java.sql.SQLException;
 <span class="fc" id="L14">public class PersistenzaReport {</span>
 
     public ObservableList&lt;TempUser&gt; reportU() throws SQLException, IOException, CsvValidationException {
-<span class="nc bnc" id="L17" title="All 2 branches missed.">       if(!Files.exists(Path.of(&quot;FileSql/users.sql&quot;))) throw new SQLException(&quot;file not found&quot;);</span>
+<span class="nc bnc" id="L17" title="All 2 branches missed.">       if(!Files.exists(Path.of(&quot;src/main/resources/sql/tablePopulate.properties&quot;))) throw new SQLException(&quot;file not found&quot;);</span>
 <span class="nc bnc" id="L18" title="All 2 branches missed.">       if(!Files.exists(Path.of(&quot;report/reportUtenti.csv&quot;))) throw new CsvValidationException(&quot; file csv not created&quot;);</span>
 <span class="nc bnc" id="L19" title="All 2 branches missed.">       if(!Files.exists(Path.of(&quot;memory/serializzazioneUsers.ser&quot;))) throw new IOException(&quot; file inmemory not exists&quot;);</span>
 <span class="nc" id="L20">       return FXCollections.observableArrayList();</span>
@@ -34,8 +34,8 @@ import java.sql.SQLException;
 
 
     public void inizializza() throws IOException, ClassNotFoundException {
-<span class="nc bnc" id="L37" title="All 2 branches missed.">        if( !Files.exists(Path.of(&quot;report/reportFinale.csv&quot;))) throw new IOException(&quot; file not exists&quot;);</span>
-<span class="nc bnc" id="L38" title="All 2 branches missed.">        if(!Files.exists(Path.of(&quot;memory/serializzazioneReport.ser&quot;))) throw new ClassNotFoundException(&quot; class in memory not found&quot;);</span>
-<span class="nc" id="L39">    }</span>
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">        if( !Files.exists(Path.of(&quot;report/reportFinale.csv&quot;))) throw new IOException(&quot; file not exists&quot;);</span>
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(&quot;memory/serializzazioneReport.ser&quot;))) throw new ClassNotFoundException(&quot; class in memory not found&quot;);</span>
+<span class="fc" id="L39">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

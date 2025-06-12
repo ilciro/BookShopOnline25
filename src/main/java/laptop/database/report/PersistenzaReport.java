@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class PersistenzaReport {
 
     public ObservableList<TempUser> reportU() throws SQLException, IOException, CsvValidationException {
-       if(!Files.exists(Path.of("FileSql/users.sql"))) throw new SQLException("file not found");
+       if(!Files.exists(Path.of("src/main/resources/sql/tablePopulate.properties"))) throw new SQLException("file not found");
        if(!Files.exists(Path.of("report/reportUtenti.csv"))) throw new CsvValidationException(" file csv not created");
        if(!Files.exists(Path.of("memory/serializzazioneUsers.ser"))) throw new IOException(" file inmemory not exists");
        return FXCollections.observableArrayList();

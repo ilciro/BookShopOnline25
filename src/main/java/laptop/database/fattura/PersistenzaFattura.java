@@ -21,7 +21,7 @@ public class PersistenzaFattura {
         return false;}
     public Fattura ultimaFattura() throws CsvValidationException, IOException, ClassNotFoundException {return null;}
     public void inizializza() throws IOException, ClassNotFoundException, SQLException {
-       if(!Files.exists(Path.of("FileSql/fattura.sql"))) throw new SQLException("file db not exits");
+       if(!Files.exists(Path.of("src/main/resources/sql/tablePopulate.properties"))) throw new SQLException("file db not exits");
        if(!Files.exists(Path.of("report/reportFattura.csv"))) throw new IOException(" file csv not exists");
        if(!Files.exists(Path.of("memory/serializzazioneFattura.ser"))) throw new ClassNotFoundException(" class not found in memory");
     }

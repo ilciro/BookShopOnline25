@@ -35,6 +35,6 @@ public class PersistenzaNegozio {
      }
      public void initializza() throws IOException, SQLException {
          if(!Files.exists(Path.of("report/reportNegozio.csv"))||(!Files.exists(Path.of("memory/serializzazioneNegozio.ser")))) throw new IOException(" files not exists");
-         if(!Files.exists(Path.of("FileSql/negozio.sql")))  throw new SQLException("file sql not exists");
+         if(!Files.exists(Path.of("src/main/resources/sql/tablePopulate.properties")))  throw new SQLException("file sql not exists");
      }
 }

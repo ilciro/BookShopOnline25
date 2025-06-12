@@ -16,7 +16,7 @@ import java.sql.SQLException;
 
 public class PersistenzaGiornale {
 
-    private static final String DATABASE="FileSql/giornale.sql";
+    private static final String DATABASE="sql/tablePopulate.sql";
     private static final String FILE="report/reportGiornale.csv";
     private static final String MEMORIA="memory/serializzazioneGiornale.ser";
     private static final String DATABASEXCEPTION="file daily sql not exists";

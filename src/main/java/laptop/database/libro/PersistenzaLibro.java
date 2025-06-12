@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 
 public  class PersistenzaLibro {
-    private static final String DATABASE="FileSql/libro.sql";
+    private static final String DATABASE="src/main/resources/*.properties";
     private static final String FILE="report/reportLibro.csv";
     private static final String MEMORIA="memory/serializzazioneLibro.ser";
     private static final String DATABASEXCEPTION="file book sql not exists";

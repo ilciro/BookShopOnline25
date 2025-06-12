@@ -11,7 +11,7 @@ import java.nio.file.Path;
 import java.sql.SQLException;
 
 public class PersistenzaPagamento {
-    private static final String DATABASE="FileSql/pagamento.sql";
+    private static final String DATABASE="src/main/resources/sql/tablePopulate.properties";
     private static final String FILE="report/reportPagamento.csv";
     private static final String MEMORIA="memory/serializzazionePagamento.ser";
     private static final String DATABASEXCEPTION="file sql not exists";

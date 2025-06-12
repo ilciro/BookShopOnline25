@@ -118,119 +118,122 @@ import java.util.logging.Logger;
 
 <span class="fc" id="L119">                }</span>
                 case POPOLA-&gt;{
-<span class="fc" id="L121">                    try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L122">                        CallableStatement callQ= conn.prepareCall(&quot;{call popolaTabella(?)}&quot;))</span>
-                    {
-<span class="fc" id="L124">                        callQ.setString(1,type);</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">                    if(getPresente()==0) {</span>
 
-<span class="fc" id="L126">                        callQ.execute();</span>
-<span class="fc" id="L127">                    }catch (SQLException e){</span>
-<span class="fc" id="L128">                       Logger.getLogger(&quot;popola query&quot;).log(Level.SEVERE,&quot; error with populate table&quot;);</span>
-<span class="fc" id="L129">                    }</span>
-<span class="fc" id="L130">                }</span>
-<span class="nc" id="L131">                default -&gt; Logger.getLogger(&quot;errore ad esegire procedura&quot;).log(Level.SEVERE,&quot;erroro while execute procedure with type .{0}&quot;,type);</span>
+
+<span class="fc" id="L124">                        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="fc" id="L125">                             CallableStatement callQ = conn.prepareCall(&quot;{call popolaTabella(?)}&quot;)) {</span>
+<span class="fc" id="L126">                            callQ.setString(1, type);</span>
+
+<span class="fc" id="L128">                            callQ.execute();</span>
+<span class="nc" id="L129">                        } catch (SQLException e) {</span>
+<span class="nc" id="L130">                            Logger.getLogger(&quot;popola query&quot;).log(Level.SEVERE, &quot; error with populate table&quot;);</span>
+<span class="pc" id="L131">                        }</span>
+                    }
+                }
+<span class="nc" id="L134">                default -&gt; Logger.getLogger(&quot;errore ad esegire procedura&quot;).log(Level.SEVERE,&quot;erroro while execute procedure with type .{0}&quot;,type);</span>
 
             }
-<span class="fc" id="L134">    }</span>
+<span class="fc" id="L137">    }</span>
 
 
 
     public void inizializza(String type) {
         //connetto a sys
-<span class="fc" id="L140">        ConnToDb.generalConnection();</span>
+<span class="fc" id="L143">        ConnToDb.generalConnection();</span>
         // connetto al mio e creo db
-<span class="fc" id="L142">        try (Connection conn = ConnToDb.connectionToDB();</span>
-<span class="fc" id="L143">             PreparedStatement prepQ = conn.prepareStatement(RBQUERYCREATEDB.getString(QUERY))) {</span>
-<span class="fc" id="L144">            prepQ.execute();</span>
-<span class="fc" id="L145">        } catch (SQLException e) {</span>
-<span class="fc" id="L146">            Logger.getLogger(&quot;create schema ispw &quot;).log(Level.SEVERE, &quot;error with create schema ispw-&gt;reuse&quot;);</span>
-<span class="fc" id="L147">        }</span>
-<span class="fc" id="L148">        try (Connection conn = ConnToDb.connectionToDB();</span>
-<span class="fc" id="L149">             PreparedStatement prepQ = conn.prepareStatement(RBQUERYCREATEDB.getString(&quot;query2&quot;))) {</span>
-<span class="fc" id="L150">            prepQ.execute();</span>
-<span class="nc" id="L151">        } catch (SQLException e) {</span>
-<span class="nc" id="L152">            Logger.getLogger(&quot;uso schema ispw&quot;).log(Level.SEVERE, &quot;error with ispw use-&gt;reuse&quot;);</span>
-<span class="fc" id="L153">        }</span>
+<span class="fc" id="L145">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="fc" id="L146">             PreparedStatement prepQ = conn.prepareStatement(RBQUERYCREATEDB.getString(QUERY))) {</span>
+<span class="fc" id="L147">            prepQ.execute();</span>
+<span class="fc" id="L148">        } catch (SQLException e) {</span>
+<span class="fc" id="L149">            Logger.getLogger(&quot;create schema ispw &quot;).log(Level.SEVERE, &quot;error with create schema ispw-&gt;reuse&quot;);</span>
+<span class="fc" id="L150">        }</span>
+<span class="fc" id="L151">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="fc" id="L152">             PreparedStatement prepQ = conn.prepareStatement(RBQUERYCREATEDB.getString(&quot;query2&quot;))) {</span>
+<span class="fc" id="L153">            prepQ.execute();</span>
+<span class="nc" id="L154">        } catch (SQLException e) {</span>
+<span class="nc" id="L155">            Logger.getLogger(&quot;uso schema ispw&quot;).log(Level.SEVERE, &quot;error with ispw use-&gt;reuse&quot;);</span>
+<span class="fc" id="L156">        }</span>
 
 
-<span class="pc bpc" id="L156" title="1 of 9 branches missed.">        switch (type) {</span>
+<span class="pc bpc" id="L159" title="1 of 9 branches missed.">        switch (type) {</span>
             case LIBRO -&gt; {
                 //creo
-<span class="fc" id="L159">                creaProcedura(ESISTE);</span>
-<span class="fc" id="L160">                creaProcedura(CREA);</span>
-<span class="fc" id="L161">                creaProcedura(POPOLA);</span>
+<span class="fc" id="L162">                creaProcedura(ESISTE);</span>
+<span class="fc" id="L163">                creaProcedura(CREA);</span>
+<span class="fc" id="L164">                creaProcedura(POPOLA);</span>
                 //richiamo
-<span class="fc" id="L163">                eseguiProcedura(ESISTE, LIBRO);</span>
-<span class="fc" id="L164">                eseguiProcedura(CREA, LIBRO);</span>
-<span class="fc" id="L165">                eseguiProcedura(POPOLA, LIBRO);</span>
-<span class="fc" id="L166">            }</span>
+<span class="fc" id="L166">                eseguiProcedura(ESISTE, LIBRO);</span>
+<span class="fc" id="L167">                eseguiProcedura(CREA, LIBRO);</span>
+<span class="fc" id="L168">                eseguiProcedura(POPOLA, LIBRO);</span>
+<span class="fc" id="L169">            }</span>
             case GIORNALE -&gt; {
                 //creo
-<span class="fc" id="L169">                creaProcedura(ESISTE );</span>
-<span class="fc" id="L170">                creaProcedura(CREA);</span>
-<span class="fc" id="L171">                creaProcedura(POPOLA);</span>
+<span class="fc" id="L172">                creaProcedura(ESISTE );</span>
+<span class="fc" id="L173">                creaProcedura(CREA);</span>
+<span class="fc" id="L174">                creaProcedura(POPOLA);</span>
                 //richiamo
-<span class="fc" id="L173">                eseguiProcedura(ESISTE, GIORNALE);</span>
-<span class="fc" id="L174">                eseguiProcedura(CREA, GIORNALE);</span>
-<span class="fc" id="L175">                eseguiProcedura(POPOLA, GIORNALE);</span>
-<span class="fc" id="L176">            }</span>
+<span class="fc" id="L176">                eseguiProcedura(ESISTE, GIORNALE);</span>
+<span class="fc" id="L177">                eseguiProcedura(CREA, GIORNALE);</span>
+<span class="fc" id="L178">                eseguiProcedura(POPOLA, GIORNALE);</span>
+<span class="fc" id="L179">            }</span>
             case RIVISTA -&gt; {
                 //creo
-<span class="fc" id="L179">                creaProcedura(ESISTE);</span>
-<span class="fc" id="L180">                creaProcedura(CREA);</span>
-<span class="fc" id="L181">                creaProcedura(POPOLA);</span>
+<span class="fc" id="L182">                creaProcedura(ESISTE);</span>
+<span class="fc" id="L183">                creaProcedura(CREA);</span>
+<span class="fc" id="L184">                creaProcedura(POPOLA);</span>
                 //richiamo
-<span class="fc" id="L183">                eseguiProcedura(ESISTE, RIVISTA);</span>
-<span class="fc" id="L184">                eseguiProcedura(CREA, RIVISTA);</span>
-<span class="fc" id="L185">                eseguiProcedura(POPOLA, RIVISTA);</span>
-<span class="fc" id="L186">            }</span>
+<span class="fc" id="L186">                eseguiProcedura(ESISTE, RIVISTA);</span>
+<span class="fc" id="L187">                eseguiProcedura(CREA, RIVISTA);</span>
+<span class="fc" id="L188">                eseguiProcedura(POPOLA, RIVISTA);</span>
+<span class="fc" id="L189">            }</span>
             case NEGOZIO -&gt; {
                 //creo
-<span class="fc" id="L189">                creaProcedura(ESISTE);</span>
-<span class="fc" id="L190">                creaProcedura(CREA);</span>
-<span class="fc" id="L191">                creaProcedura(POPOLA);</span>
+<span class="fc" id="L192">                creaProcedura(ESISTE);</span>
+<span class="fc" id="L193">                creaProcedura(CREA);</span>
+<span class="fc" id="L194">                creaProcedura(POPOLA);</span>
                 //richiamo
-<span class="fc" id="L193">                eseguiProcedura(ESISTE, NEGOZIO);</span>
-<span class="fc" id="L194">                eseguiProcedura(CREA, NEGOZIO);</span>
-<span class="fc" id="L195">                eseguiProcedura(POPOLA, NEGOZIO);</span>
-<span class="fc" id="L196">            }</span>
+<span class="fc" id="L196">                eseguiProcedura(ESISTE, NEGOZIO);</span>
+<span class="fc" id="L197">                eseguiProcedura(CREA, NEGOZIO);</span>
+<span class="fc" id="L198">                eseguiProcedura(POPOLA, NEGOZIO);</span>
+<span class="fc" id="L199">            }</span>
             case UTENTE -&gt; {
                 //creo
-<span class="fc" id="L199">                creaProcedura(ESISTE);</span>
-<span class="fc" id="L200">                creaProcedura(CREA);</span>
-<span class="fc" id="L201">                creaProcedura(POPOLA);</span>
+<span class="fc" id="L202">                creaProcedura(ESISTE);</span>
+<span class="fc" id="L203">                creaProcedura(CREA);</span>
+<span class="fc" id="L204">                creaProcedura(POPOLA);</span>
                 //richiamo
-<span class="fc" id="L203">                eseguiProcedura(ESISTE, UTENTE);</span>
-<span class="fc" id="L204">                eseguiProcedura(CREA, UTENTE);</span>
-<span class="fc" id="L205">                eseguiProcedura(POPOLA, UTENTE);</span>
-<span class="fc" id="L206">            }</span>
+<span class="fc" id="L206">                eseguiProcedura(ESISTE, UTENTE);</span>
+<span class="fc" id="L207">                eseguiProcedura(CREA, UTENTE);</span>
+<span class="fc" id="L208">                eseguiProcedura(POPOLA, UTENTE);</span>
+<span class="fc" id="L209">            }</span>
             case FATTURA -&gt; {
                 //creo
-<span class="fc" id="L209">                creaProcedura(ESISTE);</span>
-<span class="fc" id="L210">                creaProcedura(CREA);</span>
+<span class="fc" id="L212">                creaProcedura(ESISTE);</span>
+<span class="fc" id="L213">                creaProcedura(CREA);</span>
                 //richiamo
-<span class="fc" id="L212">                eseguiProcedura(ESISTE, FATTURA);</span>
-<span class="fc" id="L213">                eseguiProcedura(CREA, FATTURA);</span>
-<span class="fc" id="L214">            }</span>
+<span class="fc" id="L215">                eseguiProcedura(ESISTE, FATTURA);</span>
+<span class="fc" id="L216">                eseguiProcedura(CREA, FATTURA);</span>
+<span class="fc" id="L217">            }</span>
             case PAGAMENTO -&gt; {
                 //creo
-<span class="fc" id="L217">                creaProcedura(ESISTE);</span>
-<span class="fc" id="L218">                creaProcedura(CREA);</span>
+<span class="fc" id="L220">                creaProcedura(ESISTE);</span>
+<span class="fc" id="L221">                creaProcedura(CREA);</span>
                 //richiamo
-<span class="fc" id="L220">                eseguiProcedura(ESISTE, PAGAMENTO);</span>
-<span class="fc" id="L221">                eseguiProcedura(CREA, PAGAMENTO);</span>
-<span class="fc" id="L222">            }</span>
+<span class="fc" id="L223">                eseguiProcedura(ESISTE, PAGAMENTO);</span>
+<span class="fc" id="L224">                eseguiProcedura(CREA, PAGAMENTO);</span>
+<span class="fc" id="L225">            }</span>
             case CARTACREDITO -&gt; {
                 //creo
-<span class="fc" id="L225">                creaProcedura(ESISTE);</span>
-<span class="fc" id="L226">                creaProcedura(CREA);</span>
+<span class="fc" id="L228">                creaProcedura(ESISTE);</span>
+<span class="fc" id="L229">                creaProcedura(CREA);</span>
                 //richiamo
-<span class="fc" id="L228">                eseguiProcedura(ESISTE, CARTACREDITO);</span>
-<span class="fc" id="L229">                eseguiProcedura(CREA, CARTACREDITO);</span>
-<span class="fc" id="L230">            }</span>
-<span class="nc" id="L231">            default -&gt; Logger.getLogger(&quot;eoore con il tipo in dao initialize&quot;).log(Level.SEVERE,&quot; type is wrong!!&quot;);</span>
+<span class="fc" id="L231">                eseguiProcedura(ESISTE, CARTACREDITO);</span>
+<span class="fc" id="L232">                eseguiProcedura(CREA, CARTACREDITO);</span>
+<span class="fc" id="L233">            }</span>
+<span class="nc" id="L234">            default -&gt; Logger.getLogger(&quot;eoore con il tipo in dao initialize&quot;).log(Level.SEVERE,&quot; type is wrong!!&quot;);</span>
         }
-<span class="fc" id="L233">    }</span>
+<span class="fc" id="L236">    }</span>
 
 
 

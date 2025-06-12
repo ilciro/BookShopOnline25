@@ -87,7 +87,7 @@ public class BoundaryPagamentoCash implements Initializable{
 				Stage stage;
 				Parent root;
 				stage = (Stage) buttonI.getScene().getWindow();
-				root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("pagamentoContrassegno.fxml")));
+				root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/pagamentoContrassegno.fxml")));
 				stage.setTitle("Benvenuto nella schermata del riepilogo ordine");
 				scene = new Scene(root);
 				stage.setScene(scene);
@@ -112,7 +112,7 @@ public class BoundaryPagamentoCash implements Initializable{
 					Stage stage;
 					Parent root;
 					stage = (Stage) buttonI.getScene().getWindow();
-					root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("scegliNegozio.fxml")));
+					root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/scegliNegozio.fxml")));
 					stage.setTitle("Benvenuto nella schermata per scegliere il negozio");
 					scene = new Scene(root);
 					stage.setScene(scene);
@@ -123,7 +123,7 @@ public class BoundaryPagamentoCash implements Initializable{
 				Stage stage;
 				Parent root;
 				stage = (Stage) buttonI.getScene().getWindow();
-				root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("download.fxml")));
+				root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/download.fxml")));
 				stage.setTitle("Benvenuto nella schermata per il download");
 				scene = new Scene(root);
 				stage.setScene(scene);

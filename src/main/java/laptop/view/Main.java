@@ -1,6 +1,8 @@
 package laptop.view;
 
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,7 +27,7 @@ public class Main  extends Application {
 		Scene scene;
 
 		try {
-			Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("homePageFinale.fxml")));
+			Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
 			scene = new Scene(root);
 			primaryStage.setTitle("Benvenuto nella homePage");
 			primaryStage.setScene(scene);
@@ -42,7 +44,14 @@ public class Main  extends Application {
 
 	public static void main(String[] args)  {
 
-		launch(args);
+
+		if(Files.exists(Path.of("/sql/tablePopulate.properties"))) System.out.println("sql/tablePopulate.sql exist");
+		else System.out.println("sql/tablePopulate.sql not exists");
+
+		if(Files.exists(Path.of("src/main/resources/sql/tablePopulate.properties"))) System.out.println("src/main/resources/sql/tablePopulate.sql exist");
+		else System.out.println("src/main/resources/sql/tablePopulate.sql not exists");
+
+		//launch(args);
 
 	}
 

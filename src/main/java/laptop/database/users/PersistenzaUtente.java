@@ -10,10 +10,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.SQLException;
-import java.util.List;
 
 public class PersistenzaUtente {
-    private static final String DATABASE="FileSql/users.sql";
+    private static final String DATABASE="src/main/resources/sql/tablePopulate.properties";
     private static final String FILE="report/reportUtente.csv";
     private static final String MEMORIA="memory/serializzazioneUtente.ser";
     private static final String DATABASEXCEPTION="file sql not exists";
@@ -40,11 +39,9 @@ public class PersistenzaUtente {
 
 
     public void initializza() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
-        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);
         if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);
         if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
-        if(!Files.exists(Path.of("FileSql/popolaUsers.sql"))) throw new SQLException("file fo populate db users not found!");
-        if(!Files.exists(Path.of(DATABASE))) throw new IdException(IDEXCEPTIONMESSAGE);
+        if(!Files.exists(Path.of(DATABASE))) throw new SQLException("file fo populate db users not found!");
 
     }
 }

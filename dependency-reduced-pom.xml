@@ -185,8 +185,8 @@
     <maven.clean>3.1.0</maven.clean>
     <junit>5.9.2</junit>
     <sonar.language>java</sonar.language>
-    <java.version>17</java.version>
-    <maven.compiler.source>17</maven.compiler.source>
+    <java.version>21</java.version>
+    <maven.compiler.source>21</maven.compiler.source>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     <sonar.organization>ilciro10</sonar.organization>
     <jacoco.version>0.8.7</jacoco.version>
@@ -196,7 +196,7 @@
     <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
     <maven.install>3.0.0-M1</maven.install>
     <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.target>21</maven.compiler.target>
     <maven.resources>3.1.0</maven.resources>
     <maven.war>3.2.0</maven.war>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

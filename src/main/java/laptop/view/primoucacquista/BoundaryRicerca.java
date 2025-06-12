@@ -148,7 +148,7 @@ public class BoundaryRicerca implements Initializable {
             Stage stage;
             Parent root;
             stage = (Stage) mostraB.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("visualizzaPage.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/visualizzaPage.fxml")));
             stage.setTitle("Benvenuto nella schermata del riepilogo di oggetto");
             scene = new Scene(root);
             stage.setScene(scene);
@@ -168,7 +168,7 @@ public class BoundaryRicerca implements Initializable {
             Stage stage;
             Parent root;
             stage = (Stage) buttonI.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("homePageFinale.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
             stage.setTitle("Benvenuto nella schermata della home Page");
             scene = new Scene(root);
             stage.setScene(scene);
@@ -178,7 +178,7 @@ public class BoundaryRicerca implements Initializable {
             Stage stage;
             Parent root;
             stage = (Stage) buttonI.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("ricerca.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/ricerca.fxml")));
             stage.setTitle("Benvenuto nella schermata della ricerca");
             scene = new Scene(root);
             stage.setScene(scene);
