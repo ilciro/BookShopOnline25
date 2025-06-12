@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: primoUcAcquista.testGiornale.TestAcquistaGiornale
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.337 s - in primoUcAcquista.testGiornale.TestAcquistaGiornale
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.471 s - in primoUcAcquista.testGiornale.TestAcquistaGiornale

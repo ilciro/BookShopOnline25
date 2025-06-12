@@ -18,10 +18,10 @@ public class DaoInitialize {
     private static final String FATTURA = "fattura";
     private static final String PAGAMENTO = "pagamento";
     private static final String CARTACREDITO = "cartacredito";
-    private static final String CREA="crea";
-    private static final String ESISTE="esiste";
-    private static final String POPOLA="popola";
-    private static final String QUERY="query";
+    private static final String CREA = "crea";
+    private static final String ESISTE = "esiste";
+    private static final String POPOLA = "popola";
+    private static final String QUERY = "query";
 
 
     private static final ResourceBundle RBQUERYCREATE = ResourceBundle.getBundle("sql/tableCreate");
@@ -30,13 +30,13 @@ public class DaoInitialize {
     private static final ResourceBundle RBQUERYCREATEDB = ResourceBundle.getBundle("sql/dbCreate");
 
 
-    private  int presente;
+    private int presente;
 
-    public  int getPresente() {
+    public int getPresente() {
         return presente;
     }
 
-    public  void setPresente(int presente) {
+    public void setPresente(int presente) {
         this.presente = presente;
     }
 
@@ -77,68 +77,65 @@ public class DaoInitialize {
 
     }
 
-    private void eseguiProcedura(String nome,String type)
-    {
+    private void eseguiProcedura(String nome, String type) {
 
-            switch (nome)
-            {
-                case ESISTE->{
-                    esiste(type);
+        switch (nome) {
+            case ESISTE -> esiste(type);
+            case CREA ->  crea(type);
+            case POPOLA -> popola(type);
+            default ->
+                    Logger.getLogger("errore ad esegire procedura").log(Level.SEVERE, "erroro while execute procedure with type .{0}", type);
 
-                }
-                case CREA->{
-
-                    if(getPresente()==0){
-                        try(Connection conn=ConnToDb.connectionToDB();
-                            CallableStatement callQ= conn.prepareCall("{call creaTabella(?)}"))
-                        {
-                            callQ.setString(1,type);
-
-                            callQ.execute();
-                        }catch (SQLException e)
-                        {
-                            Logger.getLogger("crea tabella errore").log(Level.SEVERE," create table error .{0}",e.getMessage());
-                        }
-                    }else Logger.getLogger("tabella creata").log(Level.WARNING,"table already created .{0}",type);
-
-                }
-                case POPOLA->{
-                    if(getPresente()==0) {
-
-
-                        try (Connection conn = ConnToDb.connectionToDB();
-                             CallableStatement callQ = conn.prepareCall("{call popolaTabella(?)}")) {
-                            callQ.setString(1, type);
-
-                            callQ.execute();
-                        } catch (SQLException e) {
-                            Logger.getLogger("popola query").log(Level.SEVERE, " error with populate table");
-                        }
-                    }
-                }
-                default -> Logger.getLogger("errore ad esegire procedura").log(Level.SEVERE,"erroro while execute procedure with type .{0}",type);
-
-            }
+        }
     }
 
-    private void esiste(String type)
-    {
-        try(Connection conn=ConnToDb.connectionToDB();
-            CallableStatement callQ= conn.prepareCall("{call tabellaEsiste(?,?)}"))
-        {
-            callQ.setString(1,type);
-            callQ.setInt(2,0);
-            if(callQ.executeQuery().next()) {
+    private void esiste(String type) {
+        try (Connection conn = ConnToDb.connectionToDB();
+             CallableStatement callQ = conn.prepareCall("{call tabellaEsiste(?,?)}")) {
+            callQ.setString(1, type);
+            callQ.setInt(2, 0);
+            if (callQ.executeQuery().next()) {
                 presente = callQ.getInt(2);
                 setPresente(presente);
             }
 
 
-        }catch (SQLException e)
-        {
-            Logger.getLogger("esegui esiste").log(Level.SEVERE,"exists procedure called badly {0}",e.getMessage());
+        } catch (SQLException e) {
+            Logger.getLogger("esegui esiste").log(Level.SEVERE, "exists procedure called badly {0}", e.getMessage());
         }
-        Logger.getLogger("tabella presente :").log(Level.INFO," type is present :{0}", getPresente());
+        Logger.getLogger("tabella presente :").log(Level.INFO, " type is present :{0}", getPresente());
+    }
+
+    private void crea(String type)
+    {
+        if(getPresente()==0){
+            try(Connection conn=ConnToDb.connectionToDB();
+                CallableStatement callQ= conn.prepareCall("{call creaTabella(?)}"))
+            {
+                callQ.setString(1,type);
+
+                callQ.execute();
+            }catch (SQLException e)
+            {
+                Logger.getLogger("crea tabella errore").log(Level.SEVERE," create table error .{0}",e.getMessage());
+            }
+        }else Logger.getLogger("tabella creata").log(Level.WARNING,"table already created .{0}",type);
+    }
+
+    private void popola(String type)
+    {
+        if (getPresente() == 0) {
+
+
+            try (Connection conn = ConnToDb.connectionToDB();
+                 CallableStatement callQ = conn.prepareCall("{call popolaTabella(?)}")) {
+                callQ.setString(1, type);
+
+                callQ.execute();
+            } catch (SQLException e) {
+                Logger.getLogger("popola query").log(Level.SEVERE, " error with populate table");
+            }
+        }
     }
 
 

@@ -17,35 +17,35 @@ public class SystemBean {
 		 private String tipoModifica;
 		 
 		 
-<span class="nc" id="L20">		 private static SystemBean userInstance = null;</span>
+<span class="fc" id="L20">		 private static SystemBean userInstance = null;</span>
 
 		    private SystemBean() {}
 
 		    public static SystemBean getInstance() {
-<span class="nc bnc" id="L25" title="All 2 branches missed.">		        if (userInstance == null) {</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">		        if (userInstance == null) {</span>
 		          
-<span class="nc" id="L27">		        	userInstance = new SystemBean();</span>
+<span class="fc" id="L27">		        	userInstance = new SystemBean();</span>
 		                }
 		       
-<span class="nc" id="L30">		        return userInstance;</span>
+<span class="fc" id="L30">		        return userInstance;</span>
 		    }
 			
 		 
 		public int getIdB() {
-<span class="nc" id="L35">			return idB;</span>
+<span class="fc" id="L35">			return idB;</span>
 		}
 
 		public void setIdB(int idB) {
-<span class="nc" id="L39">			this.idB = idB;</span>
-<span class="nc" id="L40">		}</span>
+<span class="fc" id="L39">			this.idB = idB;</span>
+<span class="fc" id="L40">		}</span>
 
 		public String getTypeB() {
 <span class="nc" id="L43">			return typeB;</span>
 		}
 
 		public void setTypeB(String typeB) {
-<span class="nc" id="L47">			this.typeB = typeB;</span>
-<span class="nc" id="L48">		}</span>
+<span class="fc" id="L47">			this.typeB = typeB;</span>
+<span class="fc" id="L48">		}</span>
 
 		public boolean isLoggedB() {
 <span class="nc" id="L51">			return isLoggedB;</span>
@@ -72,28 +72,28 @@ public class SystemBean {
 <span class="nc" id="L72">		}</span>
 
 		public float getSpesaTB() {
-<span class="nc" id="L75">			return spesaTB;</span>
+<span class="fc" id="L75">			return spesaTB;</span>
 		}
 
 		public void setSpesaTB(float spesaTB) {
-<span class="nc" id="L79">			this.spesaTB = spesaTB;</span>
-<span class="nc" id="L80">		}</span>
+<span class="fc" id="L79">			this.spesaTB = spesaTB;</span>
+<span class="fc" id="L80">		}</span>
 
 		public int getQuantitaB() {
 <span class="nc" id="L83">			return quantitaB;</span>
 		}
 
 		public void setQuantitaB(int quantitaB) {
-<span class="nc" id="L87">			this.quantitaB = quantitaB;</span>
-<span class="nc" id="L88">		}</span>
+<span class="fc" id="L87">			this.quantitaB = quantitaB;</span>
+<span class="fc" id="L88">		}</span>
 
 		public String getMetodoPB() {
-<span class="nc" id="L91">			return metodoPB;</span>
+<span class="fc" id="L91">			return metodoPB;</span>
 		}
 
 		public void setMetodoPB(String metodoPB) {
-<span class="nc" id="L95">			this.metodoPB = metodoPB;</span>
-<span class="nc" id="L96">		}</span>
+<span class="fc" id="L95">			this.metodoPB = metodoPB;</span>
+<span class="fc" id="L96">		}</span>
 
 		public boolean isNegozioSelezionatoB() {
 <span class="nc" id="L99">			return negozioSelezionatoB;</span>
@@ -134,7 +134,7 @@ public class SystemBean {
     }
 
     public void setTipoModifica(String tipoModifica) {
-<span class="nc" id="L137">        this.tipoModifica = tipoModifica;</span>
-<span class="nc" id="L138">    }</span>
+<span class="fc" id="L137">        this.tipoModifica = tipoModifica;</span>
+<span class="fc" id="L138">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

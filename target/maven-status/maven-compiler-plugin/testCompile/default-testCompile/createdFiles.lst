@@ -1,5 +1,6 @@
 testFinali/TestFinali.class
 secondoUcLogin/TestResetPassword.class
+testWeb/TestAcquistaLibro.class
 primoUcAcquista/testLibro/TestAcquistaLibro.class
 terzoUcGestione/ricerca/TestControllerRicerca.class
 terzoUcGestione/gestioneOggetto/TestControllerGestioneRivista.class
@@ -14,5 +15,7 @@ primoUcAcquista/testGiornale/TestAcquistaGiornale.class
 terzoUcGestione/gestioneOggetto/TestControllerGestioneLibro.class
 terzoUcGestione/visualizzaProfiloModifica/TestControllerVisualizzaProfilo.class
 primoUcVisualizza/TestControllerVisualizza.class
+testWeb/TestAcquistaGiornale.class
+testWeb/TestWebFinali.class
 terzoUcGestione/ordine/TestControllerVisualizzaOrdini.class
 terzoUcGestione/gestioneOggetto/TestControllerGestioneGiornale.class
