@@ -31,7 +31,7 @@ public class BoundaryRegistra implements Initializable {
     @FXML
     private ImageView imageView;
     @FXML
-    private VBox vBox;
+    private VBox vbox;
     @FXML
     private Label nomeL;
     @FXML
@@ -47,7 +47,7 @@ public class BoundaryRegistra implements Initializable {
     @FXML
     private Label ruoloL;
     @FXML
-    private VBox vBox2;
+    private VBox vbox2;
     @FXML
     private TextField nomeTF;
     @FXML

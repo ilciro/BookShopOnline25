@@ -294,7 +294,7 @@
 
       <configuration>
         <excludes>
-          <exclude>**/laptop/view/**</exclude>
+          <exclude>**/laptop/boundary/**</exclude>
           <exclude>**/laptop/test/**</exclude>
           <exclude>**/web/test/**</exclude>
           <exclude>**/web/servlet/**</exclude>
