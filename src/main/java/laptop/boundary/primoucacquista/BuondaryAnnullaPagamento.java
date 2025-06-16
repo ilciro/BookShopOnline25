@@ -102,6 +102,8 @@ public class BuondaryAnnullaPagamento implements Initializable {
     @FXML
     private void indietro() throws IOException {
         boolean status = false;
+        Stage stage;
+        Parent root;
         switch (vis.getMetodoP())
         {
             case CASH -> {
@@ -119,8 +121,7 @@ public class BuondaryAnnullaPagamento implements Initializable {
         }
         if(status)
         {
-            Stage stage;
-            Parent root;
+
             stage = (Stage) buttonI.getScene().getWindow();
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
             stage.setTitle("Benvenuto nella schermata del riepilogo ordine");

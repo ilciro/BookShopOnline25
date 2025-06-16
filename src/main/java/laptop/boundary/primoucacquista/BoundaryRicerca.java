@@ -160,13 +160,14 @@ public class BoundaryRicerca implements Initializable {
     @FXML
     private void indietro() throws IOException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
         String type="";
+        Stage stage;
+        Parent root;
         if(databaseButton.isSelected()) type=DATABASE;
         if (fileButton.isSelected()) type=FILE;
         if (memoriaButton.isSelected()) type=MEMORIA;
 
         if(cR.logout(type)) {
-            Stage stage;
-            Parent root;
+
             stage = (Stage) buttonI.getScene().getWindow();
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
             stage.setTitle("Benvenuto nella schermata della home Page");
@@ -175,8 +176,7 @@ public class BoundaryRicerca implements Initializable {
             stage.show();
         }
         else {
-            Stage stage;
-            Parent root;
+
             stage = (Stage) buttonI.getScene().getWindow();
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/ricerca.fxml")));
             stage.setTitle("Benvenuto nella schermata della ricerca");

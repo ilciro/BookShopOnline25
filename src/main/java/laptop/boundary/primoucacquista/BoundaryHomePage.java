@@ -196,10 +196,11 @@ public class BoundaryHomePage implements Initializable {
 	}
 	@FXML
 	private void indietro() throws IOException {
+		Stage stage;
+		Parent root;
 
 		if(checkPersitenza() && cHP.logout()) {
-				Stage stage;
-				Parent root;
+
 				stage = (Stage) buttonI.getScene().getWindow();
 				root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
 				stage.setTitle("Benvenuto nella schermata di home page");
