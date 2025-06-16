@@ -133,10 +133,6 @@ public class ControllerSystemState {
 		this.metodoP = metodoP;
 	}
 
-
-
-
-
     public String getTipoModifica() {
         return tipoModifica;
     }

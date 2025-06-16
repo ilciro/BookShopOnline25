@@ -9,52 +9,53 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import laptop.database.giornale.MemoriaGiornale;
-import laptop.database.libro.MemoriaLibro;
-import laptop.database.rivista.MemoriaRivista;
+import laptop.database.primoucacquista.giornale.CsvGiornale;
+import laptop.database.primoucacquista.giornale.GiornaleDao;
+import laptop.database.primoucacquista.giornale.MemoriaGiornale;
+import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
+import laptop.database.primoucacquista.libro.MemoriaLibro;
+import laptop.database.primoucacquista.rivista.CsvRivista;
+import laptop.database.primoucacquista.rivista.MemoriaRivista;
+import laptop.database.primoucacquista.rivista.PersistenzaRivista;
+import laptop.database.primoucacquista.rivista.RivistaDao;
 import laptop.exception.IdException;
 
 import laptop.model.raccolta.Raccolta;
-import laptop.database.giornale.CsvGiornale;
-import laptop.database.giornale.GiornaleDao;
-import laptop.database.giornale.PersistenzaGiornale;
-import laptop.database.libro.CsvLibro;
-import laptop.database.libro.LibroDao;
-import laptop.database.libro.PersistenzaLibro;
-import laptop.database.rivista.CsvRivista;
-import laptop.database.rivista.PersistenzaRivista;
-import laptop.database.rivista.RivistaDao;
+
+import laptop.database.primoucacquista.libro.CsvLibro;
+import laptop.database.primoucacquista.libro.LibroDao;
+import laptop.database.primoucacquista.libro.PersistenzaLibro;
+
 
 
 public class ControllerCompravendita {
 
-	private static final String DATABASE="database";
-	private static final String FILE="file";
-	private static final String MEMORIA="memoria";
+	private static final String DATABASE = "database";
+	private static final String FILE = "file";
+	private static final String MEMORIA = "memoria";
 	private PersistenzaLibro pL;
 	private PersistenzaGiornale pG;
 	private PersistenzaRivista pR;
 
-	public ObservableList<Raccolta> getLista(String type,String database) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+	public ObservableList<Raccolta> getLista(String type, String database) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
 
-	 ObservableList <Raccolta> catalogo=FXCollections.observableArrayList();
+		ObservableList<Raccolta> catalogo = FXCollections.observableArrayList();
 
-	 switch (type)
-	 {
-		 case "libro" -> {
+		switch (type) {
+			case "libro" -> {
 
-             switch (database) {
-                 case DATABASE -> pL = new LibroDao();
-                 case FILE -> pL = new CsvLibro();
-                 case MEMORIA -> pL = new MemoriaLibro();
-				 default -> Logger.getLogger("lista libro").log(Level.SEVERE,"book persistency not correct !!");
-             }
+				switch (database) {
+					case DATABASE -> pL = new LibroDao();
+					case FILE -> pL = new CsvLibro();
+					case MEMORIA -> pL = new MemoriaLibro();
+					default -> Logger.getLogger("lista libro").log(Level.SEVERE, "book persistency not correct !!");
+				}
 
-			catalogo.addAll(pL.retrieveRaccoltaData());
-
+				catalogo.addAll(pL.retrieveRaccoltaData());
 
 
-		 }
+			}
+
 
 		 case "giornale"->{
 			 switch (database) {
@@ -68,6 +69,8 @@ public class ControllerCompravendita {
 			 catalogo.addAll(pG.retrieveRaccoltaData());
 
 		 }
+
+
 
 		 case "rivista"->{
 			 switch (database) {
@@ -83,14 +86,16 @@ public class ControllerCompravendita {
 
 
 
-		 default-> Logger.getLogger("get lista").log(Level.SEVERE, " list is empty");
+			default -> Logger.getLogger("get lista").log(Level.SEVERE, " list is empty");
 
-	 }
+		}
 
 
-
-	return catalogo;
+		return catalogo;
 	}
-
-	
 }
+
+
+
+
+

@@ -242,7 +242,7 @@
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-maven-plugin</artifactId>
       <configuration>
-        <mainClass>laptop.view.Main</mainClass>
+        <mainClass>laptop.boundary.Main</mainClass>
       </configuration>
       <version>0.0.8</version>
 

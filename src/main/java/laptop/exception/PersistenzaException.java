@@ -1,9 +1,15 @@
 package laptop.exception;
 
+import java.io.Serial;
+
 public class PersistenzaException extends Exception{
 
-    public PersistenzaException()
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+
+    public PersistenzaException(String mex)
     {
-        super(" type of persistency not correct !!");
+        super(mex);
     }
 }

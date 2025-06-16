@@ -2,36 +2,39 @@ package laptop.controller.primoucacquista;
 
 import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
-import laptop.database.giornale.MemoriaGiornale;
-import laptop.database.libro.MemoriaLibro;
-import laptop.database.pagamento.MemoriaPagamento;
-import laptop.database.pagamento.PagamentoDao;
-import laptop.database.report.MemoriaReport;
-import laptop.database.report.ReportDao;
-import laptop.database.rivista.MemoriaRivista;
+import laptop.database.primoucacquista.giornale.CsvGiornale;
+import laptop.database.primoucacquista.giornale.GiornaleDao;
+import laptop.database.primoucacquista.giornale.MemoriaGiornale;
+import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
+import laptop.database.primoucacquista.libro.MemoriaLibro;
+import laptop.database.primoucacquista.pagamento.MemoriaPagamento;
+import laptop.database.primoucacquista.pagamento.PagamentoDao;
+import laptop.database.primoucacquista.rivista.CsvRivista;
+import laptop.database.primoucacquista.rivista.MemoriaRivista;
+import laptop.database.primoucacquista.rivista.PersistenzaRivista;
+import laptop.database.primoucacquista.rivista.RivistaDao;
+import laptop.database.terzogestioneprofilooggetto.report.CsvReport;
+import laptop.database.terzogestioneprofilooggetto.report.MemoriaReport;
+import laptop.database.terzogestioneprofilooggetto.report.PersistenzaReport;
+import laptop.database.terzogestioneprofilooggetto.report.ReportDao;
 import laptop.exception.IdException;
 import laptop.model.Pagamento;
-import laptop.model.Report;
 
+import laptop.model.Report;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Rivista;
-import laptop.database.giornale.CsvGiornale;
-import laptop.database.giornale.GiornaleDao;
-import laptop.database.giornale.PersistenzaGiornale;
-import laptop.database.libro.CsvLibro;
-import laptop.database.libro.LibroDao;
-import laptop.database.libro.PersistenzaLibro;
-import laptop.database.pagamento.CsvPagamento;
-import laptop.database.pagamento.PersistenzaPagamento;
-import laptop.database.report.CsvReport;
-import laptop.database.report.PersistenzaReport;
-import laptop.database.rivista.CsvRivista;
-import laptop.database.rivista.PersistenzaRivista;
-import laptop.database.rivista.RivistaDao;
+
+import laptop.database.primoucacquista.libro.CsvLibro;
+import laptop.database.primoucacquista.libro.LibroDao;
+import laptop.database.primoucacquista.libro.PersistenzaLibro;
+import laptop.database.primoucacquista.pagamento.CsvPagamento;
+import laptop.database.primoucacquista.pagamento.PersistenzaPagamento;
+
 import laptop.model.user.User;
 
 import java.io.IOException;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.SQLException;
@@ -54,7 +57,7 @@ public class ControllerCheckPagamentoData {
     private PersistenzaPagamento pP;
     private PersistenzaReport pR;
     private PersistenzaLibro pL;
-    private  PersistenzaGiornale pG;
+    private PersistenzaGiornale pG;
     private PersistenzaRivista pRiv;
 
 
@@ -97,7 +100,7 @@ public class ControllerCheckPagamentoData {
         //fare report
 
 
-        inserisciReport(type,pL,null,null);
+       inserisciReport(type,pL,null,null);
 
         //modifico qui
         Libro temp;
@@ -118,6 +121,7 @@ public class ControllerCheckPagamentoData {
 
 
     }
+
 
     private void pagamentoGiornale(String type,Pagamento p) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
         g.setId(vis.getIdGiornale());
@@ -212,6 +216,8 @@ public class ControllerCheckPagamentoData {
 
     }
 
+
+
     public void checkPagamentoData(String nome, String type) throws IdException, CsvValidationException, IOException, ClassNotFoundException, SQLException {
         Pagamento p;
 
@@ -222,6 +228,7 @@ public class ControllerCheckPagamentoData {
                         p = new Pagamento(1, vis.getMetodoP(), nome, vis.getSpesaT(), User.getInstance().getEmail(), null, vis.getIdLibro());
                         pagamentoLibro(type,p);
                     }
+
             case "giornale" ->
 
                     {
@@ -234,9 +241,12 @@ public class ControllerCheckPagamentoData {
 
                         pagamentoRivista(type,p);
                     }
+
+
             default -> Logger.getLogger("pagamento").log(Level.SEVERE, " error in payment");
         }
     }
+
 
 
     private void inserisciReport(String type,PersistenzaLibro pL,PersistenzaGiornale pG,PersistenzaRivista pRiv) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
@@ -260,6 +270,7 @@ public class ControllerCheckPagamentoData {
             report.setTotale(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getPrezzo() * vis.getQuantita());
 
         }
+
         if(pRiv!=null)
         {
             report.setTipologiaOggetto(pRiv.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria());
@@ -277,12 +288,16 @@ public class ControllerCheckPagamentoData {
             report.setTotale(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getPrezzo() * vis.getQuantita());
 
         }
+
+
         report.setNrPezzi(vis.getQuantita());
 
 
 
         if(pR.insertReport(report))  Logger.getLogger("report inserito").log(Level.INFO," report inserted");
     }
+
+
 
 
     public void controllaPag(String d, String c,String civ) {

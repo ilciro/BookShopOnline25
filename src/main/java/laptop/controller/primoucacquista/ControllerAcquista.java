@@ -6,24 +6,27 @@ import java.util.logging.Logger;
 
 
 import com.opencsv.exceptions.CsvValidationException;
-import laptop.controller.ControllerSystemState;
 
-import laptop.database.giornale.MemoriaGiornale;
-import laptop.database.libro.MemoriaLibro;
-import laptop.database.rivista.MemoriaRivista;
-import laptop.database.rivista.RivistaDao;
+import laptop.controller.ControllerSystemState;
+import laptop.database.primoucacquista.giornale.CsvGiornale;
+import laptop.database.primoucacquista.giornale.GiornaleDao;
+import laptop.database.primoucacquista.giornale.MemoriaGiornale;
+import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
+import laptop.database.primoucacquista.libro.MemoriaLibro;
+
+import laptop.database.primoucacquista.rivista.CsvRivista;
+import laptop.database.primoucacquista.rivista.MemoriaRivista;
+import laptop.database.primoucacquista.rivista.PersistenzaRivista;
+import laptop.database.primoucacquista.rivista.RivistaDao;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Rivista;
-import laptop.database.giornale.CsvGiornale;
-import laptop.database.giornale.GiornaleDao;
-import laptop.database.giornale.PersistenzaGiornale;
-import laptop.database.libro.CsvLibro;
-import laptop.database.libro.PersistenzaLibro;
-import laptop.database.libro.LibroDao;
-import laptop.database.rivista.CsvRivista;
-import laptop.database.rivista.PersistenzaRivista;
+
+import laptop.database.primoucacquista.libro.CsvLibro;
+import laptop.database.primoucacquista.libro.PersistenzaLibro;
+import laptop.database.primoucacquista.libro.LibroDao;
+
 
 
 public class ControllerAcquista {
@@ -80,6 +83,7 @@ public class ControllerAcquista {
 
 			}
 
+
 			case GIORNALE->
 			{
 				g.setId(vis.getIdGiornale());
@@ -113,6 +117,8 @@ public class ControllerAcquista {
 
 
 			}
+
+
 
 
 			default -> Logger.getLogger("get nome").log(Level.SEVERE," name is wrong!!");

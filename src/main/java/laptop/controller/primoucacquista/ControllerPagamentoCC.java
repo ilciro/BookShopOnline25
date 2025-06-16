@@ -10,10 +10,10 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 
-import laptop.database.cartacredito.CartaCreditoDao;
-import laptop.database.cartacredito.CsvCartaCredito;
-import laptop.database.cartacredito.MemoriaCartaCredito;
-import laptop.database.cartacredito.PersistenzaCC;
+import laptop.database.primoucacquista.cartacredito.CartaCreditoDao;
+import laptop.database.primoucacquista.cartacredito.CsvCartaCredito;
+import laptop.database.primoucacquista.cartacredito.MemoriaCartaCredito;
+import laptop.database.primoucacquista.cartacredito.PersistenzaCC;
 import laptop.exception.IdException;
 import laptop.model.CartaDiCredito;
 import laptop.model.Pagamento;

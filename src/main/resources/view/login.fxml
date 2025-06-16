@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.view.secondouclogin.BuondaryLogin">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.boundary.secondouclogin.BuondaryLogin">
    <children>
       <Label fx:id="header" layoutX="54.0" layoutY="36.0" text="Benvenuto nel sistema di login" textFill="#0060e8" />
       <ImageView fx:id="imageView" fitHeight="100.0" fitWidth="100.0" layoutX="250.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">

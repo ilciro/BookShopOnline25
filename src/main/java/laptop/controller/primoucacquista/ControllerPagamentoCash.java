@@ -8,13 +8,13 @@ import java.util.logging.Logger;
 
 import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
-import laptop.database.fattura.ContrassegnoDao;
+import laptop.database.primoucacquista.fattura.ContrassegnoDao;
 import laptop.exception.IdException;
 import laptop.model.Fattura;
 import laptop.model.user.User;
-import laptop.database.fattura.CsvFattura;
-import laptop.database.fattura.MemoriaFattura;
-import laptop.database.fattura.PersistenzaFattura;
+import laptop.database.primoucacquista.fattura.CsvFattura;
+import laptop.database.primoucacquista.fattura.MemoriaFattura;
+import laptop.database.primoucacquista.fattura.PersistenzaFattura;
 
 
 public class ControllerPagamentoCash {

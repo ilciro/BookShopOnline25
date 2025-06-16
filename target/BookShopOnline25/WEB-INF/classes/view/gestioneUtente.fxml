@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.view.terzoucgestioneprofilooggetto.BoundaryGestioneUtente">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.boundary.terzoucgestioneprofilooggetto.BoundaryGestioneUtente">
    <children>
       <Label fx:id="header" layoutX="33.0" layoutY="35.0" prefHeight="30.0" prefWidth="600.0" text="Benvenuto nella schermata per la gestione dell'utente" textFill="#000cf8" />
       <VBox fx:id="vbox" layoutX="35.0" layoutY="75.0" prefHeight="400.0" prefWidth="185.0">

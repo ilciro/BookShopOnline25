@@ -1,14 +1,14 @@
 package laptop.controller.primoucacquista;
 
 import com.opencsv.exceptions.CsvValidationException;
-import laptop.database.fattura.ContrassegnoDao;
-import laptop.database.fattura.CsvFattura;
-import laptop.database.fattura.MemoriaFattura;
-import laptop.database.fattura.PersistenzaFattura;
-import laptop.database.pagamento.CsvPagamento;
-import laptop.database.pagamento.MemoriaPagamento;
-import laptop.database.pagamento.PagamentoDao;
-import laptop.database.pagamento.PersistenzaPagamento;
+import laptop.database.primoucacquista.fattura.ContrassegnoDao;
+import laptop.database.primoucacquista.fattura.CsvFattura;
+import laptop.database.primoucacquista.fattura.MemoriaFattura;
+import laptop.database.primoucacquista.fattura.PersistenzaFattura;
+import laptop.database.primoucacquista.pagamento.CsvPagamento;
+import laptop.database.primoucacquista.pagamento.MemoriaPagamento;
+import laptop.database.primoucacquista.pagamento.PagamentoDao;
+import laptop.database.primoucacquista.pagamento.PersistenzaPagamento;
 import laptop.model.Fattura;
 import laptop.model.Pagamento;
 

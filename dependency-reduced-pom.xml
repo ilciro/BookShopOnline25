@@ -62,7 +62,7 @@
         <artifactId>javafx-maven-plugin</artifactId>
         <version>0.0.8</version>
         <configuration>
-          <mainClass>laptop.view.Main</mainClass>
+          <mainClass>laptop.boundary.Main</mainClass>
         </configuration>
       </plugin>
       <plugin>

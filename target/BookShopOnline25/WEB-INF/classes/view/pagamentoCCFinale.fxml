@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.view.primoucacquista.BoundaryPagamentoCC">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.boundary.primoucacquista.BoundaryPagamentoCC">
    <children>
       <Label fx:id="header" layoutX="80.0" layoutY="30.0" prefHeight="16.0" prefWidth="408.0" text="Immettere credenziali carta di credito" textFill="#005eff" />
       <VBox fx:id="vbox" layoutX="45.0" layoutY="120.0" prefHeight="200.0" prefWidth="250.0">

@@ -7,22 +7,23 @@ import java.util.logging.Logger;
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
-import laptop.database.giornale.GiornaleDao;
-import laptop.database.giornale.MemoriaGiornale;
-import laptop.database.libro.MemoriaLibro;
-import laptop.database.rivista.MemoriaRivista;
+
+import laptop.database.primoucacquista.giornale.CsvGiornale;
+import laptop.database.primoucacquista.giornale.GiornaleDao;
+import laptop.database.primoucacquista.giornale.MemoriaGiornale;
+import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
+import laptop.database.primoucacquista.libro.MemoriaLibro;
+import laptop.database.primoucacquista.rivista.CsvRivista;
+import laptop.database.primoucacquista.rivista.MemoriaRivista;
+import laptop.database.primoucacquista.rivista.PersistenzaRivista;
+import laptop.database.primoucacquista.rivista.RivistaDao;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Rivista;
-import laptop.database.giornale.CsvGiornale;
-import laptop.database.giornale.PersistenzaGiornale;
-import laptop.database.libro.CsvLibro;
-import laptop.database.libro.LibroDao;
-import laptop.database.libro.PersistenzaLibro;
-import laptop.database.rivista.CsvRivista;
-import laptop.database.rivista.PersistenzaRivista;
-import laptop.database.rivista.RivistaDao;
+import laptop.database.primoucacquista.libro.CsvLibro;
+import laptop.database.primoucacquista.libro.LibroDao;
+import laptop.database.primoucacquista.libro.PersistenzaLibro;
 
 
 public class ControllerVisualizza {
@@ -79,6 +80,7 @@ public class ControllerVisualizza {
 		return list;
 	}
 
+
 	public ObservableList<Giornale> getListGiornale(String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 
 		ObservableList<Giornale> list;
@@ -109,6 +111,8 @@ public class ControllerVisualizza {
 		return list;
 
 	}
+
+
 
 
 

@@ -3,21 +3,24 @@ package laptop.controller.primoucacquista;
 
 import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
-import laptop.database.giornale.MemoriaGiornale;
-import laptop.database.libro.MemoriaLibro;
-import laptop.database.rivista.MemoriaRivista;
+import laptop.database.primoucacquista.giornale.CsvGiornale;
+import laptop.database.primoucacquista.giornale.GiornaleDao;
+import laptop.database.primoucacquista.giornale.MemoriaGiornale;
+import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
+import laptop.database.primoucacquista.libro.LibroDao;
+import laptop.database.primoucacquista.libro.MemoriaLibro;
+import laptop.database.primoucacquista.libro.PersistenzaLibro;
+import laptop.database.primoucacquista.rivista.CsvRivista;
+import laptop.database.primoucacquista.rivista.MemoriaRivista;
+import laptop.database.primoucacquista.rivista.PersistenzaRivista;
+import laptop.database.primoucacquista.rivista.RivistaDao;
 import laptop.exception.IdException;
 import laptop.exception.LogoutException;
 import laptop.model.user.User;
-import laptop.database.giornale.CsvGiornale;
-import laptop.database.giornale.GiornaleDao;
-import laptop.database.giornale.PersistenzaGiornale;
-import laptop.database.libro.CsvLibro;
-import laptop.database.libro.LibroDao;
-import laptop.database.libro.PersistenzaLibro;
-import laptop.database.rivista.CsvRivista;
-import laptop.database.rivista.PersistenzaRivista;
-import laptop.database.rivista.RivistaDao;
+import laptop.database.primoucacquista.libro.CsvLibro;
+
+
+
 import java.io.IOException;
 
 import java.sql.SQLException;
@@ -34,11 +37,12 @@ public class ControllerHomePage {
     private void inizializzaLibro(String type) throws CsvValidationException, IOException, ClassNotFoundException, SQLException, IdException {
         PersistenzaLibro pL;
         if(type.equals(DATABASE)) pL =new LibroDao();
-        else if(type.equals(FILE)) pL =new CsvLibro();
-        else pL=new MemoriaLibro();
+        else if(type.equals(FILE)) pL = new CsvLibro();
+        else pL= new MemoriaLibro();
 
             pL.initializza();
     }
+
     private void inizializzaGiornale(String type) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
         PersistenzaGiornale pG;
         if(type.equals(DATABASE)) pG =new GiornaleDao();
@@ -55,17 +59,20 @@ public class ControllerHomePage {
     }
 
 
+
+
     public void persistenza(String type) throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException {
 
         switch (vis.getType())
         {
             case "libro"-> inizializzaLibro(type);
-            case "giornale"-> inizializzaGiornale(type);
-            case "rivista"-> inizializzaRivista(type);
+           // case "giornale"-> inizializzaGiornale(type);
+            //case "rivista"-> inizializzaRivista(type);
             default -> Logger.getLogger("persistenza").log(Level.SEVERE," type is incorrect !!");
         }
 
     }
+
 
 
 
@@ -97,6 +104,8 @@ public class ControllerHomePage {
     public String getId() {
         return String.valueOf(User.getInstance().getId());
     }
+
+
 
 
 

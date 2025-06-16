@@ -3,10 +3,10 @@ package laptop.controller.primoucacquista;
 
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.ObservableList;
-import laptop.database.negozio.CsvNegozio;
-import laptop.database.negozio.MemoriaNegozio;
-import laptop.database.negozio.NegozioDao;
-import laptop.database.negozio.PersistenzaNegozio;
+import laptop.database.primoucacquista.negozio.CsvNegozio;
+import laptop.database.primoucacquista.negozio.MemoriaNegozio;
+import laptop.database.primoucacquista.negozio.NegozioDao;
+import laptop.database.primoucacquista.negozio.PersistenzaNegozio;
 import laptop.exception.IdException;
 import laptop.model.Negozio;
 

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.view.primoucacquista.BuondaryAnnullaPagamento">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.boundary.primoucacquista.BuondaryAnnullaPagamento">
    <children>
       <Label fx:id="header" layoutX="67.0" layoutY="24.0" prefHeight="16.0" prefWidth="552.0" text="Benvenuto nella schermata per annullare il pagamento con annessa fattura" textFill="#0202ee" />
       <TextArea fx:id="tAFattura" layoutX="14.0" layoutY="60.0" prefHeight="106.0" prefWidth="430.0" />

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="268.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.view.primoucacquista.BoundaryScegliNegozio">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="268.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.boundary.primoucacquista.BoundaryScegliNegozio">
    <children>
       <Label fx:id="labelL" layoutX="35.0" layoutY="32.0" prefHeight="41.0" prefWidth="299.0" text="Scegli uno dei negozi in cui effetuare il ritiro:" />
       <RadioButton fx:id="radio1" layoutX="35.0" layoutY="130.0" mnemonicParsing="false">
