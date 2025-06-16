@@ -3,6 +3,7 @@ package laptop.database.primoucacquista.libro;
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.database.primoucacquista.DaoInitialize;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
@@ -51,22 +52,10 @@ public  class PersistenzaLibro {
 
      }
     public void initializza() throws IOException, CsvValidationException, ClassNotFoundException, SQLException, IdException {
-      //  PersistenzaInitialize pI=new PersistenzaInitialize();
-        //pI.initializza("libro");
-
-        String []paths=new String[3];
-
-        paths[0]="src/main/resources/sql/dbCreate.properties";
-        //solo prima lettere*
-        String appoggio= StringUtils.capitalizeFirstLetter("libro");
-        paths[1]="report/report"+appoggio+".csv";
-        paths[2]="memory/serializzazione"+appoggio+".ser";
+      DaoInitialize dI=new DaoInitialize();
+        dI.inizializza("libro");
 
 
-
-        if(!Files.exists(Path.of(paths[0]))) throw new IOException(DATABASEXCEPTION);
-        if(!Files.exists(Path.of(paths[1]))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
-        if(!Files.exists(Path.of(paths[2]))) throw new CsvValidationException(CSVEXCEPTION);
     }
     public ObservableList<Libro> getLibri() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
         if(!Files.exists(Path.of(DATABASE))) throw new IdException(DATABASEXCEPTION);

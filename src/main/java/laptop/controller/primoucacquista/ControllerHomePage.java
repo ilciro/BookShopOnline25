@@ -66,8 +66,8 @@ public class ControllerHomePage {
         switch (vis.getType())
         {
             case "libro"-> inizializzaLibro(type);
-           // case "giornale"-> inizializzaGiornale(type);
-            //case "rivista"-> inizializzaRivista(type);
+            case "giornale"-> inizializzaGiornale(type);
+           case "rivista"-> inizializzaRivista(type);
             default -> Logger.getLogger("persistenza").log(Level.SEVERE," type is incorrect !!");
         }
 

@@ -3,6 +3,7 @@ package laptop.database.primoucacquista.rivista;
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.database.primoucacquista.DaoInitialize;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Raccolta;
 import laptop.model.raccolta.Rivista;
@@ -48,8 +49,8 @@ public class PersistenzaRivista {
         return FXCollections.observableArrayList();
     }
     public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException {
-       // PersistenzaInitialize pI=new PersistenzaInitialize();
-        //pI.initializza("rivista");
+        DaoInitialize dI=new DaoInitialize();
+        dI.inizializza("rivista");
     }
     public ObservableList<Rivista> getRiviste() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
         if(!Files.exists(Path.of(DATABASE))) throw new IdException(DATABASEXCEPTION);

@@ -25,12 +25,10 @@ import javafx.stage.Stage;
 import laptop.controller.primoucacquista.ControllerScegliNegozio;
 import laptop.exception.IdException;
 import laptop.model.Negozio;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
 
 public class BoundaryScegliNegozio {
 
-	private static final Log log = LogFactory.getLog(BoundaryScegliNegozio.class);
 	@FXML
 	private Label labelL;
 	@FXML
