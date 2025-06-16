@@ -120,12 +120,7 @@ public class BoundaryPagamentoCash implements Initializable{
 				else
 				{
 
-				stage = (Stage) buttonI.getScene().getWindow();
-				root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/download.fxml")));
-				stage.setTitle("Benvenuto nella schermata per il download");
-				scene = new Scene(root);
-				stage.setScene(scene);
-				stage.show();
+				download();
 				}
 			}
 
@@ -152,6 +147,17 @@ public class BoundaryPagamentoCash implements Initializable{
 					cognomeTF.setEditable(false);
 				}
 
+	}
+
+	private void download() throws IOException {
+		Stage stage;
+		Parent root;
+		stage = (Stage) buttonI.getScene().getWindow();
+		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/download.fxml")));
+		stage.setTitle("Benvenuto nella schermata per il download");
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
 	}
 
 }
