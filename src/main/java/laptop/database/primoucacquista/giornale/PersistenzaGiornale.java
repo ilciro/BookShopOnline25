@@ -42,15 +42,15 @@ public class PersistenzaGiornale {
         return FXCollections.observableArrayList();
     }
     public ObservableList<Giornale> getGiornaleByIdTitoloAutoreLibro(Giornale g) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        if(g.getId()==0) throw new IOException(" file not found or id 0");
-        if(g.getEditore().isEmpty()) throw new CsvValidationException(" codice isbn is null");
-        if(g.getTitolo().isEmpty()) throw new ClassNotFoundException("class not found or titolo is null");
+        if(g.getId()==0) throw new IOException(" file daily not found or id 0");
+        if(g.getEditore().isEmpty()) throw new CsvValidationException(" editor daily is null");
+        if(g.getTitolo().isEmpty()) throw new ClassNotFoundException("class not found or titolo is null : daily");
         if(g.getId()<=-1) throw new IdException(" id daily is lower than 0");
         return FXCollections.observableArrayList();}
     public void initializza() throws CsvValidationException, IdException, IOException, SQLException, ClassNotFoundException {
 
-        if(!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASEXCEPTION);
         if(!Files.exists(Path.of(FILE))) throw new IOException(FILEXCEPTION);
+        if(!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASE);
         if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
 
         DaoInitialize dI=new DaoInitialize();

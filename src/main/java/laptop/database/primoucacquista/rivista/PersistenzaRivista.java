@@ -42,9 +42,9 @@ public class PersistenzaRivista {
 
     }
     public ObservableList<Rivista> getRivistaByIdTitoloAutoreRivista(Rivista r) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        if(r.getId()==0) throw new IOException(" file not found or id 0");
-        if(r.getAutore().isEmpty()) throw new CsvValidationException(" codice isbn is null");
-        if(r.getEditore().isEmpty()) throw new ClassNotFoundException("class not found or titolo is null");
+        if(r.getId()==0) throw new IOException(" file magazine not found or id 0");
+        if(r.getAutore().isEmpty()) throw new CsvValidationException(" magazine author is null");
+        if(r.getEditore().isEmpty()) throw new ClassNotFoundException("magazine editor is null");
         if(r.getId()<=-1) throw new IdException(" id magazine is lower than 0");
         return FXCollections.observableArrayList();
     }
