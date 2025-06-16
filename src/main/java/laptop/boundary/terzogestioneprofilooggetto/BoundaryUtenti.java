@@ -129,15 +129,7 @@ public class BoundaryUtenti implements Initializable {
 
             }
             else{
-                Logger.getLogger(CANCELLA).log(Level.INFO," deleted unsuccessfully");
-                Stage stage;
-                Parent root;
-                stage = (Stage) cancellaB.getScene().getWindow();
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/utenti.fxml")));
-                stage.setTitle("Benvenuto nella schermata di utente");
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+                utenti();
 
             }
 
@@ -151,14 +143,7 @@ public class BoundaryUtenti implements Initializable {
     }
     @FXML
     private void indietro() throws IOException {
-        Stage stage;
-        Parent root;
-        stage = (Stage) indietroB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/admin.fxml")));
-        stage.setTitle("Benvenuto nella schermata di admin");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+       indietroToAdmin();
     }
 
     private Scene scene;
@@ -172,5 +157,27 @@ public class BoundaryUtenti implements Initializable {
         nome.setCellValueFactory(new PropertyValueFactory<>("nomeT"));
         email.setCellValueFactory(new PropertyValueFactory<>("emailT"));
 
+    }
+
+    private void utenti() throws IOException {
+        Logger.getLogger(CANCELLA).log(Level.INFO," deleted unsuccessfully");
+        Stage stage;
+        Parent root;
+        stage = (Stage) cancellaB.getScene().getWindow();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/utenti.fxml")));
+        stage.setTitle("Benvenuto nella schermata di utente");
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    private void indietroToAdmin() throws IOException {
+        Stage stage;
+        Parent root;
+        stage = (Stage) indietroB.getScene().getWindow();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/admin.fxml")));
+        stage.setTitle("Benvenuto nella schermata di admin");
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

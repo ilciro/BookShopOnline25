@@ -100,27 +100,12 @@ public class BoundaryVisualizzaOrdini implements Initializable {
             stage.show();
         }
         else {
-            Logger.getLogger("elimina").log(Level.SEVERE," deleted payment failed");
-            Stage stage;
-            Parent root;
-            stage = (Stage) indietroB.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/visualizzaOrdini.fxml")));
-            stage.setTitle("Benvenuto nella schermata degli ordini");
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+           eliminaEVisualizza();
         }
     }
     @FXML
     private void indietro() throws IOException {
-        Stage stage;
-        Parent root;
-        stage = (Stage) indietroB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
-        stage.setTitle("Benvenuto nella home page");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        homePage();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -139,5 +124,27 @@ public class BoundaryVisualizzaOrdini implements Initializable {
     private boolean checkPersistenza()
     {
         return databaseButton.isSelected()|| fileButton.isSelected()||memoriaButton.isSelected();
+    }
+
+    private void eliminaEVisualizza() throws IOException {
+        Logger.getLogger("elimina").log(Level.SEVERE," deleted payment failed");
+        Stage stage;
+        Parent root;
+        stage = (Stage) indietroB.getScene().getWindow();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/visualizzaOrdini.fxml")));
+        stage.setTitle("Benvenuto nella schermata degli ordini");
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    private void homePage() throws IOException {
+        Stage stage;
+        Parent root;
+        stage = (Stage) indietroB.getScene().getWindow();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
+        stage.setTitle("Benvenuto nella home page");
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

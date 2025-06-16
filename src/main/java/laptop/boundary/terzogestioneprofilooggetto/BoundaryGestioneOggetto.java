@@ -198,36 +198,7 @@ public class BoundaryGestioneOggetto implements Initializable {
                     copieTF.setText(String.valueOf(cG.libroById(type).get(0).getNrCopie()));
                     dispTF.setText(String.valueOf(cG.libroById(type).get(0).getDisponibilita()));
                     prezzoTF.setText(String.valueOf(cG.libroById(type).get(0).getPrezzo()));
-                    list.add("ADOLESCENTI_RAGAZZI");
-                    list.add("ARTE");
-                    list.add("CINEMA_FOTOGRAFIA");
-                    list.add("BIOGRAFIE");
-                    list.add("DIARI_MEMORIE");
-                    list.add("CALENDARI_AGENDE");
-                    list.add("DIRITTO");
-                    list.add("DIZINARI_OPERE");
-                    list.add("ECONOMIA");
-                    list.add("FAMIGLIA");
-                    list.add("FANTASCIENZA_FANTASY");
-                    list.add("FUMETTI_MANGA");
-                    list.add("GIALLI_THRILLER");
-                    list.add("COMPUTER_GIOCHI");
-                    list.add("HUMOR");
-                    list.add(INFORMATICA);
-                    list.add("WEB_DIGITAL_MEDIA");
-                    list.add("LETTERATURA_NARRATIVA");
-                    list.add("LIBRI_BAMBINI");
-                    list.add("LIBRI_SCOLASTICI");
-                    list.add("LIBRI_UNIVERSITARI");
-                    list.add("RICETTARI_GENERALI");
-                    list.add("LINGUISTICA_SCRITTURA");
-                    list.add("POLITICA");
-                    list.add("RELIGIONE");
-                    list.add("ROMANZI_ROSA");
-                    list.add("SCIENZE");
-                    list.add("TECNOLOGIA_MEDICINA");
-                    list.add("ALTRO");
-                    categoriaTF1.setItems(list);
+                    aggiungiCategorie();
 
 
                 }
@@ -449,6 +420,41 @@ public class BoundaryGestioneOggetto implements Initializable {
             default -> Logger.getLogger("insert").log(Level.SEVERE, "error in insert");
         }
         return param;
+    }
+
+    private void aggiungiCategorie()
+    {
+        ObservableList<String> list=FXCollections.observableArrayList();
+        list.add("ADOLESCENTI_RAGAZZI");
+        list.add("ARTE");
+        list.add("CINEMA_FOTOGRAFIA");
+        list.add("BIOGRAFIE");
+        list.add("DIARI_MEMORIE");
+        list.add("CALENDARI_AGENDE");
+        list.add("DIRITTO");
+        list.add("DIZINARI_OPERE");
+        list.add("ECONOMIA");
+        list.add("FAMIGLIA");
+        list.add("FANTASCIENZA_FANTASY");
+        list.add("FUMETTI_MANGA");
+        list.add("GIALLI_THRILLER");
+        list.add("COMPUTER_GIOCHI");
+        list.add("HUMOR");
+        list.add(INFORMATICA);
+        list.add("WEB_DIGITAL_MEDIA");
+        list.add("LETTERATURA_NARRATIVA");
+        list.add("LIBRI_BAMBINI");
+        list.add("LIBRI_SCOLASTICI");
+        list.add("LIBRI_UNIVERSITARI");
+        list.add("RICETTARI_GENERALI");
+        list.add("LINGUISTICA_SCRITTURA");
+        list.add("POLITICA");
+        list.add("RELIGIONE");
+        list.add("ROMANZI_ROSA");
+        list.add("SCIENZE");
+        list.add("TECNOLOGIA_MEDICINA");
+        list.add("ALTRO");
+        categoriaTF1.setItems(list);
     }
 
 

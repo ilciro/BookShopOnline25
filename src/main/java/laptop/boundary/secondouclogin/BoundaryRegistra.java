@@ -122,14 +122,7 @@ public class BoundaryRegistra implements Initializable {
     }
     @FXML
     private void indietro() throws IOException {
-        Stage stage;
-        Parent root;
-        stage = (Stage) buttonI.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/login.fxml")));
-        stage.setTitle("Benvenuto nella schermata del login");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        login();
     }
 
     @Override
@@ -148,5 +141,16 @@ public class BoundaryRegistra implements Initializable {
     private boolean checkPersistenza()
     {
         return databaseButton.isSelected() || fileButton.isSelected() || memoriaButton.isSelected();
+    }
+
+    private void login() throws IOException {
+        Stage stage;
+        Parent root;
+        stage = (Stage) buttonI.getScene().getWindow();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/login.fxml")));
+        stage.setTitle("Benvenuto nella schermata del login");
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

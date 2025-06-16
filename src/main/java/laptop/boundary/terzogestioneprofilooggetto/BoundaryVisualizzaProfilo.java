@@ -60,7 +60,7 @@ public class BoundaryVisualizzaProfilo implements Initializable {
     @FXML
     private PasswordField passTF;
     @FXML
-    private TextArea  descTA;
+    private TextArea descTA;
     @FXML
     private VBox vbox1;
     @FXML
@@ -105,60 +105,57 @@ public class BoundaryVisualizzaProfilo implements Initializable {
 
 
         ta.setEditable(false);
-        String type="";
-        if(databaseButton.isSelected()) type="database";
-        if(fileButton.isSelected()) type="file";
-        if(memoriaButton.isSelected()) type="memoria";
-        if(checkPersistenza())
+        String type = "";
+        if (databaseButton.isSelected()) type = "database";
+        if (fileButton.isSelected()) type = "file";
+        if (memoriaButton.isSelected()) type = "memoria";
+        if (checkPersistenza())
             ta.setText(cV.infoUtente(type));
 
     }
 
 
-
     @FXML
     private void mostra() throws IdException {
 
-        if(ruolo.isSelected()) ruoloM();
-        else if(nome.isSelected()) nomeM();
-        else if(cognome.isSelected()) cognomeM();
+        if (ruolo.isSelected()) ruoloM();
+        else if (nome.isSelected()) nomeM();
+        else if (cognome.isSelected()) cognomeM();
         else if (email.isSelected()) emailM();
-        else if(pwd.isSelected()) passwordM();
-        else if(descrizione.isSelected()) descrizioneM();
-        else if(tutto.isSelected()) tuttoM();
+        else if (pwd.isSelected()) passwordM();
+        else if (descrizione.isSelected()) descrizioneM();
+        else if (tutto.isSelected()) tuttoM();
 
-        else
-        {
-            Logger.getLogger("mostra").log(Level.SEVERE,"click one button!!");
+        else {
+            Logger.getLogger("mostra").log(Level.SEVERE, "click one button!!");
             throw new IdException(" campi da modificare non ce ne sono!!");
         }
 
 
-
     }
+
     @FXML
     private void modifica() throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
-        if(radioU.isSelected()) ruoloTF.setText("UTENTE");
-        else if(radioS.isSelected()) ruoloTF.setText("SCRITTORE");
+        if (radioU.isSelected()) ruoloTF.setText("UTENTE");
+        else if (radioS.isSelected()) ruoloTF.setText("SCRITTORE");
         else if (radioE.isSelected()) ruoloTF.setText("EDITORE");
-        else if(radioA.isSelected()) ruoloTF.setText("ADMIN");
+        else if (radioA.isSelected()) ruoloTF.setText("ADMIN");
 
-        String[] dataU=new String[6];
-        dataU[0]=ruoloTF.getText();
-        dataU[1]=nomeTF.getText();
-        dataU[2]=cognomeTF.getText();
-        dataU[3]=emailTF.getText();
-        dataU[4]=passTF.getText();
-        dataU[5]=descTA.getText();
+        String[] dataU = new String[6];
+        dataU[0] = ruoloTF.getText();
+        dataU[1] = nomeTF.getText();
+        dataU[2] = cognomeTF.getText();
+        dataU[3] = emailTF.getText();
+        dataU[4] = passTF.getText();
+        dataU[5] = descTA.getText();
 
 
-        String type="";
-        if(databaseButton.isSelected()) type="database";
-        if(fileButton.isSelected()) type="file";
-        if(memoriaButton.isSelected()) type="memoria";
-        if(checkPersistenza())
-        { if(cV.modifica(dataU,type))
-            {
+        String type = "";
+        if (databaseButton.isSelected()) type = "database";
+        if (fileButton.isSelected()) type = "file";
+        if (memoriaButton.isSelected()) type = "memoria";
+        if (checkPersistenza()) {
+            if (cV.modifica(dataU, type)) {
                 Stage stage;
                 Parent root;
                 stage = (Stage) buttonM.getScene().getWindow();
@@ -167,43 +164,35 @@ public class BoundaryVisualizzaProfilo implements Initializable {
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-            }
-            else {
-            Logger.getLogger("modif").log(Level.SEVERE," modif not correct!!");
-            Stage stage;
-            Parent root;
-            stage = (Stage) buttonM.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/visualizzaProfilo.fxml")));
-            stage.setTitle("Benvenuto nella schermata della modifica");
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            } else {
+                Logger.getLogger("modif").log(Level.SEVERE, " modif not correct!!");
+                Stage stage;
+                Parent root;
+                stage = (Stage) buttonM.getScene().getWindow();
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/visualizzaProfilo.fxml")));
+                stage.setTitle("Benvenuto nella schermata della modifica");
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
 
             }
         }
 
 
     }
+
     @FXML
     private void indietro() throws IOException {
-        if(checkPersistenza()) {
-            Stage stage;
-            Parent root;
-            stage = (Stage) buttonI.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
-            stage.setTitle("Benvenuto nella schermata home page");
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+        if (checkPersistenza()) {
+            homePage();
         }
 
     }
-
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        cV=new ControllerVisualizzaProfilo();
+        cV = new ControllerVisualizzaProfilo();
         ruoloTF.setEditable(false);
         vbox.setVisible(false);
 
@@ -211,8 +200,7 @@ public class BoundaryVisualizzaProfilo implements Initializable {
 
     }
 
-    private void ruoloM()
-    {
+    private void ruoloM() {
         vbox.setVisible(true);
         vbox1.setVisible(true);
         ruoloTF.setVisible(true);
@@ -224,8 +212,8 @@ public class BoundaryVisualizzaProfilo implements Initializable {
         descTA.setVisible(false);
 
     }
-    private void nomeM()
-    {
+
+    private void nomeM() {
         vbox.setVisible(true);
         nomeTF.setVisible(true);
         vbox1.setVisible(false);
@@ -235,8 +223,8 @@ public class BoundaryVisualizzaProfilo implements Initializable {
         passTF.setVisible(false);
         descTA.setVisible(false);
     }
-    private void cognomeM()
-    {
+
+    private void cognomeM() {
         vbox.setVisible(true);
         cognomeTF.setVisible(true);
         vbox1.setVisible(false);
@@ -247,8 +235,8 @@ public class BoundaryVisualizzaProfilo implements Initializable {
         descTA.setVisible(false);
 
     }
-    private void emailM()
-    {
+
+    private void emailM() {
         vbox.setVisible(true);
         emailTF.setVisible(true);
         vbox1.setVisible(false);
@@ -259,8 +247,8 @@ public class BoundaryVisualizzaProfilo implements Initializable {
         descTA.setVisible(false);
 
     }
-    private void passwordM()
-    {
+
+    private void passwordM() {
         vbox.setVisible(true);
         passTF.setVisible(true);
         vbox1.setVisible(false);
@@ -271,8 +259,8 @@ public class BoundaryVisualizzaProfilo implements Initializable {
         descTA.setVisible(false);
 
     }
-    private void descrizioneM()
-    {
+
+    private void descrizioneM() {
         vbox.setVisible(true);
         descTA.setVisible(true);
         vbox1.setVisible(false);
@@ -284,8 +272,7 @@ public class BoundaryVisualizzaProfilo implements Initializable {
 
     }
 
-    private void tuttoM()
-    {
+    private void tuttoM() {
         vbox.setVisible(true);
         vbox1.setVisible(true);
         ruoloTF.setVisible(true);
@@ -296,8 +283,18 @@ public class BoundaryVisualizzaProfilo implements Initializable {
         descTA.setVisible(true);
     }
 
-    private boolean checkPersistenza()
-    {
-        return databaseButton.isSelected()||fileButton.isSelected()|| memoriaButton.isSelected();
+    private boolean checkPersistenza() {
+        return databaseButton.isSelected() || fileButton.isSelected() || memoriaButton.isSelected();
+    }
+
+    private void homePage() throws IOException {
+        Stage stage;
+        Parent root;
+        stage = (Stage) buttonI.getScene().getWindow();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
+        stage.setTitle("Benvenuto nella schermata home page");
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

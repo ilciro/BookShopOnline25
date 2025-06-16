@@ -151,14 +151,7 @@ public class BuondaryLogin implements Initializable {
 
     @FXML
     private void indietro() throws IOException {
-        Stage stage;
-        Parent root;
-        stage = (Stage) buttonI.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
-        stage.setTitle("Benvenuto nella home page dopo il login");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        homePage();
     }
 
     @Override
@@ -169,5 +162,16 @@ public class BuondaryLogin implements Initializable {
     private boolean checkPersistenza()
     {
         return databaseButton.isSelected() || fileButton.isSelected() || memoriaButton.isSelected();
+    }
+
+    private void homePage() throws IOException {
+        Stage stage;
+        Parent root;
+        stage = (Stage) buttonI.getScene().getWindow();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
+        stage.setTitle("Benvenuto nella home page dopo il login");
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

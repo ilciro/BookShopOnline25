@@ -197,14 +197,7 @@ public class BoundaryRaccolta implements Initializable
     }
     @FXML
     private void indietro() throws IOException {
-        Stage stage;
-        Parent root;
-        stage = (Stage) indietroB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/admin.fxml")));
-        stage.setTitle("Benvenuto nella schermata di admin");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+       admin();
     }
     @FXML
     private void genera() throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
@@ -247,5 +240,16 @@ public class BoundaryRaccolta implements Initializable
             default -> Logger.getLogger("check tipologia").log(Level.SEVERE,"id not correct assigned!!");
 
         }
+    }
+
+    private void admin() throws IOException {
+        Stage stage;
+        Parent root;
+        stage = (Stage) indietroB.getScene().getWindow();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/admin.fxml")));
+        stage.setTitle("Benvenuto nella schermata di admin");
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
