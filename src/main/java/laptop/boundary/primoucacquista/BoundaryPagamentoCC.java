@@ -135,7 +135,7 @@ public class BoundaryPagamentoCC implements Initializable {
 
 			Parent root;
 			stage = (Stage) buttonI.getScene().getWindow();
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/scegliNegozio.fxml")));
+			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/scegliNegozio.fxml")));
 			stage.setTitle("Benvenuto nella schermata per annullare fattura");
 			scene = new Scene(root);
         }
@@ -148,7 +148,7 @@ public class BoundaryPagamentoCC implements Initializable {
 
 			Parent root;
 			stage = (Stage) buttonI.getScene().getWindow();
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/download.fxml")));
+			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/download.fxml")));
 			stage.setTitle("Benvenuto nella schermata per il download");
 			scene = new Scene(root);
 

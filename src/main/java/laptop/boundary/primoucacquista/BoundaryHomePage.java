@@ -78,7 +78,7 @@ public class BoundaryHomePage implements Initializable {
 
 
 	protected Scene scene;
-	private static final String COMPRAVENDITA = "view/compravendita.fxml";
+	private static final String COMPRAVENDITA = "view/primoucacquista/compravendita.fxml";
 	private static final String PERSISTENZANULLA = "persistenza nulla";
 
 	private final ControllerSystemState vis = ControllerSystemState.getInstance();
@@ -117,7 +117,7 @@ public class BoundaryHomePage implements Initializable {
 			Stage stage;
 			Parent root;
 			stage = (Stage) buttonLogin.getScene().getWindow();
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/login.fxml")));
+			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/secondouclogin/login.fxml")));
 			stage.setTitle("Benvenuto nella schermata del login");
 			scene = new Scene(root);
 			stage.setScene(scene);
@@ -135,7 +135,7 @@ public class BoundaryHomePage implements Initializable {
 			Stage stage;
 			Parent root;
 			stage = (Stage) buttonRicerca.getScene().getWindow();
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/ricerca.fxml")));
+			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/ricerca.fxml")));
 			stage.setTitle("Benvenuto nella schermata della ricerca ");
 			scene = new Scene(root);
 			stage.setScene(scene);
@@ -168,7 +168,7 @@ public class BoundaryHomePage implements Initializable {
 			Stage stage;
 			Parent root;
 			stage = (Stage) buttonVisualizza.getScene().getWindow();
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/visualizzaOrdini.fxml")));
+			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/visualizzaOrdini.fxml")));
 			stage.setTitle("Benvenuto nella schermata degli ordini ");
 			scene = new Scene(root);
 			stage.setScene(scene);
@@ -184,7 +184,7 @@ public class BoundaryHomePage implements Initializable {
 			Stage stage;
 			Parent root;
 			stage = (Stage) buttonGestione.getScene().getWindow();
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/visualizzaProfilo.fxml")));
+			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/visualizzaProfilo.fxml")));
 			stage.setTitle("Benvenuto nella schermata di visualizzazione/gestione");
 			scene = new Scene(root);
 			stage.setScene(scene);
@@ -202,7 +202,7 @@ public class BoundaryHomePage implements Initializable {
 		if(checkPersitenza() && cHP.logout()) {
 
 				stage = (Stage) buttonI.getScene().getWindow();
-				root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
+				root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
 				stage.setTitle("Benvenuto nella schermata di home page");
 				scene = new Scene(root);
 				stage.setScene(scene);

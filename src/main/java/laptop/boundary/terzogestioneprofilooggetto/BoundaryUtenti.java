@@ -77,7 +77,7 @@ public class BoundaryUtenti implements Initializable {
         Stage stage;
         Parent root;
         stage = (Stage) inserisciB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/gestioneUtente.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/gestioneUtente.fxml")));
         stage.setTitle("Benvenuto nella schermata della gestione");
         scene = new Scene(root);
         stage.setScene(scene);
@@ -92,7 +92,7 @@ public class BoundaryUtenti implements Initializable {
         Stage stage;
         Parent root;
         stage = (Stage) modificaB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/gestioneUtente.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/gestioneUtente.fxml")));
         stage.setTitle("Benvenuto nella schermata della gestione");
         scene = new Scene(root);
         stage.setScene(scene);
@@ -121,7 +121,7 @@ public class BoundaryUtenti implements Initializable {
                 Stage stage;
                 Parent root;
                 stage = (Stage) cancellaB.getScene().getWindow();
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/utenti.fxml")));
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/utenti.fxml")));
                 stage.setTitle("Benvenuto nella schermata di utente");
                 scene = new Scene(root);
                 stage.setScene(scene);
@@ -164,7 +164,7 @@ public class BoundaryUtenti implements Initializable {
         Stage stage;
         Parent root;
         stage = (Stage) cancellaB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/utenti.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/utenti.fxml")));
         stage.setTitle("Benvenuto nella schermata di utente");
         scene = new Scene(root);
         stage.setScene(scene);
@@ -174,7 +174,7 @@ public class BoundaryUtenti implements Initializable {
         Stage stage;
         Parent root;
         stage = (Stage) indietroB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/admin.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/admin.fxml")));
         stage.setTitle("Benvenuto nella schermata di admin");
         scene = new Scene(root);
         stage.setScene(scene);

@@ -117,7 +117,7 @@ public class BoundaryGestioneOggetto implements Initializable {
     private  static final String LIBRO="libro";
     private  static final String GIORNALE="giornale";
     private  static final String RIVISTA="rivista";
-    private static final String RACCOLTA= "view/raccolta.fxml";
+    private static final String RACCOLTA= "view/terzoucgestioneprofilooggetto/raccolta.fxml";
     private static final String INFORMATICA="INFORMATICA";
     @FXML
     private void inserisci() throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {

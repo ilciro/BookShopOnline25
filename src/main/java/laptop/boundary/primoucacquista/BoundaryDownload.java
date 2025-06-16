@@ -80,7 +80,7 @@ public class BoundaryDownload implements Initializable {
 		Stage stage;
 		Parent root;
 		stage = (Stage) buttonA.getScene().getWindow();
-		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
+		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
@@ -95,7 +95,7 @@ public class BoundaryDownload implements Initializable {
 			Stage stage;
 			Parent root;
 			stage = (Stage) buttonA.getScene().getWindow();
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/annullaPagamento.fxml")));
+			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/annullaPagamento.fxml")));
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();

@@ -83,7 +83,7 @@ public class MemoriaRivista extends PersistenzaRivista{
     }
 
     @Override
-    public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
+    public void initializza() throws CsvValidationException, SQLException, ClassNotFoundException, IOException {
 
 
 

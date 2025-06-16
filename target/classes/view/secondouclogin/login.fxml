@@ -17,7 +17,7 @@
       <Label fx:id="header" layoutX="54.0" layoutY="36.0" text="Benvenuto nel sistema di login" textFill="#0060e8" />
       <ImageView fx:id="imageView" fitHeight="100.0" fitWidth="100.0" layoutX="250.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@vector-users-icon-png_302626.jpg" />
+            <Image url="@../primoucacquista/vector-users-icon-png_302626.jpg" />
          </image>
       </ImageView>
       <VBox fx:id="vbox1" layoutX="65.0" layoutY="210.0" prefHeight="150.0" prefWidth="100.0">

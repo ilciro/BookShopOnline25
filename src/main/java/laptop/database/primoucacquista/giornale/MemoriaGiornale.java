@@ -27,7 +27,7 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
     private static final MemoryInitialize mI=new MemoryInitialize() ;
 
     @Override
-    public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException {
+    public void initializza() throws CsvValidationException, SQLException,  IOException, ClassNotFoundException {
 
         mI.inizializza(SERIALIZZAZIONE);
 

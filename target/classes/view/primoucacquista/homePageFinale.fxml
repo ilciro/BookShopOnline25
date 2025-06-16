@@ -42,12 +42,12 @@
             </ImageView>
             <ImageView fx:id="imageVisualizza" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@png-clipart-paper-agenda-computer-icons-diary-agenda-rectangle-technology-thumbnail.png" />
+                  <Image url="@../terzoucgestioneprofilooggetto/png-clipart-paper-agenda-computer-icons-diary-agenda-rectangle-technology-thumbnail.png" />
                </image>
             </ImageView>
             <ImageView fx:id="imageGestione" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@lovepik-tool-management-icon-png-image_401130939_wh1200.png" />
+                  <Image url="@../terzoucgestioneprofilooggetto/lovepik-tool-management-icon-png-image_401130939_wh1200.png" />
                </image>
             </ImageView>
          </children>

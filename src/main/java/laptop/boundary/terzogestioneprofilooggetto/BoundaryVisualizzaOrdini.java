@@ -93,7 +93,7 @@ public class BoundaryVisualizzaOrdini implements Initializable {
             Stage stage;
             Parent root;
             stage = (Stage) eliminaB.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
             stage.setTitle("Benvenuto nella home page");
             scene = new Scene(root);
             stage.setScene(scene);
@@ -131,7 +131,7 @@ public class BoundaryVisualizzaOrdini implements Initializable {
         Stage stage;
         Parent root;
         stage = (Stage) indietroB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/visualizzaOrdini.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/visualizzaOrdini.fxml")));
         stage.setTitle("Benvenuto nella schermata degli ordini");
         scene = new Scene(root);
         stage.setScene(scene);
@@ -141,7 +141,7 @@ public class BoundaryVisualizzaOrdini implements Initializable {
         Stage stage;
         Parent root;
         stage = (Stage) indietroB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
         stage.setTitle("Benvenuto nella home page");
         scene = new Scene(root);
         stage.setScene(scene);

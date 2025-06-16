@@ -74,7 +74,7 @@ public class BoundaryRaccolta implements Initializable
     private Scene scene;
     private  ControllerRaccolta cRacc;
     private final ControllerSystemState vis=ControllerSystemState.getInstance();
-    private static final String RACCOLTA= "view/raccolta.fxml";
+    private static final String RACCOLTA= "view/terzoucgestioneprofilooggetto/raccolta.fxml";
     private static final String DATABASE="database";
     private static final String FILE="file";
     private static final String MEMORIA="memoria";
@@ -96,7 +96,7 @@ public class BoundaryRaccolta implements Initializable
                     Stage stage;
                     Parent root;
                     stage = (Stage) inserisciB.getScene().getWindow();
-                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/gestioneOggetto.fxml")));
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/gestioneOggetto.fxml")));
                     stage.setTitle("Benvenuto nella schermata della gestione/inserimento");
                     scene = new Scene(root);
                     stage.setScene(scene);
@@ -133,7 +133,7 @@ public class BoundaryRaccolta implements Initializable
                     throw new IdException(" id is null or not in list");
                 else {
                    checkTipologia(Integer.parseInt(idTF.getText()));
-                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/gestioneOggetto.fxml")));
+                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/gestioneOggetto.fxml")));
                     Stage stage = (Stage) modificaB.getScene().getWindow();
                     stage.setTitle("Benvenuto nella schermata della gestione");
                     scene = new Scene(root);
@@ -246,7 +246,7 @@ public class BoundaryRaccolta implements Initializable
         Stage stage;
         Parent root;
         stage = (Stage) indietroB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/admin.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/admin.fxml")));
         stage.setTitle("Benvenuto nella schermata di admin");
         scene = new Scene(root);
         stage.setScene(scene);

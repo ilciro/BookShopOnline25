@@ -8,6 +8,7 @@ import laptop.exception.IdException;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Raccolta;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -46,10 +47,16 @@ public class PersistenzaGiornale {
         if(g.getTitolo().isEmpty()) throw new ClassNotFoundException("class not found or titolo is null");
         if(g.getId()<=-1) throw new IdException(" id daily is lower than 0");
         return FXCollections.observableArrayList();}
-    public void initializza() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException {
+    public void initializza() throws CsvValidationException, IdException, IOException, SQLException, ClassNotFoundException {
+
+        if(!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASEXCEPTION);
+        if(!Files.exists(Path.of(FILE))) throw new IOException(FILEXCEPTION);
+        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
 
         DaoInitialize dI=new DaoInitialize();
         dI.inizializza("giornale");
+
+
         }
     public ObservableList<Giornale> getGiornali() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
         if(!Files.exists(Path.of(DATABASE))) throw new IdException(DATABASEXCEPTION);

@@ -111,7 +111,7 @@ public class BoundaryVisualizza implements Initializable {
 		Stage stage;
 		Parent root;
 		stage = (Stage) buttonA.getScene().getWindow();
-		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/acquista.fxml")));
+		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/acquista.fxml")));
 		stage.setTitle("Benvenuto nella schermata del riepilogo ordine");
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
@@ -124,7 +124,7 @@ public class BoundaryVisualizza implements Initializable {
 		Stage stage;
 		Parent root;
 		stage = (Stage) buttonBack.getScene().getWindow();
-		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/compravendita.fxml")));
+		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/compravendita.fxml")));
 
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
@@ -135,7 +135,7 @@ public class BoundaryVisualizza implements Initializable {
 			Stage stage;
 			Parent root;
 			stage = (Stage) buttonBack.getScene().getWindow();
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/ricerca.fxml")));
+			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/ricerca.fxml")));
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();

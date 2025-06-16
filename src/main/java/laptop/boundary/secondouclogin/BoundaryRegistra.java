@@ -101,7 +101,7 @@ public class BoundaryRegistra implements Initializable {
                 Stage stage;
                 Parent root;
                 stage = (Stage) buttonReg.getScene().getWindow();
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/login.fxml")));
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/secondouclogin/login.fxml")));
                 stage.setTitle("Benvenuto nella schermata del login");
                 scene = new Scene(root);
                 stage.setScene(scene);
@@ -110,7 +110,7 @@ public class BoundaryRegistra implements Initializable {
                 Stage stage;
                 Parent root;
                 stage = (Stage) buttonReg.getScene().getWindow();
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/registraUtente.fxml")));
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/secondouclogin/registraUtente.fxml")));
                 stage.setTitle("Benvenuto nella schermata della registrazione");
                 scene = new Scene(root);
                 stage.setScene(scene);
@@ -147,7 +147,7 @@ public class BoundaryRegistra implements Initializable {
         Stage stage;
         Parent root;
         stage = (Stage) buttonI.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/login.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/secondouclogin/login.fxml")));
         stage.setTitle("Benvenuto nella schermata del login");
         scene = new Scene(root);
         stage.setScene(scene);

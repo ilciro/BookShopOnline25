@@ -1,8 +1,6 @@
 package laptop.boundary;
 
 
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +25,7 @@ public class Main  extends Application {
 		Scene scene;
 
 		try {
-			Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
+			Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
 			scene = new Scene(root);
 			primaryStage.setTitle("Benvenuto nella homePage");
 			primaryStage.setScene(scene);

@@ -82,7 +82,7 @@ public class BuondaryLogin implements Initializable {
             Stage stage;
             Parent root;
             stage = (Stage) buttonI.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/admin.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/admin.fxml")));
             stage.setTitle("Benvenuto nella schermata di admin");
             scene = new Scene(root);
             stage.setScene(scene);
@@ -94,7 +94,7 @@ public class BuondaryLogin implements Initializable {
             Stage stage;
             Parent root;
             stage = (Stage) buttonL.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
             stage.setTitle("Benvenuto nella home page dopo il login scrittore/utente/editore");
             scene = new Scene(root);
             stage.setScene(scene);
@@ -110,7 +110,7 @@ public class BuondaryLogin implements Initializable {
             Stage stage;
             Parent root;
             stage = (Stage) buttonReg.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/registraUtente.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/secondouclogin/registraUtente.fxml")));
             stage.setTitle("Benvenuto nella home page dopo il login");
             scene = new Scene(root);
             stage.setScene(scene);
@@ -132,7 +132,7 @@ public class BuondaryLogin implements Initializable {
             Stage stage;
             Parent root;
             stage = (Stage) buttonCambio.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/aggiornaPassword.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/secondouclogin/aggiornaPassword.fxml")));
             stage.setTitle("Benvenuto nella home page per cambiare credenziali");
             scene = new Scene(root);
             stage.setScene(scene);
@@ -168,7 +168,7 @@ public class BuondaryLogin implements Initializable {
         Stage stage;
         Parent root;
         stage = (Stage) buttonI.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/homePageFinale.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
         stage.setTitle("Benvenuto nella home page dopo il login");
         scene = new Scene(root);
         stage.setScene(scene);
