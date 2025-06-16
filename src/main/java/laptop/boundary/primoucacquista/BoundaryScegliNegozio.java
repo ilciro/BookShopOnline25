@@ -3,6 +3,8 @@ package laptop.boundary.primoucacquista;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.ObservableList;
@@ -23,9 +25,12 @@ import javafx.stage.Stage;
 import laptop.controller.primoucacquista.ControllerScegliNegozio;
 import laptop.exception.IdException;
 import laptop.model.Negozio;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public class BoundaryScegliNegozio {
 
+	private static final Log log = LogFactory.getLog(BoundaryScegliNegozio.class);
 	@FXML
 	private Label labelL;
 	@FXML
@@ -119,80 +124,23 @@ public class BoundaryScegliNegozio {
 	}
 
 
-	public void checkNegozio1(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+	public void checkNegozio1(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
 
-		boolean statusA;
-		boolean statusB;
-		statusA = cSN.isOpen(type,1);
-		statusB =cSN.isValid(type,1);
-
-
-		if (statusA && statusB) {
-			negozioGiusto();
-
-
-			} else {
-
-				alertE = new Alert(AlertType.WARNING);
-				alertE.setTitle(warningTitle);
-				alertE.setHeaderText(warningHeaderText);
-				alertE.setContentText(WARNINGCONTENTTEXT);
-
-			}
+		verificaDispApertura(type,1);
 
 
 
 	}
 
 	public void checkNegozio2(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
-		listOfNegozi = cSN.getNegozi(type);
-
-		boolean statusA;
-		boolean statusB;
-
-		statusA = cSN.isOpen(type,2);
-		statusB =cSN.isValid(type,2);
-
-
-
-		if (statusA && statusB) {
-			negozioGiusto();
-
-
-			} else {
-
-				alertE = new Alert(AlertType.WARNING);
-				alertE.setTitle(warningTitle);
-				alertE.setHeaderText(warningHeaderText);
-				alertE.setContentText(WARNINGCONTENTTEXT);
-
-			}
+		verificaDispApertura(type,2);
 
 
 
 	}
 
 	public void checkNegozio3(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
-		listOfNegozi = cSN.getNegozi(type);
-
-		boolean statusA;
-		boolean statusB;
-		statusA = cSN.isOpen(type,3);
-		statusB =cSN.isValid(type,3);
-
-
-
-		if (statusA && statusB) {
-			negozioGiusto();
-
-			} else {
-
-				alertE = new Alert(AlertType.WARNING);
-				alertE.setTitle(warningTitle);
-				alertE.setHeaderText(warningHeaderText);
-				alertE.setContentText(WARNINGCONTENTTEXT);
-
-			}
+		verificaDispApertura(type,3);
 
 
 
@@ -200,26 +148,8 @@ public class BoundaryScegliNegozio {
 
 	public void checkNegozio4(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
 
-		listOfNegozi = cSN.getNegozi(type);
-		boolean statusA;
-		boolean statusB;
-
-		statusA = cSN.isOpen(type,4);
-		statusB =cSN.isValid(type,4);
-
-
-
-		if (statusA && statusB) { negozioGiusto();
-
-		} else {
-
-			alertE = new Alert(AlertType.WARNING);
-			alertE.setTitle(warningTitle);
-			alertE.setHeaderText(warningHeaderText);
-			alertE.setContentText(WARNINGCONTENTTEXT);
-
-		}
-		}
+		verificaDispApertura(type,4);
+	}
 
 
 
@@ -242,6 +172,52 @@ private void negozioGiusto() throws IOException {
 			stage.setScene(scene);
 			stage.show();
 		}
+	}
+
+	private void verificaDispApertura(String type, int idNegozio) throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException {
+
+		listOfNegozi = cSN.getNegozi(type);
+		boolean statusA = false;
+		boolean statusB = false;
+
+		switch (idNegozio)
+		{
+			case 1->{
+				statusA = cSN.isOpen(type,1);
+				statusB =cSN.isValid(type,1);
+			}
+			case 2->{
+				statusA = cSN.isOpen(type,2);
+				statusB =cSN.isValid(type,2);
+			}
+			case 3->{
+				statusA = cSN.isOpen(type,3);
+				statusB =cSN.isValid(type,3);
+			}
+			case 4->{
+				statusA = cSN.isOpen(type,4);
+				statusB =cSN.isValid(type,4);
+			}
+			default -> Logger.getLogger("check negozio").log(Level.SEVERE," error with shop choice");
+
+		}
+
+
+
+
+
+		if (statusA && statusB) { negozioGiusto();
+
+		} else {
+
+			alertE = new Alert(AlertType.WARNING);
+			alertE.setTitle(warningTitle);
+			alertE.setHeaderText(warningHeaderText);
+			alertE.setContentText(WARNINGCONTENTTEXT);
+
+
+	}
+
 	}
 }
 

@@ -173,7 +173,7 @@ public class BoundaryVisualizza implements Initializable {
 					labelCopieRimanenti.setText(String.valueOf(cV.getListLibro(type).get(0).getNrCopie()));
 
 				}
-/*
+
 				case "giornale"->
 				{
 
@@ -209,7 +209,7 @@ public class BoundaryVisualizza implements Initializable {
 				}
 
 
- */
+
 
 				default -> java.util.logging.Logger.getLogger("initialize").log(Level.SEVERE," type is not correct");
 			}

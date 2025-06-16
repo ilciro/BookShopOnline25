@@ -92,54 +92,21 @@ public class BoundaryHomePage implements Initializable {
 
 	@FXML
 	private void getListaGiornali() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException, PersistenzaException {
-		if (checkPersitenza()) {
-			vis.setIsSearch(false);
-			vis.setTypeAsDaily();
-			getPersistency();
-			Stage stage;
-			Parent root;
-			stage = (Stage) buttonL.getScene().getWindow();
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(COMPRAVENDITA)));
-			stage.setTitle("Benvenuto nella schermata del riepilogo dei giornali");
-			scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		} else throw new PersistenzaException("lista giornali " + PERSISTENZANULLA);
+		vis.setTypeAsDaily();
+		getLista(vis.getType());
 	}
 
 	@FXML
-	private void getListaRiviste() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException {
-		if (checkPersitenza()) {
-			vis.setIsSearch(false);
-			vis.setTypeAsMagazine();
-			getPersistency();
-			Stage stage;
-			Parent root;
-			stage = (Stage) buttonL.getScene().getWindow();
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(COMPRAVENDITA)));
-			stage.setTitle("Benvenuto nella schermata del riepilogo dei libri");
-			scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		} else throw new IOException("lista riviste " + PERSISTENZANULLA);
+	private void getListaRiviste() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException, PersistenzaException {
+		vis.setTypeAsMagazine();
+		getLista(vis.getType());
 	}
 
 	@FXML
 	private void getListaLibri() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException, PersistenzaException {
 
-		if (checkPersitenza()) {
-			vis.setIsSearch(false);
-			vis.setTypeAsBook();
-			getPersistency();
-			Stage stage;
-			Parent root;
-			stage = (Stage) buttonL.getScene().getWindow();
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(COMPRAVENDITA)));
-			stage.setTitle("Benvenuto nella schermata del riepilogo dei libri");
-			scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		} else throw new PersistenzaException("lista libri " + PERSISTENZANULLA);
+		vis.setTypeAsBook();
+		getLista(vis.getType());
 
 	}
 
@@ -324,5 +291,27 @@ public class BoundaryHomePage implements Initializable {
 
 
     }
+
+	private void getLista(String type) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException, PersistenzaException {
+		if (checkPersitenza()) {
+			vis.setIsSearch(false);
+			getPersistency();
+			Stage stage;
+			Parent root;
+			stage = (Stage) buttonL.getScene().getWindow();
+			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(COMPRAVENDITA)));
+            switch (type) {
+                case "libro" -> stage.setTitle("Benvenuto nella schermata del riepilogo dei libri");
+                case "giornale" -> stage.setTitle("Benvenuto nella schermata del riepilogo dei giornali");
+                case "rivista" -> stage.setTitle("Benvenuto nella schermata del riepilogo delle riviste");
+				default -> Logger.getLogger("get lista").log(Level.SEVERE," error with type");
+            }
+
+
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		} else throw new PersistenzaException("lista giornali " + PERSISTENZANULLA);
+	}
 
 }
