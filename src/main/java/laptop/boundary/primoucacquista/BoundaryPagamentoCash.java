@@ -77,15 +77,15 @@ public class BoundaryPagamentoCash implements Initializable{
 			c = cognomeTF.getText();
 			v = viaTF.getText();
 			com = eventualiArea.getText();
-			
 
+
+			Stage stage;
+			Parent root;
 
 			if (n.isEmpty() || c.isEmpty() || v.isEmpty()) {
 				Logger.getLogger("procedi cash").log(Level.SEVERE,"\n errore nel pagamento");
 
 
-				Stage stage;
-				Parent root;
 				stage = (Stage) buttonI.getScene().getWindow();
 				root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/pagamentoContrassegno.fxml")));
 				stage.setTitle("Benvenuto nella schermata del riepilogo ordine");
@@ -109,8 +109,7 @@ public class BoundaryPagamentoCash implements Initializable{
 
 				if(vis.getIsPickup()) 
 				{
-					Stage stage;
-					Parent root;
+
 					stage = (Stage) buttonI.getScene().getWindow();
 					root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/scegliNegozio.fxml")));
 					stage.setTitle("Benvenuto nella schermata per scegliere il negozio");
@@ -120,8 +119,7 @@ public class BoundaryPagamentoCash implements Initializable{
 				}
 				else
 				{
-				Stage stage;
-				Parent root;
+
 				stage = (Stage) buttonI.getScene().getWindow();
 				root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/download.fxml")));
 				stage.setTitle("Benvenuto nella schermata per il download");
