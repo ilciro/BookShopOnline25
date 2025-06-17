@@ -50,11 +50,11 @@ import java.sql.SQLException;
     }
     public void initializza() throws CsvValidationException, IdException, IOException ,SQLException,ClassNotFoundException{
 
-<span class="nc bnc" id="L53" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASEXCEPTION);</span>
-<span class="nc bnc" id="L54" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
-<span class="nc" id="L55">        DaoInitialize dI=new DaoInitialize();</span>
-<span class="nc" id="L56">        dI.inizializza(&quot;rivista&quot;);</span>
-<span class="nc" id="L57">    }</span>
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASEXCEPTION);</span>
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
+<span class="fc" id="L55">        DaoInitialize dI=new DaoInitialize();</span>
+<span class="fc" id="L56">        dI.inizializza(&quot;rivista&quot;);</span>
+<span class="fc" id="L57">    }</span>
     public ObservableList&lt;Rivista&gt; getRiviste() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 <span class="nc bnc" id="L59" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IdException(DATABASEXCEPTION);</span>
 <span class="nc bnc" id="L60" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);</span>

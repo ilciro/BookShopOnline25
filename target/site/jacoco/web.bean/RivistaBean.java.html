@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RivistaBean.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">web.bean</a> &gt; <span class="el_source">RivistaBean.java</span></div><h1>RivistaBean.java</h1><pre class="source lang-java linenums">package web.bean;
+
+import java.sql.Date;
+
+import java.time.LocalDate;
+
+import javafx.collections.ObservableList;
+import laptop.model.raccolta.Raccolta;
+
+
+<span class="fc" id="L11">public class RivistaBean {</span>
+	private int idB;
+	private Exception mexB;
+	private ObservableList&lt;Raccolta&gt; listaRivisteB;
+	private String listaCategorieB;
+	private String titoloB;
+	private String tipologiaB;
+	private String autoreB;
+	private String linguaB;
+	public Exception getMexB() {
+<span class="nc" id="L21">		return mexB;</span>
+	}
+
+
+
+
+	public void setMexB(Exception mexB) {
+<span class="nc" id="L28">		this.mexB = mexB;</span>
+<span class="nc" id="L29">	}</span>
+
+
+
+
+	public ObservableList&lt;Raccolta&gt; getListaRivisteB() {
+<span class="nc" id="L35">		return listaRivisteB;</span>
+	}
+
+
+
+
+	public void setListaRivisteB(ObservableList&lt;Raccolta&gt; listaRivisteB) {
+<span class="fc" id="L42">		this.listaRivisteB = listaRivisteB;</span>
+<span class="fc" id="L43">	}</span>
+
+
+
+
+	public String getListaCategorieB() {
+<span class="nc" id="L49">		return listaCategorieB;</span>
+	}
+
+
+
+
+	public void setListaCategorieB(String listaCategorieB) {
+<span class="nc" id="L56">		this.listaCategorieB = listaCategorieB;</span>
+<span class="nc" id="L57">	}</span>
+
+
+
+
+	public String getTitoloB() {
+<span class="nc" id="L63">		return titoloB;</span>
+	}
+
+
+
+
+	public void setTitoloB(String titoloB) {
+<span class="fc" id="L70">		this.titoloB = titoloB;</span>
+<span class="fc" id="L71">	}</span>
+
+
+
+
+	public String getTipologiaB() {
+<span class="fc" id="L77">		return tipologiaB;</span>
+	}
+
+
+
+
+	public void setTipologiaB(String tipologiaB) {
+<span class="fc" id="L84">		this.tipologiaB = tipologiaB;</span>
+<span class="fc" id="L85">	}</span>
+
+
+
+
+	public String getAutoreB() {
+<span class="nc" id="L91">		return autoreB;</span>
+	}
+
+
+
+
+	public void setAutoreB(String autoreB) {
+<span class="fc" id="L98">		this.autoreB = autoreB;</span>
+<span class="fc" id="L99">	}</span>
+
+
+
+
+	public String getLinguaB() {
+<span class="nc" id="L105">		return linguaB;</span>
+	}
+
+
+
+
+	public void setLinguaB(String linguaB) {
+<span class="fc" id="L112">		this.linguaB = linguaB;</span>
+<span class="fc" id="L113">	}</span>
+
+
+
+
+	public String getEditoreB() {
+<span class="nc" id="L119">		return editoreB;</span>
+	}
+
+
+
+
+	public void setEditoreB(String editoreB) {
+<span class="nc" id="L126">		this.editoreB = editoreB;</span>
+<span class="nc" id="L127">	}</span>
+
+
+
+
+	public String getDescrizioneB() {
+<span class="nc" id="L133">		return descrizioneB;</span>
+	}
+
+
+
+
+	public void setDescrizioneB(String descrizioneB) {
+<span class="nc" id="L140">		this.descrizioneB = descrizioneB;</span>
+<span class="nc" id="L141">	}</span>
+
+
+
+
+	public LocalDate getDataPubbB() {
+<span class="nc" id="L147">		return dataPubbB;</span>
+	}
+
+
+
+
+	public void setDataPubbB(LocalDate dataPubbB) {
+<span class="fc" id="L154">		this.dataPubbB = dataPubbB;</span>
+<span class="fc" id="L155">	}</span>
+
+
+
+
+	public int getDispB() {
+<span class="nc" id="L161">		return dispB;</span>
+	}
+
+
+
+
+	public void setDispB(int dispB) {
+<span class="nc" id="L168">		this.dispB = dispB;</span>
+<span class="nc" id="L169">	}</span>
+
+
+
+
+	public float getPrezzoB() {
+<span class="nc" id="L175">		return prezzoB;</span>
+	}
+
+
+
+
+	public void setPrezzoB(float prezzoB) {
+<span class="fc" id="L182">		this.prezzoB = prezzoB;</span>
+<span class="fc" id="L183">	}</span>
+
+
+
+
+	public int getCopieRimB() {
+<span class="nc" id="L189">		return copieRimB;</span>
+	}
+
+
+
+
+	public void setCopieRimB(int copieRimB) {
+<span class="nc" id="L196">		this.copieRimB = copieRimB;</span>
+<span class="nc" id="L197">	}</span>
+
+
+
+
+	public Date getDataB() {
+<span class="nc" id="L203">		return dataB;</span>
+	}
+
+
+
+
+	public void setDataB(Date dataB) {
+<span class="nc" id="L210">		this.dataB = dataB;</span>
+<span class="nc" id="L211">	}</span>
+
+
+
+
+	private String editoreB;
+	private String descrizioneB;
+	private LocalDate dataPubbB;
+	private int dispB;
+	private float prezzoB;
+	private int copieRimB;
+	private Date dataB;
+
+	
+	
+	
+	public String elencoCategorie()
+	{
+<span class="fc" id="L229">		String s= &quot;SETTIMANALE&quot;+&quot;\n&quot;;</span>
+<span class="fc" id="L230">		s+=&quot;BISETTIMANALE&quot; +&quot;\n&quot;;</span>
+<span class="fc" id="L231">		s+= &quot;MENSILE&quot; +&quot;\n&quot;;</span>
+<span class="fc" id="L232">		s+=&quot;TRIMESTRALE&quot;+&quot;\n&quot; ;</span>
+<span class="fc" id="L233">		s+= &quot;ANNUALE&quot;+&quot;\n&quot; ;</span>
+
+<span class="fc" id="L235">		s+= &quot;ESTIVO&quot;+&quot;\n&quot; ;</span>
+
+<span class="fc" id="L237">		s+= &quot;INVERNALE&quot;+&quot;\n&quot; ;</span>
+
+<span class="fc" id="L239">		s+= &quot;SPORTIVO&quot;+&quot;\n&quot; ;</span>
+
+<span class="fc" id="L241">		s+= &quot;CINEMATOGRAFICA&quot; +&quot;\n&quot;;</span>
+
+<span class="fc" id="L243">		s+= &quot;GOSSIP&quot;+&quot;\n&quot; ;</span>
+
+<span class="fc" id="L245">		s+= &quot;TELEVISIVO&quot;+&quot;\n&quot; ;</span>
+
+<span class="fc" id="L247">		s+= &quot;MILITARE&quot;+&quot;\n&quot; ;</span>
+
+<span class="fc" id="L249">		s+= &quot;INFORMATICA&quot; +&quot;\n&quot;;</span>
+<span class="fc" id="L250">		return s;</span>
+	}
+
+
+
+
+	public int getIdB() {
+<span class="nc" id="L257">		return idB;</span>
+	}
+
+
+
+
+	public void setIdB(int idB) {
+<span class="nc" id="L264">		this.idB = idB;</span>
+<span class="nc" id="L265">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
