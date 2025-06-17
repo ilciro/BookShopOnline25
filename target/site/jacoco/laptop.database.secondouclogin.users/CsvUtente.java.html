@@ -229,7 +229,7 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 <span class="fc bfc" id="L230" title="All 2 branches covered.">            while ((giornaleVector = csvReader.readNext()) != null) {</span>
 
-<span class="pc bpc" id="L232" title="1 of 4 branches missed.">                userVectorFound = giornaleVector[GETINDEXIDUSER].equals(String.valueOf(u1.getId())) || giornaleVector[GETINDEXEMAIL].equals(u1.getEmailT());</span>
+<span class="fc bfc" id="L232" title="All 4 branches covered.">                userVectorFound = giornaleVector[GETINDEXIDUSER].equals(String.valueOf(u1.getId())) || giornaleVector[GETINDEXEMAIL].equals(u1.getEmailT());</span>
 
 <span class="fc bfc" id="L234" title="All 2 branches covered.">                if (!userVectorFound) {</span>
 <span class="fc" id="L235">                    csvWriter.writeNext(giornaleVector);</span>

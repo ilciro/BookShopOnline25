@@ -62,8 +62,8 @@ public class LibroDao extends PersistenzaLibro{
 <span class="fc" id="L62">            prepQ.setString(11, retLibro(l)[10]);</span>
 <span class="fc" id="L63">            prepQ.setInt(12, Integer.parseInt(retLibro(l)[11]));</span>
 <span class="fc" id="L64">            prepQ.setFloat(13, Float.parseFloat(retLibro(l)[12]));</span>
-<span class="pc bpc" id="L65" title="1 of 2 branches missed.">            if(vis.getTipoModifica().equals(&quot;im&quot;)) prepQ.setInt(14,vis.getIdLibro());</span>
-<span class="nc bnc" id="L66" title="All 2 branches missed.">            else if(vis.getTipoModifica().equals(&quot;insert&quot;))prepQ.setInt(14, 0);</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">            if(vis.getTipoModifica().equals(&quot;im&quot;)) prepQ.setInt(14,vis.getIdLibro());</span>
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">            else if(vis.getTipoModifica().equals(&quot;insert&quot;))prepQ.setInt(14, 0);</span>
 
 <span class="fc" id="L68">            row=prepQ.executeUpdate();</span>
 

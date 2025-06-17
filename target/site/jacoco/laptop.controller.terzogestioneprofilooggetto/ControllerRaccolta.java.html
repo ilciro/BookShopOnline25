@@ -31,7 +31,7 @@ import java.util.logging.Logger;
 
 public class ControllerRaccolta {
 
-<span class="nc" id="L34">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+<span class="fc" id="L34">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
     private static final String LIBRO = &quot;libro&quot;;
     private static final String RIVISTA = &quot;rivista&quot;;
     private static final String GIORNALE = &quot;giornale&quot;;
@@ -50,113 +50,113 @@ public class ControllerRaccolta {
 
     public ObservableList&lt;Raccolta&gt; getRaccoltaLista(String type,String persistenza) throws IOException, CsvValidationException, IdException, SQLException, ClassNotFoundException {
 
-<span class="nc" id="L53">        ObservableList &lt;Raccolta&gt; catalogo= FXCollections.observableArrayList();</span>
+<span class="fc" id="L53">        ObservableList &lt;Raccolta&gt; catalogo= FXCollections.observableArrayList();</span>
 
-<span class="nc bnc" id="L55" title="All 4 branches missed.">        switch (type) {</span>
-<span class="nc" id="L56">            case LIBRO-&gt;catalogo.addAll(prendiLibri(persistenza));</span>
-<span class="nc" id="L57">            case GIORNALE-&gt;catalogo.addAll(prendiGiornali(persistenza));</span>
-<span class="nc" id="L58">            case RIVISTA-&gt;catalogo.addAll(prendiRiviste(persistenza));</span>
+<span class="pc bpc" id="L55" title="1 of 4 branches missed.">        switch (type) {</span>
+<span class="fc" id="L56">            case LIBRO-&gt;catalogo.addAll(prendiLibri(persistenza));</span>
+<span class="fc" id="L57">            case GIORNALE-&gt;catalogo.addAll(prendiGiornali(persistenza));</span>
+<span class="fc" id="L58">            case RIVISTA-&gt;catalogo.addAll(prendiRiviste(persistenza));</span>
 <span class="nc" id="L59">            default-&gt;Logger.getLogger(&quot;Test getId db&quot;).log(Level.INFO, &quot;error !! list empty&quot;);</span>
 
         }
 
-<span class="nc" id="L63">        return catalogo;</span>
+<span class="fc" id="L63">        return catalogo;</span>
     }
 
     private ObservableList&lt;Raccolta&gt; prendiRiviste(String persistenza) throws IOException, CsvValidationException, IdException, SQLException, ClassNotFoundException {
-<span class="nc bnc" id="L67" title="All 4 branches missed.">            switch (persistenza){</span>
-<span class="nc" id="L68">                case DATABASE -&gt; pR=new RivistaDao();</span>
-<span class="nc" id="L69">                case FILE -&gt; pR=new CsvRivista();</span>
-<span class="nc" id="L70">                case MEMORIA -&gt; pR=new MemoriaRivista();</span>
+<span class="pc bpc" id="L67" title="1 of 4 branches missed.">            switch (persistenza){</span>
+<span class="fc" id="L68">                case DATABASE -&gt; pR=new RivistaDao();</span>
+<span class="fc" id="L69">                case FILE -&gt; pR=new CsvRivista();</span>
+<span class="fc" id="L70">                case MEMORIA -&gt; pR=new MemoriaRivista();</span>
 <span class="nc" id="L71">                default -&gt; Logger.getLogger(&quot;prendi riviste&quot;).log(Level.SEVERE,&quot; list magazine is empty&quot;);</span>
 
             }
-<span class="nc" id="L74">            pR.initializza();</span>
+<span class="fc" id="L74">            pR.initializza();</span>
 
 
 
 
-<span class="nc" id="L79">            return pR.retrieveRaccoltaData();</span>
+<span class="fc" id="L79">            return pR.retrieveRaccoltaData();</span>
         }
 
 
 
     private ObservableList&lt;Raccolta&gt; prendiLibri(String persistenza) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
-<span class="nc bnc" id="L85" title="All 4 branches missed.">        switch (persistenza){</span>
-<span class="nc" id="L86">            case DATABASE -&gt; pL=new LibroDao();</span>
-<span class="nc" id="L87">            case FILE -&gt; pL=new CsvLibro();</span>
-<span class="nc" id="L88">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
+<span class="pc bpc" id="L85" title="1 of 4 branches missed.">        switch (persistenza){</span>
+<span class="fc" id="L86">            case DATABASE -&gt; pL=new LibroDao();</span>
+<span class="fc" id="L87">            case FILE -&gt; pL=new CsvLibro();</span>
+<span class="fc" id="L88">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
 <span class="nc" id="L89">            default -&gt; Logger.getLogger(&quot;prendi libri&quot;).log(Level.SEVERE,&quot; list book is empty&quot;);</span>
 
         }
-<span class="nc" id="L92">       pL.initializza();</span>
+<span class="fc" id="L92">       pL.initializza();</span>
 
 
 
-<span class="nc" id="L96">        return pL.retrieveRaccoltaData();</span>
+<span class="fc" id="L96">        return pL.retrieveRaccoltaData();</span>
     }
     private ObservableList&lt;Raccolta&gt; prendiGiornali(String persistenza) throws IOException, CsvValidationException, IdException, SQLException, ClassNotFoundException {
-<span class="nc bnc" id="L99" title="All 4 branches missed.">        switch (persistenza){</span>
-<span class="nc" id="L100">            case DATABASE -&gt; pG=new GiornaleDao();</span>
-<span class="nc" id="L101">            case FILE -&gt; pG=new CsvGiornale();</span>
-<span class="nc" id="L102">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
+<span class="pc bpc" id="L99" title="1 of 4 branches missed.">        switch (persistenza){</span>
+<span class="fc" id="L100">            case DATABASE -&gt; pG=new GiornaleDao();</span>
+<span class="fc" id="L101">            case FILE -&gt; pG=new CsvGiornale();</span>
+<span class="fc" id="L102">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
 <span class="nc" id="L103">            default -&gt; Logger.getLogger(&quot;prendi giornali&quot;).log(Level.SEVERE,&quot; list daily is empty&quot;);</span>
 
         }
-<span class="nc" id="L106">            pG.initializza();</span>
+<span class="fc" id="L106">            pG.initializza();</span>
 
 
-<span class="nc" id="L109">        return pG.retrieveRaccoltaData();</span>
+<span class="fc" id="L109">        return pG.retrieveRaccoltaData();</span>
     }
 
-<span class="nc" id="L112">    public ControllerRaccolta()  {</span>
+<span class="fc" id="L112">    public ControllerRaccolta()  {</span>
 
-<span class="nc" id="L114">        l=new Libro();</span>
-<span class="nc" id="L115">        g=new Giornale();</span>
-<span class="nc" id="L116">        r=new Rivista();</span>
+<span class="fc" id="L114">        l=new Libro();</span>
+<span class="fc" id="L115">        g=new Giornale();</span>
+<span class="fc" id="L116">        r=new Rivista();</span>
 
-<span class="nc" id="L118">    }</span>
+<span class="fc" id="L118">    }</span>
 
     public boolean elimina(String type) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
-<span class="nc" id="L121">        boolean status = false;</span>
+<span class="fc" id="L121">        boolean status = false;</span>
 
-<span class="nc bnc" id="L123" title="All 4 branches missed.">            switch (vis.getType())</span>
+<span class="pc bpc" id="L123" title="1 of 4 branches missed.">            switch (vis.getType())</span>
             {
                 case LIBRO -&gt; {
-<span class="nc" id="L126">                    l.setId(vis.getIdLibro());</span>
-<span class="nc bnc" id="L127" title="All 4 branches missed.">                    switch (type)</span>
+<span class="fc" id="L126">                    l.setId(vis.getIdLibro());</span>
+<span class="pc bpc" id="L127" title="1 of 4 branches missed.">                    switch (type)</span>
                     {
-<span class="nc" id="L129">                        case DATABASE -&gt; pL=new LibroDao();</span>
-<span class="nc" id="L130">                        case FILE -&gt; pL=new CsvLibro();</span>
-<span class="nc" id="L131">                        case MEMORIA -&gt; pL=new MemoriaLibro();</span>
+<span class="fc" id="L129">                        case DATABASE -&gt; pL=new LibroDao();</span>
+<span class="fc" id="L130">                        case FILE -&gt; pL=new CsvLibro();</span>
+<span class="fc" id="L131">                        case MEMORIA -&gt; pL=new MemoriaLibro();</span>
 <span class="nc" id="L132">                        default -&gt; Logger.getLogger(&quot;elimina libro&quot;).log(Level.SEVERE,&quot;error deleting a book&quot;);</span>
                     }
-<span class="nc" id="L134">                    status=pL.removeLibroById(l);</span>
-<span class="nc" id="L135">                }</span>
+<span class="fc" id="L134">                    status=pL.removeLibroById(l);</span>
+<span class="fc" id="L135">                }</span>
                 case GIORNALE -&gt; {
-<span class="nc" id="L137">                    g.setId(vis.getIdGiornale());</span>
-<span class="nc" id="L138">                    Logger.getLogger(&quot;elimina giornale&quot;).log(Level.INFO,&quot;id daily to delete .{0}&quot;,g.getId());</span>
-<span class="nc bnc" id="L139" title="All 4 branches missed.">                    switch (type)</span>
+<span class="fc" id="L137">                    g.setId(vis.getIdGiornale());</span>
+<span class="fc" id="L138">                    Logger.getLogger(&quot;elimina giornale&quot;).log(Level.INFO,&quot;id daily to delete .{0}&quot;,g.getId());</span>
+<span class="pc bpc" id="L139" title="1 of 4 branches missed.">                    switch (type)</span>
                     {
-<span class="nc" id="L141">                        case DATABASE -&gt; pG=new GiornaleDao();</span>
-<span class="nc" id="L142">                        case FILE -&gt; pG=new CsvGiornale();</span>
-<span class="nc" id="L143">                        case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
+<span class="fc" id="L141">                        case DATABASE -&gt; pG=new GiornaleDao();</span>
+<span class="fc" id="L142">                        case FILE -&gt; pG=new CsvGiornale();</span>
+<span class="fc" id="L143">                        case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
 <span class="nc" id="L144">                        default -&gt; Logger.getLogger(&quot;elimina giornale&quot;).log(Level.SEVERE,&quot;error deleting a daily&quot;);</span>
                     }
-<span class="nc" id="L146">                    status=pG.removeGiornaleById(g);</span>
+<span class="fc" id="L146">                    status=pG.removeGiornaleById(g);</span>
 
-<span class="nc" id="L148">                }</span>
+<span class="fc" id="L148">                }</span>
                 case RIVISTA -&gt;{
-<span class="nc" id="L150">                    r.setId(vis.getIdRivista());</span>
-<span class="nc bnc" id="L151" title="All 4 branches missed.">                    switch (type)</span>
+<span class="fc" id="L150">                    r.setId(vis.getIdRivista());</span>
+<span class="pc bpc" id="L151" title="1 of 4 branches missed.">                    switch (type)</span>
                     {
-<span class="nc" id="L153">                        case DATABASE -&gt; pR=new RivistaDao();</span>
-<span class="nc" id="L154">                        case FILE -&gt; pR=new CsvRivista();</span>
-<span class="nc" id="L155">                        case MEMORIA -&gt; pR=new MemoriaRivista();</span>
+<span class="fc" id="L153">                        case DATABASE -&gt; pR=new RivistaDao();</span>
+<span class="fc" id="L154">                        case FILE -&gt; pR=new CsvRivista();</span>
+<span class="fc" id="L155">                        case MEMORIA -&gt; pR=new MemoriaRivista();</span>
 <span class="nc" id="L156">                        default -&gt; Logger.getLogger(&quot;elimina rivista&quot;).log(Level.SEVERE,&quot;error deleting a magazine&quot;);</span>
                     }
-<span class="nc" id="L158">                    status=pR.removeRivistaById(r);</span>
-<span class="nc" id="L159">                }</span>
+<span class="fc" id="L158">                    status=pR.removeRivistaById(r);</span>
+<span class="fc" id="L159">                }</span>
 <span class="nc" id="L160">                default -&gt; Logger.getLogger(&quot;elimina con db&quot;).log(Level.SEVERE,&quot; error with delete in mysql&quot;);</span>
             }
 
@@ -164,7 +164,7 @@ public class ControllerRaccolta {
 
 
 
-<span class="nc" id="L167">        return status;</span>
+<span class="fc" id="L167">        return status;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
