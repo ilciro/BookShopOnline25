@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: primoUcAcquista.testRivista.TestAcquistaRivista
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.413 s - in primoUcAcquista.testRivista.TestAcquistaRivista

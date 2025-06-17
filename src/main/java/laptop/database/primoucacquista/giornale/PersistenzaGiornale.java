@@ -49,7 +49,6 @@ public class PersistenzaGiornale {
         return FXCollections.observableArrayList();}
     public void initializza() throws CsvValidationException, IdException, IOException, SQLException, ClassNotFoundException {
 
-        if(!Files.exists(Path.of(FILE))) throw new IOException(FILEXCEPTION);
         if(!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASE);
         if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
 

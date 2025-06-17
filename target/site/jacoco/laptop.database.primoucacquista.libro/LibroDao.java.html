@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LibroDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.primoucacquista.libro</a> &gt; <span class="el_source">LibroDao.java</span></div><h1>LibroDao.java</h1><pre class="source lang-java linenums">package laptop.database.primoucacquista.libro;
+
+import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.controller.ControllerSystemState;
+import laptop.database.primoucacquista.DaoInitialize;
+import laptop.exception.IdException;
+import laptop.model.raccolta.Factory;
+import laptop.model.raccolta.Libro;
+import laptop.model.raccolta.Raccolta;
+import laptop.utilities.ConnToDb;
+
+import java.io.*;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class LibroDao extends PersistenzaLibro{
+
+<span class="fc" id="L21">    private final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+    private final Factory f;
+    private static final String ECCEZIONE = &quot; eccezione ottenuta&quot;;
+    private static final String LIBRO = &quot;libro&quot;;
+
+    private  String query;
+
+
+
+
+
+
+    public LibroDao()
+
+<span class="fc" id="L35">    {</span>
+<span class="fc" id="L36">        this.f=new Factory();</span>
+<span class="fc" id="L37">    }</span>
+
+
+
+
+    @Override
+    public boolean inserisciLibro(Libro l) throws IOException, CsvValidationException{
+<span class="fc" id="L44">        int row=0;</span>
+<span class="fc" id="L45">        query=&quot;insert into libro values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)&quot;;</span>
+
+<span class="fc" id="L47">        try(Connection conn= ConnToDb.connectionToDB();</span>
+<span class="fc" id="L48">            PreparedStatement prepQ= conn.prepareStatement(query);</span>
+            )
+        {
+
+<span class="fc" id="L52">            prepQ.setString(1, retLibro(l)[0]);</span>
+<span class="fc" id="L53">            prepQ.setInt(2, Integer.parseInt(retLibro(l)[1]));</span>
+<span class="fc" id="L54">            prepQ.setString(3, retLibro(l)[2]);</span>
+<span class="fc" id="L55">            prepQ.setString(4, retLibro(l)[3]);</span>
+<span class="fc" id="L56">            prepQ.setString(5, retLibro(l)[4]);</span>
+<span class="fc" id="L57">            prepQ.setString(6, retLibro(l)[5]);</span>
+<span class="fc" id="L58">            prepQ.setString(7, retLibro(l)[6]);</span>
+<span class="fc" id="L59">            prepQ.setDate(8, Date.valueOf(retLibro(l)[7]));</span>
+<span class="fc" id="L60">            prepQ.setString(9, retLibro(l)[8]);</span>
+<span class="fc" id="L61">            prepQ.setInt(10, Integer.parseInt(retLibro(l)[9]));</span>
+<span class="fc" id="L62">            prepQ.setString(11, retLibro(l)[10]);</span>
+<span class="fc" id="L63">            prepQ.setInt(12, Integer.parseInt(retLibro(l)[11]));</span>
+<span class="fc" id="L64">            prepQ.setFloat(13, Float.parseFloat(retLibro(l)[12]));</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">            if(vis.getTipoModifica().equals(&quot;im&quot;)) prepQ.setInt(14,vis.getIdLibro());</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">            else if(vis.getTipoModifica().equals(&quot;insert&quot;))prepQ.setInt(14, 0);</span>
+
+<span class="fc" id="L68">            row=prepQ.executeUpdate();</span>
+
+        }
+<span class="nc" id="L71">        catch (SQLException e)</span>
+        {
+<span class="nc" id="L73">            Logger.getLogger(&quot;insert libro&quot;).log(Level.SEVERE, &quot; error in insert !!.&quot;, e);</span>
+
+<span class="fc" id="L75">        }</span>
+
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">        return row==1;</span>
+
+    }
+
+    @Override
+   public boolean removeLibroById(Libro l) throws CsvValidationException, IOException {
+<span class="fc" id="L83">        int row=0;</span>
+<span class="fc" id="L84">        query = &quot;delete from libro where idLibro=? or idLibro=?&quot;;</span>
+<span class="fc" id="L85">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="fc" id="L86">             PreparedStatement prepQ = conn.prepareStatement(query)) {</span>
+
+<span class="fc" id="L88">            prepQ.setInt(1, l.getId());</span>
+<span class="fc" id="L89">            prepQ.setInt(2, vis.getIdLibro());</span>
+
+<span class="fc" id="L91">            row = prepQ.executeUpdate();</span>
+
+
+
+
+<span class="nc" id="L96">        } catch (SQLException e) {</span>
+<span class="nc" id="L97">            Logger.getLogger(&quot;elimina&quot;).log(Level.SEVERE, &quot; error in mysql delete&quot;, e);</span>
+<span class="fc" id="L98">        }</span>
+
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">        return row==1;</span>
+    }
+
+    @Override
+    public ObservableList&lt;Libro&gt; getLibri() throws CsvValidationException, IOException, IdException {
+<span class="fc" id="L105">        ObservableList&lt;Libro&gt; catalogo = FXCollections.observableArrayList();</span>
+
+<span class="fc" id="L107">        query = &quot;select * from libro &quot;;</span>
+<span class="fc" id="L108">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="fc" id="L109">             PreparedStatement prepQ = conn.prepareStatement(query);</span>
+<span class="fc" id="L110">             ResultSet rs = prepQ.executeQuery()) {</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">            while (rs.next()) {</span>
+
+<span class="fc" id="L113">                f.createRaccoltaFinale1(LIBRO, rs.getString(1), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));</span>
+
+
+<span class="fc" id="L116">                f.createRaccoltaFinale2(LIBRO, rs.getInt(2), rs.getInt(10), rs.getInt(12), rs.getFloat(13), rs.getInt(14));</span>
+
+
+<span class="fc" id="L119">                catalogo.add((Libro) f.createRaccoltaFinaleCompleta(LIBRO, rs.getDate(8).toLocalDate(), rs.getString(9), rs.getString(11)));</span>
+
+
+            }
+<span class="nc" id="L123">        } catch (SQLException e) {</span>
+<span class="nc" id="L124">            Logger.getLogger(&quot;get libri&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+<span class="fc" id="L125">        }</span>
+<span class="fc" id="L126">        return catalogo;</span>
+    }
+
+
+    @Override
+    public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData()  {
+<span class="fc" id="L132">        ObservableList&lt;Raccolta&gt; catalogo = FXCollections.observableArrayList();</span>
+
+<span class="fc" id="L134">        query = &quot;select * from libro&quot;;</span>
+<span class="fc" id="L135">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="fc" id="L136">             PreparedStatement prepQ = conn.prepareStatement(query);</span>
+<span class="fc" id="L137">             ResultSet rs = prepQ.executeQuery()) {</span>
+<span class="fc bfc" id="L138" title="All 2 branches covered.">            while (rs.next()) {</span>
+
+<span class="fc" id="L140">                f.createRaccoltaFinale1(LIBRO, rs.getString(1), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));</span>
+
+
+<span class="fc" id="L143">                f.createRaccoltaFinale2(LIBRO, rs.getInt(2), rs.getInt(10), rs.getInt(12), rs.getFloat(13), rs.getInt(14));</span>
+
+
+<span class="fc" id="L146">                catalogo.add(f.createRaccoltaFinaleCompleta(LIBRO, rs.getDate(8).toLocalDate(), rs.getString(9), rs.getString(11)));</span>
+
+
+            }
+<span class="nc" id="L150">        } catch (SQLException e) {</span>
+<span class="nc" id="L151">            Logger.getLogger(&quot;get libri&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+<span class="fc" id="L152">        }</span>
+<span class="fc" id="L153">        return catalogo;</span>
+    }
+
+
+    @Override
+    public ObservableList&lt;Libro&gt; getLibroByIdTitoloAutoreLibro(Libro l) {
+<span class="fc" id="L159">        String[] info =new String[7];</span>
+<span class="fc" id="L160">        String[] prezzo =new String[6];</span>
+
+<span class="fc" id="L162">        ObservableList&lt;Libro&gt; catalogo = FXCollections.observableArrayList();</span>
+
+<span class="fc" id="L164">        query = &quot;select * from libro where idLibro=? or idLibro=? or titolo=? or autore=? or editore=?&quot;;</span>
+<span class="fc" id="L165">        try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="fc" id="L166">             PreparedStatement prepQ = conn.prepareStatement(query)) {</span>
+
+<span class="fc" id="L168">            prepQ.setInt(1, l.getId());</span>
+<span class="fc" id="L169">            prepQ.setInt(2, vis.getIdLibro());</span>
+<span class="fc" id="L170">            prepQ.setString(3, l.getTitolo());</span>
+<span class="fc" id="L171">            prepQ.setString(4, l.getAutore());</span>
+<span class="fc" id="L172">            prepQ.setString(5, l.getEditore());</span>
+
+
+
+<span class="fc" id="L176">            ResultSet rs = prepQ.executeQuery();</span>
+<span class="fc bfc" id="L177" title="All 2 branches covered.">            while (rs.next()) {</span>
+
+<span class="fc" id="L179">                info[0]=rs.getString(&quot;titolo&quot;);</span>
+<span class="fc" id="L180">                info[1]=rs.getString(&quot;codIsbn&quot;);</span>
+<span class="fc" id="L181">                info[2]=rs.getString(&quot;editore&quot;);</span>
+<span class="fc" id="L182">                info[3]=rs.getString(&quot;autore&quot;);</span>
+<span class="fc" id="L183">                info[4]=rs.getString(&quot;lingua&quot;);</span>
+<span class="fc" id="L184">                info[5]=rs.getString(&quot;categoria&quot;);</span>
+
+
+<span class="fc" id="L187">                prezzo[0]= String.valueOf(rs.getInt(&quot;numeroPagine&quot;));</span>
+<span class="fc" id="L188">                prezzo[1]=String.valueOf(rs.getInt(&quot;copieRimanenti&quot;));</span>
+<span class="fc" id="L189">                prezzo[2]=String.valueOf(rs.getInt(&quot;disp&quot;));</span>
+<span class="fc" id="L190">                prezzo[3]=String.valueOf(rs.getFloat(&quot;prezzo&quot;));</span>
+<span class="fc" id="L191">                prezzo[4]=String.valueOf(rs.getInt(&quot;idLibro&quot;));</span>
+
+
+<span class="fc" id="L194">                catalogo.add((Libro) f.creaLibro(info,rs.getDate(&quot;dataPubblicazione&quot;).toLocalDate(),rs.getString(&quot;recensione&quot;),rs.getString(&quot;breveDescrizione&quot;),prezzo));</span>
+
+
+
+            }
+<span class="nc" id="L199">        } catch ( SQLException e) {</span>
+<span class="nc" id="L200">            Logger.getLogger(&quot;get libro id autore obes&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+<span class="fc" id="L201">        }</span>
+<span class="fc" id="L202">        return catalogo;</span>
+    }
+
+    @Override
+    public void initializza()  {
+
+<span class="fc" id="L208">        DaoInitialize dI=new DaoInitialize();</span>
+<span class="fc" id="L209">        dI.inizializza(LIBRO);</span>
+
+<span class="fc" id="L211">    }</span>
+
+
+
+
+
+
+    private String[] retLibro(Libro l)
+    {
+<span class="fc" id="L220">        String [] roba=new String[13];</span>
+<span class="fc" id="L221">        roba[0]=l.getTitolo();</span>
+<span class="fc" id="L222">        roba[1]= String.valueOf(l.getNrPagine());</span>
+<span class="fc" id="L223">        roba[2]=l.getCodIsbn();</span>
+<span class="fc" id="L224">        roba[3]=l.getEditore();</span>
+<span class="fc" id="L225">        roba[4]=l.getAutore();</span>
+<span class="fc" id="L226">        roba[5]=l.getLingua();</span>
+<span class="fc" id="L227">        roba[6]=l.getCategoria();</span>
+<span class="fc" id="L228">        roba[7]= String.valueOf(l.getDataPubb());</span>
+<span class="fc" id="L229">        roba[8]=l.getRecensione();</span>
+<span class="fc" id="L230">        roba[9]= String.valueOf(l.getNrCopie());</span>
+<span class="fc" id="L231">        roba[10]=l.getDesc();</span>
+<span class="fc" id="L232">        roba[11]= String.valueOf(l.getDisponibilita());</span>
+<span class="fc" id="L233">        roba[12]= String.valueOf(l.getPrezzo());</span>
+
+<span class="fc" id="L235">        return  roba;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

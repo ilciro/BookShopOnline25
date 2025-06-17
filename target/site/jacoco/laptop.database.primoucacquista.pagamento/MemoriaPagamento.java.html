@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MemoriaPagamento.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.primoucacquista.pagamento</a> &gt; <span class="el_source">MemoriaPagamento.java</span></div><h1>MemoriaPagamento.java</h1><pre class="source lang-java linenums">package laptop.database.primoucacquista.pagamento;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.controller.ControllerSystemState;
+import laptop.model.Pagamento;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+<span class="fc" id="L15">public class MemoriaPagamento extends PersistenzaPagamento{</span>
+<span class="fc" id="L16">    private  ArrayList&lt;Pagamento&gt; lista= new ArrayList&lt;&gt;();</span>
+    private static final String SERIALIZZAZIONE=&quot;memory/serializzazionePagamento.ser&quot;;
+<span class="fc" id="L18">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public boolean inserisciPagamento(Pagamento p) throws  IOException, ClassNotFoundException {
+
+
+<span class="fc" id="L26">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L27">            ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
+<span class="fc" id="L28">            lista = (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
+
+        }
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if(vis.getTipoModifica().equals(&quot;im&quot;)) p.setIdPag(p.getIdPag());</span>
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">        else if(vis.getTipoModifica().equals(&quot;insert&quot;)) p.setIdPag(lista.size()+1);</span>
+
+<span class="fc" id="L34">        lista.add(p);</span>
+
+<span class="fc" id="L36">        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L37">            ObjectOutputStream oos=new ObjectOutputStream(fos))</span>
+        {
+<span class="fc" id="L39">            oos.writeObject(lista);</span>
+        }
+<span class="fc" id="L41">        return true;</span>
+    }
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public Pagamento ultimoPagamento() throws IOException, ClassNotFoundException {
+
+
+<span class="fc" id="L49">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L50">            ObjectInputStream ois = new ObjectInputStream(fis)){</span>
+<span class="fc" id="L51">            lista= (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
+
+        }
+
+
+<span class="fc" id="L56">        return lista.get(lista.size()-1);</span>
+    }
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public boolean cancellaPagamento(Pagamento p) throws IOException, ClassNotFoundException {
+<span class="fc" id="L62">       boolean status=false;</span>
+
+
+<span class="fc" id="L65">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L66">            ObjectInputStream ois = new ObjectInputStream(fis)){</span>
+<span class="fc" id="L67">            lista= (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
+
+        }
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        for(int i=0;i&lt;lista.size();i++)</span>
+        {
+
+
+<span class="fc bfc" id="L74" title="All 2 branches covered.">            if(i==p.getIdPag()-1) {</span>
+
+<span class="fc" id="L76">                Logger.getLogger(&quot;cancella pagamento&quot;).log(Level.INFO,&quot;id fattura {0}.&quot;,p.getIdPag());</span>
+
+<span class="fc" id="L78">                status = lista.remove(lista.get(i));</span>
+<span class="fc" id="L79">                break;</span>
+            }
+
+
+        }
+<span class="fc" id="L84">        Path path = Path.of(SERIALIZZAZIONE);</span>
+        try {
+<span class="fc" id="L86">            Files.delete(path);</span>
+<span class="pc bpc" id="L87" title="1 of 2 branches missed.">            if(!Files.exists(path))</span>
+            {
+<span class="fc" id="L89">                throw new IOException(&quot;file is deleted!!&quot;);</span>
+
+            }
+
+<span class="fc" id="L93">        }catch (IOException e)</span>
+        {
+<span class="fc" id="L95">            Files.createFile(path);</span>
+<span class="fc" id="L96">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L97">                ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
+<span class="fc" id="L98">                oos.writeObject(lista);</span>
+            }
+<span class="nc" id="L100">        }</span>
+
+<span class="fc" id="L102">        return status;</span>
+
+    }
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public ObservableList&lt;Pagamento&gt; listPagamentiByUser(Pagamento p) throws  IOException, ClassNotFoundException {
+<span class="nc" id="L109">        ObservableList&lt;Pagamento&gt; listaRecuperata = FXCollections.observableArrayList();</span>
+<span class="nc" id="L110">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L111">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="nc" id="L112">            lista= (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
+        }
+
+
+<span class="nc bnc" id="L116" title="All 2 branches missed.">        for (Pagamento pagamento : lista) {</span>
+
+
+<span class="nc bnc" id="L119" title="All 2 branches missed.">            if (pagamento.getEmail().equals(p.getEmail()))</span>
+<span class="nc" id="L120">                listaRecuperata.add(pagamento);</span>
+
+
+<span class="nc" id="L123">        }</span>
+
+
+<span class="nc" id="L126">            return listaRecuperata;</span>
+
+    }
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public void inizializza() throws IOException, ClassNotFoundException {
+        String line;
+
+
+<span class="fc" id="L136">        ArrayList&lt;String&gt; listaR = new ArrayList&lt;&gt;();</span>
+
+
+<span class="fc" id="L139">        try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/pagamento1.txt&quot;);</span>
+<span class="fc" id="L140">             BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
+<span class="fc bfc" id="L141" title="All 2 branches covered.">            while ((line = bufferedReader.readLine()) != null) {</span>
+<span class="fc" id="L142">                listaR.add(line);</span>
+
+            }
+        }
+<span class="fc" id="L146">        Pagamento p=new Pagamento();</span>
+<span class="fc" id="L147">        p.setIdPag(Integer.parseInt(listaR.get(0)));</span>
+<span class="fc" id="L148">        p.setMetodo(listaR.get(1));</span>
+<span class="fc" id="L149">        p.setNomeUtente(listaR.get(2));</span>
+<span class="fc" id="L150">        p.setAmmontare(Float.parseFloat(listaR.get(3)));</span>
+<span class="fc" id="L151">        p.setEmail(listaR.get(4));</span>
+<span class="fc" id="L152">        p.setTipo(listaR.get(5));</span>
+<span class="fc" id="L153">        p.setIdOggetto(Integer.parseInt(listaR.get(6)));</span>
+
+<span class="fc" id="L155">        lista.add(p);</span>
+
+<span class="fc" id="L157">        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L158">            ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
+<span class="fc" id="L159">            oos.writeObject(lista);</span>
+    }
+
+<span class="fc" id="L162">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L163">        ObjectInputStream ois=new ObjectInputStream(fis)) {</span>
+<span class="fc" id="L164">            lista = (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
+        }
+<span class="fc" id="L166">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

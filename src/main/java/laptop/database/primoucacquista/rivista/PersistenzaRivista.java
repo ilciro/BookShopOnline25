@@ -51,7 +51,6 @@ public class PersistenzaRivista {
     public void initializza() throws CsvValidationException, IdException, IOException ,SQLException,ClassNotFoundException{
 
         if(!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASEXCEPTION);
-        if(!Files.exists(Path.of(FILE))) throw new IOException(FILEXCEPTION);
         if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
         DaoInitialize dI=new DaoInitialize();
         dI.inizializza("rivista");
