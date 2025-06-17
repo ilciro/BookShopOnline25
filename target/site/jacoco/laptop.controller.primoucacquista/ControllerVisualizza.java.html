@@ -39,76 +39,76 @@ public class ControllerVisualizza {
 	private PersistenzaRivista pR;
 
 
-<span class="nc" id="L42">	private final ControllerSystemState vis = ControllerSystemState.getInstance();</span>
+<span class="fc" id="L42">	private final ControllerSystemState vis = ControllerSystemState.getInstance();</span>
 
-<span class="nc" id="L44">	public ControllerVisualizza()  {</span>
-<span class="nc" id="L45">		l = new Libro();</span>
-<span class="nc" id="L46">		g = new Giornale();</span>
-<span class="nc" id="L47">		r = new Rivista();</span>
+<span class="fc" id="L44">	public ControllerVisualizza()  {</span>
+<span class="fc" id="L45">		l = new Libro();</span>
+<span class="fc" id="L46">		g = new Giornale();</span>
+<span class="fc" id="L47">		r = new Rivista();</span>
 
-<span class="nc" id="L49">	}</span>
+<span class="fc" id="L49">	}</span>
 
 
 
 	public int getID()
 	{
-<span class="nc" id="L55">		int id=0;</span>
-<span class="nc bnc" id="L56" title="All 4 branches missed.">		switch (vis.getType())</span>
+<span class="fc" id="L55">		int id=0;</span>
+<span class="pc bpc" id="L56" title="1 of 4 branches missed.">		switch (vis.getType())</span>
 		{
-<span class="nc" id="L58">			case &quot;libro&quot;-&gt; id=vis.getIdLibro();</span>
-<span class="nc" id="L59">			case &quot;giornale&quot;-&gt;id=vis.getIdGiornale();</span>
-<span class="nc" id="L60">			case &quot;rivista&quot;-&gt;id=vis.getIdRivista();</span>
+<span class="fc" id="L58">			case &quot;libro&quot;-&gt; id=vis.getIdLibro();</span>
+<span class="fc" id="L59">			case &quot;giornale&quot;-&gt;id=vis.getIdGiornale();</span>
+<span class="fc" id="L60">			case &quot;rivista&quot;-&gt;id=vis.getIdRivista();</span>
 <span class="nc" id="L61">			default -&gt; Logger.getLogger(&quot;id&quot;).log(Level.SEVERE,&quot;get id error!!&quot;);</span>
 
 		}
 
-<span class="nc" id="L65">		return id;</span>
+<span class="fc" id="L65">		return id;</span>
 	}
 
 	public ObservableList&lt;Libro&gt; getListLibro(String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 
 		ObservableList&lt;Libro&gt; list;
-<span class="nc" id="L71">		l.setId(getID());</span>
+<span class="fc" id="L71">		l.setId(getID());</span>
 
-<span class="nc bnc" id="L73" title="All 4 branches missed.">        switch (type) {</span>
-<span class="nc" id="L74">            case DATABASE -&gt; pL = new LibroDao();</span>
-<span class="nc" id="L75">            case FILE -&gt; pL = new CsvLibro();</span>
-<span class="nc" id="L76">            case MEMORIA -&gt; pL = new MemoriaLibro();</span>
+<span class="pc bpc" id="L73" title="1 of 4 branches missed.">        switch (type) {</span>
+<span class="fc" id="L74">            case DATABASE -&gt; pL = new LibroDao();</span>
+<span class="fc" id="L75">            case FILE -&gt; pL = new CsvLibro();</span>
+<span class="fc" id="L76">            case MEMORIA -&gt; pL = new MemoriaLibro();</span>
 <span class="nc" id="L77">			default -&gt; Logger.getLogger(&quot;list libro&quot;).log(Level.SEVERE,&quot;book persistency is wrong!!&quot;);</span>
         }
-<span class="nc" id="L79">		list=pL.getLibroByIdTitoloAutoreLibro(l);</span>
-<span class="nc" id="L80">		return list;</span>
+<span class="fc" id="L79">		list=pL.getLibroByIdTitoloAutoreLibro(l);</span>
+<span class="fc" id="L80">		return list;</span>
 	}
 
 
 	public ObservableList&lt;Giornale&gt; getListGiornale(String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 
 		ObservableList&lt;Giornale&gt; list;
-<span class="nc" id="L87">		g.setId(getID());</span>
-<span class="nc bnc" id="L88" title="All 4 branches missed.">        switch (type) {</span>
-<span class="nc" id="L89">            case DATABASE -&gt; pG = new GiornaleDao();</span>
-<span class="nc" id="L90">            case FILE -&gt; pG = new CsvGiornale();</span>
-<span class="nc" id="L91">            case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
+<span class="fc" id="L87">		g.setId(getID());</span>
+<span class="pc bpc" id="L88" title="1 of 4 branches missed.">        switch (type) {</span>
+<span class="fc" id="L89">            case DATABASE -&gt; pG = new GiornaleDao();</span>
+<span class="fc" id="L90">            case FILE -&gt; pG = new CsvGiornale();</span>
+<span class="fc" id="L91">            case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
 <span class="nc" id="L92">			default -&gt; Logger.getLogger(&quot;list giornale&quot;).log(Level.SEVERE,&quot;daily persistency is wrong!!&quot;);</span>
 
 		}
-<span class="nc" id="L95">		list= pG.getGiornaleByIdTitoloAutoreLibro(g);</span>
-<span class="nc" id="L96">		return list;</span>
+<span class="fc" id="L95">		list= pG.getGiornaleByIdTitoloAutoreLibro(g);</span>
+<span class="fc" id="L96">		return list;</span>
 
 	}
 
 	public ObservableList&lt;Rivista&gt; getListRivista(String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 		ObservableList&lt;Rivista&gt; list;
-<span class="nc" id="L102">		r.setId(getID());</span>
-<span class="nc bnc" id="L103" title="All 4 branches missed.">        switch (type) {</span>
-<span class="nc" id="L104">            case DATABASE -&gt; pR = new RivistaDao();</span>
-<span class="nc" id="L105">            case FILE -&gt; pR = new CsvRivista();</span>
-<span class="nc" id="L106">            case MEMORIA -&gt; pR = new MemoriaRivista();</span>
+<span class="fc" id="L102">		r.setId(getID());</span>
+<span class="pc bpc" id="L103" title="1 of 4 branches missed.">        switch (type) {</span>
+<span class="fc" id="L104">            case DATABASE -&gt; pR = new RivistaDao();</span>
+<span class="fc" id="L105">            case FILE -&gt; pR = new CsvRivista();</span>
+<span class="fc" id="L106">            case MEMORIA -&gt; pR = new MemoriaRivista();</span>
 <span class="nc" id="L107">			default -&gt; Logger.getLogger(&quot;list rivista&quot;).log(Level.SEVERE,&quot;magazine persisyency is wrong!!&quot;);</span>
 
 		}
-<span class="nc" id="L110">		list=pR.getRivistaByIdTitoloAutoreRivista(r);</span>
-<span class="nc" id="L111">		return list;</span>
+<span class="fc" id="L110">		list=pR.getRivistaByIdTitoloAutoreRivista(r);</span>
+<span class="fc" id="L111">		return list;</span>
 
 	}
 

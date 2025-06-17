@@ -43,28 +43,28 @@ import java.util.logging.Logger;
             case ESISTE -&gt; {
 <span class="fc" id="L44">                try (Connection conn = ConnToDb.connectionToDB();</span>
 <span class="fc" id="L45">                     PreparedStatement prepQ = conn.prepareStatement(RBQUERYEXISTS.getString(QUERY))) {</span>
-<span class="nc" id="L46">                    prepQ.execute();</span>
+<span class="fc" id="L46">                    prepQ.execute();</span>
 <span class="fc" id="L47">                } catch (SQLException e) {</span>
 <span class="fc" id="L48">                    Logger.getLogger(&quot;esiste procedura &quot;).log(Level.SEVERE, &quot; exists stored error  or yet created :&quot;, e);</span>
-<span class="nc" id="L49">                }</span>
+<span class="fc" id="L49">                }</span>
 
 <span class="fc" id="L51">            }</span>
             case CREA -&gt; {
 <span class="fc" id="L53">                try (Connection conn = ConnToDb.connectionToDB();</span>
 <span class="fc" id="L54">                     PreparedStatement prepQ = conn.prepareStatement(RBQUERYCREATETABLE.getString(QUERY))) {</span>
-<span class="nc" id="L55">                    prepQ.execute();</span>
+<span class="fc" id="L55">                    prepQ.execute();</span>
 <span class="fc" id="L56">                } catch (SQLException e) {</span>
 <span class="fc" id="L57">                    Logger.getLogger(&quot;crea procedura &quot;).log(Level.SEVERE, &quot; create stored error or yet created :&quot;, e);</span>
-<span class="nc" id="L58">                }</span>
+<span class="fc" id="L58">                }</span>
 
 <span class="fc" id="L60">            }</span>
             case POPOLA -&gt; {
 <span class="fc" id="L62">                try (Connection conn = ConnToDb.connectionToDB();</span>
 <span class="fc" id="L63">                     PreparedStatement prepQ = conn.prepareStatement(RBQUERYPOPOLUATED.getString(QUERY))) {</span>
-<span class="nc" id="L64">                    prepQ.execute();</span>
+<span class="fc" id="L64">                    prepQ.execute();</span>
 <span class="fc" id="L65">                } catch (SQLException e) {</span>
 <span class="fc" id="L66">                    Logger.getLogger(&quot;popola procedura &quot;).log(Level.SEVERE, &quot; polpulated stored error or yet created :&quot;, e);</span>
-<span class="nc" id="L67">                }</span>
+<span class="fc" id="L67">                }</span>
 
 <span class="fc" id="L69">            }</span>
 <span class="nc" id="L70">            default -&gt; Logger.getLogger(&quot;errore in crea stored&quot;).log(Level.SEVERE, &quot;error in create stored &quot;);</span>
@@ -79,14 +79,14 @@ import java.util.logging.Logger;
 <span class="pc bpc" id="L79" title="1 of 4 branches missed.">        switch (nome) {</span>
 <span class="fc" id="L80">            case ESISTE -&gt; esiste(type);</span>
             case CREA -&gt; {
-<span class="pc bpc" id="L82" title="1 of 2 branches missed.">                if(getPresente()==0)</span>
-<span class="nc" id="L83">                    crea(type);</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">                if(getPresente()==0)</span>
+<span class="fc" id="L83">                    crea(type);</span>
 <span class="fc" id="L84">                else Logger.getLogger(&quot;tabella creata&quot;).log(Level.WARNING,&quot;table already created .{0}&quot;,type);</span>
 
 <span class="fc" id="L86">            }</span>
             case POPOLA -&gt; {
-<span class="pc bpc" id="L88" title="1 of 2 branches missed.">                if (getPresente() == 0)</span>
-<span class="nc" id="L89">                    popola(type);</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">                if (getPresente() == 0)</span>
+<span class="fc" id="L89">                    popola(type);</span>
             }
             default -&gt;
 <span class="nc" id="L92">                    Logger.getLogger(&quot;errore ad esegire procedura&quot;).log(Level.SEVERE, &quot;erroro while execute procedure with type .{0}&quot;, type);</span>
@@ -114,33 +114,33 @@ import java.util.logging.Logger;
     private void crea(String type)
     {
 
-<span class="nc" id="L117">            try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="nc" id="L118">                CallableStatement callQ= conn.prepareCall(&quot;{call creaTabella(?)}&quot;))</span>
+<span class="fc" id="L117">            try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L118">                CallableStatement callQ= conn.prepareCall(&quot;{call creaTabella(?)}&quot;))</span>
             {
-<span class="nc" id="L120">                callQ.setString(1,type);</span>
+<span class="fc" id="L120">                callQ.setString(1,type);</span>
 
-<span class="nc" id="L122">                callQ.execute();</span>
+<span class="fc" id="L122">                callQ.execute();</span>
 <span class="nc" id="L123">            }catch (SQLException e)</span>
             {
 <span class="nc" id="L125">                Logger.getLogger(&quot;crea tabella errore&quot;).log(Level.SEVERE,&quot; create table error .{0}&quot;,e.getMessage());</span>
-<span class="nc" id="L126">            }</span>
-<span class="nc" id="L127">    }</span>
+<span class="fc" id="L126">            }</span>
+<span class="fc" id="L127">    }</span>
 
     private void popola(String type)
     {
 
 
 
-<span class="nc" id="L134">            try (Connection conn = ConnToDb.connectionToDB();</span>
-<span class="nc" id="L135">                 CallableStatement callQ = conn.prepareCall(&quot;{call popolaTabella(?)}&quot;)) {</span>
-<span class="nc" id="L136">                callQ.setString(1, type);</span>
+<span class="fc" id="L134">            try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="fc" id="L135">                 CallableStatement callQ = conn.prepareCall(&quot;{call popolaTabella(?)}&quot;)) {</span>
+<span class="fc" id="L136">                callQ.setString(1, type);</span>
 
-<span class="nc" id="L138">                callQ.execute();</span>
+<span class="fc" id="L138">                callQ.execute();</span>
 <span class="nc" id="L139">            } catch (SQLException e) {</span>
 <span class="nc" id="L140">                Logger.getLogger(&quot;popola query&quot;).log(Level.SEVERE, &quot; error with populate table&quot;);</span>
-<span class="nc" id="L141">            }</span>
+<span class="fc" id="L141">            }</span>
 
-<span class="nc" id="L143">    }</span>
+<span class="fc" id="L143">    }</span>
 
 
 
@@ -150,10 +150,10 @@ import java.util.logging.Logger;
         // connetto a ispw e se non esiste creo
 <span class="fc" id="L151">        try (Connection conn = ConnToDb.connectionToDB();</span>
 <span class="fc" id="L152">             PreparedStatement prepQ = conn.prepareStatement(RBQUERYCREATE.getString(QUERY))) {</span>
-<span class="nc" id="L153">            prepQ.execute();</span>
+<span class="fc" id="L153">            prepQ.execute();</span>
 <span class="fc" id="L154">        } catch (SQLException e) {</span>
 <span class="fc" id="L155">            Logger.getLogger(&quot;create schema ispw &quot;).log(Level.SEVERE, &quot;error with create schema ispw-&gt;reuse&quot;);</span>
-<span class="nc" id="L156">        }</span>
+<span class="fc" id="L156">        }</span>
         //uso ispw
 <span class="fc" id="L158">        try (Connection conn = ConnToDb.connectionToDB();</span>
 <span class="fc" id="L159">             PreparedStatement prepQ = conn.prepareStatement(RBQUERYCREATE.getString(&quot;query2&quot;))) {</span>
@@ -169,7 +169,7 @@ import java.util.logging.Logger;
 
 
 
-<span class="pc bpc" id="L172" title="3 of 9 branches missed.">        switch (type) {</span>
+<span class="pc bpc" id="L172" title="1 of 9 branches missed.">        switch (type) {</span>
             case LIBRO -&gt; {
                 //creo
 <span class="fc" id="L175">                creaProcedura(ESISTE);</span>
@@ -212,14 +212,14 @@ import java.util.logging.Logger;
 <span class="fc" id="L212">            }</span>
             case UTENTE -&gt; {
                 //creo
-<span class="nc" id="L215">                creaProcedura(ESISTE);</span>
-<span class="nc" id="L216">                creaProcedura(CREA);</span>
-<span class="nc" id="L217">                creaProcedura(POPOLA);</span>
+<span class="fc" id="L215">                creaProcedura(ESISTE);</span>
+<span class="fc" id="L216">                creaProcedura(CREA);</span>
+<span class="fc" id="L217">                creaProcedura(POPOLA);</span>
                 //richiamo
-<span class="nc" id="L219">                eseguiProcedura(ESISTE, UTENTE);</span>
-<span class="nc" id="L220">                eseguiProcedura(CREA, UTENTE);</span>
-<span class="nc" id="L221">                eseguiProcedura(POPOLA, UTENTE);</span>
-<span class="nc" id="L222">            }</span>
+<span class="fc" id="L219">                eseguiProcedura(ESISTE, UTENTE);</span>
+<span class="fc" id="L220">                eseguiProcedura(CREA, UTENTE);</span>
+<span class="fc" id="L221">                eseguiProcedura(POPOLA, UTENTE);</span>
+<span class="fc" id="L222">            }</span>
             case FATTURA -&gt; {
                 //creo
 <span class="fc" id="L225">                creaProcedura(ESISTE);</span>
@@ -238,12 +238,12 @@ import java.util.logging.Logger;
 <span class="fc" id="L238">            }</span>
             case CARTACREDITO -&gt; {
                 //creo
-<span class="nc" id="L241">                creaProcedura(ESISTE);</span>
-<span class="nc" id="L242">                creaProcedura(CREA);</span>
+<span class="fc" id="L241">                creaProcedura(ESISTE);</span>
+<span class="fc" id="L242">                creaProcedura(CREA);</span>
                 //richiamo
-<span class="nc" id="L244">                eseguiProcedura(ESISTE, CARTACREDITO);</span>
-<span class="nc" id="L245">                eseguiProcedura(CREA, CARTACREDITO);</span>
-<span class="nc" id="L246">            }</span>
+<span class="fc" id="L244">                eseguiProcedura(ESISTE, CARTACREDITO);</span>
+<span class="fc" id="L245">                eseguiProcedura(CREA, CARTACREDITO);</span>
+<span class="fc" id="L246">            }</span>
 <span class="nc" id="L247">            default -&gt; Logger.getLogger(&quot;eoore con il tipo in dao initialize&quot;).log(Level.SEVERE,&quot; type is wrong!!&quot;);</span>
         }
 <span class="fc" id="L249">    }</span>
