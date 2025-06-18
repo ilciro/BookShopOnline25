@@ -22,7 +22,7 @@ public  class PersistenzaLibro {
     private static final String DATABASEXCEPTION="file book sql not exists";
     private static final String CSVEXCEPTION="file book csv not exists";
     private static final String MEMORIAEXCEPTION="class book not in memory";
-    private static final String IDEXCEPTIONMESSAGE=" id book is null or is zero";
+    private static final String IDEXCEPTIONMESSAGE="id book is null or is zero";
 
 
      public  boolean inserisciLibro(Libro l) throws CsvValidationException, IOException, ClassNotFoundException {

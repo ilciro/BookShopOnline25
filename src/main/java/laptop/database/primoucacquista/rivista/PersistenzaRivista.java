@@ -21,7 +21,7 @@ public class PersistenzaRivista {
     private static final String DATABASEXCEPTION="file magazine sql not exists";
     private static final String FILEXCEPTION="file magazine csv not exists";
     private static final String MEMORIAEXCEPTION="class magazine not in memory";
-    private static final String IDEXCEPTIONMESSAGE=" id magazine is null or is zero";
+    private static final String IDEXCEPTIONMESSAGE="id magazine is null or is zero";
 
     public  boolean inserisciRivista(Rivista r) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
         if(r.getId()==0) throw new IOException(" file not found or id null");

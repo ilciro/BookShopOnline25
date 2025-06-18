@@ -20,7 +20,7 @@ public class LibroDao extends PersistenzaLibro{
 
     private final ControllerSystemState vis=ControllerSystemState.getInstance();
     private final Factory f;
-    private static final String ECCEZIONE = " eccezione ottenuta";
+    private static final String ECCEZIONE = "eccezione ottenuta";
     private static final String LIBRO = "libro";
 
     private  String query;

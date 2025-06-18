@@ -122,7 +122,7 @@ public class BoundaryScegliNegozio {
 	}
 
 
-	public void checkNegozio1(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
+	private  void checkNegozio1(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
 
 		verificaDispApertura(type,1);
 
@@ -130,21 +130,21 @@ public class BoundaryScegliNegozio {
 
 	}
 
-	public void checkNegozio2(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
+	private void checkNegozio2(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
 		verificaDispApertura(type,2);
 
 
 
 	}
 
-	public void checkNegozio3(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
+	private void checkNegozio3(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
 		verificaDispApertura(type,3);
 
 
 
 	}
 
-	public void checkNegozio4(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
+	private void checkNegozio4(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
 
 		verificaDispApertura(type,4);
 	}

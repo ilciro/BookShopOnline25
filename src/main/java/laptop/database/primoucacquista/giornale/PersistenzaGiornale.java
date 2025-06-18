@@ -8,7 +8,6 @@ import laptop.exception.IdException;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Raccolta;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,7 +22,7 @@ public class PersistenzaGiornale {
     private static final String DATABASEXCEPTION="file daily sql not exists";
     private static final String FILEXCEPTION="file daily csv not exists";
     private static final String MEMORIAEXCEPTION="class daily not in memory";
-    private static final String IDEXCEPTIONMESSAGE=" id  daiy is null or is zero";
+    private static final String IDEXCEPTIONMESSAGE="id  daiy is null or is zero";
 
 
     public  boolean inserisciGiornale(Giornale g) throws CsvValidationException, IOException,  ClassNotFoundException {
