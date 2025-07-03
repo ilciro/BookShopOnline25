@@ -26,7 +26,7 @@ public class CsvCartaCredito extends PersistenzaCC{
     private static final int GETINDEXAMMONTARE=5;
     private static final int GETINDEXIDCC=6;
     private static final String CARTACREDITO=&quot;report/reportCartaCredito.csv&quot;;
-    private static final String IDWRONG=&quot; id wrong ..!!&quot;;
+    private static final String IDWRONG=&quot;id wrong ..!!&quot;;
     private static final String IDERROR=&quot;id error !!..&quot;;
 
 <span class="fc" id="L32">    public CsvCartaCredito() throws IOException {</span>
@@ -125,12 +125,13 @@ public class CsvCartaCredito extends PersistenzaCC{
     @Override
     public void inizializza() throws IOException, ClassNotFoundException, SQLException {
 
+<span class="fc" id="L128">        Path path = Path.of(CARTACREDITO);</span>
         try{
-<span class="pc bpc" id="L129" title="1 of 2 branches missed.">            if(!Files.exists(Path.of(CARTACREDITO))) throw new IOException(&quot;file not exists&quot;);</span>
-<span class="nc" id="L130">        } catch (IOException e)</span>
+<span class="pc bpc" id="L130" title="1 of 2 branches missed.">            if(!Files.exists(path)) throw new IOException(&quot;file not exists&quot;);</span>
+<span class="nc" id="L131">        } catch (IOException e)</span>
         {
-<span class="nc" id="L132">            Files.createFile(Path.of(CARTACREDITO  ));</span>
-<span class="fc" id="L133">        }</span>
-<span class="fc" id="L134">    }</span>
+<span class="nc" id="L133">            Files.createFile(path);</span>
+<span class="fc" id="L134">        }</span>
+<span class="fc" id="L135">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

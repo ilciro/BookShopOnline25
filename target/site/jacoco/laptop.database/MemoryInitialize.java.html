@@ -354,23 +354,26 @@ import java.util.logging.Logger;
             }
 
 
-
-<span class="fc" id="L358">                Rivista r=new Rivista();</span>
-<span class="fc" id="L359">                r.setTitolo(listaR.get(0));</span>
-<span class="fc" id="L360">                r.setCategoria(listaR.get(1));</span>
-<span class="fc" id="L361">                r.setAutore(listaR.get(2));</span>
-<span class="fc" id="L362">                r.setLingua(listaR.get(3));</span>
-<span class="fc" id="L363">                r.setEditore(listaR.get(4));</span>
-<span class="fc" id="L364">                r.setDescrizione(listaR.get(5));</span>
-<span class="fc" id="L365">                r.setDataPubb(LocalDate.parse(listaR.get(6)));</span>
-<span class="fc" id="L366">                r.setDisp(Integer.parseInt(listaR.get(7)));</span>
-<span class="fc" id="L367">                r.setPrezzo(Float.parseFloat(listaR.get(8)));</span>
-<span class="fc" id="L368">                r.setCopieRim(Integer.parseInt(listaR.get(9)));</span>
-<span class="fc" id="L369">                r.setId(Integer.parseInt(listaR.get(10)));</span>
-<span class="fc" id="L370">                return r;</span>
+<span class="fc" id="L357">        return getRivista(listaR);</span>
 
 
 
             }
+
+    private static @NotNull Rivista getRivista(ArrayList&lt;String&gt; listaR) {
+<span class="fc" id="L364">        Rivista r=new Rivista();</span>
+<span class="fc" id="L365">        r.setTitolo(listaR.get(0));</span>
+<span class="fc" id="L366">        r.setCategoria(listaR.get(1));</span>
+<span class="fc" id="L367">        r.setAutore(listaR.get(2));</span>
+<span class="fc" id="L368">        r.setLingua(listaR.get(3));</span>
+<span class="fc" id="L369">        r.setEditore(listaR.get(4));</span>
+<span class="fc" id="L370">        r.setDescrizione(listaR.get(5));</span>
+<span class="fc" id="L371">        r.setDataPubb(LocalDate.parse(listaR.get(6)));</span>
+<span class="fc" id="L372">        r.setDisp(Integer.parseInt(listaR.get(7)));</span>
+<span class="fc" id="L373">        r.setPrezzo(Float.parseFloat(listaR.get(8)));</span>
+<span class="fc" id="L374">        r.setCopieRim(Integer.parseInt(listaR.get(9)));</span>
+<span class="fc" id="L375">        r.setId(Integer.parseInt(listaR.get(10)));</span>
+<span class="fc" id="L376">        return r;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

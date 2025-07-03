@@ -36,6 +36,8 @@ class TestAcquistaGiornale {
 
     @Test
     void testPagamentoCashEDownloadGiornale() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException, CsvValidationException, IOException, IdException, ClassNotFoundException, ParseException {
+
+
         System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver/chromedriver");
         //schermata index
         WebDriver driver = new ChromeDriver();

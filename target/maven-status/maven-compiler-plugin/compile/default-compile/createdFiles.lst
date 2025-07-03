@@ -7,7 +7,6 @@ laptop/boundary/primoucacquista/BuondaryAnnullaPagamento.class
 laptop/database/primoucacquista/pagamento/PagamentoDao.class
 laptop/database/primoucacquista/giornale/GiornaleDao.class
 laptop/model/user/User$Ruoli.class
-laptop/database/primoucacquista/DaoInitialize.class
 laptop/database/MemoryInitialize.class
 web/bean/CartaCreditoBean.class
 laptop/database/primoucacquista/negozio/CsvNegozio.class
@@ -81,6 +80,7 @@ laptop/boundary/terzoucgestioneprofilooggetto/BoundaryGestioneOggetto.class
 laptop/boundary/secondouclogin/BoundaryRegistra.class
 laptop/database/primoucacquista/cartacredito/CartaCreditoDao.class
 laptop/database/primoucacquista/giornale/MemoriaGiornale.class
+laptop/database/DaoInitialize.class
 laptop/database/primoucacquista/fattura/MemoriaFattura.class
 laptop/database/secondouclogin/users/UsersDao.class
 laptop/model/raccolta/CategorieRivista.class

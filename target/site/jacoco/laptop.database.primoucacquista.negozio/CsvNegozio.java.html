@@ -16,9 +16,9 @@ import java.util.logging.Logger;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 <span class="fc" id="L18">public class CsvNegozio extends PersistenzaNegozio{</span>
-    private static final String LOCATIONNEGOZIO = &quot;report/reportNegozio.csv&quot;;
+    private static final String LOCATIONEGOZIO=&quot;report/reportNegozio.csv&quot;;
     private static final String NEGOZIOP=&quot;src/main/resources/csvfiles/negozio.csv&quot;;
-<span class="fc" id="L21">    private final File fdn=new File(LOCATIONNEGOZIO);</span>
+<span class="fc" id="L21">    private final File fdn=new File(LOCATIONEGOZIO);</span>
 
 
     private static final int GETINDEXNEGOZIOID = 0;
@@ -77,7 +77,7 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 <span class="fc" id="L77">        }catch (IOException e)</span>
         {
 <span class="fc" id="L79">            Logger.getLogger(&quot;initialize csvNEgozio&quot;).log(Level.SEVERE,&quot;file not exists!!&quot;);</span>
-<span class="fc" id="L80">            Files.copy(Path.of(NEGOZIOP), Path.of(LOCATIONNEGOZIO), REPLACE_EXISTING);</span>
+<span class="fc" id="L80">            Files.copy(Path.of(NEGOZIOP), Path.of(LOCATIONEGOZIO), REPLACE_EXISTING);</span>
 
 <span class="fc" id="L82">            Logger.getLogger(&quot;crea negpzio file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, e);</span>
 

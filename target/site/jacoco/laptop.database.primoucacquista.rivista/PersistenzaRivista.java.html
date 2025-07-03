@@ -3,7 +3,7 @@
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import laptop.database.primoucacquista.DaoInitialize;
+import laptop.database.DaoInitialize;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Raccolta;
 import laptop.model.raccolta.Rivista;
@@ -21,7 +21,7 @@ import java.sql.SQLException;
     private static final String DATABASEXCEPTION=&quot;file magazine sql not exists&quot;;
     private static final String FILEXCEPTION=&quot;file magazine csv not exists&quot;;
     private static final String MEMORIAEXCEPTION=&quot;class magazine not in memory&quot;;
-    private static final String IDEXCEPTIONMESSAGE=&quot; id magazine is null or is zero&quot;;
+    private static final String IDEXCEPTIONMESSAGE=&quot;id magazine is null or is zero&quot;;
 
     public  boolean inserisciRivista(Rivista r) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
 <span class="nc bnc" id="L27" title="All 2 branches missed.">        if(r.getId()==0) throw new IOException(&quot; file not found or id null&quot;);</span>

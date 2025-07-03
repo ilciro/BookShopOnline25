@@ -353,13 +353,13 @@ public class 	Libro implements Raccolta , Serializable  {
 <span class="nc" id="L353">			default -&gt; 	Logger.getLogger(&quot;Test leggi&quot;).log(Level.SEVERE, &quot;read error&quot;);</span>
 		}
 <span class="pc bpc" id="L355" title="1 of 2 branches missed.">		if (Desktop.isDesktopSupported()) {</span>
-<span class="nc" id="L356">			new Thread(() -&gt; {</span>
+<span class="fc" id="L356">			new Thread(() -&gt; {</span>
 				try {
-<span class="nc" id="L358">					Desktop.getDesktop().open(f);</span>
+<span class="fc" id="L358">					Desktop.getDesktop().open(f);</span>
 
 <span class="nc" id="L360">				} catch (IOException e) {</span>
-<span class="nc" id="L361">					Logger.getLogger(&quot;open file&quot;).log(Level.SEVERE, &quot;open error&quot;);				}</span>
-<span class="nc" id="L362">			}).start();</span>
+<span class="pc" id="L361">					Logger.getLogger(&quot;open file&quot;).log(Level.SEVERE, &quot;open error&quot;);				}</span>
+<span class="fc" id="L362">			}).start();</span>
 
 
 		}

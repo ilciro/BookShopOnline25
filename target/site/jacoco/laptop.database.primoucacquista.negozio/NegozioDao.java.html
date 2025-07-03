@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import java.util.logging.Level;
 
-import laptop.database.primoucacquista.DaoInitialize;
+import laptop.database.DaoInitialize;
 import laptop.model.Negozio;
 import laptop.utilities.ConnToDb;
 import javafx.collections.FXCollections;

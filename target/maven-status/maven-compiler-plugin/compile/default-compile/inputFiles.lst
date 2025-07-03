@@ -43,8 +43,8 @@
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/terzogestioneprofilooggetto/ControllerUtenti.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/terzogestioneprofilooggetto/ControllerVisualizzaOrdini.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/terzogestioneprofilooggetto/ControllerVisualizzaProfilo.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/DaoInitialize.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/MemoryInitialize.java
-/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/primoucacquista/DaoInitialize.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/primoucacquista/cartacredito/CartaCreditoDao.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/primoucacquista/cartacredito/CsvCartaCredito.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/primoucacquista/cartacredito/MemoriaCartaCredito.java

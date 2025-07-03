@@ -21,7 +21,6 @@ import web.bean.RivistaBean;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class TestWebFinali {
@@ -98,4 +97,6 @@ class TestWebFinali {
           assertNotEquals(0,PropertyUtils.getProperty(gB,"idB"));
 
      }
+
+
 }

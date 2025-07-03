@@ -32,6 +32,7 @@ class TestAcquistaLibro {
      void testIndexBook() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException, CsvValidationException, IOException, IdException, ClassNotFoundException {
          System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver/chromedriver");
          //schermata index
+
          WebDriver driver = new ChromeDriver();
          driver.get("http://localhost:8080/original-BookShopOnline25/index.jsp");
          driver.findElement(By.id("libri")).click();
