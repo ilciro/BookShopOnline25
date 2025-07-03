@@ -18,9 +18,9 @@ public class PersistenzaNegozio {
     private static final String MEMORIA="memory/serializzazioneNegozio.ser";
 
      public ObservableList<Negozio> getNegozi()throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        if(!Files.exists(Path.of("report/reportNegozio.csv"))) throw new CsvValidationException(" file csv not exists");
+        if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(" file csv not exists");
         if(!Files.exists(Path.of(DATABASE))) throw new IdException(" file not exists");
-        if(!Files.exists(Path.of("memory/serializzazioneNegozio.ser"))) throw new ClassNotFoundException(" class in memory not found");
+        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(" class in memory not found");
         else throw new IOException("file not found");
      }
      public boolean checkOpen(Negozio  shop) throws CsvValidationException, IOException, ClassNotFoundException {
