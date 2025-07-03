@@ -14,8 +14,10 @@ import java.sql.SQLException;
 public class PersistenzaNegozio {
 
     private static final String DATABASE="src/main/resources/sql/tablePopulate.properties";
+    private static final String FILE="report/reportNegozio.csv";
+    private static final String MEMORIA="memory/serializzazioneNegozio.ser";
 
-     public ObservableList<Negozio> getNegozi( )throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+     public ObservableList<Negozio> getNegozi()throws CsvValidationException, IOException, IdException, ClassNotFoundException {
         if(!Files.exists(Path.of("report/reportNegozio.csv"))) throw new CsvValidationException(" file csv not exists");
         if(!Files.exists(Path.of(DATABASE))) throw new IdException(" file not exists");
         if(!Files.exists(Path.of("memory/serializzazioneNegozio.ser"))) throw new ClassNotFoundException(" class in memory not found");
@@ -36,7 +38,7 @@ public class PersistenzaNegozio {
          return false;
      }
      public void initializza() throws IOException, SQLException {
-         if(!Files.exists(Path.of("report/reportNegozio.csv"))||(!Files.exists(Path.of("memory/serializzazioneNegozio.ser")))) throw new IOException(" files not exists");
+         if(!Files.exists(Path.of(FILE))||(!Files.exists(Path.of(MEMORIA)))) throw new IOException(" files not exists");
          if(!Files.exists(Path.of(DATABASE)))  throw new SQLException("file sql not exists");
      }
 }

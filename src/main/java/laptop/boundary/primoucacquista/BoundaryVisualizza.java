@@ -99,8 +99,7 @@ public class BoundaryVisualizza implements Initializable {
 	private Button buttonMostra;
 	
 	private ControllerVisualizza cV;
-	protected int i;
-	private final ControllerSystemState vis = ControllerSystemState.getInstance() ;
+    private final ControllerSystemState vis = ControllerSystemState.getInstance() ;
 
 
 
@@ -144,8 +143,8 @@ public class BoundaryVisualizza implements Initializable {
 	@FXML
 	private void mostra()
 	{
-		i = cV.getID();
-		String tipo=vis.getType();
+        cV.getID();
+        String tipo=vis.getType();
 		String indisponibile="";
 
 		String type="";

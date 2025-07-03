@@ -4,7 +4,7 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
-import laptop.database.primoucacquista.DaoInitialize;
+import laptop.database.DaoInitialize;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Factory;
 import laptop.model.raccolta.Libro;
@@ -20,8 +20,8 @@ public class LibroDao extends PersistenzaLibro{
 
     private final ControllerSystemState vis=ControllerSystemState.getInstance();
     private final Factory f;
-    private static final String ECCEZIONE = "eccezione ottenuta";
-    private static final String LIBRO = "libro";
+    private static final String ECCEZIONE="eccezione ottenuta";
+    private static final String LIBRO="libro";
 
     private  String query;
 

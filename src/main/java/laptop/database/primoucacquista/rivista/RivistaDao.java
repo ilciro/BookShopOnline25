@@ -4,7 +4,7 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
-import laptop.database.primoucacquista.DaoInitialize;
+import laptop.database.DaoInitialize;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Factory;
 import laptop.model.raccolta.Raccolta;
@@ -18,11 +18,7 @@ import java.util.logging.Logger;
 
 public class RivistaDao extends PersistenzaRivista{
     private final Factory f;
-
     private  String query ;
-
-
-
     private final ControllerSystemState vis=ControllerSystemState.getInstance();
     private  static final String RIVISTA="rivista";
     private static final String ECCEZIONE="eccezione generata:";

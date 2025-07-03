@@ -39,7 +39,7 @@ public class ControllerAcquista {
 	private final Rivista r;
 	private static final ControllerSystemState vis = ControllerSystemState.getInstance() ;
 
-    private static final String LIBRO = "libro";
+    private static final String LIBRO ="libro";
 	private static final String RIVISTA="rivista";
 	private static final String GIORNALE="giornale";
 	private static final String DATABASE="database";

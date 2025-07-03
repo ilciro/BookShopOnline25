@@ -19,8 +19,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 		@Serial
 		private static final long serialVersionUID = 2L;
 
-
-		private String  titolo;
+	private String  titolo;
 	private String categoria;
 	private String lingua;
 	private String editore;

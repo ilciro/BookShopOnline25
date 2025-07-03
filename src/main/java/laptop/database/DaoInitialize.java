@@ -1,4 +1,4 @@
-package laptop.database.primoucacquista;
+package laptop.database;
 
 import laptop.utilities.ConnToDb;
 
@@ -22,7 +22,6 @@ public class DaoInitialize {
     private static final ResourceBundle RBQUERYEXISTS = ResourceBundle.getBundle("sql/tableExist");
     private static final ResourceBundle RBQUERYPOPOLUATED = ResourceBundle.getBundle("sql/tablePopulate");
     private static final ResourceBundle RBQUERYCREATETABLE = ResourceBundle.getBundle("sql/tableCreate");
-
     private static final String CREA = "crea";
     private static final String ESISTE = "esiste";
     private static final String POPOLA = "popola";

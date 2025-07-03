@@ -2,7 +2,7 @@ package laptop.database.primoucacquista.pagamento;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import laptop.database.primoucacquista.DaoInitialize;
+import laptop.database.DaoInitialize;
 import laptop.model.Pagamento;
 import laptop.model.user.User;
 import laptop.utilities.ConnToDb;

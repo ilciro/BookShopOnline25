@@ -41,7 +41,7 @@ public class CsvPagamento extends PersistenzaPagamento{
     private static final String PREFIX="prefix";
     private static final String SUFFIX="suffix";
     private static final String PAGAMENTO="report/reportPagamento.csv";
-    private static final String IDWRONG=" id wrong ..!!";
+    private static final String IDWRONG="id wrong ..!!";
     private static final String IDERROR="id error !!..";
 
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
@@ -149,7 +149,8 @@ public class CsvPagamento extends PersistenzaPagamento{
 
     @Override
     public void inizializza() throws IOException, ClassNotFoundException, SQLException {
-        if(!Files.exists(Path.of(PAGAMENTO))) Files.createFile(Path.of(PAGAMENTO));
+        Path path = Path.of(PAGAMENTO);
+        if(!Files.exists(path)) Files.createFile(path);
     }
 
     private static boolean isFound(Pagamento p, File tmpFile) throws IOException, CsvValidationException {

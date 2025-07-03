@@ -3,7 +3,6 @@ import java.io.*;
 import java.sql.*;
 import java.time.LocalDate;
 
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,7 +11,7 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
-import laptop.database.primoucacquista.DaoInitialize;
+import laptop.database.DaoInitialize;
 import laptop.exception.IdException;
 import laptop.utilities.ConnToDb;
 import laptop.model.user.TempUser;

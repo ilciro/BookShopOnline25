@@ -1,7 +1,7 @@
 package laptop.database.primoucacquista.fattura;
 
 import laptop.controller.ControllerSystemState;
-import laptop.database.primoucacquista.DaoInitialize;
+import laptop.database.DaoInitialize;
 import laptop.model.Fattura;
 import laptop.utilities.ConnToDb;
 

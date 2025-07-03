@@ -354,22 +354,25 @@ public class MemoryInitialize {
             }
 
 
-
-                Rivista r=new Rivista();
-                r.setTitolo(listaR.get(0));
-                r.setCategoria(listaR.get(1));
-                r.setAutore(listaR.get(2));
-                r.setLingua(listaR.get(3));
-                r.setEditore(listaR.get(4));
-                r.setDescrizione(listaR.get(5));
-                r.setDataPubb(LocalDate.parse(listaR.get(6)));
-                r.setDisp(Integer.parseInt(listaR.get(7)));
-                r.setPrezzo(Float.parseFloat(listaR.get(8)));
-                r.setCopieRim(Integer.parseInt(listaR.get(9)));
-                r.setId(Integer.parseInt(listaR.get(10)));
-                return r;
+        return getRivista(listaR);
 
 
 
             }
+
+    private static @NotNull Rivista getRivista(ArrayList<String> listaR) {
+        Rivista r=new Rivista();
+        r.setTitolo(listaR.get(0));
+        r.setCategoria(listaR.get(1));
+        r.setAutore(listaR.get(2));
+        r.setLingua(listaR.get(3));
+        r.setEditore(listaR.get(4));
+        r.setDescrizione(listaR.get(5));
+        r.setDataPubb(LocalDate.parse(listaR.get(6)));
+        r.setDisp(Integer.parseInt(listaR.get(7)));
+        r.setPrezzo(Float.parseFloat(listaR.get(8)));
+        r.setCopieRim(Integer.parseInt(listaR.get(9)));
+        r.setId(Integer.parseInt(listaR.get(10)));
+        return r;
+    }
 }

@@ -27,7 +27,7 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 public class CsvRivista extends PersistenzaRivista {
 
-    private static final String LOCATIONR = "report/reportRivista.csv";
+    private static final String LOCATIONR="report/reportRivista.csv";
     private static final int GETINDEXTITOLOR = 0;
     private static final int GETINDEXTIPOLOGIAR = 1;
     private static final int GETINDEXAUTORER = 2;
@@ -41,13 +41,12 @@ public class CsvRivista extends PersistenzaRivista {
     private static final int GETINDEXIDR = 10;
     private final HashMap<Integer, Rivista> cacheRivista;
     private final File fdR = new File(LOCATIONR);
-    private static final String APPOGGIO = "report/appoggio.csv";
-    private static final String PERMESSI = "rwx------";
-    private static final String PREFIX = "prefix";
-    private static final String SUFFIX = "suffix";
-
-    private static final ControllerSystemState vis = ControllerSystemState.getInstance();
-    private static final String RIVISTAP = "src/main/resources/csvfiles/rivista.csv";
+    private static final String APPOGGIO="report/appoggio.csv";
+    private static final String PERMESSI="rwx------";
+    private static final String PREFIX="prefix";
+    private static final String SUFFIX="suffix";
+    private static final ControllerSystemState vis=ControllerSystemState.getInstance();
+    private static final String RIVISTAP="src/main/resources/csvfiles/rivista.csv";
 
 
     public CsvRivista()  {

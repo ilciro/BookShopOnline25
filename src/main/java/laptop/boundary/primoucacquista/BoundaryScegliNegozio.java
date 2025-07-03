@@ -58,12 +58,12 @@ public class BoundaryScegliNegozio {
 
 	private final ControllerScegliNegozio cSN;
 	private ObservableList<Negozio> listOfNegozi;
-	protected String alertTitle = "Ordine ricevuto!";
-	protected String alertHeaderTexr = "Il negozio che hai selezionato ha ricevuto il tuo ordine. \n Presentati dopo 3 giorni lavorativi per ritirare il tuo acquisto";
-	protected String alertContentText = "Ricordati di presentarti con le credenziali con le quali accedi ed avrai consegnato il tuo ordine";
-	protected String warningTitle = " Negozio chiuso o non disponibile per il ritiro";
-	protected String warningHeaderText = "Il negozio seleziopnato non � al momento pronto per questo tipo di operazioni";
-	private static final String WARNINGCONTENTTEXT = "Torna indietro e seleziona un'altro negozio fra quelli che ti vengono mostrati ! ";
+	private static final String ALERTITLE = "Ordine ricevuto!";
+	private static final String ALERTHEADERTEXT = "Il negozio che hai selezionato ha ricevuto il tuo ordine. \n Presentati dopo 3 giorni lavorativi per ritirare il tuo acquisto";
+	private static final String ALERTCONTENTEXT = "Ricordati di presentarti con le credenziali con le quali accedi ed avrai consegnato il tuo ordine";
+	private static final String WARNINGTITLE = "Negozio chiuso o non disponibile per il ritiro";
+	private static final String WARNINGHEADERTEXT = "Il negozio seleziopnato non e al momento pronto per questo tipo di operazioni";
+	private static final String WARNINGCONTENTTEXT = "Torna indietro e seleziona un'altro negozio fra quelli che ti vengono mostrati!";
 	private static final String HOMEPAGE = "view/primoucacquista/homePageFinale.fxml";
 	private String type = "";
 
@@ -154,9 +154,9 @@ public class BoundaryScegliNegozio {
 
 private void negozioGiusto() throws IOException {
 	alert = new Alert(AlertType.CONFIRMATION);
-	alert.setTitle(alertTitle);
-	alert.setHeaderText(alertHeaderTexr);
-	alert.setContentText(alertContentText);
+	alert.setTitle(ALERTITLE);
+	alert.setHeaderText(ALERTHEADERTEXT);
+	alert.setContentText(ALERTCONTENTEXT);
 	Optional<ButtonType> result = alert.showAndWait();
 
 	if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
@@ -209,8 +209,8 @@ private void negozioGiusto() throws IOException {
 		} else {
 
 			alertE = new Alert(AlertType.WARNING);
-			alertE.setTitle(warningTitle);
-			alertE.setHeaderText(warningHeaderText);
+			alertE.setTitle(WARNINGTITLE);
+			alertE.setHeaderText(WARNINGHEADERTEXT);
 			alertE.setContentText(WARNINGCONTENTTEXT);
 
 

@@ -26,7 +26,7 @@ public class CsvCartaCredito extends PersistenzaCC{
     private static final int GETINDEXAMMONTARE=5;
     private static final int GETINDEXIDCC=6;
     private static final String CARTACREDITO="report/reportCartaCredito.csv";
-    private static final String IDWRONG=" id wrong ..!!";
+    private static final String IDWRONG="id wrong ..!!";
     private static final String IDERROR="id error !!..";
 
     public CsvCartaCredito() throws IOException {
@@ -125,11 +125,12 @@ public class CsvCartaCredito extends PersistenzaCC{
     @Override
     public void inizializza() throws IOException, ClassNotFoundException, SQLException {
 
+        Path path = Path.of(CARTACREDITO);
         try{
-            if(!Files.exists(Path.of(CARTACREDITO))) throw new IOException("file not exists");
+            if(!Files.exists(path)) throw new IOException("file not exists");
         } catch (IOException e)
         {
-            Files.createFile(Path.of(CARTACREDITO  ));
+            Files.createFile(path);
         }
     }
 }

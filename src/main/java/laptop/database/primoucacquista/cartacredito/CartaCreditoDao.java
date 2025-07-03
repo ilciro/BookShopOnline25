@@ -2,7 +2,7 @@ package laptop.database.primoucacquista.cartacredito;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import laptop.database.primoucacquista.DaoInitialize;
+import laptop.database.DaoInitialize;
 import laptop.model.CartaDiCredito;
 import laptop.utilities.ConnToDb;
 

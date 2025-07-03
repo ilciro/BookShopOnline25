@@ -27,7 +27,7 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 public class CsvGiornale extends PersistenzaGiornale{
 
-    private static final String LOCATIONG = "report/reportGiornale.csv";
+    private static final String LOCATIONG="report/reportGiornale.csv";
     private static final int GETINDEXTITOLOG = 0;
     private static final int GETINDEXTIPOLOGIAG = 1;
     private static final int GETINDEXLINGUAG = 2;

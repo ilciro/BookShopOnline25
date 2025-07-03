@@ -3,11 +3,10 @@ package laptop.database.primoucacquista.libro;
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import laptop.database.primoucacquista.DaoInitialize;
+import laptop.database.DaoInitialize;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
-import org.codehaus.plexus.util.StringUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;

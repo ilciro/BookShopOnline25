@@ -39,7 +39,7 @@ public class CsvFattura extends PersistenzaFattura {
     private static final String PREFIX="prefix";
     private static final String SUFFIX="suffix";
     private static final String FATTURA="report/reportFattura.csv";
-    private static final String IDWRONG=" id wrong ..!!";
+    private static final String IDWRONG="id wrong ..!!";
     private static final String IDERROR="id error !!..";
 
     public CsvFattura() throws IOException {
