@@ -13,11 +13,9 @@ import laptop.controller.ControllerSystemState;
 
 import java.io.IOException;
 import java.util.Objects;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
-public class BoundarySceltaModalità {
+public class BoundarySceltaModalita {
     @FXML
     private Pane pane;
     @FXML

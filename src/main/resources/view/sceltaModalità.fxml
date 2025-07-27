@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.boundary.demo.BoundarySceltaModalità">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.boundary.demo.BoundarySceltaModalita">
    <children>
       <Label fx:id="header" layoutX="25.0" layoutY="24.0" prefHeight="46.0" prefWidth="560.0" text="Benvenuto nel BSO. Scegliere tra le seguenti modalità" textFill="#000cf8" />
       <Button fx:id="demoB" layoutX="39.0" layoutY="93.0" mnemonicParsing="false" onAction="#demo" prefHeight="93.0" prefWidth="262.0" text="DEMO VERSION" textFill="#40b984" />
