@@ -91,7 +91,7 @@ public class ControllerAcquista {
                 switch (string) {
                     case DATABASE -> pG = new GiornaleDao();
                     case FILE -> pG = new CsvGiornale();
-                    case MEMORIA -> pG = new MemoriaGiornale();
+                   case MEMORIA -> pG = new MemoriaGiornale();
 					default -> Logger.getLogger("cAGiornale").log(Level.SEVERE,"cost/name daily is empty is null");
 
 				}
@@ -113,7 +113,7 @@ public class ControllerAcquista {
 				}
 				dati[0] = pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getTitolo();
 				dati[1]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getPrezzo());
-				dati[2]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCopieRim());
+				dati[2]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getNrCopie());
 
 
 			}
@@ -121,8 +121,13 @@ public class ControllerAcquista {
 
 
 
+
+
 			default -> Logger.getLogger("get nome").log(Level.SEVERE," name is wrong!!");
 		}
+
+
+
 		return dati;
 	}
 

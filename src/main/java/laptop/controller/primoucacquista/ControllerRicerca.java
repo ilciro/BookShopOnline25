@@ -16,10 +16,13 @@ import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
 import laptop.database.primoucacquista.rivista.RivistaDao;
+/*
 import laptop.database.secondouclogin.users.CsvUtente;
 import laptop.database.secondouclogin.users.MemoriaUtente;
 import laptop.database.secondouclogin.users.PersistenzaUtente;
 import laptop.database.secondouclogin.users.UsersDao;
+
+ */
 import laptop.exception.IdException;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
@@ -46,7 +49,7 @@ public class ControllerRicerca {
     private PersistenzaLibro pL;
     private PersistenzaGiornale pG;
     private PersistenzaRivista pR;
-    private PersistenzaUtente pU;
+   // private PersistenzaUtente pU;
 
     private static final User u= User.getInstance();
 
@@ -138,7 +141,7 @@ public class ControllerRicerca {
         return FXCollections.observableArrayList(listaR);
 
     }
-
+/*
     public boolean logout(String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
         boolean status=false;
         switch (persistenza)
@@ -182,6 +185,8 @@ public class ControllerRicerca {
         }
         return tu;
     }
+
+ */
 
 
 }

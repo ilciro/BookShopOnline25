@@ -1,91 +1,136 @@
 package laptop.controller.primoucacquista;
 
+
 import com.opencsv.exceptions.CsvValidationException;
-import laptop.database.primoucacquista.fattura.ContrassegnoDao;
-import laptop.database.primoucacquista.fattura.CsvFattura;
-import laptop.database.primoucacquista.fattura.MemoriaFattura;
-import laptop.database.primoucacquista.fattura.PersistenzaFattura;
-import laptop.database.primoucacquista.pagamento.CsvPagamento;
-import laptop.database.primoucacquista.pagamento.MemoriaPagamento;
-import laptop.database.primoucacquista.pagamento.PagamentoDao;
-import laptop.database.primoucacquista.pagamento.PersistenzaPagamento;
-import laptop.model.Fattura;
-import laptop.model.Pagamento;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.database.primoucacquista.pagamentoCartacredito.CsvPagamentoCartaCredito;
+import laptop.database.primoucacquista.pagamentoCartacredito.MemoriaPagamentoCartaCredito;
+import laptop.database.primoucacquista.pagamentoCartacredito.PagamentoCartaCreditoDao;
+import laptop.database.primoucacquista.pagamentoCartacredito.PersistenzaPagamentoCartaCredito;
+import laptop.database.primoucacquista.pagamentoFattura.ContrassegnoDao;
+import laptop.database.primoucacquista.pagamentoFattura.CsvFattura;
+import laptop.database.primoucacquista.pagamentoFattura.MemoriaFattura;
+import laptop.database.primoucacquista.pagamentoFattura.PersistenzaPagamentoFattura;
+import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotale;
+import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotaleCsv;
+import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotaleDao;
+import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotaleMemoria;
+import laptop.model.pagamento.PagamentoCartaCredito;
+import laptop.model.pagamento.PagamentoFattura;
 
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ControllerAnnullaPagamento {
+public class ControllerAnnullaPagamento  {
 
     private static final String DATABASE="database";
     private static final String FILE="file";
     private static final String MEMORIA="memoria";
-    private PersistenzaFattura pF;
-    private PersistenzaPagamento pP;
+
+    private PersistenzaPagamentoFattura pPF;
+    private  PagamentoFattura pF;
+    private PersistenzaPagamentoCartaCredito pPCC;
+    private PagamentoCartaCredito pCC;
+    private PagamentoTotale pT;
 
 
-    public String getFattura(String type) throws CsvValidationException, IOException, ClassNotFoundException {
-        String fattura;
 
-        switch (type)
-        {
-            case DATABASE -> pF=new ContrassegnoDao();
-            case FILE -> pF=new CsvFattura();
-            case MEMORIA -> pF=new MemoriaFattura();
-            default -> Logger.getLogger("ultima fattura").log(Level.SEVERE,"error with last fattura");
-
-        }
-        fattura=pF.ultimaFattura().toString();
-
-        return fattura;
-
-    }
-    public String getPagamento(String type) throws CsvValidationException, IOException, ClassNotFoundException {
-        String pagamento;
-        switch (type)
-        {
-            case DATABASE -> pP=new PagamentoDao();
-            case FILE -> pP=new CsvPagamento();
-            case MEMORIA -> pP=new MemoriaPagamento();
-            default -> Logger.getLogger("ultimo pagamento").log(Level.SEVERE,"error with last payment");
-
-        }
-        pagamento=pP.ultimoPagamento().toString();
-        return pagamento;
-
+    private String returnPersistency(String persistenza)
+    {
+        String persistency="";
+       switch (persistenza)
+       {
+           case DATABASE -> persistency=DATABASE;
+           case FILE -> persistency=FILE;
+           case MEMORIA -> persistency=MEMORIA;
+           default -> Logger.getLogger("persistenza errata").log(Level.SEVERE," persistency is wrong or null!!");
+       }
+       return persistency;
     }
 
-
-
-
-    public boolean cancellaFattura(String text, String string) throws CsvValidationException, IOException, ClassNotFoundException {
-
-        switch (string)
+    public ObservableList<PagamentoFattura> getFattura(String persistenza) throws CsvValidationException, IOException, ClassNotFoundException {
+        ObservableList<PagamentoFattura> list= FXCollections.observableArrayList();
+        switch (persistenza)
         {
-            case DATABASE -> pF=new ContrassegnoDao();
-            case FILE -> pF=new CsvFattura();
-            case MEMORIA -> pF=new MemoriaFattura();
-            default -> Logger.getLogger("cancella fattura").log(Level.SEVERE," fattura not deleted!!");
-        }
-        Fattura f=new Fattura();
-        f.setIdFattura(Integer.parseInt(text));
-        return pF.cancellaFattura(f);
+            case DATABASE -> pPF=new ContrassegnoDao();
+            case FILE -> pPF=new CsvFattura();
+            case MEMORIA -> pPF=new MemoriaFattura();
+            default -> Logger.getLogger("get fattura ").log(Level.SEVERE,"error with persistency");
 
+        }
+        list.add(pPF.ultimaFattura());
+        return list;
 
     }
-    public boolean cancellaPagamento(String text, String string) throws CsvValidationException, IOException, ClassNotFoundException {
 
-        switch (string)
-        {
-            case DATABASE -> pP=new PagamentoDao();
-            case FILE -> pP=new CsvPagamento();
-            case MEMORIA -> pP=new MemoriaPagamento();
-            default -> Logger.getLogger("cancella pagamento").log(Level.SEVERE," payment not deleted!!");
+    public boolean cancellaFattura(int idFattura,String persistency) throws IOException, CsvValidationException, ClassNotFoundException {
+        switch (persistency) {
+            case DATABASE ->
+                    {
+                        pPF=new ContrassegnoDao();
+                        pT=new PagamentoTotaleDao();
+                    }
+            case FILE ->
+                    {
+                        pPF=new CsvFattura();
+                        pT=new PagamentoTotaleCsv();
+                    }
+            case MEMORIA ->
+                    {
+                        pPF=new MemoriaFattura();
+                        pT=new PagamentoTotaleMemoria();
+                    }
+            default -> Logger.getLogger("persistenza errata").log(Level.SEVERE, " persistency is wrong or null!!");
         }
-        Pagamento p=new Pagamento();
-        p.setIdPag(Integer.parseInt(text));
-        return pP.cancellaPagamento(p);
-
+        pF=new PagamentoFattura();
+        pF.setIdFattura(idFattura);
+        return pPF.cancellaPagamentoFattura(pF) && pT.cancellaFattura(pF);
     }
+
+    public ObservableList<PagamentoCartaCredito> getPagamentoCartaCredito(String persistenza) throws IOException, CsvValidationException, ClassNotFoundException {
+        ObservableList<PagamentoCartaCredito> list= FXCollections.observableArrayList();
+        switch (persistenza)
+        {
+            case DATABASE -> pPCC=new PagamentoCartaCreditoDao();
+            case FILE -> pPCC=new CsvPagamentoCartaCredito();
+            case MEMORIA -> pPCC=new MemoriaPagamentoCartaCredito();
+            default -> Logger.getLogger("get carta credito ").log(Level.SEVERE,"error with persistency");
+
+        }
+        list.add(pPCC.ultimoPagamentoCartaCredito());
+        return list;
+    }
+
+    public boolean cancellaPagamentoCC(int idPagamentoCC,String persistency) throws IOException, CsvValidationException, ClassNotFoundException {
+        switch (persistency) {
+            case DATABASE ->
+            {
+                pPF=new ContrassegnoDao();
+                pT=new PagamentoTotaleDao();
+            }
+            case FILE ->
+            {
+                pPF=new CsvFattura();
+                pT=new PagamentoTotaleCsv();
+            }
+            case MEMORIA ->
+            {
+                pPF=new MemoriaFattura();
+                pT=new PagamentoTotaleMemoria();
+            }
+            default -> Logger.getLogger("cancella pagamento cc").log(Level.SEVERE, "error with persistency");
+        }
+        pCC=new PagamentoCartaCredito();
+        pCC.setIdPagCC(idPagamentoCC);
+        return pPCC.cancellaPagamentoCartaCredito(pCC) && pT.cancellaPagamentoCC(pCC);
+    }
+
+
+
+
+
 }
+
+

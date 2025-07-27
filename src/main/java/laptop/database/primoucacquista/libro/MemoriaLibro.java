@@ -28,7 +28,7 @@ public class MemoriaLibro extends PersistenzaLibro{
 
 
     @Override
-    public boolean inserisciLibro(Libro l) throws CsvValidationException, IOException, ClassNotFoundException {
+    public boolean inserisciLibro(Libro l) throws  IOException, ClassNotFoundException {
         Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);
         if (!Files.exists(path2))
         {
@@ -48,7 +48,7 @@ public class MemoriaLibro extends PersistenzaLibro{
     }
 
     @Override
-    public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l) throws IOException, ClassNotFoundException {
         ObservableList<Libro> listaRecuperata = FXCollections.observableArrayList();
 
         List<Libro> list=mI.listaLibri(SERIALIZZAZIONE);
@@ -72,14 +72,14 @@ public class MemoriaLibro extends PersistenzaLibro{
     }
 
     @Override
-    public ObservableList<Libro> getLibri() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public ObservableList<Libro> getLibri() throws IOException, ClassNotFoundException {
         List<Libro> list=mI.listaLibri(SERIALIZZAZIONE);
         return FXCollections.observableList(list);
     }
 
     @Override
 
-    public boolean removeLibroById(Libro l) throws  IOException, ClassNotFoundException {
+    public boolean removeLibroById(Libro l) throws IOException, ClassNotFoundException {
         return mI.cancellaLibro(l);
     }
 

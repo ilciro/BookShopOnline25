@@ -6,10 +6,28 @@ package laptop.controller;
 
 public class ControllerSystemState {
 
-	 private int idLibro;
-	 private int idGiornale;
-	 private int idRivista;
-	 private int idUtente;
+	private int idLibro;
+	private int idGiornale;
+	private int idRivista;
+	private int idUtente;
+	private String type;
+	private boolean isLogged ;
+	private boolean isSearch;
+	private boolean isPickup;
+	private float spesaT;// usato per avere importo totale
+	private int quantita; //usato per avere quantita oggetto che compro
+	private String metodoP;	//usato per vedere se contanti o cc
+	private String tipologiaApplicazione;
+
+
+	public String getTipologiaApplicazione() {
+		return tipologiaApplicazione;
+	}
+
+	public void setTipologiaApplicazione(String tipologiaApplicazione) {
+		this.tipologiaApplicazione = tipologiaApplicazione;
+	}
+
 
 	public int getIdLibro() {
 		return idLibro;
@@ -43,13 +61,7 @@ public class ControllerSystemState {
 		this.idUtente = idUtente;
 	}
 
-	private String type;
-	 private boolean isLogged ;
-	 private boolean isSearch;
-	 private boolean isPickup;
-	 private float spesaT;// usato per avere importo totale 
-	 private int quantita; //usato per avere quantita oggetto che compro
-	 private String metodoP; //usato per vedere se contanti o cc
+
 
 
 

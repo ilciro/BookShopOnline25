@@ -66,7 +66,7 @@ public class CsvLibro extends PersistenzaLibro{
 
 
     @Override
-   public boolean inserisciLibro(Libro l) throws IOException, CsvValidationException {
+   public boolean inserisciLibro(Libro l) throws CsvValidationException, IOException {
         //provo con titolo ed autore ed editore
         //visto che id non buono in quanto non gli e lo assegno
 
@@ -406,7 +406,7 @@ public class CsvLibro extends PersistenzaLibro{
         return list;
     }
 
-    private static synchronized ObservableList<Libro> retrieveLibro(File fdL) throws CsvValidationException, IOException, IdException {
+    private static synchronized ObservableList<Libro> retrieveLibro(File fdL) throws IOException,IdException,CsvValidationException {
         ObservableList<Libro> list;
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fdL)))) {
             String[] gVector;
@@ -450,6 +450,9 @@ public class CsvLibro extends PersistenzaLibro{
 
             Logger.getLogger("crea db file").log(Level.SEVERE, "\n eccezione ottenuta nella modalità file.", eFile);
         }
+        Logger.getLogger("files creati con successo").log(Level.INFO, "\n files successfully created");
+
+
 
     }
 

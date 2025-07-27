@@ -166,6 +166,7 @@ public class BoundaryRicerca implements Initializable {
         if (fileButton.isSelected()) type=FILE;
         if (memoriaButton.isSelected()) type=MEMORIA;
 
+        /*
         if(cR.logout(type)) {
 
             stage = (Stage) buttonI.getScene().getWindow();
@@ -185,12 +186,19 @@ public class BoundaryRicerca implements Initializable {
             stage.show();
         }
 
+         */
+
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cR=new ControllerRicerca();
+        if(vis.getTipologiaApplicazione().equals("demo"))
+        {
+            databaseButton.setVisible(false);
+            fileButton.setVisible(false);
+        }
 
     }
 

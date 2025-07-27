@@ -1,156 +1,266 @@
 package laptop.boundary.primoucacquista;
 
+
 import com.opencsv.exceptions.CsvValidationException;
+import javafx.application.Platform;
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import laptop.controller.primoucacquista.ControllerAnnullaPagamento;
 import laptop.controller.ControllerSystemState;
+import laptop.controller.primoucacquista.ControllerAnnullaPagamento;
+import laptop.model.pagamento.PagamentoCartaCredito;
+import laptop.model.pagamento.PagamentoFattura;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class BuondaryAnnullaPagamento implements Initializable {
-    private  ControllerAnnullaPagamento cannP;
 
-    @FXML
-    private Label header;
+    private ControllerAnnullaPagamento cAP;
+
+
     @FXML
     private Pane pane;
     @FXML
-    private TextArea tAPagamento;
+    private Label header;
     @FXML
-    private TextArea tAFattura;
+    private TableView<PagamentoFattura> pagamentoFattura;
     @FXML
-    private Button buttonI;
+    private TableColumn<PagamentoFattura, SimpleStringProperty> nomeF = new TableColumn<>("nome");
     @FXML
-    private TextField idFattura;
+    private TableColumn<PagamentoFattura, SimpleStringProperty> cognomeF = new TableColumn<>("cognome");
     @FXML
-    private TextField idPagamento;
+    private TableColumn<PagamentoFattura, SimpleFloatProperty> spesaF = new TableColumn<>("ammontare");
     @FXML
-    private RadioButton databaseButton;
+    private TableColumn<PagamentoFattura, Integer> idProdottoF = new TableColumn<>("idProdotto");
     @FXML
-    private RadioButton fileButton;
+    private TableColumn<PagamentoFattura, Integer> idF = new TableColumn<>("idFattura");
     @FXML
-    private RadioButton memoriaButton;
-    @FXML
-    private VBox vbox;
+    private TextField fatturaTF;
     @FXML
     private VBox vbox1;
     @FXML
+    private RadioButton generaF;
+    @FXML
+    private RadioButton cancellaF;
+    @FXML
+    private ToggleGroup toggleGroup1;
+    @FXML
+    private TableView<PagamentoCartaCredito> pagamentoCC;
+    @FXML
+    private TableColumn<PagamentoCartaCredito, SimpleStringProperty> nomeCC = new TableColumn<>("nomeUtente");
+    @FXML
+    private TableColumn<PagamentoCartaCredito, SimpleStringProperty> cognomeCC = new TableColumn<>("cognomeUtente");
+    @FXML
+    private TableColumn<PagamentoCartaCredito, SimpleFloatProperty> ammontareCC = new TableColumn<>("spesaTotale");
+    @FXML
+    private TableColumn<PagamentoCartaCredito, Integer> idProdottoCC = new TableColumn<>("idProdotto");
+    @FXML
+    private TableColumn<PagamentoCartaCredito, Integer> idCC = new TableColumn<>("idPagCC");
+    @FXML
+    private TextField ccTF;
+    @FXML
     private VBox vbox2;
     @FXML
-    private ToggleGroup toggleGroup;
+    private RadioButton generaPagCC;
     @FXML
-    private ToggleGroup toggleGroupP;
+    private RadioButton cancellaCC;
     @FXML
-    private ToggleGroup toggleGroupF;
+    private ToggleGroup toggleGroup2;
     @FXML
-    private RadioButton buttonGeneraFattura;
+    private HBox hbox1;
     @FXML
-    private RadioButton buttonCancellaFattura;
+    private RadioButton databaseB;
     @FXML
-    private RadioButton buttonGeneraPagamento;
+    private RadioButton fileB;
     @FXML
-    private RadioButton buttonCancellaPagamento;
+    private RadioButton memoriaB;
+    @FXML
+    private Button buttonI;
+    @FXML
+    private ToggleGroup toggleGroup3;
 
-    private final ControllerSystemState vis= ControllerSystemState.getInstance();
-    private static final String CASH="cash";
-    private  static final String CCREDITO="cCredito";
     protected Scene scene;
+
+
+
+    /*
+    finire per versione file/csv e memoria
+     */
+
+
+
+    private static final ControllerSystemState vis=ControllerSystemState.getInstance();
+
+    private static final String DATABASE="database";
+    private static final String FILE="file";
+    private static final String MEMORIA="memoria";
 
     @FXML
     private void generaFattura() throws CsvValidationException, IOException, ClassNotFoundException {
-        tAFattura.setText(cannP.getFattura(returnPersistenza()));
+        if(databaseB.isSelected()) pagamentoFattura.setItems(cAP.getFattura(DATABASE));
+        if(fileB.isSelected()) pagamentoFattura.setItems(cAP.getFattura(FILE));
+        if(memoriaB.isSelected())pagamentoFattura.setItems(cAP.getFattura(MEMORIA));
+
     }
-
-    @FXML
-    private void generaPagamento() throws CsvValidationException, IOException, ClassNotFoundException {
-        tAPagamento.setText(cannP.getPagamento(returnPersistenza()));
-    }
-
-
-
     @FXML
     private void cancellaFattura() throws CsvValidationException, IOException, ClassNotFoundException {
+        String persistency="";
+        if(databaseB.isSelected()) persistency=DATABASE;
+        if(fileB.isSelected()) persistency=FILE;
+        if(memoriaB.isSelected()) persistency=MEMORIA;
 
-        if(cannP.cancellaFattura(idFattura.getText(),returnPersistenza())) {
-            buttonGeneraFattura.setVisible(false);
-            Logger.getLogger("cancella Pagamento ok ").log(Level.INFO, "payment deleted with success!!");
-            tAFattura.clear();
-        }
-    }
-    @FXML
-    private void cancellaPagamento() throws CsvValidationException, IOException, ClassNotFoundException {
 
-        if(cannP.cancellaPagamento(idPagamento.getText(),returnPersistenza())) {
-            buttonGeneraPagamento.setVisible(false);
-            Logger.getLogger("cancella Pagamento ok ").log(Level.INFO, "payment deleted with success!!");
-            tAPagamento.clear();
-        }
-    }
-    @FXML
-    private void indietro() throws IOException {
-        boolean status = false;
-        Stage stage;
-        Parent root;
-        switch (vis.getMetodoP())
+
+        if(cAP.cancellaFattura(Integer.parseInt(fatturaTF.getText()),persistency))
         {
-            case CASH -> {
-
-                if(tAPagamento.getText().isEmpty() && tAFattura.getText().isEmpty())
-                    status=true;
-
-            }
-            case CCREDITO ->
+            if(vis.getTipologiaApplicazione().equals("demo"))
             {
-                if (tAPagamento.getText().isEmpty()) status=true;
+                Platform.exit();
+                File path=new File("memory");
+                File[] files = path.listFiles();
+                for(int i = 0; i< Objects.requireNonNull(files).length; i++) {
+
+                    files[i].delete();
+                }
+
+            }else {
+                Stage stage;
+                Parent root;
+                stage = (Stage) cancellaF.getScene().getWindow();
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
             }
-            default ->  Logger.getLogger("indietro ").log(Level.INFO," textareas not empty !!!");
-
         }
-        if(status)
-        {
-
-            stage = (Stage) buttonI.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
-            stage.setTitle("Benvenuto nella schermata del riepilogo ordine");
+        else {
+            Stage stage;
+            Parent root;
+            stage = (Stage) cancellaF.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/annullaPagamento.fxml")));
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+        }
 
+
+
+    }
+    @FXML
+    private void generaPagamento() throws CsvValidationException, IOException, ClassNotFoundException {
+        if(databaseB.isSelected()) pagamentoCC.setItems(cAP.getPagamentoCartaCredito(DATABASE));
+        if(fileB.isSelected()) pagamentoCC.setItems(cAP.getPagamentoCartaCredito(FILE));
+        if(memoriaB.isSelected())pagamentoCC.setItems(cAP.getPagamentoCartaCredito(MEMORIA));
+    }
+    @FXML
+    private void cancellaPagCC() throws CsvValidationException, IOException, ClassNotFoundException {
+        String persistency="";
+        if(databaseB.isSelected()) persistency=DATABASE;
+        if(fileB.isSelected()) persistency=FILE;
+        if(memoriaB.isSelected()) persistency=MEMORIA;
+
+
+
+        if(cAP.cancellaPagamentoCC(Integer.parseInt(ccTF.getText()),persistency))
+        {
+            if(vis.getTipologiaApplicazione().equals("demo"))
+            {
+                Platform.exit();
+                File path=new File("memory");
+                File[] files = path.listFiles();
+                for(int i = 0; i< Objects.requireNonNull(files).length; i++) {
+
+                    files[i].delete();
+                }
+
+            }else {
+                Stage stage;
+                Parent root;
+                stage = (Stage) cancellaCC.getScene().getWindow();
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
+        else {
+            Stage stage;
+            Parent root;
+            stage = (Stage) cancellaCC.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/annullaPagamento.fxml")));
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
     }
+
+    @FXML
+    private void indietro() throws IOException {
+        Stage stage;
+        Parent root;
+        stage = (Stage) buttonI.getScene().getWindow();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/download.fxml")));
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-            cannP = new ControllerAnnullaPagamento();
-            if(vis.getMetodoP().equals(CCREDITO))
-            {
-                buttonGeneraFattura.setVisible(false);
-                buttonCancellaFattura.setVisible(false);
+        cAP=new ControllerAnnullaPagamento();
+        if(vis.getTipologiaApplicazione().equals("demo"))
+        {
+            databaseB.setVisible(false);
+            fileB.setVisible(false);
+        }
+
+        if (vis.getMetodoP().equals("cash"))
+        {
+            pagamentoCC.setEditable(false);
+            vbox2.setDisable(true);
+            ccTF.setEditable(false);
+
+            nomeF.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+            cognomeF.setCellValueFactory(new PropertyValueFactory<>("Cognome"));
+            spesaF.setCellValueFactory(new PropertyValueFactory<>("Ammontare"));
+            idProdottoF.setCellValueFactory(new PropertyValueFactory<>("idProdotto"));
+            idF.setCellValueFactory(new PropertyValueFactory<>("idFattura"));
 
 
-            }
+        }
+        else
+        {
+            pagamentoFattura.setEditable(false);
+            vbox1.setDisable(true);
+            fatturaTF.setEditable(false);
 
+            nomeCC.setCellValueFactory(new PropertyValueFactory<>("nomeUtente"));
+            cognomeCC.setCellValueFactory(new PropertyValueFactory<>("cognomeUtente"));
+            ammontareCC.setCellValueFactory(new PropertyValueFactory<>("spesaTotale"));
+            idProdottoCC.setCellValueFactory(new PropertyValueFactory<>("idProdotto"));
+            idCC.setCellValueFactory(new PropertyValueFactory<>("idPagCC"));
+
+
+
+
+        }
 
     }
-    private String returnPersistenza()
-    {
-        String type="";
-        if(databaseButton.isSelected()) type="database";
-        if(fileButton.isSelected()) type="file";
-        if(memoriaButton.isSelected()) type="memoria";
-        return type;
-    }
+
+
 }

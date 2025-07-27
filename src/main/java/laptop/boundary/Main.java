@@ -25,7 +25,7 @@ public class Main  extends Application {
 		Scene scene;
 
 		try {
-			Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
+			Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/sceltaModalità.fxml")));
 			scene = new Scene(root);
 			primaryStage.setTitle("Benvenuto nella homePage");
 			primaryStage.setScene(scene);
@@ -43,7 +43,11 @@ public class Main  extends Application {
 	public static void main(String[] args)  {
 
 
-		launch(args);
+
+	launch(args);
+
+
+
 
 
 	}

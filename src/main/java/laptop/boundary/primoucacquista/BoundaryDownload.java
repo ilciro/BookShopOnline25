@@ -1,5 +1,6 @@
 package laptop.boundary.primoucacquista;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -14,6 +15,7 @@ import com.itextpdf.text.DocumentException;
 
 
 import com.opencsv.exceptions.CsvValidationException;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,6 +28,8 @@ import javafx.stage.Stage;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.ControllerDownload;
 import laptop.exception.IdException;
+
+import static org.apache.commons.io.FileUtils.deleteDirectory;
 
 public class BoundaryDownload implements Initializable {
 	@FXML
@@ -77,6 +81,17 @@ public class BoundaryDownload implements Initializable {
 
 
 	        }
+		 if(vis.getTipologiaApplicazione().equals("demo"))
+		 {
+			 Platform.exit();
+			 File path=new File("memory");
+			 File[] files = path.listFiles();
+			 for(int i = 0; i< Objects.requireNonNull(files).length; i++) {
+
+				 files[i].delete();
+			 }
+
+		 }
 		Stage stage;
 		Parent root;
 		stage = (Stage) buttonA.getScene().getWindow();
@@ -110,6 +125,10 @@ public class BoundaryDownload implements Initializable {
 
 
             cD = new ControllerDownload();
+			if(vis.getTipologiaApplicazione().equals("demo")) {
+				databaseButton.setVisible(false);
+				fileButton.setVisible(false);
+			}
 
 
     }

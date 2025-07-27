@@ -57,33 +57,32 @@ public class ControllerCompravendita {
 			}
 
 
-		 case "giornale"->{
-			 switch (database) {
-				 case DATABASE -> pG = new GiornaleDao();
-				 case FILE -> pG = new CsvGiornale();
-				 case MEMORIA -> pG = new MemoriaGiornale();
-				 default -> Logger.getLogger("lista giornale").log(Level.SEVERE,"daily persistency not correct !!");
-			 }
+			case "giornale" -> {
+				switch (database) {
+					case DATABASE -> pG = new GiornaleDao();
+					case FILE -> pG = new CsvGiornale();
+					 case MEMORIA -> pG = new MemoriaGiornale();
+					default -> Logger.getLogger("lista giornale").log(Level.SEVERE, "daily persistency not correct !!");
+				}
 
 
-			 catalogo.addAll(pG.retrieveRaccoltaData());
+				catalogo.addAll(pG.retrieveRaccoltaData());
 
-		 }
+			}
 
 
+			case "rivista" -> {
+				switch (database) {
+					case DATABASE -> pR = new RivistaDao();
+					case FILE -> pR = new CsvRivista();
+					case MEMORIA -> pR = new MemoriaRivista();
+					default ->
+							Logger.getLogger("lista rivista").log(Level.SEVERE, "magazine persistency not correct !!");
+				}
 
-		 case "rivista"->{
-			 switch (database) {
-				 case DATABASE -> pR = new RivistaDao();
-				 case FILE -> pR = new CsvRivista();
-				 case MEMORIA -> pR = new MemoriaRivista();
-				 default -> Logger.getLogger("lista rivista").log(Level.SEVERE,"magazine persistency not correct !!");
-			 }
+				catalogo.addAll(pR.retrieveRaccoltaData());
 
-			 catalogo.addAll(pR.retrieveRaccoltaData());
-
-		 }
-
+			}
 
 
 			default -> Logger.getLogger("get lista").log(Level.SEVERE, " list is empty");
@@ -92,6 +91,20 @@ public class ControllerCompravendita {
 
 
 		return catalogo;
+	}
+
+
+	public boolean checkId(int id,String type,String typeObj) throws CsvValidationException, IOException, ClassNotFoundException {
+		 boolean status=true;
+		 try {
+			if (id <= 0 || id > getLista(typeObj, type).size())
+				throw new IdException("id is wrong!! grater than size");
+		}catch (IdException e)
+		{
+			Logger.getLogger("checkId").log(Level.SEVERE,e.getMessage());
+			status=false;
+		}
+		 return status;
 	}
 }
 

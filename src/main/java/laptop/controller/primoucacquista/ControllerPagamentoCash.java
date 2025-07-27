@@ -8,49 +8,116 @@ import java.util.logging.Logger;
 
 import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
-import laptop.database.primoucacquista.fattura.ContrassegnoDao;
+
+
+import laptop.database.primoucacquista.giornale.CsvGiornale;
+import laptop.database.primoucacquista.giornale.GiornaleDao;
+import laptop.database.primoucacquista.giornale.MemoriaGiornale;
+import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
+import laptop.database.primoucacquista.libro.CsvLibro;
+import laptop.database.primoucacquista.libro.LibroDao;
+import laptop.database.primoucacquista.libro.MemoriaLibro;
+import laptop.database.primoucacquista.libro.PersistenzaLibro;
+import laptop.database.primoucacquista.pagamentoFattura.CsvFattura;
+import laptop.database.primoucacquista.pagamentoFattura.MemoriaFattura;
+import laptop.database.primoucacquista.pagamentoFattura.PersistenzaPagamentoFattura;
+import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotale;
+import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotaleCsv;
+import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotaleDao;
+import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotaleMemoria;
+import laptop.database.primoucacquista.rivista.CsvRivista;
+import laptop.database.primoucacquista.rivista.MemoriaRivista;
+import laptop.database.primoucacquista.rivista.PersistenzaRivista;
+import laptop.database.primoucacquista.rivista.RivistaDao;
 import laptop.exception.IdException;
-import laptop.model.Fattura;
+import laptop.model.pagamento.PagamentoCartaCredito;
+import laptop.model.pagamento.PagamentoFattura;
+import laptop.model.raccolta.Giornale;
+import laptop.model.raccolta.Libro;
+import laptop.model.raccolta.Rivista;
 import laptop.model.user.User;
-import laptop.database.primoucacquista.fattura.CsvFattura;
-import laptop.database.primoucacquista.fattura.MemoriaFattura;
-import laptop.database.primoucacquista.fattura.PersistenzaFattura;
+
+import laptop.database.primoucacquista.pagamentoFattura.ContrassegnoDao;
 
 
 public class ControllerPagamentoCash {
 
 	private final ControllerSystemState vis= ControllerSystemState.getInstance();
-	private final ControllerCheckPagamentoData cCPD;
-	private PersistenzaFattura pF;
+	private PagamentoTotale pT;
+	private PersistenzaPagamentoFattura pF;
+	private PagamentoFattura p;
+	private static final String DATABASE="database";
+	private static final String FILE="file";
+	private static final String MEMORIA="memoria";
+	private static final String LIBRO="libro";
+	private static final String GIORNALE="giornale";
+	private static final String RIVISTA="rivista";
+	private PersistenzaLibro pL;
+	private PersistenzaGiornale pG;
+	private PersistenzaRivista pR;
+
+    public void controlla(String nome, String cognome, String via, String com,String type) throws IOException, ClassNotFoundException, SQLException, CsvValidationException, IdException {
 
 
-	public void controlla(String nome, String cognome, String via, String com,String type) throws IdException, IOException, CsvValidationException, ClassNotFoundException, SQLException {
+			/*
+			todo
+				1)creare tabella pagamento (db-file-memoria)
+				2) scegliere tipo persistenza pagamentoFattura (db-file-memoria)
+				3) creare pagamento tipo pagamentoFattura ->
+				4) effettuare pagaemnto (db-file-memoria)
+				5) fare categoria prodotto
+			 */
+
+		//1
+		switch (type)
+		{
+			case DATABASE -> pT=new PagamentoTotaleDao();
+			case FILE -> pT=new PagamentoTotaleCsv();
+			case MEMORIA -> pT=new PagamentoTotaleMemoria();
+		}
+		pT.inizializza();
+
+		//2
+		switch (type)
+		{
+			case DATABASE -> pF=new ContrassegnoDao();
+			case FILE -> pF=new CsvFattura();
+			case MEMORIA -> pF=new MemoriaFattura();
+			default -> Logger.getLogger("controlla tipologia fattura").log(Level.SEVERE," persistency fattura is wrong!!");
+
+		}
+		//creo tabella fattuira
+		pF.inizializza();
+
+		//3
+		int id=0;
+		if(vis.getType().equals(LIBRO)) id=vis.getIdLibro();
+		if(vis.getType().equals(GIORNALE)) id=vis.getIdGiornale();
+		if(vis.getType().equals(RIVISTA)) id=vis.getIdRivista();
+
+
+		p = new PagamentoFattura(nome, cognome, via, com, vis.getSpesaT(), 0,id);
+		p.setTipoAcquisto(ritornaTipoOggetto(type,vis.getType()));
 
 
 
-			Fattura f=new Fattura(nome,cognome,via,com,vis.getSpesaT(),0);
 
 
-			switch (type)
-			{
-				case "database"->pF=new ContrassegnoDao();
-				case "file"->pF=new CsvFattura();
-				case "memoria"->pF=new MemoriaFattura();
-				default -> Logger.getLogger("controlla").log(Level.SEVERE," persistency is wrong!!");
-			}
+		//inserisco in pagamentoTotale
+		if(pF.inserisciPagamentoFattura(p))
+		{
+			Logger.getLogger("pagamento effettuato ").log(Level.INFO,"payment success with id .", p.getIdFattura());
+			if(type.equals(FILE)) pT.inserisciPagamentoFattura(p);
+			else if(type.equals(MEMORIA)) pT.inserisciPagamentoFattura(p);
 
 
+		}
 
-			pF.inizializza();
-
-
-			if(pF.inserisciFattura(f))
-				cCPD.checkPagamentoData(f.getNome(),type);
 
 
 	}
 
-	public ControllerPagamentoCash()  { cCPD=new ControllerCheckPagamentoData();}
+	public ControllerPagamentoCash()  { }
 
 	public String[] getInfo()
 	{
@@ -58,6 +125,58 @@ public class ControllerPagamentoCash {
 		dati[0]= User.getInstance().getNome();
 		dati[1]=User.getInstance().getCognome();
 		return dati;
+	}
+
+
+	private String ritornaTipoOggetto(String persistenza,String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+		String tipologia = "";
+
+		/*
+		todo finirfe switch
+		 */
+
+		switch (type)
+		{
+			case LIBRO ->
+			{
+				Libro l=new Libro();
+				switch (persistenza)
+				{
+					case DATABASE -> pL=new LibroDao();
+					case FILE -> pL=new CsvLibro();
+					case MEMORIA -> pL=new MemoriaLibro();
+				}
+				l.setId(vis.getIdLibro());
+				tipologia=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();
+			}
+			case GIORNALE -> {
+				Giornale g=new Giornale();
+				switch (persistenza)
+				{
+					case DATABASE -> pG=new GiornaleDao();
+					case FILE -> pG=new CsvGiornale();
+					case MEMORIA -> pG=new MemoriaGiornale();
+				}
+				g.setId(vis.getIdGiornale());
+				tipologia=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria();
+			}
+			case RIVISTA -> {
+				Rivista r=new Rivista();
+				switch (persistenza)
+				{
+					case DATABASE -> pR=new RivistaDao();
+					case FILE -> pR=new CsvRivista();
+					case MEMORIA -> pR=new MemoriaRivista();
+				}
+				r.setId(vis.getIdRivista());
+				tipologia=pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();
+			}
+		}
+
+
+
+
+		return tipologia;
 	}
 
 

@@ -76,6 +76,8 @@ public class BoundaryHomePage implements Initializable {
 	@FXML
 	private ToggleGroup toggleGroup;
 
+	private Stage stage;
+
 
 	protected Scene scene;
 	private static final String COMPRAVENDITA = "view/primoucacquista/compravendita.fxml";
@@ -154,9 +156,8 @@ public class BoundaryHomePage implements Initializable {
 		String type = "";
 
 		if(checkDataBase.isSelected())type="database";
-		else if(checkFile.isSelected())type="file";
-		else if(checkMemoria.isSelected()) type="memoria";
-
+		if(checkFile.isSelected())type="file";
+		if(checkMemoria.isSelected()) type="memoria";
 
 		cHP.persistenza(type);
 
@@ -215,77 +216,90 @@ public class BoundaryHomePage implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		cHP = new ControllerHomePage();
 
 
-		tArea.setEditable(false);
-        cHP=new ControllerHomePage();
 
-		tArea.setText(" logged \t " + vis.getIsLogged() +" \t ruolo \t :" + cHP.getRuolo() + " \t id \t" + cHP.getId());
-
-
-		if(vis.getIsLogged())
+		if(vis.getTipologiaApplicazione().equals("demo"))
 		{
-
-			switch (cHP.getRuolo())
-			{
-
-				case "SCRITTORE","EDITORE","E","W","S"->
-				{
-					imageLogin.setVisible(false);
-					labelScelta.setVisible(false);
-					buttonLogin.setVisible(false);
-					imageVisualizza.setVisible(true);
-					buttonVisualizza.setVisible(true);
-					//per image view funziona
-					imageVisualizza.setTranslateX(-120);
-					buttonVisualizza.setTranslateX(-120);
-
-					imageGestione.setVisible(true);
-					buttonGestione.setVisible(true);
-
-					imageGestione.setTranslateX(-120);
-					imageGestione.setTranslateX(-120);
-
-					buttonGestione.setTranslateX(-120);
-
-					buttonI.relocate(750,220);
+			imageLogin.setVisible(false);
+			imageRicerca.setVisible(false);
+			imageGestione.setVisible(false);
+			imageVisualizza.setVisible(false);
+			checkDataBase.setVisible(false);
+			checkFile.setVisible(false);
+			buttonLogin.setVisible(false);
+			buttonRicerca.setVisible(false);
+			buttonGestione.setVisible(false);
+			buttonVisualizza.setVisible(false);
+			buttonI.setVisible(false);
+			tArea.setVisible(false);
+			header.setText(header.getText()+" versione demo con persistenza volatile");
 
 
 
+		}else {
 
 
+			tArea.setEditable(false);
+
+			tArea.setText(" logged \t " + vis.getIsLogged() + " \t ruolo \t :" + cHP.getRuolo() + " \t id \t" + cHP.getId());
+
+
+			if (vis.getIsLogged()) {
+
+				switch (cHP.getRuolo()) {
+
+					case "SCRITTORE", "EDITORE", "E", "W", "S" -> {
+						imageLogin.setVisible(false);
+						labelScelta.setVisible(false);
+						buttonLogin.setVisible(false);
+						imageVisualizza.setVisible(true);
+						buttonVisualizza.setVisible(true);
+						//per image view funziona
+						imageVisualizza.setTranslateX(-120);
+						buttonVisualizza.setTranslateX(-120);
+
+						imageGestione.setVisible(true);
+						buttonGestione.setVisible(true);
+
+						imageGestione.setTranslateX(-120);
+						imageGestione.setTranslateX(-120);
+
+						buttonGestione.setTranslateX(-120);
+
+						buttonI.relocate(750, 220);
+
+
+					}
+					case "UTENTE", "U" -> {
+						imageVisualizza.setVisible(true);
+						buttonVisualizza.setVisible(true);
+						imageLogin.setVisible(false);
+						buttonLogin.setVisible(false);
+						imageGestione.setVisible(true);
+						buttonGestione.setVisible(true);
+						imageVisualizza.setTranslateX(-120);
+						buttonVisualizza.setTranslateX(-120);
+						buttonI.relocate(630, 220);
+					}
+					case "N" -> {
+						imageVisualizza.setVisible(false);
+						buttonVisualizza.setVisible(false);
+						imageGestione.setVisible(false);
+						buttonGestione.setVisible(false);
+						buttonI.setVisible(false);
+					}
+					default -> Logger.getLogger("initialize").log(Level.SEVERE, " type of user not correct");
 				}
-				case "UTENTE","U"->
-				{
-					imageVisualizza.setVisible(true);
-					buttonVisualizza.setVisible(true);
-					imageLogin.setVisible(false);
-					buttonLogin.setVisible(false);
-					imageGestione.setVisible(true);
-					buttonGestione.setVisible(true);
-					imageVisualizza.setTranslateX(-120);
-					buttonVisualizza.setTranslateX(-120);
-					buttonI.relocate(630,220);
-				}
-				case "N"->
-				{
-					imageVisualizza.setVisible(false);
-					buttonVisualizza.setVisible(false);
-					imageGestione.setVisible(false);
-					buttonGestione.setVisible(false);
-					buttonI.setVisible(false);
-				}
-				default -> Logger.getLogger("initialize").log(Level.SEVERE," type of user not correct");
+			} else {
+				imageVisualizza.setVisible(false);
+				buttonVisualizza.setVisible(false);
+				imageGestione.setVisible(false);
+				buttonGestione.setVisible(false);
+				buttonI.setVisible(false);
 			}
 		}
-		else {
-			imageVisualizza.setVisible(false);
-			buttonVisualizza.setVisible(false);
-			imageGestione.setVisible(false);
-			buttonGestione.setVisible(false);
-			buttonI.setVisible(false);
-		}
-
 
 
 

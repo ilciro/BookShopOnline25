@@ -11,10 +11,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane fx:id="panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.boundary.primoucacquista.BoundaryCompravendita">
+<Pane fx:id="panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="994.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.boundary.primoucacquista.BoundaryCompravendita">
    <children>
       <Label fx:id="header" layoutX="59.0" layoutY="38.0" prefHeight="20.0" prefWidth="550.0" />
-      <TableView fx:id="table" layoutX="10.0" layoutY="84.0" prefHeight="376.0" prefWidth="666.0">
+      <TableView fx:id="table" layoutX="10.0" layoutY="84.0" prefHeight="376.0" prefWidth="794.0">
         <columns>
           <TableColumn fx:id="titolo" prefWidth="128.0" text="Titolo" />
             <TableColumn fx:id="editore" prefWidth="110.0" text="Editore" />
@@ -22,9 +22,10 @@
             <TableColumn fx:id="categoria" prefWidth="141.0" text="Categoria" />
             <TableColumn fx:id="prezzo" prefWidth="141.0" text="Prezzo" />
             <TableColumn fx:id="idLibro" prefWidth="75.0" text="Id Libro" />
+            <TableColumn fx:id="copieRimaste" prefWidth="127.0" text="Copie rimaste" />
         </columns>
       </TableView>
-      <VBox fx:id="vbox" layoutX="719.0" layoutY="84.0" prefHeight="376.0" prefWidth="100.0">
+      <VBox fx:id="vbox" layoutX="822.0" layoutY="84.0" prefHeight="376.0" prefWidth="100.0">
          <children>
             <Button fx:id="buttonPrendi" mnemonicParsing="false" onAction="#prendiLista" prefHeight="30.0" prefWidth="100.0" text="Prendi Lista" textFill="#02f720" />
             <Button fx:id="buttonMostra" mnemonicParsing="false" onAction="#mostra" prefHeight="30.0" prefWidth="100.0" text="Mostra" textFill="#0c00ee">

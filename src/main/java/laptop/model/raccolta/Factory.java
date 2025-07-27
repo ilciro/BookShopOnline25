@@ -84,7 +84,7 @@ public class Factory {
 		{
 			r.setDisp(disp);
 			r.setPrezzo(prezzo);
-			r.setCopieRim(nrCopie);
+			r.setNrCopie(nrCopie);
 			r.setId(id);
 		}
 	}
@@ -106,7 +106,7 @@ public class Factory {
 			case RIVISTA:
 				r.setDataPubb(dataPubb);
 				r.setDescrizione(descrizione);
-				return new Rivista(r.getInfoGenerali(), r.getDescrizione(), r.getDataPubb(),r.getDisp(),r.getPrezzo() ,r.getCopieRim(),r.getId());
+				return new Rivista(r.getInfoGenerali(), r.getDescrizione(), r.getDataPubb(),r.getDisp(),r.getPrezzo() ,r.getNrCopie(),r.getId());
 		
 			default:
 				try {

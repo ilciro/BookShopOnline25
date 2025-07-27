@@ -30,7 +30,7 @@ public class Rivista implements Raccolta, Serializable {
 	private LocalDate dataPubb;
 	private int disp;
 	private float prezzo;
-	private int copieRim;
+	private int nrCopie;
 	private int id;
 
 	private final transient ResourceBundle rbTitoli=ResourceBundle.getBundle("configurations/titles");
@@ -47,7 +47,7 @@ public class Rivista implements Raccolta, Serializable {
 		this.dataPubb = dataPubb2;
 		this.disp = disp;
 		this.prezzo = prezzo;
-		this.copieRim = copieRim;
+		this.nrCopie = copieRim;
 		this.id = id;
 		this.titolo=info[0];
 		this.categoria=info[5];
@@ -82,9 +82,6 @@ public class Rivista implements Raccolta, Serializable {
 	}
 	public float getPrezzo() {
 		return this.prezzo;
-	}
-	public int getCopieRim() {
-		return this.copieRim;
 	}
 	public int getId() {
 		return this.id;
@@ -177,9 +174,6 @@ public class Rivista implements Raccolta, Serializable {
 	public void setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
 	}
-	public void setCopieRim(int copieRim) {
-		this.copieRim = copieRim;
-	}
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -256,5 +250,12 @@ public class Rivista implements Raccolta, Serializable {
 		document.close();
 
 	}
-	
+
+    public int getNrCopie() {
+        return nrCopie;
+    }
+
+    public void setNrCopie(int nrCopie) {
+        this.nrCopie = nrCopie;
+    }
 }

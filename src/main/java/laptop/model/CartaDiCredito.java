@@ -11,7 +11,6 @@ public class 	CartaDiCredito implements Serializable {
 	private static final long serialVersionUID = 2L;
 
 
-	private int tipo;
 	private String numeroCC;
 	private double limite;
 	private double ammontare;
@@ -21,7 +20,7 @@ public class 	CartaDiCredito implements Serializable {
 	private String cognomeUser; 
 	private String civ;
 
-	private static final String[] types = {"No Card:Cash Only","DINER'S","JCB","MASTER","VISA"};
+	private static final String[] types = {"DINER'S","JCB","MASTER","VISA","POSTEPAY"};
 
 	public CartaDiCredito() {
 	}
@@ -40,13 +39,6 @@ public class 	CartaDiCredito implements Serializable {
 		this.prezzoTransazine=prezzo;
 	}
 
-	public int getTipo() {
-		return tipo;
-	}
-	public void setTipo(int tipo)  {
-
-		this.tipo = tipo;
-	}
 	public String getNumeroCC() {
 		return numeroCC;
 	}

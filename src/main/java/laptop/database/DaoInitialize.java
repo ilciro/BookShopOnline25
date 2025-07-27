@@ -15,9 +15,10 @@ public class DaoInitialize {
     private static final String RIVISTA = "rivista";
     private static final String UTENTE = "utenti";
     private static final String NEGOZIO = "negozio";
-    private static final String FATTURA = "fattura";
-    private static final String PAGAMENTO = "pagamento";
+    private static final String FATTURA = "pagamentoFattura";
+    private static final String PAGAMENTOCARTACREDITO = "pagamentoCartaCredito";
     private static final String CARTACREDITO = "cartacredito";
+    private static final String PAGAMENTOTALE = "pagamentoTotale";
     private static final ResourceBundle RBQUERYCREATE = ResourceBundle.getBundle("sql/dbCreate");
     private static final ResourceBundle RBQUERYEXISTS = ResourceBundle.getBundle("sql/tableExist");
     private static final ResourceBundle RBQUERYPOPOLUATED = ResourceBundle.getBundle("sql/tablePopulate");
@@ -227,13 +228,21 @@ public class DaoInitialize {
                 eseguiProcedura(ESISTE, FATTURA);
                 eseguiProcedura(CREA, FATTURA);
             }
-            case PAGAMENTO -> {
+            case PAGAMENTOCARTACREDITO -> {
                 //creo
                 creaProcedura(ESISTE);
                 creaProcedura(CREA);
                 //richiamo
-                eseguiProcedura(ESISTE, PAGAMENTO);
-                eseguiProcedura(CREA, PAGAMENTO);
+                eseguiProcedura(ESISTE, PAGAMENTOCARTACREDITO);
+                eseguiProcedura(CREA, PAGAMENTOCARTACREDITO);
+            }
+            case PAGAMENTOTALE -> {
+                //creo
+                creaProcedura(ESISTE);
+                creaProcedura(CREA);
+                //richiamo
+                eseguiProcedura(ESISTE, PAGAMENTOTALE);
+                eseguiProcedura(CREA, PAGAMENTOTALE);
             }
             case CARTACREDITO -> {
                 //creo

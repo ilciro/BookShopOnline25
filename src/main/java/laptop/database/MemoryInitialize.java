@@ -147,6 +147,8 @@ public class MemoryInitialize {
                     Libro l = getLibro(i);
 
                     listL.add(l);
+
+
                 }
                 scriviInFile(file,null,listL,null);
                 leggiDaFileLibro(file);
@@ -176,6 +178,8 @@ public class MemoryInitialize {
             if (vis.getTipoModifica().equals("im")) l.setId(vis.getIdLibro());
             else if (vis.getTipoModifica().equals(INSERT)) l.setId(listL.size() + 1);
             listL.add(l);
+
+            Logger.getLogger("inserisci").log(Level.INFO,"inserted libro in list {0}",listL.get(0).getTitolo());
             //scrivo lista in appoggio
 
             scriviInFile(appoggio,null,listL,null);
@@ -191,6 +195,8 @@ public class MemoryInitialize {
             else if (vis.getTipoModifica().equals(INSERT)) g.setId(listG.size() + 1);
             listG.add(g);
             //scrivo lista in appoggio
+            Logger.getLogger("inserisci").log(Level.INFO,"inserted giornale in list {0}",listG.get(0).getTitolo());
+
 
             scriviInFile(appoggio,listG,null,null);
             listG=leggiDaFileGiornale(appoggio);
@@ -205,6 +211,8 @@ public class MemoryInitialize {
             else if (vis.getTipoModifica().equals(INSERT)) r.setId(listR.size() + 1);
             listR.add(r);
             //scrivo lista in appoggio
+            Logger.getLogger("inserisci").log(Level.INFO,"inserted rivista in list {0}",listR.get(0).getTitolo());
+
 
             scriviInFile(appoggio,null,null,listR);
             listR=leggiDaFileRivista(appoggio);
@@ -246,11 +254,14 @@ public class MemoryInitialize {
         return listG;
     }
     @SuppressWarnings("unchecked")
-    private ArrayList<Libro> leggiDaFileLibro(String nome) throws IOException ,ClassNotFoundException{
+    private ArrayList<Libro> leggiDaFileLibro(String nome) throws IOException, ClassNotFoundException {
         try(FileInputStream fis=new FileInputStream(nome);
             ObjectInputStream ois=new ObjectInputStream(fis)){
             listL=(ArrayList<Libro>) ois.readObject();
+
+
         }
+
         return listL;
     }
     @SuppressWarnings("unchecked")
@@ -371,7 +382,7 @@ public class MemoryInitialize {
         r.setDataPubb(LocalDate.parse(listaR.get(6)));
         r.setDisp(Integer.parseInt(listaR.get(7)));
         r.setPrezzo(Float.parseFloat(listaR.get(8)));
-        r.setCopieRim(Integer.parseInt(listaR.get(9)));
+        r.setNrCopie(Integer.parseInt(listaR.get(9)));
         r.setId(Integer.parseInt(listaR.get(10)));
         return r;
     }

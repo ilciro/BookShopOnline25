@@ -5,6 +5,7 @@ import java.io.*;
 import java.net.URISyntaxException;
 
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,6 +16,10 @@ import com.itextpdf.text.DocumentException;
 import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
 
+//import laptop.database.primoucacquista.giornale.CsvGiornale;
+//import laptop.database.primoucacquista.giornale.GiornaleDao;
+//import laptop.database.primoucacquista.giornale.MemoriaGiornale;
+//import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
 import laptop.database.primoucacquista.giornale.CsvGiornale;
 import laptop.database.primoucacquista.giornale.GiornaleDao;
 import laptop.database.primoucacquista.giornale.MemoriaGiornale;
@@ -23,6 +28,10 @@ import laptop.database.primoucacquista.libro.CsvLibro;
 import laptop.database.primoucacquista.libro.LibroDao;
 import laptop.database.primoucacquista.libro.MemoriaLibro;
 import laptop.database.primoucacquista.libro.PersistenzaLibro;
+//import laptop.database.primoucacquista.rivista.CsvRivista;
+//import laptop.database.primoucacquista.rivista.MemoriaRivista;
+//import laptop.database.primoucacquista.rivista.PersistenzaRivista;
+//import laptop.database.primoucacquista.rivista.RivistaDao;
 import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
@@ -46,6 +55,7 @@ public class ControllerDownload {
 	private static final String RIVISTA="rivista";
 	private static final String DATABASE="database";
 	private static final String FILE="file";
+	private static final String MEMORIA="memoria";
 
 
 
@@ -79,20 +89,27 @@ public class ControllerDownload {
 
 		}
 		tempLibro.setId(vis.getIdLibro());
+		tempLibro.setNrCopie(tempLibro.getNrCopie()-vis.getQuantita());
 
 		if(pL.inserisciLibro(tempLibro)) Logger.getLogger("aggiorno libro").log(Level.INFO,"update book succesfully!!");
 
 	}
+
 	private void acquistaGiornale(String persistenza) throws IOException, DocumentException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
-  		PersistenzaGiornale pG;
+  		PersistenzaGiornale pG = null;
 		g.setId(vis.getIdGiornale());
 		g.scarica(vis.getIdGiornale());
 		g.leggi(vis.getIdGiornale());
-		if(persistenza.equals(DATABASE))  pG=new GiornaleDao();
-		else if(persistenza.equals(FILE)) pG=new CsvGiornale();
-		else pG=new MemoriaGiornale();
+
+		switch (persistenza)
+		{
+			case DATABASE -> pG=new GiornaleDao();
+			case FILE -> pG=new CsvGiornale();
+			case MEMORIA -> pG=new MemoriaGiornale();
+		}
+
 		Giornale tempG=new Giornale();
-		for (int i=0;i<pG.getGiornali().size();i++)
+		for (int i = 0; i< Objects.requireNonNull(pG).getGiornali().size(); i++)
 		{
 
 			if(i==g.getId()-1)
@@ -108,6 +125,7 @@ public class ControllerDownload {
 
 		}
 		tempG.setId(vis.getIdGiornale());
+		tempG.setCopieRimanenti(tempG.getCopieRimanenti()-vis.getQuantita());
 		if(pG.inserisciGiornale(tempG)) Logger.getLogger("aggiorno giornale").log(Level.INFO,"update daily succesfully!!");
 
 	}
@@ -132,10 +150,14 @@ public class ControllerDownload {
 			}
 
 		}
+		tempR.setId(vis.getIdRivista());
+		tempR.setNrCopie(tempR.getNrCopie()-vis.getQuantita());
 
 		if (pR.inserisciRivista(tempR))Logger.getLogger("aggionro rivista").log(Level.INFO, "update magazine succesfully!!");
 
 	}
+
+
 
 
 

@@ -3,6 +3,7 @@ package laptop.controller.primoucacquista;
 
 import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
+
 import laptop.database.primoucacquista.giornale.CsvGiornale;
 import laptop.database.primoucacquista.giornale.GiornaleDao;
 import laptop.database.primoucacquista.giornale.MemoriaGiornale;
@@ -10,6 +11,7 @@ import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
 import laptop.database.primoucacquista.libro.LibroDao;
 import laptop.database.primoucacquista.libro.MemoriaLibro;
 import laptop.database.primoucacquista.libro.PersistenzaLibro;
+
 import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
@@ -43,12 +45,13 @@ public class ControllerHomePage {
             pL.initializza();
     }
 
+
     private void inizializzaGiornale(String type) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
-        PersistenzaGiornale pG;
+        PersistenzaGiornale pG = null;
         if(type.equals(DATABASE)) pG =new GiornaleDao();
         else if(type.equals(FILE))pG =new CsvGiornale();
         else pG=new MemoriaGiornale();
-            pG.initializza();
+        pG.initializza();
     }
     private void inizializzaRivista(String type) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
         PersistenzaRivista pR;
@@ -57,6 +60,8 @@ public class ControllerHomePage {
         else pR=new MemoriaRivista();
             pR.initializza();
     }
+
+
 
 
 

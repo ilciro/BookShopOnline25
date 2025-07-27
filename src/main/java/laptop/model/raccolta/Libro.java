@@ -321,7 +321,7 @@ public class 	Libro implements Raccolta , Serializable  {
 				case 9-> createPDF(rbTitoli.getString("titolo9"));
 				case 10->createPDF(rbTitoli.getString("titolo10"));
 				case 11->createPDF(rbTitoli.getString("titolo11"));
-				case 12->createPDF(rbTitoli.getString("titolo12"));
+				case 12,13,14,15,16,17,18,19->createPDF(rbTitoli.getString("titolo12"));
 
 				default -> 	Logger.getLogger("Test scarica").log(Level.SEVERE, "download error");
 
@@ -347,8 +347,7 @@ public class 	Libro implements Raccolta , Serializable  {
 			case 9->this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString("titolo9"));
 			case 10->this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString("titolo10"));
 			case 11->this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString("titolo11"));
-
-			case 12->this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString("titolo12"));
+			case 12,13,14,15,16,17,18,19->this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString("titolo12"));
 
 			default -> 	Logger.getLogger("Test leggi").log(Level.SEVERE, "read error");
 		}

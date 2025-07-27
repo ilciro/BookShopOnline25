@@ -101,7 +101,7 @@ public class LibroDao extends PersistenzaLibro{
     }
 
     @Override
-    public ObservableList<Libro> getLibri() throws CsvValidationException, IOException, IdException {
+    public ObservableList<Libro> getLibri()  {
         ObservableList<Libro> catalogo = FXCollections.observableArrayList();
 
         query = "select * from libro ";
@@ -131,7 +131,7 @@ public class LibroDao extends PersistenzaLibro{
     public ObservableList<Raccolta> retrieveRaccoltaData()  {
         ObservableList<Raccolta> catalogo = FXCollections.observableArrayList();
 
-        query = "select * from libro";
+        query = "select * from ispw.libro";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ = conn.prepareStatement(query);
              ResultSet rs = prepQ.executeQuery()) {

@@ -107,7 +107,7 @@ public class CsvRivista extends PersistenzaRivista {
             gVector[GETINDEXDATAR] = String.valueOf(r.getDataPubb());
             gVector[GETINDEXDISPR] = String.valueOf(r.getDisp());
             gVector[GETINDEXPREZZOR] = String.valueOf(r.getPrezzo());
-            gVector[GETINDEXCOPIER] = String.valueOf(r.getCopieRim());
+            gVector[GETINDEXCOPIER] = String.valueOf(r.getNrCopie());
             if(vis.getTipoModifica().equals("im")) gVector[GETINDEXIDR] = String.valueOf(vis.getIdRivista());
             else if(vis.getTipoModifica().equals("insert")) gVector[GETINDEXIDR] = String.valueOf(getIdMax() + 1);
             else throw new CsvValidationException(" type of modif at magazine is wrong !!");
@@ -168,7 +168,7 @@ public class CsvRivista extends PersistenzaRivista {
         r.setDataPubb(LocalDate.parse(data));
         r.setDisp(Integer.parseInt(disp));
         r.setPrezzo(Float.parseFloat(prezzo));
-        r.setCopieRim(Integer.parseInt(copie));
+        r.setNrCopie(Integer.parseInt(copie));
         r.setId(Integer.parseInt(id));
 
         return r;

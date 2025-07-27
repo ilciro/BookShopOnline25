@@ -18,6 +18,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -27,6 +30,7 @@ import laptop.controller.ControllerSystemState;
 
 import laptop.exception.IdException;
 import laptop.model.raccolta.Raccolta;
+
 
 public class BoundaryCompravendita implements Initializable {
 	@FXML
@@ -47,6 +51,8 @@ public class BoundaryCompravendita implements Initializable {
 	private TableColumn<Raccolta, SimpleFloatProperty> prezzo = new TableColumn<>("Prezzo");
 	@FXML
 	private TableColumn<Raccolta, SimpleIntegerProperty> idLibro = new TableColumn<>("Id Libro");
+	@FXML
+	private TableColumn<Raccolta, SimpleIntegerProperty> copieRimaste = new TableColumn<>("Copie rimaste");
 	@FXML
 	private VBox vbox;
 	@FXML
@@ -83,44 +89,49 @@ public class BoundaryCompravendita implements Initializable {
 	@FXML
 	private void prendiLista() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 		 type=controllaPersistenza();
-		table.setItems(cCV.getLista(vis.getType(),type));
-	}
-	@FXML
-	private void mostra() throws IOException, CsvValidationException, IdException, ClassNotFoundException {
-		int id=Integer.parseInt(idOggetto.getText());
-		type=controllaPersistenza();
-		if(id<=0 || id > cCV.getLista(vis.getType(), type).size())
-			throw new IdException(" id is wrong!! grater than size");
-		checkTipologiaCompravendita(id);
+		 table.setItems(cCV.getLista(vis.getType(),type));
 
-
-		Stage stage;
-		Parent root;
-		stage = (Stage) buttonMostra.getScene().getWindow();
-		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/visualizzaPage.fxml")));
-		stage.setTitle("Benvenuto nella schermata del riepilogo");
-
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
 
 	}
 	@FXML
-	private void acquista() throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+	private void mostra() throws IOException, CsvValidationException, ClassNotFoundException {
 		int id=Integer.parseInt(idOggetto.getText());
 		type=controllaPersistenza();
-		if(id<=0 || id > cCV.getLista(vis.getType(), type).size())
-			throw new IdException(" id is wrong!! grater than size");
-		checkTipologiaCompravendita(id);
+		if(cCV.checkId(id,type,vis.getType())) {
+
+			checkTipologiaCompravendita(id);
 
 
-		Stage stage;
-		Parent root;
-		stage = (Stage) buttonAcquista.getScene().getWindow();
-		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/acquista.fxml")));
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+			Stage stage;
+			Parent root;
+			stage = (Stage) buttonMostra.getScene().getWindow();
+			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/visualizzaPage.fxml")));
+			stage.setTitle("Benvenuto nella schermata del riepilogo");
+
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		}
+
+	}
+	@FXML
+	private void acquista() throws IOException, CsvValidationException,  ClassNotFoundException {
+		int id=Integer.parseInt(idOggetto.getText());
+		type=controllaPersistenza();
+
+		if(cCV.checkId(id,type,vis.getType()))
+		{
+			checkTipologiaCompravendita(id);
+
+
+			Stage stage;
+			Parent root;
+			stage = (Stage) buttonAcquista.getScene().getWindow();
+			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/acquista.fxml")));
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		}
 
 	}
 	@FXML
@@ -144,6 +155,17 @@ public class BoundaryCompravendita implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
         cCV = new ControllerCompravendita();
+		if(vis.getTipologiaApplicazione().equals("demo"))
+		{
+			buttonDatabase.setVisible(false);
+			buttonFile.setVisible(false);
+            switch (vis.getType()) {
+                case "libro" -> idOggetto.setText("6");
+                case "giornale" -> idOggetto.setText("1");
+                case "rivista" -> idOggetto.setText("3");
+				default -> Logger.getLogger("initialize").log(Level.SEVERE," type of object is null");
+            }
+		}
 
 
         if(vis.getType().equals("libro") || vis.getType().equals("rivista"))
@@ -155,7 +177,8 @@ public class BoundaryCompravendita implements Initializable {
 			categoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
 			prezzo.setCellValueFactory(new PropertyValueFactory<>(PREZZOS));
 			idLibro.setCellValueFactory(new PropertyValueFactory<>("id"));
-			
+			copieRimaste.setCellValueFactory(new PropertyValueFactory<>("nrCopie"));
+
 		}
 		else if(ControllerSystemState.getInstance().getType().equals("giornale"))
 		{
@@ -168,6 +191,8 @@ public class BoundaryCompravendita implements Initializable {
 			categoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
 			prezzo.setCellValueFactory(new PropertyValueFactory<>(PREZZOS));
 			idLibro.setCellValueFactory(new PropertyValueFactory<>("id"));
+			copieRimaste.setCellValueFactory(new PropertyValueFactory<>("copieRimanenti"));
+
 		}
 
 		
@@ -195,6 +220,7 @@ public class BoundaryCompravendita implements Initializable {
 
 		}
 	}
+
 
 
 

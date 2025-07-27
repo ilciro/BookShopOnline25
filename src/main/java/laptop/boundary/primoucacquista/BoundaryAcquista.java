@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
@@ -112,6 +113,18 @@ public class BoundaryAcquista implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		cA=new ControllerAcquista();
+		if(vis.getTipologiaApplicazione().equals("demo"))
+		{
+			databaseButton.setVisible(false);
+			fileButton.setVisible(false);
+
+			switch (vis.getType()) {
+				case "libro" -> quantita.setText("3");
+				case "giornale" -> quantita.setText("5");
+				case "rivista" -> quantita.setText("2");
+				default -> Logger.getLogger("initialize").log(Level.SEVERE," type of object is null");
+			}
+		}
 
 
 

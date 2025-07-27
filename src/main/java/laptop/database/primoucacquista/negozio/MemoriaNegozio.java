@@ -49,7 +49,7 @@ public class MemoriaNegozio extends PersistenzaNegozio{
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean checkRitiro(Negozio shop) throws IOException, CsvValidationException, ClassNotFoundException {
+    public boolean checkRitiro(Negozio shop) throws IOException,  ClassNotFoundException {
         boolean status=false;
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois = new ObjectInputStream(fis)){

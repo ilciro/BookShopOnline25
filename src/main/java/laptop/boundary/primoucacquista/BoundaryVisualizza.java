@@ -204,8 +204,10 @@ public class BoundaryVisualizza implements Initializable {
 					labelDescrizione.setText(cV.getListRivista(type).get(0).getDescrizione());
 					labelDisp.setText(String.valueOf(cV.getListRivista(type).get(0).getDisp()));
 					labelPrezzo.setText(String.valueOf(cV.getListRivista(type).get(0).getPrezzo()));
-					labelCopieRimanenti.setText(String.valueOf(cV.getListRivista(type).get(0).getCopieRim()));
+					labelCopieRimanenti.setText(String.valueOf(cV.getListRivista(type).get(0).getNrCopie()));
 				}
+
+
 
 
 
@@ -233,6 +235,12 @@ public class BoundaryVisualizza implements Initializable {
 
 
 			cV = new ControllerVisualizza();
+
+			if(vis.getTipologiaApplicazione().equals("demo"))
+			{
+				buttonDatabase.setVisible(false);
+				buttonFile.setVisible(false);
+			}
 
 
 	}

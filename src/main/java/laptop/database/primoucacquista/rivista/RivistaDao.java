@@ -50,7 +50,7 @@ public class RivistaDao extends PersistenzaRivista{
             prepQ.setString(5,r.getEditore());
             prepQ.setString(6,r.getDescrizione());
             prepQ.setDate(7, Date.valueOf(r.getDataPubb().toString()));
-            prepQ.setInt(8,r.getCopieRim());
+            prepQ.setInt(8,r.getNrCopie());
             prepQ.setInt(9, r.getDisp());
             prepQ.setFloat(10, r.getPrezzo());
             if(vis.getTipoModifica().equals("im")) prepQ.setInt(11,vis.getIdRivista());

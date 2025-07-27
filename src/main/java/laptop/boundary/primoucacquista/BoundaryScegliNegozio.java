@@ -1,15 +1,21 @@
 package laptop.boundary.primoucacquista;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.opencsv.exceptions.CsvValidationException;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -22,12 +28,13 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.ControllerScegliNegozio;
 import laptop.exception.IdException;
 import laptop.model.Negozio;
 
 
-public class BoundaryScegliNegozio {
+public class BoundaryScegliNegozio implements Initializable {
 
 	@FXML
 	private Label labelL;
@@ -56,7 +63,7 @@ public class BoundaryScegliNegozio {
 	@FXML
 	private ToggleGroup toggleGroupB;
 
-	private final ControllerScegliNegozio cSN;
+	private ControllerScegliNegozio cSN;
 	private ObservableList<Negozio> listOfNegozi;
 	private static final String ALERTITLE = "Ordine ricevuto!";
 	private static final String ALERTHEADERTEXT = "Il negozio che hai selezionato ha ricevuto il tuo ordine. \n Presentati dopo 3 giorni lavorativi per ritirare il tuo acquisto";
@@ -73,10 +80,9 @@ public class BoundaryScegliNegozio {
 	protected Alert alertE;
 	protected FXMLLoader loader;
 
+	private static final ControllerSystemState vis= ControllerSystemState.getInstance();
 
-	public BoundaryScegliNegozio() {
-		cSN = new ControllerScegliNegozio();
-	}
+
 
 	@FXML
 	private void database() throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
@@ -159,7 +165,21 @@ private void negozioGiusto() throws IOException {
 	alert.setContentText(ALERTCONTENTEXT);
 	Optional<ButtonType> result = alert.showAndWait();
 
+
+
 	if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
+		if (vis.getTipologiaApplicazione().equals("demo"))
+		{
+
+				Platform.exit();
+				File path=new File("memory");
+				File[] files = path.listFiles();
+				for(int i = 0; i< Objects.requireNonNull(files).length; i++) {
+
+					files[i].delete();
+				}
+		}
+		else {
 
 			Stage stage;
 			Parent root;
@@ -169,6 +189,7 @@ private void negozioGiusto() throws IOException {
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
+		}
 		}
 	}
 
@@ -216,6 +237,16 @@ private void negozioGiusto() throws IOException {
 
 	}
 
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		cSN=new ControllerScegliNegozio();
+		if(vis.getTipologiaApplicazione().equals("demo"))
+		{
+			databaseButton.setVisible(false);
+			fileButton.setVisible(false);
+		}
 	}
 }
 

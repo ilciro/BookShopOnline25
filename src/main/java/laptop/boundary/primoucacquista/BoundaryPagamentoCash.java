@@ -68,7 +68,7 @@ public class BoundaryPagamentoCash implements Initializable{
 	private static final ControllerSystemState vis = ControllerSystemState.getInstance();
 
 	@FXML
-	private void procediCash() throws IOException, SQLException, IdException, CsvValidationException, ClassNotFoundException {
+	private void procediCash() throws IOException, SQLException, ClassNotFoundException, CsvValidationException, IdException {
 		
 			vis.setMetodoP("cash");
 
@@ -92,7 +92,6 @@ public class BoundaryPagamentoCash implements Initializable{
 				scene = new Scene(root);
 				stage.setScene(scene);
 				stage.show();
-				throw new IOException();
 
 			} else {
 
@@ -145,6 +144,16 @@ public class BoundaryPagamentoCash implements Initializable{
 					cognomeTF.setText(cPC.getInfo()[1]);
 					nomeTF.setEditable(false);
 					cognomeTF.setEditable(false);
+				}
+				if(vis.getTipologiaApplicazione().equals("demo"))
+				{
+					databaseButton.setVisible(false);
+					fileButton.setVisible(false);
+
+					nomeTF.setText("prova");
+					cognomeTF.setText("prova");
+					viaTF.setText("viale prova 8");
+					eventualiArea.setText(" dopo le 12 ");
 				}
 
 	}
