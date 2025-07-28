@@ -12,47 +12,47 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="nc" id="L15">public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{</span>
-<span class="nc" id="L16">    private  ArrayList&lt;PagamentoCartaCredito&gt; list= new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L15">public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{</span>
+<span class="fc" id="L16">    private  ArrayList&lt;PagamentoCartaCredito&gt; list= new ArrayList&lt;&gt;();</span>
     private static final String SERIALIZZAZIONE=&quot;memory/serializzazionePagamentoCartaCredito.ser&quot;;
     @Override
     public void inizializza() throws IOException, ClassNotFoundException, SQLException {
         try
         {
-<span class="nc bnc" id="L22" title="All 2 branches missed.">            if(!Files.exists(Path.of(SERIALIZZAZIONE))) throw new IOException(&quot; file not exists&quot;);</span>
-<span class="nc" id="L23">        }catch (IOException e)</span>
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">            if(!Files.exists(Path.of(SERIALIZZAZIONE))) throw new IOException(&quot; file not exists&quot;);</span>
+<span class="fc" id="L23">        }catch (IOException e)</span>
         {
-<span class="nc" id="L25">            Files.createFile(Path.of(SERIALIZZAZIONE));</span>
-<span class="nc" id="L26">            Logger.getLogger(&quot;inizializza memoria pagamentoCC&quot;).log(Level.INFO,&quot; file has been created&quot;);</span>
+<span class="fc" id="L25">            Files.createFile(Path.of(SERIALIZZAZIONE));</span>
+<span class="fc" id="L26">            Logger.getLogger(&quot;inizializza memoria pagamentoCC&quot;).log(Level.INFO,&quot; file has been created&quot;);</span>
 <span class="nc" id="L27">        }</span>
-<span class="nc" id="L28">    }</span>
+<span class="fc" id="L28">    }</span>
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito p) throws CsvValidationException, IOException, ClassNotFoundException {
-<span class="nc" id="L33">        try (FileInputStream fin = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L33">        try (FileInputStream fin = new FileInputStream(SERIALIZZAZIONE);</span>
 <span class="nc" id="L34">             ObjectInputStream ois = new ObjectInputStream(fin)) {</span>
 
 <span class="nc" id="L36">            list = (ArrayList&lt;PagamentoCartaCredito&gt;) ois.readObject();</span>
 
-<span class="nc" id="L38">        }catch (EOFException e)</span>
+<span class="fc" id="L38">        }catch (EOFException e)</span>
         {
-<span class="nc" id="L40">            Logger.getLogger(&quot;inserisci pagamento cartacredito&quot;).log(Level.SEVERE,&quot; excepion :.&quot;,e);</span>
+<span class="fc" id="L40">            Logger.getLogger(&quot;inserisci pagamento cartacredito&quot;).log(Level.SEVERE,&quot; excepion :.&quot;,e);</span>
 <span class="nc" id="L41">        }</span>
-<span class="nc" id="L42">        p.setIdPagCC(list.size()+1);</span>
-<span class="nc" id="L43">        list.add(p);</span>
+<span class="fc" id="L42">        p.setIdPagCC(list.size()+1);</span>
+<span class="fc" id="L43">        list.add(p);</span>
 
 
-<span class="nc" id="L46">        try (FileOutputStream fout = new FileOutputStream(SERIALIZZAZIONE);</span>
-<span class="nc" id="L47">             ObjectOutputStream oos = new ObjectOutputStream(fout)) {</span>
-<span class="nc" id="L48">            oos.writeObject(list);</span>
+<span class="fc" id="L46">        try (FileOutputStream fout = new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L47">             ObjectOutputStream oos = new ObjectOutputStream(fout)) {</span>
+<span class="fc" id="L48">            oos.writeObject(list);</span>
         }
 
 
 
-<span class="nc" id="L53">        Logger.getLogger(&quot;insert payment in memory&quot;).log(Level.INFO, &quot;payment is wrote&quot;);</span>
+<span class="fc" id="L53">        Logger.getLogger(&quot;insert payment in memory&quot;).log(Level.INFO, &quot;payment is wrote&quot;);</span>
 
-<span class="nc" id="L55">        return true;</span>
+<span class="fc" id="L55">        return true;</span>
     }
 
     @Override
@@ -77,13 +77,13 @@ import java.util.logging.Logger;
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public PagamentoCartaCredito ultimoPagamentoCartaCredito() throws IOException, ClassNotFoundException {
-<span class="nc" id="L80">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="nc" id="L81">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
-<span class="nc" id="L82">            list = (ArrayList&lt;PagamentoCartaCredito&gt;) ois.readObject();</span>
+<span class="fc" id="L80">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L81">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
+<span class="fc" id="L82">            list = (ArrayList&lt;PagamentoCartaCredito&gt;) ois.readObject();</span>
 
 
         }
-<span class="nc" id="L86">        return list.get(list.size() - 1);</span>
+<span class="fc" id="L86">        return list.get(list.size() - 1);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

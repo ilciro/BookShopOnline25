@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.*;
 import laptop.exception.IdException;
+import laptop.model.pagamento.PagamentoFattura;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +27,10 @@ class TestDemo {
     private static final ControllerAcquista cA=new ControllerAcquista();
     private static final ControllerPagamentoCash cPCash=new ControllerPagamentoCash();
     private static final ControllerDownload cD=new ControllerDownload();
+    private static final ControllerPagamentoCC cPCC=new ControllerPagamentoCC();
+    private static final ControllerVisualizza cV=new ControllerVisualizza();
+    private static final ControllerScegliNegozio cSN=new ControllerScegliNegozio();
+    private static final ControllerAnnullaPagamento cAP=new ControllerAnnullaPagamento();
      @Test
     void testAcquistaLibroCashDownload() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException, DocumentException, URISyntaxException {
          vis.setTipologiaApplicazione("demo");
@@ -44,6 +49,56 @@ class TestDemo {
          cD.scarica(vis.getType(),MEMORIA);
 
      }
+    @Test
+    void testAcquistaLibroGiornaleCCNegozio() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException, DocumentException, URISyntaxException {
+        vis.setTipologiaApplicazione("demo");
+        vis.setTypeAsDaily();
+        //inizializzo lista
+        cHP.persistenza(vis.getType());
+        //scelgo id
+        cCV.checkId(3,MEMORIA,vis.getType());
+        //setto id
+        vis.setIdGiornale(3);
+        //visualizza
+        cV.getID();
+        cV.getListGiornale(MEMORIA);
+        //scelgo quantita e prezzo
+        cA.getPrezzo("3",MEMORIA);
+        //controllo correttezza cc
+        cPCC.correttezza("1952-7488-1111-5252","2030/09/09","841");
+        //effettuo pagamento
+        cPCC.pagamentoCC("prova",MEMORIA,"prova");
+        //scarico oggetto
+        cSN.getNegozi(MEMORIA);
+        boolean status= cSN.isOpen(MEMORIA,2)&&cSN.isValid(MEMORIA,2);
+        assertTrue(status);
+
+    }
+    @Test
+    void testAnnullaRivistaCashDownload() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException, DocumentException, URISyntaxException {
+        vis.setTipologiaApplicazione("demo");
+        vis.setTypeAsMagazine();
+        vis.setMetodoP("cash");
+        //inizializzo lista
+        cHP.persistenza(vis.getType());
+        //scelgo id
+        cCV.checkId(3,MEMORIA,vis.getType());
+        //setto id
+        vis.setIdRivista(1);
+        //scelgo quantita e prezzo
+        cA.getPrezzo("3",MEMORIA);
+        //prendo oggetto e crea fattura
+        cPCash.controlla("prova","prova","via prova","",MEMORIA);
+        //annullo pagamento -> prendo lista
+        PagamentoFattura pf=cAP.getFattura(MEMORIA).get(0);
+        //cancello fattura
+       assertTrue(cAP.cancellaFattura(pf.getIdFattura(), MEMORIA));
+
+    }
+
+
+
+
      @AfterAll
      public static void teardown()
      {

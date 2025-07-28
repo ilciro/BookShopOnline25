@@ -41,7 +41,7 @@ import laptop.database.primoucacquista.libro.PersistenzaLibro;
 
 <span class="fc" id="L42">		ObservableList&lt;Raccolta&gt; catalogo = FXCollections.observableArrayList();</span>
 
-<span class="pc bpc" id="L44" title="3 of 4 branches missed.">		switch (type) {</span>
+<span class="pc bpc" id="L44" title="1 of 4 branches missed.">		switch (type) {</span>
 			case &quot;libro&quot; -&gt; {
 
 <span class="pc bpc" id="L47" title="3 of 4 branches missed.">				switch (database) {</span>
@@ -58,30 +58,30 @@ import laptop.database.primoucacquista.libro.PersistenzaLibro;
 
 
 			case &quot;giornale&quot; -&gt; {
-<span class="nc bnc" id="L61" title="All 4 branches missed.">				switch (database) {</span>
+<span class="pc bpc" id="L61" title="3 of 4 branches missed.">				switch (database) {</span>
 <span class="nc" id="L62">					case DATABASE -&gt; pG = new GiornaleDao();</span>
 <span class="nc" id="L63">					case FILE -&gt; pG = new CsvGiornale();</span>
-<span class="nc" id="L64">					 case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
+<span class="fc" id="L64">					 case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
 <span class="nc" id="L65">					default -&gt; Logger.getLogger(&quot;lista giornale&quot;).log(Level.SEVERE, &quot;daily persistency not correct !!&quot;);</span>
 				}
 
 
-<span class="nc" id="L69">				catalogo.addAll(pG.retrieveRaccoltaData());</span>
+<span class="fc" id="L69">				catalogo.addAll(pG.retrieveRaccoltaData());</span>
 
-<span class="nc" id="L71">			}</span>
+<span class="fc" id="L71">			}</span>
 
 
 			case &quot;rivista&quot; -&gt; {
-<span class="nc bnc" id="L75" title="All 4 branches missed.">				switch (database) {</span>
+<span class="pc bpc" id="L75" title="3 of 4 branches missed.">				switch (database) {</span>
 <span class="nc" id="L76">					case DATABASE -&gt; pR = new RivistaDao();</span>
 <span class="nc" id="L77">					case FILE -&gt; pR = new CsvRivista();</span>
-<span class="nc" id="L78">					case MEMORIA -&gt; pR = new MemoriaRivista();</span>
+<span class="fc" id="L78">					case MEMORIA -&gt; pR = new MemoriaRivista();</span>
 <span class="nc" id="L79">					default -&gt; Logger.getLogger(&quot;lista rivista&quot;).log(Level.SEVERE, &quot;magazine persistency not correct !!&quot;);</span>
 				}
 
-<span class="nc" id="L82">				catalogo.addAll(pR.retrieveRaccoltaData());</span>
+<span class="fc" id="L82">				catalogo.addAll(pR.retrieveRaccoltaData());</span>
 
-<span class="nc" id="L84">			}</span>
+<span class="fc" id="L84">			}</span>
 
 
 <span class="nc" id="L87">			default -&gt; Logger.getLogger(&quot;get lista&quot;).log(Level.SEVERE, &quot; list is empty&quot;);</span>

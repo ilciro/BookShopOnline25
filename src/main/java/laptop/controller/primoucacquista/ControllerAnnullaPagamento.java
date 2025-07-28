@@ -37,18 +37,7 @@ public class ControllerAnnullaPagamento  {
 
 
 
-    private String returnPersistency(String persistenza)
-    {
-        String persistency="";
-       switch (persistenza)
-       {
-           case DATABASE -> persistency=DATABASE;
-           case FILE -> persistency=FILE;
-           case MEMORIA -> persistency=MEMORIA;
-           default -> Logger.getLogger("persistenza errata").log(Level.SEVERE," persistency is wrong or null!!");
-       }
-       return persistency;
-    }
+
 
     public ObservableList<PagamentoFattura> getFattura(String persistenza) throws CsvValidationException, IOException, ClassNotFoundException {
         ObservableList<PagamentoFattura> list= FXCollections.observableArrayList();

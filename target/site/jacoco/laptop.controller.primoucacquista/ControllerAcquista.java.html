@@ -65,7 +65,7 @@ public class ControllerAcquista {
 
 
 <span class="fc" id="L67">	    String [] dati=new String[3];</span>
-<span class="pc bpc" id="L68" title="3 of 4 branches missed.">		switch (vis.getType())</span>
+<span class="pc bpc" id="L68" title="1 of 4 branches missed.">		switch (vis.getType())</span>
 		{
 			case LIBRO-&gt;
 			{
@@ -87,37 +87,37 @@ public class ControllerAcquista {
 
 			case GIORNALE-&gt;
 			{
-<span class="nc" id="L90">				g.setId(vis.getIdGiornale());</span>
+<span class="fc" id="L90">				g.setId(vis.getIdGiornale());</span>
 
-<span class="nc bnc" id="L92" title="All 4 branches missed.">                switch (string) {</span>
+<span class="pc bpc" id="L92" title="3 of 4 branches missed.">                switch (string) {</span>
 <span class="nc" id="L93">                    case DATABASE -&gt; pG = new GiornaleDao();</span>
 <span class="nc" id="L94">                    case FILE -&gt; pG = new CsvGiornale();</span>
-<span class="nc" id="L95">                   case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
+<span class="fc" id="L95">                   case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
 <span class="nc" id="L96">					default -&gt; Logger.getLogger(&quot;cAGiornale&quot;).log(Level.SEVERE,&quot;cost/name daily is empty is null&quot;);</span>
 
 				}
-<span class="nc" id="L99">				dati[0] = pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getTitolo();</span>
-<span class="nc" id="L100">				dati[1]= String.valueOf(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getPrezzo());</span>
-<span class="nc" id="L101">				dati[2]= String.valueOf(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCopieRimanenti());</span>
+<span class="fc" id="L99">				dati[0] = pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getTitolo();</span>
+<span class="fc" id="L100">				dati[1]= String.valueOf(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getPrezzo());</span>
+<span class="fc" id="L101">				dati[2]= String.valueOf(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCopieRimanenti());</span>
 
 
-<span class="nc" id="L104">			}</span>
+<span class="fc" id="L104">			}</span>
 
 			case RIVISTA-&gt;{
-<span class="nc" id="L107">				r.setId(vis.getIdRivista());</span>
-<span class="nc bnc" id="L108" title="All 4 branches missed.">                switch (string) {</span>
+<span class="fc" id="L107">				r.setId(vis.getIdRivista());</span>
+<span class="pc bpc" id="L108" title="3 of 4 branches missed.">                switch (string) {</span>
 <span class="nc" id="L109">                    case DATABASE -&gt; pR = new RivistaDao();</span>
 <span class="nc" id="L110">                    case FILE -&gt; pR = new CsvRivista();</span>
-<span class="nc" id="L111">                    case MEMORIA -&gt; pR = new MemoriaRivista();</span>
+<span class="fc" id="L111">                    case MEMORIA -&gt; pR = new MemoriaRivista();</span>
 <span class="nc" id="L112">					default -&gt; Logger.getLogger(&quot;cARivista&quot;).log(Level.SEVERE,&quot;cost/name magazine is empty is null&quot;);</span>
 
 				}
-<span class="nc" id="L115">				dati[0] = pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getTitolo();</span>
-<span class="nc" id="L116">				dati[1]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getPrezzo());</span>
-<span class="nc" id="L117">				dati[2]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getNrCopie());</span>
+<span class="fc" id="L115">				dati[0] = pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getTitolo();</span>
+<span class="fc" id="L116">				dati[1]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getPrezzo());</span>
+<span class="fc" id="L117">				dati[2]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getNrCopie());</span>
 
 
-<span class="nc" id="L120">			}</span>
+<span class="fc" id="L120">			}</span>
 
 
 

@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="nc" id="L26">public class ControllerAnnullaPagamento  {</span>
+<span class="fc" id="L26">public class ControllerAnnullaPagamento  {</span>
 
     private static final String DATABASE=&quot;database&quot;;
     private static final String FILE=&quot;file&quot;;
@@ -37,94 +37,83 @@ import java.util.logging.Logger;
 
 
 
-    private String returnPersistency(String persistenza)
-    {
-<span class="nc" id="L42">        String persistency=&quot;&quot;;</span>
-<span class="nc bnc" id="L43" title="All 4 branches missed.">       switch (persistenza)</span>
-       {
-<span class="nc" id="L45">           case DATABASE -&gt; persistency=DATABASE;</span>
-<span class="nc" id="L46">           case FILE -&gt; persistency=FILE;</span>
-<span class="nc" id="L47">           case MEMORIA -&gt; persistency=MEMORIA;</span>
-<span class="nc" id="L48">           default -&gt; Logger.getLogger(&quot;persistenza errata&quot;).log(Level.SEVERE,&quot; persistency is wrong or null!!&quot;);</span>
-       }
-<span class="nc" id="L50">       return persistency;</span>
-    }
+
 
     public ObservableList&lt;PagamentoFattura&gt; getFattura(String persistenza) throws CsvValidationException, IOException, ClassNotFoundException {
-<span class="nc" id="L54">        ObservableList&lt;PagamentoFattura&gt; list= FXCollections.observableArrayList();</span>
-<span class="nc bnc" id="L55" title="All 4 branches missed.">        switch (persistenza)</span>
+<span class="fc" id="L43">        ObservableList&lt;PagamentoFattura&gt; list= FXCollections.observableArrayList();</span>
+<span class="pc bpc" id="L44" title="3 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="nc" id="L57">            case DATABASE -&gt; pPF=new ContrassegnoDao();</span>
-<span class="nc" id="L58">            case FILE -&gt; pPF=new CsvFattura();</span>
-<span class="nc" id="L59">            case MEMORIA -&gt; pPF=new MemoriaFattura();</span>
-<span class="nc" id="L60">            default -&gt; Logger.getLogger(&quot;get fattura &quot;).log(Level.SEVERE,&quot;error with persistency&quot;);</span>
+<span class="nc" id="L46">            case DATABASE -&gt; pPF=new ContrassegnoDao();</span>
+<span class="nc" id="L47">            case FILE -&gt; pPF=new CsvFattura();</span>
+<span class="fc" id="L48">            case MEMORIA -&gt; pPF=new MemoriaFattura();</span>
+<span class="nc" id="L49">            default -&gt; Logger.getLogger(&quot;get fattura &quot;).log(Level.SEVERE,&quot;error with persistency&quot;);</span>
 
         }
-<span class="nc" id="L63">        list.add(pPF.ultimaFattura());</span>
-<span class="nc" id="L64">        return list;</span>
+<span class="fc" id="L52">        list.add(pPF.ultimaFattura());</span>
+<span class="fc" id="L53">        return list;</span>
 
     }
 
     public boolean cancellaFattura(int idFattura,String persistency) throws IOException, CsvValidationException, ClassNotFoundException {
-<span class="nc bnc" id="L69" title="All 4 branches missed.">        switch (persistency) {</span>
+<span class="pc bpc" id="L58" title="3 of 4 branches missed.">        switch (persistency) {</span>
             case DATABASE -&gt;
                     {
-<span class="nc" id="L72">                        pPF=new ContrassegnoDao();</span>
-<span class="nc" id="L73">                        pT=new PagamentoTotaleDao();</span>
-<span class="nc" id="L74">                    }</span>
+<span class="nc" id="L61">                        pPF=new ContrassegnoDao();</span>
+<span class="nc" id="L62">                        pT=new PagamentoTotaleDao();</span>
+<span class="nc" id="L63">                    }</span>
             case FILE -&gt;
                     {
-<span class="nc" id="L77">                        pPF=new CsvFattura();</span>
-<span class="nc" id="L78">                        pT=new PagamentoTotaleCsv();</span>
-<span class="nc" id="L79">                    }</span>
+<span class="nc" id="L66">                        pPF=new CsvFattura();</span>
+<span class="nc" id="L67">                        pT=new PagamentoTotaleCsv();</span>
+<span class="nc" id="L68">                    }</span>
             case MEMORIA -&gt;
                     {
-<span class="nc" id="L82">                        pPF=new MemoriaFattura();</span>
-<span class="nc" id="L83">                        pT=new PagamentoTotaleMemoria();</span>
-<span class="nc" id="L84">                    }</span>
-<span class="nc" id="L85">            default -&gt; Logger.getLogger(&quot;persistenza errata&quot;).log(Level.SEVERE, &quot; persistency is wrong or null!!&quot;);</span>
+<span class="fc" id="L71">                        pPF=new MemoriaFattura();</span>
+<span class="fc" id="L72">                        pT=new PagamentoTotaleMemoria();</span>
+<span class="fc" id="L73">                    }</span>
+<span class="nc" id="L74">            default -&gt; Logger.getLogger(&quot;persistenza errata&quot;).log(Level.SEVERE, &quot; persistency is wrong or null!!&quot;);</span>
         }
-<span class="nc" id="L87">        pF=new PagamentoFattura();</span>
-<span class="nc" id="L88">        pF.setIdFattura(idFattura);</span>
-<span class="nc bnc" id="L89" title="All 4 branches missed.">        return pPF.cancellaPagamentoFattura(pF) &amp;&amp; pT.cancellaFattura(pF);</span>
+<span class="fc" id="L76">        pF=new PagamentoFattura();</span>
+<span class="fc" id="L77">        pF.setIdFattura(idFattura);</span>
+<span class="pc bpc" id="L78" title="2 of 4 branches missed.">        return pPF.cancellaPagamentoFattura(pF) &amp;&amp; pT.cancellaFattura(pF);</span>
     }
 
     public ObservableList&lt;PagamentoCartaCredito&gt; getPagamentoCartaCredito(String persistenza) throws IOException, CsvValidationException, ClassNotFoundException {
-<span class="nc" id="L93">        ObservableList&lt;PagamentoCartaCredito&gt; list= FXCollections.observableArrayList();</span>
-<span class="nc bnc" id="L94" title="All 4 branches missed.">        switch (persistenza)</span>
+<span class="nc" id="L82">        ObservableList&lt;PagamentoCartaCredito&gt; list= FXCollections.observableArrayList();</span>
+<span class="nc bnc" id="L83" title="All 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="nc" id="L96">            case DATABASE -&gt; pPCC=new PagamentoCartaCreditoDao();</span>
-<span class="nc" id="L97">            case FILE -&gt; pPCC=new CsvPagamentoCartaCredito();</span>
-<span class="nc" id="L98">            case MEMORIA -&gt; pPCC=new MemoriaPagamentoCartaCredito();</span>
-<span class="nc" id="L99">            default -&gt; Logger.getLogger(&quot;get carta credito &quot;).log(Level.SEVERE,&quot;error with persistency&quot;);</span>
+<span class="nc" id="L85">            case DATABASE -&gt; pPCC=new PagamentoCartaCreditoDao();</span>
+<span class="nc" id="L86">            case FILE -&gt; pPCC=new CsvPagamentoCartaCredito();</span>
+<span class="nc" id="L87">            case MEMORIA -&gt; pPCC=new MemoriaPagamentoCartaCredito();</span>
+<span class="nc" id="L88">            default -&gt; Logger.getLogger(&quot;get carta credito &quot;).log(Level.SEVERE,&quot;error with persistency&quot;);</span>
 
         }
-<span class="nc" id="L102">        list.add(pPCC.ultimoPagamentoCartaCredito());</span>
-<span class="nc" id="L103">        return list;</span>
+<span class="nc" id="L91">        list.add(pPCC.ultimoPagamentoCartaCredito());</span>
+<span class="nc" id="L92">        return list;</span>
     }
 
     public boolean cancellaPagamentoCC(int idPagamentoCC,String persistency) throws IOException, CsvValidationException, ClassNotFoundException {
-<span class="nc bnc" id="L107" title="All 4 branches missed.">        switch (persistency) {</span>
+<span class="nc bnc" id="L96" title="All 4 branches missed.">        switch (persistency) {</span>
             case DATABASE -&gt;
             {
-<span class="nc" id="L110">                pPF=new ContrassegnoDao();</span>
-<span class="nc" id="L111">                pT=new PagamentoTotaleDao();</span>
-<span class="nc" id="L112">            }</span>
+<span class="nc" id="L99">                pPF=new ContrassegnoDao();</span>
+<span class="nc" id="L100">                pT=new PagamentoTotaleDao();</span>
+<span class="nc" id="L101">            }</span>
             case FILE -&gt;
             {
-<span class="nc" id="L115">                pPF=new CsvFattura();</span>
-<span class="nc" id="L116">                pT=new PagamentoTotaleCsv();</span>
-<span class="nc" id="L117">            }</span>
+<span class="nc" id="L104">                pPF=new CsvFattura();</span>
+<span class="nc" id="L105">                pT=new PagamentoTotaleCsv();</span>
+<span class="nc" id="L106">            }</span>
             case MEMORIA -&gt;
             {
-<span class="nc" id="L120">                pPF=new MemoriaFattura();</span>
-<span class="nc" id="L121">                pT=new PagamentoTotaleMemoria();</span>
-<span class="nc" id="L122">            }</span>
-<span class="nc" id="L123">            default -&gt; Logger.getLogger(&quot;cancella pagamento cc&quot;).log(Level.SEVERE, &quot;error with persistency&quot;);</span>
+<span class="nc" id="L109">                pPF=new MemoriaFattura();</span>
+<span class="nc" id="L110">                pT=new PagamentoTotaleMemoria();</span>
+<span class="nc" id="L111">            }</span>
+<span class="nc" id="L112">            default -&gt; Logger.getLogger(&quot;cancella pagamento cc&quot;).log(Level.SEVERE, &quot;error with persistency&quot;);</span>
         }
-<span class="nc" id="L125">        pCC=new PagamentoCartaCredito();</span>
-<span class="nc" id="L126">        pCC.setIdPagCC(idPagamentoCC);</span>
-<span class="nc bnc" id="L127" title="All 4 branches missed.">        return pPCC.cancellaPagamentoCartaCredito(pCC) &amp;&amp; pT.cancellaPagamentoCC(pCC);</span>
+<span class="nc" id="L114">        pCC=new PagamentoCartaCredito();</span>
+<span class="nc" id="L115">        pCC.setIdPagCC(idPagamentoCC);</span>
+<span class="nc bnc" id="L116" title="All 4 branches missed.">        return pPCC.cancellaPagamentoCartaCredito(pCC) &amp;&amp; pT.cancellaPagamentoCC(pCC);</span>
     }
 
 

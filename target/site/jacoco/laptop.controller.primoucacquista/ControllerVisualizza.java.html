@@ -47,30 +47,30 @@ public class ControllerVisualizza {
 	private PersistenzaRivista pR;
 
 
-<span class="nc" id="L50">	private final ControllerSystemState vis = ControllerSystemState.getInstance();</span>
+<span class="fc" id="L50">	private final ControllerSystemState vis = ControllerSystemState.getInstance();</span>
 
-<span class="nc" id="L52">	public ControllerVisualizza()  {</span>
-<span class="nc" id="L53">		l = new Libro();</span>
-<span class="nc" id="L54">		g = new Giornale();</span>
-<span class="nc" id="L55">		r = new Rivista();</span>
+<span class="fc" id="L52">	public ControllerVisualizza()  {</span>
+<span class="fc" id="L53">		l = new Libro();</span>
+<span class="fc" id="L54">		g = new Giornale();</span>
+<span class="fc" id="L55">		r = new Rivista();</span>
 
-<span class="nc" id="L57">	}</span>
+<span class="fc" id="L57">	}</span>
 
 
 
 	public int getID()
 	{
-<span class="nc" id="L63">		int id=0;</span>
-<span class="nc bnc" id="L64" title="All 4 branches missed.">		switch (vis.getType())</span>
+<span class="fc" id="L63">		int id=0;</span>
+<span class="pc bpc" id="L64" title="3 of 4 branches missed.">		switch (vis.getType())</span>
 		{
 <span class="nc" id="L66">			case &quot;libro&quot;-&gt; id=vis.getIdLibro();</span>
-<span class="nc" id="L67">			case &quot;giornale&quot;-&gt;id=vis.getIdGiornale();</span>
+<span class="fc" id="L67">			case &quot;giornale&quot;-&gt;id=vis.getIdGiornale();</span>
 <span class="nc" id="L68">			case &quot;rivista&quot;-&gt;id=vis.getIdRivista();</span>
 <span class="nc" id="L69">			default -&gt; Logger.getLogger(&quot;id&quot;).log(Level.SEVERE,&quot;get id error!!&quot;);</span>
 
 		}
 
-<span class="nc" id="L73">		return id;</span>
+<span class="fc" id="L73">		return id;</span>
 	}
 
 	public ObservableList&lt;Libro&gt; getListLibro(String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
@@ -93,16 +93,16 @@ public class ControllerVisualizza {
 	public ObservableList&lt;Giornale&gt; getListGiornale(String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 
 		ObservableList&lt;Giornale&gt; list;
-<span class="nc" id="L96">		g.setId(getID());</span>
-<span class="nc bnc" id="L97" title="All 4 branches missed.">        switch (type) {</span>
+<span class="fc" id="L96">		g.setId(getID());</span>
+<span class="pc bpc" id="L97" title="3 of 4 branches missed.">        switch (type) {</span>
 <span class="nc" id="L98">            case DATABASE -&gt; pG = new GiornaleDao();</span>
 <span class="nc" id="L99">            case FILE -&gt; pG = new CsvGiornale();</span>
-<span class="nc" id="L100">            case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
+<span class="fc" id="L100">            case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
 <span class="nc" id="L101">			default -&gt; Logger.getLogger(&quot;list giornale&quot;).log(Level.SEVERE,&quot;daily persistency is wrong!!&quot;);</span>
 
 		}
-<span class="nc" id="L104">		list= pG.getGiornaleByIdTitoloAutoreLibro(g);</span>
-<span class="nc" id="L105">		return list;</span>
+<span class="fc" id="L104">		list= pG.getGiornaleByIdTitoloAutoreLibro(g);</span>
+<span class="fc" id="L105">		return list;</span>
 
 	}
 

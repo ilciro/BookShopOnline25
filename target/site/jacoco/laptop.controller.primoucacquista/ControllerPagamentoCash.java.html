@@ -82,9 +82,9 @@ public class ControllerPagamentoCash {
 
 		//3
 <span class="fc" id="L84">		int id=0;</span>
-<span class="pc bpc" id="L85" title="1 of 2 branches missed.">		if(vis.getType().equals(LIBRO)) id=vis.getIdLibro();</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">		if(vis.getType().equals(LIBRO)) id=vis.getIdLibro();</span>
 <span class="pc bpc" id="L86" title="1 of 2 branches missed.">		if(vis.getType().equals(GIORNALE)) id=vis.getIdGiornale();</span>
-<span class="pc bpc" id="L87" title="1 of 2 branches missed.">		if(vis.getType().equals(RIVISTA)) id=vis.getIdRivista();</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">		if(vis.getType().equals(RIVISTA)) id=vis.getIdRivista();</span>
 
 
 <span class="fc" id="L90">		p = new PagamentoFattura(nome, cognome, via, com, vis.getSpesaT(), 0,id);</span>
@@ -124,7 +124,7 @@ public class ControllerPagamentoCash {
 
 
 
-<span class="pc bpc" id="L127" title="3 of 4 branches missed.">		switch (type)</span>
+<span class="pc bpc" id="L127" title="2 of 4 branches missed.">		switch (type)</span>
 		{
 			case LIBRO -&gt;
 			{
@@ -150,15 +150,15 @@ public class ControllerPagamentoCash {
 <span class="nc" id="L150">				tipologia=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria();</span>
 <span class="nc" id="L151">			}</span>
 			case RIVISTA -&gt; {
-<span class="nc" id="L153">				Rivista r=new Rivista();</span>
-<span class="nc bnc" id="L154" title="All 4 branches missed.">				switch (persistenza)</span>
+<span class="fc" id="L153">				Rivista r=new Rivista();</span>
+<span class="pc bpc" id="L154" title="3 of 4 branches missed.">				switch (persistenza)</span>
 				{
 <span class="nc" id="L156">					case DATABASE -&gt; pR=new RivistaDao();</span>
 <span class="nc" id="L157">					case FILE -&gt; pR=new CsvRivista();</span>
-<span class="nc" id="L158">					case MEMORIA -&gt; pR=new MemoriaRivista();</span>
+<span class="fc" id="L158">					case MEMORIA -&gt; pR=new MemoriaRivista();</span>
 				}
-<span class="nc" id="L160">				r.setId(vis.getIdRivista());</span>
-<span class="nc" id="L161">				tipologia=pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();</span>
+<span class="fc" id="L160">				r.setId(vis.getIdRivista());</span>
+<span class="fc" id="L161">				tipologia=pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();</span>
 			}
 		}
 

@@ -59,10 +59,10 @@ public class Rivista implements Raccolta, Serializable {
 <span class="fc" id="L59">	public Rivista() {}</span>
 
 	public String getTitolo() {
-<span class="nc" id="L62">		return this.titolo;</span>
+<span class="fc" id="L62">		return this.titolo;</span>
 	}
 	public String getAutore() {
-<span class="nc" id="L65">		return this.autore;</span>
+<span class="fc" id="L65">		return this.autore;</span>
 	}
 	public String getLingua() {
 <span class="nc" id="L68">		return this.lingua;</span>
@@ -76,33 +76,33 @@ public class Rivista implements Raccolta, Serializable {
 	public LocalDate getDataPubb() {
 <span class="nc" id="L77">		return this.dataPubb;</span>
 	}
-<span class="nc" id="L79">	public String getCategoria(){return this.categoria;}</span>
+<span class="fc" id="L79">	public String getCategoria(){return this.categoria;}</span>
 	public int getDisp() {
 <span class="nc" id="L81">		return this.disp;</span>
 	}
 	public float getPrezzo() {
-<span class="nc" id="L84">		return this.prezzo;</span>
+<span class="fc" id="L84">		return this.prezzo;</span>
 	}
 	public int getId() {
-<span class="nc" id="L87">		return this.id;</span>
+<span class="fc" id="L87">		return this.id;</span>
 	}
 	public void setTitolo(String titolo) {
-<span class="nc" id="L90">		this.titolo = titolo;</span>
-<span class="nc" id="L91">	}</span>
+<span class="fc" id="L90">		this.titolo = titolo;</span>
+<span class="fc" id="L91">	}</span>
 	public void setCategoria(String categoria) {
-<span class="nc bnc" id="L93" title="All 15 branches missed.">		switch (categoria){</span>
+<span class="pc bpc" id="L93" title="12 of 15 branches missed.">		switch (categoria){</span>
 		
 		case &quot;SETTIMANALE&quot;: 
-<span class="nc" id="L96">			this.categoria = CategorieRivista.SETTIMANALE.toString();</span>
-<span class="nc" id="L97">			break;</span>
+<span class="fc" id="L96">			this.categoria = CategorieRivista.SETTIMANALE.toString();</span>
+<span class="fc" id="L97">			break;</span>
 
 		case &quot;BISETTIMANALE&quot;: 
 <span class="nc" id="L100">			this.categoria = CategorieRivista.BISETTIMANALE.toString();</span>
 <span class="nc" id="L101">			break;</span>
 
 		case &quot;MENSILE&quot; : 
-<span class="nc" id="L104">			this.categoria = CategorieRivista.MENSILE.toString();</span>
-<span class="nc" id="L105">			break;</span>
+<span class="fc" id="L104">			this.categoria = CategorieRivista.MENSILE.toString();</span>
+<span class="fc" id="L105">			break;</span>
 
 		case &quot;BIMESTRALE&quot; : 
 <span class="nc" id="L108">			this.categoria = CategorieRivista.BIMESTRALE.toString();</span>
@@ -125,8 +125,8 @@ public class Rivista implements Raccolta, Serializable {
 <span class="nc" id="L125">			break;</span>
 
 		case &quot;SPORTIVO&quot; : 
-<span class="nc" id="L128">			this.categoria = CategorieRivista.SPORTIVO.toString();</span>
-<span class="nc" id="L129">			break;</span>
+<span class="fc" id="L128">			this.categoria = CategorieRivista.SPORTIVO.toString();</span>
+<span class="fc" id="L129">			break;</span>
 
 		case &quot;CINEMATOGRAFICA&quot; : 
 <span class="nc" id="L132">			this.categoria = CategorieRivista.CINEMATOGRAFICA.toString();</span>
@@ -152,31 +152,31 @@ public class Rivista implements Raccolta, Serializable {
 <span class="nc" id="L152">			this.categoria = null;</span>
 			break;
 		}
-<span class="nc" id="L155">	}</span>
+<span class="fc" id="L155">	}</span>
 	public void setAutore(String autore) {
-<span class="nc" id="L157">		this.autore = autore;</span>
-<span class="nc" id="L158">	}</span>
+<span class="fc" id="L157">		this.autore = autore;</span>
+<span class="fc" id="L158">	}</span>
 	public void setLingua(String lingua) {
-<span class="nc" id="L160">		this.lingua = lingua;</span>
-<span class="nc" id="L161">	}</span>
+<span class="fc" id="L160">		this.lingua = lingua;</span>
+<span class="fc" id="L161">	}</span>
 	public void setEditore(String editore) {
-<span class="nc" id="L163">		this.editore = editore;</span>
-<span class="nc" id="L164">	}</span>
+<span class="fc" id="L163">		this.editore = editore;</span>
+<span class="fc" id="L164">	}</span>
 	public void setDescrizione(String descrizione) {
-<span class="nc" id="L166">		this.descrizione = descrizione;</span>
-<span class="nc" id="L167">	}</span>
+<span class="fc" id="L166">		this.descrizione = descrizione;</span>
+<span class="fc" id="L167">	}</span>
 	public void setDataPubb(LocalDate dataPubb) {
-<span class="nc" id="L169">		this.dataPubb = dataPubb;</span>
-<span class="nc" id="L170">	}</span>
+<span class="fc" id="L169">		this.dataPubb = dataPubb;</span>
+<span class="fc" id="L170">	}</span>
 	public void setDisp(int disp) {
-<span class="nc" id="L172">		this.disp = disp;</span>
-<span class="nc" id="L173">	}</span>
+<span class="fc" id="L172">		this.disp = disp;</span>
+<span class="fc" id="L173">	}</span>
 	public void setPrezzo(float prezzo) {
-<span class="nc" id="L175">		this.prezzo = prezzo;</span>
-<span class="nc" id="L176">	}</span>
+<span class="fc" id="L175">		this.prezzo = prezzo;</span>
+<span class="fc" id="L176">	}</span>
 	public void setId(int id) {
-<span class="nc" id="L178">		this.id = id;</span>
-<span class="nc" id="L179">	}</span>
+<span class="fc" id="L178">		this.id = id;</span>
+<span class="fc" id="L179">	}</span>
 	
 	@Override
 	public void scarica(int i) throws IOException {
@@ -252,11 +252,11 @@ public class Rivista implements Raccolta, Serializable {
 <span class="nc" id="L252">	}</span>
 
     public int getNrCopie() {
-<span class="nc" id="L255">        return nrCopie;</span>
+<span class="fc" id="L255">        return nrCopie;</span>
     }
 
     public void setNrCopie(int nrCopie) {
-<span class="nc" id="L259">        this.nrCopie = nrCopie;</span>
-<span class="nc" id="L260">    }</span>
+<span class="fc" id="L259">        this.nrCopie = nrCopie;</span>
+<span class="fc" id="L260">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
