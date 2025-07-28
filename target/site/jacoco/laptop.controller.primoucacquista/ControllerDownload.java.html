@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerDownload.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.controller.primoucacquista</a> &gt; <span class="el_source">ControllerDownload.java</span></div><h1>ControllerDownload.java</h1><pre class="source lang-java linenums">package laptop.controller.primoucacquista;
+
+
+import java.io.*;
+import java.net.URISyntaxException;
+
+import java.sql.SQLException;
+import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+import com.itextpdf.text.DocumentException;
+
+
+import com.opencsv.exceptions.CsvValidationException;
+import laptop.controller.ControllerSystemState;
+
+//import laptop.database.primoucacquista.giornale.CsvGiornale;
+//import laptop.database.primoucacquista.giornale.GiornaleDao;
+//import laptop.database.primoucacquista.giornale.MemoriaGiornale;
+//import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
+import laptop.database.primoucacquista.giornale.CsvGiornale;
+import laptop.database.primoucacquista.giornale.GiornaleDao;
+import laptop.database.primoucacquista.giornale.MemoriaGiornale;
+import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
+import laptop.database.primoucacquista.libro.CsvLibro;
+import laptop.database.primoucacquista.libro.LibroDao;
+import laptop.database.primoucacquista.libro.MemoriaLibro;
+import laptop.database.primoucacquista.libro.PersistenzaLibro;
+//import laptop.database.primoucacquista.rivista.CsvRivista;
+//import laptop.database.primoucacquista.rivista.MemoriaRivista;
+//import laptop.database.primoucacquista.rivista.PersistenzaRivista;
+//import laptop.database.primoucacquista.rivista.RivistaDao;
+import laptop.database.primoucacquista.rivista.CsvRivista;
+import laptop.database.primoucacquista.rivista.MemoriaRivista;
+import laptop.database.primoucacquista.rivista.PersistenzaRivista;
+import laptop.database.primoucacquista.rivista.RivistaDao;
+import laptop.exception.IdException;
+import laptop.model.raccolta.Giornale;
+import laptop.model.raccolta.Libro;
+import laptop.model.raccolta.Rivista;
+
+
+
+public class ControllerDownload {
+<span class="fc" id="L47">    private final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+
+	private final Giornale g;
+	private final Rivista r;
+	private final Libro l;
+
+	private static final String LIBRO=&quot;libro&quot;;
+	private static final String GIORNALE=&quot;giornale&quot;;
+	private static final String RIVISTA=&quot;rivista&quot;;
+	private static final String DATABASE=&quot;database&quot;;
+	private static final String FILE=&quot;file&quot;;
+	private static final String MEMORIA=&quot;memoria&quot;;
+
+
+
+	private void acquistaLibro(String persistenza) throws DocumentException, IOException, URISyntaxException, CsvValidationException, IdException, ClassNotFoundException {
+  		PersistenzaLibro pL;
+<span class="fc" id="L64">		l.setId(vis.getIdLibro());</span>
+<span class="fc" id="L65">		l.scarica(vis.getIdLibro());</span>
+<span class="fc" id="L66">		l.leggi(vis.getIdLibro());</span>
+
+
+
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">		if(persistenza.equals(DATABASE)) pL=new LibroDao();</span>
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">		else if(persistenza.equals(FILE)) pL=new CsvLibro();</span>
+<span class="fc" id="L72">		else pL=new MemoriaLibro();</span>
+
+<span class="fc" id="L74">		Libro tempLibro =new Libro();</span>
+
+
+<span class="fc bfc" id="L77" title="All 2 branches covered.">		for(int i=0;i&lt;pL.getLibri().size();i++)</span>
+		{
+
+<span class="fc bfc" id="L80" title="All 2 branches covered.">			if(i==l.getId()-1)</span>
+			{
+<span class="fc" id="L82">				tempLibro=pL.getLibroByIdTitoloAutoreLibro(l).get(0);</span>
+<span class="fc" id="L83">				pL.removeLibroById(l);</span>
+<span class="fc" id="L84">				Logger.getLogger(&quot;libro eliminato&quot;).log(Level.INFO,&quot; id eliminated book {0}&quot;,i);</span>
+
+			}
+
+
+
+		}
+<span class="fc" id="L91">		tempLibro.setId(vis.getIdLibro());</span>
+<span class="fc" id="L92">		tempLibro.setNrCopie(tempLibro.getNrCopie()-vis.getQuantita());</span>
+
+<span class="pc bpc" id="L94" title="1 of 2 branches missed.">		if(pL.inserisciLibro(tempLibro)) Logger.getLogger(&quot;aggiorno libro&quot;).log(Level.INFO,&quot;update book succesfully!!&quot;);</span>
+
+<span class="fc" id="L96">	}</span>
+
+	private void acquistaGiornale(String persistenza) throws IOException, DocumentException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
+<span class="nc" id="L99">  		PersistenzaGiornale pG = null;</span>
+<span class="nc" id="L100">		g.setId(vis.getIdGiornale());</span>
+<span class="nc" id="L101">		g.scarica(vis.getIdGiornale());</span>
+<span class="nc" id="L102">		g.leggi(vis.getIdGiornale());</span>
+
+<span class="nc bnc" id="L104" title="All 4 branches missed.">		switch (persistenza)</span>
+		{
+<span class="nc" id="L106">			case DATABASE -&gt; pG=new GiornaleDao();</span>
+<span class="nc" id="L107">			case FILE -&gt; pG=new CsvGiornale();</span>
+<span class="nc" id="L108">			case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
+		}
+
+<span class="nc" id="L111">		Giornale tempG=new Giornale();</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">		for (int i = 0; i&lt; Objects.requireNonNull(pG).getGiornali().size(); i++)</span>
+		{
+
+<span class="nc bnc" id="L115" title="All 2 branches missed.">			if(i==g.getId()-1)</span>
+			{
+
+
+<span class="nc" id="L119">				tempG=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0);</span>
+<span class="nc" id="L120">				pG.removeGiornaleById(g);</span>
+<span class="nc" id="L121">				Logger.getLogger(&quot;giornale eliminato&quot;).log(Level.INFO,&quot; id eliminated daily{0}&quot;,i);</span>
+
+			}
+
+
+		}
+<span class="nc" id="L127">		tempG.setId(vis.getIdGiornale());</span>
+<span class="nc" id="L128">		tempG.setCopieRimanenti(tempG.getCopieRimanenti()-vis.getQuantita());</span>
+<span class="nc bnc" id="L129" title="All 2 branches missed.">		if(pG.inserisciGiornale(tempG)) Logger.getLogger(&quot;aggiorno giornale&quot;).log(Level.INFO,&quot;update daily succesfully!!&quot;);</span>
+
+<span class="nc" id="L131">	}</span>
+	private void acquistaRivista(String persistenza) throws IOException, DocumentException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
+  	PersistenzaRivista pR;
+<span class="nc" id="L134">		r.setId(vis.getIdRivista());</span>
+<span class="nc" id="L135">		r.scarica(vis.getIdRivista());</span>
+<span class="nc" id="L136">		r.leggi(vis.getIdRivista());</span>
+
+<span class="nc bnc" id="L138" title="All 2 branches missed.">		if (persistenza.equals(DATABASE)) pR = new RivistaDao();</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">		else if (persistenza.equals(FILE)) pR = new CsvRivista();</span>
+<span class="nc" id="L140">		else pR=new MemoriaRivista();</span>
+
+<span class="nc" id="L142">		Rivista tempR=new Rivista();</span>
+<span class="nc bnc" id="L143" title="All 2 branches missed.">		for(int i=0;i&lt;pR.getRiviste().size();i++) {</span>
+<span class="nc bnc" id="L144" title="All 2 branches missed.">			if (i==r.getId()-1) {</span>
+
+<span class="nc" id="L146">				 tempR=pR.getRivistaByIdTitoloAutoreRivista(r).get(0);</span>
+<span class="nc" id="L147">				pR.removeRivistaById(r);</span>
+<span class="nc" id="L148">				Logger.getLogger(&quot;rivista eliminata&quot;).log(Level.INFO,&quot; id eliminated magazine{0}&quot;,i);</span>
+
+			}
+
+		}
+<span class="nc" id="L153">		tempR.setId(vis.getIdRivista());</span>
+<span class="nc" id="L154">		tempR.setNrCopie(tempR.getNrCopie()-vis.getQuantita());</span>
+
+<span class="nc bnc" id="L156" title="All 2 branches missed.">		if (pR.inserisciRivista(tempR))Logger.getLogger(&quot;aggionro rivista&quot;).log(Level.INFO, &quot;update magazine succesfully!!&quot;);</span>
+
+<span class="nc" id="L158">	}</span>
+
+
+
+
+
+
+		public void scarica(String type,String persistenza) throws IOException, URISyntaxException, DocumentException, SQLException, CsvValidationException, IdException, ClassNotFoundException {
+
+<span class="fc" id="L167">			vis.setTipoModifica(&quot;im&quot;);</span>
+
+<span class="pc bpc" id="L169" title="3 of 4 branches missed.">			switch (type)</span>
+		{
+<span class="fc" id="L171">			case LIBRO-&gt;acquistaLibro(persistenza);</span>
+<span class="nc" id="L172">			case GIORNALE -&gt; acquistaGiornale(persistenza);</span>
+<span class="nc" id="L173">			case RIVISTA -&gt; acquistaRivista(persistenza);</span>
+
+<span class="nc" id="L175">			default -&gt; 	Logger.getLogger(&quot;Test scarica&quot;).log(Level.SEVERE,&quot;download error&quot;);</span>
+
+		}
+<span class="fc" id="L178">	}</span>
+
+
+<span class="fc" id="L181">	public ControllerDownload()  {</span>
+
+<span class="fc" id="L183">        l = new Libro();</span>
+<span class="fc" id="L184">		g=new Giornale();</span>
+<span class="fc" id="L185">		r=new Rivista();</span>
+
+<span class="fc" id="L187">	}</span>
+
+
+
+
+	}
+
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

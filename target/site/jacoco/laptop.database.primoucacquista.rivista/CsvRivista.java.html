@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CsvRivista.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.primoucacquista.rivista</a> &gt; <span class="el_source">CsvRivista.java</span></div><h1>CsvRivista.java</h1><pre class="source lang-java linenums">package laptop.database.primoucacquista.rivista;
+
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
+import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.controller.ControllerSystemState;
+import laptop.exception.IdException;
+import laptop.model.raccolta.Raccolta;
+import laptop.model.raccolta.Rivista;
+import org.apache.commons.lang.SystemUtils;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.attribute.FileAttribute;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.PosixFilePermissions;
+import java.time.LocalDate;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+
+public class CsvRivista extends PersistenzaRivista {
+
+    private static final String LOCATIONR=&quot;report/reportRivista.csv&quot;;
+    private static final int GETINDEXTITOLOR = 0;
+    private static final int GETINDEXTIPOLOGIAR = 1;
+    private static final int GETINDEXAUTORER = 2;
+    private static final int GETINDEXLINGUAR = 3;
+    private static final int GETINDEXEDITORER = 4;
+    private static final int GETINDEXDESCRIZIONER = 5;
+    private static final int GETINDEXDATAR = 6;
+    private static final int GETINDEXDISPR = 7;
+    private static final int GETINDEXPREZZOR = 8;
+    private static final int GETINDEXCOPIER = 9;
+    private static final int GETINDEXIDR = 10;
+    private final HashMap&lt;Integer, Rivista&gt; cacheRivista;
+<span class="nc" id="L43">    private final File fdR = new File(LOCATIONR);</span>
+    private static final String APPOGGIO=&quot;report/appoggio.csv&quot;;
+    private static final String PERMESSI=&quot;rwx------&quot;;
+    private static final String PREFIX=&quot;prefix&quot;;
+    private static final String SUFFIX=&quot;suffix&quot;;
+<span class="nc" id="L48">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+    private static final String RIVISTAP=&quot;src/main/resources/csvfiles/rivista.csv&quot;;
+
+
+<span class="nc" id="L52">    public CsvRivista()  {</span>
+
+<span class="nc" id="L54">        this.cacheRivista = new HashMap&lt;&gt;();</span>
+
+
+<span class="nc" id="L57">    }</span>
+
+
+    @Override
+    public boolean inserisciRivista(Rivista r) throws CsvValidationException, IOException {
+<span class="nc" id="L62">        boolean duplicatedR = false;</span>
+<span class="nc" id="L63">        boolean duplicatedT = false;</span>
+<span class="nc" id="L64">        boolean duplicatedA = false;</span>
+<span class="nc" id="L65">        boolean duplicatedE = false;</span>
+<span class="nc" id="L66">        synchronized (this.cacheRivista) {</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">            for (Map.Entry&lt;Integer, Rivista&gt; mapR : this.cacheRivista.entrySet()) {</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">                if (mapR.getValue().getTitolo() != null)</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">                    duplicatedT = mapR.getValue().getTitolo() != null;</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">                if (mapR.getValue().getAutore() != null)</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">                    duplicatedA = mapR.getValue().getAutore() != null;</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">                if (mapR.getValue().getEditore() != null)</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">                    duplicatedE = mapR.getValue().getEditore() != null;</span>
+<span class="nc bnc" id="L74" title="All 6 branches missed.">                duplicatedR = duplicatedT &amp;&amp; duplicatedA &amp;&amp; duplicatedE;</span>
+
+<span class="nc" id="L76">            }</span>
+
+
+<span class="nc" id="L79">        }</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">        if (!duplicatedR) {</span>
+<span class="nc" id="L81">            List&lt;Rivista&gt; list = returnRivistaByTAE(this.fdR, r.getTitolo(), r.getAutore(), r.getEditore());</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">            duplicatedR = (!list.isEmpty());</span>
+        }
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        if (duplicatedR)</span>
+            try {
+<span class="nc" id="L86">                Logger.getLogger(&quot;try rivista&quot;).log(Level.INFO, &quot;id rivista sbagliato !!&quot;);</span>
+<span class="nc" id="L87">                throw new IdException(&quot; id rivista sbagliato or duplicated&quot;);</span>
+<span class="nc" id="L88">            } catch (IdException e) {</span>
+<span class="nc" id="L89">                Logger.getLogger(&quot;catch rivista&quot;).log(Level.SEVERE, &quot;remove rivista...&quot;);</span>
+                //rimuovo e se lista vuota
+<span class="nc" id="L91">                removeRivistaById(r);</span>
+            }
+<span class="nc" id="L93">        return inserimentoRivista(this.fdR, r);</span>
+    }
+
+    private static synchronized boolean inserimentoRivista(File fd, Rivista r) throws IOException, CsvValidationException {
+<span class="nc" id="L97">        try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(fd, true)))) {</span>
+<span class="nc" id="L98">            String[] gVector = new String[11];</span>
+
+
+<span class="nc" id="L101">            gVector[GETINDEXTITOLOR] = r.getTitolo();</span>
+<span class="nc" id="L102">            gVector[GETINDEXTIPOLOGIAR] = r.getCategoria();</span>
+<span class="nc" id="L103">            gVector[GETINDEXAUTORER] = r.getAutore();</span>
+<span class="nc" id="L104">            gVector[GETINDEXLINGUAR] = r.getLingua();</span>
+<span class="nc" id="L105">            gVector[GETINDEXEDITORER] = r.getEditore();</span>
+<span class="nc" id="L106">            gVector[GETINDEXDESCRIZIONER] = r.getDescrizione();</span>
+<span class="nc" id="L107">            gVector[GETINDEXDATAR] = String.valueOf(r.getDataPubb());</span>
+<span class="nc" id="L108">            gVector[GETINDEXDISPR] = String.valueOf(r.getDisp());</span>
+<span class="nc" id="L109">            gVector[GETINDEXPREZZOR] = String.valueOf(r.getPrezzo());</span>
+<span class="nc" id="L110">            gVector[GETINDEXCOPIER] = String.valueOf(r.getNrCopie());</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">            if(vis.getTipoModifica().equals(&quot;im&quot;)) gVector[GETINDEXIDR] = String.valueOf(vis.getIdRivista());</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">            else if(vis.getTipoModifica().equals(&quot;insert&quot;)) gVector[GETINDEXIDR] = String.valueOf(getIdMax() + 1);</span>
+<span class="nc" id="L113">            else throw new CsvValidationException(&quot; type of modif at magazine is wrong !!&quot;);</span>
+<span class="nc" id="L114">            csvWriter.writeNext(gVector);</span>
+<span class="nc" id="L115">            csvWriter.flush();</span>
+        }
+<span class="nc bnc" id="L117" title="All 2 branches missed.">        return getIdMax() != 0;</span>
+    }
+
+    private static synchronized List&lt;Rivista&gt; returnRivistaByTAE(File fd, String tit, String autor, String edit) throws IOException, CsvValidationException {
+        List&lt;Rivista&gt; rivistaList;
+<span class="nc" id="L122">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
+            String[] gVector;
+            boolean recordFound;
+
+<span class="nc" id="L126">            rivistaList = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L127" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
+
+<span class="nc bnc" id="L129" title="All 4 branches missed.">                recordFound = gVector[GETINDEXTITOLOR].equals(tit) || gVector[GETINDEXAUTORER].equals(autor)</span>
+<span class="nc bnc" id="L130" title="All 4 branches missed.">                        || gVector[GETINDEXEDITORER].equals(edit) || gVector[GETINDEXIDR].equals(String.valueOf(vis.getIdRivista()));</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">                if (recordFound) {</span>
+
+
+<span class="nc" id="L134">                    Rivista r = getRivista(gVector);</span>
+
+
+<span class="nc" id="L137">                    rivistaList.add(r);</span>
+
+<span class="nc" id="L139">                }</span>
+            }
+        }
+<span class="nc" id="L142">        return rivistaList;</span>
+
+
+    }
+
+    private static @NotNull Rivista getRivista(String[] gVector) {
+<span class="nc" id="L148">        String titolo = gVector[GETINDEXTITOLOR];</span>
+<span class="nc" id="L149">        String tipologia = gVector[GETINDEXTIPOLOGIAR];</span>
+<span class="nc" id="L150">        String autore = gVector[GETINDEXAUTORER];</span>
+<span class="nc" id="L151">        String lingua = gVector[GETINDEXLINGUAR];</span>
+<span class="nc" id="L152">        String editore = gVector[GETINDEXEDITORER];</span>
+<span class="nc" id="L153">        String desc = gVector[GETINDEXDESCRIZIONER];</span>
+<span class="nc" id="L154">        String data = gVector[GETINDEXDATAR];</span>
+<span class="nc" id="L155">        String disp = gVector[GETINDEXDISPR];</span>
+<span class="nc" id="L156">        String prezzo = gVector[GETINDEXPREZZOR];</span>
+<span class="nc" id="L157">        String copie = gVector[GETINDEXCOPIER];</span>
+<span class="nc" id="L158">        String id = gVector[GETINDEXIDR];</span>
+
+<span class="nc" id="L160">        Rivista r = new Rivista();</span>
+
+<span class="nc" id="L162">        r.setTitolo(titolo);</span>
+<span class="nc" id="L163">        r.setCategoria(tipologia);</span>
+<span class="nc" id="L164">        r.setAutore(autore);</span>
+<span class="nc" id="L165">        r.setLingua(lingua);</span>
+<span class="nc" id="L166">        r.setEditore(editore);</span>
+<span class="nc" id="L167">        r.setDescrizione(desc);</span>
+<span class="nc" id="L168">        r.setDataPubb(LocalDate.parse(data));</span>
+<span class="nc" id="L169">        r.setDisp(Integer.parseInt(disp));</span>
+<span class="nc" id="L170">        r.setPrezzo(Float.parseFloat(prezzo));</span>
+<span class="nc" id="L171">        r.setNrCopie(Integer.parseInt(copie));</span>
+<span class="nc" id="L172">        r.setId(Integer.parseInt(id));</span>
+
+<span class="nc" id="L174">        return r;</span>
+
+    }
+
+    private static synchronized int getIdMax() throws IOException, CsvValidationException {
+        //used for insert correct idOgg
+
+        String []gVector;
+<span class="nc" id="L182">        int max=0;</span>
+
+
+<span class="nc" id="L185">        try (CSVReader reader = new CSVReader(new FileReader(LOCATIONR))) {</span>
+<span class="nc bnc" id="L186" title="All 2 branches missed.">            while ((gVector = reader.readNext()) != null) {</span>
+<span class="nc bnc" id="L187" title="All 2 branches missed.">                if(Integer.parseInt(gVector[GETINDEXIDR])&gt;max)</span>
+<span class="nc" id="L188">                    max= Integer.parseInt(gVector[GETINDEXIDR]);</span>
+            }
+        }
+
+
+<span class="nc" id="L193">        return max;</span>
+
+
+    }
+
+    @Override
+    public boolean removeRivistaById(Rivista r) throws CsvValidationException, IOException {
+<span class="nc" id="L200">        synchronized (this.cacheRivista) {</span>
+<span class="nc" id="L201">            this.cacheRivista.remove(r.getId());</span>
+<span class="nc" id="L202">        }</span>
+<span class="nc" id="L203">        return removeRivistaId(this.fdR, r);</span>
+    }
+
+    private static synchronized boolean removeRivistaId(File fd, Rivista r) throws IOException, CsvValidationException {
+<span class="nc" id="L207">        return deleteByType(r, fd);</span>
+    }
+
+    private static synchronized boolean deleteByType(Rivista r, File fd) throws IOException, CsvValidationException {
+<span class="nc" id="L211">        boolean status = false;</span>
+<span class="nc bnc" id="L212" title="All 2 branches missed.">        if (SystemUtils.IS_OS_UNIX) {</span>
+<span class="nc" id="L213">            FileAttribute&lt;Set&lt;PosixFilePermission&gt;&gt; attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));</span>
+<span class="nc" id="L214">            Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant</span>
+        }
+<span class="nc" id="L216">        File tmpFile = new File(APPOGGIO);</span>
+<span class="nc" id="L217">        boolean found = isFound(r, fd, tmpFile);</span>
+<span class="nc bnc" id="L218" title="All 2 branches missed.">        if (found) {</span>
+<span class="nc" id="L219">            Files.move(tmpFile.toPath(), fd.toPath(), REPLACE_EXISTING);</span>
+<span class="nc" id="L220">            status = true;</span>
+
+        } else {
+<span class="nc" id="L223">            cleanUp(Path.of(tmpFile.toURI()));</span>
+        }
+<span class="nc" id="L225">        return status;</span>
+
+    }
+
+    private static boolean isFound(Rivista r, File fd, File tmpFile) throws IOException, CsvValidationException {
+<span class="nc" id="L230">        boolean found = false;</span>
+<span class="nc" id="L231">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fd)));</span>
+<span class="nc" id="L232">             CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true)))) {</span>
+            String[] gVector;
+            boolean recordFound;
+<span class="nc bnc" id="L235" title="All 2 branches missed.">            while ((gVector = reader.readNext()) != null) {</span>
+
+<span class="nc bnc" id="L237" title="All 2 branches missed.">                recordFound = gVector[GETINDEXIDR].equals(String.valueOf(r.getId()))</span>
+<span class="nc bnc" id="L238" title="All 2 branches missed.">                        || gVector[GETINDEXIDR].equals(String.valueOf(vis.getIdRivista()))</span>
+<span class="nc bnc" id="L239" title="All 2 branches missed.">                        || gVector[GETINDEXTITOLOR].equals(r.getTitolo());</span>
+
+<span class="nc bnc" id="L241" title="All 2 branches missed.">                if (!recordFound)</span>
+<span class="nc" id="L242">                    writer.writeNext(gVector);</span>
+                else
+<span class="nc" id="L244">                    found = true;</span>
+            }
+<span class="nc" id="L246">            writer.flush();</span>
+        }
+<span class="nc" id="L248">        return found;</span>
+    }
+
+    @Override
+    public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException {
+<span class="nc" id="L253">        return retrieveData(this.fdR);</span>
+    }
+
+    private static synchronized ObservableList&lt;Raccolta&gt; retrieveData(File fd) throws CsvValidationException, IOException, IdException {
+<span class="nc" id="L257">        ObservableList&lt;Raccolta&gt; gList = FXCollections.observableArrayList();</span>
+<span class="nc" id="L258">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
+            String[] gVector;
+
+
+<span class="nc bnc" id="L262" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="nc" id="L263">                gList.add(getRivista(gVector));</span>
+
+            }
+<span class="nc bnc" id="L266" title="All 2 branches missed.">            if (gList.isEmpty()) {</span>
+<span class="nc" id="L267">                throw new IdException(&quot;lista rivista is empty&quot;);</span>
+            }
+
+
+        }
+
+<span class="nc" id="L273">        return gList;</span>
+
+    }
+
+    @Override
+    public ObservableList&lt;Rivista&gt; getRiviste() throws CsvValidationException, IOException, IdException {
+<span class="nc" id="L279">        ObservableList&lt;Rivista&gt; list = FXCollections.observableArrayList();</span>
+<span class="nc" id="L280">        synchronized (this.cacheRivista) {</span>
+<span class="nc bnc" id="L281" title="All 2 branches missed.">            for (Map.Entry&lt;Integer, Rivista&gt; id : cacheRivista.entrySet()) {</span>
+<span class="nc bnc" id="L282" title="All 2 branches missed.">                boolean recordT = !id.getValue().getTitolo().isEmpty();</span>
+
+<span class="nc bnc" id="L284" title="All 2 branches missed.">                if (recordT)</span>
+<span class="nc" id="L285">                    list.add(id.getValue());</span>
+<span class="nc" id="L286">            }</span>
+<span class="nc" id="L287">        }</span>
+<span class="nc bnc" id="L288" title="All 2 branches missed.">        if (list.isEmpty()) {</span>
+<span class="nc" id="L289">            list = retrieveRivista(this.fdR);</span>
+<span class="nc" id="L290">            synchronized (this.cacheRivista) {</span>
+<span class="nc bnc" id="L291" title="All 2 branches missed.">                for (Rivista rivista : list)</span>
+<span class="nc" id="L292">                    this.cacheRivista.put(rivista.getId(), rivista);</span>
+<span class="nc" id="L293">            }</span>
+
+        }
+<span class="nc" id="L296">        return list;</span>
+    }
+
+    private static synchronized ObservableList&lt;Rivista&gt; retrieveRivista(File fdR) throws IOException, CsvValidationException, IdException {
+        ObservableList&lt;Rivista&gt; rivistaList;
+<span class="nc" id="L301">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fdR)))) {</span>
+            String[] gVector;
+
+<span class="nc" id="L304">            rivistaList = FXCollections.observableArrayList();</span>
+<span class="nc bnc" id="L305" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
+
+
+<span class="nc" id="L308">                    rivistaList.add(getRivista(gVector));</span>
+
+
+            }
+        }
+<span class="nc bnc" id="L313" title="All 2 branches missed.">        if (rivistaList.isEmpty()) {</span>
+<span class="nc" id="L314">            throw new IdException(&quot;rivista not found!!&quot;);</span>
+        }
+
+<span class="nc" id="L317">        return rivistaList;</span>
+    }
+
+    @Override
+    public ObservableList&lt;Rivista&gt; getRivistaByIdTitoloAutoreRivista(Rivista r) throws CsvValidationException, IOException, IdException {
+<span class="nc" id="L322">        ObservableList&lt;Rivista&gt; list = FXCollections.observableArrayList();</span>
+<span class="nc" id="L323">        synchronized (this.cacheRivista) {</span>
+<span class="nc bnc" id="L324" title="All 2 branches missed.">            for (Map.Entry&lt;Integer, Rivista&gt; id : cacheRivista.entrySet()) {</span>
+<span class="nc" id="L325">                boolean recordT = id.getValue().getTitolo().equals(r.getTitolo());</span>
+<span class="nc" id="L326">                boolean recordA = id.getValue().getTitolo().equals(r.getEditore());</span>
+<span class="nc bnc" id="L327" title="All 4 branches missed.">                boolean recordFound = recordT &amp;&amp; recordA;</span>
+
+<span class="nc bnc" id="L329" title="All 2 branches missed.">                if (recordFound)</span>
+<span class="nc" id="L330">                    list.add(id.getValue());</span>
+<span class="nc" id="L331">            }</span>
+<span class="nc" id="L332">        }</span>
+<span class="nc bnc" id="L333" title="All 2 branches missed.">        if (list.isEmpty()) {</span>
+<span class="nc" id="L334">            list = retrieveRivistaByIdTitoloEditore(this.fdR, r);</span>
+<span class="nc" id="L335">            synchronized (this.cacheRivista) {</span>
+<span class="nc bnc" id="L336" title="All 2 branches missed.">                for (Rivista rivista : list)</span>
+<span class="nc" id="L337">                    this.cacheRivista.put(r.getId(), rivista);</span>
+<span class="nc" id="L338">            }</span>
+
+        }
+<span class="nc" id="L341">        return list;</span>
+    }
+
+    private static synchronized ObservableList&lt;Rivista&gt; retrieveRivistaByIdTitoloEditore(File fd, Rivista rivista) throws CsvValidationException, IOException, IdException {
+        ObservableList&lt;Rivista&gt; rivistaList;
+<span class="nc" id="L346">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
+            String[] gVector;
+
+<span class="nc" id="L349">            rivistaList = FXCollections.observableArrayList();</span>
+<span class="nc bnc" id="L350" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="nc bnc" id="L351" title="All 4 branches missed.">                boolean recordFound = gVector[GETINDEXIDR].equals(String.valueOf(rivista.getId())) || gVector[GETINDEXIDR].equals(String.valueOf(vis.getIdRivista()))</span>
+<span class="nc bnc" id="L352" title="All 4 branches missed.">                        || gVector[GETINDEXTITOLOR].equals(rivista.getTitolo()) || gVector[GETINDEXAUTORER].equals(rivista.getAutore());</span>
+<span class="nc bnc" id="L353" title="All 2 branches missed.">                if (recordFound) {</span>
+
+<span class="nc" id="L355">                    rivistaList.add(getRivista(gVector));</span>
+
+                }
+<span class="nc" id="L358">            }</span>
+        }
+<span class="nc bnc" id="L360" title="All 2 branches missed.">        if (rivistaList.isEmpty()) {</span>
+<span class="nc" id="L361">            throw new IdException(&quot;rivista not found!!&quot;);</span>
+        }
+
+<span class="nc" id="L364">        return rivistaList;</span>
+
+
+    }
+
+
+    @Override
+    public void initializza() throws IOException, CsvValidationException {
+        try {
+<span class="nc" id="L373">            File directory=new File(&quot;report&quot;);</span>
+
+<span class="nc bnc" id="L375" title="All 2 branches missed.">            if(directory.isDirectory())            {</span>
+<span class="nc" id="L376">                String[] files = directory.list();</span>
+
+<span class="nc bnc" id="L378" title="All 2 branches missed.">                assert files != null;</span>
+<span class="nc bnc" id="L379" title="All 4 branches missed.">                if ( files.length == 0 || !this.fdR.exists()) {</span>
+<span class="nc" id="L380">                    throw new IOException(&quot;cartella vuota&quot;);</span>
+                }
+
+            }
+
+
+<span class="nc" id="L386">        } catch (IOException eFile) {</span>
+
+<span class="nc" id="L388">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
+
+<span class="nc" id="L390">            Files.copy(Path.of(RIVISTAP), Path.of(LOCATIONR), REPLACE_EXISTING);</span>
+
+<span class="nc" id="L392">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
+<span class="nc" id="L393">        }</span>
+<span class="nc" id="L394">    }</span>
+    private static void cleanUp(Path path) throws IOException {
+<span class="nc" id="L396">        Files.delete(path);</span>
+<span class="nc" id="L397">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

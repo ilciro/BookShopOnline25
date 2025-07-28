@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MemoriaPagamentoCartaCredito.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.primoucacquista.pagamentoCartacredito</a> &gt; <span class="el_source">MemoriaPagamentoCartaCredito.java</span></div><h1>MemoriaPagamentoCartaCredito.java</h1><pre class="source lang-java linenums">package laptop.database.primoucacquista.pagamentoCartacredito;
+
+import com.opencsv.exceptions.CsvValidationException;
+import laptop.model.pagamento.PagamentoCartaCredito;
+import laptop.model.pagamento.PagamentoFattura;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+<span class="nc" id="L15">public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{</span>
+<span class="nc" id="L16">    private  ArrayList&lt;PagamentoCartaCredito&gt; list= new ArrayList&lt;&gt;();</span>
+    private static final String SERIALIZZAZIONE=&quot;memory/serializzazionePagamentoCartaCredito.ser&quot;;
+    @Override
+    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
+        try
+        {
+<span class="nc bnc" id="L22" title="All 2 branches missed.">            if(!Files.exists(Path.of(SERIALIZZAZIONE))) throw new IOException(&quot; file not exists&quot;);</span>
+<span class="nc" id="L23">        }catch (IOException e)</span>
+        {
+<span class="nc" id="L25">            Files.createFile(Path.of(SERIALIZZAZIONE));</span>
+<span class="nc" id="L26">            Logger.getLogger(&quot;inizializza memoria pagamentoCC&quot;).log(Level.INFO,&quot; file has been created&quot;);</span>
+<span class="nc" id="L27">        }</span>
+<span class="nc" id="L28">    }</span>
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito p) throws CsvValidationException, IOException, ClassNotFoundException {
+<span class="nc" id="L33">        try (FileInputStream fin = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L34">             ObjectInputStream ois = new ObjectInputStream(fin)) {</span>
+
+<span class="nc" id="L36">            list = (ArrayList&lt;PagamentoCartaCredito&gt;) ois.readObject();</span>
+
+<span class="nc" id="L38">        }catch (EOFException e)</span>
+        {
+<span class="nc" id="L40">            Logger.getLogger(&quot;inserisci pagamento cartacredito&quot;).log(Level.SEVERE,&quot; excepion :.&quot;,e);</span>
+<span class="nc" id="L41">        }</span>
+<span class="nc" id="L42">        p.setIdPagCC(list.size()+1);</span>
+<span class="nc" id="L43">        list.add(p);</span>
+
+
+<span class="nc" id="L46">        try (FileOutputStream fout = new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L47">             ObjectOutputStream oos = new ObjectOutputStream(fout)) {</span>
+<span class="nc" id="L48">            oos.writeObject(list);</span>
+        }
+
+
+
+<span class="nc" id="L53">        Logger.getLogger(&quot;insert payment in memory&quot;).log(Level.INFO, &quot;payment is wrote&quot;);</span>
+
+<span class="nc" id="L55">        return true;</span>
+    }
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p) throws IOException, CsvValidationException, ClassNotFoundException {
+<span class="nc" id="L61">        boolean status = false;</span>
+<span class="nc" id="L62">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L63">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
+<span class="nc" id="L64">            list = (ArrayList&lt;PagamentoCartaCredito&gt;) ois.readObject();</span>
+        }
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        for (int i = 1; i &lt;= list.size(); i++) {</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">            if (i == p.getIdPagCC()) {</span>
+<span class="nc" id="L68">                Logger.getLogger(&quot;cancella fattura&quot;).log(Level.INFO,&quot;id payment {0}.&quot;,p.getIdPagCC());</span>
+
+<span class="nc" id="L70">                status = list.remove(list.get(i - 1));</span>
+<span class="nc" id="L71">                break;</span>
+            }
+        }
+<span class="nc" id="L74">        return status;</span>
+    }
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public PagamentoCartaCredito ultimoPagamentoCartaCredito() throws IOException, ClassNotFoundException {
+<span class="nc" id="L80">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L81">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
+<span class="nc" id="L82">            list = (ArrayList&lt;PagamentoCartaCredito&gt;) ois.readObject();</span>
+
+
+        }
+<span class="nc" id="L86">        return list.get(list.size() - 1);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

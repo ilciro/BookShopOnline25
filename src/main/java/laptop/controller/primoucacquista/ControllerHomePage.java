@@ -47,7 +47,7 @@ public class ControllerHomePage {
 
 
     private void inizializzaGiornale(String type) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
-        PersistenzaGiornale pG = null;
+        PersistenzaGiornale pG ;
         if(type.equals(DATABASE)) pG =new GiornaleDao();
         else if(type.equals(FILE))pG =new CsvGiornale();
         else pG=new MemoriaGiornale();

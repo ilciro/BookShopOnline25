@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MemoriaGiornale.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.primoucacquista.giornale</a> &gt; <span class="el_source">MemoriaGiornale.java</span></div><h1>MemoriaGiornale.java</h1><pre class="source lang-java linenums">package laptop.database.primoucacquista.giornale;
+
+import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.database.MemoryInitialize;
+import laptop.exception.IdException;
+import laptop.model.raccolta.Giornale;
+import laptop.model.raccolta.Raccolta;
+
+import java.io.*;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+<span class="nc" id="L20">public class  MemoriaGiornale extends PersistenzaGiornale{</span>
+
+    private static final String SERIALIZZAZIONE=&quot;memory/serializzazioneGiornale.ser&quot;;
+    private static final String SERIALIZZAZIONEAPPOGGIO=&quot;memory/serializzazioneGiornaleAppoggio.ser&quot;;
+
+
+
+<span class="nc" id="L27">    private static final MemoryInitialize mI=new MemoryInitialize() ;</span>
+
+    @Override
+    public void initializza() throws CsvValidationException, SQLException,  IOException, ClassNotFoundException {
+
+<span class="nc" id="L32">        mI.inizializza(SERIALIZZAZIONE);</span>
+
+
+
+<span class="nc" id="L36">    }</span>
+
+
+
+
+    @Override
+
+    public boolean inserisciGiornale(Giornale g) throws IOException, ClassNotFoundException {
+
+<span class="nc" id="L45">        Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        if (!Files.exists(path2))</span>
+        {
+<span class="nc" id="L48">            Files.createFile(path2);</span>
+        }
+<span class="nc" id="L50">        return mI.inserisci(null,g,null,SERIALIZZAZIONE,SERIALIZZAZIONEAPPOGGIO);</span>
+
+    }
+
+
+
+    @Override
+
+    public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+
+<span class="nc" id="L60">        return FXCollections.observableArrayList(mI.listaGiornali(SERIALIZZAZIONE));</span>
+    }
+
+    @Override
+
+    public ObservableList&lt;Giornale&gt; getGiornaleByIdTitoloAutoreLibro(Giornale g) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+<span class="nc" id="L66">        ObservableList&lt;Giornale&gt; listaRecuperata = FXCollections.observableArrayList();</span>
+
+<span class="nc" id="L68">        List&lt;Giornale&gt; list=mI.listaGiornali(SERIALIZZAZIONE);</span>
+
+<span class="nc bnc" id="L70" title="All 2 branches missed.">        for(int i=0;i&lt;list.size();i++)</span>
+        {
+<span class="nc bnc" id="L72" title="All 2 branches missed.">            if(i==g.getId()-1</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">            || list.get(i).getTitolo().equals(g.getTitolo())</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">            || list.get(i).getEditore().equals(g.getEditore()))</span>
+            {
+<span class="nc" id="L76">                listaRecuperata=FXCollections.observableArrayList(list.get(i));</span>
+            }
+
+        }
+
+
+<span class="nc" id="L82">        return listaRecuperata;</span>
+    }
+
+    @Override
+    public ObservableList&lt;Giornale&gt; getGiornali() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+
+<span class="nc" id="L88">        List&lt;Giornale&gt; list=mI.listaGiornali(SERIALIZZAZIONE);</span>
+<span class="nc" id="L89">        return FXCollections.observableList(list);</span>
+    }
+
+    @Override
+    public boolean removeGiornaleById(Giornale g) throws  IOException,  ClassNotFoundException {
+<span class="nc" id="L94">        return mI.cancellaGiornale(g);</span>
+    }
+
+
+
+
+
+
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

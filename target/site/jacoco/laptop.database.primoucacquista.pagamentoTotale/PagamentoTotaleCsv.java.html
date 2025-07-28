@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PagamentoTotaleCsv.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.primoucacquista.pagamentoTotale</a> &gt; <span class="el_source">PagamentoTotaleCsv.java</span></div><h1>PagamentoTotaleCsv.java</h1><pre class="source lang-java linenums">package laptop.database.primoucacquista.pagamentoTotale;
+
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
+import com.opencsv.exceptions.CsvValidationException;
+import laptop.controller.ControllerSystemState;
+import laptop.database.primoucacquista.pagamentoCartacredito.CsvPagamentoCartaCredito;
+import laptop.database.primoucacquista.pagamentoFattura.CsvFattura;
+import laptop.exception.IdException;
+import laptop.model.pagamento.Pagamento;
+import laptop.model.pagamento.PagamentoCartaCredito;
+import laptop.model.pagamento.PagamentoFattura;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class PagamentoTotaleCsv extends laptop.database.primoucacquista.pagamentoTotale.PagamentoTotale {
+
+    private static final String PAGAMENTOTOTALE=&quot;report/reportPagamentoTotale.csv&quot;;
+    private static final String APPOGGIO=&quot;report/appoggioPagamentoTotale.csv&quot;;
+    private static final String PREFIX=&quot;prefix&quot;;
+    private static final String SUFFIX=&quot;suffix&quot;;
+
+    private final HashMap&lt;String, Pagamento&gt; cachePagamentoTotale;
+    private File file;
+<span class="nc" id="L30">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+    private CsvFattura csvFattura;
+    private CsvPagamentoCartaCredito csvPagamentoCartaCredito;
+
+    private static final int NOMEUTENTE=0;
+    private static final int COGNOMEUTENTE=1;
+    private static final int VIA=2;
+    private static final int COM=3;
+    private static final int AMMONTARE=4;
+    private static final int EMAIL=5;
+    private static final int TIPOACQUISTO=6;
+    private static final int IDFATTURA=7;
+    private static final int IDPAGAMENTOCC=8;
+    private static final int IDPAGAMENTO=9;
+
+    @Override
+    public boolean cancellaFattura(PagamentoFattura p) throws IOException {
+<span class="nc" id="L47">        synchronized (this.cachePagamentoTotale) {</span>
+<span class="nc" id="L48">            this.cachePagamentoTotale.remove(String.valueOf(p.getIdFattura()));</span>
+<span class="nc" id="L49">        }</span>
+      //  return removeFattura(p);
+<span class="nc" id="L51">        return true;</span>
+    }
+    /*
+
+    private static synchronized boolean removeFattura(PagamentoFattura p) throws IOException, CsvValidationException {
+        boolean status=false;
+        if (SystemUtils.IS_OS_UNIX) {
+            FileAttribute&lt;Set&lt;PosixFilePermission&gt;&gt; attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));
+            Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant
+        }
+        File tmpFile = new File(APPOGGIO);
+        boolean found = isFound(p, tmpFile);
+        if (found) {
+            Files.move(tmpFile.toPath(), Path.of(PAGAMENTOTOTALE), REPLACE_EXISTING);
+            status=true;
+        } else {
+            cleanUp(Path.of(tmpFile.toURI()));
+        }
+        return status;
+    }
+
+
+
+    private static boolean isFound(PagamentoFattura f, File tmpFile) throws IOException, CsvValidationException {
+        boolean found = false;
+        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(PAGAMENTOTOTALE)));
+             CSVWriter writer= new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true)))) {
+            String[] gVector;
+
+            boolean recordFound;
+            while ((gVector = reader.readNext()) != null) {
+
+                recordFound = gVector[].equals(String.valueOf(f.getIdFattura()));
+
+
+                if (!recordFound)
+                    writer.writeNext(gVector);
+                else
+                    found = true;
+            }
+            writer.flush();
+
+        }
+        return found;
+    }
+
+     */
+
+
+    @Override
+    public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException {
+<span class="nc" id="L102">        return super.cancellaPagamentoCC(pCC);</span>
+    }
+
+    private static final int IDPAGAMENTOFATTURA=7;
+ //   private static final int IDPAGAMENTOCC=8;
+   // private static final int IDPAGAMENTO=9;
+    private static final int IDOGGETTO=10;
+
+    private static final String IDWRONG=&quot;id wrong ..!!&quot;;
+    private static final String IDERROR=&quot;id error !!..&quot;;
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="nc" id="L124">    public PagamentoTotaleCsv() throws IOException {</span>
+<span class="nc" id="L125">        this.file=new File(PAGAMENTOTOTALE);</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">        if(!this.file.exists())</span>
+
+<span class="nc" id="L128">            Files.createFile(Path.of(this.file.toURI()));</span>
+<span class="nc" id="L129">        this.cachePagamentoTotale=new HashMap&lt;&gt;();</span>
+
+        //richiamo entrambi i sottopagamenti dao
+<span class="nc bnc" id="L132" title="All 2 branches missed.">        if(vis.getMetodoP().equals(&quot;cash&quot;)) csvFattura=new CsvFattura();</span>
+<span class="nc" id="L133">        else csvPagamentoCartaCredito=new CsvPagamentoCartaCredito();</span>
+
+
+<span class="nc" id="L136">    }</span>
+
+    @Override
+    public boolean inserisciPagamentoFattura(PagamentoFattura p) throws CsvValidationException, IOException, ClassNotFoundException {
+<span class="nc" id="L140">         p=csvFattura.ultimaFattura();</span>
+
+
+
+<span class="nc" id="L144">        try(CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.file, true))))</span>
+        {
+<span class="nc" id="L146">            String[] gVectore = new String[10];</span>
+<span class="nc" id="L147">            gVectore[NOMEUTENTE]=p.getNome();</span>
+<span class="nc" id="L148">            gVectore[COGNOMEUTENTE]=p.getCognome();</span>
+<span class="nc" id="L149">            gVectore[VIA]=p.getVia();</span>
+<span class="nc" id="L150">            gVectore[COM]=p.getCom();</span>
+<span class="nc" id="L151">            gVectore[AMMONTARE]= String.valueOf(p.getAmmontare());</span>
+<span class="nc" id="L152">            gVectore[EMAIL]=p.getEmail();</span>
+<span class="nc" id="L153">            gVectore[TIPOACQUISTO]=p.getTipoAcquisto();</span>
+<span class="nc" id="L154">            gVectore[IDPAGAMENTOFATTURA]= String.valueOf(p.getIdFattura());</span>
+<span class="nc" id="L155">            gVectore[IDPAGAMENTO]= String.valueOf(getIdMax()+1);</span>
+
+<span class="nc" id="L157">            csvWriter.writeNext(gVectore);</span>
+
+
+<span class="nc" id="L160">            csvWriter.flush();</span>
+<span class="nc" id="L161">            this.cachePagamentoTotale.put(String.valueOf(getIdMax()+1),p);</span>
+
+
+
+
+
+
+<span class="nc" id="L168">        }catch (CsvValidationException e)</span>
+        {
+<span class="nc" id="L170">            Logger.getLogger(&quot;inset pagamentoTotaleFattura&quot;).log(Level.SEVERE,&quot;error in insert payment total fattura csv&quot;);</span>
+
+<span class="nc" id="L172">        }</span>
+<span class="nc" id="L173">        return true;</span>
+    }
+
+    @Override
+    public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito pCC) throws IOException, CsvValidationException {
+<span class="nc" id="L178">         pCC=csvPagamentoCartaCredito.ultimoPagamentoCartaCredito();</span>
+<span class="nc" id="L179">        pCC.setMetodo(&quot;cCredito&quot;);</span>
+<span class="nc" id="L180">        try(CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.file, true))))</span>
+        {
+<span class="nc" id="L182">            String[] gVector =new String[12];</span>
+<span class="nc" id="L183">            gVector[NOMEUTENTE]= pCC.getNomeUtente();</span>
+<span class="nc" id="L184">            gVector[COGNOMEUTENTE]=pCC.getCognomeUtente();</span>
+<span class="nc" id="L185">            gVector[AMMONTARE]= String.valueOf(pCC.getSpesaTotale());</span>
+<span class="nc" id="L186">            gVector[EMAIL]=pCC.getEmail();</span>
+<span class="nc" id="L187">            gVector[TIPOACQUISTO]=pCC.getTipoAcquisto();</span>
+<span class="nc" id="L188">            gVector[IDPAGAMENTOCC]= String.valueOf(pCC.getIdPagCC());</span>
+<span class="nc" id="L189">            gVector[IDOGGETTO]= String.valueOf(pCC.getIdProdotto());</span>
+
+<span class="nc" id="L191">            csvWriter.writeNext(gVector);</span>
+<span class="nc" id="L192">            csvWriter.flush();</span>
+<span class="nc" id="L193">            this.cachePagamentoTotale.put(String.valueOf(getIdMax()+1),pCC);</span>
+
+
+        }
+
+
+
+<span class="nc" id="L200">        return true;</span>
+    }
+
+
+
+    @Override
+    public void inizializza() throws IOException {
+
+<span class="nc" id="L208">        Path path = Path.of(PAGAMENTOTOTALE);</span>
+        try
+        {
+<span class="nc bnc" id="L211" title="All 2 branches missed.">            if(!Files.exists(path))</span>
+<span class="nc" id="L212">                throw new IOException(&quot;il file pagamentoTotale non esiste&quot;);</span>
+<span class="nc" id="L213">        }catch (IOException e)</span>
+        {
+<span class="nc" id="L215">            Logger.getLogger(&quot; inizializza pagamentoTotale&quot;).log(Level.SEVERE,&quot; file not exists .{0}&quot;,PAGAMENTOTOTALE);</span>
+<span class="nc" id="L216">            Files.createFile(path);</span>
+<span class="nc" id="L217">            Logger.getLogger(&quot; inizializza pagamentoTotale creazione&quot;).log(Level.INFO,&quot; file created .{0}&quot;,PAGAMENTOTOTALE);</span>
+
+
+
+<span class="nc" id="L221">        }</span>
+
+<span class="nc" id="L223">    }</span>
+    private static  int getIdMax() throws IOException, CsvValidationException {
+        //used for insert correct idOgg
+        String[] gVector;
+<span class="nc" id="L227">        int id = 0;</span>
+
+
+        try {
+
+
+<span class="nc" id="L233">            try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(PAGAMENTOTOTALE)))) {</span>
+<span class="nc bnc" id="L234" title="All 2 branches missed.">                while ((gVector = reader.readNext()) != null) {</span>
+<span class="nc" id="L235">                    id = Integer.parseInt(gVector[IDPAGAMENTO]);</span>
+                }
+            }
+
+<span class="nc bnc" id="L239" title="All 2 branches missed.">            if (id == 0) throw new IdException(&quot;id == 0 &quot;);</span>
+
+
+<span class="nc" id="L242">        } catch (IdException |NumberFormatException e) {</span>
+<span class="nc" id="L243">            Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR);</span>
+<span class="nc" id="L244">        }</span>
+
+
+<span class="nc" id="L247">            return id;</span>
+
+        }
+
+
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

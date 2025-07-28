@@ -59,15 +59,6 @@ public class ControllerPagamentoCash {
     public void controlla(String nome, String cognome, String via, String com,String type) throws IOException, ClassNotFoundException, SQLException, CsvValidationException, IdException {
 
 
-			/*
-			todo
-				1)creare tabella pagamento (db-file-memoria)
-				2) scegliere tipo persistenza pagamentoFattura (db-file-memoria)
-				3) creare pagamento tipo pagamentoFattura ->
-				4) effettuare pagaemnto (db-file-memoria)
-				5) fare categoria prodotto
-			 */
-
 		//1
 		switch (type)
 		{
@@ -131,9 +122,7 @@ public class ControllerPagamentoCash {
 	private String ritornaTipoOggetto(String persistenza,String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 		String tipologia = "";
 
-		/*
-		todo finirfe switch
-		 */
+
 
 		switch (type)
 		{

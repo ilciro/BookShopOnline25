@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>User.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.model.user</a> &gt; <span class="el_source">User.java</span></div><h1>User.java</h1><pre class="source lang-java linenums">package laptop.model.user;
+
+import java.io.Serial;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+public class User implements Serializable {
+	
+<span class="nc" id="L12"> enum Ruoli {</span>
+<span class="nc" id="L13">		ADMIN,</span>
+<span class="nc" id="L14">		UTENTE,</span>
+<span class="nc" id="L15">		SCRITTORE,</span>
+<span class="nc" id="L16">		EDITORE,</span>
+<span class="nc" id="L17">		NONVALIDO;</span>
+ }
+	@Override
+	public String toString() {
+<span class="nc" id="L21">		return &quot;User [nome=&quot; + nome + &quot;, Cognome=&quot; + cognome + &quot;, email=&quot; + email + &quot; , pass=&quot; + password +&quot;, idRuolo=&quot; + r + &quot;, id=&quot; + id +&quot;]&quot;;</span>
+	}
+
+
+	@Serial
+	private static final long serialVersionUID = 2L;
+
+
+	private int id;
+	private String nome;
+	private String cognome;
+	private String email;
+	private String password;
+	private String descrizione;
+	private LocalDate dataDiNascita;
+	private String r;
+	
+<span class="nc" id="L38">	private static User userInstance = null;</span>
+
+    private User() {}
+
+
+		public static User getInstance() {
+<span class="nc bnc" id="L44" title="All 2 branches missed.">			if (userInstance == null) {</span>
+
+<span class="nc" id="L46">				userInstance = new User();</span>
+			}
+
+<span class="nc" id="L49">			return userInstance;</span>
+		}
+
+
+
+	
+
+	public int getId() {
+<span class="nc" id="L57">		return id;</span>
+	}
+	public void setId(int id) {
+<span class="nc" id="L60">		this.id = id;</span>
+<span class="nc" id="L61">	}</span>
+	public String getNome() {
+<span class="nc" id="L63">		return nome;</span>
+	}
+	public void setNome(String nome) {
+<span class="nc" id="L66">		this.nome = nome;</span>
+<span class="nc" id="L67">	}</span>
+	public String getCognome() {
+<span class="nc" id="L69">		return cognome;</span>
+	}
+	public void setCognome(String cognome) {
+<span class="nc" id="L72">		this.cognome = cognome;</span>
+<span class="nc" id="L73">	}</span>
+	public String getEmail() {
+<span class="nc" id="L75">		return email;</span>
+	}
+	public void setEmail(String email) {
+<span class="nc" id="L78">		this.email = email;</span>
+<span class="nc" id="L79">	}</span>
+	public String getPassword() {
+<span class="nc" id="L81">		return password;</span>
+	}
+	public void setPassword(String password) {
+<span class="nc" id="L84">		this.password = password;</span>
+<span class="nc" id="L85">	}</span>
+	public String getDescrizione() {
+<span class="nc" id="L87">		return descrizione;</span>
+	}
+	public void setDescrizione(String descrizione) {
+<span class="nc" id="L90">		this.descrizione = descrizione;</span>
+<span class="nc" id="L91">	}</span>
+	public LocalDate getDataDiNascita() {
+<span class="nc" id="L93">		return dataDiNascita;</span>
+	}
+	public void setDataDiNascita(LocalDate dataDiNascita) {
+<span class="nc" id="L96">		this.dataDiNascita = dataDiNascita;</span>
+<span class="nc" id="L97">	}</span>
+	
+	public String getIdRuolo()  {
+		
+<span class="nc" id="L101">		return r;</span>
+	}
+
+
+
+	public void setIdRuolo(String ruolo) {
+
+<span class="nc bnc" id="L108" title="All 5 branches missed.">		 switch (ruolo){</span>
+<span class="nc" id="L109">			case &quot;ADMIN&quot;, &quot;A&quot;-&gt; r = Ruoli.ADMIN.toString().substring(0,1);</span>
+<span class="nc" id="L110">			case &quot;EDITORE&quot;, &quot;E&quot;-&gt;r = Ruoli.EDITORE.toString().substring(0,1);</span>
+<span class="nc" id="L111">			case &quot;SCRITTORE&quot;, &quot;W&quot;, &quot;S&quot;-&gt;r = Ruoli.SCRITTORE.toString().substring(0,1);</span>
+<span class="nc" id="L112">			case &quot;UTENTE&quot;,&quot;U&quot;-&gt;r=Ruoli.UTENTE.toString().substring(0,1);</span>
+<span class="nc" id="L113">             default-&gt;r= Ruoli.NONVALIDO.toString().substring(0,1);</span>
+
+			}
+		
+
+<span class="nc" id="L118">	}</span>
+	//usato per &quot;pulire&quot; utente dopo modifica
+	public boolean annullaUtente()
+	{
+<span class="nc" id="L122">		setId(-1);</span>
+<span class="nc" id="L123">		setNome(&quot;&quot;);</span>
+<span class="nc" id="L124">		setCognome(&quot;&quot;);</span>
+<span class="nc" id="L125">		setEmail(&quot;&quot;);</span>
+<span class="nc" id="L126">		setPassword(&quot;&quot;);</span>
+<span class="nc" id="L127">		setDescrizione(&quot;&quot;);</span>
+<span class="nc" id="L128">		setDataDiNascita(LocalDate.of(1900,1,1));</span>
+<span class="nc" id="L129">		setIdRuolo(&quot;NONVALIDO&quot;);</span>
+<span class="nc" id="L130">		Logger.getLogger(&quot;annulla utente&quot;).log(Level.INFO,&quot; user data is cleaned&quot;);</span>
+<span class="nc" id="L131">		return nome.isEmpty();</span>
+	}
+
+
+
+
+
+
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

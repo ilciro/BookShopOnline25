@@ -29,7 +29,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
 
         }catch (EOFException e)
         {
-            System.out.println("eccezione :"+e.getMessage());
+           Logger.getLogger("pagaemnto fattura").log(Level.SEVERE," error with file payment .",e);
         }
         f.setIdFattura(list.size()+1);
         list.add(f);

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerSystemState.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.controller</a> &gt; <span class="el_source">ControllerSystemState.java</span></div><h1>ControllerSystemState.java</h1><pre class="source lang-java linenums">package laptop.controller;
+
+
+// this is singelton battona 
+// know evreything about the system
+
+public class ControllerSystemState {
+
+	private int idLibro;
+	private int idGiornale;
+	private int idRivista;
+	private int idUtente;
+	private String type;
+	private boolean isLogged ;
+	private boolean isSearch;
+	private boolean isPickup;
+	private float spesaT;// usato per avere importo totale
+	private int quantita; //usato per avere quantita oggetto che compro
+	private String metodoP;	//usato per vedere se contanti o cc
+	private String tipologiaApplicazione;
+
+
+	public String getTipologiaApplicazione() {
+<span class="nc" id="L24">		return tipologiaApplicazione;</span>
+	}
+
+	public void setTipologiaApplicazione(String tipologiaApplicazione) {
+<span class="fc" id="L28">		this.tipologiaApplicazione = tipologiaApplicazione;</span>
+<span class="fc" id="L29">	}</span>
+
+
+	public int getIdLibro() {
+<span class="fc" id="L33">		return idLibro;</span>
+	}
+
+	public void setIdLibro(int idLibro) {
+<span class="fc" id="L37">		this.idLibro = idLibro;</span>
+<span class="fc" id="L38">	}</span>
+
+	public int getIdGiornale() {
+<span class="nc" id="L41">		return idGiornale;</span>
+	}
+
+	public void setIdGiornale(int idGiornale) {
+<span class="nc" id="L45">		this.idGiornale = idGiornale;</span>
+<span class="nc" id="L46">	}</span>
+
+	public int getIdRivista() {
+<span class="nc" id="L49">		return idRivista;</span>
+	}
+
+	public void setIdRivista(int idRivista) {
+<span class="nc" id="L53">		this.idRivista = idRivista;</span>
+<span class="nc" id="L54">	}</span>
+
+	public int getIdUtente() {
+<span class="nc" id="L57">		return idUtente;</span>
+	}
+
+	public void setIdUtente(int idUtente) {
+<span class="nc" id="L61">		this.idUtente = idUtente;</span>
+<span class="nc" id="L62">	}</span>
+
+
+
+
+
+
+	private String tipoModifica;
+	 
+<span class="fc" id="L71">	 private static ControllerSystemState instance = null;</span>
+
+	    private ControllerSystemState() {}
+
+	    public static ControllerSystemState getInstance() {
+<span class="fc bfc" id="L76" title="All 2 branches covered.">	        if (instance == null) {</span>
+	          
+<span class="fc" id="L78">	        	instance = new ControllerSystemState();</span>
+	                }
+	       
+<span class="fc" id="L81">	        return instance;</span>
+	    }
+	 public int getQuantita() {
+<span class="fc" id="L84">		return quantita;</span>
+	}
+
+	public void setQuantita(int quantita) {
+<span class="fc" id="L88">		this.quantita = quantita;</span>
+<span class="fc" id="L89">	}</span>
+
+	public float getSpesaT() {
+<span class="fc" id="L92">		return spesaT;</span>
+	}
+
+	public void setSpesaT(float spesaT) {
+<span class="fc" id="L96">		this.spesaT = spesaT;</span>
+<span class="fc" id="L97">	}</span>
+
+	
+
+
+	public void setTypeAsBook()
+	{
+<span class="fc" id="L104">		this.type = &quot;libro&quot;;</span>
+<span class="fc" id="L105">	}</span>
+<span class="nc" id="L106">	public void setTypeAsMagazine() { this.type = &quot;rivista&quot;;	}</span>
+	public void setTypeAsDaily()
+	{
+<span class="nc" id="L109">		this.type = &quot;giornale&quot;;</span>
+<span class="nc" id="L110">	}</span>
+	public String getType()
+	{
+<span class="fc" id="L113">		return type;</span>
+	}
+
+	public boolean getIsLogged() {
+<span class="nc" id="L117">		return isLogged;</span>
+	}
+
+	public void setIsLogged(boolean isLogged) {
+<span class="nc" id="L121">		this.isLogged = isLogged;</span>
+<span class="nc" id="L122">	}</span>
+	
+	public boolean getIsSearch() {
+<span class="nc" id="L125">		return isSearch;</span>
+	}
+
+	public void setIsSearch(boolean isSearch) {
+<span class="nc" id="L129">		this.isSearch = isSearch;</span>
+<span class="nc" id="L130">	}</span>
+
+	public boolean getIsPickup() {
+<span class="nc" id="L133">		return isPickup;</span>
+	}
+
+	public void setPickup(boolean isPickup) {
+<span class="nc" id="L137">		this.isPickup = isPickup;</span>
+<span class="nc" id="L138">	}</span>
+
+	public String getMetodoP() {
+<span class="nc" id="L141">		return metodoP;</span>
+	}
+
+	public void setMetodoP(String metodoP) {
+<span class="nc" id="L145">		this.metodoP = metodoP;</span>
+<span class="nc" id="L146">	}</span>
+
+    public String getTipoModifica() {
+<span class="fc" id="L149">        return tipoModifica;</span>
+    }
+
+    public void setTipoModifica(String tipoModifica) {
+<span class="fc" id="L153">        this.tipoModifica = tipoModifica;</span>
+<span class="fc" id="L154">    }</span>
+
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

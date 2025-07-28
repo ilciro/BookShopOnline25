@@ -76,8 +76,7 @@ public class ControllerCompravendita {
 					case DATABASE -> pR = new RivistaDao();
 					case FILE -> pR = new CsvRivista();
 					case MEMORIA -> pR = new MemoriaRivista();
-					default ->
-							Logger.getLogger("lista rivista").log(Level.SEVERE, "magazine persistency not correct !!");
+					default -> Logger.getLogger("lista rivista").log(Level.SEVERE, "magazine persistency not correct !!");
 				}
 
 				catalogo.addAll(pR.retrieveRaccoltaData());

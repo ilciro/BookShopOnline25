@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerVisualizza.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.controller.primoucacquista</a> &gt; <span class="el_source">ControllerVisualizza.java</span></div><h1>ControllerVisualizza.java</h1><pre class="source lang-java linenums">package laptop.controller.primoucacquista;
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.ObservableList;
+import laptop.controller.ControllerSystemState;
+
+//import laptop.database.primoucacquista.giornale.CsvGiornale;
+//import laptop.database.primoucacquista.giornale.GiornaleDao;
+//import laptop.database.primoucacquista.giornale.MemoriaGiornale;
+//import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
+import laptop.database.primoucacquista.giornale.CsvGiornale;
+import laptop.database.primoucacquista.giornale.GiornaleDao;
+import laptop.database.primoucacquista.giornale.MemoriaGiornale;
+import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
+import laptop.database.primoucacquista.libro.MemoriaLibro;
+//import laptop.database.primoucacquista.rivista.CsvRivista;
+//import laptop.database.primoucacquista.rivista.MemoriaRivista;
+//import laptop.database.primoucacquista.rivista.PersistenzaRivista;
+//import laptop.database.primoucacquista.rivista.RivistaDao;
+import laptop.database.primoucacquista.rivista.CsvRivista;
+import laptop.database.primoucacquista.rivista.MemoriaRivista;
+import laptop.database.primoucacquista.rivista.PersistenzaRivista;
+import laptop.database.primoucacquista.rivista.RivistaDao;
+import laptop.exception.IdException;
+import laptop.model.raccolta.Giornale;
+import laptop.model.raccolta.Libro;
+import laptop.model.raccolta.Rivista;
+import laptop.database.primoucacquista.libro.CsvLibro;
+import laptop.database.primoucacquista.libro.LibroDao;
+import laptop.database.primoucacquista.libro.PersistenzaLibro;
+
+
+public class ControllerVisualizza {
+
+	private final Libro l;
+	private final Giornale g;
+	private final Rivista r;
+	private static final String DATABASE=&quot;database&quot;;
+	private static final String FILE=&quot;file&quot;;
+	private static final String MEMORIA=&quot;memoria&quot;;
+	private PersistenzaLibro pL ;
+	private PersistenzaGiornale pG;
+	private PersistenzaRivista pR;
+
+
+<span class="nc" id="L50">	private final ControllerSystemState vis = ControllerSystemState.getInstance();</span>
+
+<span class="nc" id="L52">	public ControllerVisualizza()  {</span>
+<span class="nc" id="L53">		l = new Libro();</span>
+<span class="nc" id="L54">		g = new Giornale();</span>
+<span class="nc" id="L55">		r = new Rivista();</span>
+
+<span class="nc" id="L57">	}</span>
+
+
+
+	public int getID()
+	{
+<span class="nc" id="L63">		int id=0;</span>
+<span class="nc bnc" id="L64" title="All 4 branches missed.">		switch (vis.getType())</span>
+		{
+<span class="nc" id="L66">			case &quot;libro&quot;-&gt; id=vis.getIdLibro();</span>
+<span class="nc" id="L67">			case &quot;giornale&quot;-&gt;id=vis.getIdGiornale();</span>
+<span class="nc" id="L68">			case &quot;rivista&quot;-&gt;id=vis.getIdRivista();</span>
+<span class="nc" id="L69">			default -&gt; Logger.getLogger(&quot;id&quot;).log(Level.SEVERE,&quot;get id error!!&quot;);</span>
+
+		}
+
+<span class="nc" id="L73">		return id;</span>
+	}
+
+	public ObservableList&lt;Libro&gt; getListLibro(String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+
+		ObservableList&lt;Libro&gt; list;
+<span class="nc" id="L79">		l.setId(getID());</span>
+
+<span class="nc bnc" id="L81" title="All 4 branches missed.">        switch (type) {</span>
+<span class="nc" id="L82">            case DATABASE -&gt; pL = new LibroDao();</span>
+<span class="nc" id="L83">            case FILE -&gt; pL = new CsvLibro();</span>
+<span class="nc" id="L84">            case MEMORIA -&gt; pL = new MemoriaLibro();</span>
+<span class="nc" id="L85">			default -&gt; Logger.getLogger(&quot;list libro&quot;).log(Level.SEVERE,&quot;book persistency is wrong!!&quot;);</span>
+        }
+<span class="nc" id="L87">		list=pL.getLibroByIdTitoloAutoreLibro(l);</span>
+<span class="nc" id="L88">		return list;</span>
+	}
+
+
+
+	public ObservableList&lt;Giornale&gt; getListGiornale(String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+
+		ObservableList&lt;Giornale&gt; list;
+<span class="nc" id="L96">		g.setId(getID());</span>
+<span class="nc bnc" id="L97" title="All 4 branches missed.">        switch (type) {</span>
+<span class="nc" id="L98">            case DATABASE -&gt; pG = new GiornaleDao();</span>
+<span class="nc" id="L99">            case FILE -&gt; pG = new CsvGiornale();</span>
+<span class="nc" id="L100">            case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
+<span class="nc" id="L101">			default -&gt; Logger.getLogger(&quot;list giornale&quot;).log(Level.SEVERE,&quot;daily persistency is wrong!!&quot;);</span>
+
+		}
+<span class="nc" id="L104">		list= pG.getGiornaleByIdTitoloAutoreLibro(g);</span>
+<span class="nc" id="L105">		return list;</span>
+
+	}
+
+	public ObservableList&lt;Rivista&gt; getListRivista(String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+		ObservableList&lt;Rivista&gt; list;
+<span class="nc" id="L111">		r.setId(getID());</span>
+<span class="nc bnc" id="L112" title="All 4 branches missed.">        switch (type) {</span>
+<span class="nc" id="L113">            case DATABASE -&gt; pR = new RivistaDao();</span>
+<span class="nc" id="L114">            case FILE -&gt; pR = new CsvRivista();</span>
+<span class="nc" id="L115">            case MEMORIA -&gt; pR = new MemoriaRivista();</span>
+<span class="nc" id="L116">			default -&gt; Logger.getLogger(&quot;list rivista&quot;).log(Level.SEVERE,&quot;magazine persisyency is wrong!!&quot;);</span>
+
+		}
+<span class="nc" id="L119">		list=pR.getRivistaByIdTitoloAutoreRivista(r);</span>
+<span class="nc" id="L120">		return list;</span>
+
+	}
+
+
+
+
+
+
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

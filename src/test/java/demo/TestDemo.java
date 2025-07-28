@@ -1,0 +1,61 @@
+package demo;
+
+import com.itextpdf.text.DocumentException;
+import com.opencsv.exceptions.CsvValidationException;
+import javafx.application.Platform;
+import laptop.controller.ControllerSystemState;
+import laptop.controller.primoucacquista.*;
+import laptop.exception.IdException;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Test;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.sql.SQLException;
+import java.util.Objects;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+class TestDemo {
+
+    private static final ControllerSystemState vis=ControllerSystemState.getInstance();
+    private static final String MEMORIA="memoria";
+    private static final ControllerHomePage cHP=new ControllerHomePage();
+    private static final ControllerCompravendita cCV=new ControllerCompravendita();
+    private static final ControllerAcquista cA=new ControllerAcquista();
+    private static final ControllerPagamentoCash cPCash=new ControllerPagamentoCash();
+    private static final ControllerDownload cD=new ControllerDownload();
+     @Test
+    void testAcquistaLibroCashDownload() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException, DocumentException, URISyntaxException {
+         vis.setTipologiaApplicazione("demo");
+         vis.setTypeAsBook();
+         //inizializzo lista
+         cHP.persistenza(vis.getType());
+         //scelgo id
+         cCV.checkId(6,MEMORIA,vis.getType());
+         //setto id
+         vis.setIdLibro(6);
+         //scelgo quantita e prezzo
+         cA.getPrezzo("3",MEMORIA);
+         //prendo oggetto e crea fattura
+         cPCash.controlla("prova","prova","via prova","",MEMORIA);
+         //scarico oggetto
+         cD.scarica(vis.getType(),MEMORIA);
+
+     }
+     @AfterAll
+     public static void teardown()
+     {
+         boolean status=false;
+         Platform.exit();
+         File path=new File("memory");
+         File[] files = path.listFiles();
+         for(int i = 0; i< Objects.requireNonNull(files).length; i++) {
+
+             status=files[i].delete();
+         }
+         assertTrue(status);
+     }
+
+}

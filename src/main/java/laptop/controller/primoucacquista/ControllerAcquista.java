@@ -77,6 +77,7 @@ public class ControllerAcquista {
 					default -> Logger.getLogger("cALibro").log(Level.SEVERE,"cost/name book is empty is null");
 
 				}
+
 				dati[0] = pL.getLibroByIdTitoloAutoreLibro(l).get(0).getTitolo();
 				dati[1]= String.valueOf(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getPrezzo());
 				dati[2]= String.valueOf(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getNrCopie());
