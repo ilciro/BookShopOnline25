@@ -216,6 +216,12 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 
     private static  int getIdMax() throws IOException, CsvValidationException {
         //used for insert correct idOgg
+       return id();
+
+    }
+
+
+    private static synchronized int id() throws IOException, CsvValidationException {
         String[] gVector;
         int id = 0;
 
@@ -238,7 +244,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
             if (id == 0)
                 throw new IdException("id == 0 ");
 
-        }catch (IdException  e)
+        }catch (IdException | FileNotFoundException e)
         {
 
             Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR);
@@ -246,7 +252,6 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
         }
 
         return id;
-
     }
 
     /*

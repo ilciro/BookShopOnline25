@@ -69,14 +69,14 @@ import java.util.logging.Logger;
 
 <span class="fc" id="L70">        p=pCC.ultimoPagamentoCartaCredito();</span>
 <span class="fc" id="L71">        try (FileInputStream fin = new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="nc" id="L72">             ObjectInputStream ois = new ObjectInputStream(fin)) {</span>
+<span class="fc" id="L72">             ObjectInputStream ois = new ObjectInputStream(fin)) {</span>
 
-<span class="nc" id="L74">            list = (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
+<span class="fc" id="L74">            list = (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
 
 <span class="fc" id="L76">        }catch (EOFException e)</span>
         {
 <span class="fc" id="L78">            Logger.getLogger(&quot;inserisci pagamento cc&quot;).log(Level.SEVERE,&quot; excepion :.&quot;,e);</span>
-<span class="nc" id="L79">        }</span>
+<span class="fc" id="L79">        }</span>
 
 <span class="fc" id="L81">        list.add(p);</span>
 
@@ -110,20 +110,20 @@ import java.util.logging.Logger;
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException {
-<span class="nc" id="L113">        boolean status = false;</span>
-<span class="nc" id="L114">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="nc" id="L115">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
-<span class="nc" id="L116">            list = (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
+<span class="fc" id="L113">        boolean status = false;</span>
+<span class="fc" id="L114">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L115">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
+<span class="fc" id="L116">            list = (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
         }
-<span class="nc bnc" id="L118" title="All 2 branches missed.">        for (int i = 1; i &lt;= list.size(); i++) {</span>
-<span class="nc bnc" id="L119" title="All 2 branches missed.">            if (i == pCC.getIdPagCC()) {</span>
-<span class="nc" id="L120">                Logger.getLogger(&quot;cancella pagaemnto cc&quot;).log(Level.INFO,&quot;id payment {0}.&quot;,pCC.getIdPagCC());</span>
+<span class="pc bpc" id="L118" title="1 of 2 branches missed.">        for (int i = 1; i &lt;= list.size(); i++) {</span>
+<span class="fc bfc" id="L119" title="All 2 branches covered.">            if (i == pCC.getIdPagCC()) {</span>
+<span class="fc" id="L120">                Logger.getLogger(&quot;cancella pagaemnto cc&quot;).log(Level.INFO,&quot;id payment {0}.&quot;,pCC.getIdPagCC());</span>
 
-<span class="nc" id="L122">                status = list.remove(list.get(i - 1));</span>
-<span class="nc" id="L123">                break;</span>
+<span class="fc" id="L122">                status = list.remove(list.get(i - 1));</span>
+<span class="fc" id="L123">                break;</span>
             }
         }
-<span class="nc" id="L126">        return status;</span>
+<span class="fc" id="L126">        return status;</span>
     }
 
 

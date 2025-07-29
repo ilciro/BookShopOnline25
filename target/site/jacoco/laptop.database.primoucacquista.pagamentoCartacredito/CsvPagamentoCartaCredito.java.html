@@ -216,17 +216,23 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 
     private static  int getIdMax() throws IOException, CsvValidationException {
         //used for insert correct idOgg
+<span class="nc" id="L219">       return id();</span>
+
+    }
+
+
+    private static synchronized int id() throws IOException, CsvValidationException {
         String[] gVector;
-<span class="nc" id="L220">        int id = 0;</span>
+<span class="nc" id="L226">        int id = 0;</span>
 
 
         try {
 
 
 
-<span class="nc" id="L227">            try(CSVReader reader = new CSVReader(new FileReader(PAGAMENTO))) {</span>
-<span class="nc bnc" id="L228" title="All 2 branches missed.">                while ((gVector = reader.readNext()) != null) {</span>
-<span class="nc" id="L229">                    id = Integer.parseInt(gVector[GETINDEXIDP]);</span>
+<span class="nc" id="L233">            try(CSVReader reader = new CSVReader(new FileReader(PAGAMENTO))) {</span>
+<span class="nc bnc" id="L234" title="All 2 branches missed.">                while ((gVector = reader.readNext()) != null) {</span>
+<span class="nc" id="L235">                    id = Integer.parseInt(gVector[GETINDEXIDP]);</span>
                 }
             }
 
@@ -235,18 +241,17 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 
 
 
-<span class="nc bnc" id="L238" title="All 2 branches missed.">            if (id == 0)</span>
-<span class="nc" id="L239">                throw new IdException(&quot;id == 0 &quot;);</span>
+<span class="nc bnc" id="L244" title="All 2 branches missed.">            if (id == 0)</span>
+<span class="nc" id="L245">                throw new IdException(&quot;id == 0 &quot;);</span>
 
-<span class="nc" id="L241">        }catch (IdException  e)</span>
+<span class="nc" id="L247">        }catch (IdException | FileNotFoundException e)</span>
         {
 
-<span class="nc" id="L244">            Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR);</span>
+<span class="nc" id="L250">            Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR);</span>
 
-<span class="nc" id="L246">        }</span>
+<span class="nc" id="L252">        }</span>
 
-<span class="nc" id="L248">        return id;</span>
-
+<span class="nc" id="L254">        return id;</span>
     }
 
     /*

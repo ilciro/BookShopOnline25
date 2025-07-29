@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.*;
 import laptop.exception.IdException;
+import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
@@ -94,6 +95,31 @@ class TestDemo {
         //cancello fattura
        assertTrue(cAP.cancellaFattura(pf.getIdFattura(), MEMORIA));
 
+    }
+
+    @Test
+    void testAnnullaGiornaleCCredito() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException, DocumentException, URISyntaxException {
+        vis.setTipologiaApplicazione("demo");
+        vis.setTypeAsDaily();
+        vis.setMetodoP("cCredito");
+        //inizializzo lista
+        cHP.persistenza(vis.getType());
+        //scelgo id
+        cCV.checkId(1,MEMORIA,vis.getType());
+        //setto id
+        vis.setIdGiornale(1);
+        //visualizza
+        cV.getID();
+        cV.getListGiornale(MEMORIA);
+        //scelgo quantita e prezzo
+        cA.getPrezzo("3",MEMORIA);
+        //controllo correttezza cc
+        cPCC.correttezza("1952-7488-1111-5252","2030/09/09","841");
+        //effettuo pagamento
+        cPCC.pagamentoCC("prova",MEMORIA,"prova");
+        //annullo pagamento
+        PagamentoCartaCredito pCC=cAP.getPagamentoCartaCredito(MEMORIA).get(0);
+        assertTrue(cAP.cancellaPagamentoCC(pCC.getIdPagCC(),MEMORIA));
     }
 
 

@@ -96,17 +96,17 @@ public class ControllerAnnullaPagamento  {
         switch (persistency) {
             case DATABASE ->
             {
-                pPF=new ContrassegnoDao();
+                pPCC=new PagamentoCartaCreditoDao();
                 pT=new PagamentoTotaleDao();
             }
             case FILE ->
             {
-                pPF=new CsvFattura();
+                pPCC=new CsvPagamentoCartaCredito();
                 pT=new PagamentoTotaleCsv();
             }
             case MEMORIA ->
             {
-                pPF=new MemoriaFattura();
+                pPCC=new MemoriaPagamentoCartaCredito();
                 pT=new PagamentoTotaleMemoria();
             }
             default -> Logger.getLogger("cancella pagamento cc").log(Level.SEVERE, "error with persistency");
