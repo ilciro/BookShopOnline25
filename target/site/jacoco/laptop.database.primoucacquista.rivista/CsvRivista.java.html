@@ -376,20 +376,20 @@ public class CsvRivista extends PersistenzaRivista {
 <span class="fc" id="L376">                String[] files = directory.list();</span>
 
 <span class="pc bpc" id="L378" title="1 of 2 branches missed.">                assert files != null;</span>
-<span class="pc bpc" id="L379" title="2 of 4 branches missed.">                if ( files.length == 0 || !this.fdR.exists()) {</span>
-<span class="nc" id="L380">                    throw new IOException(&quot;cartella vuota&quot;);</span>
+<span class="pc bpc" id="L379" title="1 of 4 branches missed.">                if ( files.length == 0 || !this.fdR.exists()) {</span>
+<span class="fc" id="L380">                    throw new IOException(&quot;cartella vuota&quot;);</span>
                 }
 
             }
 
 
-<span class="nc" id="L386">        } catch (IOException eFile) {</span>
+<span class="fc" id="L386">        } catch (IOException eFile) {</span>
 
-<span class="nc" id="L388">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
+<span class="fc" id="L388">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
 
-<span class="nc" id="L390">            Files.copy(Path.of(RIVISTAP), Path.of(LOCATIONR), REPLACE_EXISTING);</span>
+<span class="fc" id="L390">            Files.copy(Path.of(RIVISTAP), Path.of(LOCATIONR), REPLACE_EXISTING);</span>
 
-<span class="nc" id="L392">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
+<span class="fc" id="L392">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
 <span class="fc" id="L393">        }</span>
 <span class="fc" id="L394">    }</span>
     private static void cleanUp(Path path) throws IOException {

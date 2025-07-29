@@ -145,7 +145,7 @@ public class BoundaryPagamentoCash implements Initializable{
 					nomeTF.setEditable(false);
 					cognomeTF.setEditable(false);
 				}
-				if(vis.getTipologiaApplicazione().equals("demo"))
+				if(vis.getTipologiaApplicazione().equals("demo") && !vis.getIsLogged())
 				{
 					databaseButton.setVisible(false);
 					fileButton.setVisible(false);

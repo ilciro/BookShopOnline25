@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PagamentoTotaleMemoria.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.primoucacquista.pagamentototale</a> &gt; <span class="el_source">PagamentoTotaleMemoria.java</span></div><h1>PagamentoTotaleMemoria.java</h1><pre class="source lang-java linenums">package laptop.database.primoucacquista.pagamentototale;
+
+import com.opencsv.exceptions.CsvValidationException;
+import laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito;
+import laptop.database.primoucacquista.pagamentofattura.MemoriaFattura;
+import laptop.model.pagamento.Pagamento;
+import laptop.model.pagamento.PagamentoCartaCredito;
+import laptop.model.pagamento.PagamentoFattura;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+<span class="fc" id="L17">public class PagamentoTotaleMemoria extends PagamentoTotale{</span>
+    private static final String SERIALIZZAZIONE=&quot;memory/serializzazionePagamentoTotale.ser&quot;;
+<span class="fc" id="L19">    private ArrayList&lt;Pagamento&gt; list=new ArrayList&lt;&gt;();</span>
+    @Override
+    public void inizializza() throws IOException {
+<span class="fc" id="L22">        Path path = Path.of(SERIALIZZAZIONE);</span>
+        try
+        {
+<span class="fc bfc" id="L25" title="All 2 branches covered.">            if(!Files.exists(path)) throw new IOException(&quot; file not exists&quot;);</span>
+<span class="fc" id="L26">        }catch (IOException e)</span>
+        {
+<span class="fc" id="L28">            Files.createFile(path);</span>
+<span class="fc" id="L29">            Logger.getLogger(&quot;inizializza memoria fattura&quot;).log(Level.INFO,&quot; file has been created&quot;);</span>
+<span class="fc" id="L30">        }</span>
+<span class="fc" id="L31">    }</span>
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public boolean inserisciPagamentoFattura(PagamentoFattura p) throws CsvValidationException, IOException, ClassNotFoundException {
+<span class="fc" id="L36">        MemoriaFattura mF = new MemoriaFattura();</span>
+
+
+<span class="fc" id="L39">        p=mF.ultimaFattura();</span>
+<span class="fc" id="L40">        try (FileInputStream fin = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L41">             ObjectInputStream ois = new ObjectInputStream(fin)) {</span>
+
+<span class="fc" id="L43">            list = (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
+
+<span class="fc" id="L45">        }catch (EOFException e)</span>
+        {
+<span class="fc" id="L47">           Logger.getLogger(&quot;lista è vuota&quot;).log(Level.SEVERE,&quot; list is empty&quot;,list.size());</span>
+<span class="fc" id="L48">        }</span>
+
+
+<span class="fc" id="L51">        list.add(p);</span>
+<span class="fc" id="L52">        Logger.getLogger(&quot;grandzezza lista dopo insert&quot;).log(Level.INFO,&quot; list size after insert : .{0}&quot;,list.size());</span>
+
+
+
+<span class="fc" id="L56">        try (FileOutputStream fout = new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L57">             ObjectOutputStream oos = new ObjectOutputStream(fout)) {</span>
+<span class="fc" id="L58">            oos.writeObject(list);</span>
+        }
+
+<span class="fc" id="L61">        return true;</span>
+
+    }
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito p ) throws IOException, CsvValidationException, ClassNotFoundException {
+<span class="fc" id="L68">        MemoriaPagamentoCartaCredito pCC=new MemoriaPagamentoCartaCredito();</span>
+
+<span class="fc" id="L70">        p=pCC.ultimoPagamentoCartaCredito();</span>
+<span class="fc" id="L71">        try (FileInputStream fin = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L72">             ObjectInputStream ois = new ObjectInputStream(fin)) {</span>
+
+<span class="fc" id="L74">            list = (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
+
+<span class="fc" id="L76">        }catch (EOFException e)</span>
+        {
+<span class="fc" id="L78">            Logger.getLogger(&quot;inserisci pagamento cc&quot;).log(Level.SEVERE,&quot; excepion :.&quot;,e);</span>
+<span class="fc" id="L79">        }</span>
+
+<span class="fc" id="L81">        list.add(p);</span>
+
+
+<span class="fc" id="L84">        try (FileOutputStream fout = new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L85">             ObjectOutputStream oos = new ObjectOutputStream(fout)) {</span>
+<span class="fc" id="L86">            oos.writeObject(list);</span>
+        }
+<span class="fc" id="L88">        return true;</span>
+    }
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public boolean cancellaFattura(PagamentoFattura p) throws IOException, ClassNotFoundException {
+<span class="fc" id="L94">        boolean status = false;</span>
+<span class="fc" id="L95">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L96">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
+<span class="fc" id="L97">            list = (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
+        }
+<span class="pc bpc" id="L99" title="1 of 2 branches missed.">        for (int i = 1; i &lt;= list.size(); i++) {</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">            if (i == p.getIdFattura()) {</span>
+<span class="fc" id="L101">                Logger.getLogger(&quot;cancella fattura&quot;).log(Level.INFO,&quot;id payment {0}.&quot;,p.getIdFattura());</span>
+
+<span class="fc" id="L103">                status = list.remove(list.get(i - 1));</span>
+<span class="fc" id="L104">                break;</span>
+            }
+        }
+<span class="fc" id="L107">        return status;</span>
+    }
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException {
+<span class="fc" id="L113">        boolean status = false;</span>
+<span class="fc" id="L114">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L115">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
+<span class="fc" id="L116">            list = (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
+        }
+<span class="pc bpc" id="L118" title="1 of 2 branches missed.">        for (int i = 1; i &lt;= list.size(); i++) {</span>
+<span class="pc bpc" id="L119" title="1 of 2 branches missed.">            if (i == pCC.getIdPagCC()) {</span>
+<span class="fc" id="L120">                Logger.getLogger(&quot;cancella pagaemnto cc&quot;).log(Level.INFO,&quot;id payment {0}.&quot;,pCC.getIdPagCC());</span>
+
+<span class="fc" id="L122">                status = list.remove(list.get(i - 1));</span>
+<span class="fc" id="L123">                break;</span>
+            }
+        }
+<span class="fc" id="L126">        return status;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

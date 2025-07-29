@@ -1,5 +1,6 @@
+demo/primoucacquista/TestDemoAcquista.class
+demo/secondouclogin/TestDemoLogin.class
 primoucacquista/TestAcquistoLibro.class
 primoucacquista/TestAcquistoGiornale.class
 primoucacquista/TestAcquistoRivista.class
-demo/TestDemo.class
 primoucacquista/TestRicerca.class

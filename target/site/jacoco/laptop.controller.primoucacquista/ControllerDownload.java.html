@@ -50,9 +50,9 @@ public class ControllerDownload {
 	private static final String FILE=&quot;file&quot;;
 	private static final String MEMORIA=&quot;memoria&quot;;
 
-	private static PersistenzaLibro pL;
-	private static PersistenzaGiornale pG ;
-	private static PersistenzaRivista pR;
+	private  PersistenzaLibro pL;
+	private  PersistenzaGiornale pG ;
+	private  PersistenzaRivista pR;
 
 
 
@@ -134,10 +134,10 @@ public class ControllerDownload {
 <span class="fc" id="L134">		r.scarica(vis.getIdRivista());</span>
 <span class="fc" id="L135">		r.leggi(vis.getIdRivista());</span>
 
-<span class="pc bpc" id="L137" title="2 of 4 branches missed.">        switch (persistenza) {</span>
+<span class="pc bpc" id="L137" title="1 of 4 branches missed.">        switch (persistenza) {</span>
 <span class="fc" id="L138">            case DATABASE -&gt; pR = new RivistaDao();</span>
 <span class="fc" id="L139">            case FILE -&gt; pR = new CsvRivista();</span>
-<span class="nc" id="L140">            case MEMORIA -&gt; pR = new MemoriaRivista();</span>
+<span class="fc" id="L140">            case MEMORIA -&gt; pR = new MemoriaRivista();</span>
 <span class="nc" id="L141">			default -&gt; Logger.getLogger(&quot;acquista rivista&quot;).log(Level.SEVERE,&quot; error with magazine persistency &quot;);</span>
 
 		}

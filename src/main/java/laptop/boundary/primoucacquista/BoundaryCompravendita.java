@@ -137,14 +137,16 @@ public class BoundaryCompravendita implements Initializable {
 	}
 	@FXML
 	private void homePage() throws IOException {
+		if(controllaPersistenza()!=null) {
 
-		Stage stage;
-		Parent root;
-		stage = (Stage) buttonHomePage.getScene().getWindow();
-		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+			Stage stage;
+			Parent root;
+			stage = (Stage) buttonHomePage.getScene().getWindow();
+			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		}
 
 
 
@@ -156,7 +158,7 @@ public class BoundaryCompravendita implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
         cCV = new ControllerCompravendita();
-		if(vis.getTipologiaApplicazione().equals("demo"))
+		if(vis.getTipologiaApplicazione().equals("demo") && !vis.getIsLogged())
 		{
 			buttonDatabase.setVisible(false);
 			buttonFile.setVisible(false);
@@ -166,6 +168,10 @@ public class BoundaryCompravendita implements Initializable {
                 case "rivista" -> idOggetto.setText("3");
 				default -> Logger.getLogger("initialize").log(Level.SEVERE," type of object is null");
             }
+		}else if(vis.getTipologiaApplicazione().equals("demo") && vis.getIsLogged())
+		{
+			buttonDatabase.setVisible(false);
+			buttonFile.setVisible(false);
 		}
 
 
@@ -181,7 +187,7 @@ public class BoundaryCompravendita implements Initializable {
 			copieRimaste.setCellValueFactory(new PropertyValueFactory<>("nrCopie"));
 
 		}
-		else if(ControllerSystemState.getInstance().getType().equals("giornale"))
+		else if(vis.getType().equals("giornale"))
 		{
 			header.setText("elenco giornali presenti nel db");
 			titolo.setCellValueFactory(new PropertyValueFactory<>(TITOLOS));

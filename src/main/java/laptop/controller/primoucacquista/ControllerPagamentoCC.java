@@ -20,20 +20,20 @@ import laptop.database.primoucacquista.libro.LibroDao;
 import laptop.database.primoucacquista.libro.MemoriaLibro;
 import laptop.database.primoucacquista.libro.PersistenzaLibro;
 
-import laptop.database.primoucacquista.pagamentoCartacredito.MemoriaPagamentoCartaCredito;
-import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotaleCsv;
-import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotaleMemoria;
+import laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito;
+import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleCsv;
+import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria;
 import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
 import laptop.database.primoucacquista.rivista.RivistaDao;
 
 
-import laptop.database.primoucacquista.pagamentoCartacredito.CsvPagamentoCartaCredito;
-import laptop.database.primoucacquista.pagamentoCartacredito.PagamentoCartaCreditoDao;
-import laptop.database.primoucacquista.pagamentoCartacredito.PersistenzaPagamentoCartaCredito;
-import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotale;
-import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotaleDao;
+import laptop.database.primoucacquista.pagamentocartacredito.CsvPagamentoCartaCredito;
+import laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCreditoDao;
+import laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito;
+import laptop.database.primoucacquista.pagamentototale.PagamentoTotale;
+import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
 import laptop.exception.IdException;
 //import laptop.model.CartaDiCredito;
 import laptop.model.pagamento.PagamentoCartaCredito;
@@ -49,23 +49,20 @@ public class ControllerPagamentoCC {
 	private final ControllerSystemState vis= ControllerSystemState.getInstance();
 
 
-//	private PersistenzaCC pCC;
-	//private CartaDiCredito cc;
+
 
 	private static final String DATABASE="database";
 	private static final String FILE="file";
 	private static final String MEMORIA="memoria";
 
-	private PersistenzaLibro pL;
+	private  PersistenzaLibro pL;
 	private PersistenzaGiornale pG;
 	private PersistenzaRivista pR;
     private PagamentoTotale pT;
 	private PersistenzaPagamentoCartaCredito pCC;
-	private PagamentoCartaCredito p;
 
 
-
-	public ControllerPagamentoCC()  {
+    public ControllerPagamentoCC()  {
 
 
 
@@ -130,7 +127,9 @@ public class ControllerPagamentoCC {
 		vis.setTipoModifica("insert");
 
 
-		switch (vis.getType()) {
+        PagamentoCartaCredito p;
+
+        switch (vis.getType()) {
 			case "libro" -> {
 				Libro l=new Libro();
 				l.setId(vis.getIdLibro());
@@ -143,7 +142,7 @@ public class ControllerPagamentoCC {
 					default -> Logger.getLogger(" errore cpn la persistenza nel libro").log(Level.SEVERE,"persisentcy book error !!");
 				}
 				tipo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();
-				 p=new PagamentoCartaCredito(0,"cCcredito",nome, vis.getSpesaT(),mail,tipo,id );
+				 p =new PagamentoCartaCredito(0,"cCcredito",nome, vis.getSpesaT(),mail,tipo,id );
 				 p.setCognomeUtente(cognome);
 
 			}
@@ -160,7 +159,7 @@ public class ControllerPagamentoCC {
 					default -> Logger.getLogger(" errore cpn la persistenza nel giornale").log(Level.SEVERE,"persisentcy daily error !!");
 				}
 				tipo=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria();
-				p=new PagamentoCartaCredito(0,"cCcredito",nome, vis.getSpesaT(),mail,tipo,id );
+				p =new PagamentoCartaCredito(0,"cCcredito",nome, vis.getSpesaT(),mail,tipo,id );
 				p.setCognomeUtente(cognome);
 				}
 			case "rivista" -> {
@@ -175,7 +174,7 @@ public class ControllerPagamentoCC {
 					default -> Logger.getLogger(" errore cpn la persistenza nella rivista").log(Level.SEVERE,"persisentcy magazine error !!");
 				}
 				tipo= pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();
-				p=new PagamentoCartaCredito(0,"cCcredito",nome, vis.getSpesaT(),mail,tipo,id );
+				p =new PagamentoCartaCredito(0,"cCcredito",nome, vis.getSpesaT(),mail,tipo,id );
 				p.setCognomeUtente(cognome);
 
 			}

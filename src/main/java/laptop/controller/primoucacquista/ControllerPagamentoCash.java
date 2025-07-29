@@ -18,26 +18,25 @@ import laptop.database.primoucacquista.libro.CsvLibro;
 import laptop.database.primoucacquista.libro.LibroDao;
 import laptop.database.primoucacquista.libro.MemoriaLibro;
 import laptop.database.primoucacquista.libro.PersistenzaLibro;
-import laptop.database.primoucacquista.pagamentoFattura.CsvFattura;
-import laptop.database.primoucacquista.pagamentoFattura.MemoriaFattura;
-import laptop.database.primoucacquista.pagamentoFattura.PersistenzaPagamentoFattura;
-import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotale;
-import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotaleCsv;
-import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotaleDao;
-import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotaleMemoria;
+import laptop.database.primoucacquista.pagamentofattura.CsvFattura;
+import laptop.database.primoucacquista.pagamentofattura.MemoriaFattura;
+import laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura;
+import laptop.database.primoucacquista.pagamentototale.PagamentoTotale;
+import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleCsv;
+import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
+import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria;
 import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
 import laptop.database.primoucacquista.rivista.RivistaDao;
 import laptop.exception.IdException;
-import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Rivista;
 import laptop.model.user.User;
 
-import laptop.database.primoucacquista.pagamentoFattura.ContrassegnoDao;
+import laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao;
 
 
 public class ControllerPagamentoCash {
@@ -45,8 +44,7 @@ public class ControllerPagamentoCash {
 	private final ControllerSystemState vis= ControllerSystemState.getInstance();
 	private PagamentoTotale pT;
 	private PersistenzaPagamentoFattura pF;
-	private PagamentoFattura p;
-	private static final String DATABASE="database";
+    private static final String DATABASE="database";
 	private static final String FILE="file";
 	private static final String MEMORIA="memoria";
 	private static final String LIBRO="libro";
@@ -91,7 +89,7 @@ public class ControllerPagamentoCash {
         };
 
 
-        p = new PagamentoFattura(nome, cognome, via, com, vis.getSpesaT(), 0,id);
+        PagamentoFattura p = new PagamentoFattura(nome, cognome, via, com, vis.getSpesaT(), 0, id);
 		p.setTipoAcquisto(ritornaTipoOggetto(type,vis.getType()));
 
 

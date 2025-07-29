@@ -8,13 +8,13 @@ import java.time.LocalDate;
 // this class is not singleton
 
 
-<span class="nc" id="L11">public class TempUser implements Serializable {</span>
-<span class="nc" id="L12">	enum RuoliT {</span>
-<span class="nc" id="L13">		ADMIN,</span>
-<span class="nc" id="L14">		UTENTE,</span>
-<span class="nc" id="L15">		SCRITTORE,</span>
-<span class="nc" id="L16">		EDITORE,</span>
-<span class="nc" id="L17">		NONVALIDO;</span>
+<span class="fc" id="L11">public class TempUser implements Serializable {</span>
+<span class="fc" id="L12">	enum RuoliT {</span>
+<span class="fc" id="L13">		ADMIN,</span>
+<span class="fc" id="L14">		UTENTE,</span>
+<span class="fc" id="L15">		SCRITTORE,</span>
+<span class="fc" id="L16">		EDITORE,</span>
+<span class="fc" id="L17">		NONVALIDO;</span>
  }
 	@Override
 	public String toString() {
@@ -24,60 +24,60 @@ import java.time.LocalDate;
 	
 
 	public int getId() {
-<span class="nc" id="L27">		return id;</span>
+<span class="fc" id="L27">		return id;</span>
 	}
 
 	public void setId(int id) {
-<span class="nc" id="L31">		this.id = id;</span>
-<span class="nc" id="L32">	}</span>
+<span class="fc" id="L31">		this.id = id;</span>
+<span class="fc" id="L32">	}</span>
 
 	public String getNomeT() {
-<span class="nc" id="L35">		return nomeT;</span>
+<span class="fc" id="L35">		return nomeT;</span>
 	}
 
 	public void setNomeT(String nomeT) {
-<span class="nc" id="L39">		this.nomeT = nomeT;</span>
-<span class="nc" id="L40">	}</span>
+<span class="fc" id="L39">		this.nomeT = nomeT;</span>
+<span class="fc" id="L40">	}</span>
 
 	public String getCognomeT() {
-<span class="nc" id="L43">		return cognomeT;</span>
+<span class="fc" id="L43">		return cognomeT;</span>
 	}
 
 	public void setCognomeT(String cognomeT) {
-<span class="nc" id="L47">		this.cognomeT = cognomeT;</span>
-<span class="nc" id="L48">	}</span>
+<span class="fc" id="L47">		this.cognomeT = cognomeT;</span>
+<span class="fc" id="L48">	}</span>
 
 	public String getEmailT() {
-<span class="nc" id="L51">		return emailT;</span>
+<span class="fc" id="L51">		return emailT;</span>
 	}
 
 	public void setEmailT(String emailT) {
-<span class="nc" id="L55">		this.emailT = emailT;</span>
-<span class="nc" id="L56">	}</span>
+<span class="fc" id="L55">		this.emailT = emailT;</span>
+<span class="fc" id="L56">	}</span>
 
 	public String getPasswordT() {
-<span class="nc" id="L59">		return passwordT;</span>
+<span class="fc" id="L59">		return passwordT;</span>
 	}
 
 	public void setPasswordT(String passwordT) {
-<span class="nc" id="L63">		this.passwordT = passwordT;</span>
-<span class="nc" id="L64">	}</span>
+<span class="fc" id="L63">		this.passwordT = passwordT;</span>
+<span class="fc" id="L64">	}</span>
 
 	public String getDescrizioneT() {
 <span class="nc" id="L67">		return descrizioneT;</span>
 	}
 
 	public void setDescrizioneT(String descrizioneT) {
-<span class="nc" id="L71">		this.descrizioneT = descrizioneT;</span>
-<span class="nc" id="L72">	}</span>
+<span class="fc" id="L71">		this.descrizioneT = descrizioneT;</span>
+<span class="fc" id="L72">	}</span>
 
 	public LocalDate getDataDiNascitaT() {
 <span class="nc" id="L75">		return dataDiNascitaT;</span>
 	}
 
 	public void setDataDiNascitaT(LocalDate dataDiNascitaT) {
-<span class="nc" id="L79">		this.dataDiNascitaT = dataDiNascitaT;</span>
-<span class="nc" id="L80">	}</span>
+<span class="fc" id="L79">		this.dataDiNascitaT = dataDiNascitaT;</span>
+<span class="fc" id="L80">	}</span>
 
 
 	@Serial
@@ -99,29 +99,29 @@ import java.time.LocalDate;
 
 public String getIdRuoloT()  {
 
-<span class="nc" id="L102">		return ruoloT;</span>
+<span class="fc" id="L102">		return ruoloT;</span>
 	}
 
 
 
 	public void setIdRuoloT(String ruolo) {
 
-<span class="nc bnc" id="L109" title="All 5 branches missed.">		 switch (ruolo){</span>
+<span class="pc bpc" id="L109" title="1 of 5 branches missed.">		 switch (ruolo){</span>
 			case &quot;ADMIN&quot;,&quot;A&quot;-&gt;
-<span class="nc" id="L111">				ruoloT = RuoliT.ADMIN.toString();</span>
+<span class="fc" id="L111">				ruoloT = RuoliT.ADMIN.toString();</span>
 			case &quot;EDITORE&quot;,&quot;E&quot;-&gt;
-<span class="nc" id="L113">				ruoloT = RuoliT.EDITORE.toString();</span>
+<span class="fc" id="L113">				ruoloT = RuoliT.EDITORE.toString();</span>
 			case &quot;SCRITTORE&quot;,&quot;W&quot;,&quot;S&quot;-&gt;
-<span class="nc" id="L115">				ruoloT = RuoliT.SCRITTORE.toString();</span>
+<span class="fc" id="L115">				ruoloT = RuoliT.SCRITTORE.toString();</span>
 			case &quot;UTENTE&quot;,&quot;U&quot;-&gt;
-<span class="nc" id="L117">					ruoloT = RuoliT.UTENTE.toString();</span>
+<span class="fc" id="L117">					ruoloT = RuoliT.UTENTE.toString();</span>
              default-&gt;
 <span class="nc" id="L119">				ruoloT= RuoliT.NONVALIDO.toString();</span>
 
 			}
 
 
-<span class="nc" id="L124">	}</span>
+<span class="fc" id="L124">	}</span>
 
 
 	

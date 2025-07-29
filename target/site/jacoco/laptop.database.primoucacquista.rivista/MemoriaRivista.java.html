@@ -13,25 +13,24 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 
-<span class="fc" id="L20">public class MemoriaRivista extends PersistenzaRivista{</span>
-    private static final String SERIALIZZAZIONE=&quot;memory/serializzazioneRivista.out&quot;;
-    private static final String SERIALIZZAZIONEAPPOGGIO=&quot;memory/serializzazioneRivistaAppoggio.out&quot;;
+<span class="fc" id="L19">public class MemoriaRivista extends PersistenzaRivista{</span>
+    private static final String SERIALIZZAZIONE=&quot;memory/serializzazioneRivista.ser&quot;;
+    private static final String SERIALIZZAZIONEAPPOGGIO=&quot;memory/serializzazioneRivistaAppoggio.ser&quot;;
 
-<span class="fc" id="L24">   private static final MemoryInitialize mI=new MemoryInitialize();</span>
+<span class="fc" id="L23">   private static final MemoryInitialize mI=new MemoryInitialize();</span>
     @Override
     public boolean inserisciRivista(Rivista r) throws IOException, ClassNotFoundException {
 
-<span class="nc" id="L28">        Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);</span>
-<span class="nc bnc" id="L29" title="All 2 branches missed.">        if (!Files.exists(path2))</span>
+<span class="fc" id="L27">        Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);</span>
+<span class="pc bpc" id="L28" title="1 of 2 branches missed.">        if (!Files.exists(path2))</span>
         {
-<span class="nc" id="L31">            Files.createFile(path2);</span>
+<span class="fc" id="L30">            Files.createFile(path2);</span>
         }
 
-<span class="nc" id="L34">        return mI.inserisci(null,null,r,SERIALIZZAZIONE,SERIALIZZAZIONEAPPOGGIO);</span>
+<span class="fc" id="L33">        return mI.inserisci(null,null,r,SERIALIZZAZIONE,SERIALIZZAZIONEAPPOGGIO);</span>
 
 
     }
@@ -39,7 +38,7 @@ import java.util.List;
     @Override
     public boolean removeRivistaById(Rivista r) throws IOException, ClassNotFoundException {
 
-<span class="nc" id="L42">        return mI.cancellaRivista(r);</span>
+<span class="fc" id="L41">        return mI.cancellaRivista(r);</span>
     }
 
 
@@ -47,13 +46,13 @@ import java.util.List;
     @Override
     public ObservableList&lt;Rivista&gt; getRiviste() throws IOException, ClassNotFoundException {
 
-<span class="nc" id="L50">        return FXCollections.observableList(mI.listaRiviste(SERIALIZZAZIONE));</span>
+<span class="fc" id="L49">        return FXCollections.observableList(mI.listaRiviste(SERIALIZZAZIONE));</span>
     }
 
     @Override
     public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 
-<span class="fc" id="L56">        return FXCollections.observableArrayList(mI.listaRiviste(SERIALIZZAZIONE));</span>
+<span class="fc" id="L55">        return FXCollections.observableArrayList(mI.listaRiviste(SERIALIZZAZIONE));</span>
 
 
     }
@@ -65,21 +64,21 @@ import java.util.List;
     public ObservableList&lt;Rivista&gt; getRivistaByIdTitoloAutoreRivista(Rivista r) throws IOException, ClassNotFoundException {
 
 
-<span class="fc" id="L68">        ObservableList&lt;Rivista&gt; listaRecuperata = FXCollections.observableArrayList();</span>
-<span class="fc" id="L69">        List&lt;Rivista&gt; list=mI.listaRiviste(SERIALIZZAZIONE);</span>
+<span class="fc" id="L67">        ObservableList&lt;Rivista&gt; listaRecuperata = FXCollections.observableArrayList();</span>
+<span class="fc" id="L68">        List&lt;Rivista&gt; list=mI.listaRiviste(SERIALIZZAZIONE);</span>
 
-<span class="fc bfc" id="L71" title="All 2 branches covered.">        for(int i=0;i&lt;list.size();i++)</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        for(int i=0;i&lt;list.size();i++)</span>
         {
-<span class="fc bfc" id="L73" title="All 2 branches covered.">            if(i==r.getId()-1</span>
-<span class="pc bpc" id="L74" title="1 of 2 branches missed.">                    || list.get(i).getTitolo().equals(r.getTitolo())</span>
-<span class="pc bpc" id="L75" title="1 of 2 branches missed.">                    || list.get(i).getAutore().equals(r.getAutore()))</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">            if(i==r.getId()-1</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">                    || list.get(i).getTitolo().equals(r.getTitolo())</span>
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">                    || list.get(i).getAutore().equals(r.getAutore()))</span>
             {
 
-<span class="fc" id="L78">                listaRecuperata=FXCollections.observableArrayList(list.get(i));</span>
+<span class="fc" id="L77">                listaRecuperata=FXCollections.observableArrayList(list.get(i));</span>
             }
 
         }
-<span class="fc" id="L82">        return listaRecuperata;</span>
+<span class="fc" id="L81">        return listaRecuperata;</span>
     }
 
     @Override
@@ -87,11 +86,11 @@ import java.util.List;
 
 
 
-<span class="fc" id="L90">        mI.inizializza(SERIALIZZAZIONE);</span>
+<span class="fc" id="L89">        mI.inizializza(SERIALIZZAZIONE);</span>
 
 
 
-<span class="fc" id="L94">    }</span>
+<span class="fc" id="L93">    }</span>
 
 
 

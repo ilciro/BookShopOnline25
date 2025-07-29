@@ -4,18 +4,18 @@ package laptop.controller.primoucacquista;
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import laptop.database.primoucacquista.pagamentoCartacredito.CsvPagamentoCartaCredito;
-import laptop.database.primoucacquista.pagamentoCartacredito.MemoriaPagamentoCartaCredito;
-import laptop.database.primoucacquista.pagamentoCartacredito.PagamentoCartaCreditoDao;
-import laptop.database.primoucacquista.pagamentoCartacredito.PersistenzaPagamentoCartaCredito;
-import laptop.database.primoucacquista.pagamentoFattura.ContrassegnoDao;
-import laptop.database.primoucacquista.pagamentoFattura.CsvFattura;
-import laptop.database.primoucacquista.pagamentoFattura.MemoriaFattura;
-import laptop.database.primoucacquista.pagamentoFattura.PersistenzaPagamentoFattura;
-import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotale;
-import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotaleCsv;
-import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotaleDao;
-import laptop.database.primoucacquista.pagamentoTotale.PagamentoTotaleMemoria;
+import laptop.database.primoucacquista.pagamentocartacredito.CsvPagamentoCartaCredito;
+import laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito;
+import laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCreditoDao;
+import laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito;
+import laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao;
+import laptop.database.primoucacquista.pagamentofattura.CsvFattura;
+import laptop.database.primoucacquista.pagamentofattura.MemoriaFattura;
+import laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura;
+import laptop.database.primoucacquista.pagamentototale.PagamentoTotale;
+import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleCsv;
+import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
+import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
 
@@ -30,9 +30,7 @@ public class ControllerAnnullaPagamento  {
     private static final String MEMORIA="memoria";
 
     private PersistenzaPagamentoFattura pPF;
-    private  PagamentoFattura pF;
     private PersistenzaPagamentoCartaCredito pPCC;
-    private PagamentoCartaCredito pCC;
     private PagamentoTotale pT;
 
 
@@ -73,7 +71,7 @@ public class ControllerAnnullaPagamento  {
                     }
             default -> Logger.getLogger("persistenza errata").log(Level.SEVERE, " persistency is wrong or null!!");
         }
-        pF=new PagamentoFattura();
+        PagamentoFattura pF = new PagamentoFattura();
         pF.setIdFattura(idFattura);
         return pPF.cancellaPagamentoFattura(pF) && pT.cancellaFattura(pF);
     }
@@ -111,7 +109,7 @@ public class ControllerAnnullaPagamento  {
             }
             default -> Logger.getLogger("cancella pagamento cc").log(Level.SEVERE, "error with persistency");
         }
-        pCC=new PagamentoCartaCredito();
+        PagamentoCartaCredito pCC = new PagamentoCartaCredito();
         pCC.setIdPagCC(idPagamentoCC);
         return pPCC.cancellaPagamentoCartaCredito(pCC) && pT.cancellaPagamentoCC(pCC);
     }

@@ -13,13 +13,12 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class MemoriaRivista extends PersistenzaRivista{
-    private static final String SERIALIZZAZIONE="memory/serializzazioneRivista.out";
-    private static final String SERIALIZZAZIONEAPPOGGIO="memory/serializzazioneRivistaAppoggio.out";
+    private static final String SERIALIZZAZIONE="memory/serializzazioneRivista.ser";
+    private static final String SERIALIZZAZIONEAPPOGGIO="memory/serializzazioneRivistaAppoggio.ser";
 
    private static final MemoryInitialize mI=new MemoryInitialize();
     @Override

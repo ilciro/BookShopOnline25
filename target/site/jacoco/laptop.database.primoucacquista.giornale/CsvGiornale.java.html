@@ -389,20 +389,20 @@ public class CsvGiornale extends PersistenzaGiornale{
 
 
 <span class="pc bpc" id="L391" title="1 of 2 branches missed.">                assert files != null;</span>
-<span class="pc bpc" id="L392" title="2 of 4 branches missed.">                if ( files.length == 0 || !this.fdG.exists()) {</span>
-<span class="nc" id="L393">                    throw new IOException(&quot;cartella vuota&quot;);</span>
+<span class="pc bpc" id="L392" title="1 of 4 branches missed.">                if ( files.length == 0 || !this.fdG.exists()) {</span>
+<span class="fc" id="L393">                    throw new IOException(&quot;cartella vuota&quot;);</span>
                 }
 
             }
 
 
-<span class="nc" id="L399">        } catch (IOException eFile) {</span>
+<span class="fc" id="L399">        } catch (IOException eFile) {</span>
 
-<span class="nc" id="L401">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
+<span class="fc" id="L401">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
 
-<span class="nc" id="L403">            Files.copy(Path.of(GIORNALEP), Path.of(LOCATIONG), REPLACE_EXISTING);</span>
+<span class="fc" id="L403">            Files.copy(Path.of(GIORNALEP), Path.of(LOCATIONG), REPLACE_EXISTING);</span>
 
-<span class="nc" id="L405">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
+<span class="fc" id="L405">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
 <span class="fc" id="L406">        }</span>
 
 <span class="fc" id="L408">    }</span>

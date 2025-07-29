@@ -209,6 +209,7 @@ public class BoundaryHomePage implements Initializable {
 				stage.setScene(scene);
 				stage.show();
 			}
+		else throw new IOException("gestione "+PERSISTENZANULLA);
 
 
 
@@ -222,19 +223,25 @@ public class BoundaryHomePage implements Initializable {
 
 		if(vis.getTipologiaApplicazione().equals("demo"))
 		{
-			imageLogin.setVisible(false);
 			imageRicerca.setVisible(false);
 			imageGestione.setVisible(false);
 			imageVisualizza.setVisible(false);
 			checkDataBase.setVisible(false);
 			checkFile.setVisible(false);
-			buttonLogin.setVisible(false);
 			buttonRicerca.setVisible(false);
 			buttonGestione.setVisible(false);
 			buttonVisualizza.setVisible(false);
 			buttonI.setVisible(false);
 			tArea.setVisible(false);
 			header.setText(header.getText()+" versione demo con persistenza volatile");
+
+			if(vis.getIsLogged())
+			{
+				buttonLogin.setVisible(false);
+				imageLogin.setVisible(false);
+				buttonI.setVisible(true);
+
+			}
 
 
 
@@ -299,6 +306,8 @@ public class BoundaryHomePage implements Initializable {
 				buttonGestione.setVisible(false);
 				buttonI.setVisible(false);
 			}
+
+
 		}
 
 

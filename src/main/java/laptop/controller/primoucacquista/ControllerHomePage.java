@@ -36,9 +36,9 @@ public class ControllerHomePage {
     private static final String FILE="file";
     private static final String MEMORIA="memoria";
 
-    private static PersistenzaLibro pL;
-    private static PersistenzaGiornale pG;
-    private static PersistenzaRivista pR;
+    private  PersistenzaLibro pL;
+    private  PersistenzaGiornale pG;
+    private  PersistenzaRivista pR;
 
 
     private void inizializzaLibro(String type) throws CsvValidationException, IOException, ClassNotFoundException, SQLException, IdException {

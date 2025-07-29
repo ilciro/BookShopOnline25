@@ -309,7 +309,7 @@ public class 	Libro implements Raccolta , Serializable  {
 
 		//here is copy of file
 
-<span class="pc bpc" id="L312" title="11 of 13 branches missed.">			switch (i) {</span>
+<span class="pc bpc" id="L312" title="10 of 13 branches missed.">			switch (i) {</span>
 <span class="nc" id="L313">				case 1 -&gt;createPDF(rbTitoli.getString(&quot;titolo1&quot;));</span>
 <span class="nc" id="L314">				case 2 -&gt; createPDF(rbTitoli.getString(&quot;titolo2&quot;));</span>
 <span class="nc" id="L315">				case 3-&gt; createPDF(rbTitoli.getString(&quot;titolo3&quot;));</span>
@@ -317,7 +317,7 @@ public class 	Libro implements Raccolta , Serializable  {
 <span class="nc" id="L317">				case 5-&gt;createPDF(rbTitoli.getString(&quot;titolo5&quot;));</span>
 <span class="fc" id="L318">				case 6-&gt;createPDF(rbTitoli.getString(&quot;titolo6&quot;));</span>
 <span class="nc" id="L319">				case 7-&gt; createPDF(rbTitoli.getString(&quot;titolo7&quot;));</span>
-<span class="nc" id="L320">				case 8-&gt;createPDF(rbTitoli.getString(&quot;titolo8&quot;));</span>
+<span class="fc" id="L320">				case 8-&gt;createPDF(rbTitoli.getString(&quot;titolo8&quot;));</span>
 <span class="nc" id="L321">				case 9-&gt; createPDF(rbTitoli.getString(&quot;titolo9&quot;));</span>
 <span class="fc" id="L322">				case 10-&gt;createPDF(rbTitoli.getString(&quot;titolo10&quot;));</span>
 <span class="nc" id="L323">				case 11-&gt;createPDF(rbTitoli.getString(&quot;titolo11&quot;));</span>
@@ -335,7 +335,7 @@ public class 	Libro implements Raccolta , Serializable  {
 	@Override
 	public void leggi(int i) throws IOException, DocumentException, URISyntaxException {
 
-<span class="pc bpc" id="L338" title="11 of 13 branches missed.">		switch (i) {</span>
+<span class="pc bpc" id="L338" title="10 of 13 branches missed.">		switch (i) {</span>
 <span class="nc" id="L339">			case 1 -&gt; this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo1&quot;));</span>
 <span class="nc" id="L340">			case 2-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo2&quot;));</span>
 <span class="nc" id="L341">			case 3-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo3&quot;));</span>
@@ -343,7 +343,7 @@ public class 	Libro implements Raccolta , Serializable  {
 <span class="nc" id="L343">			case 5-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo5&quot;));</span>
 <span class="fc" id="L344">			case 6-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo6&quot;));</span>
 <span class="nc" id="L345">			case 7-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo7&quot;));</span>
-<span class="nc" id="L346">			case 8-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo8&quot;));</span>
+<span class="fc" id="L346">			case 8-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo8&quot;));</span>
 <span class="nc" id="L347">			case 9-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo9&quot;));</span>
 <span class="fc" id="L348">			case 10-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo10&quot;));</span>
 <span class="nc" id="L349">			case 11-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo11&quot;));</span>
