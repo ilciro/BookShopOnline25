@@ -32,8 +32,8 @@ public class 	Libro implements Raccolta , Serializable  {
 	private int disponibilita;
 	private float prezzo;
 	private int id;
-<span class="pc" id="L35">	private String[] infoGenerali = new String[7];</span>
-<span class="pc" id="L36">	private String[] infoCostiDisp = new String[5];</span>
+<span class="fc" id="L35">	private String[] infoGenerali = new String[7];</span>
+<span class="fc" id="L36">	private String[] infoCostiDisp = new String[5];</span>
 	private static final String DSTPATH=&quot;dstPath&quot;;
 
 	private  File f;
@@ -51,7 +51,7 @@ public class 	Libro implements Raccolta , Serializable  {
 	}
 
 	public String getCodIsbn() {
-<span class="nc" id="L54">		return this.codIsbn;</span>
+<span class="fc" id="L54">		return this.codIsbn;</span>
 	}
 
 	public String getEditore() {
@@ -63,7 +63,7 @@ public class 	Libro implements Raccolta , Serializable  {
 	}
 
 	public String getLingua() {
-<span class="nc" id="L66">		return this.lingua;</span>
+<span class="fc" id="L66">		return this.lingua;</span>
 	}
 
 	public String getCategoria() {
@@ -71,11 +71,11 @@ public class 	Libro implements Raccolta , Serializable  {
 	}
 
 	public LocalDate getDataPubb() {
-<span class="nc" id="L74">		return this.dataPubb;</span>
+<span class="fc" id="L74">		return this.dataPubb;</span>
 	}
 
 	public String getRecensione() {
-<span class="nc" id="L78">		return this.recensione;</span>
+<span class="fc" id="L78">		return this.recensione;</span>
 	}
 
 	public int getNrCopie() {
@@ -83,11 +83,11 @@ public class 	Libro implements Raccolta , Serializable  {
 	}
 
 	public String getDesc() {
-<span class="nc" id="L86">		return this.descrizione;</span>
+<span class="fc" id="L86">		return this.descrizione;</span>
 	}
 
 	public int getDisponibilita() {
-<span class="nc" id="L90">		return this.disponibilita;</span>
+<span class="fc" id="L90">		return this.disponibilita;</span>
 	}
 
 	public float getPrezzo() {
@@ -139,7 +139,7 @@ public class 	Libro implements Raccolta , Serializable  {
 <span class="fc" id="L139">	}</span>
 
 
-<span class="pc" id="L142">	private final transient ResourceBundle rbTitoli=ResourceBundle.getBundle(&quot;configurations/titles&quot;);</span>
+<span class="fc" id="L142">	private final transient ResourceBundle rbTitoli=ResourceBundle.getBundle(&quot;configurations/titles&quot;);</span>
 
 	public int getId() {
 <span class="fc" id="L145">		return id;</span>
@@ -309,7 +309,7 @@ public class 	Libro implements Raccolta , Serializable  {
 
 		//here is copy of file
 
-<span class="pc bpc" id="L312" title="12 of 13 branches missed.">			switch (i) {</span>
+<span class="pc bpc" id="L312" title="11 of 13 branches missed.">			switch (i) {</span>
 <span class="nc" id="L313">				case 1 -&gt;createPDF(rbTitoli.getString(&quot;titolo1&quot;));</span>
 <span class="nc" id="L314">				case 2 -&gt; createPDF(rbTitoli.getString(&quot;titolo2&quot;));</span>
 <span class="nc" id="L315">				case 3-&gt; createPDF(rbTitoli.getString(&quot;titolo3&quot;));</span>
@@ -319,7 +319,7 @@ public class 	Libro implements Raccolta , Serializable  {
 <span class="nc" id="L319">				case 7-&gt; createPDF(rbTitoli.getString(&quot;titolo7&quot;));</span>
 <span class="nc" id="L320">				case 8-&gt;createPDF(rbTitoli.getString(&quot;titolo8&quot;));</span>
 <span class="nc" id="L321">				case 9-&gt; createPDF(rbTitoli.getString(&quot;titolo9&quot;));</span>
-<span class="nc" id="L322">				case 10-&gt;createPDF(rbTitoli.getString(&quot;titolo10&quot;));</span>
+<span class="fc" id="L322">				case 10-&gt;createPDF(rbTitoli.getString(&quot;titolo10&quot;));</span>
 <span class="nc" id="L323">				case 11-&gt;createPDF(rbTitoli.getString(&quot;titolo11&quot;));</span>
 <span class="nc" id="L324">				case 12,13,14,15,16,17,18,19-&gt;createPDF(rbTitoli.getString(&quot;titolo12&quot;));</span>
 
@@ -335,7 +335,7 @@ public class 	Libro implements Raccolta , Serializable  {
 	@Override
 	public void leggi(int i) throws IOException, DocumentException, URISyntaxException {
 
-<span class="pc bpc" id="L338" title="12 of 13 branches missed.">		switch (i) {</span>
+<span class="pc bpc" id="L338" title="11 of 13 branches missed.">		switch (i) {</span>
 <span class="nc" id="L339">			case 1 -&gt; this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo1&quot;));</span>
 <span class="nc" id="L340">			case 2-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo2&quot;));</span>
 <span class="nc" id="L341">			case 3-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo3&quot;));</span>
@@ -345,7 +345,7 @@ public class 	Libro implements Raccolta , Serializable  {
 <span class="nc" id="L345">			case 7-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo7&quot;));</span>
 <span class="nc" id="L346">			case 8-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo8&quot;));</span>
 <span class="nc" id="L347">			case 9-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo9&quot;));</span>
-<span class="nc" id="L348">			case 10-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo10&quot;));</span>
+<span class="fc" id="L348">			case 10-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo10&quot;));</span>
 <span class="nc" id="L349">			case 11-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo11&quot;));</span>
 <span class="nc" id="L350">			case 12,13,14,15,16,17,18,19-&gt;this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString(&quot;titolo12&quot;));</span>
 
@@ -367,54 +367,54 @@ public class 	Libro implements Raccolta , Serializable  {
 	/*
 	 * provo a levare i codeSmells &gt; 7 paramentri
 	 */
-<span class="nc" id="L370">	public Libro(String[] info, LocalDate dataPubb,  String recensione, String descrizione,String [] prezzi) {</span>
-<span class="nc" id="L371">		this.infoGenerali=info;</span>
-<span class="nc" id="L372">		this.infoCostiDisp=prezzi;</span>
-<span class="nc" id="L373">		this.descrizione=descrizione;</span>
-<span class="nc" id="L374">		this.recensione=recensione;</span>
-<span class="nc" id="L375">		this.dataPubb = dataPubb;</span>
+<span class="fc" id="L370">	public Libro(String[] info, LocalDate dataPubb,  String recensione, String descrizione,String [] prezzi) {</span>
+<span class="fc" id="L371">		this.infoGenerali=info;</span>
+<span class="fc" id="L372">		this.infoCostiDisp=prezzi;</span>
+<span class="fc" id="L373">		this.descrizione=descrizione;</span>
+<span class="fc" id="L374">		this.recensione=recensione;</span>
+<span class="fc" id="L375">		this.dataPubb = dataPubb;</span>
 
-<span class="nc" id="L377">		this.titolo=info[0];</span>
-<span class="nc" id="L378">		this.codIsbn=info[1];</span>
-<span class="nc" id="L379">		this.editore=info[2];</span>
-<span class="nc" id="L380">		this.autore=info[3];</span>
-<span class="nc" id="L381">		this.lingua=info[4];</span>
-<span class="nc" id="L382">		this.categoria=info[5];</span>
-
-
+<span class="fc" id="L377">		this.titolo=info[0];</span>
+<span class="fc" id="L378">		this.codIsbn=info[1];</span>
+<span class="fc" id="L379">		this.editore=info[2];</span>
+<span class="fc" id="L380">		this.autore=info[3];</span>
+<span class="fc" id="L381">		this.lingua=info[4];</span>
+<span class="fc" id="L382">		this.categoria=info[5];</span>
 
 
 
-<span class="nc" id="L388">		this.nrPagine=Integer.parseInt(prezzi[0]);</span>
-
-<span class="nc" id="L390">		this.nrCopie=Integer.parseInt(prezzi[1]);</span>
-<span class="nc" id="L391">		this.disponibilita=Integer.parseInt(prezzi[2]);</span>
-<span class="nc" id="L392">		this.prezzo=Float.parseFloat(prezzi[3]);</span>
-<span class="nc" id="L393">		this.id= Integer.parseInt(prezzi[4]);</span>
 
 
+<span class="fc" id="L388">		this.nrPagine=Integer.parseInt(prezzi[0]);</span>
 
-<span class="nc" id="L397">	}</span>
+<span class="fc" id="L390">		this.nrCopie=Integer.parseInt(prezzi[1]);</span>
+<span class="fc" id="L391">		this.disponibilita=Integer.parseInt(prezzi[2]);</span>
+<span class="fc" id="L392">		this.prezzo=Float.parseFloat(prezzi[3]);</span>
+<span class="fc" id="L393">		this.id= Integer.parseInt(prezzi[4]);</span>
+
+
+
+<span class="fc" id="L397">	}</span>
 
 	public String[] getInfoGenerali() {
-<span class="nc" id="L400">		return infoGenerali;</span>
+<span class="fc" id="L400">		return infoGenerali;</span>
 	}
 
 	public void setInfoGenerali(String[] infoGenerali) {
-<span class="nc" id="L404">		this.infoGenerali = infoGenerali;</span>
-<span class="nc" id="L405">	}</span>
+<span class="fc" id="L404">		this.infoGenerali = infoGenerali;</span>
+<span class="fc" id="L405">	}</span>
 
 	public String[] getInfoCostiDisp() {
-<span class="nc" id="L408">		return infoCostiDisp;</span>
+<span class="fc" id="L408">		return infoCostiDisp;</span>
 	}
 
 	public void setInfoCostiDisp(String[] infoCostiDisp) {
-<span class="nc" id="L412">		this.infoCostiDisp = infoCostiDisp;</span>
-<span class="nc" id="L413">	}</span>
+<span class="fc" id="L412">		this.infoCostiDisp = infoCostiDisp;</span>
+<span class="fc" id="L413">	}</span>
 
 
 	public int getNrPagine() {
-<span class="nc" id="L417">		return nrPagine;</span>
+<span class="fc" id="L417">		return nrPagine;</span>
 	}
 
 	public void setNrPagine(int nrPagine) {

@@ -65,6 +65,8 @@ public class ControllerPagamentoCash {
 			case DATABASE -> pT=new PagamentoTotaleDao();
 			case FILE -> pT=new PagamentoTotaleCsv();
 			case MEMORIA -> pT=new PagamentoTotaleMemoria();
+			default -> Logger.getLogger("controlla pagamento totale").log(Level.SEVERE," persistency total payment is wrong!!");
+
 		}
 		pT.inizializza();
 
@@ -81,13 +83,15 @@ public class ControllerPagamentoCash {
 		pF.inizializza();
 
 		//3
-		int id=0;
-		if(vis.getType().equals(LIBRO)) id=vis.getIdLibro();
-		if(vis.getType().equals(GIORNALE)) id=vis.getIdGiornale();
-		if(vis.getType().equals(RIVISTA)) id=vis.getIdRivista();
+		int id = switch (vis.getType()) {
+            case LIBRO -> vis.getIdLibro();
+            case GIORNALE -> vis.getIdGiornale();
+            case RIVISTA -> vis.getIdRivista();
+            default -> 0;
+        };
 
 
-		p = new PagamentoFattura(nome, cognome, via, com, vis.getSpesaT(), 0,id);
+        p = new PagamentoFattura(nome, cognome, via, com, vis.getSpesaT(), 0,id);
 		p.setTipoAcquisto(ritornaTipoOggetto(type,vis.getType()));
 
 
@@ -134,6 +138,8 @@ public class ControllerPagamentoCash {
 					case DATABASE -> pL=new LibroDao();
 					case FILE -> pL=new CsvLibro();
 					case MEMORIA -> pL=new MemoriaLibro();
+					default -> Logger.getLogger("ritorna libro").log(Level.SEVERE,"persistency return book is wrong!!");
+
 				}
 				l.setId(vis.getIdLibro());
 				tipologia=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();
@@ -145,6 +151,8 @@ public class ControllerPagamentoCash {
 					case DATABASE -> pG=new GiornaleDao();
 					case FILE -> pG=new CsvGiornale();
 					case MEMORIA -> pG=new MemoriaGiornale();
+					default -> Logger.getLogger("ritorna giornale").log(Level.SEVERE,"persistency return daily is wrong!!");
+
 				}
 				g.setId(vis.getIdGiornale());
 				tipologia=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria();
@@ -156,6 +164,8 @@ public class ControllerPagamentoCash {
 					case DATABASE -> pR=new RivistaDao();
 					case FILE -> pR=new CsvRivista();
 					case MEMORIA -> pR=new MemoriaRivista();
+					default -> Logger.getLogger("ritorna rivista").log(Level.SEVERE,"persistency return magazine is wrong!!");
+
 				}
 				r.setId(vis.getIdRivista());
 				tipologia=pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();

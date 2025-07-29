@@ -34,30 +34,43 @@ public class ControllerHomePage {
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
     private static final String DATABASE="database";
     private static final String FILE="file";
+    private static final String MEMORIA="memoria";
+
+    private static PersistenzaLibro pL;
+    private static PersistenzaGiornale pG;
+    private static PersistenzaRivista pR;
 
 
     private void inizializzaLibro(String type) throws CsvValidationException, IOException, ClassNotFoundException, SQLException, IdException {
-        PersistenzaLibro pL;
-        if(type.equals(DATABASE)) pL =new LibroDao();
-        else if(type.equals(FILE)) pL = new CsvLibro();
-        else pL= new MemoriaLibro();
+        switch (type) {
+            case DATABASE -> pL = new LibroDao();
+            case FILE -> pL = new CsvLibro();
+            case MEMORIA -> pL = new MemoriaLibro();
+            default -> Logger.getLogger("inizializza libro").log(Level.SEVERE,"persistency init book is wrong!!");
 
+        }
             pL.initializza();
     }
 
 
     private void inizializzaGiornale(String type) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
-        PersistenzaGiornale pG ;
-        if(type.equals(DATABASE)) pG =new GiornaleDao();
-        else if(type.equals(FILE))pG =new CsvGiornale();
-        else pG=new MemoriaGiornale();
+        switch (type) {
+            case DATABASE -> pG = new GiornaleDao();
+            case FILE -> pG = new CsvGiornale();
+            case MEMORIA -> pG = new MemoriaGiornale();
+            default -> Logger.getLogger("inizializza giornale").log(Level.SEVERE,"persistency init daily is wrong!!");
+
+        }
         pG.initializza();
     }
     private void inizializzaRivista(String type) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
-        PersistenzaRivista pR;
-        if(type.equals(DATABASE)) pR =new RivistaDao();
-        else if(type.equals(FILE)) pR =new CsvRivista();
-        else pR=new MemoriaRivista();
+        switch (type) {
+            case DATABASE -> pR = new RivistaDao();
+            case FILE -> pR = new CsvRivista();
+            case MEMORIA -> pR = new MemoriaRivista();
+            default -> Logger.getLogger("inizializza rivista").log(Level.SEVERE,"persistency magazine book is wrong!!");
+
+        }
             pR.initializza();
     }
 
@@ -72,7 +85,7 @@ public class ControllerHomePage {
         {
             case "libro"-> inizializzaLibro(type);
             case "giornale"-> inizializzaGiornale(type);
-           case "rivista"-> inizializzaRivista(type);
+            case "rivista"-> inizializzaRivista(type);
             default -> Logger.getLogger("persistenza").log(Level.SEVERE," type is incorrect !!");
         }
 

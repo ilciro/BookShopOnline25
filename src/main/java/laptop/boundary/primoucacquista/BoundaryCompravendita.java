@@ -2,6 +2,7 @@ package laptop.boundary.primoucacquista;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -87,7 +88,7 @@ public class BoundaryCompravendita implements Initializable {
 
 
 	@FXML
-	private void prendiLista() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+	private void prendiLista() throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
 		 type=controllaPersistenza();
 		 table.setItems(cCV.getLista(vis.getType(),type));
 

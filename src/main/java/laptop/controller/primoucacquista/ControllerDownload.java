@@ -50,19 +50,25 @@ public class ControllerDownload {
 	private static final String FILE="file";
 	private static final String MEMORIA="memoria";
 
+	private static PersistenzaLibro pL;
+	private static PersistenzaGiornale pG ;
+	private static PersistenzaRivista pR;
+
+
 
 
 	private void acquistaLibro(String persistenza) throws DocumentException, IOException, URISyntaxException, CsvValidationException, IdException, ClassNotFoundException {
-  		PersistenzaLibro pL;
 		l.setId(vis.getIdLibro());
 		l.scarica(vis.getIdLibro());
 		l.leggi(vis.getIdLibro());
 
 
-
-		if(persistenza.equals(DATABASE)) pL=new LibroDao();
-		else if(persistenza.equals(FILE)) pL=new CsvLibro();
-		else pL=new MemoriaLibro();
+        switch (persistenza) {
+            case DATABASE -> pL = new LibroDao();
+            case FILE -> pL = new CsvLibro();
+            case MEMORIA -> pL = new MemoriaLibro();
+			default -> Logger.getLogger("acquista libro").log(Level.SEVERE," error with book persistency ");
+        }
 
 		Libro tempLibro =new Libro();
 
@@ -89,7 +95,6 @@ public class ControllerDownload {
 	}
 
 	private void acquistaGiornale(String persistenza) throws IOException, DocumentException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
-  		PersistenzaGiornale pG = null;
 		g.setId(vis.getIdGiornale());
 		g.scarica(vis.getIdGiornale());
 		g.leggi(vis.getIdGiornale());
@@ -99,6 +104,8 @@ public class ControllerDownload {
 			case DATABASE -> pG=new GiornaleDao();
 			case FILE -> pG=new CsvGiornale();
 			case MEMORIA -> pG=new MemoriaGiornale();
+			default -> Logger.getLogger("acquista giornale").log(Level.SEVERE," error with daily persistency ");
+
 		}
 
 		Giornale tempG=new Giornale();
@@ -123,14 +130,17 @@ public class ControllerDownload {
 
 	}
 	private void acquistaRivista(String persistenza) throws IOException, DocumentException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
-  	PersistenzaRivista pR;
 		r.setId(vis.getIdRivista());
 		r.scarica(vis.getIdRivista());
 		r.leggi(vis.getIdRivista());
 
-		if (persistenza.equals(DATABASE)) pR = new RivistaDao();
-		else if (persistenza.equals(FILE)) pR = new CsvRivista();
-		else pR=new MemoriaRivista();
+        switch (persistenza) {
+            case DATABASE -> pR = new RivistaDao();
+            case FILE -> pR = new CsvRivista();
+            case MEMORIA -> pR = new MemoriaRivista();
+			default -> Logger.getLogger("acquista rivista").log(Level.SEVERE," error with magazine persistency ");
+
+		}
 
 		Rivista tempR=new Rivista();
 		for(int i=0;i<pR.getRiviste().size();i++) {

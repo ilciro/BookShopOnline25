@@ -2,6 +2,7 @@ package laptop.controller.primoucacquista;
 
 import java.io.IOException;
 
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,7 +38,7 @@ public class ControllerCompravendita {
 	private PersistenzaGiornale pG;
 	private PersistenzaRivista pR;
 
-	public ObservableList<Raccolta> getLista(String type, String database) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+	public ObservableList<Raccolta> getLista(String type, String database) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
 
 		ObservableList<Raccolta> catalogo = FXCollections.observableArrayList();
 
@@ -50,6 +51,7 @@ public class ControllerCompravendita {
 					case MEMORIA -> pL = new MemoriaLibro();
 					default -> Logger.getLogger("lista libro").log(Level.SEVERE, "book persistency not correct !!");
 				}
+				pL.initializza();
 
 				catalogo.addAll(pL.retrieveRaccoltaData());
 
@@ -64,7 +66,7 @@ public class ControllerCompravendita {
 					 case MEMORIA -> pG = new MemoriaGiornale();
 					default -> Logger.getLogger("lista giornale").log(Level.SEVERE, "daily persistency not correct !!");
 				}
-
+				pG.initializza();
 
 				catalogo.addAll(pG.retrieveRaccoltaData());
 
@@ -78,7 +80,7 @@ public class ControllerCompravendita {
 					case MEMORIA -> pR = new MemoriaRivista();
 					default -> Logger.getLogger("lista rivista").log(Level.SEVERE, "magazine persistency not correct !!");
 				}
-
+				pR.initializza();
 				catalogo.addAll(pR.retrieveRaccoltaData());
 
 			}
@@ -98,7 +100,7 @@ public class ControllerCompravendita {
 		 try {
 			if (id <= 0 || id > getLista(typeObj, type).size())
 				throw new IdException("id is wrong!! grater than size");
-		}catch (IdException e)
+		}catch (IdException | SQLException e)
 		{
 			Logger.getLogger("checkId").log(Level.SEVERE,e.getMessage());
 			status=false;

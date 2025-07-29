@@ -42,9 +42,9 @@ import java.util.logging.Logger;
 
 <span class="fc" id="L43">            list = (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
 
-<span class="nc" id="L45">        }catch (EOFException e)</span>
+<span class="fc" id="L45">        }catch (EOFException e)</span>
         {
-<span class="nc" id="L47">           Logger.getLogger(&quot;lista è vuota&quot;).log(Level.SEVERE,&quot; list is empty&quot;,list.size());</span>
+<span class="fc" id="L47">           Logger.getLogger(&quot;lista è vuota&quot;).log(Level.SEVERE,&quot; list is empty&quot;,list.size());</span>
 <span class="fc" id="L48">        }</span>
 
 
@@ -73,9 +73,9 @@ import java.util.logging.Logger;
 
 <span class="fc" id="L74">            list = (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
 
-<span class="fc" id="L76">        }catch (EOFException e)</span>
+<span class="nc" id="L76">        }catch (EOFException e)</span>
         {
-<span class="fc" id="L78">            Logger.getLogger(&quot;inserisci pagamento cc&quot;).log(Level.SEVERE,&quot; excepion :.&quot;,e);</span>
+<span class="nc" id="L78">            Logger.getLogger(&quot;inserisci pagamento cc&quot;).log(Level.SEVERE,&quot; excepion :.&quot;,e);</span>
 <span class="fc" id="L79">        }</span>
 
 <span class="fc" id="L81">        list.add(p);</span>
@@ -116,7 +116,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L116">            list = (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
         }
 <span class="pc bpc" id="L118" title="1 of 2 branches missed.">        for (int i = 1; i &lt;= list.size(); i++) {</span>
-<span class="fc bfc" id="L119" title="All 2 branches covered.">            if (i == pCC.getIdPagCC()) {</span>
+<span class="pc bpc" id="L119" title="1 of 2 branches missed.">            if (i == pCC.getIdPagCC()) {</span>
 <span class="fc" id="L120">                Logger.getLogger(&quot;cancella pagaemnto cc&quot;).log(Level.INFO,&quot;id payment {0}.&quot;,pCC.getIdPagCC());</span>
 
 <span class="fc" id="L122">                status = list.remove(list.get(i - 1));</span>

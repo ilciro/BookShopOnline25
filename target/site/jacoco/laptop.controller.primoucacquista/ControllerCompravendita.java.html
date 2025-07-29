@@ -2,6 +2,7 @@
 
 import java.io.IOException;
 
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,7 +29,7 @@ import laptop.database.primoucacquista.libro.PersistenzaLibro;
 
 
 
-<span class="fc" id="L31">public class ControllerCompravendita {</span>
+<span class="fc" id="L32">public class ControllerCompravendita {</span>
 
 	private static final String DATABASE = &quot;database&quot;;
 	private static final String FILE = &quot;file&quot;;
@@ -37,73 +38,74 @@ import laptop.database.primoucacquista.libro.PersistenzaLibro;
 	private PersistenzaGiornale pG;
 	private PersistenzaRivista pR;
 
-	public ObservableList&lt;Raccolta&gt; getLista(String type, String database) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+	public ObservableList&lt;Raccolta&gt; getLista(String type, String database) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
 
-<span class="fc" id="L42">		ObservableList&lt;Raccolta&gt; catalogo = FXCollections.observableArrayList();</span>
+<span class="fc" id="L43">		ObservableList&lt;Raccolta&gt; catalogo = FXCollections.observableArrayList();</span>
 
-<span class="pc bpc" id="L44" title="1 of 4 branches missed.">		switch (type) {</span>
+<span class="pc bpc" id="L45" title="1 of 4 branches missed.">		switch (type) {</span>
 			case &quot;libro&quot; -&gt; {
 
-<span class="pc bpc" id="L47" title="3 of 4 branches missed.">				switch (database) {</span>
-<span class="nc" id="L48">					case DATABASE -&gt; pL = new LibroDao();</span>
-<span class="nc" id="L49">					case FILE -&gt; pL = new CsvLibro();</span>
-<span class="fc" id="L50">					case MEMORIA -&gt; pL = new MemoriaLibro();</span>
-<span class="nc" id="L51">					default -&gt; Logger.getLogger(&quot;lista libro&quot;).log(Level.SEVERE, &quot;book persistency not correct !!&quot;);</span>
+<span class="pc bpc" id="L48" title="1 of 4 branches missed.">				switch (database) {</span>
+<span class="fc" id="L49">					case DATABASE -&gt; pL = new LibroDao();</span>
+<span class="fc" id="L50">					case FILE -&gt; pL = new CsvLibro();</span>
+<span class="fc" id="L51">					case MEMORIA -&gt; pL = new MemoriaLibro();</span>
+<span class="nc" id="L52">					default -&gt; Logger.getLogger(&quot;lista libro&quot;).log(Level.SEVERE, &quot;book persistency not correct !!&quot;);</span>
 				}
+<span class="fc" id="L54">				pL.initializza();</span>
 
-<span class="fc" id="L54">				catalogo.addAll(pL.retrieveRaccoltaData());</span>
+<span class="fc" id="L56">				catalogo.addAll(pL.retrieveRaccoltaData());</span>
 
 
-<span class="fc" id="L57">			}</span>
+<span class="fc" id="L59">			}</span>
 
 
 			case &quot;giornale&quot; -&gt; {
-<span class="pc bpc" id="L61" title="3 of 4 branches missed.">				switch (database) {</span>
-<span class="nc" id="L62">					case DATABASE -&gt; pG = new GiornaleDao();</span>
-<span class="nc" id="L63">					case FILE -&gt; pG = new CsvGiornale();</span>
-<span class="fc" id="L64">					 case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
-<span class="nc" id="L65">					default -&gt; Logger.getLogger(&quot;lista giornale&quot;).log(Level.SEVERE, &quot;daily persistency not correct !!&quot;);</span>
+<span class="pc bpc" id="L63" title="1 of 4 branches missed.">				switch (database) {</span>
+<span class="fc" id="L64">					case DATABASE -&gt; pG = new GiornaleDao();</span>
+<span class="fc" id="L65">					case FILE -&gt; pG = new CsvGiornale();</span>
+<span class="fc" id="L66">					 case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
+<span class="nc" id="L67">					default -&gt; Logger.getLogger(&quot;lista giornale&quot;).log(Level.SEVERE, &quot;daily persistency not correct !!&quot;);</span>
 				}
+<span class="fc" id="L69">				pG.initializza();</span>
 
+<span class="fc" id="L71">				catalogo.addAll(pG.retrieveRaccoltaData());</span>
 
-<span class="fc" id="L69">				catalogo.addAll(pG.retrieveRaccoltaData());</span>
-
-<span class="fc" id="L71">			}</span>
+<span class="fc" id="L73">			}</span>
 
 
 			case &quot;rivista&quot; -&gt; {
-<span class="pc bpc" id="L75" title="3 of 4 branches missed.">				switch (database) {</span>
-<span class="nc" id="L76">					case DATABASE -&gt; pR = new RivistaDao();</span>
-<span class="nc" id="L77">					case FILE -&gt; pR = new CsvRivista();</span>
-<span class="fc" id="L78">					case MEMORIA -&gt; pR = new MemoriaRivista();</span>
-<span class="nc" id="L79">					default -&gt; Logger.getLogger(&quot;lista rivista&quot;).log(Level.SEVERE, &quot;magazine persistency not correct !!&quot;);</span>
+<span class="pc bpc" id="L77" title="1 of 4 branches missed.">				switch (database) {</span>
+<span class="fc" id="L78">					case DATABASE -&gt; pR = new RivistaDao();</span>
+<span class="fc" id="L79">					case FILE -&gt; pR = new CsvRivista();</span>
+<span class="fc" id="L80">					case MEMORIA -&gt; pR = new MemoriaRivista();</span>
+<span class="nc" id="L81">					default -&gt; Logger.getLogger(&quot;lista rivista&quot;).log(Level.SEVERE, &quot;magazine persistency not correct !!&quot;);</span>
 				}
+<span class="fc" id="L83">				pR.initializza();</span>
+<span class="fc" id="L84">				catalogo.addAll(pR.retrieveRaccoltaData());</span>
 
-<span class="fc" id="L82">				catalogo.addAll(pR.retrieveRaccoltaData());</span>
-
-<span class="fc" id="L84">			}</span>
+<span class="fc" id="L86">			}</span>
 
 
-<span class="nc" id="L87">			default -&gt; Logger.getLogger(&quot;get lista&quot;).log(Level.SEVERE, &quot; list is empty&quot;);</span>
+<span class="nc" id="L89">			default -&gt; Logger.getLogger(&quot;get lista&quot;).log(Level.SEVERE, &quot; list is empty&quot;);</span>
 
 		}
 
 
-<span class="fc" id="L92">		return catalogo;</span>
+<span class="fc" id="L94">		return catalogo;</span>
 	}
 
 
 	public boolean checkId(int id,String type,String typeObj) throws CsvValidationException, IOException, ClassNotFoundException {
-<span class="fc" id="L97">		 boolean status=true;</span>
+<span class="fc" id="L99">		 boolean status=true;</span>
 		 try {
-<span class="pc bpc" id="L99" title="2 of 4 branches missed.">			if (id &lt;= 0 || id &gt; getLista(typeObj, type).size())</span>
-<span class="nc" id="L100">				throw new IdException(&quot;id is wrong!! grater than size&quot;);</span>
-<span class="nc" id="L101">		}catch (IdException e)</span>
+<span class="pc bpc" id="L101" title="2 of 4 branches missed.">			if (id &lt;= 0 || id &gt; getLista(typeObj, type).size())</span>
+<span class="nc" id="L102">				throw new IdException(&quot;id is wrong!! grater than size&quot;);</span>
+<span class="nc" id="L103">		}catch (IdException | SQLException e)</span>
 		{
-<span class="nc" id="L103">			Logger.getLogger(&quot;checkId&quot;).log(Level.SEVERE,e.getMessage());</span>
-<span class="nc" id="L104">			status=false;</span>
-<span class="fc" id="L105">		}</span>
-<span class="fc" id="L106">		 return status;</span>
+<span class="nc" id="L105">			Logger.getLogger(&quot;checkId&quot;).log(Level.SEVERE,e.getMessage());</span>
+<span class="nc" id="L106">			status=false;</span>
+<span class="fc" id="L107">		}</span>
+<span class="fc" id="L108">		 return status;</span>
 	}
 }
 

@@ -130,32 +130,32 @@ public class ControllerPagamentoCC {
 <span class="fc" id="L130">		vis.setTipoModifica(&quot;insert&quot;);</span>
 
 
-<span class="pc bpc" id="L133" title="3 of 4 branches missed.">		switch (vis.getType()) {</span>
+<span class="pc bpc" id="L133" title="1 of 4 branches missed.">		switch (vis.getType()) {</span>
 			case &quot;libro&quot; -&gt; {
-<span class="nc" id="L135">				Libro l=new Libro();</span>
-<span class="nc" id="L136">				l.setId(vis.getIdLibro());</span>
-<span class="nc" id="L137">				id=l.getId();</span>
-<span class="nc bnc" id="L138" title="All 4 branches missed.">				switch (database)</span>
+<span class="fc" id="L135">				Libro l=new Libro();</span>
+<span class="fc" id="L136">				l.setId(vis.getIdLibro());</span>
+<span class="fc" id="L137">				id=l.getId();</span>
+<span class="pc bpc" id="L138" title="2 of 4 branches missed.">				switch (database)</span>
 				{
-<span class="nc" id="L140">					case DATABASE -&gt; pL=new LibroDao();</span>
-<span class="nc" id="L141">					case FILE -&gt; pL=new CsvLibro();</span>
+<span class="fc" id="L140">					case DATABASE -&gt; pL=new LibroDao();</span>
+<span class="fc" id="L141">					case FILE -&gt; pL=new CsvLibro();</span>
 <span class="nc" id="L142">					case MEMORIA -&gt; pL=new MemoriaLibro();</span>
 <span class="nc" id="L143">					default -&gt; Logger.getLogger(&quot; errore cpn la persistenza nel libro&quot;).log(Level.SEVERE,&quot;persisentcy book error !!&quot;);</span>
 				}
-<span class="nc" id="L145">				tipo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();</span>
-<span class="nc" id="L146">				 p=new PagamentoCartaCredito(0,&quot;cCcredito&quot;,nome, vis.getSpesaT(),mail,tipo,id );</span>
-<span class="nc" id="L147">				 p.setCognomeUtente(cognome);</span>
+<span class="fc" id="L145">				tipo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();</span>
+<span class="fc" id="L146">				 p=new PagamentoCartaCredito(0,&quot;cCcredito&quot;,nome, vis.getSpesaT(),mail,tipo,id );</span>
+<span class="fc" id="L147">				 p.setCognomeUtente(cognome);</span>
 
-<span class="nc" id="L149">			}</span>
+<span class="fc" id="L149">			}</span>
 
 			case &quot;giornale&quot; -&gt; {
 <span class="fc" id="L152">				Giornale g=new Giornale();</span>
 <span class="fc" id="L153">				g.setId(vis.getIdGiornale());</span>
 <span class="fc" id="L154">				id=g.getId();</span>
-<span class="pc bpc" id="L155" title="3 of 4 branches missed.">				switch (database)</span>
+<span class="pc bpc" id="L155" title="1 of 4 branches missed.">				switch (database)</span>
 				{
-<span class="nc" id="L157">					case DATABASE -&gt; pG=new GiornaleDao();</span>
-<span class="nc" id="L158">					case FILE -&gt; pG=new CsvGiornale();</span>
+<span class="fc" id="L157">					case DATABASE -&gt; pG=new GiornaleDao();</span>
+<span class="fc" id="L158">					case FILE -&gt; pG=new CsvGiornale();</span>
 <span class="fc" id="L159">					case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
 <span class="nc" id="L160">					default -&gt; Logger.getLogger(&quot; errore cpn la persistenza nel giornale&quot;).log(Level.SEVERE,&quot;persisentcy daily error !!&quot;);</span>
 				}
@@ -164,21 +164,21 @@ public class ControllerPagamentoCC {
 <span class="fc" id="L164">				p.setCognomeUtente(cognome);</span>
 <span class="fc" id="L165">				}</span>
 			case &quot;rivista&quot; -&gt; {
-<span class="nc" id="L167">				Rivista r=new Rivista();</span>
-<span class="nc" id="L168">				r.setId(vis.getIdRivista());</span>
-<span class="nc" id="L169">				id=r.getId();</span>
-<span class="nc bnc" id="L170" title="All 4 branches missed.">				switch (database)</span>
+<span class="fc" id="L167">				Rivista r=new Rivista();</span>
+<span class="fc" id="L168">				r.setId(vis.getIdRivista());</span>
+<span class="fc" id="L169">				id=r.getId();</span>
+<span class="pc bpc" id="L170" title="2 of 4 branches missed.">				switch (database)</span>
 				{
-<span class="nc" id="L172">					case DATABASE -&gt; pR=new RivistaDao();</span>
-<span class="nc" id="L173">					case FILE -&gt; pR=new CsvRivista();</span>
+<span class="fc" id="L172">					case DATABASE -&gt; pR=new RivistaDao();</span>
+<span class="fc" id="L173">					case FILE -&gt; pR=new CsvRivista();</span>
 <span class="nc" id="L174">					case MEMORIA -&gt; pR=new MemoriaRivista();</span>
 <span class="nc" id="L175">					default -&gt; Logger.getLogger(&quot; errore cpn la persistenza nella rivista&quot;).log(Level.SEVERE,&quot;persisentcy magazine error !!&quot;);</span>
 				}
-<span class="nc" id="L177">				tipo= pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();</span>
-<span class="nc" id="L178">				p=new PagamentoCartaCredito(0,&quot;cCcredito&quot;,nome, vis.getSpesaT(),mail,tipo,id );</span>
-<span class="nc" id="L179">				p.setCognomeUtente(cognome);</span>
+<span class="fc" id="L177">				tipo= pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();</span>
+<span class="fc" id="L178">				p=new PagamentoCartaCredito(0,&quot;cCcredito&quot;,nome, vis.getSpesaT(),mail,tipo,id );</span>
+<span class="fc" id="L179">				p.setCognomeUtente(cognome);</span>
 
-<span class="nc" id="L181">			}</span>
+<span class="fc" id="L181">			}</span>
 
 
 <span class="nc" id="L184">			default -&gt; throw new IdException(&quot; id not found&quot;);</span>
@@ -187,20 +187,20 @@ public class ControllerPagamentoCC {
 
 		//effettua pagamento
 
-<span class="pc bpc" id="L190" title="3 of 4 branches missed.">		switch (database)</span>
+<span class="pc bpc" id="L190" title="1 of 4 branches missed.">		switch (database)</span>
 		{
-<span class="nc" id="L192">			case DATABASE -&gt; pT=new PagamentoTotaleDao();</span>
-<span class="nc" id="L193">			case FILE -&gt; pT=new PagamentoTotaleCsv();</span>
+<span class="fc" id="L192">			case DATABASE -&gt; pT=new PagamentoTotaleDao();</span>
+<span class="fc" id="L193">			case FILE -&gt; pT=new PagamentoTotaleCsv();</span>
 <span class="fc" id="L194">			case MEMORIA -&gt; pT=new PagamentoTotaleMemoria();</span>
 		}
 <span class="fc" id="L196">		pT.inizializza();</span>
 
 
 
-<span class="pc bpc" id="L200" title="3 of 4 branches missed.">		switch (database)</span>
+<span class="pc bpc" id="L200" title="1 of 4 branches missed.">		switch (database)</span>
 		{
-<span class="nc" id="L202">			case DATABASE -&gt;pCC=new PagamentoCartaCreditoDao();</span>
-<span class="nc" id="L203">			case FILE -&gt; pCC=new CsvPagamentoCartaCredito();</span>
+<span class="fc" id="L202">			case DATABASE -&gt;pCC=new PagamentoCartaCreditoDao();</span>
+<span class="fc" id="L203">			case FILE -&gt; pCC=new CsvPagamentoCartaCredito();</span>
 <span class="fc" id="L204">			case MEMORIA -&gt; pCC=new MemoriaPagamentoCartaCredito();</span>
 <span class="nc" id="L205">			default -&gt; Logger.getLogger(&quot;controlla tipologia fattura&quot;).log(Level.SEVERE,&quot; persistency fattura is wrong!!&quot;);</span>
 
@@ -211,14 +211,14 @@ public class ControllerPagamentoCC {
 
 <span class="pc bpc" id="L212" title="1 of 2 branches missed.">		if(pCC.inserisciPagamentoCartaCredito(p)) {</span>
 <span class="fc" id="L213">			Logger.getLogger(&quot;pagamento effettuato &quot;).log(Level.INFO,&quot; payment success with id .&quot;, p.getIdPagCC());</span>
-<span class="pc bpc" id="L214" title="1 of 2 branches missed.">			if(database.equals(FILE))</span>
+<span class="fc bfc" id="L214" title="All 2 branches covered.">			if(database.equals(FILE))</span>
 			{
 
-<span class="nc" id="L217">				pT=new PagamentoTotaleCsv();</span>
-<span class="nc" id="L218">				pT.inizializza();</span>
-<span class="nc" id="L219">				pT.inserisciPagamentoCartaCredito(new PagamentoCartaCredito());</span>
+<span class="fc" id="L217">				pT=new PagamentoTotaleCsv();</span>
+<span class="fc" id="L218">				pT.inizializza();</span>
+<span class="fc" id="L219">				pT.inserisciPagamentoCartaCredito(new PagamentoCartaCredito());</span>
 			}
-<span class="pc bpc" id="L221" title="1 of 2 branches missed.">			if(database.equals(MEMORIA))</span>
+<span class="fc bfc" id="L221" title="All 2 branches covered.">			if(database.equals(MEMORIA))</span>
 			{
 <span class="fc" id="L223">				pT=new PagamentoTotaleMemoria();</span>
 <span class="fc" id="L224">				pT.inizializza();</span>

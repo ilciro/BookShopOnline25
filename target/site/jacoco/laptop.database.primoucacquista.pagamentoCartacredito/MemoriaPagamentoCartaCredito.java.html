@@ -64,7 +64,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L64">            list = (ArrayList&lt;PagamentoCartaCredito&gt;) ois.readObject();</span>
         }
 <span class="pc bpc" id="L66" title="1 of 2 branches missed.">        for (int i = 1; i &lt;= list.size(); i++) {</span>
-<span class="fc bfc" id="L67" title="All 2 branches covered.">            if (i == p.getIdPagCC()) {</span>
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">            if (i == p.getIdPagCC()) {</span>
 <span class="fc" id="L68">                Logger.getLogger(&quot;cancella fattura&quot;).log(Level.INFO,&quot;id payment {0}.&quot;,p.getIdPagCC());</span>
 
 <span class="fc" id="L70">                status = list.remove(list.get(i - 1));</span>

@@ -7,16 +7,16 @@ import laptop.model.pagamento.PagamentoFattura;
 
 import java.io.IOException;
 
-<span class="nc" id="L10">public class PagamentoTotaleDao extends PagamentoTotale {</span>
+<span class="fc" id="L10">public class PagamentoTotaleDao extends PagamentoTotale {</span>
 
 
     @Override
     public void inizializza() {
-<span class="nc" id="L15">        DaoInitialize dI=new DaoInitialize();</span>
-<span class="nc" id="L16">        dI.inizializza(&quot;pagamentoTotale&quot;);</span>
+<span class="fc" id="L15">        DaoInitialize dI=new DaoInitialize();</span>
+<span class="fc" id="L16">        dI.inizializza(&quot;pagamentoTotale&quot;);</span>
 
 
-<span class="nc" id="L19">    }</span>
+<span class="fc" id="L19">    }</span>
 
     @Override
     public boolean inserisciPagamentoFattura(PagamentoFattura p) throws CsvValidationException, IOException, ClassNotFoundException {
@@ -30,12 +30,12 @@ import java.io.IOException;
 
     @Override
     public boolean cancellaFattura(PagamentoFattura p) throws IOException, ClassNotFoundException {
-<span class="nc" id="L33">       return super.cancellaFattura(p);</span>
+<span class="fc" id="L33">       return super.cancellaFattura(p);</span>
     }
 
     @Override
     public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException {
-<span class="nc" id="L38">        return super.cancellaPagamentoCC(pCC);</span>
+<span class="fc" id="L38">        return super.cancellaPagamentoCC(pCC);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

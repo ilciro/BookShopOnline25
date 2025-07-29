@@ -37,7 +37,7 @@ class TestDemo {
          vis.setTipologiaApplicazione("demo");
          vis.setTypeAsBook();
          //inizializzo lista
-         cHP.persistenza(vis.getType());
+         cHP.persistenza(MEMORIA);
          //scelgo id
          cCV.checkId(6,MEMORIA,vis.getType());
          //setto id
@@ -51,11 +51,11 @@ class TestDemo {
 
      }
     @Test
-    void testAcquistaLibroGiornaleCCNegozio() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException, DocumentException, URISyntaxException {
+    void testAcquistaGiornaleCCNegozio() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException{
         vis.setTipologiaApplicazione("demo");
         vis.setTypeAsDaily();
         //inizializzo lista
-        cHP.persistenza(vis.getType());
+        cHP.persistenza(MEMORIA);
         //scelgo id
         cCV.checkId(3,MEMORIA,vis.getType());
         //setto id
@@ -76,12 +76,12 @@ class TestDemo {
 
     }
     @Test
-    void testAnnullaRivistaCashDownload() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException, DocumentException, URISyntaxException {
+    void testAnnullaRivistaCashDownload() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
         vis.setTipologiaApplicazione("demo");
         vis.setTypeAsMagazine();
         vis.setMetodoP("cash");
         //inizializzo lista
-        cHP.persistenza(vis.getType());
+        cHP.persistenza(MEMORIA);
         //scelgo id
         cCV.checkId(3,MEMORIA,vis.getType());
         //setto id
@@ -98,12 +98,12 @@ class TestDemo {
     }
 
     @Test
-    void testAnnullaGiornaleCCredito() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException, DocumentException, URISyntaxException {
+    void testAnnullaGiornaleCCredito() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
         vis.setTipologiaApplicazione("demo");
         vis.setTypeAsDaily();
         vis.setMetodoP("cCredito");
         //inizializzo lista
-        cHP.persistenza(vis.getType());
+        cHP.persistenza(MEMORIA);
         //scelgo id
         cCV.checkId(1,MEMORIA,vis.getType());
         //setto id
