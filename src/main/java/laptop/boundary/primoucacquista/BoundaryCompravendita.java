@@ -173,6 +173,7 @@ public class BoundaryCompravendita implements Initializable {
 			buttonDatabase.setVisible(false);
 			buttonFile.setVisible(false);
 		}
+		if(vis.getTipologiaApplicazione().equals("full")) buttonMemoria.setVisible(false);
 
 
         if(vis.getType().equals("libro") || vis.getType().equals("rivista"))

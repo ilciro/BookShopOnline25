@@ -64,7 +64,6 @@ public class ControllerRicerca {
             case MEMORIA -> pL=new MemoriaLibro();
             default -> Logger.getLogger("id oggetto libro").log(Level.SEVERE," id book in null or zero");
         }
-            pL.initializza();
         Libro l=new Libro();
         l.setTitolo(nome);
         l.setEditore(nome);
@@ -94,7 +93,6 @@ public class ControllerRicerca {
             case MEMORIA -> pG=new MemoriaGiornale();
             default -> Logger.getLogger("id oggetto giornale").log(Level.SEVERE," id daily in null or zero");
         }
-            pG.initializza();
         Giornale g=new Giornale();
         g.setTitolo(nome);
         g.setEditore(nome);
@@ -122,7 +120,6 @@ public class ControllerRicerca {
             case MEMORIA -> pR=new MemoriaRivista();
             default -> Logger.getLogger("id oggetto rivista").log(Level.SEVERE," id magazine in null or zero");
         }
-            pR.initializza();
         Rivista r=new Rivista();
         r.setTitolo(nome);
         r.setEditore(nome);

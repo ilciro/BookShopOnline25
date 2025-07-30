@@ -3,6 +3,7 @@
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.database.DaoInitialize;
 import laptop.exception.IdException;
 import laptop.model.user.TempUser;
 
@@ -13,36 +14,24 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L16">public class PersistenzaUtente {</span>
-    private static final String DATABASE=&quot;src/main/resources/sql/tablePopulate.properties&quot;;
-    private static final String FILE=&quot;report/reportUtente.csv&quot;;
-    private static final String MEMORIA=&quot;memory/serializzazioneUtente.ser&quot;;
-    private static final String DATABASEXCEPTION=&quot;file sql not exists&quot;;
-    private static final String FILEXCEPTION=&quot;file csv not exists&quot;;
-    private static final String MEMORIAEXCEPTION=&quot;class not in memory&quot;;
-    private static final String IDEXCEPTIONMESSAGE=&quot; id is null or is zero&quot;;
+<span class="fc" id="L17">public class PersistenzaUtente {</span>
+
     public boolean inserisciUtente(TempUser tu) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
-<span class="nc bnc" id="L25" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);</span>
-<span class="nc bnc" id="L26" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);</span>
-<span class="nc bnc" id="L27" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
-<span class="nc bnc" id="L28" title="All 2 branches missed.">        if(tu.getId()&lt;=0) throw new IdException(IDEXCEPTIONMESSAGE);</span>
-<span class="nc" id="L29">        return false;}</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        return tu.getId()!=-1;}</span>
     public ObservableList&lt;TempUser&gt; getUserData() throws IOException, CsvValidationException, SQLException {
-      //  if(!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASEXCEPTION);
-<span class="nc bnc" id="L32" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);</span>
-<span class="nc bnc" id="L33" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new IOException(MEMORIAEXCEPTION);</span>
-<span class="nc" id="L34">        return FXCollections.observableArrayList();}</span>
+
+<span class="nc" id="L23">        return FXCollections.observableArrayList();}</span>
     public boolean removeUserByIdEmailPwd(TempUser tu) throws CsvValidationException, IOException, SQLException {
-<span class="nc bnc" id="L36" title="All 2 branches missed.">        if(tu.getId()&lt;=0) throw new SQLException(&quot;id in db is wrong&quot;);</span>
-<span class="nc bnc" id="L37" title="All 2 branches missed.">        if(tu.getEmailT().isEmpty()) throw new CsvValidationException(FILEXCEPTION);</span>
-<span class="nc bnc" id="L38" title="All 2 branches missed.">        if(tu.getPasswordT().isEmpty()) throw new IOException(&quot;password memory is empty&quot;);</span>
-<span class="nc" id="L39">        return false;}</span>
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        return tu.getId()!=-0;</span>
+    }
 
 
 
     public void initializza() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
-<span class="nc" id="L44">        Logger.getLogger(&quot;inizializza persistenza utente&quot;).log(Level.INFO,&quot;peristenza utente initialize&quot;);</span>
+<span class="fc" id="L31">        Logger.getLogger(&quot;inizializza persistenza utente&quot;).log(Level.INFO,&quot;peristenza utente initialize&quot;);</span>
+<span class="fc" id="L32">        DaoInitialize daoI=new DaoInitialize();</span>
+<span class="fc" id="L33">        daoI.inizializza(&quot;utenti&quot;);</span>
 
-<span class="nc" id="L46">    }</span>
+<span class="fc" id="L35">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -3,15 +3,15 @@
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import laptop.database.DaoInitialize;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 <span class="fc" id="L17">public  class PersistenzaLibro {</span>
@@ -25,12 +25,13 @@ import java.sql.SQLException;
 <span class="nc" id="L25">    public ObservableList&lt;Libro&gt; getLibroByIdTitoloAutoreLibro(Libro l) throws CsvValidationException, IOException, IdException, ClassNotFoundException { return FXCollections.observableArrayList();}</span>
 
     public void initializza() throws IOException, CsvValidationException, ClassNotFoundException, SQLException, IdException {
-<span class="nc" id="L28">      DaoInitialize dI=new DaoInitialize();</span>
-<span class="nc" id="L29">        dI.inizializza(&quot;libro&quot;);</span>
+
+<span class="fc" id="L29">        Logger.getLogger(&quot;inizializza persistenza libro&quot;).log(Level.INFO,&quot; persistenza libro inizializza&quot;);</span>
 
 
-<span class="nc" id="L32">    }</span>
-<span class="nc" id="L33">    public ObservableList&lt;Libro&gt; getLibri() throws IOException, ClassNotFoundException, CsvValidationException, IdException { return FXCollections.observableArrayList();}</span>
+
+<span class="fc" id="L33">    }</span>
+<span class="nc" id="L34">    public ObservableList&lt;Libro&gt; getLibri() throws IOException, ClassNotFoundException, CsvValidationException, IdException { return FXCollections.observableArrayList();}</span>
 
 
 

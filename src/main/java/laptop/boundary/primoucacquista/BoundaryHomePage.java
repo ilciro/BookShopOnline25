@@ -252,6 +252,8 @@ public class BoundaryHomePage implements Initializable {
 
 			tArea.setText(" logged \t " + vis.getIsLogged() + " \t ruolo \t :" + cHP.getRuolo() + " \t id \t" + cHP.getId());
 
+			checkMemoria.setVisible(false);
+
 
 			if (vis.getIsLogged()) {
 

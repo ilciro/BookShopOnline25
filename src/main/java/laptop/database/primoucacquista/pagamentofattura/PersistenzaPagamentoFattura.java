@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PersistenzaPagamentoFattura {
 
@@ -18,13 +20,12 @@ public class PersistenzaPagamentoFattura {
         return f.getIdFattura()!=-1;
     }
     public void inizializza() throws IOException, ClassNotFoundException, SQLException {
-       if(!Files.exists(Path.of("src/main/resources/sql/tablePopulate.properties"))) throw new SQLException("file db not exits");
-       if(!Files.exists(Path.of("report/reportPagamentoFattura.csv"))) throw new IOException(" file csv not exists");
-       if(!Files.exists(Path.of("memory/serializzazionePagamentoFattura.ser"))) throw new ClassNotFoundException(" class not found in memory");
-    }
+        Logger.getLogger("persistenza fattura inizializza").log(Level.INFO,"persistenza pagamento fattura inizializza");
+          }
 
     public PagamentoFattura ultimaFattura() throws IOException, CsvValidationException, ClassNotFoundException {
-        return new PagamentoFattura();
+        Logger.getLogger("Persistenza pagamento fattura").log(Level.INFO,"ultima fattur");
+        return null;
     }
 
 }

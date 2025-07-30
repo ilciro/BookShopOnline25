@@ -28,6 +28,7 @@ public class ControllerAnnullaPagamento  {
     private static final String DATABASE="database";
     private static final String FILE="file";
     private static final String MEMORIA="memoria";
+    private static final String ERROR="error with persistency";
 
     private PersistenzaPagamentoFattura pPF;
     private PersistenzaPagamentoCartaCredito pPCC;
@@ -44,7 +45,7 @@ public class ControllerAnnullaPagamento  {
             case DATABASE -> pPF=new ContrassegnoDao();
             case FILE -> pPF=new CsvFattura();
             case MEMORIA -> pPF=new MemoriaFattura();
-            default -> Logger.getLogger("get fattura ").log(Level.SEVERE,"error with persistency");
+            default -> Logger.getLogger("get fattura ").log(Level.SEVERE,ERROR);
 
         }
         list.add(pPF.ultimaFattura());
@@ -83,7 +84,7 @@ public class ControllerAnnullaPagamento  {
             case DATABASE -> pPCC=new PagamentoCartaCreditoDao();
             case FILE -> pPCC=new CsvPagamentoCartaCredito();
             case MEMORIA -> pPCC=new MemoriaPagamentoCartaCredito();
-            default -> Logger.getLogger("get carta credito ").log(Level.SEVERE,"error with persistency");
+            default -> Logger.getLogger("get carta credito ").log(Level.SEVERE,ERROR);
 
         }
         list.add(pPCC.ultimoPagamentoCartaCredito());
@@ -107,7 +108,7 @@ public class ControllerAnnullaPagamento  {
                 pPCC=new MemoriaPagamentoCartaCredito();
                 pT=new PagamentoTotaleMemoria();
             }
-            default -> Logger.getLogger("cancella pagamento cc").log(Level.SEVERE, "error with persistency");
+            default -> Logger.getLogger("cancella pagamento cc").log(Level.SEVERE, ERROR);
         }
         PagamentoCartaCredito pCC = new PagamentoCartaCredito();
         pCC.setIdPagCC(idPagamentoCC);

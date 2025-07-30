@@ -36,12 +36,12 @@ public class ControllerHomePage {
     private static final String FILE="file";
     private static final String MEMORIA="memoria";
 
-    private  PersistenzaLibro pL;
-    private  PersistenzaGiornale pG;
+    private PersistenzaLibro pL;
+    private PersistenzaGiornale pG;
     private  PersistenzaRivista pR;
 
 
-    private void inizializzaLibro(String type) throws CsvValidationException, IOException, ClassNotFoundException, SQLException, IdException {
+    private void inizializzaLibro(String type) {
         switch (type) {
             case DATABASE -> pL = new LibroDao();
             case FILE -> pL = new CsvLibro();
@@ -49,11 +49,13 @@ public class ControllerHomePage {
             default -> Logger.getLogger("inizializza libro").log(Level.SEVERE,"persistency init book is wrong!!");
 
         }
-            pL.initializza();
+        Logger.getLogger("inizializzazione libro").log(Level.INFO,"type of persistency of book {0}",pL);
+
+
     }
 
 
-    private void inizializzaGiornale(String type) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
+    private void inizializzaGiornale(String type)  {
         switch (type) {
             case DATABASE -> pG = new GiornaleDao();
             case FILE -> pG = new CsvGiornale();
@@ -61,9 +63,10 @@ public class ControllerHomePage {
             default -> Logger.getLogger("inizializza giornale").log(Level.SEVERE,"persistency init daily is wrong!!");
 
         }
-        pG.initializza();
+        Logger.getLogger("inizializzazione giornale").log(Level.INFO,"type of persistency of daily {0}",pG);
+
     }
-    private void inizializzaRivista(String type) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
+    private void inizializzaRivista(String type) {
         switch (type) {
             case DATABASE -> pR = new RivistaDao();
             case FILE -> pR = new CsvRivista();
@@ -71,7 +74,7 @@ public class ControllerHomePage {
             default -> Logger.getLogger("inizializza rivista").log(Level.SEVERE,"persistency magazine book is wrong!!");
 
         }
-            pR.initializza();
+        Logger.getLogger("inizializzazione rivista").log(Level.INFO,"type of persistency of magazine {0}",pR.toString());
     }
 
 

@@ -188,7 +188,7 @@ public class BoundaryVisualizza implements Initializable {
 					labelDescrizione.setText(indisponibile);
 					labelDisp.setText(String.valueOf(cV.getListGiornale(type).get(0).getDisponibilita()));
 					labelPrezzo.setText(String.valueOf(cV.getListGiornale(type).get(0).getPrezzo()));
-					labelCopieRimanenti.setText(String.valueOf(0));
+					labelCopieRimanenti.setText(String.valueOf(cV.getListGiornale(type).get(0).getCopieRimanenti()));
 				}
 
 				case "rivista" -> {
@@ -241,6 +241,7 @@ public class BoundaryVisualizza implements Initializable {
 				buttonDatabase.setVisible(false);
 				buttonFile.setVisible(false);
 			}
+			else memoriaButton.setVisible(false);
 
 
 	}

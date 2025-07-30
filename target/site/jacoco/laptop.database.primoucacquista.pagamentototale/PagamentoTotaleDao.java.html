@@ -20,7 +20,7 @@ import java.io.IOException;
 
     @Override
     public boolean inserisciPagamentoFattura(PagamentoFattura p) throws CsvValidationException, IOException, ClassNotFoundException {
-<span class="nc" id="L23">        return super.inserisciPagamentoFattura(p);</span>
+<span class="fc" id="L23">        return super.inserisciPagamentoFattura(p);</span>
     }
 
     @Override
@@ -29,12 +29,12 @@ import java.io.IOException;
     }
 
     @Override
-    public boolean cancellaFattura(PagamentoFattura p) throws IOException, ClassNotFoundException {
+    public boolean cancellaFattura(PagamentoFattura p) throws IOException, ClassNotFoundException, CsvValidationException {
 <span class="fc" id="L33">       return super.cancellaFattura(p);</span>
     }
 
     @Override
-    public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException {
+    public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException, CsvValidationException {
 <span class="fc" id="L38">        return super.cancellaPagamentoCC(pCC);</span>
     }
 }

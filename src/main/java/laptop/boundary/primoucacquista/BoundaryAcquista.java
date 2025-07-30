@@ -125,6 +125,7 @@ public class BoundaryAcquista implements Initializable {
 				default -> Logger.getLogger("initialize").log(Level.SEVERE," type of object is null");
 			}
 		}
+		else memoriaButton.setVisible(false);
 
 
 

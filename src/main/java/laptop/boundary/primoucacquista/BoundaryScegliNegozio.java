@@ -247,6 +247,7 @@ private void negozioGiusto() throws IOException {
 			databaseButton.setVisible(false);
 			fileButton.setVisible(false);
 		}
+		else memoriaButton.setVisible(false);
 	}
 }
 

@@ -112,6 +112,7 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
 
     @Override
     public void inizializza() throws IOException, ClassNotFoundException, SQLException {
+        super.inizializza();
         DaoInitialize daoI=new DaoInitialize();
         daoI.inizializza("pagamentoFattura");
 

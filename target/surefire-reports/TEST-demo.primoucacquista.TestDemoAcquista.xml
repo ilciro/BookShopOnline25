@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="demo.primoucacquista.TestDemoAcquista" time="0.503" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="demo.primoucacquista.TestDemoAcquista" time="0.911" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IT"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter13512854409041363560.jar /home/daniele/IdeaProjects/BookShopOnline25/target/surefire 2025-07-30T12-25-50_180-jvmRun1 surefire9145118111389450260tmp surefire_04225035473536808666tmp"/>
+    <property name="sun.java.command" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter1389324293863584846.jar /home/daniele/IdeaProjects/BookShopOnline25/target/surefire 2025-07-30T15-09-59_773-jvmRun1 surefire9923745539123044537tmp surefire_09784152953776406627tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/daniele/IdeaProjects/BookShopOnline25/target/test-classes:/home/daniele/IdeaProjects/BookShopOnline25/target/classes:/home/daniele/.m2/repository/com/opencsv/opencsv/5.7.1/opencsv-5.7.1.jar:/home/daniele/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:/home/daniele/.m2/repository/org/apache/commons/commons-text/1.10.0/commons-text-1.10.0.jar:/home/daniele/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/home/daniele/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/home/daniele/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/daniele/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/home/daniele/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/daniele/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/home/daniele/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/home/daniele/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:/home/daniele/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17-linux.jar:/home/daniele/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17-linux.jar:/home/daniele/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17-linux.jar:/home/daniele/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17-linux.jar:/home/daniele/.m2/repository/com/mysql/mysql-connector-j/8.2.0/mysql-connector-j-8.2.0.jar:/home/daniele/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar:/home/daniele/.m2/repository/com/itextpdf/itextpdf/5.5.13.3/itextpdf-5.5.13.3.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v131/4.27.0/selenium-devtools-v131-4.27.0.jar:/home/daniele/.m2/repository/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-api/4.27.0/selenium-api-4.27.0.jar:/home/daniele/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-json/4.27.0/selenium-json-4.27.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.27.0/selenium-remote-driver-4.27.0.jar:/home/daniele/.m2/repository/com/google/guava/guava/33.3.1-jre/guava-33.3.1-jre.jar:/home/daniele/.m2/repository/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.jar:/home/daniele/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/home/daniele/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/daniele/.m2/repository/org/checkerframework/checker-qual/3.43.0/checker-qual-3.43.0.jar:/home/daniele/.m2/repository/com/google/errorprone/error_prone_annotations/2.28.0/error_prone_annotations-2.28.0.jar:/home/daniele/.m2/repository/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.jar:/home/daniele/.m2/repository/io/opentelemetry/semconv/opentelemetry-semconv/1.25.0-alpha/opentelemetry-semconv-1.25.0-alpha.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-api/1.44.1/opentelemetry-api-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-context/1.44.1/opentelemetry-context-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-exporter-logging/1.44.1/opentelemetry-exporter-logging-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-common/1.44.1/opentelemetry-sdk-common-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.44.1/opentelemetry-sdk-extension-autoconfigure-spi-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.44.1/opentelemetry-sdk-extension-autoconfigure-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-api-incubator/1.44.1-alpha/opentelemetry-api-incubator-1.44.1-alpha.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-trace/1.44.1/opentelemetry-sdk-trace-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk/1.44.1/opentelemetry-sdk-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-metrics/1.44.1/opentelemetry-sdk-metrics-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-logs/1.44.1/opentelemetry-sdk-logs-1.44.1.jar:/home/daniele/.m2/repository/net/bytebuddy/byte-buddy/1.15.10/byte-buddy-1.15.10.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-http/4.27.0/selenium-http-4.27.0.jar:/home/daniele/.m2/repository/dev/failsafe/failsafe/3.3.2/failsafe-3.3.2.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-os/4.27.0/selenium-os-4.27.0.jar:/home/daniele/.m2/repository/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.jar:/home/daniele/.m2/repository/org/glassfish/web/jakarta.servlet.jsp.jstl/3.0.1/jakarta.servlet.jsp.jstl-3.0.1.jar:/home/daniele/.m2/repository/jakarta/servlet/jsp/jstl/jakarta.servlet.jsp.jstl-api/3.0.0/jakarta.servlet.jsp.jstl-api-3.0.0.jar:/home/daniele/.m2/repository/jakarta/servlet/jakarta.servlet-api/6.0.0/jakarta.servlet-api-6.0.0.jar:/home/daniele/.m2/repository/jakarta/el/jakarta.el-api/5.0.0/jakarta.el-api-5.0.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/4.27.0/selenium-chrome-driver-4.27.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-chromium-driver/4.27.0/selenium-chromium-driver-4.27.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-manager/4.27.0/selenium-manager-4.27.0.jar:/home/daniele/.m2/repository/org/sonarsource/scanner/maven/sonar-maven-plugin/4.0.0.4121/sonar-maven-plugin-4.0.0.4121.jar:/home/daniele/.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.jar:/home/daniele/.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar:/home/daniele/.m2/repository/org/sonarsource/scanner/api/sonar-scanner-api/2.16.3.1081/sonar-scanner-api-2.16.3.1081.jar:/home/daniele/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar:/home/daniele/.m2/repository/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.jar:/home/daniele/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/daniele/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar:/home/daniele/.m2/repository/org/codehaus/mojo/build-helper-maven-plugin/3.4.0/build-helper-maven-plugin-3.4.0.jar:/home/daniele/.m2/repository/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar:/home/daniele/.m2/repository/org/apache-extras/beanshell/bsh/2.0b6/bsh-2.0b6.jar:/home/daniele/.m2/repository/org/apache/maven/shared/file-management/3.1.0/file-management-3.1.0.jar:/home/daniele/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/home/daniele/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/home/daniele/.m2/repository/org/jetbrains/annotations/15.0/annotations-15.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter13512854409041363560.jar"/>
+    <property name="surefire.real.class.path" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter1389324293863584846.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.15+6-Ubuntu-0ubuntu124.04"/>
     <property name="user.name" value="daniele"/>
@@ -55,12 +55,14 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testAcquistaLibroCashDownload" classname="demo.primoucacquista.TestDemoAcquista" time="0.406">
-    <system-err><![CDATA[lug 30, 2025 12:25:50 PM laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria inizializza
+  <testcase name="testAcquistaLibroCashDownload" classname="demo.primoucacquista.TestDemoAcquista" time="0.727">
+    <system-err><![CDATA[lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
+INFORMAZIONI: type of persistency of book laptop.database.primoucacquista.libro.MemoriaLibro@3a0807b7
+lug 30, 2025 3:10:01 PM laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria inizializza
 INFORMAZIONI:  file has been created
-lug 30, 2025 12:25:50 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+lug 30, 2025 3:10:01 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 INFORMAZIONI:  file has been created
-lug 30, 2025 12:25:50 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inserisciPagamentoFattura
+lug 30, 2025 3:10:01 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inserisciPagamentoFattura
 GRAVE:  error with file payment .
 java.io.EOFException
 	at java.base/java.io.ObjectInputStream$PeekInputStream.readFully(ObjectInputStream.java:2915)
@@ -142,49 +144,55 @@ java.io.EOFException
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-lug 30, 2025 12:25:50 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inserisciPagamentoFattura
+lug 30, 2025 3:10:01 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inserisciPagamentoFattura
 INFORMAZIONI: fattura is wrote
-lug 30, 2025 12:25:50 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
-INFORMAZIONI: payment success with id .
-lug 30, 2025 12:25:50 PM laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria inserisciPagamentoFattura
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
+INFORMAZIONI: payment success with id . 1
+lug 30, 2025 3:10:01 PM laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria inserisciPagamentoFattura
 GRAVE:  list is empty
-lug 30, 2025 12:25:50 PM laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria inserisciPagamentoFattura
+lug 30, 2025 3:10:01 PM laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria inserisciPagamentoFattura
 INFORMAZIONI:  list size after insert : .1
-lug 30, 2025 12:25:51 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
 INFORMAZIONI:  id eliminated book 5
-lug 30, 2025 12:25:51 PM laptop.database.MemoryInitialize inserisci
+lug 30, 2025 3:10:01 PM laptop.database.MemoryInitialize inserisci
 INFORMAZIONI: inserted libro in list Apocalypse town: Cronache dalla fine della civilta urbana
-lug 30, 2025 12:25:51 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
 INFORMAZIONI: update book succesfully!!
 ]]></system-err>
   </testcase>
-  <testcase name="testAnnullaRivistaCashDownload" classname="demo.primoucacquista.TestDemoAcquista" time="0.015">
-    <system-err><![CDATA[lug 30, 2025 12:25:51 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inserisciPagamentoFattura
+  <testcase name="testAnnullaRivistaCashDownload" classname="demo.primoucacquista.TestDemoAcquista" time="0.03">
+    <system-err><![CDATA[lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaRivista
+INFORMAZIONI: type of persistency of magazine laptop.database.primoucacquista.rivista.MemoriaRivista@6486fe7b
+lug 30, 2025 3:10:01 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inserisciPagamentoFattura
 INFORMAZIONI: fattura is wrote
-lug 30, 2025 12:25:51 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
-INFORMAZIONI: payment success with id .
-lug 30, 2025 12:25:51 PM laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria inserisciPagamentoFattura
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
+INFORMAZIONI: payment success with id . 2
+lug 30, 2025 3:10:01 PM laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria inserisciPagamentoFattura
 INFORMAZIONI:  list size after insert : .2
-lug 30, 2025 12:25:51 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura cancellaPagamentoFattura
+lug 30, 2025 3:10:01 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura cancellaPagamentoFattura
 INFORMAZIONI: id fattura 2.
-lug 30, 2025 12:25:51 PM laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria cancellaFattura
+lug 30, 2025 3:10:01 PM laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria cancellaFattura
 INFORMAZIONI: id payment 2.
 ]]></system-err>
   </testcase>
-  <testcase name="testAnnullaGiornaleCCredito" classname="demo.primoucacquista.TestDemoAcquista" time="0.017">
-    <system-err><![CDATA[lug 30, 2025 12:25:51 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
+  <testcase name="testAnnullaGiornaleCCredito" classname="demo.primoucacquista.TestDemoAcquista" time="0.022">
+    <system-err><![CDATA[lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaGiornale
+INFORMAZIONI: type of persistency of daily laptop.database.primoucacquista.giornale.MemoriaGiornale@c568f91
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
 INFORMAZIONI:  year is correct
-lug 30, 2025 12:25:51 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
-INFORMAZIONI:  month is correct .
-lug 30, 2025 12:25:51 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
-INFORMAZIONI:  giorno is correct .
-lug 30, 2025 12:25:51 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
+INFORMAZIONI:  month is correct . 9
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerPagamentoCC getMeseGiorno
+GRAVE: month/day is incorrect
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
+INFORMAZIONI:  giorno is correct . 9
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
 INFORMAZIONI:  year is correct
-lug 30, 2025 12:25:51 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
 INFORMAZIONI:  year is correct
-lug 30, 2025 12:25:51 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito inizializza
+lug 30, 2025 3:10:01 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito inizializza
 INFORMAZIONI:  file has been created
-lug 30, 2025 12:25:51 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito inserisciPagamentoCartaCredito
+lug 30, 2025 3:10:01 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito inserisciPagamentoCartaCredito
 GRAVE:  excepion :.
 java.io.EOFException
 	at java.base/java.io.ObjectInputStream$PeekInputStream.readFully(ObjectInputStream.java:2915)
@@ -266,30 +274,34 @@ java.io.EOFException
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-lug 30, 2025 12:25:51 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito inserisciPagamentoCartaCredito
+lug 30, 2025 3:10:01 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito inserisciPagamentoCartaCredito
 INFORMAZIONI: payment is wrote
-lug 30, 2025 12:25:51 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
 INFORMAZIONI:  payment success with id .
-lug 30, 2025 12:25:51 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito cancellaPagamentoCartaCredito
+lug 30, 2025 3:10:01 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito cancellaPagamentoCartaCredito
 INFORMAZIONI: id payment 1.
-lug 30, 2025 12:25:51 PM laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria cancellaPagamentoCC
+lug 30, 2025 3:10:01 PM laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria cancellaPagamentoCC
 INFORMAZIONI: id payment 1.
 ]]></system-err>
   </testcase>
-  <testcase name="testAcquistaGiornaleCCNegozio" classname="demo.primoucacquista.TestDemoAcquista" time="0.011">
-    <system-err><![CDATA[lug 30, 2025 12:25:51 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
+  <testcase name="testAcquistaGiornaleCCNegozio" classname="demo.primoucacquista.TestDemoAcquista" time="0.036">
+    <system-err><![CDATA[lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaGiornale
+INFORMAZIONI: type of persistency of daily laptop.database.primoucacquista.giornale.MemoriaGiornale@23e61112
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
 INFORMAZIONI:  year is correct
-lug 30, 2025 12:25:51 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
-INFORMAZIONI:  month is correct .
-lug 30, 2025 12:25:51 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
-INFORMAZIONI:  giorno is correct .
-lug 30, 2025 12:25:51 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
+INFORMAZIONI:  month is correct . 9
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerPagamentoCC getMeseGiorno
+GRAVE: month/day is incorrect
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
+INFORMAZIONI:  giorno is correct . 9
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
 INFORMAZIONI:  year is correct
-lug 30, 2025 12:25:51 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerPagamentoCC correttezza
 INFORMAZIONI:  year is correct
-lug 30, 2025 12:25:51 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito inserisciPagamentoCartaCredito
+lug 30, 2025 3:10:01 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito inserisciPagamentoCartaCredito
 INFORMAZIONI: payment is wrote
-lug 30, 2025 12:25:51 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
+lug 30, 2025 3:10:01 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
 INFORMAZIONI:  payment success with id .
 ]]></system-err>
   </testcase>

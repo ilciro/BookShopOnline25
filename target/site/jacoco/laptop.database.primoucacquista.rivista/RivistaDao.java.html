@@ -178,10 +178,11 @@ public class RivistaDao extends PersistenzaRivista{
     }
 
     @Override
-    public void initializza() throws IOException, CsvValidationException, SQLException {
-<span class="fc" id="L182">        DaoInitialize daoI=new DaoInitialize();</span>
-<span class="fc" id="L183">        daoI.inizializza(RIVISTA);</span>
-<span class="fc" id="L184">        }</span>
+    public void initializza() throws IOException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
+<span class="fc" id="L182">        super.initializza();</span>
+<span class="fc" id="L183">        DaoInitialize dI=new DaoInitialize();</span>
+<span class="fc" id="L184">        dI.inizializza(&quot;rivista&quot;);</span>
+<span class="fc" id="L185">        }</span>
 
 
 

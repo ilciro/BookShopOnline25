@@ -108,8 +108,9 @@ import javafx.collections.ObservableList;
 
 	@Override
 	public void initializza() throws IOException, SQLException {
-<span class="fc" id="L111">		DaoInitialize daoI=new DaoInitialize();</span>
-<span class="fc" id="L112">		daoI.inizializza(&quot;negozio&quot;);</span>
-<span class="fc" id="L113">	}</span>
+<span class="fc" id="L111">		super.initializza();</span>
+<span class="fc" id="L112">		DaoInitialize daoI=new DaoInitialize();</span>
+<span class="fc" id="L113">		daoI.inizializza(&quot;negozio&quot;);</span>
+<span class="fc" id="L114">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

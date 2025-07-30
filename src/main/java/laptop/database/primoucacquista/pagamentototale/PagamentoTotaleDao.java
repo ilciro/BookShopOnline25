@@ -29,12 +29,12 @@ public class PagamentoTotaleDao extends PagamentoTotale {
     }
 
     @Override
-    public boolean cancellaFattura(PagamentoFattura p) throws IOException, ClassNotFoundException {
+    public boolean cancellaFattura(PagamentoFattura p) throws IOException, ClassNotFoundException, CsvValidationException {
        return super.cancellaFattura(p);
     }
 
     @Override
-    public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException {
+    public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException, CsvValidationException {
         return super.cancellaPagamentoCC(pCC);
     }
 }

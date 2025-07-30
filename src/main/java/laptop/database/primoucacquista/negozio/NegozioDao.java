@@ -108,6 +108,7 @@ public class NegozioDao extends PersistenzaNegozio{
 
 	@Override
 	public void initializza() throws IOException, SQLException {
+		super.initializza();
 		DaoInitialize daoI=new DaoInitialize();
 		daoI.inizializza("negozio");
 	}

@@ -33,7 +33,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L33">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
 <span class="nc" id="L34">			default -&gt; Logger.getLogger(&quot;get negozi&quot;).log(Level.SEVERE,&quot;  empty list!!&quot;);</span>
 		}
-<span class="fc" id="L36">		 	pN.initializza();</span>
+<span class="fc" id="L36">		pN.initializza();</span>
 <span class="fc" id="L37">		return pN.getNegozi();</span>
 	}
 

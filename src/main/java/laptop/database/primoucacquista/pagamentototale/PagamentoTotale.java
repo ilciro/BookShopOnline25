@@ -10,8 +10,8 @@ public class PagamentoTotale {
     public void inizializza() throws IOException {}
     public boolean inserisciPagamentoFattura(PagamentoFattura p) throws CsvValidationException, IOException, ClassNotFoundException { return p.getIdFattura()!=0;}
     public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito pCC) throws IOException, CsvValidationException, ClassNotFoundException {return pCC.getIdPagCC()!=0;}
-    public boolean cancellaFattura(PagamentoFattura p) throws IOException, ClassNotFoundException { return p.getIdFattura()!=0;}
-    public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException { return pCC.getIdPagCC() != 0;}
+    public boolean cancellaFattura(PagamentoFattura p) throws IOException, ClassNotFoundException, CsvValidationException { return p.getIdFattura()!=0;}
+    public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException, CsvValidationException { return pCC.getIdPagCC() != 0;}
 
 
 }

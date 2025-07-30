@@ -13,6 +13,7 @@ import laptop.utilities.ConnToDb;
 
 import java.io.*;
 import java.sql.*;
+import java.util.SortedMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -131,7 +132,7 @@ public class LibroDao extends PersistenzaLibro{
     public ObservableList<Raccolta> retrieveRaccoltaData()  {
         ObservableList<Raccolta> catalogo = FXCollections.observableArrayList();
 
-        query = "select * from ispw.libro";
+        query = "select * from libro";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ = conn.prepareStatement(query);
              ResultSet rs = prepQ.executeQuery()) {
@@ -197,16 +198,18 @@ public class LibroDao extends PersistenzaLibro{
 
             }
         } catch ( SQLException e) {
-            Logger.getLogger("get libro id autore obes").log(Level.INFO, ECCEZIONE, e);
+            Logger.getLogger("get libro id autore obes").log(Level.SEVERE, ECCEZIONE, e);
         }
         return catalogo;
     }
 
     @Override
-    public void initializza()  {
+    public void initializza() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
 
+        super.initializza();
+        Logger.getLogger("libro dao inizializza").log(Level.INFO, "inizializza libro dao");
         DaoInitialize dI=new DaoInitialize();
-        dI.inizializza(LIBRO);
+        dI.inizializza("libro");
 
     }
 

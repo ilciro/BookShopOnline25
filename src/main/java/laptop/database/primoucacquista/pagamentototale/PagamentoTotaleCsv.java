@@ -10,15 +10,22 @@ import laptop.exception.IdException;
 import laptop.model.pagamento.Pagamento;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
+import org.apache.commons.lang.SystemUtils;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.attribute.FileAttribute;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.PosixFilePermissions;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PagamentoTotaleCsv extends laptop.database.primoucacquista.pagamentototale.PagamentoTotale {
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+
+public class PagamentoTotaleCsv extends PagamentoTotale {
 
     private static final String PAGAMENTOTOTALE="report/reportPagamentoTotale.csv";
     private static final String APPOGGIO="report/appoggioPagamentoTotale.csv";
@@ -41,16 +48,19 @@ public class PagamentoTotaleCsv extends laptop.database.primoucacquista.pagament
     private static final int IDFATTURA=7;
     private static final int IDPAGAMENTOCC=8;
     private static final int IDPAGAMENTO=9;
+    private static final String PERMESSI="rwx------";
 
     @Override
-    public boolean cancellaFattura(PagamentoFattura p) throws IOException {
+    public boolean cancellaFattura(PagamentoFattura p) throws IOException, CsvValidationException {
         synchronized (this.cachePagamentoTotale) {
             this.cachePagamentoTotale.remove(String.valueOf(p.getIdFattura()));
         }
-      //  return removeFattura(p);
-        return true;
+       return removeFattura(p);
     }
-    /*
+    private static void cleanUp(Path path) throws IOException {
+        Files.delete(path);
+    }
+
 
     private static synchronized boolean removeFattura(PagamentoFattura p) throws IOException, CsvValidationException {
         boolean status=false;
@@ -80,7 +90,7 @@ public class PagamentoTotaleCsv extends laptop.database.primoucacquista.pagament
             boolean recordFound;
             while ((gVector = reader.readNext()) != null) {
 
-                recordFound = gVector[].equals(String.valueOf(f.getIdFattura()));
+                recordFound = gVector[IDFATTURA].equals(String.valueOf(f.getIdFattura()));
 
 
                 if (!recordFound)
@@ -94,17 +104,57 @@ public class PagamentoTotaleCsv extends laptop.database.primoucacquista.pagament
         return found;
     }
 
-     */
+
 
 
     @Override
-    public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException {
-        return super.cancellaPagamentoCC(pCC);
+    public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException, CsvValidationException {
+        synchronized (this.cachePagamentoTotale) {
+            this.cachePagamentoTotale.remove(String.valueOf(pCC.getIdPagCC()));
+        }
+        return removePagamentoCC(pCC);
+    }
+
+    private static synchronized boolean removePagamentoCC(PagamentoCartaCredito pCC) throws IOException, CsvValidationException {
+        boolean status=false;
+        if (SystemUtils.IS_OS_UNIX) {
+            FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));
+            Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant
+        }
+        File tmpFile = new File(APPOGGIO);
+        boolean found = isFoundCartaCredito(pCC, tmpFile);
+        if (found) {
+            Files.move(tmpFile.toPath(), Path.of(PAGAMENTOTOTALE), REPLACE_EXISTING);
+            status=true;
+        } else {
+            cleanUp(Path.of(tmpFile.toURI()));
+        }
+        return status;
+    }
+    private static boolean isFoundCartaCredito(PagamentoCartaCredito pCC, File tmpFile) throws IOException, CsvValidationException {
+        boolean found = false;
+        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(PAGAMENTOTOTALE)));
+             CSVWriter writer= new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true)))) {
+            String[] gVector;
+
+            boolean recordFound;
+            while ((gVector = reader.readNext()) != null) {
+
+                recordFound = gVector[IDPAGAMENTOCC].equals(String.valueOf(pCC.getIdPagCC()));
+
+
+                if (!recordFound)
+                    writer.writeNext(gVector);
+                else
+                    found = true;
+            }
+            writer.flush();
+
+        }
+        return found;
     }
 
     private static final int IDPAGAMENTOFATTURA=7;
- //   private static final int IDPAGAMENTOCC=8;
-   // private static final int IDPAGAMENTO=9;
     private static final int IDOGGETTO=10;
 
     private static final String IDWRONG="id wrong ..!!";

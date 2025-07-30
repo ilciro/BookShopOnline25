@@ -99,10 +99,10 @@ public class ControllerPagamentoCash {
 		//inserisco in pagamentoTotale
 <span class="pc bpc" id="L100" title="1 of 2 branches missed.">		if(pF.inserisciPagamentoFattura(p))</span>
 		{
-<span class="fc" id="L102">			Logger.getLogger(&quot;pagamento effettuato &quot;).log(Level.INFO,&quot;payment success with id .&quot;, p.getIdFattura());</span>
-<span class="fc bfc" id="L103" title="All 2 branches covered.">			if(type.equals(FILE)) pT.inserisciPagamentoFattura(p);</span>
-<span class="fc bfc" id="L104" title="All 2 branches covered.">			else if(type.equals(MEMORIA)) pT.inserisciPagamentoFattura(p);</span>
-
+<span class="fc" id="L102">			Logger.getLogger(&quot;pagamento effettuato &quot;).log(Level.INFO,&quot;payment success with id . {0}&quot;, p.getIdFattura());</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">			if(type.equals(FILE)) pT=new PagamentoTotaleCsv();</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">			else if(type.equals(MEMORIA)) pT=new PagamentoTotaleMemoria();</span>
+<span class="fc" id="L105">			pT.inserisciPagamentoFattura(p);</span>
 
 		}
 
@@ -167,13 +167,14 @@ public class ControllerPagamentoCash {
 				}
 <span class="fc" id="L168">				r.setId(vis.getIdRivista());</span>
 <span class="fc" id="L169">				tipologia=pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();</span>
-			}
+<span class="fc" id="L170">			}</span>
+<span class="nc" id="L171">			default -&gt; Logger.getLogger(&quot;ritorna tipo oggetto&quot;).log(Level.SEVERE,&quot; error with type object&quot;);</span>
 		}
 
 
 
 
-<span class="fc" id="L176">		return tipologia;</span>
+<span class="fc" id="L177">		return tipologia;</span>
 	}
 
 

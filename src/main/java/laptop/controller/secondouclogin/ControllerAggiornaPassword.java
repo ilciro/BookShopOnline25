@@ -53,7 +53,6 @@ public class ControllerAggiornaPassword {
             if(pU.getUserData().get(i).getEmailT().equals(getEmail())
             && pU.getUserData().get(i).getPasswordT().equals(getPass()))
             {
-                System.out.println("i vale:"+i);
 
                 tu2=pU.getUserData().get(i);
                 pU.removeUserByIdEmailPwd(pU.getUserData().get(i));
@@ -62,6 +61,7 @@ public class ControllerAggiornaPassword {
 
 
         }
+
        tu2.setPasswordT(nuovaP);
 
 

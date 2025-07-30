@@ -31,6 +31,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
     private static final int GETINDEXCOMF=3;
     private static final int GETINDEXAMMONTAREF=4;
     private static final int GETINDEXIDF=5;
+    private static final int GETINDEXIDPRODOTTO=6;
     private  final File fileFattura;
     private final HashMap<String, PagamentoFattura> cacheFattura;
 
@@ -72,7 +73,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
 
         try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.fileFattura, true)))) {
 
-            String[] gVectore = new String[6];
+            String[] gVectore = new String[7];
 
             gVectore[GETINDEXNOMEF] = f.getNome();
             gVectore[GETINDEXCOGNOMEF] = f.getCognome();
@@ -80,12 +81,13 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
             gVectore[GETINDEXCOMF] = f.getCom();
             gVectore[GETINDEXAMMONTAREF] = String.valueOf(f.getAmmontare());
             gVectore[GETINDEXIDF] = String.valueOf(getIdMax() + 1);
+            gVectore[GETINDEXIDPRODOTTO]= String.valueOf(f.getIdProdotto());
             csvWriter.writeNext(gVectore);
 
             csvWriter.flush();
 
         } catch (CsvValidationException e) {
-            Logger.getLogger("inset fattura").log(Level.SEVERE,"error in insert fattura csv");
+            Logger.getLogger("insert fattura").log(Level.SEVERE,"error in insert fattura csv");
         }
 
 
@@ -194,6 +196,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
                 f.setCom(gVector[GETINDEXCOMF]);
                 f.setAmmontare(Float.parseFloat(gVector[GETINDEXAMMONTAREF]));
                 f.setIdFattura(Integer.parseInt(gVector[GETINDEXIDF]));
+                f.setIdProdotto(Integer.parseInt(gVector[GETINDEXIDPRODOTTO]));
                 list.add(f);
 
 

@@ -99,10 +99,10 @@ public class ControllerPagamentoCash {
 		//inserisco in pagamentoTotale
 		if(pF.inserisciPagamentoFattura(p))
 		{
-			Logger.getLogger("pagamento effettuato ").log(Level.INFO,"payment success with id .", p.getIdFattura());
-			if(type.equals(FILE)) pT.inserisciPagamentoFattura(p);
-			else if(type.equals(MEMORIA)) pT.inserisciPagamentoFattura(p);
-
+			Logger.getLogger("pagamento effettuato ").log(Level.INFO,"payment success with id . {0}", p.getIdFattura());
+			if(type.equals(FILE)) pT=new PagamentoTotaleCsv();
+			else if(type.equals(MEMORIA)) pT=new PagamentoTotaleMemoria();
+			pT.inserisciPagamentoFattura(p);
 
 		}
 
@@ -168,6 +168,7 @@ public class ControllerPagamentoCash {
 				r.setId(vis.getIdRivista());
 				tipologia=pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();
 			}
+			default -> Logger.getLogger("ritorna tipo oggetto").log(Level.SEVERE," error with type object");
 		}
 
 

@@ -54,6 +54,7 @@ public class ControllerPagamentoCC {
 	private static final String DATABASE=&quot;database&quot;;
 	private static final String FILE=&quot;file&quot;;
 	private static final String MEMORIA=&quot;memoria&quot;;
+	private static final String CCREDITO=&quot;cCredito&quot;;
 
 	private  PersistenzaLibro pL;
 	private PersistenzaGiornale pG;
@@ -62,12 +63,7 @@ public class ControllerPagamentoCC {
 	private PersistenzaPagamentoCartaCredito pCC;
 
 
-<span class="fc" id="L65">    public ControllerPagamentoCC()  {</span>
-
-
-
-
-<span class="fc" id="L70">	}</span>
+<span class="fc" id="L66">    public ControllerPagamentoCC()  {}</span>
 
 	/*
 
@@ -113,71 +109,75 @@ public class ControllerPagamentoCC {
 
 */
 
+	private PagamentoCartaCredito pagamentoLibroCC(String nome,String database,String cognome,String mail) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+<span class="fc" id="L113">		Libro l=new Libro();</span>
+<span class="fc" id="L114">		l.setId(vis.getIdLibro());</span>
+<span class="fc" id="L115">		int id=l.getId();</span>
+<span class="pc bpc" id="L116" title="2 of 4 branches missed.">		switch (database)</span>
+		{
+<span class="fc" id="L118">			case DATABASE -&gt; pL=new LibroDao();</span>
+<span class="fc" id="L119">			case FILE -&gt; pL=new CsvLibro();</span>
+<span class="nc" id="L120">			case MEMORIA -&gt; pL=new MemoriaLibro();</span>
+<span class="nc" id="L121">			default -&gt; Logger.getLogger(&quot; errore cpn la persistenza nel libro&quot;).log(Level.SEVERE,&quot;persisentcy book error !!&quot;);</span>
+		}
+<span class="fc" id="L123">		String tipo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();</span>
+<span class="fc" id="L124">		PagamentoCartaCredito p =new PagamentoCartaCredito(0,CCREDITO,nome, vis.getSpesaT(),mail,tipo,id );</span>
+<span class="fc" id="L125">		p.setCognomeUtente(cognome);</span>
+<span class="fc" id="L126">		return p;</span>
+	}
+
+	private PagamentoCartaCredito pagamentoGiornaleCC(String nome,String database,String cognome,String mail) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+<span class="fc" id="L130">		Giornale g=new Giornale();</span>
+<span class="fc" id="L131">		g.setId(vis.getIdGiornale());</span>
+<span class="fc" id="L132">		int id=g.getId();</span>
+<span class="pc bpc" id="L133" title="1 of 4 branches missed.">		switch (database)</span>
+		{
+<span class="fc" id="L135">			case DATABASE -&gt; pG=new GiornaleDao();</span>
+<span class="fc" id="L136">			case FILE -&gt; pG=new CsvGiornale();</span>
+<span class="fc" id="L137">			case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
+<span class="nc" id="L138">			default -&gt; Logger.getLogger(&quot; errore cpn la persistenza nel giornale&quot;).log(Level.SEVERE,&quot;persisentcy daily error !!&quot;);</span>
+		}
+<span class="fc" id="L140">		String tipo=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria();</span>
+<span class="fc" id="L141">		PagamentoCartaCredito p =new PagamentoCartaCredito(0,CCREDITO,nome, vis.getSpesaT(),mail,tipo,id );</span>
+<span class="fc" id="L142">		p.setCognomeUtente(cognome);</span>
+<span class="fc" id="L143">		return p;</span>
+	}
+
+	private PagamentoCartaCredito pagamentoRivistaCC(String nome,String database,String cognome,String mail) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+<span class="fc" id="L147">		Rivista r=new Rivista();</span>
+<span class="fc" id="L148">		r.setId(vis.getIdRivista());</span>
+<span class="fc" id="L149">		int id=r.getId();</span>
+<span class="pc bpc" id="L150" title="2 of 4 branches missed.">		switch (database)</span>
+		{
+<span class="fc" id="L152">			case DATABASE -&gt; pR=new RivistaDao();</span>
+<span class="fc" id="L153">			case FILE -&gt; pR=new CsvRivista();</span>
+<span class="nc" id="L154">			case MEMORIA -&gt; pR=new MemoriaRivista();</span>
+<span class="nc" id="L155">			default -&gt; Logger.getLogger(&quot; errore cpn la persistenza nella rivista&quot;).log(Level.SEVERE,&quot;persisentcy magazine error !!&quot;);</span>
+		}
+<span class="fc" id="L157">		String tipo= pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();</span>
+<span class="fc" id="L158">		PagamentoCartaCredito p =new PagamentoCartaCredito(0,CCREDITO,nome, vis.getSpesaT(),mail,tipo,id );</span>
+<span class="fc" id="L159">		p.setCognomeUtente(cognome);</span>
+<span class="fc" id="L160">		return p;</span>
+
+	}
 
 
 	public void pagamentoCC(String nome,String database,String cognome) throws IdException, IOException, CsvValidationException, ClassNotFoundException, SQLException {
   		String mail;
-		  String tipo;
-		  int id;
-<span class="fc bfc" id="L122" title="All 2 branches covered.">		  if(vis.getIsLogged())</span>
-<span class="fc" id="L123">			  mail=User.getInstance().getEmail();</span>
-<span class="fc" id="L124">		  else  mail=null;</span>
+<span class="fc bfc" id="L167" title="All 2 branches covered.">		  if(vis.getIsLogged())</span>
+<span class="fc" id="L168">			  mail=User.getInstance().getEmail();</span>
+<span class="fc" id="L169">		  else  mail=null;</span>
 		//effettuo pagamento
 
-<span class="fc" id="L127">		vis.setTipoModifica(&quot;insert&quot;);</span>
+<span class="fc" id="L172">		vis.setTipoModifica(&quot;insert&quot;);</span>
 
 
-        PagamentoCartaCredito p;
+        PagamentoCartaCredito p ;
 
-<span class="pc bpc" id="L132" title="1 of 4 branches missed.">        switch (vis.getType()) {</span>
-			case &quot;libro&quot; -&gt; {
-<span class="fc" id="L134">				Libro l=new Libro();</span>
-<span class="fc" id="L135">				l.setId(vis.getIdLibro());</span>
-<span class="fc" id="L136">				id=l.getId();</span>
-<span class="pc bpc" id="L137" title="2 of 4 branches missed.">				switch (database)</span>
-				{
-<span class="fc" id="L139">					case DATABASE -&gt; pL=new LibroDao();</span>
-<span class="fc" id="L140">					case FILE -&gt; pL=new CsvLibro();</span>
-<span class="nc" id="L141">					case MEMORIA -&gt; pL=new MemoriaLibro();</span>
-<span class="nc" id="L142">					default -&gt; Logger.getLogger(&quot; errore cpn la persistenza nel libro&quot;).log(Level.SEVERE,&quot;persisentcy book error !!&quot;);</span>
-				}
-<span class="fc" id="L144">				tipo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();</span>
-<span class="fc" id="L145">				 p =new PagamentoCartaCredito(0,&quot;cCcredito&quot;,nome, vis.getSpesaT(),mail,tipo,id );</span>
-<span class="fc" id="L146">				 p.setCognomeUtente(cognome);</span>
-
-<span class="fc" id="L148">			}</span>
-
-			case &quot;giornale&quot; -&gt; {
-<span class="fc" id="L151">				Giornale g=new Giornale();</span>
-<span class="fc" id="L152">				g.setId(vis.getIdGiornale());</span>
-<span class="fc" id="L153">				id=g.getId();</span>
-<span class="pc bpc" id="L154" title="1 of 4 branches missed.">				switch (database)</span>
-				{
-<span class="fc" id="L156">					case DATABASE -&gt; pG=new GiornaleDao();</span>
-<span class="fc" id="L157">					case FILE -&gt; pG=new CsvGiornale();</span>
-<span class="fc" id="L158">					case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
-<span class="nc" id="L159">					default -&gt; Logger.getLogger(&quot; errore cpn la persistenza nel giornale&quot;).log(Level.SEVERE,&quot;persisentcy daily error !!&quot;);</span>
-				}
-<span class="fc" id="L161">				tipo=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria();</span>
-<span class="fc" id="L162">				p =new PagamentoCartaCredito(0,&quot;cCcredito&quot;,nome, vis.getSpesaT(),mail,tipo,id );</span>
-<span class="fc" id="L163">				p.setCognomeUtente(cognome);</span>
-<span class="fc" id="L164">				}</span>
-			case &quot;rivista&quot; -&gt; {
-<span class="fc" id="L166">				Rivista r=new Rivista();</span>
-<span class="fc" id="L167">				r.setId(vis.getIdRivista());</span>
-<span class="fc" id="L168">				id=r.getId();</span>
-<span class="pc bpc" id="L169" title="2 of 4 branches missed.">				switch (database)</span>
-				{
-<span class="fc" id="L171">					case DATABASE -&gt; pR=new RivistaDao();</span>
-<span class="fc" id="L172">					case FILE -&gt; pR=new CsvRivista();</span>
-<span class="nc" id="L173">					case MEMORIA -&gt; pR=new MemoriaRivista();</span>
-<span class="nc" id="L174">					default -&gt; Logger.getLogger(&quot; errore cpn la persistenza nella rivista&quot;).log(Level.SEVERE,&quot;persisentcy magazine error !!&quot;);</span>
-				}
-<span class="fc" id="L176">				tipo= pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();</span>
-<span class="fc" id="L177">				p =new PagamentoCartaCredito(0,&quot;cCcredito&quot;,nome, vis.getSpesaT(),mail,tipo,id );</span>
-<span class="fc" id="L178">				p.setCognomeUtente(cognome);</span>
-
-<span class="fc" id="L180">			}</span>
+<span class="pc bpc" id="L177" title="1 of 4 branches missed.">        switch (vis.getType()) {</span>
+<span class="fc" id="L178">			case &quot;libro&quot; -&gt; p=pagamentoLibroCC(nome,database,cognome,mail);</span>
+<span class="fc" id="L179">			case &quot;giornale&quot; -&gt;p= pagamentoGiornaleCC(nome,database,cognome,mail);</span>
+<span class="fc" id="L180">			case &quot;rivista&quot; -&gt; p=pagamentoRivistaCC(nome,database,cognome,mail);</span>
 
 
 <span class="nc" id="L183">			default -&gt; throw new IdException(&quot; id not found&quot;);</span>
@@ -264,14 +264,14 @@ public class ControllerPagamentoCC {
 <span class="fc bfc" id="L264" title="All 2 branches covered.">			if (tokensData[1].length() == 2)</span>
 <span class="fc" id="L265">			{	tokensData[1]=getMeseGiorno(tokensData[1]);</span>
 <span class="pc bpc" id="L266" title="2 of 4 branches missed.">				if ((Integer.parseInt(tokensData[1]) &gt;= 1 &amp;&amp; Integer.parseInt(tokensData[1]) &lt;= 12)) {</span>
-<span class="fc" id="L267">					Logger.getLogger(&quot; mese controllato&quot;).log(Level.INFO, &quot; month is correct .&quot;,tokensData[1]);</span>
+<span class="fc" id="L267">					Logger.getLogger(&quot; mese controllato&quot;).log(Level.INFO, &quot; month is correct . {0}&quot;,tokensData[1]);</span>
 <span class="fc" id="L268">					i++;</span>
 <span class="nc" id="L269">				}else throw new IdException(&quot; mese è sbagliato&quot;);</span>
 			}
 <span class="fc bfc" id="L271" title="All 2 branches covered.">			if (tokensData[2].length() == 2)</span>
 <span class="fc" id="L272">			{	tokensData[2]=getMeseGiorno(tokensData[1]);</span>
 <span class="pc bpc" id="L273" title="2 of 4 branches missed.">				if ((Integer.parseInt(tokensData[1]) &gt;= 1 &amp;&amp; Integer.parseInt(tokensData[1]) &lt;= 12)) {</span>
-<span class="fc" id="L274">					Logger.getLogger(&quot;giorno controllato&quot;).log(Level.INFO, &quot; giorno is correct .&quot;,tokensData[1]);</span>
+<span class="fc" id="L274">					Logger.getLogger(&quot;giorno controllato&quot;).log(Level.INFO, &quot; giorno is correct . {0}&quot;,tokensData[1]);</span>
 <span class="fc" id="L275">					i++;</span>
 <span class="nc" id="L276">				}else throw new IdException(&quot;giorno è sbagliato&quot;);</span>
 			}
@@ -311,14 +311,15 @@ public class ControllerPagamentoCC {
 <span class="nc" id="L311">			case &quot;07&quot;-&gt; finale=&quot;7&quot;;</span>
 <span class="nc" id="L312">			case &quot;08&quot;-&gt; finale=&quot;8&quot;;</span>
 <span class="fc" id="L313">			case &quot;09&quot;-&gt; finale=&quot;9&quot;;</span>
+<span class="fc" id="L314">			default -&gt; Logger.getLogger(&quot;getMeseGiorno&quot;).log(Level.SEVERE,&quot;month/day is incorrect&quot;);</span>
 
 		}
-<span class="fc" id="L316">		return finale;</span>
+<span class="fc" id="L317">		return finale;</span>
 	}
 
 	private boolean checkInteger(String civ)
 	{
-<span class="fc" id="L321">		return civ.matches(&quot;-?\\d+(\\d+\\d+)?&quot;);</span>
+<span class="fc" id="L322">		return civ.matches(&quot;-?\\d+(\\d+\\d+)?&quot;);</span>
 	}
 }
 

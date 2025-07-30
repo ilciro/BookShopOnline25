@@ -11,12 +11,10 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
-import laptop.database.DaoInitialize;
-import laptop.database.secondouclogin.users.PersistenzaUtente;
+
 import laptop.exception.IdException;
 import laptop.utilities.ConnToDb;
 import laptop.model.user.TempUser;
-import org.jetbrains.annotations.NotNull;
 
 
 public class UsersDao extends PersistenzaUtente {
@@ -116,10 +114,8 @@ public class UsersDao extends PersistenzaUtente {
 
 
 	@Override
-	public void initializza() throws CsvValidationException, IOException, IdException, SQLException {
-
-		DaoInitialize daoI=new DaoInitialize();
-		daoI.inizializza("utenti");
+	public void initializza() throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
+	super.initializza();
     }
 
 

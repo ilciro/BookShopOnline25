@@ -122,22 +122,19 @@ public class BuondaryAnnullaPagamento implements Initializable {
         if(databaseB.isSelected()) persistency=DATABASE;
         if(fileB.isSelected()) persistency=FILE;
         if(memoriaB.isSelected()) persistency=MEMORIA;
-
-
-
-        if(cAP.cancellaFattura(Integer.parseInt(fatturaTF.getText()),persistency))
+        if(!persistency.isEmpty())
         {
-            if(vis.getTipologiaApplicazione().equals("demo"))
-            {
+        if(cAP.cancellaFattura(Integer.parseInt(fatturaTF.getText()),persistency)) {
+            if (vis.getTipologiaApplicazione().equals("demo")) {
                 Platform.exit();
-                File path=new File("memory");
+                File path = new File("memory");
                 File[] files = path.listFiles();
-                for(int i = 0; i< Objects.requireNonNull(files).length; i++) {
+                for (int i = 0; i < Objects.requireNonNull(files).length; i++) {
 
                     files[i].delete();
                 }
 
-            }else {
+            } else {
                 Stage stage;
                 Parent root;
                 stage = (Stage) cancellaF.getScene().getWindow();
@@ -146,6 +143,7 @@ public class BuondaryAnnullaPagamento implements Initializable {
                 stage.setScene(scene);
                 stage.show();
             }
+        }
         }
         else {
             Stage stage;

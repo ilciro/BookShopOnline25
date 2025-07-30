@@ -67,7 +67,6 @@ public class ControllerCompravendita {
 					default -> Logger.getLogger("lista giornale").log(Level.SEVERE, "daily persistency not correct !!");
 				}
 				pG.initializza();
-
 				catalogo.addAll(pG.retrieveRaccoltaData());
 
 			}

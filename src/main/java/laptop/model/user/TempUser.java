@@ -108,15 +108,15 @@ public String getIdRuoloT()  {
 
 		 switch (ruolo){
 			case "ADMIN","A"->
-				ruoloT = RuoliT.ADMIN.toString();
+				ruoloT = RuoliT.ADMIN.toString().substring(0,1);
 			case "EDITORE","E"->
-				ruoloT = RuoliT.EDITORE.toString();
+				ruoloT = RuoliT.EDITORE.toString().substring(0,1);
 			case "SCRITTORE","W","S"->
-				ruoloT = RuoliT.SCRITTORE.toString();
+				ruoloT = RuoliT.SCRITTORE.toString().substring(0,1);
 			case "UTENTE","U"->
-					ruoloT = RuoliT.UTENTE.toString();
+					ruoloT = RuoliT.UTENTE.toString().substring(0,1);
              default->
-				ruoloT= RuoliT.NONVALIDO.toString();
+				ruoloT= RuoliT.NONVALIDO.toString().substring(0,1);
 
 			}
 

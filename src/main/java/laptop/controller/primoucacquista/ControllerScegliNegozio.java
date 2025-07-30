@@ -33,7 +33,7 @@ public class ControllerScegliNegozio {
 			case MEMORIA -> pN = new MemoriaNegozio();
 			default -> Logger.getLogger("get negozi").log(Level.SEVERE,"  empty list!!");
 		}
-		 	pN.initializza();
+		pN.initializza();
 		return pN.getNegozi();
 	}
 

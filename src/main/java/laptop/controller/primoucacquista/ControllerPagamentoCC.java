@@ -54,6 +54,7 @@ public class ControllerPagamentoCC {
 	private static final String DATABASE="database";
 	private static final String FILE="file";
 	private static final String MEMORIA="memoria";
+	private static final String CCREDITO="cCredito";
 
 	private  PersistenzaLibro pL;
 	private PersistenzaGiornale pG;
@@ -62,12 +63,7 @@ public class ControllerPagamentoCC {
 	private PersistenzaPagamentoCartaCredito pCC;
 
 
-    public ControllerPagamentoCC()  {
-
-
-
-
-	}
+    public ControllerPagamentoCC()  {}
 
 	/*
 
@@ -113,12 +109,61 @@ public class ControllerPagamentoCC {
 
 */
 
+	private PagamentoCartaCredito pagamentoLibroCC(String nome,String database,String cognome,String mail) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+		Libro l=new Libro();
+		l.setId(vis.getIdLibro());
+		int id=l.getId();
+		switch (database)
+		{
+			case DATABASE -> pL=new LibroDao();
+			case FILE -> pL=new CsvLibro();
+			case MEMORIA -> pL=new MemoriaLibro();
+			default -> Logger.getLogger(" errore cpn la persistenza nel libro").log(Level.SEVERE,"persisentcy book error !!");
+		}
+		String tipo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();
+		PagamentoCartaCredito p =new PagamentoCartaCredito(0,CCREDITO,nome, vis.getSpesaT(),mail,tipo,id );
+		p.setCognomeUtente(cognome);
+		return p;
+	}
+
+	private PagamentoCartaCredito pagamentoGiornaleCC(String nome,String database,String cognome,String mail) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+		Giornale g=new Giornale();
+		g.setId(vis.getIdGiornale());
+		int id=g.getId();
+		switch (database)
+		{
+			case DATABASE -> pG=new GiornaleDao();
+			case FILE -> pG=new CsvGiornale();
+			case MEMORIA -> pG=new MemoriaGiornale();
+			default -> Logger.getLogger(" errore cpn la persistenza nel giornale").log(Level.SEVERE,"persisentcy daily error !!");
+		}
+		String tipo=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria();
+		PagamentoCartaCredito p =new PagamentoCartaCredito(0,CCREDITO,nome, vis.getSpesaT(),mail,tipo,id );
+		p.setCognomeUtente(cognome);
+		return p;
+	}
+
+	private PagamentoCartaCredito pagamentoRivistaCC(String nome,String database,String cognome,String mail) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+		Rivista r=new Rivista();
+		r.setId(vis.getIdRivista());
+		int id=r.getId();
+		switch (database)
+		{
+			case DATABASE -> pR=new RivistaDao();
+			case FILE -> pR=new CsvRivista();
+			case MEMORIA -> pR=new MemoriaRivista();
+			default -> Logger.getLogger(" errore cpn la persistenza nella rivista").log(Level.SEVERE,"persisentcy magazine error !!");
+		}
+		String tipo= pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();
+		PagamentoCartaCredito p =new PagamentoCartaCredito(0,CCREDITO,nome, vis.getSpesaT(),mail,tipo,id );
+		p.setCognomeUtente(cognome);
+		return p;
+
+	}
 
 
 	public void pagamentoCC(String nome,String database,String cognome) throws IdException, IOException, CsvValidationException, ClassNotFoundException, SQLException {
   		String mail;
-		  String tipo;
-		  int id;
 		  if(vis.getIsLogged())
 			  mail=User.getInstance().getEmail();
 		  else  mail=null;
@@ -127,57 +172,12 @@ public class ControllerPagamentoCC {
 		vis.setTipoModifica("insert");
 
 
-        PagamentoCartaCredito p;
+        PagamentoCartaCredito p ;
 
         switch (vis.getType()) {
-			case "libro" -> {
-				Libro l=new Libro();
-				l.setId(vis.getIdLibro());
-				id=l.getId();
-				switch (database)
-				{
-					case DATABASE -> pL=new LibroDao();
-					case FILE -> pL=new CsvLibro();
-					case MEMORIA -> pL=new MemoriaLibro();
-					default -> Logger.getLogger(" errore cpn la persistenza nel libro").log(Level.SEVERE,"persisentcy book error !!");
-				}
-				tipo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();
-				 p =new PagamentoCartaCredito(0,"cCcredito",nome, vis.getSpesaT(),mail,tipo,id );
-				 p.setCognomeUtente(cognome);
-
-			}
-
-			case "giornale" -> {
-				Giornale g=new Giornale();
-				g.setId(vis.getIdGiornale());
-				id=g.getId();
-				switch (database)
-				{
-					case DATABASE -> pG=new GiornaleDao();
-					case FILE -> pG=new CsvGiornale();
-					case MEMORIA -> pG=new MemoriaGiornale();
-					default -> Logger.getLogger(" errore cpn la persistenza nel giornale").log(Level.SEVERE,"persisentcy daily error !!");
-				}
-				tipo=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria();
-				p =new PagamentoCartaCredito(0,"cCcredito",nome, vis.getSpesaT(),mail,tipo,id );
-				p.setCognomeUtente(cognome);
-				}
-			case "rivista" -> {
-				Rivista r=new Rivista();
-				r.setId(vis.getIdRivista());
-				id=r.getId();
-				switch (database)
-				{
-					case DATABASE -> pR=new RivistaDao();
-					case FILE -> pR=new CsvRivista();
-					case MEMORIA -> pR=new MemoriaRivista();
-					default -> Logger.getLogger(" errore cpn la persistenza nella rivista").log(Level.SEVERE,"persisentcy magazine error !!");
-				}
-				tipo= pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();
-				p =new PagamentoCartaCredito(0,"cCcredito",nome, vis.getSpesaT(),mail,tipo,id );
-				p.setCognomeUtente(cognome);
-
-			}
+			case "libro" -> p=pagamentoLibroCC(nome,database,cognome,mail);
+			case "giornale" ->p= pagamentoGiornaleCC(nome,database,cognome,mail);
+			case "rivista" -> p=pagamentoRivistaCC(nome,database,cognome,mail);
 
 
 			default -> throw new IdException(" id not found");
@@ -264,14 +264,14 @@ public class ControllerPagamentoCC {
 			if (tokensData[1].length() == 2)
 			{	tokensData[1]=getMeseGiorno(tokensData[1]);
 				if ((Integer.parseInt(tokensData[1]) >= 1 && Integer.parseInt(tokensData[1]) <= 12)) {
-					Logger.getLogger(" mese controllato").log(Level.INFO, " month is correct .",tokensData[1]);
+					Logger.getLogger(" mese controllato").log(Level.INFO, " month is correct . {0}",tokensData[1]);
 					i++;
 				}else throw new IdException(" mese è sbagliato");
 			}
 			if (tokensData[2].length() == 2)
 			{	tokensData[2]=getMeseGiorno(tokensData[1]);
 				if ((Integer.parseInt(tokensData[1]) >= 1 && Integer.parseInt(tokensData[1]) <= 12)) {
-					Logger.getLogger("giorno controllato").log(Level.INFO, " giorno is correct .",tokensData[1]);
+					Logger.getLogger("giorno controllato").log(Level.INFO, " giorno is correct . {0}",tokensData[1]);
 					i++;
 				}else throw new IdException("giorno è sbagliato");
 			}
@@ -311,6 +311,7 @@ public class ControllerPagamentoCC {
 			case "07"-> finale="7";
 			case "08"-> finale="8";
 			case "09"-> finale="9";
+			default -> Logger.getLogger("getMeseGiorno").log(Level.SEVERE,"month/day is incorrect");
 
 		}
 		return finale;

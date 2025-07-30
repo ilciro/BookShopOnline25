@@ -7,24 +7,25 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-<span class="fc" id="L11">public class PersistenzaPagamentoFattura {</span>
+<span class="fc" id="L13">public class PersistenzaPagamentoFattura {</span>
 
     public boolean inserisciPagamentoFattura(PagamentoFattura f) throws IOException, ClassNotFoundException {
 
-<span class="nc bnc" id="L15" title="All 2 branches missed.">        return f.getIdFattura()!=-1;</span>
+<span class="nc bnc" id="L17" title="All 2 branches missed.">        return f.getIdFattura()!=-1;</span>
     }
     public boolean cancellaPagamentoFattura(PagamentoFattura f) throws CsvValidationException, IOException, ClassNotFoundException {
-<span class="nc bnc" id="L18" title="All 2 branches missed.">        return f.getIdFattura()!=-1;</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        return f.getIdFattura()!=-1;</span>
     }
     public void inizializza() throws IOException, ClassNotFoundException, SQLException {
-<span class="nc bnc" id="L21" title="All 2 branches missed.">       if(!Files.exists(Path.of(&quot;src/main/resources/sql/tablePopulate.properties&quot;))) throw new SQLException(&quot;file db not exits&quot;);</span>
-<span class="nc bnc" id="L22" title="All 2 branches missed.">       if(!Files.exists(Path.of(&quot;report/reportPagamentoFattura.csv&quot;))) throw new IOException(&quot; file csv not exists&quot;);</span>
-<span class="nc bnc" id="L23" title="All 2 branches missed.">       if(!Files.exists(Path.of(&quot;memory/serializzazionePagamentoFattura.ser&quot;))) throw new ClassNotFoundException(&quot; class not found in memory&quot;);</span>
-<span class="nc" id="L24">    }</span>
+<span class="fc" id="L23">        Logger.getLogger(&quot;persistenza fattura inizializza&quot;).log(Level.INFO,&quot;persistenza pagamento fattura inizializza&quot;);</span>
+<span class="fc" id="L24">          }</span>
 
     public PagamentoFattura ultimaFattura() throws IOException, CsvValidationException, ClassNotFoundException {
-<span class="nc" id="L27">        return new PagamentoFattura();</span>
+<span class="nc" id="L27">        Logger.getLogger(&quot;Persistenza pagamento fattura&quot;).log(Level.INFO,&quot;ultima fattur&quot;);</span>
+<span class="nc" id="L28">        return null;</span>
     }
 
 }
