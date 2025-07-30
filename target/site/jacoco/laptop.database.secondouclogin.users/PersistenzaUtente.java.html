@@ -10,8 +10,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-<span class="fc" id="L14">public class PersistenzaUtente {</span>
+<span class="fc" id="L16">public class PersistenzaUtente {</span>
     private static final String DATABASE=&quot;src/main/resources/sql/tablePopulate.properties&quot;;
     private static final String FILE=&quot;report/reportUtente.csv&quot;;
     private static final String MEMORIA=&quot;memory/serializzazioneUtente.ser&quot;;
@@ -20,28 +22,26 @@ import java.sql.SQLException;
     private static final String MEMORIAEXCEPTION=&quot;class not in memory&quot;;
     private static final String IDEXCEPTIONMESSAGE=&quot; id is null or is zero&quot;;
     public boolean inserisciUtente(TempUser tu) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
-<span class="nc bnc" id="L23" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);</span>
-<span class="nc bnc" id="L24" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);</span>
-<span class="nc bnc" id="L25" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
-<span class="nc bnc" id="L26" title="All 2 branches missed.">        if(tu.getId()&lt;=0) throw new IdException(IDEXCEPTIONMESSAGE);</span>
-<span class="nc" id="L27">        return false;}</span>
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IOException(DATABASEXCEPTION);</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);</span>
+<span class="nc bnc" id="L27" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        if(tu.getId()&lt;=0) throw new IdException(IDEXCEPTIONMESSAGE);</span>
+<span class="nc" id="L29">        return false;}</span>
     public ObservableList&lt;TempUser&gt; getUserData() throws IOException, CsvValidationException, SQLException {
-<span class="nc bnc" id="L29" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASEXCEPTION);</span>
-<span class="nc bnc" id="L30" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);</span>
-<span class="nc bnc" id="L31" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new IOException(MEMORIAEXCEPTION);</span>
-<span class="nc" id="L32">        return FXCollections.observableArrayList();}</span>
+      //  if(!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASEXCEPTION);
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new IOException(MEMORIAEXCEPTION);</span>
+<span class="nc" id="L34">        return FXCollections.observableArrayList();}</span>
     public boolean removeUserByIdEmailPwd(TempUser tu) throws CsvValidationException, IOException, SQLException {
-<span class="nc bnc" id="L34" title="All 2 branches missed.">        if(tu.getId()&lt;=0) throw new SQLException(&quot;id in db is wrong&quot;);</span>
-<span class="nc bnc" id="L35" title="All 2 branches missed.">        if(tu.getEmailT().isEmpty()) throw new CsvValidationException(FILEXCEPTION);</span>
-<span class="nc bnc" id="L36" title="All 2 branches missed.">        if(tu.getPasswordT().isEmpty()) throw new IOException(&quot;password memory is empty&quot;);</span>
-<span class="nc" id="L37">        return false;}</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        if(tu.getId()&lt;=0) throw new SQLException(&quot;id in db is wrong&quot;);</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        if(tu.getEmailT().isEmpty()) throw new CsvValidationException(FILEXCEPTION);</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        if(tu.getPasswordT().isEmpty()) throw new IOException(&quot;password memory is empty&quot;);</span>
+<span class="nc" id="L39">        return false;}</span>
 
 
 
     public void initializza() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
-<span class="nc bnc" id="L42" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);</span>
-<span class="nc bnc" id="L43" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
-<span class="nc bnc" id="L44" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new SQLException(&quot;file fo populate db users not found!&quot;);</span>
+<span class="nc" id="L44">        Logger.getLogger(&quot;inizializza persistenza utente&quot;).log(Level.INFO,&quot;peristenza utente initialize&quot;);</span>
 
 <span class="nc" id="L46">    }</span>
 }

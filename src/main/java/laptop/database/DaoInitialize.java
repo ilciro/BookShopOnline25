@@ -88,8 +88,7 @@ public class DaoInitialize {
                 if (getPresente() == 0)
                     popola(type);
             }
-            default ->
-                    Logger.getLogger("errore ad esegire procedura").log(Level.SEVERE, "erroro while execute procedure with type .{0}", type);
+            default -> Logger.getLogger("errore ad esegire procedura").log(Level.SEVERE, "erroro while execute procedure with type .{0}", type);
 
         }
     }
@@ -252,7 +251,7 @@ public class DaoInitialize {
                 eseguiProcedura(ESISTE, CARTACREDITO);
                 eseguiProcedura(CREA, CARTACREDITO);
             }
-            default -> Logger.getLogger("eoore con il tipo in dao initialize").log(Level.SEVERE," type is wrong!!");
+            default -> Logger.getLogger("errore con il tipo in dao initialize").log(Level.SEVERE," type is wrong!!");
         }
     }
 

@@ -10,6 +10,8 @@
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/boundary/primoucacquista/BoundaryScegliNegozio.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/boundary/primoucacquista/BoundaryVisualizza.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/boundary/primoucacquista/BuondaryAnnullaPagamento.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/boundary/secondouclogin/BoundaryAggiornaPassword.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/boundary/secondouclogin/BoundaryRegistra.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/boundary/secondouclogin/BuondaryLogin.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/ControllerSystemState.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/primoucacquista/ControllerAcquista.java
@@ -22,7 +24,9 @@
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/primoucacquista/ControllerRicerca.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/primoucacquista/ControllerScegliNegozio.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/primoucacquista/ControllerVisualizza.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/secondouclogin/ControllerAggiornaPassword.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/secondouclogin/ControllerLogin.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/secondouclogin/ControllerRegistraUtente.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/DaoInitialize.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/MemoryInitialize.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/primoucacquista/giornale/CsvGiornale.java

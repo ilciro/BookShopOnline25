@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PersistenzaUtente {
     private static final String DATABASE="src/main/resources/sql/tablePopulate.properties";
@@ -26,7 +28,7 @@ public class PersistenzaUtente {
         if(tu.getId()<=0) throw new IdException(IDEXCEPTIONMESSAGE);
         return false;}
     public ObservableList<TempUser> getUserData() throws IOException, CsvValidationException, SQLException {
-        if(!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASEXCEPTION);
+      //  if(!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASEXCEPTION);
         if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);
         if(!Files.exists(Path.of(MEMORIA))) throw new IOException(MEMORIAEXCEPTION);
         return FXCollections.observableArrayList();}
@@ -39,9 +41,7 @@ public class PersistenzaUtente {
 
 
     public void initializza() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
-        if(!Files.exists(Path.of(FILE))) throw new CsvValidationException(FILEXCEPTION);
-        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);
-        if(!Files.exists(Path.of(DATABASE))) throw new SQLException("file fo populate db users not found!");
+        Logger.getLogger("inizializza persistenza utente").log(Level.INFO,"peristenza utente initialize");
 
     }
 }

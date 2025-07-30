@@ -1,8 +1,9 @@
 package laptop.model.pagamento;
 
 
+import java.io.Serializable;
 
-public class Pagamento {
+public class Pagamento implements Serializable {
 
     public boolean controllaPagamentoFattura(PagamentoFattura pF){
        return pF.getIdFattura()!=-1;
