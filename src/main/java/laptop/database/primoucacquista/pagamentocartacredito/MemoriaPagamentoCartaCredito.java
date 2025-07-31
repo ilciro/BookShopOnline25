@@ -1,6 +1,8 @@
 package laptop.database.primoucacquista.pagamentocartacredito;
 
 import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import laptop.model.pagamento.PagamentoCartaCredito;
 
 import java.io.*;
@@ -16,12 +18,13 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
     private static final String SERIALIZZAZIONE="memory/serializzazionePagamentoCartaCredito.ser";
     @Override
     public void inizializza() throws IOException, ClassNotFoundException, SQLException {
+        Path path = Path.of(SERIALIZZAZIONE);
         try
         {
-            if(!Files.exists(Path.of(SERIALIZZAZIONE))) throw new IOException(" file not exists");
+            if(!Files.exists(path)) throw new IOException(" file not exists");
         }catch (IOException e)
         {
-            Files.createFile(Path.of(SERIALIZZAZIONE));
+            Files.createFile(path);
             Logger.getLogger("inizializza memoria pagamentoCC").log(Level.INFO," file has been created");
         }
     }
@@ -62,12 +65,24 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             list = (ArrayList<PagamentoCartaCredito>) ois.readObject();
         }
-        for (int i = 1; i <= list.size(); i++) {
-            if (i == p.getIdPagCC()) {
+        for (int i = 0; i < list.size(); i++) {
+            if (i == p.getIdPagCC()-1) {
                 Logger.getLogger("cancella fattura").log(Level.INFO,"id payment {0}.",p.getIdPagCC());
 
-                status = list.remove(list.get(i - 1));
-                break;
+                status = list.remove(list.get(i));
+
+            }
+        }
+        Path path=Path.of(SERIALIZZAZIONE);
+        try{
+            Files.delete(path);
+            if(!Files.exists(path)) throw new IOException("file "+SERIALIZZAZIONE+" cancellato");
+        }catch (IOException e)
+        {
+            Files.createFile(path);
+            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
+                ObjectOutputStream oos=new ObjectOutputStream(fos)){
+                oos.writeObject(list);
             }
         }
         return status;
@@ -83,5 +98,27 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
 
         }
         return list.get(list.size() - 1);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(String email) throws IOException, ClassNotFoundException {
+        ObservableList<PagamentoCartaCredito> listCC= FXCollections.observableArrayList();
+        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            list = (ArrayList<PagamentoCartaCredito>) ois.readObject();
+        }catch (EOFException e)
+        {
+            Logger.getLogger("listPagamentoCCUser").log(Level.SEVERE,"file is empty");
+        }
+        for (int i = 1; i <= list.size(); i++) {
+            if (list.get(i-1).getEmail().equals(email)) {
+                PagamentoCartaCredito pCC=list.get(i-1);
+                listCC.add(pCC);
+
+            }
+        }
+        return listCC;
+
     }
 }

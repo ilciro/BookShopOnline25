@@ -187,6 +187,7 @@ public class PagamentoTotaleCsv extends PagamentoTotale {
 
     @Override
     public boolean inserisciPagamentoFattura(PagamentoFattura p) throws CsvValidationException, IOException, ClassNotFoundException {
+        super.inserisciPagamentoFattura(p);
          p=csvFattura.ultimaFattura();
 
 
@@ -224,7 +225,8 @@ public class PagamentoTotaleCsv extends PagamentoTotale {
     }
 
     @Override
-    public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito pCC) throws IOException, CsvValidationException {
+    public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito pCC) throws IOException, CsvValidationException, ClassNotFoundException {
+        super.inserisciPagamentoCartaCredito(pCC);
          pCC=csvPagamentoCartaCredito.ultimoPagamentoCartaCredito();
         pCC.setMetodo("cCredito");
         try(CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.file, true))))

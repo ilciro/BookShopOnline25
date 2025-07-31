@@ -155,6 +155,11 @@ public class BoundaryPagamentoCash implements Initializable{
 					viaTF.setText("viale prova 8");
 					eventualiArea.setText(" dopo le 12 ");
 				}
+				if(vis.getTipologiaApplicazione().equals("demo"))
+				{
+					databaseButton.setVisible(false);
+					fileButton.setVisible(false);
+				}
 
 	}
 

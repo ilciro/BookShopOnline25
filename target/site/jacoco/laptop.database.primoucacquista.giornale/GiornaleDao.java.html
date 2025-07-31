@@ -186,9 +186,9 @@ public class GiornaleDao extends PersistenzaGiornale{
     }
 
     @Override
-    public void initializza() throws FileNotFoundException, SQLException {
+    public void initializza() throws IOException, SQLException, CsvValidationException, IdException, ClassNotFoundException {
 
-
+<span class="fc" id="L191">    super.initializza();</span>
 <span class="fc" id="L192">        DaoInitialize daoI=new DaoInitialize();</span>
 <span class="fc" id="L193">        daoI.inizializza(GIORNALE);</span>
 <span class="fc" id="L194">    }</span>

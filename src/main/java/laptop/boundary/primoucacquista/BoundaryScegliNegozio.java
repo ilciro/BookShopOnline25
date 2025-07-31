@@ -168,6 +168,7 @@ private void negozioGiusto() throws IOException {
 
 
 	if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
+		/*
 		if (vis.getTipologiaApplicazione().equals("demo"))
 		{
 
@@ -179,7 +180,9 @@ private void negozioGiusto() throws IOException {
 					files[i].delete();
 				}
 		}
-		else {
+
+		 */
+		//else {
 
 			Stage stage;
 			Parent root;
@@ -189,7 +192,7 @@ private void negozioGiusto() throws IOException {
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
-		}
+	//	}
 		}
 	}
 

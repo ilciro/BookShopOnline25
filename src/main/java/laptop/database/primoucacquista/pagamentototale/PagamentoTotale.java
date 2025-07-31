@@ -1,6 +1,9 @@
 package laptop.database.primoucacquista.pagamentototale;
 
 import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.model.pagamento.Pagamento;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
 
@@ -12,6 +15,5 @@ public class PagamentoTotale {
     public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito pCC) throws IOException, CsvValidationException, ClassNotFoundException {return pCC.getIdPagCC()!=0;}
     public boolean cancellaFattura(PagamentoFattura p) throws IOException, ClassNotFoundException, CsvValidationException { return p.getIdFattura()!=0;}
     public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException, CsvValidationException { return pCC.getIdPagCC() != 0;}
-
 
 }

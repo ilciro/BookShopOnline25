@@ -1,41 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PagamentoTotaleDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.primoucacquista.pagamentototale</a> &gt; <span class="el_source">PagamentoTotaleDao.java</span></div><h1>PagamentoTotaleDao.java</h1><pre class="source lang-java linenums">package laptop.database.primoucacquista.pagamentototale;
 
 import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.controller.ControllerSystemState;
 import laptop.database.DaoInitialize;
+import laptop.model.pagamento.Pagamento;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
+import laptop.model.user.User;
+import laptop.utilities.ConnToDb;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-<span class="fc" id="L10">public class PagamentoTotaleDao extends PagamentoTotale {</span>
+<span class="fc" id="L22">public class PagamentoTotaleDao extends PagamentoTotale {</span>
+
+<span class="fc" id="L24">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
 
 
     @Override
     public void inizializza() {
-<span class="fc" id="L15">        DaoInitialize dI=new DaoInitialize();</span>
-<span class="fc" id="L16">        dI.inizializza(&quot;pagamentoTotale&quot;);</span>
+<span class="fc" id="L29">        DaoInitialize dI=new DaoInitialize();</span>
+<span class="fc" id="L30">        dI.inizializza(&quot;pagamentoTotale&quot;);</span>
 
 
-<span class="fc" id="L19">    }</span>
+<span class="fc" id="L33">    }</span>
 
     @Override
     public boolean inserisciPagamentoFattura(PagamentoFattura p) throws CsvValidationException, IOException, ClassNotFoundException {
-<span class="fc" id="L23">        return super.inserisciPagamentoFattura(p);</span>
+<span class="fc" id="L37">        return super.inserisciPagamentoFattura(p);</span>
     }
 
     @Override
     public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito pCC) throws CsvValidationException, IOException, ClassNotFoundException {
-<span class="nc" id="L28">        return super.inserisciPagamentoCartaCredito(pCC);</span>
+<span class="nc" id="L42">        return super.inserisciPagamentoCartaCredito(pCC);</span>
     }
 
     @Override
     public boolean cancellaFattura(PagamentoFattura p) throws IOException, ClassNotFoundException, CsvValidationException {
-<span class="fc" id="L33">       return super.cancellaFattura(p);</span>
+<span class="fc" id="L47">        int row=0;</span>
+<span class="fc" id="L48">        String query=&quot;delete from pagamentoFattura where idFattura=?&quot;;</span>
+<span class="fc" id="L49">      try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L50">      PreparedStatement prepQ=conn.prepareStatement(query))</span>
+      {
+<span class="fc" id="L52">          prepQ.setInt(1,p.getIdFattura());</span>
+
+<span class="fc" id="L54">          row=prepQ.executeUpdate();</span>
+
+<span class="nc" id="L56">      }catch (SQLException e)</span>
+      {
+<span class="nc" id="L58">          Logger.getLogger(&quot;cancella fattura&quot;).log(Level.SEVERE,&quot;exception with cash {0}&quot;,e);</span>
+<span class="fc" id="L59">      }</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">      return row==1;</span>
+
     }
 
     @Override
     public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException, CsvValidationException {
-<span class="fc" id="L38">        return super.cancellaPagamentoCC(pCC);</span>
+<span class="fc" id="L66">        int row=0;</span>
+<span class="fc" id="L67">        String query=&quot;delete from pagamentoCartaCredito where idPagamento=?&quot;;</span>
+<span class="fc" id="L68">        try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L69">            PreparedStatement prepQ=conn.prepareStatement(query))</span>
+        {
+<span class="fc" id="L71">            prepQ.setInt(1,pCC.getIdPagCC());</span>
+
+<span class="fc" id="L73">            row=prepQ.executeUpdate();</span>
+
+<span class="nc" id="L75">        }catch (SQLException e)</span>
+        {
+<span class="nc" id="L77">            Logger.getLogger(&quot;cancella pagaemnto&quot;).log(Level.SEVERE,&quot;exception with cc{0}&quot;,e);</span>
+<span class="fc" id="L78">        }</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">        return row==1;</span>
     }
+
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

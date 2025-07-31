@@ -1,5 +1,7 @@
 package laptop.database.primoucacquista.pagamentofattura;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 import laptop.database.DaoInitialize;
 import laptop.model.pagamento.PagamentoFattura;
@@ -155,4 +157,28 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
         }
     }
 
+    @Override
+    public ObservableList<PagamentoFattura> listPagamentiByUserF(String email) {
+        ObservableList<PagamentoFattura> list= FXCollections.observableArrayList();
+        query="select idProdotto,ammontare,tipoAcquisto,idFattura from pagamentoFattura where email=?";
+        try(Connection conn=ConnToDb.connectionToDB();
+        PreparedStatement prepQ= conn.prepareStatement(query))
+        {
+            prepQ.setString(1,email);
+            ResultSet rs= prepQ.executeQuery();
+            while(rs.next())
+            {
+                PagamentoFattura pF=new PagamentoFattura();
+                pF.setIdProdotto(rs.getInt(1));
+                pF.setAmmontare(rs.getFloat(2));
+                pF.setTipoAcquisto(rs.getString(3));
+                pF.setIdFattura(rs.getInt(4));
+                list.add(pF);
+            }
+        }catch (SQLException e)
+        {
+            Logger.getLogger("pagamenti fattura di utente").log(Level.SEVERE,"exception :{0}",e);
+        }
+        return list;
+    }
 }

@@ -81,6 +81,7 @@ public class BoundaryDownload implements Initializable {
 
 
 	        }
+		 /*
 		 if(vis.getTipologiaApplicazione().equals("demo"))
 		 {
 			 Platform.exit();
@@ -92,6 +93,8 @@ public class BoundaryDownload implements Initializable {
 			 }
 
 		 }
+
+		  */
 		Stage stage;
 		Parent root;
 		stage = (Stage) buttonA.getScene().getWindow();

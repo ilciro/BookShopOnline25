@@ -147,11 +147,11 @@ public class ControllerPagamentoCC {
 <span class="fc" id="L147">		Rivista r=new Rivista();</span>
 <span class="fc" id="L148">		r.setId(vis.getIdRivista());</span>
 <span class="fc" id="L149">		int id=r.getId();</span>
-<span class="pc bpc" id="L150" title="2 of 4 branches missed.">		switch (database)</span>
+<span class="pc bpc" id="L150" title="1 of 4 branches missed.">		switch (database)</span>
 		{
 <span class="fc" id="L152">			case DATABASE -&gt; pR=new RivistaDao();</span>
 <span class="fc" id="L153">			case FILE -&gt; pR=new CsvRivista();</span>
-<span class="nc" id="L154">			case MEMORIA -&gt; pR=new MemoriaRivista();</span>
+<span class="fc" id="L154">			case MEMORIA -&gt; pR=new MemoriaRivista();</span>
 <span class="nc" id="L155">			default -&gt; Logger.getLogger(&quot; errore cpn la persistenza nella rivista&quot;).log(Level.SEVERE,&quot;persisentcy magazine error !!&quot;);</span>
 		}
 <span class="fc" id="L157">		String tipo= pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();</span>
@@ -235,91 +235,121 @@ public class ControllerPagamentoCC {
 <span class="nc" id="L235">		return dati;</span>
 	}
 
-	public boolean correttezza(String codice, String scadenza,String civ) throws IdException {
-<span class="fc" id="L239">		boolean correttezzaCodice = false;</span>
-<span class="fc" id="L240">		boolean correttezzaData = false;</span>
-<span class="fc" id="L241">		boolean correttezzaCiv = false;</span>
 
+	private boolean checkCorrettezzaSplitCodice(String[] tokensCod) throws IdException {
+<span class="fc" id="L240">		int i = 0;</span>
+<span class="fc bfc" id="L241" title="All 2 branches covered.">		for (String token : tokensCod) {</span>
+<span class="pc bpc" id="L242" title="1 of 2 branches missed.">			if (token.length() == 4) {</span>
 
-<span class="fc" id="L244">		String delimiter = &quot;-&quot;; // Space as delimiter</span>
-<span class="fc" id="L245">		String[] tokensCod = codice.split(delimiter);</span>
+<span class="fc" id="L244">				i++;</span>
 
-<span class="fc" id="L247">		int i = 0;</span>
-<span class="fc bfc" id="L248" title="All 2 branches covered.">		for (String token : tokensCod) {</span>
-<span class="pc bpc" id="L249" title="1 of 2 branches missed.">			if (token.length() == 4) {</span>
-<span class="fc" id="L250">				i++;</span>
-
-<span class="nc" id="L252">			} else throw new IdException(&quot;codice carta non valido&quot;);</span>
+<span class="nc" id="L246">			} else throw new IdException(&quot;spit&quot;);</span>
 		}
-<span class="pc bpc" id="L254" title="1 of 2 branches missed.">		if (i == 4) correttezzaCodice = true;</span>
-
-<span class="fc" id="L256">		i = 0;</span>
-
-<span class="fc" id="L258">		String[] tokensData = scadenza.split(&quot;/&quot;);</span>
-<span class="fc bfc" id="L259" title="All 2 branches covered.">		for (String token : tokensData) {</span>
-<span class="pc bpc" id="L260" title="2 of 4 branches missed.">			if ((tokensData[0].length() == 4) &amp;&amp; (Integer.parseInt(tokensData[0]) &gt;= 2025)) {</span>
-<span class="fc" id="L261">				Logger.getLogger(&quot;anno controlalto&quot;).log(Level.INFO, &quot; year is correct&quot;);</span>
-<span class="fc" id="L262">				i++;</span>
-<span class="nc" id="L263">			} else throw new IdException(&quot;anno è sbagliato&quot;);</span>
-<span class="fc bfc" id="L264" title="All 2 branches covered.">			if (tokensData[1].length() == 2)</span>
-<span class="fc" id="L265">			{	tokensData[1]=getMeseGiorno(tokensData[1]);</span>
-<span class="pc bpc" id="L266" title="2 of 4 branches missed.">				if ((Integer.parseInt(tokensData[1]) &gt;= 1 &amp;&amp; Integer.parseInt(tokensData[1]) &lt;= 12)) {</span>
-<span class="fc" id="L267">					Logger.getLogger(&quot; mese controllato&quot;).log(Level.INFO, &quot; month is correct . {0}&quot;,tokensData[1]);</span>
-<span class="fc" id="L268">					i++;</span>
-<span class="nc" id="L269">				}else throw new IdException(&quot; mese è sbagliato&quot;);</span>
-			}
-<span class="fc bfc" id="L271" title="All 2 branches covered.">			if (tokensData[2].length() == 2)</span>
-<span class="fc" id="L272">			{	tokensData[2]=getMeseGiorno(tokensData[1]);</span>
-<span class="pc bpc" id="L273" title="2 of 4 branches missed.">				if ((Integer.parseInt(tokensData[1]) &gt;= 1 &amp;&amp; Integer.parseInt(tokensData[1]) &lt;= 12)) {</span>
-<span class="fc" id="L274">					Logger.getLogger(&quot;giorno controllato&quot;).log(Level.INFO, &quot; giorno is correct . {0}&quot;,tokensData[1]);</span>
-<span class="fc" id="L275">					i++;</span>
-<span class="nc" id="L276">				}else throw new IdException(&quot;giorno è sbagliato&quot;);</span>
-			}
-<span class="fc bfc" id="L278" title="All 2 branches covered.">			if (i == 3) correttezzaData = true;</span>
-
-
-		}
-
-<span class="pc bpc" id="L283" title="1 of 2 branches missed.">		if(civ.length()==3)</span>
-		{
-<span class="fc" id="L285">			correttezzaCiv=checkInteger(civ);</span>
-<span class="pc bpc" id="L286" title="1 of 2 branches missed.">			if(!correttezzaCiv) throw new IdException(&quot; civ format is worng&quot;);</span>
-		}
-
-
-
-
-
-
-
-
-<span class="pc bpc" id="L296" title="3 of 6 branches missed.">		return correttezzaCodice &amp;&amp; correttezzaData&amp;&amp;correttezzaCiv;</span>
+<span class="pc bpc" id="L248" title="1 of 2 branches missed.">		return i==4;</span>
 	}
+	private boolean checkCorrettezzaAnno(String[] tokensData, int i) throws IdException {
+<span class="pc bpc" id="L251" title="2 of 4 branches missed.">		if ((tokensData[0].length() == 4) &amp;&amp; (Integer.parseInt(tokensData[0]) &gt;= 2025)) {</span>
+<span class="fc" id="L252">			Logger.getLogger(&quot;anno controllato&quot;).log(Level.INFO, &quot; year is correct&quot;);</span>
+<span class="fc" id="L253">			i++;</span>
+<span class="nc" id="L254">		} else throw new IdException(&quot;anno è sbagliato&quot;);</span>
+<span class="pc bpc" id="L255" title="1 of 2 branches missed.">		return i==1;</span>
+	}
+	private boolean checkCorrettezzaMese(String[] tokensData,int i) throws IdException {
+<span class="fc" id="L258">		System.out.println(&quot;tokensdatas[1]&quot;+tokensData[1]);</span>
+<span class="pc bpc" id="L259" title="1 of 2 branches missed.">		if (tokensData[1].length() == 2)</span>
+<span class="fc" id="L260">		{	tokensData[1]=getMeseGiorno(tokensData[1]);</span>
+<span class="pc bpc" id="L261" title="2 of 4 branches missed.">			if ((Integer.parseInt(tokensData[1]) &gt;= 1 &amp;&amp; Integer.parseInt(tokensData[1]) &lt;= 12)) {</span>
+<span class="fc" id="L262">				Logger.getLogger(&quot; mese controllato&quot;).log(Level.INFO, &quot; month is correct . {0}&quot;,tokensData[1]);</span>
+<span class="fc" id="L263">				i++;</span>
+<span class="nc" id="L264">			}else throw new IdException(&quot; mese è sbagliato&quot;);</span>
+		}
+<span class="pc bpc" id="L266" title="1 of 2 branches missed.">		return i==1;</span>
+	}
+	private boolean checkCorrettezzaGiorno(String[] tokensData,int i) throws IdException {
+<span class="pc bpc" id="L269" title="1 of 2 branches missed.">		if (tokensData[2].length() == 2)</span>
+<span class="fc" id="L270">		{	tokensData[2]=getMeseGiorno(tokensData[1]);</span>
+<span class="pc bpc" id="L271" title="2 of 4 branches missed.">			if ((Integer.parseInt(tokensData[1]) &gt;= 1 &amp;&amp; Integer.parseInt(tokensData[1]) &lt;= 12)) {</span>
+<span class="fc" id="L272">				Logger.getLogger(&quot;giorno controllato&quot;).log(Level.INFO, &quot; giorno is correct . {0}&quot;,tokensData[1]);</span>
+<span class="fc" id="L273">				i++;</span>
+<span class="nc" id="L274">			}else throw new IdException(&quot;giorno è sbagliato&quot;);</span>
+		}
+<span class="pc bpc" id="L276" title="1 of 2 branches missed.">		return i==1;</span>
+	}
+
+	public boolean correttezza(String codice, String scadenza,String civ) throws IdException {
+		boolean correttezzaSplit;
+		boolean correttezzaAnno;
+		boolean correttezzaMese;
+		boolean correttezzaGiorno;
+<span class="fc" id="L284">		boolean correttezzaData=false;</span>
+<span class="fc" id="L285">		boolean correttezzaCiv = false;</span>
+
+
+<span class="fc" id="L288">		String delimiter = &quot;-&quot;; // Space as delimiter</span>
+<span class="fc" id="L289">		String[] tokensCod = codice.split(delimiter);</span>
+
+<span class="fc" id="L291">		correttezzaSplit=checkCorrettezzaSplitCodice(tokensCod);</span>
+
+<span class="fc" id="L293">		int i = 0;</span>
+<span class="fc" id="L294">		String[] tokensData = scadenza.split(&quot;/&quot;);</span>
+
+<span class="fc" id="L296">			correttezzaAnno=checkCorrettezzaAnno(tokensData,i);</span>
+<span class="fc" id="L297">			correttezzaMese=checkCorrettezzaMese(tokensData,i);</span>
+<span class="fc" id="L298">			correttezzaGiorno=checkCorrettezzaGiorno(tokensData,i);</span>
+
+
+
+<span class="fc" id="L302">		System.out.println(&quot;correttezza split :&quot;+correttezzaSplit);</span>
+<span class="fc" id="L303">		System.out.println(&quot;correttezza anno :&quot;+correttezzaAnno);</span>
+<span class="fc" id="L304">		System.out.println(&quot;correttezza mese :&quot;+correttezzaMese);</span>
+<span class="fc" id="L305">		System.out.println(&quot;correttezza giornno :&quot;+correttezzaGiorno);</span>
+
+<span class="pc bpc" id="L307" title="4 of 8 branches missed.">		if(correttezzaSplit&amp;&amp;correttezzaAnno&amp;&amp;correttezzaMese&amp;&amp;correttezzaGiorno) correttezzaData=true;</span>
+
+
+<span class="pc bpc" id="L310" title="1 of 2 branches missed.">		if(civ.length()==3)</span>
+		{
+<span class="fc" id="L312">			System.out.println(&quot;civ:&quot;+civ);</span>
+<span class="fc" id="L313">			correttezzaCiv=checkInteger(civ);</span>
+<span class="pc bpc" id="L314" title="1 of 2 branches missed.">			if(!correttezzaCiv) throw new IdException(&quot; civ format is worng&quot;);</span>
+		}
+
+
+
+
+
+
+
+
+<span class="pc bpc" id="L324" title="2 of 4 branches missed.">		return  correttezzaData&amp;&amp;correttezzaCiv;</span>
+	}
+
+
 
 
 	private String getMeseGiorno(String stringa)
 	{
-<span class="fc" id="L302">		String finale=&quot;&quot;;</span>
-<span class="pc bpc" id="L303" title="8 of 10 branches missed.">		switch (stringa)</span>
+<span class="fc" id="L332">		String finale=&quot;&quot;;</span>
+<span class="pc bpc" id="L333" title="8 of 10 branches missed.">		switch (stringa)</span>
 		{
-<span class="nc" id="L305">			case &quot;01&quot;-&gt; finale=&quot;1&quot;;</span>
-<span class="nc" id="L306">			case &quot;02&quot;-&gt; finale=&quot;2&quot;;</span>
-<span class="nc" id="L307">			case &quot;03&quot;-&gt; finale=&quot;3&quot;;</span>
-<span class="nc" id="L308">			case &quot;04&quot;-&gt; finale=&quot;4&quot;;</span>
-<span class="nc" id="L309">			case &quot;05&quot;-&gt; finale=&quot;5&quot;;</span>
-<span class="nc" id="L310">			case &quot;06&quot;-&gt; finale=&quot;6&quot;;</span>
-<span class="nc" id="L311">			case &quot;07&quot;-&gt; finale=&quot;7&quot;;</span>
-<span class="nc" id="L312">			case &quot;08&quot;-&gt; finale=&quot;8&quot;;</span>
-<span class="fc" id="L313">			case &quot;09&quot;-&gt; finale=&quot;9&quot;;</span>
-<span class="fc" id="L314">			default -&gt; Logger.getLogger(&quot;getMeseGiorno&quot;).log(Level.SEVERE,&quot;month/day is incorrect&quot;);</span>
+<span class="nc" id="L335">			case &quot;01&quot;-&gt; finale=&quot;1&quot;;</span>
+<span class="nc" id="L336">			case &quot;02&quot;-&gt; finale=&quot;2&quot;;</span>
+<span class="nc" id="L337">			case &quot;03&quot;-&gt; finale=&quot;3&quot;;</span>
+<span class="nc" id="L338">			case &quot;04&quot;-&gt; finale=&quot;4&quot;;</span>
+<span class="nc" id="L339">			case &quot;05&quot;-&gt; finale=&quot;5&quot;;</span>
+<span class="nc" id="L340">			case &quot;06&quot;-&gt; finale=&quot;6&quot;;</span>
+<span class="nc" id="L341">			case &quot;07&quot;-&gt; finale=&quot;7&quot;;</span>
+<span class="nc" id="L342">			case &quot;08&quot;-&gt; finale=&quot;8&quot;;</span>
+<span class="fc" id="L343">			case &quot;09&quot;-&gt; finale=&quot;9&quot;;</span>
+<span class="fc" id="L344">			default -&gt; Logger.getLogger(&quot;getMeseGiorno&quot;).log(Level.SEVERE,&quot;month/day is incorrect&quot;);</span>
 
 		}
-<span class="fc" id="L317">		return finale;</span>
+<span class="fc" id="L347">		return finale;</span>
 	}
 
 	private boolean checkInteger(String civ)
 	{
-<span class="fc" id="L322">		return civ.matches(&quot;-?\\d+(\\d+\\d+)?&quot;);</span>
+<span class="fc" id="L352">		return civ.matches(&quot;\\d+&quot;);</span>
 	}
 }
 

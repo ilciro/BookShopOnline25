@@ -4,6 +4,7 @@ package laptop.controller.primoucacquista;
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.database.DaoInitialize;
 import laptop.database.primoucacquista.pagamentocartacredito.CsvPagamentoCartaCredito;
 import laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito;
 import laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCreditoDao;
@@ -54,6 +55,7 @@ public class ControllerAnnullaPagamento  {
     }
 
     public boolean cancellaFattura(int idFattura,String persistency) throws IOException, CsvValidationException, ClassNotFoundException {
+        boolean status=false;
         switch (persistency) {
             case DATABASE ->
                     {
@@ -74,7 +76,11 @@ public class ControllerAnnullaPagamento  {
         }
         PagamentoFattura pF = new PagamentoFattura();
         pF.setIdFattura(idFattura);
-        return pPF.cancellaPagamentoFattura(pF) && pT.cancellaFattura(pF);
+        if(persistency.equals(FILE) || persistency.equals(MEMORIA))
+            status=pPF.cancellaPagamentoFattura(pF) && pT.cancellaFattura(pF);
+        else if(persistency.equals(DATABASE))
+            status= pT.cancellaFattura(pF);
+        return status;
     }
 
     public ObservableList<PagamentoCartaCredito> getPagamentoCartaCredito(String persistenza) throws IOException, CsvValidationException, ClassNotFoundException {
@@ -92,6 +98,7 @@ public class ControllerAnnullaPagamento  {
     }
 
     public boolean cancellaPagamentoCC(int idPagamentoCC,String persistency) throws IOException, CsvValidationException, ClassNotFoundException {
+        boolean status=false;
         switch (persistency) {
             case DATABASE ->
             {
@@ -112,7 +119,11 @@ public class ControllerAnnullaPagamento  {
         }
         PagamentoCartaCredito pCC = new PagamentoCartaCredito();
         pCC.setIdPagCC(idPagamentoCC);
-        return pPCC.cancellaPagamentoCartaCredito(pCC) && pT.cancellaPagamentoCC(pCC);
+        if(persistency.equals(FILE) || persistency.equals(MEMORIA))
+            status=pPCC.cancellaPagamentoCartaCredito(pCC) && pT.cancellaPagamentoCC(pCC);
+        else if(persistency.equals(DATABASE))
+            status=pT.cancellaPagamentoCC(pCC);
+        return status;
     }
 
 

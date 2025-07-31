@@ -177,7 +177,7 @@ public class BoundaryPagamentoCC implements Initializable {
 
             cPCC=new ControllerPagamentoCC();
 
-			if(vis.getTipologiaApplicazione().equals("demo"))
+			if(vis.getTipologiaApplicazione().equals("demo") && !vis.getIsLogged())
 			{
 				databaseButton.setVisible(false);
 				fileButton.setVisible(false);
@@ -188,14 +188,17 @@ public class BoundaryPagamentoCC implements Initializable {
 				scadenzaTF.setText("2030/09/08");
 				passTF.setText("951");
 			}
+			if(vis.getTipologiaApplicazione().equals("demo")&&vis.getIsLogged())
+			{
+				databaseButton.setVisible(false);
+				fileButton.setVisible(false);
+				nomeTF.setText(cPCC.getInfo()[0]);
+				cognomeTF.setText(cPCC.getInfo()[1]);
+				nomeTF.setEditable(false);
+				cognomeTF.setEditable(false);
+			}
 
-		if(vis.getIsLogged())
-		{
-		//	nomeTF.setText(cPCC.getInfo()[0]);
-		//	cognomeTF.setText(cPCC.getInfo()[1]);
-			nomeTF.setEditable(false);
-			cognomeTF.setEditable(false);
-		}
+
 		else {
 			buttonReg.setDisable(true);
 		}

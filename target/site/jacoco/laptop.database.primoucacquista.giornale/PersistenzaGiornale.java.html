@@ -12,56 +12,36 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
-<span class="fc" id="L17">public class PersistenzaGiornale {</span>
+<span class="fc" id="L19">public class PersistenzaGiornale {</span>
 
-    private static final String DATABASE=&quot;src/main/resources/sql/tablePopulate.properties&quot;;
-    private static final String FILE=&quot;report/reportGiornale.csv&quot;;
-    private static final String MEMORIA=&quot;memory/serializzazioneGiornale.ser&quot;;
-    private static final String DATABASEXCEPTION=&quot;file daily sql not exists&quot;;
-    private static final String FILEXCEPTION=&quot;file daily csv not exists&quot;;
-    private static final String MEMORIAEXCEPTION=&quot;class daily not in memory&quot;;
-    private static final String IDEXCEPTIONMESSAGE=&quot;id  daiy is null or is zero&quot;;
 
 
     public  boolean inserisciGiornale(Giornale g) throws CsvValidationException, IOException,  ClassNotFoundException {
-<span class="nc bnc" id="L29" title="All 2 branches missed.">        if(g.getId()==0) throw new IOException(&quot; file not found or id null&quot;);</span>
-<span class="nc bnc" id="L30" title="All 2 branches missed.">        if(g.getEditore().isEmpty()) throw new CsvValidationException(&quot; autore insert daily book is null&quot;);</span>
-<span class="nc bnc" id="L31" title="All 2 branches missed.">        if(g.getTitolo().isEmpty()) throw new ClassNotFoundException(&quot;class not found or titolo insert book is null&quot;);</span>
 
-<span class="nc" id="L33">        return false;}</span>
+
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        return g.getId()!=0;}</span>
     public  boolean removeGiornaleById(Giornale g) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
-<span class="nc bnc" id="L35" title="All 2 branches missed.">        if(g.getId()==0) throw new IOException(&quot; file not found or id null&quot;);</span>
-<span class="nc bnc" id="L36" title="All 2 branches missed.">        if(g.getEditore().isEmpty()) throw new CsvValidationException(&quot; codice isbn is null&quot;);</span>
-<span class="nc bnc" id="L37" title="All 2 branches missed.">        if(g.getTitolo().isEmpty()) throw new ClassNotFoundException(&quot;class not found or titolo is null&quot;);</span>
-<span class="nc bnc" id="L38" title="All 2 branches missed.">        if(g.getId()&lt;-1) throw new SQLException(&quot;removed daily id is wrong&quot;);</span>
-<span class="nc" id="L39">        return false;}</span>
+
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        return g.getId()!=-1;}</span>
     public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="nc" id="L41">        return FXCollections.observableArrayList();</span>
+<span class="nc" id="L31">        return FXCollections.observableArrayList();</span>
     }
     public ObservableList&lt;Giornale&gt; getGiornaleByIdTitoloAutoreLibro(Giornale g) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="nc bnc" id="L44" title="All 2 branches missed.">        if(g.getId()==0) throw new IOException(&quot; file daily not found or id 0&quot;);</span>
-<span class="nc bnc" id="L45" title="All 2 branches missed.">        if(g.getEditore().isEmpty()) throw new CsvValidationException(&quot; editor daily is null&quot;);</span>
-<span class="nc bnc" id="L46" title="All 2 branches missed.">        if(g.getTitolo().isEmpty()) throw new ClassNotFoundException(&quot;class not found or titolo is null : daily&quot;);</span>
-<span class="nc bnc" id="L47" title="All 2 branches missed.">        if(g.getId()&lt;=-1) throw new IdException(&quot; id daily is lower than 0&quot;);</span>
-<span class="nc" id="L48">        return FXCollections.observableArrayList();}</span>
+
+<span class="nc" id="L35">        return FXCollections.observableArrayList();}</span>
     public void initializza() throws CsvValidationException, IdException, IOException, SQLException, ClassNotFoundException {
 
-<span class="nc bnc" id="L51" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new SQLException(DATABASE);</span>
-<span class="nc bnc" id="L52" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
-<span class="nc bnc" id="L53" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE)))throw new IOException(FILEXCEPTION);</span>
-
-<span class="nc" id="L55">        DaoInitialize dI=new DaoInitialize();</span>
-<span class="nc" id="L56">        dI.inizializza(&quot;giornale&quot;);</span>
+<span class="fc" id="L38">        Logger.getLogger(&quot;inizializza persistenza giornale&quot;).log(Level.INFO,&quot; persistenza giornale inizializza&quot;);</span>
 
 
-<span class="nc" id="L59">        }</span>
+
+<span class="fc" id="L42">    }</span>
     public ObservableList&lt;Giornale&gt; getGiornali() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="nc bnc" id="L61" title="All 2 branches missed.">        if(!Files.exists(Path.of(DATABASE))) throw new IdException(DATABASEXCEPTION);</span>
-<span class="nc bnc" id="L62" title="All 2 branches missed.">        if(!Files.exists(Path.of(FILE))) throw new  CsvValidationException(FILEXCEPTION);</span>
-<span class="nc bnc" id="L63" title="All 2 branches missed.">        if(!Files.exists(Path.of(MEMORIA))) throw new ClassNotFoundException(MEMORIAEXCEPTION);</span>
-<span class="nc" id="L64">        else throw new IOException(IDEXCEPTIONMESSAGE);</span>
+<span class="nc" id="L44">       return FXCollections.observableArrayList();</span>
     }
 
 }

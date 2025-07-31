@@ -96,12 +96,23 @@ public class PagamentoTotaleMemoria extends PagamentoTotale{
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             list = (ArrayList<Pagamento>) ois.readObject();
         }
-        for (int i = 1; i <= list.size(); i++) {
-            if (i == p.getIdFattura()) {
+        for (int i = 0; i < list.size(); i++) {
+            if (i == p.getIdFattura()-1) {
                 Logger.getLogger("cancella fattura").log(Level.INFO,"id payment {0}.",p.getIdFattura());
 
-                status = list.remove(list.get(i - 1));
-                break;
+                status = list.remove(list.get(i));
+            }
+        }
+        Path path=Path.of(SERIALIZZAZIONE);
+        try{
+            Files.delete(path);
+            if(!Files.exists(path)) throw new IOException("file "+SERIALIZZAZIONE+" cancellato");
+        }catch (IOException e)
+        {
+            Files.createFile(path);
+            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
+                ObjectOutputStream oos=new ObjectOutputStream(fos)){
+                oos.writeObject(list);
             }
         }
         return status;

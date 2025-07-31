@@ -91,6 +91,8 @@ public class ControllerPagamentoCash {
 
         PagamentoFattura p = new PagamentoFattura(nome, cognome, via, com, vis.getSpesaT(), 0, id);
 		p.setTipoAcquisto(ritornaTipoOggetto(type,vis.getType()));
+		if(vis.getIsLogged())
+			p.setEmail(User.getInstance().getEmail());
 
 
 

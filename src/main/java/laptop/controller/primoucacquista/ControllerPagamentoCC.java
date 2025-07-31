@@ -235,53 +235,81 @@ public class ControllerPagamentoCC {
 		return dati;
 	}
 
+
+	private boolean checkCorrettezzaSplitCodice(String[] tokensCod) throws IdException {
+		int i = 0;
+		for (String token : tokensCod) {
+			if (token.length() == 4) {
+
+				i++;
+
+			} else throw new IdException("spit");
+		}
+		return i==4;
+	}
+	private boolean checkCorrettezzaAnno(String[] tokensData, int i) throws IdException {
+		if ((tokensData[0].length() == 4) && (Integer.parseInt(tokensData[0]) >= 2025)) {
+			Logger.getLogger("anno controllato").log(Level.INFO, " year is correct");
+			i++;
+		} else throw new IdException("anno è sbagliato");
+		return i==1;
+	}
+	private boolean checkCorrettezzaMese(String[] tokensData,int i) throws IdException {
+		System.out.println("tokensdatas[1]"+tokensData[1]);
+		if (tokensData[1].length() == 2)
+		{	tokensData[1]=getMeseGiorno(tokensData[1]);
+			if ((Integer.parseInt(tokensData[1]) >= 1 && Integer.parseInt(tokensData[1]) <= 12)) {
+				Logger.getLogger(" mese controllato").log(Level.INFO, " month is correct . {0}",tokensData[1]);
+				i++;
+			}else throw new IdException(" mese è sbagliato");
+		}
+		return i==1;
+	}
+	private boolean checkCorrettezzaGiorno(String[] tokensData,int i) throws IdException {
+		if (tokensData[2].length() == 2)
+		{	tokensData[2]=getMeseGiorno(tokensData[1]);
+			if ((Integer.parseInt(tokensData[1]) >= 1 && Integer.parseInt(tokensData[1]) <= 12)) {
+				Logger.getLogger("giorno controllato").log(Level.INFO, " giorno is correct . {0}",tokensData[1]);
+				i++;
+			}else throw new IdException("giorno è sbagliato");
+		}
+		return i==1;
+	}
+
 	public boolean correttezza(String codice, String scadenza,String civ) throws IdException {
-		boolean correttezzaCodice = false;
-		boolean correttezzaData = false;
+		boolean correttezzaSplit;
+		boolean correttezzaAnno;
+		boolean correttezzaMese;
+		boolean correttezzaGiorno;
+		boolean correttezzaData=false;
 		boolean correttezzaCiv = false;
 
 
 		String delimiter = "-"; // Space as delimiter
 		String[] tokensCod = codice.split(delimiter);
 
+		correttezzaSplit=checkCorrettezzaSplitCodice(tokensCod);
+
 		int i = 0;
-		for (String token : tokensCod) {
-			if (token.length() == 4) {
-				i++;
-
-			} else throw new IdException("codice carta non valido");
-		}
-		if (i == 4) correttezzaCodice = true;
-
-		i = 0;
-
 		String[] tokensData = scadenza.split("/");
-		for (String token : tokensData) {
-			if ((tokensData[0].length() == 4) && (Integer.parseInt(tokensData[0]) >= 2025)) {
-				Logger.getLogger("anno controlalto").log(Level.INFO, " year is correct");
-				i++;
-			} else throw new IdException("anno è sbagliato");
-			if (tokensData[1].length() == 2)
-			{	tokensData[1]=getMeseGiorno(tokensData[1]);
-				if ((Integer.parseInt(tokensData[1]) >= 1 && Integer.parseInt(tokensData[1]) <= 12)) {
-					Logger.getLogger(" mese controllato").log(Level.INFO, " month is correct . {0}",tokensData[1]);
-					i++;
-				}else throw new IdException(" mese è sbagliato");
-			}
-			if (tokensData[2].length() == 2)
-			{	tokensData[2]=getMeseGiorno(tokensData[1]);
-				if ((Integer.parseInt(tokensData[1]) >= 1 && Integer.parseInt(tokensData[1]) <= 12)) {
-					Logger.getLogger("giorno controllato").log(Level.INFO, " giorno is correct . {0}",tokensData[1]);
-					i++;
-				}else throw new IdException("giorno è sbagliato");
-			}
-			if (i == 3) correttezzaData = true;
+
+			correttezzaAnno=checkCorrettezzaAnno(tokensData,i);
+			correttezzaMese=checkCorrettezzaMese(tokensData,i);
+			correttezzaGiorno=checkCorrettezzaGiorno(tokensData,i);
 
 
-		}
+
+		System.out.println("correttezza split :"+correttezzaSplit);
+		System.out.println("correttezza anno :"+correttezzaAnno);
+		System.out.println("correttezza mese :"+correttezzaMese);
+		System.out.println("correttezza giornno :"+correttezzaGiorno);
+
+		if(correttezzaSplit&&correttezzaAnno&&correttezzaMese&&correttezzaGiorno) correttezzaData=true;
+
 
 		if(civ.length()==3)
 		{
+			System.out.println("civ:"+civ);
 			correttezzaCiv=checkInteger(civ);
 			if(!correttezzaCiv) throw new IdException(" civ format is worng");
 		}
@@ -293,8 +321,10 @@ public class ControllerPagamentoCC {
 
 
 
-		return correttezzaCodice && correttezzaData&&correttezzaCiv;
+		return  correttezzaData&&correttezzaCiv;
 	}
+
+
 
 
 	private String getMeseGiorno(String stringa)
@@ -319,7 +349,7 @@ public class ControllerPagamentoCC {
 
 	private boolean checkInteger(String civ)
 	{
-		return civ.matches("-?\\d+(\\d+\\d+)?");
+		return civ.matches("\\d+");
 	}
 }
 

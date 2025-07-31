@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ContrassegnoDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.primoucacquista.pagamentofattura</a> &gt; <span class="el_source">ContrassegnoDao.java</span></div><h1>ContrassegnoDao.java</h1><pre class="source lang-java linenums">package laptop.database.primoucacquista.pagamentofattura;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 import laptop.database.DaoInitialize;
 import laptop.model.pagamento.PagamentoFattura;
@@ -14,43 +16,43 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L17">public class ContrassegnoDao extends PersistenzaPagamentoFattura {</span>
+<span class="fc" id="L19">public class ContrassegnoDao extends PersistenzaPagamentoFattura {</span>
 
     private  static  final String ECCEZIONE=&quot;eccezione ottenuta:&quot;;
     private String query;
-<span class="fc" id="L21">    private final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
-<span class="fc" id="L22">    private static final ResourceBundle TRIGGERFATTURA = ResourceBundle.getBundle(&quot;sql/triggerFattura&quot;);</span>
-<span class="fc" id="L23">    private static final ResourceBundle PERMESSI=ResourceBundle.getBundle(&quot;sql/cancella&quot;);</span>
-<span class="fc" id="L24">    private static final ResourceBundle CANCELLAPAGAMENTOFATTURA=ResourceBundle.getBundle(&quot;sql/triggerCancellaFattura&quot;);</span>
+<span class="fc" id="L23">    private final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+<span class="fc" id="L24">    private static final ResourceBundle TRIGGERFATTURA = ResourceBundle.getBundle(&quot;sql/triggerFattura&quot;);</span>
+<span class="fc" id="L25">    private static final ResourceBundle PERMESSI=ResourceBundle.getBundle(&quot;sql/cancella&quot;);</span>
+<span class="fc" id="L26">    private static final ResourceBundle CANCELLAPAGAMENTOFATTURA=ResourceBundle.getBundle(&quot;sql/triggerCancellaFattura&quot;);</span>
 
     @Override
     public boolean inserisciPagamentoFattura(PagamentoFattura f) {
-<span class="fc" id="L28">        int row=0;</span>
+<span class="fc" id="L30">        int row=0;</span>
 
 
-<span class="fc" id="L31">            query=&quot;insert into pagamentoFattura values (?,?,?,?,?,?,?,?,?)&quot;;</span>
+<span class="fc" id="L33">            query=&quot;insert into pagamentoFattura values (?,?,?,?,?,?,?,?,?)&quot;;</span>
 
-<span class="fc" id="L33">            try(Connection conn= ConnToDb.connectionToDB();</span>
-<span class="fc" id="L34">                PreparedStatement prepQ=conn.prepareStatement(query)){</span>
+<span class="fc" id="L35">            try(Connection conn= ConnToDb.connectionToDB();</span>
+<span class="fc" id="L36">                PreparedStatement prepQ=conn.prepareStatement(query)){</span>
 
-<span class="fc" id="L36">                prepQ.setString(1, f.getNome());</span>
-<span class="fc" id="L37">                prepQ.setString(2, f.getCognome());</span>
-<span class="fc" id="L38">                prepQ.setString(3, f.getVia());</span>
-<span class="fc" id="L39">                prepQ.setString(4,f.getCom());</span>
-<span class="fc" id="L40">                prepQ.setFloat(5,vis.getSpesaT());</span>
-<span class="fc" id="L41">                prepQ.setInt(6,0);</span>
-<span class="fc" id="L42">                prepQ.setInt(7,f.getIdProdotto());</span>
-<span class="fc" id="L43">                prepQ.setString(8,f.getTipoAcquisto());</span>
-<span class="fc" id="L44">                prepQ.setString(9,f.getEmail());</span>
+<span class="fc" id="L38">                prepQ.setString(1, f.getNome());</span>
+<span class="fc" id="L39">                prepQ.setString(2, f.getCognome());</span>
+<span class="fc" id="L40">                prepQ.setString(3, f.getVia());</span>
+<span class="fc" id="L41">                prepQ.setString(4,f.getCom());</span>
+<span class="fc" id="L42">                prepQ.setFloat(5,vis.getSpesaT());</span>
+<span class="fc" id="L43">                prepQ.setInt(6,0);</span>
+<span class="fc" id="L44">                prepQ.setInt(7,f.getIdProdotto());</span>
+<span class="fc" id="L45">                prepQ.setString(8,f.getTipoAcquisto());</span>
+<span class="fc" id="L46">                prepQ.setString(9,f.getEmail());</span>
 
-<span class="fc" id="L46">              row=prepQ.executeUpdate();</span>
+<span class="fc" id="L48">              row=prepQ.executeUpdate();</span>
 
 
-<span class="nc" id="L49">            }catch(SQLException e)</span>
+<span class="nc" id="L51">            }catch(SQLException e)</span>
             {
-<span class="nc" id="L51">                Logger.getLogger(&quot;insert fattura&quot;).log(Level.SEVERE, ECCEZIONE, e);</span>
-<span class="fc" id="L52">            }</span>
-<span class="pc bpc" id="L53" title="1 of 2 branches missed.">            return row==1;</span>
+<span class="nc" id="L53">                Logger.getLogger(&quot;insert fattura&quot;).log(Level.SEVERE, ECCEZIONE, e);</span>
+<span class="fc" id="L54">            }</span>
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">            return row==1;</span>
 
 
 
@@ -61,49 +63,49 @@ import java.util.logging.Logger;
 
     @Override
     public boolean cancellaPagamentoFattura(PagamentoFattura f) {
-<span class="fc" id="L64">        boolean state=false;</span>
+<span class="nc" id="L66">        boolean state=false;</span>
         int row;
-<span class="fc" id="L66">        query=&quot;delete from pagamentoFattura where idFattura=?&quot;;</span>
-<span class="fc" id="L67">        try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L68">            PreparedStatement prepQ=conn.prepareStatement(query))</span>
+<span class="nc" id="L68">        query=&quot;delete from pagamentoFattura where idFattura=?&quot;;</span>
+<span class="nc" id="L69">        try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="nc" id="L70">            PreparedStatement prepQ=conn.prepareStatement(query))</span>
         {
-<span class="fc" id="L70">            prepQ.setInt(1,f.getIdFattura());</span>
-<span class="fc" id="L71">            row=prepQ.executeUpdate();</span>
-<span class="pc bpc" id="L72" title="1 of 2 branches missed.">            if(row==1)</span>
-<span class="fc" id="L73">                state=true;</span>
-<span class="nc" id="L74">        }catch(SQLException e)</span>
+<span class="nc" id="L72">            prepQ.setInt(1,f.getIdFattura());</span>
+<span class="nc" id="L73">            row=prepQ.executeUpdate();</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">            if(row==1)</span>
+<span class="nc" id="L75">                state=true;</span>
+<span class="nc" id="L76">        }catch(SQLException e)</span>
         {
-<span class="nc" id="L76">            Logger.getLogger(&quot;annulla ordine&quot;).log(Level.INFO, ECCEZIONE, e);</span>
-<span class="fc" id="L77">        }</span>
+<span class="nc" id="L78">            Logger.getLogger(&quot;annulla ordine&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+<span class="nc" id="L79">        }</span>
 
-<span class="fc" id="L79">        return state;</span>
+<span class="nc" id="L81">        return state;</span>
     }
 
 
     @Override
     public PagamentoFattura ultimaFattura() {
-<span class="fc" id="L85">        PagamentoFattura f=new PagamentoFattura();</span>
-<span class="fc" id="L86">        query=&quot;select * from pagamentoFattura order by idFattura desc limit 1&quot;;</span>
-<span class="fc" id="L87">        try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L88">            PreparedStatement prepQ=conn.prepareStatement(query)){</span>
+<span class="fc" id="L87">        PagamentoFattura f=new PagamentoFattura();</span>
+<span class="fc" id="L88">        query=&quot;select * from pagamentoFattura order by idFattura desc limit 1&quot;;</span>
+<span class="fc" id="L89">        try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L90">            PreparedStatement prepQ=conn.prepareStatement(query)){</span>
 
-<span class="fc" id="L90">            ResultSet rs=prepQ.executeQuery();</span>
-<span class="fc bfc" id="L91" title="All 2 branches covered.">            while (rs.next())</span>
+<span class="fc" id="L92">            ResultSet rs=prepQ.executeQuery();</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">            while (rs.next())</span>
             {
-<span class="fc" id="L93">                f.setNome(rs.getString(1));</span>
-<span class="fc" id="L94">                f.setCognome(rs.getString(2));</span>
-<span class="fc" id="L95">                f.setVia(rs.getString(3));</span>
-<span class="fc" id="L96">                f.setCom(rs.getString(4));</span>
-<span class="fc" id="L97">                f.setAmmontare(rs.getFloat(5));</span>
-<span class="fc" id="L98">                f.setIdFattura(rs.getInt(6));</span>
-<span class="fc" id="L99">                f.setIdProdotto(rs.getInt(7));</span>
+<span class="fc" id="L95">                f.setNome(rs.getString(1));</span>
+<span class="fc" id="L96">                f.setCognome(rs.getString(2));</span>
+<span class="fc" id="L97">                f.setVia(rs.getString(3));</span>
+<span class="fc" id="L98">                f.setCom(rs.getString(4));</span>
+<span class="fc" id="L99">                f.setAmmontare(rs.getFloat(5));</span>
+<span class="fc" id="L100">                f.setIdFattura(rs.getInt(6));</span>
+<span class="fc" id="L101">                f.setIdProdotto(rs.getInt(7));</span>
             }
 
-<span class="nc" id="L102">        }catch(SQLException e)</span>
+<span class="nc" id="L104">        }catch(SQLException e)</span>
         {
-<span class="nc" id="L104">            Logger.getLogger(&quot;return fattura&quot;).log(Level.INFO, ECCEZIONE, e);</span>
-<span class="fc" id="L105">        }</span>
-<span class="fc" id="L106">        return f;</span>
+<span class="nc" id="L106">            Logger.getLogger(&quot;return fattura&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+<span class="fc" id="L107">        }</span>
+<span class="fc" id="L108">        return f;</span>
     }
 
 
@@ -112,48 +114,72 @@ import java.util.logging.Logger;
 
     @Override
     public void inizializza() throws IOException, ClassNotFoundException, SQLException {
-<span class="fc" id="L115">        super.inizializza();</span>
-<span class="fc" id="L116">        DaoInitialize daoI=new DaoInitialize();</span>
-<span class="fc" id="L117">        daoI.inizializza(&quot;pagamentoFattura&quot;);</span>
+<span class="fc" id="L117">        super.inizializza();</span>
+<span class="fc" id="L118">        DaoInitialize daoI=new DaoInitialize();</span>
+<span class="fc" id="L119">        daoI.inizializza(&quot;pagamentoFattura&quot;);</span>
 
 
-<span class="fc" id="L120">        creaTrigger();</span>
-
-
-
+<span class="fc" id="L122">        creaTrigger();</span>
 
 
 
 
-<span class="fc" id="L128">    }</span>
+
+
+
+<span class="fc" id="L130">    }</span>
 
     private void creaTrigger() {
 
-<span class="fc" id="L132">        try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L133">        PreparedStatement prepQ=conn.prepareStatement(PERMESSI.getString(&quot;query&quot;)))</span>
+<span class="fc" id="L134">        try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L135">        PreparedStatement prepQ=conn.prepareStatement(PERMESSI.getString(&quot;query&quot;)))</span>
         {
-<span class="fc" id="L135">            prepQ.execute();</span>
-<span class="nc" id="L136">        }catch (SQLException e)</span>
+<span class="fc" id="L137">            prepQ.execute();</span>
+<span class="nc" id="L138">        }catch (SQLException e)</span>
         {
-<span class="nc" id="L138">            Logger.getLogger(&quot;setto permessi&quot;).log(Level.SEVERE,&quot; error with grants permissions&quot;);</span>
-<span class="fc" id="L139">        }</span>
+<span class="nc" id="L140">            Logger.getLogger(&quot;setto permessi&quot;).log(Level.SEVERE,&quot; error with grants permissions&quot;);</span>
+<span class="fc" id="L141">        }</span>
 
 
-<span class="fc" id="L142">        try (Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L143">        PreparedStatement prepQ= conn.prepareStatement(TRIGGERFATTURA.getString(&quot;query&quot;))){</span>
-<span class="fc" id="L144">            prepQ.executeUpdate();</span>
-<span class="fc" id="L145">        }catch (SQLException e)</span>
+<span class="fc" id="L144">        try (Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L145">        PreparedStatement prepQ= conn.prepareStatement(TRIGGERFATTURA.getString(&quot;query&quot;))){</span>
+<span class="fc" id="L146">            prepQ.executeUpdate();</span>
+<span class="fc" id="L147">        }catch (SQLException e)</span>
         {
-<span class="fc" id="L147">            Logger.getLogger(&quot;crea trigger inserisci in pagaemnto toale&quot;).log(Level.SEVERE,&quot; error with fattura trigger&quot;,e);</span>
-<span class="fc" id="L148">        }</span>
-<span class="fc" id="L149">        try (Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L150">             PreparedStatement prepQ= conn.prepareStatement(CANCELLAPAGAMENTOFATTURA.getString(&quot;query&quot;))){</span>
-<span class="fc" id="L151">            prepQ.executeUpdate();</span>
-<span class="fc" id="L152">        }catch (SQLException e)</span>
+<span class="fc" id="L149">            Logger.getLogger(&quot;crea trigger inserisci in pagaemnto toale&quot;).log(Level.SEVERE,&quot; error with fattura trigger&quot;,e);</span>
+<span class="fc" id="L150">        }</span>
+<span class="fc" id="L151">        try (Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L152">             PreparedStatement prepQ= conn.prepareStatement(CANCELLAPAGAMENTOFATTURA.getString(&quot;query&quot;))){</span>
+<span class="fc" id="L153">            prepQ.executeUpdate();</span>
+<span class="fc" id="L154">        }catch (SQLException e)</span>
         {
-<span class="fc" id="L154">            Logger.getLogger(&quot;crea trigger cancella in pagaemnto toale&quot;).log(Level.SEVERE,&quot; error with fattura trigger delete&quot;,e);</span>
-<span class="fc" id="L155">        }</span>
-<span class="fc" id="L156">    }</span>
+<span class="fc" id="L156">            Logger.getLogger(&quot;crea trigger cancella in pagaemnto toale&quot;).log(Level.SEVERE,&quot; error with fattura trigger delete&quot;,e);</span>
+<span class="fc" id="L157">        }</span>
+<span class="fc" id="L158">    }</span>
 
+    @Override
+    public ObservableList&lt;PagamentoFattura&gt; listPagamentiByUserF(String email) {
+<span class="nc" id="L162">        ObservableList&lt;PagamentoFattura&gt; list= FXCollections.observableArrayList();</span>
+<span class="nc" id="L163">        query=&quot;select idProdotto,ammontare,tipoAcquisto,idFattura from pagamentoFattura where email=?&quot;;</span>
+<span class="nc" id="L164">        try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="nc" id="L165">        PreparedStatement prepQ= conn.prepareStatement(query))</span>
+        {
+<span class="nc" id="L167">            prepQ.setString(1,email);</span>
+<span class="nc" id="L168">            ResultSet rs= prepQ.executeQuery();</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">            while(rs.next())</span>
+            {
+<span class="nc" id="L171">                PagamentoFattura pF=new PagamentoFattura();</span>
+<span class="nc" id="L172">                pF.setIdProdotto(rs.getInt(1));</span>
+<span class="nc" id="L173">                pF.setAmmontare(rs.getFloat(2));</span>
+<span class="nc" id="L174">                pF.setTipoAcquisto(rs.getString(3));</span>
+<span class="nc" id="L175">                pF.setIdFattura(rs.getInt(4));</span>
+<span class="nc" id="L176">                list.add(pF);</span>
+<span class="nc" id="L177">            }</span>
+<span class="nc" id="L178">        }catch (SQLException e)</span>
+        {
+<span class="nc" id="L180">            Logger.getLogger(&quot;pagamenti fattura di utente&quot;).log(Level.SEVERE,&quot;exception :{0}&quot;,e);</span>
+<span class="nc" id="L181">        }</span>
+<span class="nc" id="L182">        return list;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

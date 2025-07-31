@@ -240,6 +240,8 @@ public class BoundaryHomePage implements Initializable {
 				buttonLogin.setVisible(false);
 				imageLogin.setVisible(false);
 				buttonI.setVisible(true);
+				imageVisualizza.setVisible(true);
+				buttonVisualizza.setVisible(true);
 
 			}
 

@@ -113,7 +113,7 @@ public class BoundaryAcquista implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		cA=new ControllerAcquista();
-		if(vis.getTipologiaApplicazione().equals("demo"))
+		if(vis.getTipologiaApplicazione().equals("demo")&&!vis.getIsLogged())
 		{
 			databaseButton.setVisible(false);
 			fileButton.setVisible(false);
@@ -125,7 +125,11 @@ public class BoundaryAcquista implements Initializable {
 				default -> Logger.getLogger("initialize").log(Level.SEVERE," type of object is null");
 			}
 		}
-		else memoriaButton.setVisible(false);
+		if(vis.getTipologiaApplicazione().equals("demo"))
+		{
+			databaseButton.setVisible(false);
+			fileButton.setVisible(false);
+		}
 
 
 

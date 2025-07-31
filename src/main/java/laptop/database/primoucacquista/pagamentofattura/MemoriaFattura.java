@@ -1,5 +1,8 @@
 package laptop.database.primoucacquista.pagamentofattura;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import laptop.model.pagamento.PagamentoFattura;
 
 import java.io.*;
@@ -54,12 +57,26 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             list = (ArrayList<PagamentoFattura>) ois.readObject();
         }
-        for (int i = 1; i <= list.size(); i++) {
-            if (i == f.getIdFattura()) {
+
+        for (int i = 0; i <list.size(); i++) {
+            if (i == f.getIdFattura()-1) {
                 Logger.getLogger("cancella fattura").log(Level.INFO,"id fattura {0}.",f.getIdFattura());
 
-                status = list.remove(list.get(i - 1));
-                break;
+                status = list.remove(list.get(i));
+
+            }
+        }
+        //cancello file e lo ricreo
+        Path path=Path.of(SERIALIZZAZIONE);
+        try{
+            Files.delete(path);
+            if(!Files.exists(path)) throw new IOException("file "+SERIALIZZAZIONE+" cancellato");
+        }catch (IOException e)
+        {
+            Files.createFile(path);
+            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
+                ObjectOutputStream oos=new ObjectOutputStream(fos)){
+                oos.writeObject(list);
             }
         }
         return status;
@@ -88,5 +105,27 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
 
         }
         return list.get(list.size() - 1);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public ObservableList<PagamentoFattura> listPagamentiByUserF(String email) throws IOException, ClassNotFoundException {
+        ObservableList<PagamentoFattura> listFatture= FXCollections.observableArrayList();
+        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            list = (ArrayList<PagamentoFattura>) ois.readObject();
+        }catch (EOFException e)
+        {
+            Logger.getLogger("listPagemntoFatturaUser").log(Level.SEVERE,"file is empty");
+        }
+
+        for (int i = 1; i <= list.size(); i++) {
+            if (list.get(i-1).getEmail().equals(email)) {
+                PagamentoFattura pf=list.get(i-1);
+                listFatture.add(pf);
+
+            }
+        }
+        return listFatture;
     }
 }

@@ -79,7 +79,7 @@
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
-      <version>${java.version}</version>
+      <version>17</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-fxml -->
     <dependency>
@@ -122,7 +122,6 @@
       <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
       <version>3.0.0</version>
     </dependency>
-
 
 
 

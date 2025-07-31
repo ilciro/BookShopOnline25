@@ -1,6 +1,8 @@
 package laptop.database.primoucacquista.pagamentocartacredito;
 
 import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import laptop.database.DaoInitialize;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.utilities.ConnToDb;
@@ -24,6 +26,31 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
 
     private String query;
 
+    @Override
+    public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(String email) {
+        query="select idProdotto,spesaTotale,tipoAcquisto,idPagamento from pagamentoCartaCredito where email=?";
+        ObservableList<PagamentoCartaCredito>list = FXCollections.observableArrayList();
+        try(Connection conn=ConnToDb.connectionToDB();
+        PreparedStatement prepQ=conn.prepareStatement(query))
+        {
+            prepQ.setString(1,email);
+            ResultSet rs= prepQ.executeQuery();
+            while(rs.next())
+            {
+                PagamentoCartaCredito pCC=new PagamentoCartaCredito();
+                pCC.setIdProdotto(rs.getInt(1));
+                pCC.setSpesaTotale(rs.getFloat(2));
+                pCC.setTipoAcquisto(rs.getString(3));
+                pCC.setIdPagCC(rs.getInt(4));
+                list.add(pCC);
+            }
+        }catch (SQLException e)
+        {
+            Logger.getLogger("listaPagamentiUSerByCC").log(Level.SEVERE,"exception .{0}",e);
+        }
+        return list;
+
+    }
 
     @Override
     public void inizializza() {

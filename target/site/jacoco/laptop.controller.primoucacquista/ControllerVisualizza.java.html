@@ -109,10 +109,10 @@ public class ControllerVisualizza {
 	public ObservableList&lt;Rivista&gt; getListRivista(String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 		ObservableList&lt;Rivista&gt; list;
 <span class="fc" id="L111">		r.setId(getID());</span>
-<span class="pc bpc" id="L112" title="2 of 4 branches missed.">        switch (type) {</span>
+<span class="pc bpc" id="L112" title="1 of 4 branches missed.">        switch (type) {</span>
 <span class="fc" id="L113">            case DATABASE -&gt; pR = new RivistaDao();</span>
 <span class="fc" id="L114">            case FILE -&gt; pR = new CsvRivista();</span>
-<span class="nc" id="L115">            case MEMORIA -&gt; pR = new MemoriaRivista();</span>
+<span class="fc" id="L115">            case MEMORIA -&gt; pR = new MemoriaRivista();</span>
 <span class="nc" id="L116">			default -&gt; Logger.getLogger(&quot;list rivista&quot;).log(Level.SEVERE,&quot;magazine persisyency is wrong!!&quot;);</span>
 
 		}

@@ -37,6 +37,7 @@ laptop/database/secondouclogin/users/CsvUtente.class
 laptop/controller/primoucacquista/ControllerPagamentoCC.class
 laptop/model/raccolta/Raccolta.class
 laptop/model/user/User.class
+laptop/boundary/terzoucgestioneprofiloggetto/BoundaryVisualizzaOrdini.class
 laptop/boundary/primoucacquista/BoundaryScegliNegozio.class
 laptop/database/primoucacquista/pagamentocartacredito/CsvPagamentoCartaCredito.class
 laptop/controller/primoucacquista/ControllerAnnullaPagamento.class
@@ -55,6 +56,7 @@ laptop/boundary/primoucacquista/BoundaryPagamentoCash.class
 laptop/boundary/primoucacquista/BoundaryDownload.class
 laptop/database/primoucacquista/negozio/PersistenzaNegozio.class
 laptop/model/pagamento/PagamentoFattura.class
+laptop/controller/terzoucgestioneprofiloggetto/ControllerVisualizzaOrdini.class
 laptop/boundary/primoucacquista/BoundaryPagamentoCC.class
 laptop/boundary/secondouclogin/BoundaryRegistra.class
 laptop/database/primoucacquista/giornale/MemoriaGiornale.class

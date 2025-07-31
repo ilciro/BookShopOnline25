@@ -1,6 +1,8 @@
 package laptop.database.primoucacquista.pagamentocartacredito;
 
 import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import laptop.model.pagamento.PagamentoCartaCredito;
 
 import java.io.IOException;
@@ -16,4 +18,6 @@ public class PersistenzaPagamentoCartaCredito {
     public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p) throws IOException, CsvValidationException, ClassNotFoundException { return p.getIdProdotto()!=0;}
 
     public PagamentoCartaCredito ultimoPagamentoCartaCredito() throws IOException, CsvValidationException, ClassNotFoundException { return new PagamentoCartaCredito();}
+
+    public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(String email) throws IOException, ClassNotFoundException {return FXCollections.observableArrayList();}
 }
