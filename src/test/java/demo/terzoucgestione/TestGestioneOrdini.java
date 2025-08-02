@@ -33,7 +33,6 @@ class TestGestioneOrdini {
 
     @Test
     void testAnnullaOrdineCash() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException, DocumentException, URISyntaxException {
-        boolean status=false;
         vis.setTipologiaApplicazione("demo");
         cL.login("giuliaConforto@gmail.eu","12345678Gc",MEMORIA);
         vis.setTypeAsMagazine();
@@ -53,9 +52,10 @@ class TestGestioneOrdini {
         //prendo lista
         for(int i=0;i<cVO.getListaFattura(MEMORIA).size();i++)
         {
-           status=cVO.cancellaPagamento(cVO.getListaFattura(MEMORIA).get(0).getIdFattura(),MEMORIA);
+            cVO.cancellaPagamento(cVO.getListaFattura(MEMORIA).get(0).getIdFattura(), MEMORIA);
         }
-        assertTrue(status);
+        //logout
+        assertTrue(cHP.logout());
 
 
 
@@ -63,7 +63,6 @@ class TestGestioneOrdini {
     }
     @Test
     void testAnnullaOrdineCredito() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException { vis.setTipologiaApplicazione("demo");
-        boolean status=false;
         vis.setTipologiaApplicazione("demo");
         cL.login("giuliaConforto@gmail.eu","12345678Gc",MEMORIA);
         vis.setTypeAsMagazine();
@@ -90,9 +89,10 @@ class TestGestioneOrdini {
          cSN.isValid(MEMORIA,2);
         for(int i=0;i<cVO.getListaCC(MEMORIA).size();i++)
         {
-            status=cVO.cancellaPagamento(cVO.getListaCC(MEMORIA).get(0).getIdPagCC(),MEMORIA);
+            cVO.cancellaPagamento(cVO.getListaCC(MEMORIA).get(0).getIdPagCC(), MEMORIA);
         }
-        assertTrue(status);
+        //logout
+        assertTrue(cHP.logout());
 
     }
 

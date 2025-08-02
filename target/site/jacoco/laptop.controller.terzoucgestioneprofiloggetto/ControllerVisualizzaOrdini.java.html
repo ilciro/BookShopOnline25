@@ -109,7 +109,7 @@ import java.util.logging.Logger;
         {
 <span class="fc" id="L110">            PagamentoFattura pF=new PagamentoFattura();</span>
 <span class="fc" id="L111">            pF.setIdFattura(id);</span>
-<span class="fc bfc" id="L112" title="All 4 branches covered.">            if(persistenza.equals(MEMORIA) || persistenza.equals(FILE))</span>
+<span class="pc bpc" id="L112" title="1 of 4 branches missed.">            if(persistenza.equals(MEMORIA) || persistenza.equals(FILE))</span>
 <span class="pc bpc" id="L113" title="2 of 4 branches missed.">                status=pT.cancellaFattura(pF)&amp;&amp; pPF.cancellaPagamentoFattura(pF);</span>
 <span class="fc" id="L114">            else status=pT.cancellaFattura(pF);</span>
 <span class="fc" id="L115">        }</span>

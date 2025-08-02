@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MemoriaReport.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.terzoucgestioneprofiloggetto.report</a> &gt; <span class="el_source">MemoriaReport.java</span></div><h1>MemoriaReport.java</h1><pre class="source lang-java linenums">package laptop.database.terzoucgestioneprofiloggetto.report;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+//import laptop.database.secondouclogin.users.MemoriaUtente;
+import laptop.model.Report;
+//import laptop.model.user.TempUser;
+
+import java.io.*;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+<span class="fc" id="L17">public class MemoriaReport extends PersistenzaReport{</span>
+
+
+    private static final String SERIALIZZAZIONE=&quot;memory/serializzazioneReport.ser&quot;;
+<span class="fc" id="L21">    private ArrayList&lt;Report&gt; list=new ArrayList&lt;&gt;();</span>
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public boolean insertReport(Report r) throws  IOException, ClassNotFoundException {
+
+
+<span class="fc" id="L28">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L29">            ObjectInputStream ois=new ObjectInputStream(fis)) {</span>
+<span class="fc" id="L30">            list = (ArrayList&lt;Report&gt;) ois.readObject();</span>
+
+<span class="fc" id="L32">        }catch (EOFException e)</span>
+        {
+<span class="fc" id="L34">            Logger.getLogger(&quot;insert report&quot;).log(Level.SEVERE,&quot; exception {0}&quot;,e);</span>
+<span class="fc" id="L35">        }</span>
+
+<span class="fc" id="L37">            r.setIdReport(list.size()+1);</span>
+<span class="fc" id="L38">            list.add(r);</span>
+
+
+<span class="fc" id="L41">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L42">                ObjectOutputStream oos=new ObjectOutputStream(fos))</span>
+            {
+<span class="fc" id="L44">                oos.writeObject(list);</span>
+            }
+<span class="fc" id="L46">        return true;</span>
+    }
+
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public ObservableList&lt;Report&gt; report(String type) throws IOException, ClassNotFoundException {
+
+<span class="nc" id="L53">        ArrayList&lt;Report&gt; repoLibri=new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L54">        ArrayList&lt;Report&gt; repoGiornali=new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L55">        ArrayList&lt;Report&gt; repoRiviste=new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L56">        ObservableList&lt;Report&gt; reportFinale = null;</span>
+<span class="nc" id="L57">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L58">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="nc" id="L59">            list= (ArrayList&lt;Report&gt;) ois.readObject();</span>
+        }
+<span class="nc bnc" id="L61" title="All 2 branches missed.">        for (Report report : list) {</span>
+<span class="nc bnc" id="L62" title="All 4 branches missed.">            switch (type) {</span>
+                case &quot;libro&quot; -&gt; {
+<span class="nc" id="L64">                    repoLibri.add(report);</span>
+<span class="nc" id="L65">                    reportFinale = FXCollections.observableArrayList(repoLibri);</span>
+<span class="nc" id="L66">                }</span>
+                case &quot;giornale&quot; -&gt; {
+<span class="nc" id="L68">                    repoGiornali.add(report);</span>
+<span class="nc" id="L69">                    reportFinale = FXCollections.observableArrayList(repoGiornali);</span>
+<span class="nc" id="L70">                }</span>
+                case &quot;rivista&quot; -&gt; {
+<span class="nc" id="L72">                    repoRiviste.add(report);</span>
+<span class="nc" id="L73">                    reportFinale = FXCollections.observableArrayList(repoRiviste);</span>
+<span class="nc" id="L74">                }</span>
+<span class="nc" id="L75">                default -&gt; Logger.getLogger(&quot;report&quot;).log(Level.SEVERE, &quot; report persistency is wrong!!&quot;);</span>
+            }
+<span class="nc" id="L77">        }</span>
+
+<span class="nc" id="L79">       return reportFinale;</span>
+
+    }
+    /*
+
+    @Override
+    public ObservableList&lt;TempUser&gt; reportU() throws SQLException, IOException, CsvValidationException {
+        MemoriaUtente mU=new MemoriaUtente();
+        return mU.getUserData();
+    }
+
+     */
+
+
+
+    @Override
+
+    public void inizializza() throws IOException, ClassNotFoundException {
+
+<span class="fc" id="L98">        Path path = Path.of(SERIALIZZAZIONE);</span>
+        try
+        {
+<span class="fc bfc" id="L101" title="All 2 branches covered.">           if(!Files.exists(path)) throw new IOException(&quot;report memoria non esiste!!&quot;);</span>
+<span class="fc" id="L102">        }catch (IOException e)</span>
+        {
+<span class="fc" id="L104">            Logger.getLogger(&quot;inizializza memoria report&quot;).log(Level.SEVERE,&quot;file not exists .&quot;,SERIALIZZAZIONE);</span>
+<span class="fc" id="L105">            Files.createFile(path);</span>
+<span class="fc" id="L106">            Logger.getLogger(&quot;inizializza memoria report&quot;).log(Level.INFO,&quot;file created&quot;);</span>
+
+
+<span class="fc" id="L109">        }</span>
+
+<span class="fc" id="L111">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

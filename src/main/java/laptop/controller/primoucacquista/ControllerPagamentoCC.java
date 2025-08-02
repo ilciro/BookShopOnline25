@@ -34,8 +34,13 @@ import laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCredi
 import laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito;
 import laptop.database.primoucacquista.pagamentototale.PersistenzzaPagamentoTotale;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
+import laptop.database.terzoucgestioneprofiloggetto.report.CsvReport;
+import laptop.database.terzoucgestioneprofiloggetto.report.MemoriaReport;
+import laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport;
+import laptop.database.terzoucgestioneprofiloggetto.report.ReportDao;
 import laptop.exception.IdException;
 //import laptop.model.CartaDiCredito;
+import laptop.model.Report;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Rivista;
@@ -55,15 +60,20 @@ public class ControllerPagamentoCC {
 	private static final String FILE="file";
 	private static final String MEMORIA="memoria";
 	private static final String CCREDITO="cCredito";
+	private static final String LIBRO="libro";
+	private static final String GIORNALE="giornale";
+	private static final String RIVISTA="rivista";
 
 	private  PersistenzaLibro pL;
 	private PersistenzaGiornale pG;
 	private PersistenzaRivista pR;
     private PersistenzzaPagamentoTotale pT;
 	private PersistenzaPagamentoCartaCredito pCC;
+	private PersistenzaReport pRepo;
 
 
-    public ControllerPagamentoCC()  {}
+
+	public ControllerPagamentoCC()  {}
 
 	/*
 
@@ -175,9 +185,9 @@ public class ControllerPagamentoCC {
         PagamentoCartaCredito p ;
 
         switch (vis.getType()) {
-			case "libro" -> p=pagamentoLibroCC(nome,database,cognome,mail);
-			case "giornale" ->p= pagamentoGiornaleCC(nome,database,cognome,mail);
-			case "rivista" -> p=pagamentoRivistaCC(nome,database,cognome,mail);
+			case LIBRO-> p=pagamentoLibroCC(nome,database,cognome,mail);
+			case GIORNALE ->p= pagamentoGiornaleCC(nome,database,cognome,mail);
+			case RIVISTA -> p=pagamentoRivistaCC(nome,database,cognome,mail);
 
 
 			default -> throw new IdException(" id not found");
@@ -224,6 +234,52 @@ public class ControllerPagamentoCC {
 				pT.inserisciPagamentoCartaCredito(new PagamentoCartaCredito());
 			}
 		}
+		//creo report cc
+		switch (database) {
+			case FILE -> pRepo = new CsvReport();
+			case MEMORIA -> pRepo = new MemoriaReport();
+			case DATABASE -> pRepo = new ReportDao();
+			default -> Logger.getLogger("inizializza report").log(Level.SEVERE," error with repo cc");
+		}
+		pRepo.inizializza();
+		Report r=new Report();
+		String titolo = "";
+		float prezzo=0;
+		String tipologia = "";
+		switch (vis.getType())
+		{
+			case LIBRO ->
+			{
+				Libro l=new Libro();
+				l.setId(vis.getIdLibro());
+				titolo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getTitolo();
+				prezzo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getPrezzo();
+				tipologia=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();
+			}
+			case GIORNALE -> {
+				Giornale g=new Giornale();
+				g.setId(vis.getIdGiornale());
+				titolo=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getTitolo();
+				prezzo=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getPrezzo();
+				tipologia=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria();
+			}
+			case RIVISTA -> {
+				Rivista riv=new Rivista();
+				riv.setId(vis.getIdRivista());
+				titolo=pR.getRivistaByIdTitoloAutoreRivista(riv).get(0).getTitolo();
+				prezzo=pR.getRivistaByIdTitoloAutoreRivista(riv).get(0).getPrezzo();
+				tipologia=pR.getRivistaByIdTitoloAutoreRivista(riv).get(0).getCategoria();
+			}
+		}
+		r.setTipologiaOggetto(tipologia);
+		r.setTitoloOggetto(titolo);
+		r.setNrPezzi(vis.getQuantita());
+		r.setPrezzo(prezzo);
+		r.setTotale(r.getPrezzo()*vis.getQuantita());
+
+		if(pRepo.insertReport(r))
+			Logger.getLogger("insert repo cc").log(Level.INFO, "repo cc correct inserted");
+
 
 	}
 
@@ -255,7 +311,6 @@ public class ControllerPagamentoCC {
 		return i==1;
 	}
 	private boolean checkCorrettezzaMese(String[] tokensData,int i) throws IdException {
-		System.out.println("tokensdatas[1]"+tokensData[1]);
 		if (tokensData[1].length() == 2)
 		{	tokensData[1]=getMeseGiorno(tokensData[1]);
 			if ((Integer.parseInt(tokensData[1]) >= 1 && Integer.parseInt(tokensData[1]) <= 12)) {
@@ -299,10 +354,7 @@ public class ControllerPagamentoCC {
 
 
 
-		System.out.println("correttezza split :"+correttezzaSplit);
-		System.out.println("correttezza anno :"+correttezzaAnno);
-		System.out.println("correttezza mese :"+correttezzaMese);
-		System.out.println("correttezza giornno :"+correttezzaGiorno);
+
 
 		if(correttezzaSplit&&correttezzaAnno&&correttezzaMese&&correttezzaGiorno) correttezzaData=true;
 

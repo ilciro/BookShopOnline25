@@ -54,7 +54,7 @@ public class User implements Serializable {
 	
 
 	public int getId() {
-<span class="nc" id="L57">		return id;</span>
+<span class="fc" id="L57">		return id;</span>
 	}
 	public void setId(int id) {
 <span class="fc" id="L60">		this.id = id;</span>
@@ -87,30 +87,30 @@ public class User implements Serializable {
 <span class="nc" id="L87">		return descrizione;</span>
 	}
 	public void setDescrizione(String descrizione) {
-<span class="nc" id="L90">		this.descrizione = descrizione;</span>
-<span class="nc" id="L91">	}</span>
+<span class="fc" id="L90">		this.descrizione = descrizione;</span>
+<span class="fc" id="L91">	}</span>
 	public LocalDate getDataDiNascita() {
 <span class="nc" id="L93">		return dataDiNascita;</span>
 	}
 	public void setDataDiNascita(LocalDate dataDiNascita) {
-<span class="nc" id="L96">		this.dataDiNascita = dataDiNascita;</span>
-<span class="nc" id="L97">	}</span>
+<span class="fc" id="L96">		this.dataDiNascita = dataDiNascita;</span>
+<span class="fc" id="L97">	}</span>
 	
 	public String getIdRuolo()  {
 		
-<span class="nc" id="L101">		return r;</span>
+<span class="fc" id="L101">		return r;</span>
 	}
 
 
 
 	public void setIdRuolo(String ruolo) {
 
-<span class="pc bpc" id="L108" title="2 of 5 branches missed.">		 switch (ruolo){</span>
-<span class="nc" id="L109">			case &quot;ADMIN&quot;, &quot;A&quot;-&gt; r = Ruoli.ADMIN.toString().substring(0,1);</span>
+<span class="fc bfc" id="L108" title="All 5 branches covered.">		 switch (ruolo){</span>
+<span class="fc" id="L109">			case &quot;ADMIN&quot;, &quot;A&quot;-&gt; r = Ruoli.ADMIN.toString().substring(0,1);</span>
 <span class="fc" id="L110">			case &quot;EDITORE&quot;, &quot;E&quot;-&gt;r = Ruoli.EDITORE.toString().substring(0,1);</span>
 <span class="fc" id="L111">			case &quot;SCRITTORE&quot;, &quot;W&quot;, &quot;S&quot;-&gt;r = Ruoli.SCRITTORE.toString().substring(0,1);</span>
 <span class="fc" id="L112">			case &quot;UTENTE&quot;,&quot;U&quot;-&gt;r=Ruoli.UTENTE.toString().substring(0,1);</span>
-<span class="nc" id="L113">             default-&gt;r= Ruoli.NONVALIDO.toString().substring(0,1);</span>
+<span class="fc" id="L113">             default-&gt;r= Ruoli.NONVALIDO.toString().substring(0,1);</span>
 
 			}
 		
@@ -119,16 +119,16 @@ public class User implements Serializable {
 	//usato per &quot;pulire&quot; utente dopo modifica
 	public boolean annullaUtente()
 	{
-<span class="nc" id="L122">		setId(-1);</span>
-<span class="nc" id="L123">		setNome(&quot;&quot;);</span>
-<span class="nc" id="L124">		setCognome(&quot;&quot;);</span>
-<span class="nc" id="L125">		setEmail(&quot;&quot;);</span>
-<span class="nc" id="L126">		setPassword(&quot;&quot;);</span>
-<span class="nc" id="L127">		setDescrizione(&quot;&quot;);</span>
-<span class="nc" id="L128">		setDataDiNascita(LocalDate.of(1900,1,1));</span>
-<span class="nc" id="L129">		setIdRuolo(&quot;NONVALIDO&quot;);</span>
-<span class="nc" id="L130">		Logger.getLogger(&quot;annulla utente&quot;).log(Level.INFO,&quot; user data is cleaned&quot;);</span>
-<span class="nc" id="L131">		return nome.isEmpty();</span>
+<span class="fc" id="L122">		setId(-1);</span>
+<span class="fc" id="L123">		setNome(&quot;&quot;);</span>
+<span class="fc" id="L124">		setCognome(&quot;&quot;);</span>
+<span class="fc" id="L125">		setEmail(&quot;&quot;);</span>
+<span class="fc" id="L126">		setPassword(&quot;&quot;);</span>
+<span class="fc" id="L127">		setDescrizione(&quot;&quot;);</span>
+<span class="fc" id="L128">		setDataDiNascita(LocalDate.of(1900,1,1));</span>
+<span class="fc" id="L129">		setIdRuolo(&quot;NONVALIDO&quot;);</span>
+<span class="fc" id="L130">		Logger.getLogger(&quot;annulla utente&quot;).log(Level.INFO,&quot; user data is cleaned&quot;);</span>
+<span class="fc" id="L131">		return nome.isEmpty();</span>
 	}
 
 

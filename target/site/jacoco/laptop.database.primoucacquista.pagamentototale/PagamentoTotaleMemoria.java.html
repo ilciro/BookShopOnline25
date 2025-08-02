@@ -36,7 +36,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L36">        MemoriaFattura mF = new MemoriaFattura();</span>
 
 
-<span class="fc" id="L39">        p=mF.ultimaFattura();</span>
+<span class="fc" id="L39">        PagamentoFattura p1=mF.ultimaFattura();</span>
 <span class="fc" id="L40">        try (FileInputStream fin = new FileInputStream(SERIALIZZAZIONE);</span>
 <span class="fc" id="L41">             ObjectInputStream ois = new ObjectInputStream(fin)) {</span>
 
@@ -48,7 +48,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L48">        }</span>
 
 
-<span class="fc" id="L51">        list.add(p);</span>
+<span class="fc" id="L51">        list.add(p1);</span>
 <span class="fc" id="L52">        Logger.getLogger(&quot;grandzezza lista dopo insert&quot;).log(Level.INFO,&quot; list size after insert : .{0}&quot;,list.size());</span>
 
 
@@ -67,7 +67,7 @@ import java.util.logging.Logger;
     public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito p ) throws IOException, CsvValidationException, ClassNotFoundException {
 <span class="fc" id="L68">        MemoriaPagamentoCartaCredito pCC=new MemoriaPagamentoCartaCredito();</span>
 
-<span class="fc" id="L70">        p=pCC.ultimoPagamentoCartaCredito();</span>
+<span class="fc" id="L70">        PagamentoCartaCredito p1=pCC.ultimoPagamentoCartaCredito();</span>
 <span class="fc" id="L71">        try (FileInputStream fin = new FileInputStream(SERIALIZZAZIONE);</span>
 <span class="fc" id="L72">             ObjectInputStream ois = new ObjectInputStream(fin)) {</span>
 
@@ -78,7 +78,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L78">            Logger.getLogger(&quot;inserisci pagamento cc&quot;).log(Level.SEVERE,&quot; excepion :.&quot;,e);</span>
 <span class="fc" id="L79">        }</span>
 
-<span class="fc" id="L81">        list.add(p);</span>
+<span class="fc" id="L81">        list.add(p1);</span>
 
 
 <span class="fc" id="L84">        try (FileOutputStream fout = new FileOutputStream(SERIALIZZAZIONE);</span>
@@ -103,38 +103,42 @@ import java.util.logging.Logger;
 <span class="fc" id="L103">                status = list.remove(list.get(i));</span>
             }
         }
-<span class="fc" id="L106">        Path path=Path.of(SERIALIZZAZIONE);</span>
-        try{
-<span class="fc" id="L108">            Files.delete(path);</span>
-<span class="pc bpc" id="L109" title="1 of 2 branches missed.">            if(!Files.exists(path)) throw new IOException(&quot;file &quot;+SERIALIZZAZIONE+&quot; cancellato&quot;);</span>
-<span class="fc" id="L110">        }catch (IOException e)</span>
-        {
-<span class="fc" id="L112">            Files.createFile(path);</span>
-<span class="fc" id="L113">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L114">                ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
-<span class="fc" id="L115">                oos.writeObject(list);</span>
-            }
-<span class="nc" id="L117">        }</span>
-<span class="fc" id="L118">        return status;</span>
+<span class="fc" id="L106">        cancellaCreaFile();</span>
+
+<span class="fc" id="L108">        return status;</span>
     }
 
+    private void cancellaCreaFile() throws IOException {
+<span class="fc" id="L112">        Path path=Path.of(SERIALIZZAZIONE);</span>
+        try{
+<span class="fc" id="L114">            Files.delete(path);</span>
+<span class="pc bpc" id="L115" title="1 of 2 branches missed.">            if(!Files.exists(path)) throw new IOException(&quot;file &quot;+SERIALIZZAZIONE+&quot; cancellato&quot;);</span>
+<span class="fc" id="L116">        }catch (IOException e)</span>
+        {
+<span class="fc" id="L118">            Files.createFile(path);</span>
+<span class="fc" id="L119">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L120">                ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
+<span class="fc" id="L121">                oos.writeObject(list);</span>
+            }
+<span class="nc" id="L123">        }</span>
+<span class="fc" id="L124">    }</span>
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException {
-<span class="fc" id="L124">        boolean status = false;</span>
-<span class="fc" id="L125">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L126">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
-<span class="fc" id="L127">            list = (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
+<span class="fc" id="L128">        boolean status = false;</span>
+<span class="fc" id="L129">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L130">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
+<span class="fc" id="L131">            list = (ArrayList&lt;Pagamento&gt;) ois.readObject();</span>
         }
-<span class="pc bpc" id="L129" title="1 of 2 branches missed.">        for (int i = 1; i &lt;= list.size(); i++) {</span>
-<span class="pc bpc" id="L130" title="1 of 2 branches missed.">            if (i == pCC.getIdPagCC()) {</span>
-<span class="fc" id="L131">                Logger.getLogger(&quot;cancella pagaemnto cc&quot;).log(Level.INFO,&quot;id payment {0}.&quot;,pCC.getIdPagCC());</span>
+<span class="pc bpc" id="L133" title="1 of 2 branches missed.">        for (int i = 1; i &lt;= list.size(); i++) {</span>
+<span class="pc bpc" id="L134" title="1 of 2 branches missed.">            if (i == pCC.getIdPagCC()) {</span>
+<span class="fc" id="L135">                Logger.getLogger(&quot;cancella pagaemnto cc&quot;).log(Level.INFO,&quot;id payment {0}.&quot;,pCC.getIdPagCC());</span>
 
-<span class="fc" id="L133">                status = list.remove(list.get(i - 1));</span>
-<span class="fc" id="L134">                break;</span>
+<span class="fc" id="L137">                status = list.remove(list.get(i - 1));</span>
+<span class="fc" id="L138">                break;</span>
             }
         }
-<span class="fc" id="L137">        return status;</span>
+<span class="fc" id="L141">        return status;</span>
     }
 
 

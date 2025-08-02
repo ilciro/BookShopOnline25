@@ -36,7 +36,7 @@ public class PagamentoTotaleMemoria extends PersistenzzaPagamentoTotale {
         MemoriaFattura mF = new MemoriaFattura();
 
 
-        p=mF.ultimaFattura();
+        PagamentoFattura p1=mF.ultimaFattura();
         try (FileInputStream fin = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fin)) {
 
@@ -48,7 +48,7 @@ public class PagamentoTotaleMemoria extends PersistenzzaPagamentoTotale {
         }
 
 
-        list.add(p);
+        list.add(p1);
         Logger.getLogger("grandzezza lista dopo insert").log(Level.INFO," list size after insert : .{0}",list.size());
 
 
@@ -67,7 +67,7 @@ public class PagamentoTotaleMemoria extends PersistenzzaPagamentoTotale {
     public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito p ) throws IOException, CsvValidationException, ClassNotFoundException {
         MemoriaPagamentoCartaCredito pCC=new MemoriaPagamentoCartaCredito();
 
-        p=pCC.ultimoPagamentoCartaCredito();
+        PagamentoCartaCredito p1=pCC.ultimoPagamentoCartaCredito();
         try (FileInputStream fin = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fin)) {
 
@@ -78,7 +78,7 @@ public class PagamentoTotaleMemoria extends PersistenzzaPagamentoTotale {
             Logger.getLogger("inserisci pagamento cc").log(Level.SEVERE," excepion :.",e);
         }
 
-        list.add(p);
+        list.add(p1);
 
 
         try (FileOutputStream fout = new FileOutputStream(SERIALIZZAZIONE);
@@ -103,6 +103,12 @@ public class PagamentoTotaleMemoria extends PersistenzzaPagamentoTotale {
                 status = list.remove(list.get(i));
             }
         }
+        cancellaCreaFile();
+
+        return status;
+    }
+
+    private void cancellaCreaFile() throws IOException {
         Path path=Path.of(SERIALIZZAZIONE);
         try{
             Files.delete(path);
@@ -115,9 +121,7 @@ public class PagamentoTotaleMemoria extends PersistenzzaPagamentoTotale {
                 oos.writeObject(list);
             }
         }
-        return status;
     }
-
     @Override
     @SuppressWarnings("unchecked")
     public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException {

@@ -87,7 +87,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L87">        Path path = Path.of(SERIALIZZAZIONE);</span>
         try
        {
-<span class="fc bfc" id="L90" title="All 2 branches covered.">           if(!Files.exists(path)) throw new IOException(&quot; file not exists&quot;);</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">           if(!Files.exists(path)) throw new IOException(&quot; file fattura.ser not exists&quot;);</span>
 <span class="fc" id="L91">       }catch (IOException e)</span>
        {
 <span class="fc" id="L93">           Files.createFile(path);</span>

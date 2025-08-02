@@ -1,4 +1,4 @@
-package laptop.boundary.terzoucgestioneprofiloggetto;
+package laptop.boundary.terzoucgestioneprofilooggetto;
 
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;

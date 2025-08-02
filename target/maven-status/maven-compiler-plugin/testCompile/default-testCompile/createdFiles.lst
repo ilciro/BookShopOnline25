@@ -4,6 +4,7 @@ primoucacquista/TestAcquistoGiornale.class
 demo/terzoucgestione/TestGestioneOrdini.class
 primoucacquista/TestAcquistoRivista.class
 terzoucgestione/TestGestioneOrdini.class
+terzoucgestione/TestReport.class
 demo/primoucacquista/TestDemoAcquista.class
 demo/secondouclogin/TestDemoLogin.class
 primoucacquista/TestRicerca.class

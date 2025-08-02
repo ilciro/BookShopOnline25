@@ -87,7 +87,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
         Path path = Path.of(SERIALIZZAZIONE);
         try
        {
-           if(!Files.exists(path)) throw new IOException(" file not exists");
+           if(!Files.exists(path)) throw new IOException(" file fattura.ser not exists");
        }catch (IOException e)
        {
            Files.createFile(path);

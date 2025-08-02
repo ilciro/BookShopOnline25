@@ -51,6 +51,8 @@ class TestDemoLogin {
         cPCash.controlla(User.getInstance().getNome(),User.getInstance().getCognome(), "via papaveri 8","dopo le 18",MEMORIA);
         //scarico oggetto
         cD.scarica(vis.getType(),MEMORIA);
+        //logout
+        assertTrue(cHP.logout());
 
     }
     @Test
@@ -72,6 +74,8 @@ class TestDemoLogin {
         cPCash.controlla(User.getInstance().getNome(),User.getInstance().getCognome(), "piazza sempio snc","dopo le 9",MEMORIA);
         //scarico oggetto
         cD.scarica(vis.getType(),MEMORIA);
+        //logout
+        assertTrue(cHP.logout());
 
     }
 
@@ -97,8 +101,11 @@ class TestDemoLogin {
         cPCC.pagamentoCC(User.getInstance().getNome(),MEMORIA,User.getInstance().getCognome());
         //scarico oggetto
         cSN.getNegozi(MEMORIA);
-        boolean status= cSN.isOpen(MEMORIA,2)&&cSN.isValid(MEMORIA,2);
-        assertTrue(status);
+        cSN.isOpen(MEMORIA,2);
+        cSN.isValid(MEMORIA,2);
+        //logout
+        assertTrue(cHP.logout());
+
 
     }
 

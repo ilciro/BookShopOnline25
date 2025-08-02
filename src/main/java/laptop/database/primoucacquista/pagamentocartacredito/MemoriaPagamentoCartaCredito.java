@@ -21,7 +21,7 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
         Path path = Path.of(SERIALIZZAZIONE);
         try
         {
-            if(!Files.exists(path)) throw new IOException(" file not exists");
+            if(!Files.exists(path)) throw new IOException(" file "+ SERIALIZZAZIONE +" not exists");
         }catch (IOException e)
         {
             Files.createFile(path);

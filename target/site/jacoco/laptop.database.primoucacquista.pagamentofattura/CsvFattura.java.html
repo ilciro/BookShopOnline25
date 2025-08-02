@@ -233,7 +233,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
 <span class="pc bpc" id="L233" title="1 of 2 branches missed.">                if (recordFound) {</span>
 
 
-<span class="fc" id="L236">                    list.add(getPagamentoFattura(gVector));</span>
+<span class="nc" id="L236">                    list.add(getPagamentoFattura(gVector));</span>
 
                 }
 
@@ -241,12 +241,12 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
         }
         try {
 <span class="pc bpc" id="L243" title="1 of 2 branches missed.">            if (list.isEmpty()) {</span>
-<span class="nc" id="L244">                throw new IdException(&quot;list is empty!!&quot;);</span>
+<span class="fc" id="L244">                throw new IdException(&quot;list is empty!!&quot;);</span>
             }
-<span class="nc" id="L246">        }catch (IdException e )</span>
+<span class="fc" id="L246">        }catch (IdException e )</span>
         {
-<span class="nc" id="L248">            Logger.getLogger(&quot;list pagamenti by user&quot;).log(Level.SEVERE,&quot; list is empty !!&quot;);</span>
-<span class="fc" id="L249">        }</span>
+<span class="fc" id="L248">            Logger.getLogger(&quot;list pagamenti by user&quot;).log(Level.SEVERE,&quot; list is empty !!&quot;);</span>
+<span class="nc" id="L249">        }</span>
 
 <span class="fc" id="L251">        return list;</span>
     }

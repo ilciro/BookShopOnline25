@@ -29,7 +29,12 @@ import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
 import laptop.database.primoucacquista.rivista.RivistaDao;
+import laptop.database.terzoucgestioneprofiloggetto.report.CsvReport;
+import laptop.database.terzoucgestioneprofiloggetto.report.MemoriaReport;
+import laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport;
+import laptop.database.terzoucgestioneprofiloggetto.report.ReportDao;
 import laptop.exception.IdException;
+import laptop.model.Report;
 import laptop.model.pagamento.PagamentoFattura;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
@@ -53,6 +58,7 @@ public class ControllerPagamentoCash {
 	private PersistenzaLibro pL;
 	private PersistenzaGiornale pG;
 	private PersistenzaRivista pR;
+	private PersistenzaReport pRepo;
 
     public void controlla(String nome, String cognome, String via, String com,String type) throws IOException, ClassNotFoundException, SQLException, CsvValidationException, IdException {
 
@@ -107,6 +113,48 @@ public class ControllerPagamentoCash {
 			pT.inserisciPagamentoFattura(p);
 
 		}
+		//inserisco in report finale
+
+        switch (type) {
+            case FILE -> pRepo = new CsvReport();
+            case MEMORIA -> pRepo = new MemoriaReport();
+            case DATABASE -> pRepo = new ReportDao();
+			default -> Logger.getLogger("inizializza report").log(Level.SEVERE," error with repo cash");
+        }
+		pRepo.inizializza();
+		Report r=new Report();
+		r.setTipologiaOggetto(ritornaTipoOggetto(type,vis.getType()));
+		String titolo = "";
+		float prezzo=0;
+		switch (vis.getType())
+		{
+			case LIBRO ->
+					{
+						Libro l=new Libro();
+						l.setId(vis.getIdLibro());
+						titolo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getTitolo();
+						prezzo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getPrezzo();
+					}
+			case GIORNALE -> {
+				Giornale g=new Giornale();
+				g.setId(vis.getIdGiornale());
+				titolo=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getTitolo();
+				prezzo=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getPrezzo();
+			}
+			case RIVISTA -> {
+				Rivista riv=new Rivista();
+				riv.setId(vis.getIdRivista());
+				titolo=pR.getRivistaByIdTitoloAutoreRivista(riv).get(0).getTitolo();
+				prezzo=pR.getRivistaByIdTitoloAutoreRivista(riv).get(0).getPrezzo();
+			}
+		}
+		r.setTitoloOggetto(titolo);
+		r.setNrPezzi(vis.getQuantita());
+		r.setPrezzo(prezzo);
+		r.setTotale(r.getPrezzo()*vis.getQuantita());
+
+		if(pRepo.insertReport(r))
+			Logger.getLogger("insert repo cash").log(Level.INFO, "repo cash correct inserted");
 
 
 

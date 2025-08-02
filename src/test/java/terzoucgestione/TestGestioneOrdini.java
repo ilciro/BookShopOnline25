@@ -7,7 +7,6 @@ import laptop.controller.primoucacquista.*;
 import laptop.controller.secondouclogin.ControllerLogin;
 import laptop.controller.terzoucgestioneprofiloggetto.ControllerVisualizzaOrdini;
 import laptop.exception.IdException;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -35,7 +34,6 @@ public class TestGestioneOrdini {
     @ParameterizedTest
     @ValueSource(strings = {"database","file"})
     void testAnnullaOrdineCash(String strings) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException, DocumentException, URISyntaxException {
-        boolean status=false;
         vis.setTipologiaApplicazione("full");
         cL.login("giuliaConforto@gmail.eu","12345678Gc",strings);
         vis.setTypeAsMagazine();
@@ -55,9 +53,10 @@ public class TestGestioneOrdini {
         //prendo lista
         for(int i=0;i<cVO.getListaFattura(strings).size();i++)
         {
-            status=cVO.cancellaPagamento(cVO.getListaFattura(strings).get(0).getIdFattura(),strings);
+            cVO.cancellaPagamento(cVO.getListaFattura(strings).get(0).getIdFattura(), strings);
         }
-        assertTrue(status);
+        //logout
+        assertTrue(cHP.logout());
 
 
 
@@ -66,7 +65,6 @@ public class TestGestioneOrdini {
     @ParameterizedTest
     @ValueSource(strings = {"database","file"})
     void testAnnullaOrdineCredito(String strings) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException { vis.setTipologiaApplicazione("demo");
-        boolean status=false;
         vis.setTipologiaApplicazione("full");
         cL.login("giuliaConforto@gmail.eu","12345678Gc",strings);
         vis.setTypeAsMagazine();
@@ -93,9 +91,10 @@ public class TestGestioneOrdini {
         cSN.isValid(strings,2);
         for(int i=0;i<cVO.getListaCC(strings).size();i++)
         {
-            status=cVO.cancellaPagamento(cVO.getListaCC(strings).get(0).getIdPagCC(),strings);
+            cVO.cancellaPagamento(cVO.getListaCC(strings).get(0).getIdPagCC(), strings);
         }
-        assertTrue(status);
+        //logout
+        assertTrue(cHP.logout());
 
     }
 }

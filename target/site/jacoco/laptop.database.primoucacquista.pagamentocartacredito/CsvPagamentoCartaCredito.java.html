@@ -321,7 +321,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 
 
 <span class="fc" id="L323">                boolean recordFound = gVector[GETINDEXEIAMILP].equals(String.valueOf(pcc.getEmail()));</span>
-<span class="pc bpc" id="L324" title="1 of 2 branches missed.">                if (recordFound) {</span>
+<span class="fc bfc" id="L324" title="All 2 branches covered.">                if (recordFound) {</span>
 
 
 <span class="fc" id="L327">                    list.add(getCartaCredito(gVector));</span>
@@ -331,12 +331,12 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 <span class="fc" id="L331">            }</span>
         }
         try {
-<span class="pc bpc" id="L334" title="1 of 2 branches missed.">            if (list.isEmpty()) {</span>
-<span class="nc" id="L335">                throw new IdException(&quot;list pagamenti cc vuota!!&quot;);</span>
+<span class="fc bfc" id="L334" title="All 2 branches covered.">            if (list.isEmpty()) {</span>
+<span class="fc" id="L335">                throw new IdException(&quot;list pagamenti cc vuota!!&quot;);</span>
             }
-<span class="nc" id="L337">        }catch (IdException e)</span>
+<span class="fc" id="L337">        }catch (IdException e)</span>
         {
-<span class="nc" id="L339">            Logger.getLogger(&quot;lista pagamentu by user cc&quot;).log(Level.SEVERE,&quot; list payment cc is empty!!&quot;);</span>
+<span class="fc" id="L339">            Logger.getLogger(&quot;lista pagamentu by user cc&quot;).log(Level.SEVERE,&quot; list payment cc is empty!!&quot;);</span>
 <span class="fc" id="L340">        }</span>
 
 
