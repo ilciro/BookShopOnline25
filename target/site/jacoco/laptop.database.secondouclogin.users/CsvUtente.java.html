@@ -99,7 +99,7 @@ public class CsvUtente extends PersistenzaUtente {
 
 
 <span class="pc bpc" id="L101" title="1 of 2 branches missed.">                assert files != null;</span>
-<span class="pc bpc" id="L102" title="2 of 4 branches missed.">                if ( files.length == 0 || !this.fdU.exists()) {</span>
+<span class="pc bpc" id="L102" title="1 of 4 branches missed.">                if ( files.length == 0 || !this.fdU.exists()) {</span>
 <span class="fc" id="L103">                    throw new IOException(&quot;cartella vuota&quot;);</span>
                 }
 
@@ -116,7 +116,7 @@ public class CsvUtente extends PersistenzaUtente {
 <span class="fc" id="L116">            Files.copy(Path.of(UTENTEP), Path.of(LOCATIONU), REPLACE_EXISTING);</span>
 
 <span class="fc" id="L118">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
-<span class="nc" id="L119">        }</span>
+<span class="fc" id="L119">        }</span>
 <span class="fc" id="L120">    }</span>
 
 

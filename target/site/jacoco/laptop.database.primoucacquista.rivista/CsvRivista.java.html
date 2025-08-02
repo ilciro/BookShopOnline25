@@ -184,7 +184,7 @@ public class CsvRivista extends PersistenzaRivista {
 
 <span class="fc" id="L185">        try (CSVReader reader = new CSVReader(new FileReader(LOCATIONR))) {</span>
 <span class="fc bfc" id="L186" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
-<span class="pc bpc" id="L187" title="1 of 2 branches missed.">                if(Integer.parseInt(gVector[GETINDEXIDR])&gt;max)</span>
+<span class="fc bfc" id="L187" title="All 2 branches covered.">                if(Integer.parseInt(gVector[GETINDEXIDR])&gt;max)</span>
 <span class="fc" id="L188">                    max= Integer.parseInt(gVector[GETINDEXIDR]);</span>
             }
         }

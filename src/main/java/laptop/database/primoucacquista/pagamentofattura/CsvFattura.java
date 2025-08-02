@@ -6,8 +6,10 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.exception.IdException;
+import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
 import org.apache.commons.lang.SystemUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -32,6 +34,8 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
     private static final int GETINDEXAMMONTAREF=4;
     private static final int GETINDEXIDF=5;
     private static final int GETINDEXIDPRODOTTO=6;
+    private static final int GETINDEXEMAIL=8;
+    private static final int GETINDEXTIPOACQUISTO=9;
     private  final File fileFattura;
     private final HashMap<String, PagamentoFattura> cacheFattura;
 
@@ -73,7 +77,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
 
         try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.fileFattura, true)))) {
 
-            String[] gVectore = new String[7];
+            String[] gVectore = new String[10];
 
             gVectore[GETINDEXNOMEF] = f.getNome();
             gVectore[GETINDEXCOGNOMEF] = f.getCognome();
@@ -82,6 +86,8 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
             gVectore[GETINDEXAMMONTAREF] = String.valueOf(f.getAmmontare());
             gVectore[GETINDEXIDF] = String.valueOf(getIdMax() + 1);
             gVectore[GETINDEXIDPRODOTTO]= String.valueOf(f.getIdProdotto());
+            gVectore[GETINDEXEMAIL]=f.getEmail();
+            gVectore[GETINDEXTIPOACQUISTO]=f.getTipoAcquisto();
             csvWriter.writeNext(gVectore);
 
             csvWriter.flush();
@@ -189,19 +195,59 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
             list = FXCollections.observableArrayList();
             String[] gVector;
             while ((gVector = reader.readNext()) != null) {
-                PagamentoFattura f = new PagamentoFattura();
-                f.setNome(gVector[GETINDEXNOMEF]);
-                f.setCognome(gVector[GETINDEXCOGNOMEF]);
-                f.setVia(gVector[GETINDEXVIAF]);
-                f.setCom(gVector[GETINDEXCOMF]);
-                f.setAmmontare(Float.parseFloat(gVector[GETINDEXAMMONTAREF]));
-                f.setIdFattura(Integer.parseInt(gVector[GETINDEXIDF]));
-                f.setIdProdotto(Integer.parseInt(gVector[GETINDEXIDPRODOTTO]));
+                PagamentoFattura f = getPagamentoFattura(gVector);
                 list.add(f);
 
 
             }
         }
         return list.get(list.size()-1);
+    }
+
+    private static @NotNull PagamentoFattura getPagamentoFattura(String[] gVector) {
+        PagamentoFattura f = new PagamentoFattura();
+        f.setNome(gVector[GETINDEXNOMEF]);
+        f.setCognome(gVector[GETINDEXCOGNOMEF]);
+        f.setVia(gVector[GETINDEXVIAF]);
+        f.setCom(gVector[GETINDEXCOMF]);
+        f.setAmmontare(Float.parseFloat(gVector[GETINDEXAMMONTAREF]));
+        f.setIdFattura(Integer.parseInt(gVector[GETINDEXIDF]));
+        f.setIdProdotto(Integer.parseInt(gVector[GETINDEXIDPRODOTTO]));
+        f.setEmail(gVector[GETINDEXEMAIL]);
+        f.setTipoAcquisto(gVector[GETINDEXTIPOACQUISTO]);
+        return f;
+    }
+
+    @Override
+    public ObservableList<PagamentoFattura> listPagamentiByUserF(PagamentoFattura pF) throws IOException,  CsvValidationException, IdException {
+        ObservableList<PagamentoFattura> list;
+        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fileFattura)))) {
+            String[] gVector;
+            list = FXCollections.observableArrayList();
+
+
+            while ((gVector = csvReader.readNext()) != null) {
+
+
+                boolean recordFound = gVector[GETINDEXEMAIL].equals(String.valueOf(pF.getEmail()));
+                if (recordFound) {
+
+
+                    list.add(getPagamentoFattura(gVector));
+
+                }
+
+            }
+        }
+        try {
+            if (list.isEmpty()) {
+                throw new IdException("list is empty!!");
+            }
+        }catch (IdException e )
+        {
+            Logger.getLogger("list pagamenti by user").log(Level.SEVERE," list is empty !!");
+        }
+
+        return list;
     }
 }

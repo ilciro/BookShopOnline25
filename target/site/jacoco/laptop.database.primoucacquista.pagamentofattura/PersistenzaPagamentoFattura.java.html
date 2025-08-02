@@ -3,6 +3,7 @@
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.exception.IdException;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
 
@@ -14,24 +15,24 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L17">public class PersistenzaPagamentoFattura {</span>
+<span class="fc" id="L18">public class PersistenzaPagamentoFattura {</span>
 
     public boolean inserisciPagamentoFattura(PagamentoFattura f) throws IOException, ClassNotFoundException {
 
-<span class="nc bnc" id="L21" title="All 2 branches missed.">        return f.getIdFattura()!=-1;</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        return f.getIdFattura()!=-1;</span>
     }
     public boolean cancellaPagamentoFattura(PagamentoFattura f) throws CsvValidationException, IOException, ClassNotFoundException {
-<span class="nc bnc" id="L24" title="All 2 branches missed.">        return f.getIdFattura()!=-1;</span>
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        return f.getIdFattura()!=-1;</span>
     }
     public void inizializza() throws IOException, ClassNotFoundException, SQLException {
-<span class="fc" id="L27">        Logger.getLogger(&quot;persistenza fattura inizializza&quot;).log(Level.INFO,&quot;persistenza pagamento fattura inizializza&quot;);</span>
-<span class="fc" id="L28">          }</span>
+<span class="fc" id="L28">        Logger.getLogger(&quot;persistenza fattura inizializza&quot;).log(Level.INFO,&quot;persistenza pagamento fattura inizializza&quot;);</span>
+<span class="fc" id="L29">          }</span>
 
     public PagamentoFattura ultimaFattura() throws IOException, CsvValidationException, ClassNotFoundException {
-<span class="nc" id="L31">        Logger.getLogger(&quot;Persistenza pagamento fattura&quot;).log(Level.INFO,&quot;ultima fattur&quot;);</span>
-<span class="nc" id="L32">        return null;</span>
+<span class="nc" id="L32">        Logger.getLogger(&quot;Persistenza pagamento fattura&quot;).log(Level.INFO,&quot;ultima fattur&quot;);</span>
+<span class="nc" id="L33">        return null;</span>
     }
-<span class="nc" id="L34">    public ObservableList&lt;PagamentoFattura&gt; listPagamentiByUserF(String email) throws IOException, ClassNotFoundException { return FXCollections.observableArrayList();}</span>
+<span class="nc" id="L35">    public ObservableList&lt;PagamentoFattura&gt; listPagamentiByUserF(PagamentoFattura pF) throws IOException, ClassNotFoundException, CsvValidationException, IdException { return FXCollections.observableArrayList();}</span>
 
 
 }

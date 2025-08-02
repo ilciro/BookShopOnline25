@@ -109,7 +109,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
 
     @Override
     @SuppressWarnings("unchecked")
-    public ObservableList<PagamentoFattura> listPagamentiByUserF(String email) throws IOException, ClassNotFoundException {
+    public ObservableList<PagamentoFattura> listPagamentiByUserF(PagamentoFattura pF) throws IOException, ClassNotFoundException {
         ObservableList<PagamentoFattura> listFatture= FXCollections.observableArrayList();
         try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
@@ -120,7 +120,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
         }
 
         for (int i = 1; i <= list.size(); i++) {
-            if (list.get(i-1).getEmail().equals(email)) {
+            if (list.get(i-1).getEmail().equals(pF.getEmail())) {
                 PagamentoFattura pf=list.get(i-1);
                 listFatture.add(pf);
 

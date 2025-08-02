@@ -109,7 +109,7 @@ import java.util.logging.Logger;
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
-    public ObservableList&lt;PagamentoFattura&gt; listPagamentiByUserF(String email) throws IOException, ClassNotFoundException {
+    public ObservableList&lt;PagamentoFattura&gt; listPagamentiByUserF(PagamentoFattura pF) throws IOException, ClassNotFoundException {
 <span class="fc" id="L113">        ObservableList&lt;PagamentoFattura&gt; listFatture= FXCollections.observableArrayList();</span>
 <span class="fc" id="L114">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
 <span class="fc" id="L115">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
@@ -120,7 +120,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L120">        }</span>
 
 <span class="fc bfc" id="L122" title="All 2 branches covered.">        for (int i = 1; i &lt;= list.size(); i++) {</span>
-<span class="pc bpc" id="L123" title="1 of 2 branches missed.">            if (list.get(i-1).getEmail().equals(email)) {</span>
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">            if (list.get(i-1).getEmail().equals(pF.getEmail())) {</span>
 <span class="fc" id="L124">                PagamentoFattura pf=list.get(i-1);</span>
 <span class="fc" id="L125">                listFatture.add(pf);</span>
 

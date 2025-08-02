@@ -1,8 +1,9 @@
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/demo/primoucacquista/TestDemoAcquista.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/demo/secondouclogin/TestDemoLogin.java
-/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/demo/terzoucgestione/TestControllerGestioneordini.java
-/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoucacquista/TestAcquistaGiornale.java
-/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoucacquista/TestAcquistaRivista.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/demo/terzoucgestione/TestGestioneOrdini.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoucacquista/TestAcquistoGiornale.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoucacquista/TestAcquistoLibro.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoucacquista/TestAcquistoRivista.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/primoucacquista/TestRicerca.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/secondouclogin/TestRegistraUItente.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/terzoucgestione/TestGestioneOrdini.java

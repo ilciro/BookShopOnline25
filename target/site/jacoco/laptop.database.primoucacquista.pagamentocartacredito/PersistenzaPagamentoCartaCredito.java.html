@@ -3,22 +3,23 @@
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.exception.IdException;
 import laptop.model.pagamento.PagamentoCartaCredito;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-<span class="fc" id="L11">public class PersistenzaPagamentoCartaCredito {</span>
-<span class="nc" id="L12">    public void inizializza() throws IOException, ClassNotFoundException, SQLException {}</span>
+<span class="fc" id="L12">public class PersistenzaPagamentoCartaCredito {</span>
+<span class="nc" id="L13">    public void inizializza() throws IOException, ClassNotFoundException, SQLException {}</span>
 
     public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito p) throws CsvValidationException, IOException, ClassNotFoundException {
-<span class="nc bnc" id="L15" title="All 2 branches missed.">        return p.getIdPagCC()!=-1;</span>
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        return p.getIdPagCC()!=-1;</span>
     }
 
-<span class="nc bnc" id="L18" title="All 2 branches missed.">    public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p) throws IOException, CsvValidationException, ClassNotFoundException { return p.getIdProdotto()!=0;}</span>
+<span class="nc bnc" id="L19" title="All 2 branches missed.">    public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p) throws IOException, CsvValidationException, ClassNotFoundException { return p.getIdProdotto()!=0;}</span>
 
-<span class="nc" id="L20">    public PagamentoCartaCredito ultimoPagamentoCartaCredito() throws IOException, CsvValidationException, ClassNotFoundException { return new PagamentoCartaCredito();}</span>
+<span class="nc" id="L21">    public PagamentoCartaCredito ultimoPagamentoCartaCredito() throws IOException, CsvValidationException, ClassNotFoundException { return new PagamentoCartaCredito();}</span>
 
-<span class="nc" id="L22">    public ObservableList&lt;PagamentoCartaCredito&gt; listaPagamentiUserByCC(String email) throws IOException, ClassNotFoundException {return FXCollections.observableArrayList();}</span>
+<span class="nc" id="L23">    public ObservableList&lt;PagamentoCartaCredito&gt; listaPagamentiUserByCC(PagamentoCartaCredito pcc) throws IOException, ClassNotFoundException, CsvValidationException, IdException {return FXCollections.observableArrayList();}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

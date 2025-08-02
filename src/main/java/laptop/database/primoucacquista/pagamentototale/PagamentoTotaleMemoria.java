@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PagamentoTotaleMemoria extends PagamentoTotale{
+public class PagamentoTotaleMemoria extends PersistenzzaPagamentoTotale {
     private static final String SERIALIZZAZIONE="memory/serializzazionePagamentoTotale.ser";
     private ArrayList<Pagamento> list=new ArrayList<>();
     @Override

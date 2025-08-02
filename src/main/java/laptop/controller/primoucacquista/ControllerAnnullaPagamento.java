@@ -4,7 +4,6 @@ package laptop.controller.primoucacquista;
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import laptop.database.DaoInitialize;
 import laptop.database.primoucacquista.pagamentocartacredito.CsvPagamentoCartaCredito;
 import laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito;
 import laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCreditoDao;
@@ -13,7 +12,7 @@ import laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao;
 import laptop.database.primoucacquista.pagamentofattura.CsvFattura;
 import laptop.database.primoucacquista.pagamentofattura.MemoriaFattura;
 import laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura;
-import laptop.database.primoucacquista.pagamentototale.PagamentoTotale;
+import laptop.database.primoucacquista.pagamentototale.PersistenzzaPagamentoTotale;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleCsv;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria;
@@ -33,7 +32,7 @@ public class ControllerAnnullaPagamento  {
 
     private PersistenzaPagamentoFattura pPF;
     private PersistenzaPagamentoCartaCredito pPCC;
-    private PagamentoTotale pT;
+    private PersistenzzaPagamentoTotale pT;
 
 
 

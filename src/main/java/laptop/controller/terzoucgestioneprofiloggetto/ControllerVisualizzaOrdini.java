@@ -13,10 +13,11 @@ import laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao;
 import laptop.database.primoucacquista.pagamentofattura.CsvFattura;
 import laptop.database.primoucacquista.pagamentofattura.MemoriaFattura;
 import laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura;
-import laptop.database.primoucacquista.pagamentototale.PagamentoTotale;
+import laptop.database.primoucacquista.pagamentototale.PersistenzzaPagamentoTotale;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleCsv;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria;
+import laptop.exception.IdException;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
 import laptop.model.user.User;
@@ -33,7 +34,7 @@ public class ControllerVisualizzaOrdini {
     private static final String FILE="file";
     private static final String MEMORIA="memoria";
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
-    private PagamentoTotale pT;
+    private PersistenzzaPagamentoTotale pT;
 
 
 
@@ -42,7 +43,7 @@ public class ControllerVisualizzaOrdini {
         return User.getInstance().getEmail();
     }
 
-    public ObservableList<PagamentoFattura> getListaFattura(String persistenza) throws CsvValidationException, IOException, ClassNotFoundException, SQLException {
+    public ObservableList<PagamentoFattura> getListaFattura(String persistenza) throws CsvValidationException, IOException, ClassNotFoundException, SQLException, IdException {
 
 
 
@@ -55,11 +56,13 @@ public class ControllerVisualizzaOrdini {
         }
 
         pPF.inizializza();
+        PagamentoFattura pf=new PagamentoFattura();
+        pf.setEmail(getEmail());
 
-        return pPF.listPagamentiByUserF(getEmail());
+        return pPF.listPagamentiByUserF(pf);
     }
 
-    public ObservableList<PagamentoCartaCredito> getListaCC(String persistenza) throws IOException, ClassNotFoundException {
+    public ObservableList<PagamentoCartaCredito> getListaCC(String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, IdException {
         switch (persistenza)
         {
             case DATABASE->pCC=new PagamentoCartaCreditoDao();
@@ -68,7 +71,9 @@ public class ControllerVisualizzaOrdini {
 
             default -> Logger.getLogger("getLista pagamenti cc").log(Level.SEVERE,"list pf payment with cc is empty!!");
         }
-        return pCC.listaPagamentiUserByCC(getEmail());
+        PagamentoCartaCredito pCC1=new PagamentoCartaCredito();
+        pCC1.setEmail(getEmail());
+        return pCC.listaPagamentiUserByCC(pCC1);
     }
 
     public boolean cancellaPagamento(int id,String persistenza) throws CsvValidationException, IOException, ClassNotFoundException, SQLException {

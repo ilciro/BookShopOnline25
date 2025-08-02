@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-class TestControllerGestioneordini {
+class TestGestioneOrdini {
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
     private static final String MEMORIA="memoria";
     private static final ControllerHomePage cHP=new ControllerHomePage();

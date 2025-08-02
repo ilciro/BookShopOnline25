@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
-public class PagamentoTotaleCsv extends PagamentoTotale {
+public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
 
     private static final String PAGAMENTOTOTALE="report/reportPagamentoTotale.csv";
     private static final String APPOGGIO="report/appoggioPagamentoTotale.csv";

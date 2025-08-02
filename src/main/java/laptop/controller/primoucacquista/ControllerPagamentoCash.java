@@ -21,7 +21,7 @@ import laptop.database.primoucacquista.libro.PersistenzaLibro;
 import laptop.database.primoucacquista.pagamentofattura.CsvFattura;
 import laptop.database.primoucacquista.pagamentofattura.MemoriaFattura;
 import laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura;
-import laptop.database.primoucacquista.pagamentototale.PagamentoTotale;
+import laptop.database.primoucacquista.pagamentototale.PersistenzzaPagamentoTotale;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleCsv;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria;
@@ -42,7 +42,7 @@ import laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao;
 public class ControllerPagamentoCash {
 
 	private final ControllerSystemState vis= ControllerSystemState.getInstance();
-	private PagamentoTotale pT;
+	private PersistenzzaPagamentoTotale pT;
 	private PersistenzaPagamentoFattura pF;
     private static final String DATABASE="database";
 	private static final String FILE="file";

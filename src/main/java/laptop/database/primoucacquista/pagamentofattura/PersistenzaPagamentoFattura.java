@@ -3,6 +3,7 @@ package laptop.database.primoucacquista.pagamentofattura;
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.exception.IdException;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
 
@@ -31,7 +32,7 @@ public class PersistenzaPagamentoFattura {
         Logger.getLogger("Persistenza pagamento fattura").log(Level.INFO,"ultima fattur");
         return null;
     }
-    public ObservableList<PagamentoFattura> listPagamentiByUserF(String email) throws IOException, ClassNotFoundException { return FXCollections.observableArrayList();}
+    public ObservableList<PagamentoFattura> listPagamentiByUserF(PagamentoFattura pF) throws IOException, ClassNotFoundException, CsvValidationException, IdException { return FXCollections.observableArrayList();}
 
 
 }

@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.terzoucgestioneprofiloggetto.ControllerVisualizzaOrdini;
+import laptop.exception.IdException;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
 
@@ -79,7 +80,7 @@ public class BoundaryVisualizzaOrdini implements Initializable {
     protected Scene scene;
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
     @FXML
-    private void genera() throws CsvValidationException, IOException, ClassNotFoundException, SQLException {
+    private void genera() throws CsvValidationException, IOException, ClassNotFoundException, SQLException, IdException {
 
 
 

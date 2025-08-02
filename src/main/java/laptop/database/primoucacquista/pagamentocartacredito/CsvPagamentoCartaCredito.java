@@ -308,4 +308,39 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
     }
 
      */
+
+    @Override
+    public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(PagamentoCartaCredito pcc) throws IOException,  CsvValidationException, IdException {
+        ObservableList<PagamentoCartaCredito> list;
+        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(filePagamento)))) {
+            String[] gVector;
+            list = FXCollections.observableArrayList();
+
+
+            while ((gVector = csvReader.readNext()) != null) {
+
+
+                boolean recordFound = gVector[GETINDEXEIAMILP].equals(String.valueOf(pcc.getEmail()));
+                if (recordFound) {
+
+
+                    list.add(getCartaCredito(gVector));
+
+                }
+
+            }
+        }
+        try {
+            if (list.isEmpty()) {
+                throw new IdException("list pagamenti cc vuota!!");
+            }
+        }catch (IdException e)
+        {
+            Logger.getLogger("lista pagamentu by user cc").log(Level.SEVERE," list payment cc is empty!!");
+        }
+
+
+        return list;
+
+    }
 }

@@ -199,6 +199,7 @@ public class BoundaryRicerca implements Initializable {
             databaseButton.setVisible(false);
             fileButton.setVisible(false);
         }
+        if (vis.getTipologiaApplicazione().equals("full")) memoriaButton.setVisible(false);
 
     }
 

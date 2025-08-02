@@ -130,6 +130,7 @@ public class BoundaryAcquista implements Initializable {
 			databaseButton.setVisible(false);
 			fileButton.setVisible(false);
 		}
+		else if (vis.getTipologiaApplicazione().equals("full")) memoriaButton.setVisible(false);
 
 
 

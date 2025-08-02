@@ -102,7 +102,7 @@ import java.util.logging.Logger;
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
-    public ObservableList&lt;PagamentoCartaCredito&gt; listaPagamentiUserByCC(String email) throws IOException, ClassNotFoundException {
+    public ObservableList&lt;PagamentoCartaCredito&gt; listaPagamentiUserByCC(PagamentoCartaCredito pcc) throws IOException, ClassNotFoundException {
 <span class="fc" id="L106">        ObservableList&lt;PagamentoCartaCredito&gt; listCC= FXCollections.observableArrayList();</span>
 <span class="fc" id="L107">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
 <span class="fc" id="L108">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
@@ -112,7 +112,7 @@ import java.util.logging.Logger;
 <span class="nc" id="L112">            Logger.getLogger(&quot;listPagamentoCCUser&quot;).log(Level.SEVERE,&quot;file is empty&quot;);</span>
 <span class="fc" id="L113">        }</span>
 <span class="fc bfc" id="L114" title="All 2 branches covered.">        for (int i = 1; i &lt;= list.size(); i++) {</span>
-<span class="pc bpc" id="L115" title="1 of 2 branches missed.">            if (list.get(i-1).getEmail().equals(email)) {</span>
+<span class="pc bpc" id="L115" title="1 of 2 branches missed.">            if (list.get(i-1).getEmail().equals(pcc.getEmail())) {</span>
 <span class="fc" id="L116">                PagamentoCartaCredito pCC=list.get(i-1);</span>
 <span class="fc" id="L117">                listCC.add(pCC);</span>
 

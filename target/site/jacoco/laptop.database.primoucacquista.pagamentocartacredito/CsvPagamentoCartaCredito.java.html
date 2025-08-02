@@ -152,15 +152,15 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 
 
     private static @NotNull PagamentoCartaCredito getCartaCredito(String[] gVector) {
-<span class="nc" id="L155">        PagamentoCartaCredito p = new PagamentoCartaCredito();</span>
-<span class="nc" id="L156">        p.setIdPagCC(Integer.parseInt(gVector[GETINDEXIDP]));</span>
-<span class="nc" id="L157">        p.setMetodo(gVector[GETINDEXMETODOP]);</span>
-<span class="nc" id="L158">        p.setNomeUtente(gVector[GETINDEXNOMEP]);</span>
-<span class="nc" id="L159">        p.setSpesaTotale(Float.parseFloat(gVector[GETINDEXSPESAP]));</span>
-<span class="nc" id="L160">        p.setEmail(gVector[GETINDEXEIAMILP]);</span>
-<span class="nc" id="L161">        p.setTipoAcquisto(gVector[GETINDEXACQUISTOP]);</span>
-<span class="nc" id="L162">        p.setIdProdotto(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));</span>
-<span class="nc" id="L163">        return p;</span>
+<span class="fc" id="L155">        PagamentoCartaCredito p = new PagamentoCartaCredito();</span>
+<span class="fc" id="L156">        p.setIdPagCC(Integer.parseInt(gVector[GETINDEXIDP]));</span>
+<span class="fc" id="L157">        p.setMetodo(gVector[GETINDEXMETODOP]);</span>
+<span class="fc" id="L158">        p.setNomeUtente(gVector[GETINDEXNOMEP]);</span>
+<span class="fc" id="L159">        p.setSpesaTotale(Float.parseFloat(gVector[GETINDEXSPESAP]));</span>
+<span class="fc" id="L160">        p.setEmail(gVector[GETINDEXEIAMILP]);</span>
+<span class="fc" id="L161">        p.setTipoAcquisto(gVector[GETINDEXACQUISTOP]);</span>
+<span class="fc" id="L162">        p.setIdProdotto(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));</span>
+<span class="fc" id="L163">        return p;</span>
     }
 
 
@@ -308,5 +308,40 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
     }
 
      */
+
+    @Override
+    public ObservableList&lt;PagamentoCartaCredito&gt; listaPagamentiUserByCC(PagamentoCartaCredito pcc) throws IOException,  CsvValidationException, IdException {
+        ObservableList&lt;PagamentoCartaCredito&gt; list;
+<span class="fc" id="L315">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(filePagamento)))) {</span>
+            String[] gVector;
+<span class="fc" id="L317">            list = FXCollections.observableArrayList();</span>
+
+
+<span class="fc bfc" id="L320" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
+
+
+<span class="fc" id="L323">                boolean recordFound = gVector[GETINDEXEIAMILP].equals(String.valueOf(pcc.getEmail()));</span>
+<span class="pc bpc" id="L324" title="1 of 2 branches missed.">                if (recordFound) {</span>
+
+
+<span class="fc" id="L327">                    list.add(getCartaCredito(gVector));</span>
+
+                }
+
+<span class="fc" id="L331">            }</span>
+        }
+        try {
+<span class="pc bpc" id="L334" title="1 of 2 branches missed.">            if (list.isEmpty()) {</span>
+<span class="nc" id="L335">                throw new IdException(&quot;list pagamenti cc vuota!!&quot;);</span>
+            }
+<span class="nc" id="L337">        }catch (IdException e)</span>
+        {
+<span class="nc" id="L339">            Logger.getLogger(&quot;lista pagamentu by user cc&quot;).log(Level.SEVERE,&quot; list payment cc is empty!!&quot;);</span>
+<span class="fc" id="L340">        }</span>
+
+
+<span class="fc" id="L343">        return list;</span>
+
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

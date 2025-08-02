@@ -102,7 +102,7 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
 
     @Override
     @SuppressWarnings("unchecked")
-    public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(String email) throws IOException, ClassNotFoundException {
+    public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(PagamentoCartaCredito pcc) throws IOException, ClassNotFoundException {
         ObservableList<PagamentoCartaCredito> listCC= FXCollections.observableArrayList();
         try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
@@ -112,7 +112,7 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
             Logger.getLogger("listPagamentoCCUser").log(Level.SEVERE,"file is empty");
         }
         for (int i = 1; i <= list.size(); i++) {
-            if (list.get(i-1).getEmail().equals(email)) {
+            if (list.get(i-1).getEmail().equals(pcc.getEmail())) {
                 PagamentoCartaCredito pCC=list.get(i-1);
                 listCC.add(pCC);
 

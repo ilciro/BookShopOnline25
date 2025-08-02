@@ -158,28 +158,28 @@ import java.util.logging.Logger;
 <span class="fc" id="L158">    }</span>
 
     @Override
-    public ObservableList&lt;PagamentoFattura&gt; listPagamentiByUserF(String email) {
-<span class="nc" id="L162">        ObservableList&lt;PagamentoFattura&gt; list= FXCollections.observableArrayList();</span>
-<span class="nc" id="L163">        query=&quot;select idProdotto,ammontare,tipoAcquisto,idFattura from pagamentoFattura where email=?&quot;;</span>
-<span class="nc" id="L164">        try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="nc" id="L165">        PreparedStatement prepQ= conn.prepareStatement(query))</span>
+    public ObservableList&lt;PagamentoFattura&gt; listPagamentiByUserF(PagamentoFattura pf) {
+<span class="fc" id="L162">        ObservableList&lt;PagamentoFattura&gt; list= FXCollections.observableArrayList();</span>
+<span class="fc" id="L163">        query=&quot;select idProdotto,ammontare,tipoAcquisto,idFattura from pagamentoFattura where email=?&quot;;</span>
+<span class="fc" id="L164">        try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L165">        PreparedStatement prepQ= conn.prepareStatement(query))</span>
         {
-<span class="nc" id="L167">            prepQ.setString(1,email);</span>
-<span class="nc" id="L168">            ResultSet rs= prepQ.executeQuery();</span>
-<span class="nc bnc" id="L169" title="All 2 branches missed.">            while(rs.next())</span>
+<span class="fc" id="L167">            prepQ.setString(1, pf.getEmail());</span>
+<span class="fc" id="L168">            ResultSet rs= prepQ.executeQuery();</span>
+<span class="fc bfc" id="L169" title="All 2 branches covered.">            while(rs.next())</span>
             {
-<span class="nc" id="L171">                PagamentoFattura pF=new PagamentoFattura();</span>
-<span class="nc" id="L172">                pF.setIdProdotto(rs.getInt(1));</span>
-<span class="nc" id="L173">                pF.setAmmontare(rs.getFloat(2));</span>
-<span class="nc" id="L174">                pF.setTipoAcquisto(rs.getString(3));</span>
-<span class="nc" id="L175">                pF.setIdFattura(rs.getInt(4));</span>
-<span class="nc" id="L176">                list.add(pF);</span>
-<span class="nc" id="L177">            }</span>
+<span class="fc" id="L171">                PagamentoFattura pF=new PagamentoFattura();</span>
+<span class="fc" id="L172">                pF.setIdProdotto(rs.getInt(1));</span>
+<span class="fc" id="L173">                pF.setAmmontare(rs.getFloat(2));</span>
+<span class="fc" id="L174">                pF.setTipoAcquisto(rs.getString(3));</span>
+<span class="fc" id="L175">                pF.setIdFattura(rs.getInt(4));</span>
+<span class="fc" id="L176">                list.add(pF);</span>
+<span class="fc" id="L177">            }</span>
 <span class="nc" id="L178">        }catch (SQLException e)</span>
         {
 <span class="nc" id="L180">            Logger.getLogger(&quot;pagamenti fattura di utente&quot;).log(Level.SEVERE,&quot;exception :{0}&quot;,e);</span>
-<span class="nc" id="L181">        }</span>
-<span class="nc" id="L182">        return list;</span>
+<span class="fc" id="L181">        }</span>
+<span class="fc" id="L182">        return list;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

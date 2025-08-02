@@ -32,7 +32,7 @@ import laptop.database.primoucacquista.rivista.RivistaDao;
 import laptop.database.primoucacquista.pagamentocartacredito.CsvPagamentoCartaCredito;
 import laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCreditoDao;
 import laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito;
-import laptop.database.primoucacquista.pagamentototale.PagamentoTotale;
+import laptop.database.primoucacquista.pagamentototale.PersistenzzaPagamentoTotale;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
 import laptop.exception.IdException;
 //import laptop.model.CartaDiCredito;
@@ -59,7 +59,7 @@ public class ControllerPagamentoCC {
 	private  PersistenzaLibro pL;
 	private PersistenzaGiornale pG;
 	private PersistenzaRivista pR;
-    private PagamentoTotale pT;
+    private PersistenzzaPagamentoTotale pT;
 	private PersistenzaPagamentoCartaCredito pCC;
 
 

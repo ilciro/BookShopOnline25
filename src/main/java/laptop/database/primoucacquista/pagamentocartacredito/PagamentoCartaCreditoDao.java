@@ -27,13 +27,13 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
     private String query;
 
     @Override
-    public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(String email) {
+    public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(PagamentoCartaCredito pcc) {
         query="select idProdotto,spesaTotale,tipoAcquisto,idPagamento from pagamentoCartaCredito where email=?";
         ObservableList<PagamentoCartaCredito>list = FXCollections.observableArrayList();
         try(Connection conn=ConnToDb.connectionToDB();
         PreparedStatement prepQ=conn.prepareStatement(query))
         {
-            prepQ.setString(1,email);
+            prepQ.setString(1, pcc.getEmail());
             ResultSet rs= prepQ.executeQuery();
             while(rs.next())
             {

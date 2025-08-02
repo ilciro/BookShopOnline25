@@ -1,8 +1,9 @@
 secondouclogin/TestRegistraUItente.class
 primoucacquista/TestAcquistoLibro.class
-demo/terzoucgestione/TestControllerGestioneordini.class
 primoucacquista/TestAcquistoGiornale.class
+demo/terzoucgestione/TestGestioneOrdini.class
 primoucacquista/TestAcquistoRivista.class
+terzoucgestione/TestGestioneOrdini.class
 demo/primoucacquista/TestDemoAcquista.class
 demo/secondouclogin/TestDemoLogin.class
 primoucacquista/TestRicerca.class

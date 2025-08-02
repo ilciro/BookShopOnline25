@@ -27,28 +27,28 @@ import java.util.logging.Logger;
     private String query;
 
     @Override
-    public ObservableList&lt;PagamentoCartaCredito&gt; listaPagamentiUserByCC(String email) {
-<span class="nc" id="L31">        query=&quot;select idProdotto,spesaTotale,tipoAcquisto,idPagamento from pagamentoCartaCredito where email=?&quot;;</span>
-<span class="nc" id="L32">        ObservableList&lt;PagamentoCartaCredito&gt;list = FXCollections.observableArrayList();</span>
-<span class="nc" id="L33">        try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="nc" id="L34">        PreparedStatement prepQ=conn.prepareStatement(query))</span>
+    public ObservableList&lt;PagamentoCartaCredito&gt; listaPagamentiUserByCC(PagamentoCartaCredito pcc) {
+<span class="fc" id="L31">        query=&quot;select idProdotto,spesaTotale,tipoAcquisto,idPagamento from pagamentoCartaCredito where email=?&quot;;</span>
+<span class="fc" id="L32">        ObservableList&lt;PagamentoCartaCredito&gt;list = FXCollections.observableArrayList();</span>
+<span class="fc" id="L33">        try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L34">        PreparedStatement prepQ=conn.prepareStatement(query))</span>
         {
-<span class="nc" id="L36">            prepQ.setString(1,email);</span>
-<span class="nc" id="L37">            ResultSet rs= prepQ.executeQuery();</span>
-<span class="nc bnc" id="L38" title="All 2 branches missed.">            while(rs.next())</span>
+<span class="fc" id="L36">            prepQ.setString(1, pcc.getEmail());</span>
+<span class="fc" id="L37">            ResultSet rs= prepQ.executeQuery();</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">            while(rs.next())</span>
             {
-<span class="nc" id="L40">                PagamentoCartaCredito pCC=new PagamentoCartaCredito();</span>
-<span class="nc" id="L41">                pCC.setIdProdotto(rs.getInt(1));</span>
-<span class="nc" id="L42">                pCC.setSpesaTotale(rs.getFloat(2));</span>
-<span class="nc" id="L43">                pCC.setTipoAcquisto(rs.getString(3));</span>
-<span class="nc" id="L44">                pCC.setIdPagCC(rs.getInt(4));</span>
-<span class="nc" id="L45">                list.add(pCC);</span>
-<span class="nc" id="L46">            }</span>
+<span class="fc" id="L40">                PagamentoCartaCredito pCC=new PagamentoCartaCredito();</span>
+<span class="fc" id="L41">                pCC.setIdProdotto(rs.getInt(1));</span>
+<span class="fc" id="L42">                pCC.setSpesaTotale(rs.getFloat(2));</span>
+<span class="fc" id="L43">                pCC.setTipoAcquisto(rs.getString(3));</span>
+<span class="fc" id="L44">                pCC.setIdPagCC(rs.getInt(4));</span>
+<span class="fc" id="L45">                list.add(pCC);</span>
+<span class="fc" id="L46">            }</span>
 <span class="nc" id="L47">        }catch (SQLException e)</span>
         {
 <span class="nc" id="L49">            Logger.getLogger(&quot;listaPagamentiUSerByCC&quot;).log(Level.SEVERE,&quot;exception .{0}&quot;,e);</span>
-<span class="nc" id="L50">        }</span>
-<span class="nc" id="L51">        return list;</span>
+<span class="fc" id="L50">        }</span>
+<span class="fc" id="L51">        return list;</span>
 
     }
 

@@ -202,6 +202,7 @@ public class BoundaryPagamentoCC implements Initializable {
 		else {
 			buttonReg.setDisable(true);
 		}
+		if (vis.getTipologiaApplicazione().equals("full")) memoriaButton.setVisible(false);
 		codiceCC.setCellValueFactory(new PropertyValueFactory<>("numeroCC"));
 
 	}

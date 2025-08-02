@@ -175,8 +175,10 @@ public class BuondaryAnnullaPagamento implements Initializable {
 
         if(cAP.cancellaPagamentoCC(Integer.parseInt(ccTF.getText()),persistency))
         {
+            /*
             if(vis.getTipologiaApplicazione().equals("demo"))
             {
+
                 Platform.exit();
                 File path=new File("memory");
                 File[] files = path.listFiles();
@@ -186,6 +188,8 @@ public class BuondaryAnnullaPagamento implements Initializable {
                 }
 
             }else {
+
+             */
                 Stage stage;
                 Parent root;
                 stage = (Stage) cancellaCC.getScene().getWindow();
@@ -193,7 +197,7 @@ public class BuondaryAnnullaPagamento implements Initializable {
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-            }
+
         }
         else {
             Stage stage;

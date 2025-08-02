@@ -1,25 +1,20 @@
 package laptop.database.primoucacquista.pagamentototale;
 
 import com.opencsv.exceptions.CsvValidationException;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 import laptop.database.DaoInitialize;
-import laptop.model.pagamento.Pagamento;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
-import laptop.model.user.User;
 import laptop.utilities.ConnToDb;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PagamentoTotaleDao extends PagamentoTotale {
+public class PagamentoTotaleDao extends PersistenzzaPagamentoTotale {
 
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
 
