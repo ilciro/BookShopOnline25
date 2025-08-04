@@ -99,12 +99,12 @@ public class CsvGiornale extends PersistenzaGiornale{
 <span class="fc" id="L99">            }</span>
 
 <span class="fc" id="L101">        }</span>
-<span class="pc bpc" id="L102" title="1 of 2 branches missed.">        if(!duplicatedG)</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">        if(!duplicatedG)</span>
         {
-<span class="nc" id="L104">            List&lt;Giornale&gt; list=returnGiornaleByTE(this.fdG,g.getTitolo(),g.getEditore(),g.getId());</span>
-<span class="nc bnc" id="L105" title="All 2 branches missed.">            duplicatedG=(!list.isEmpty());</span>
+<span class="fc" id="L104">            List&lt;Giornale&gt; list=returnGiornaleByTE(this.fdG,g.getTitolo(),g.getEditore(),g.getId());</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">            duplicatedG=(!list.isEmpty());</span>
         }
-<span class="pc bpc" id="L107" title="1 of 2 branches missed.">        if(duplicatedG)</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">        if(duplicatedG)</span>
             try{
 <span class="fc" id="L109">                Logger.getLogger(&quot;try giornale&quot;).log(Level.INFO,&quot;id giornale sbagliato !!&quot;);</span>
 <span class="fc" id="L110">                throw new IdException(&quot; id giornale sbagliato or duplicated&quot;);</span>
@@ -130,8 +130,8 @@ public class CsvGiornale extends PersistenzaGiornale{
 <span class="fc" id="L130">            gVector[GETINDEXCOPIERG] = String.valueOf(g.getCopieRimanenti());</span>
 <span class="fc" id="L131">            gVector[GETINDEXDISPG] = String.valueOf(g.getDisponibilita());</span>
 <span class="fc" id="L132">            gVector[GETINDEXPREZZOG] = String.valueOf(g.getPrezzo());</span>
-<span class="pc bpc" id="L133" title="1 of 2 branches missed.">            if(vis.getTipoModifica().equals(&quot;im&quot;)) gVector[GETINDEXIDG] = String.valueOf(vis.getIdGiornale());</span>
-<span class="nc bnc" id="L134" title="All 2 branches missed.">            else if(vis.getTipoModifica().equals(&quot;insert&quot;))gVector[GETINDEXIDG] = String.valueOf(getIdMax() + 1);</span>
+<span class="fc bfc" id="L133" title="All 2 branches covered.">            if(vis.getTipoModifica().equals(&quot;im&quot;)) gVector[GETINDEXIDG] = String.valueOf(vis.getIdGiornale());</span>
+<span class="pc bpc" id="L134" title="1 of 2 branches missed.">            else if(vis.getTipoModifica().equals(&quot;insert&quot;))gVector[GETINDEXIDG] = String.valueOf(getIdMax() + 1);</span>
 <span class="nc" id="L135">            else throw new CsvValidationException(&quot;type of modif in daily files is wrong !!&quot;);</span>
 <span class="fc" id="L136">            csvWriter.writeNext(gVector);</span>
 <span class="fc" id="L137">            csvWriter.flush();</span>
@@ -142,27 +142,27 @@ public class CsvGiornale extends PersistenzaGiornale{
 
     private static synchronized List&lt;Giornale&gt; returnGiornaleByTE(File fd,String tit,String edit,int id) throws IOException, CsvValidationException {
         List&lt;Giornale&gt; list;
-<span class="nc" id="L145">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
+<span class="fc" id="L145">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
             String[] gVector;
             boolean recordFound;
 
-<span class="nc" id="L149">            list = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L149">            list = new ArrayList&lt;&gt;();</span>
 
-<span class="nc bnc" id="L151" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="fc bfc" id="L151" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
 
-<span class="nc bnc" id="L153" title="All 6 branches missed.">                recordFound = gVector[GETINDEXTITOLOG].equals(tit) || gVector[GETINDEXEDITOREG].equals(edit) || gVector[GETINDEXIDG].equals(String.valueOf(id))</span>
-<span class="nc bnc" id="L154" title="All 2 branches missed.">                        || gVector[GETINDEXIDG].equals(String.valueOf(vis.getIdGiornale()));</span>
+<span class="pc bpc" id="L153" title="2 of 6 branches missed.">                recordFound = gVector[GETINDEXTITOLOG].equals(tit) || gVector[GETINDEXEDITOREG].equals(edit) || gVector[GETINDEXIDG].equals(String.valueOf(id))</span>
+<span class="pc bpc" id="L154" title="1 of 2 branches missed.">                        || gVector[GETINDEXIDG].equals(String.valueOf(vis.getIdGiornale()));</span>
 
-<span class="nc bnc" id="L156" title="All 2 branches missed.">                if (recordFound) {</span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">                if (recordFound) {</span>
 
-<span class="nc" id="L158">                    Giornale g = getGiornale(gVector);</span>
+<span class="fc" id="L158">                    Giornale g = getGiornale(gVector);</span>
 
-<span class="nc" id="L160">                    list.add(g);</span>
-<span class="nc" id="L161">                }</span>
+<span class="fc" id="L160">                    list.add(g);</span>
+<span class="fc" id="L161">                }</span>
             }
         }
 
-<span class="nc" id="L165">        return list;</span>
+<span class="fc" id="L165">        return list;</span>
 
     }
     private static @NotNull Giornale getGiornale(String[] gVector) {

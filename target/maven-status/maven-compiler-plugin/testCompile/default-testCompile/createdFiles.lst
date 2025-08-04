@@ -1,10 +1,14 @@
 secondouclogin/TestRegistraUItente.class
-primoucacquista/TestAcquistoLibro.class
 primoucacquista/TestAcquistoGiornale.class
 demo/terzoucgestione/TestGestioneOrdini.class
+demo/primoucacquista/TestDemoAcquista.class
+demo/secondouclogin/TestDemoLogin.class
+terzoucgestione/gestioneutente/TestGestioneUtenteByAdmin.class
+terzoucgestione/gestioneoggetto/TestGestioneOggettoLibro.class
+primoucacquista/TestAcquistoLibro.class
 primoucacquista/TestAcquistoRivista.class
 terzoucgestione/TestGestioneOrdini.class
 terzoucgestione/TestReport.class
-demo/primoucacquista/TestDemoAcquista.class
-demo/secondouclogin/TestDemoLogin.class
+terzoucgestione/gestioneoggetto/TestGestioneOggettoGiornale.class
 primoucacquista/TestRicerca.class
+terzoucgestione/gestioneoggetto/TestGestioneOggettoRivista.class

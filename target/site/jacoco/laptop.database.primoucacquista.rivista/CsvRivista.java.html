@@ -77,9 +77,9 @@ public class CsvRivista extends PersistenzaRivista {
 
 
 <span class="fc" id="L79">        }</span>
-<span class="pc bpc" id="L80" title="1 of 2 branches missed.">        if (!duplicatedR) {</span>
-<span class="nc" id="L81">            List&lt;Rivista&gt; list = returnRivistaByTAE(this.fdR, r.getTitolo(), r.getAutore(), r.getEditore());</span>
-<span class="nc bnc" id="L82" title="All 2 branches missed.">            duplicatedR = (!list.isEmpty());</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        if (!duplicatedR) {</span>
+<span class="fc" id="L81">            List&lt;Rivista&gt; list = returnRivistaByTAE(this.fdR, r.getTitolo(), r.getAutore(), r.getEditore());</span>
+<span class="pc bpc" id="L82" title="1 of 2 branches missed.">            duplicatedR = (!list.isEmpty());</span>
         }
 <span class="pc bpc" id="L84" title="1 of 2 branches missed.">        if (duplicatedR)</span>
             try {
@@ -108,8 +108,8 @@ public class CsvRivista extends PersistenzaRivista {
 <span class="fc" id="L108">            gVector[GETINDEXDISPR] = String.valueOf(r.getDisp());</span>
 <span class="fc" id="L109">            gVector[GETINDEXPREZZOR] = String.valueOf(r.getPrezzo());</span>
 <span class="fc" id="L110">            gVector[GETINDEXCOPIER] = String.valueOf(r.getNrCopie());</span>
-<span class="pc bpc" id="L111" title="1 of 2 branches missed.">            if(vis.getTipoModifica().equals(&quot;im&quot;)) gVector[GETINDEXIDR] = String.valueOf(vis.getIdRivista());</span>
-<span class="nc bnc" id="L112" title="All 2 branches missed.">            else if(vis.getTipoModifica().equals(&quot;insert&quot;)) gVector[GETINDEXIDR] = String.valueOf(getIdMax() + 1);</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">            if(vis.getTipoModifica().equals(&quot;im&quot;)) gVector[GETINDEXIDR] = String.valueOf(vis.getIdRivista());</span>
+<span class="pc bpc" id="L112" title="1 of 2 branches missed.">            else if(vis.getTipoModifica().equals(&quot;insert&quot;)) gVector[GETINDEXIDR] = String.valueOf(getIdMax() + 1);</span>
 <span class="nc" id="L113">            else throw new CsvValidationException(&quot; type of modif at magazine is wrong !!&quot;);</span>
 <span class="fc" id="L114">            csvWriter.writeNext(gVector);</span>
 <span class="fc" id="L115">            csvWriter.flush();</span>
@@ -119,27 +119,27 @@ public class CsvRivista extends PersistenzaRivista {
 
     private static synchronized List&lt;Rivista&gt; returnRivistaByTAE(File fd, String tit, String autor, String edit) throws IOException, CsvValidationException {
         List&lt;Rivista&gt; rivistaList;
-<span class="nc" id="L122">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
+<span class="fc" id="L122">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
             String[] gVector;
             boolean recordFound;
 
-<span class="nc" id="L126">            rivistaList = new ArrayList&lt;&gt;();</span>
-<span class="nc bnc" id="L127" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="fc" id="L126">            rivistaList = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
 
-<span class="nc bnc" id="L129" title="All 4 branches missed.">                recordFound = gVector[GETINDEXTITOLOR].equals(tit) || gVector[GETINDEXAUTORER].equals(autor)</span>
-<span class="nc bnc" id="L130" title="All 4 branches missed.">                        || gVector[GETINDEXEDITORER].equals(edit) || gVector[GETINDEXIDR].equals(String.valueOf(vis.getIdRivista()));</span>
-<span class="nc bnc" id="L131" title="All 2 branches missed.">                if (recordFound) {</span>
-
-
-<span class="nc" id="L134">                    Rivista r = getRivista(gVector);</span>
+<span class="pc bpc" id="L129" title="1 of 4 branches missed.">                recordFound = gVector[GETINDEXTITOLOR].equals(tit) || gVector[GETINDEXAUTORER].equals(autor)</span>
+<span class="pc bpc" id="L130" title="1 of 4 branches missed.">                        || gVector[GETINDEXEDITORER].equals(edit) || gVector[GETINDEXIDR].equals(String.valueOf(vis.getIdRivista()));</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">                if (recordFound) {</span>
 
 
-<span class="nc" id="L137">                    rivistaList.add(r);</span>
+<span class="fc" id="L134">                    Rivista r = getRivista(gVector);</span>
 
-<span class="nc" id="L139">                }</span>
+
+<span class="fc" id="L137">                    rivistaList.add(r);</span>
+
+<span class="fc" id="L139">                }</span>
             }
         }
-<span class="nc" id="L142">        return rivistaList;</span>
+<span class="fc" id="L142">        return rivistaList;</span>
 
 
     }

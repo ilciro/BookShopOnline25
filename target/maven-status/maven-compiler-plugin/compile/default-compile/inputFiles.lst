@@ -14,7 +14,11 @@
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/boundary/secondouclogin/BoundaryRegistra.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/boundary/secondouclogin/BuondaryLogin.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/boundary/terzoucgestioneprofilooggetto/BoundaryAdmin.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/boundary/terzoucgestioneprofilooggetto/BoundaryGestioneOggetto.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/boundary/terzoucgestioneprofilooggetto/BoundaryGestioneUtente.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/boundary/terzoucgestioneprofilooggetto/BoundaryRaccolta.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/boundary/terzoucgestioneprofilooggetto/BoundaryReport.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/boundary/terzoucgestioneprofilooggetto/BoundaryUtenti.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/boundary/terzoucgestioneprofilooggetto/BoundaryVisualizzaOrdini.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/ControllerSystemState.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/primoucacquista/ControllerAcquista.java
@@ -31,7 +35,11 @@
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/secondouclogin/ControllerLogin.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/secondouclogin/ControllerRegistraUtente.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/terzoucgestioneprofiloggetto/ControllerAdmin.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/terzoucgestioneprofiloggetto/ControllerGestione.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/terzoucgestioneprofiloggetto/ControllerGestioneUtente.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/terzoucgestioneprofiloggetto/ControllerRaccolta.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/terzoucgestioneprofiloggetto/ControllerReport.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/terzoucgestioneprofiloggetto/ControllerUtenti.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/controller/terzoucgestioneprofiloggetto/ControllerVisualizzaOrdini.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/DaoInitialize.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/MemoryInitialize.java

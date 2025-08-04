@@ -8,3 +8,7 @@
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/secondouclogin/TestRegistraUItente.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/terzoucgestione/TestGestioneOrdini.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/test/java/terzoucgestione/TestReport.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/terzoucgestione/gestioneoggetto/TestGestioneOggettoGiornale.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/terzoucgestione/gestioneoggetto/TestGestioneOggettoLibro.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/terzoucgestione/gestioneoggetto/TestGestioneOggettoRivista.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/test/java/terzoucgestione/gestioneutente/TestGestioneUtenteByAdmin.java

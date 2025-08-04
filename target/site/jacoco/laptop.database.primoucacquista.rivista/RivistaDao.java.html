@@ -53,8 +53,8 @@ public class RivistaDao extends PersistenzaRivista{
 <span class="fc" id="L53">            prepQ.setInt(8,r.getNrCopie());</span>
 <span class="fc" id="L54">            prepQ.setInt(9, r.getDisp());</span>
 <span class="fc" id="L55">            prepQ.setFloat(10, r.getPrezzo());</span>
-<span class="pc bpc" id="L56" title="1 of 2 branches missed.">            if(vis.getTipoModifica().equals(&quot;im&quot;)) prepQ.setInt(11,vis.getIdRivista());</span>
-<span class="nc bnc" id="L57" title="All 2 branches missed.">            else if(vis.getTipoModifica().equals(&quot;insert&quot;)) prepQ.setInt(11,0);</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">            if(vis.getTipoModifica().equals(&quot;im&quot;)) prepQ.setInt(11,vis.getIdRivista());</span>
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">            else if(vis.getTipoModifica().equals(&quot;insert&quot;)) prepQ.setInt(11,0);</span>
 
 
 <span class="fc" id="L60">            row=prepQ.executeUpdate();</span>

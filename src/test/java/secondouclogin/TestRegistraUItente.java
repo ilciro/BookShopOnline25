@@ -6,6 +6,8 @@ import laptop.controller.secondouclogin.ControllerAggiornaPassword;
 import laptop.controller.secondouclogin.ControllerRegistraUtente;
 import laptop.exception.IdException;
 import laptop.model.user.User;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -16,26 +18,29 @@ import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@TestMethodOrder(MethodOrderer.MethodName.class)
+
+
 class TestRegistraUItente {
 
     private static final ControllerRegistraUtente cRU=new ControllerRegistraUtente();
     private static final ControllerAggiornaPassword cAP=new ControllerAggiornaPassword();
-    private static final ResourceBundle RBUTENTE=ResourceBundle.getBundle("configTest/users");
+    private static final ResourceBundle RBUTENTE=ResourceBundle.getBundle("configurations/users");
 
     @ParameterizedTest
     @ValueSource(strings = {"database", "file"})
-    void testRegistraUtente1(String strings) throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException {
+    void testRegistraUtente(String strings) throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException {
         cRU.setType(strings);
-        LocalDate date=LocalDate.of(1995,10,31);
-        assertTrue(cRU.registra(RBUTENTE.getString("regNome"),RBUTENTE.getString("regCognome"),RBUTENTE.getString("regEmail"),RBUTENTE.getString("regPwd"),RBUTENTE.getString("regDesc"),date,RBUTENTE.getString("regRuolo")));
+        assertTrue(cRU.registra(RBUTENTE.getString("nome2"),RBUTENTE.getString("cognome2"),RBUTENTE.getString("email2"),RBUTENTE.getString("pwd2"),RBUTENTE.getString("desc2"), LocalDate.parse(RBUTENTE.getString("data2"))
+                ,RBUTENTE.getString("ruolo2")));
     }
 
      @ParameterizedTest
     @ValueSource(strings = {"database","file"})
-    void testRegistraUtente2(String strings) throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException {
+    void testRegistraUtenteModifPwd(String strings) throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException {
          cRU.setType(strings);
-         User.getInstance().setEmail(RBUTENTE.getString("regEmail"));
-         User.getInstance().setPassword(RBUTENTE.getString("regPwd"));
-         assertTrue(cAP.aggiorna(RBUTENTE.getString("modifPwd"),strings));
+         User.getInstance().setEmail(RBUTENTE.getString("email2"));
+        User.getInstance().setPassword(RBUTENTE.getString("pwd2"));
+         assertTrue(cAP.aggiorna(RBUTENTE.getString("passAgg"),strings));
     }
 }

@@ -22,6 +22,7 @@ laptop/database/primoucacquista/pagamentofattura/PersistenzaPagamentoFattura.cla
 laptop/database/primoucacquista/negozio/NegozioDao.class
 laptop/database/primoucacquista/pagamentocartacredito/PagamentoCartaCreditoDao.class
 laptop/database/primoucacquista/pagamentototale/PersistenzzaPagamentoTotale.class
+laptop/boundary/terzoucgestioneprofilooggetto/BoundaryUtenti.class
 laptop/exception/PersistenzaException.class
 laptop/database/primoucacquista/giornale/PersistenzaGiornale.class
 laptop/model/raccolta/Factory.class
@@ -33,6 +34,7 @@ laptop/model/raccolta/MatchParam.class
 laptop/model/raccolta/Rivista.class
 laptop/boundary/primoucacquista/BoundaryCompravendita.class
 laptop/exception/LogoutException.class
+laptop/controller/terzoucgestioneprofiloggetto/ControllerGestioneUtente.class
 laptop/boundary/demo/BoundarySceltaModalita.class
 laptop/database/secondouclogin/users/CsvUtente.class
 laptop/controller/primoucacquista/ControllerPagamentoCC.class
@@ -41,10 +43,13 @@ laptop/model/raccolta/Raccolta.class
 laptop/controller/terzoucgestioneprofiloggetto/ControllerReport.class
 laptop/model/user/User.class
 laptop/controller/terzoucgestioneprofiloggetto/ControllerAdmin.class
+laptop/boundary/terzoucgestioneprofilooggetto/BoundaryGestioneUtente.class
+laptop/boundary/terzoucgestioneprofilooggetto/BoundaryRaccolta.class
 laptop/boundary/primoucacquista/BoundaryScegliNegozio.class
 laptop/database/primoucacquista/pagamentocartacredito/CsvPagamentoCartaCredito.class
 laptop/controller/primoucacquista/ControllerAnnullaPagamento.class
 laptop/controller/primoucacquista/ControllerHomePage.class
+laptop/controller/terzoucgestioneprofiloggetto/ControllerGestione.class
 laptop/controller/primoucacquista/ControllerRicerca.class
 laptop/boundary/terzoucgestioneprofilooggetto/BoundaryVisualizzaOrdini.class
 laptop/controller/primoucacquista/ControllerDownload.class
@@ -52,6 +57,7 @@ laptop/exception/AcquistaException.class
 laptop/boundary/primoucacquista/BoundaryHomePage.class
 laptop/controller/primoucacquista/ControllerAcquista.class
 laptop/database/primoucacquista/pagamentofattura/ContrassegnoDao.class
+laptop/controller/terzoucgestioneprofiloggetto/ControllerRaccolta.class
 laptop/database/primoucacquista/pagamentofattura/MemoriaFattura.class
 laptop/boundary/primoucacquista/BoundaryAcquista.class
 laptop/boundary/secondouclogin/BuondaryLogin.class
@@ -62,6 +68,7 @@ laptop/database/terzoucgestioneprofiloggetto/report/PersistenzaReport.class
 laptop/model/pagamento/PagamentoFattura.class
 laptop/controller/terzoucgestioneprofiloggetto/ControllerVisualizzaOrdini.class
 laptop/boundary/primoucacquista/BoundaryPagamentoCC.class
+laptop/boundary/terzoucgestioneprofilooggetto/BoundaryGestioneOggetto.class
 laptop/boundary/secondouclogin/BoundaryRegistra.class
 laptop/database/primoucacquista/giornale/MemoriaGiornale.class
 laptop/database/DaoInitialize.class
@@ -85,6 +92,7 @@ laptop/database/primoucacquista/libro/CsvLibro.class
 laptop/boundary/secondouclogin/BoundaryAggiornaPassword.class
 laptop/boundary/primoucacquista/BoundaryRicerca.class
 laptop/model/user/TempUser.class
+laptop/controller/terzoucgestioneprofiloggetto/ControllerUtenti.class
 laptop/utilities/ConnToDb.class
 laptop/controller/primoucacquista/ControllerPagamentoCash.class
 laptop/database/primoucacquista/libro/PersistenzaLibro.class

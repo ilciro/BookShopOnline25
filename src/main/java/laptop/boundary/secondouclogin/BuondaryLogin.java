@@ -75,6 +75,7 @@ public class BuondaryLogin implements Initializable {
         if (fileButton.isSelected()) type = "file";
         if (memoriaButton.isSelected()) type = "memoria";
 
+
         if (cL.login(emailTF.getText(), passTF.getText(), type).equals("NONVALIDO")) {
 
             vis.setIsLogged(false);

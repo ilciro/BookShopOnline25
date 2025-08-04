@@ -80,9 +80,7 @@ public class CsvReport extends PersistenzaReport{
 
     @Override
     public ObservableList<Report> report(String type) throws IOException {
-        /*
-        todo fare qui
-         */
+
         ObservableList<Report> list = FXCollections.observableArrayList();
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fileReport)))) {
             String[] gVector;
