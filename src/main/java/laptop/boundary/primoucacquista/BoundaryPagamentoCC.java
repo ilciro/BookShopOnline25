@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -26,6 +27,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class BoundaryPagamentoCC implements Initializable {
@@ -68,7 +71,7 @@ public class BoundaryPagamentoCC implements Initializable {
 	@FXML
 	private TextField nomeInput;
 	@FXML
-	private RadioButton buttonPrendi;
+	private Button buttonPrendi;
 	@FXML
 	private RadioButton databaseButton;
 	@FXML
@@ -78,9 +81,13 @@ public class BoundaryPagamentoCC implements Initializable {
 	@FXML
 	private ToggleGroup toggleGroup;
 	@FXML
-	private RadioButton completa;
+	private Button completa;
 	@FXML
 	private Button buttonI;
+	@FXML
+	private HBox hbox;
+	@FXML
+	private Button buttonPaga;
 
 
 	protected Scene scene;
@@ -102,14 +109,14 @@ public class BoundaryPagamentoCC implements Initializable {
 		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = sdf1.parse(scadenzaTF.getText());
 		java.sql.Date sqlStartDate = new java.sql.Date(date.getTime());
-		/*
+
 		if(cPCC.aggiungiCartaDB(nomeTF.getText(),cognomeTF.getText(),codiceTF.getText(), sqlStartDate,passTF.getText(),vis.getSpesaT(),persistenza))
 		{
-			Logger.getLogger("carta di credito registrata").log(Level.INFO," cc inserted with success");
+			Logger.getLogger("carta di credito registrata").log(Level.INFO," cc inserted with success {0}", codiceTF.getText());
 			buttonReg.setDisable(true);
 		}
 
-		 */
+
 
 
 
@@ -123,8 +130,8 @@ public class BoundaryPagamentoCC implements Initializable {
 		String persistenza="";
 		if(databaseButton.isSelected()) persistenza=DATABASE;
 		if(fileButton.isSelected()) persistenza=FILE;
-		if(memoriaButton.isSelected()) persistenza=MEMORIA;
-		//tableview.setItems(cPCC.ritornaElencoCC(nomeInput.getText(),persistenza));
+		//if(memoriaButton.isSelected()) persistenza=MEMORIA;
+		tableview.setItems(cPCC.ritornaElencoCC(nomeInput.getText(),persistenza,null));
 
 
 	}
@@ -150,7 +157,7 @@ public class BoundaryPagamentoCC implements Initializable {
 				String persistenza = "";
 				if (databaseButton.isSelected()) persistenza = DATABASE;
 				else if (fileButton.isSelected()) persistenza = FILE;
-				else if (memoriaButton.isSelected()) persistenza = MEMORIA;
+				//else if (memoriaButton.isSelected()) persistenza = MEMORIA;
 				cPCC.pagamentoCC(nomeTF.getText(), persistenza, cognomeTF.getText());
 			if (cPCC.correttezza(codiceTF.getText(),scadenzaTF.getText(),passTF.getText())) {
 
@@ -176,8 +183,10 @@ public class BoundaryPagamentoCC implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
             cPCC=new ControllerPagamentoCC();
+			codiceCC.setCellValueFactory(new PropertyValueFactory<>("numeroCC"));
 
-			if(vis.getTipologiaApplicazione().equals("demo") && !vis.getIsLogged())
+
+		if(vis.getTipologiaApplicazione().equals("demo") && !vis.getIsLogged())
 			{
 				databaseButton.setVisible(false);
 				fileButton.setVisible(false);
@@ -198,32 +207,35 @@ public class BoundaryPagamentoCC implements Initializable {
 				cognomeTF.setEditable(false);
 			}
 
-
-		else {
-			buttonReg.setDisable(true);
-		}
 		if (vis.getTipologiaApplicazione().equals("full")) memoriaButton.setVisible(false);
-		codiceCC.setCellValueFactory(new PropertyValueFactory<>("numeroCC"));
+		if(vis.getTipologiaApplicazione().equals("full") && vis.getIsLogged())
+		{
+			nomeTF.setText(cPCC.getInfo()[0]);
+			cognomeTF.setText(cPCC.getInfo()[1]);
+			nomeTF.setEditable(false);
+			cognomeTF.setEditable(false);
+			buttonReg.setDisable(false);
+			buttonI.setDisable(true);
+		}
+
 
 	}
-
 	@FXML
-	private void completa() throws IOException, ClassNotFoundException, CsvValidationException, SQLException {
-		String persistenza="";
-		if(databaseButton.isSelected()) persistenza=DATABASE;
-		if(fileButton.isSelected()) persistenza=FILE;
-		if(memoriaButton.isSelected()) persistenza=MEMORIA;
+	private void completa() throws CsvValidationException, SQLException, IOException, ClassNotFoundException {
+
 
 		//provo a prendere i dati dal db
 		if(tableview.getSelectionModel().getSelectedItem().getNumeroCC()!=null )
 		{
 			codiceTF.setText(tableview.getSelectionModel().getSelectedItem().getNumeroCC());
-		//	scadenzaTF.setText(String.valueOf(cPCC.ritornaElencoCByNumero(codiceTF.getText(),persistenza).get(0).getScadenza()));
-		//	passTF.setText(cPCC.ritornaElencoCByNumero(codiceTF.getText(),persistenza).get(0).getCiv());
+
 
 		}
-		String scadenza1=scadenzaTF.getText().replace("-","/");
-		scadenzaTF.setText(scadenza1);
+		String persistency="";
+		if(databaseButton.isSelected()) persistency="database";
+		if(fileButton.isSelected()) persistency="file";
 
+		scadenzaTF.setText(String.valueOf(cPCC.ritornaElencoCC(nomeTF.getText(),persistency,tableview.getSelectionModel().getSelectedItem().getNumeroCC()).get(0).getScadenza()).replace("-","/"));
+		passTF.setText(cPCC.ritornaElencoCC(nomeTF.getText(),persistency,tableview.getSelectionModel().getSelectedItem().getNumeroCC()).get(0).getCiv());
 	}
 }

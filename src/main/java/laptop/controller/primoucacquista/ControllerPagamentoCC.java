@@ -1,5 +1,6 @@
 package laptop.controller.primoucacquista;
 
+import java.io.File;
 import java.io.IOException;
 
 import java.sql.SQLException;
@@ -7,8 +8,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 
+import laptop.database.primoucacquista.cartacredito.CartaCreditoDao;
+import laptop.database.primoucacquista.cartacredito.CsvCartaCredito;
+import laptop.database.primoucacquista.cartacredito.PersistenzaCC;
 import laptop.database.primoucacquista.giornale.CsvGiornale;
 import laptop.database.primoucacquista.giornale.GiornaleDao;
 import laptop.database.primoucacquista.giornale.MemoriaGiornale;
@@ -39,7 +45,7 @@ import laptop.database.terzoucgestioneprofiloggetto.report.MemoriaReport;
 import laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport;
 import laptop.database.terzoucgestioneprofiloggetto.report.ReportDao;
 import laptop.exception.IdException;
-//import laptop.model.CartaDiCredito;
+import laptop.model.CartaDiCredito;
 import laptop.model.Report;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.raccolta.Giornale;
@@ -71,11 +77,14 @@ public class ControllerPagamentoCC {
 	private PersistenzaPagamentoCartaCredito pCC;
 	private PersistenzaReport pRepo;
 
+	private CartaDiCredito cc;
+	private PersistenzaCC persistenzaCC;
 
 
-	public ControllerPagamentoCC()  {}
 
-	/*
+	public ControllerPagamentoCC(){}
+
+
 
 	public boolean aggiungiCartaDB(String n, String c, String cod, java.sql.Date data, String civ, float prezzo,String persistenza)
             throws CsvValidationException, IOException, ClassNotFoundException, SQLException {
@@ -85,39 +94,39 @@ public class ControllerPagamentoCC {
 
 			switch (persistenza)
 			{
-			//	case DATABASE->pCC=new CartaCreditoDao();
-			//	case FILE->pCC=new CsvCartaCredito();
-			//	case MEMORIA->pCC=new MemoriaCartaCredito();
+				case DATABASE->persistenzaCC=new CartaCreditoDao();
+				case FILE->persistenzaCC=new CsvCartaCredito();
 				default -> Logger.getLogger("aggiungi carta db").log(Level.SEVERE," error in persistency");
 			}
-			//	pCC.inizializza();
-		//	return pCC.insCC(cc);
+				persistenzaCC.inizializza();
+			return persistenzaCC.insCC(cc);
 
 	}
 
 
 
-	public ObservableList<CartaDiCredito> ritornaElencoCC(String nomeU,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, SQLException {
+
+	public ObservableList<CartaDiCredito> ritornaElencoCC(String nomeU, String persistenza,String numero) throws IOException, ClassNotFoundException, CsvValidationException, SQLException {
 
 		cc=new CartaDiCredito();
 		cc.setNomeUser(nomeU);
+		cc.setNumeroCC(numero);
 
 		switch (persistenza)
 		{
-			case DATABASE->pCC=new CartaCreditoDao();
-			//case FILE->pCC=new CsvCartaCredito();
+			case DATABASE->persistenzaCC=new CartaCreditoDao();
+			case FILE->persistenzaCC=new CsvCartaCredito();
 			//case MEMORIA->pCC=new MemoriaCartaCredito();
 			default -> Logger.getLogger("elenco cc dal db").log(Level.SEVERE," list is empty");
 		}
-			pCC.inizializza();
+			persistenzaCC.inizializza();
 
-		return pCC.getCarteDiCredito(cc);
 
+        return persistenzaCC.getCarteDiCredito(cc);
 
 	}
 	
 
-*/
 
 	private PagamentoCartaCredito pagamentoLibroCC(String nome,String database,String cognome,String mail) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
 		Libro l=new Libro();
@@ -201,6 +210,8 @@ public class ControllerPagamentoCC {
 			case DATABASE -> pT=new PagamentoTotaleDao();
 			case FILE -> pT=new PagamentoTotaleCsv();
 			case MEMORIA -> pT=new PagamentoTotaleMemoria();
+			default -> Logger.getLogger("pagamento totale ").log(Level.SEVERE," error total payment  persistency");
+
 		}
 		pT.inizializza();
 
@@ -219,7 +230,7 @@ public class ControllerPagamentoCC {
 
 
 		if(pCC.inserisciPagamentoCartaCredito(p)) {
-			Logger.getLogger("pagamento effettuato ").log(Level.INFO," payment success with id .", p.getIdPagCC());
+			Logger.getLogger("pagamento effettuato ").log(Level.INFO," payment success with id . {0}", p.getIdPagCC());
 			if(database.equals(FILE))
 			{
 
@@ -299,7 +310,7 @@ public class ControllerPagamentoCC {
 
 				i++;
 
-			} else throw new IdException("spit");
+			} else throw new IdException("split exception ");
 		}
 		return i==4;
 	}
@@ -361,7 +372,6 @@ public class ControllerPagamentoCC {
 
 		if(civ.length()==3)
 		{
-			System.out.println("civ:"+civ);
 			correttezzaCiv=checkInteger(civ);
 			if(!correttezzaCiv) throw new IdException(" civ format is worng");
 		}
@@ -406,31 +416,10 @@ public class ControllerPagamentoCC {
 }
 
 
-	/*
-	public ObservableList<CartaDiCredito> ritornaElencoCByNumero(String numero,String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, SQLException {
-
-		cc=new CartaDiCredito();
-		cc.setNumeroCC(numero);
-
-		switch (persistenza)
-		{
-			case DATABASE->pCC=new CartaCreditoDao();
-			case FILE->pCC=new CsvCartaCredito();
-			case MEMORIA->pCC=new MemoriaCartaCredito();
-			default -> Logger.getLogger("elenco cc dal db").log(Level.SEVERE," list is empty");
-		}
-			pCC.inizializza();
-
-		return pCC.getCarteDiCredito(cc);
-
-
-	}
 
 
 
-}
 
-	 */
 
 		
 

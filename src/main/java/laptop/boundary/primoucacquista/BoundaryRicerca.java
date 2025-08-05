@@ -166,7 +166,7 @@ public class BoundaryRicerca implements Initializable {
         if (fileButton.isSelected()) type=FILE;
         if (memoriaButton.isSelected()) type=MEMORIA;
 
-        /*
+
         if(cR.logout(type)) {
 
             stage = (Stage) buttonI.getScene().getWindow();
@@ -186,7 +186,7 @@ public class BoundaryRicerca implements Initializable {
             stage.show();
         }
 
-         */
+
 
     }
 

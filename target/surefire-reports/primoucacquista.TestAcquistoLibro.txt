@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: primoucacquista.TestAcquistoLibro
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.334 s - in primoucacquista.TestAcquistoLibro
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.572 s - in primoucacquista.TestAcquistoLibro

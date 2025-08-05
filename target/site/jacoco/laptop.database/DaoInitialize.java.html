@@ -168,7 +168,7 @@ import java.util.logging.Logger;
 
 
 
-<span class="pc bpc" id="L171" title="2 of 10 branches missed.">        switch (type) {</span>
+<span class="pc bpc" id="L171" title="1 of 10 branches missed.">        switch (type) {</span>
             case LIBRO -&gt; {
                 //creo
 <span class="fc" id="L174">                creaProcedura(ESISTE);</span>
@@ -245,12 +245,12 @@ import java.util.logging.Logger;
 <span class="fc" id="L245">            }</span>
             case CARTACREDITO -&gt; {
                 //creo
-<span class="nc" id="L248">                creaProcedura(ESISTE);</span>
-<span class="nc" id="L249">                creaProcedura(CREA);</span>
+<span class="fc" id="L248">                creaProcedura(ESISTE);</span>
+<span class="fc" id="L249">                creaProcedura(CREA);</span>
                 //richiamo
-<span class="nc" id="L251">                eseguiProcedura(ESISTE, CARTACREDITO);</span>
-<span class="nc" id="L252">                eseguiProcedura(CREA, CARTACREDITO);</span>
-<span class="nc" id="L253">            }</span>
+<span class="fc" id="L251">                eseguiProcedura(ESISTE, CARTACREDITO);</span>
+<span class="fc" id="L252">                eseguiProcedura(CREA, CARTACREDITO);</span>
+<span class="fc" id="L253">            }</span>
 <span class="nc" id="L254">            default -&gt; Logger.getLogger(&quot;errore con il tipo in dao initialize&quot;).log(Level.SEVERE,&quot; type is wrong!!&quot;);</span>
         }
 <span class="fc" id="L256">    }</span>

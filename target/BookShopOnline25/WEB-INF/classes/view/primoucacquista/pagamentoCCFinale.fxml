@@ -9,10 +9,11 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.boundary.primoucacquista.BoundaryPagamentoCC">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="743.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.boundary.primoucacquista.BoundaryPagamentoCC">
    <children>
       <Label fx:id="header" layoutX="80.0" layoutY="30.0" prefHeight="16.0" prefWidth="408.0" text="Immettere credenziali carta di credito" textFill="#005eff" />
       <VBox fx:id="vbox" layoutX="45.0" layoutY="120.0" prefHeight="200.0" prefWidth="250.0">
@@ -71,23 +72,38 @@
             </PasswordField>
          </children>
       </VBox>
-      <Button fx:id="buttonReg" layoutX="257.0" layoutY="358.0" mnemonicParsing="false" onAction="#registraCC" text="Registra carta credito e paga" textFill="#00a1ff" />
-      <TableView fx:id="tableview" layoutX="25.0" layoutY="400.0" prefHeight="200.0" prefWidth="200.0">
+      <Button fx:id="buttonReg" layoutX="282.0" layoutY="389.0" mnemonicParsing="false" onAction="#registraCC" text="Registra carta credito" textFill="#00a1ff" />
+      <TableView fx:id="tableview" layoutX="26.0" layoutY="457.0" prefHeight="200.0" prefWidth="200.0">
         <columns>
           <TableColumn fx:id="codiceCC" prefWidth="199.0" text="Codice Carta" />
         </columns>
       </TableView>
-      <Label fx:id="labelNU" layoutX="312.0" layoutY="412.0" minHeight="30.0" minWidth="100.0" text="Inserire nome utente :" />
-      <TextField fx:id="nomeInput" layoutX="464.0" layoutY="414.0" />
-      <RadioButton fx:id="buttonPrendi" layoutX="304.0" layoutY="468.0" mnemonicParsing="false" onAction="#popolaTabella" text="Prendi dati" textFill="#c300ff" />
-      <Button fx:id="buttonI" layoutX="379.0" layoutY="555.0" mnemonicParsing="false" onAction="#procediCC" text="Invia(Dati non salvati)" textFill="#09f544" />
-      <RadioButton fx:id="databaseButton" layoutX="284.0" layoutY="511.0" mnemonicParsing="false" text="database">
-         <toggleGroup>
-            <ToggleGroup fx:id="toggleGroup" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="fileButton" layoutX="386.0" layoutY="511.0" mnemonicParsing="false" text="file" toggleGroup="$toggleGroup" />
-      <RadioButton fx:id="memoriaButton" layoutX="450.0" layoutY="511.0" mnemonicParsing="false" text="memoria" toggleGroup="$toggleGroup" />
-      <RadioButton fx:id="completa" layoutX="465.0" layoutY="468.0" mnemonicParsing="false" onAction="#completa" text="Completa" textFill="#1800f5" />
+      <Label fx:id="labelNU" layoutX="311.0" layoutY="457.0" minHeight="30.0" minWidth="100.0" text="Inserire nome utente :" />
+      <TextField fx:id="nomeInput" layoutX="474.0" layoutY="459.0" />
+      <Button fx:id="buttonI" layoutX="335.0" layoutY="683.0" mnemonicParsing="false" onAction="#procediCC" text="Invia(Dati non salvati)" textFill="#09f544" />
+      <Button fx:id="buttonPrendi" layoutX="311.0" layoutY="531.0" mnemonicParsing="false" onAction="#popolaTabella" text="prendi dati" textFill="#ee03ea" />
+      <Button fx:id="completa" layoutX="485.0" layoutY="531.0" mnemonicParsing="false" onAction="#completa" text="completa" textFill="#0044ff" />
+      <HBox fx:id="hbox" layoutX="312.0" layoutY="600.0" prefHeight="18.0" prefWidth="281.0">
+         <children>
+            <RadioButton fx:id="databaseButton" mnemonicParsing="false" text="database">
+               <toggleGroup>
+                  <ToggleGroup fx:id="toggleGroup" />
+               </toggleGroup>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="fileButton" mnemonicParsing="false" text="file" toggleGroup="$toggleGroup">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="memoriaButton" mnemonicParsing="false" text="memoria" toggleGroup="$toggleGroup" />
+         </children>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
+      </HBox>
+      <Button fx:id="buttonPaga" layoutX="453.0" layoutY="389.0" mnemonicParsing="false" onAction="#procediCC" text="Paga con carta credito" textFill="#eb7602" />
    </children>
 </Pane>

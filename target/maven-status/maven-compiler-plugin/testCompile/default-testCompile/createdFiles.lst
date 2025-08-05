@@ -10,5 +10,6 @@ primoucacquista/TestAcquistoRivista.class
 terzoucgestione/TestGestioneOrdini.class
 terzoucgestione/TestReport.class
 terzoucgestione/gestioneoggetto/TestGestioneOggettoGiornale.class
+terzoucgestione/acquista/TestAcquistoLogged.class
 primoucacquista/TestRicerca.class
 terzoucgestione/gestioneoggetto/TestGestioneOggettoRivista.class

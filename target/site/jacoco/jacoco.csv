@@ -1,6 +1,6 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 BookShopOnline25 Maven Webapp,laptop.database,MemoryInitialize,157,804,19,39,25,158,14,36,1,18
-BookShopOnline25 Maven Webapp,laptop.database,DaoInitialize,59,393,5,19,16,126,5,23,0,10
+BookShopOnline25 Maven Webapp,laptop.database,DaoInitialize,44,408,4,20,11,131,4,24,0,10
 BookShopOnline25 Maven Webapp,laptop.model.user,TempUser.RuoliT,0,33,0,0,0,6,0,1,0,1
 BookShopOnline25 Maven Webapp,laptop.model.user,User,20,141,0,7,3,41,3,22,3,17
 BookShopOnline25 Maven Webapp,laptop.model.user,User.Ruoli,0,33,0,0,0,6,0,1,0,1
@@ -41,15 +41,15 @@ BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.libro,LibroDao,37,
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.libro,CsvLibro,36,969,36,82,4,194,35,43,0,19
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerScegliNegozio,15,112,3,9,3,17,3,10,0,4
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerDownload,26,375,8,26,5,62,8,18,0,5
-BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerPagamentoCC,105,773,39,57,23,140,40,33,1,12
+BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerPagamentoCC,116,856,38,64,25,154,39,40,1,14
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerVisualizza,26,161,5,11,5,32,5,12,0,5
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerCompravendita,34,137,6,14,8,29,6,11,0,3
-BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerRicerca,39,286,10,30,7,44,10,18,0,5
+BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerRicerca,175,286,26,30,35,44,21,18,2,5
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerHomePage,39,147,7,15,8,29,9,15,2,7
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerAnnullaPagamento,22,241,10,26,4,51,10,17,0,5
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerAcquista,20,266,4,12,4,41,4,12,0,4
 BookShopOnline25 Maven Webapp,laptop.controller.primoucacquista,ControllerPagamentoCash,42,478,11,35,8,87,11,25,0,4
-BookShopOnline25 Maven Webapp,laptop.model,CartaDiCredito,109,0,0,0,37,0,20,0,20,0
+BookShopOnline25 Maven Webapp,laptop.model,CartaDiCredito,21,88,0,0,10,27,6,14,6,14
 BookShopOnline25 Maven Webapp,laptop.model,Negozio,16,51,0,0,3,21,3,10,3,10
 BookShopOnline25 Maven Webapp,laptop.model,Report,0,45,0,0,0,19,0,13,0,13
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.pagamentototale,PagamentoTotaleMemoria,3,289,3,9,1,65,3,10,0,7
@@ -70,6 +70,9 @@ BookShopOnline25 Maven Webapp,laptop.model.raccolta,CategorieRivista,0,87,0,0,0,
 BookShopOnline25 Maven Webapp,laptop.model.raccolta,Libro,324,442,42,18,64,124,42,52,0,39
 BookShopOnline25 Maven Webapp,laptop.model.raccolta,CategorieLibro,0,177,0,0,0,10,0,1,0,1
 BookShopOnline25 Maven Webapp,laptop.model.raccolta,Rivista,65,299,12,7,24,87,12,34,0,30
+BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.cartacredito,CartaCreditoDao,15,121,1,3,4,32,1,5,0,4
+BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.cartacredito,PersistenzaCC,15,3,2,0,4,1,4,1,3,1
+BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.cartacredito,CsvCartaCredito,9,193,6,10,0,40,5,8,0,5
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.giornale,PersistenzaGiornale,21,9,4,0,5,3,7,2,5,2
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.giornale,GiornaleDao,37,409,3,11,10,84,3,11,0,7
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.giornale,MemoriaGiornale,34,68,4,6,7,13,6,7,3,5

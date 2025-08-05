@@ -70,10 +70,12 @@ laptop/controller/terzoucgestioneprofiloggetto/ControllerVisualizzaOrdini.class
 laptop/boundary/primoucacquista/BoundaryPagamentoCC.class
 laptop/boundary/terzoucgestioneprofilooggetto/BoundaryGestioneOggetto.class
 laptop/boundary/secondouclogin/BoundaryRegistra.class
+laptop/database/primoucacquista/cartacredito/CartaCreditoDao.class
 laptop/database/primoucacquista/giornale/MemoriaGiornale.class
 laptop/database/DaoInitialize.class
 laptop/database/secondouclogin/users/UsersDao.class
 laptop/model/raccolta/CategorieRivista.class
+laptop/database/primoucacquista/cartacredito/CsvCartaCredito.class
 laptop/database/primoucacquista/rivista/PersistenzaRivista.class
 laptop/model/Negozio.class
 laptop/model/pagamento/Pagamento.class
@@ -96,6 +98,7 @@ laptop/controller/terzoucgestioneprofiloggetto/ControllerUtenti.class
 laptop/utilities/ConnToDb.class
 laptop/controller/primoucacquista/ControllerPagamentoCash.class
 laptop/database/primoucacquista/libro/PersistenzaLibro.class
+laptop/database/primoucacquista/cartacredito/PersistenzaCC.class
 laptop/database/primoucacquista/libro/LibroDao.class
 laptop/boundary/terzoucgestioneprofilooggetto/BoundaryAdmin.class
 laptop/model/raccolta/Libro.class
