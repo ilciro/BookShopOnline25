@@ -24,7 +24,7 @@ public class PersistenzaPagamentoFattura {
     public boolean cancellaPagamentoFattura(PagamentoFattura f) throws CsvValidationException, IOException, ClassNotFoundException {
         return f.getIdFattura()!=-1;
     }
-    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
+    public void inizializza() throws IOException, ClassNotFoundException, SQLException  {
         Logger.getLogger("persistenza fattura inizializza").log(Level.INFO,"persistenza pagamento fattura inizializza");
           }
 
@@ -32,7 +32,10 @@ public class PersistenzaPagamentoFattura {
         Logger.getLogger("Persistenza pagamento fattura").log(Level.INFO,"ultima fattur");
         return null;
     }
-    public ObservableList<PagamentoFattura> listPagamentiByUserF(PagamentoFattura pF) throws IOException, ClassNotFoundException, CsvValidationException, IdException { return FXCollections.observableArrayList();}
+    public ObservableList<PagamentoFattura> listPagamentiByUserF(PagamentoFattura pF) throws IOException, ClassNotFoundException, CsvValidationException, IdException {
+        Logger.getLogger("Persistenza pagamento fattura by user").log(Level.INFO,"lisa payment by user:.{0}",pF.getNome());
+
+        return FXCollections.observableArrayList();}
 
 
 }

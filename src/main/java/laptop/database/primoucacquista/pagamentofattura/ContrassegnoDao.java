@@ -132,7 +132,7 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
     private void creaTrigger() {
 
         try(Connection conn=ConnToDb.connectionToDB();
-        PreparedStatement prepQ=conn.prepareStatement(PERMESSI.getString("query")))
+            PreparedStatement prepQ=conn.prepareStatement(PERMESSI.getString("queryP")))
         {
             prepQ.execute();
         }catch (SQLException e)
@@ -142,14 +142,14 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
 
 
         try (Connection conn=ConnToDb.connectionToDB();
-        PreparedStatement prepQ= conn.prepareStatement(TRIGGERFATTURA.getString("query"))){
+        PreparedStatement prepQ= conn.prepareStatement(TRIGGERFATTURA.getString("queryT"))){
             prepQ.executeUpdate();
         }catch (SQLException e)
         {
             Logger.getLogger("crea trigger inserisci in pagaemnto toale").log(Level.SEVERE," error with fattura trigger",e);
         }
         try (Connection conn=ConnToDb.connectionToDB();
-             PreparedStatement prepQ= conn.prepareStatement(CANCELLAPAGAMENTOFATTURA.getString("query"))){
+             PreparedStatement prepQ= conn.prepareStatement(CANCELLAPAGAMENTOFATTURA.getString("queryCF"))){
             prepQ.executeUpdate();
         }catch (SQLException e)
         {

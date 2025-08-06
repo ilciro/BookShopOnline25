@@ -46,7 +46,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L46">            }</span>
 <span class="nc" id="L47">        }catch (SQLException e)</span>
         {
-<span class="nc" id="L49">            Logger.getLogger(&quot;listaPagamentiUSerByCC&quot;).log(Level.SEVERE,&quot;exception .{0}&quot;,e);</span>
+<span class="nc" id="L49">            Logger.getLogger(&quot;get libro id autore obes&quot;).log(Level.SEVERE, &quot;eccezione :.{0}&quot;, e);</span>
 <span class="fc" id="L50">        }</span>
 <span class="fc" id="L51">        return list;</span>
 
@@ -61,7 +61,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L61">    }</span>
 
     @Override
-    public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p) throws IOException, CsvValidationException, ClassNotFoundException {
+    public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p)  {
 <span class="nc" id="L65">        int row=0;</span>
 <span class="nc" id="L66">       query=&quot;delete from pagamentoCartaCredito where idPagamento=?&quot;;</span>
 <span class="nc" id="L67">       try(Connection conn=ConnToDb.connectionToDB();</span>
@@ -126,7 +126,7 @@ import java.util.logging.Logger;
 
     private void creaTrigger() {
 <span class="fc" id="L128">        try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L129">            PreparedStatement prepQ=conn.prepareStatement(PERMESSI.getString(&quot;query&quot;)))</span>
+<span class="fc" id="L129">            PreparedStatement prepQ=conn.prepareStatement(PERMESSI.getString(&quot;queryP&quot;)))</span>
         {
 <span class="fc" id="L131">            prepQ.execute();</span>
 <span class="nc" id="L132">        }catch (SQLException e)</span>
@@ -136,14 +136,14 @@ import java.util.logging.Logger;
 
 
 <span class="fc" id="L138">        try (Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L139">             PreparedStatement prepQ= conn.prepareStatement(TRIGGERCC.getString(&quot;query&quot;))){</span>
+<span class="fc" id="L139">             PreparedStatement prepQ= conn.prepareStatement(TRIGGERCC.getString(&quot;queryTCC&quot;))){</span>
 <span class="fc" id="L140">            prepQ.executeUpdate();</span>
 <span class="fc" id="L141">        }catch (SQLException e)</span>
         {
 <span class="fc" id="L143">            Logger.getLogger(&quot;crea trigger inserisci in pagaemnto toale&quot;).log(Level.SEVERE,&quot; error with fattura trigger&quot;,e);</span>
 <span class="fc" id="L144">        }</span>
 <span class="fc" id="L145">        try (Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L146">             PreparedStatement prepQ= conn.prepareStatement(CANCELLAPAGAMENTOCARTACREDITO.getString(&quot;query&quot;))){</span>
+<span class="fc" id="L146">             PreparedStatement prepQ= conn.prepareStatement(CANCELLAPAGAMENTOCARTACREDITO.getString(&quot;queryCancCC&quot;))){</span>
 <span class="fc" id="L147">            prepQ.executeUpdate();</span>
 <span class="fc" id="L148">        }catch (SQLException e)</span>
         {

@@ -20,13 +20,15 @@ import java.util.logging.Logger;
 
     }
     public ObservableList&lt;CartaDiCredito&gt; getCarteDiCredito(CartaDiCredito cc) throws IOException,  CsvValidationException {
-<span class="nc" id="L23">      return FXCollections.observableArrayList();</span>
+<span class="nc" id="L23">        Logger.getLogger(&quot;get cartecredito&quot;).log(Level.INFO,&quot;lista cc con nome: {0}&quot;,cc.getNomeUser());</span>
+
+<span class="nc" id="L25">        return FXCollections.observableArrayList();</span>
 
 
 
          }
-    public void inizializza()throws IOException, ClassNotFoundException, SQLException {
-<span class="nc" id="L29">        Logger.getLogger(&quot;inizializza persistenza cc&quot;).log(Level.INFO,&quot;persistenza cc inizializza&quot;);</span>
-<span class="nc" id="L30">    }</span>
+    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
+<span class="nc" id="L31">        Logger.getLogger(&quot;inizializza persistenza cc&quot;).log(Level.INFO,&quot;persistenza cc inizializza&quot;);</span>
+<span class="nc" id="L32">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

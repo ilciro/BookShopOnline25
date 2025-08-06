@@ -8,19 +8,13 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 
-//import laptop.database.primoucacquista.giornale.CsvGiornale;
-//import laptop.database.primoucacquista.giornale.GiornaleDao;
-//import laptop.database.primoucacquista.giornale.MemoriaGiornale;
-//import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
+
 import laptop.database.primoucacquista.giornale.CsvGiornale;
 import laptop.database.primoucacquista.giornale.GiornaleDao;
 import laptop.database.primoucacquista.giornale.MemoriaGiornale;
 import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
 import laptop.database.primoucacquista.libro.MemoriaLibro;
-//import laptop.database.primoucacquista.rivista.CsvRivista;
-//import laptop.database.primoucacquista.rivista.MemoriaRivista;
-//import laptop.database.primoucacquista.rivista.PersistenzaRivista;
-//import laptop.database.primoucacquista.rivista.RivistaDao;
+
 import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;

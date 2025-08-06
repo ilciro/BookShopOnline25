@@ -137,13 +137,12 @@ public class ControllerRaccolta {
                 }
                 case GIORNALE -> {
                     g.setId(vis.getIdGiornale());
-                    Logger.getLogger("elimina giornale").log(Level.INFO,"id daily to delete .{0}",g.getId());
                     switch (type)
                     {
                         case DATABASE -> pG=new GiornaleDao();
                         case FILE -> pG=new CsvGiornale();
                         case MEMORIA -> pG=new MemoriaGiornale();
-                        default -> Logger.getLogger("elimina giornale").log(Level.SEVERE,"error deleting a daily");
+                        default -> Logger.getLogger("elimina daily").log(Level.SEVERE,"error deleting a daily");
                     }
                     status=pG.removeGiornaleById(g);
                     if(status) Logger.getLogger("elimina giornale").log(Level.INFO,"eliminated daily with id .{0}",vis.getIdGiornale());

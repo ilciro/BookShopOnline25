@@ -20,12 +20,14 @@ public class PersistenzaCC {
 
     }
     public ObservableList<CartaDiCredito> getCarteDiCredito(CartaDiCredito cc) throws IOException,  CsvValidationException {
-      return FXCollections.observableArrayList();
+        Logger.getLogger("get cartecredito").log(Level.INFO,"lista cc con nome: {0}",cc.getNomeUser());
+
+        return FXCollections.observableArrayList();
 
 
 
          }
-    public void inizializza()throws IOException, ClassNotFoundException, SQLException {
+    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
         Logger.getLogger("inizializza persistenza cc").log(Level.INFO,"persistenza cc inizializza");
     }
 }

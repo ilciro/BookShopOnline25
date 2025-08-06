@@ -132,7 +132,7 @@ import java.util.logging.Logger;
     private void creaTrigger() {
 
 <span class="fc" id="L134">        try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L135">        PreparedStatement prepQ=conn.prepareStatement(PERMESSI.getString(&quot;query&quot;)))</span>
+<span class="fc" id="L135">            PreparedStatement prepQ=conn.prepareStatement(PERMESSI.getString(&quot;queryP&quot;)))</span>
         {
 <span class="fc" id="L137">            prepQ.execute();</span>
 <span class="nc" id="L138">        }catch (SQLException e)</span>
@@ -142,14 +142,14 @@ import java.util.logging.Logger;
 
 
 <span class="fc" id="L144">        try (Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L145">        PreparedStatement prepQ= conn.prepareStatement(TRIGGERFATTURA.getString(&quot;query&quot;))){</span>
+<span class="fc" id="L145">        PreparedStatement prepQ= conn.prepareStatement(TRIGGERFATTURA.getString(&quot;queryT&quot;))){</span>
 <span class="fc" id="L146">            prepQ.executeUpdate();</span>
 <span class="fc" id="L147">        }catch (SQLException e)</span>
         {
 <span class="fc" id="L149">            Logger.getLogger(&quot;crea trigger inserisci in pagaemnto toale&quot;).log(Level.SEVERE,&quot; error with fattura trigger&quot;,e);</span>
 <span class="fc" id="L150">        }</span>
 <span class="fc" id="L151">        try (Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L152">             PreparedStatement prepQ= conn.prepareStatement(CANCELLAPAGAMENTOFATTURA.getString(&quot;query&quot;))){</span>
+<span class="fc" id="L152">             PreparedStatement prepQ= conn.prepareStatement(CANCELLAPAGAMENTOFATTURA.getString(&quot;queryCF&quot;))){</span>
 <span class="fc" id="L153">            prepQ.executeUpdate();</span>
 <span class="fc" id="L154">        }catch (SQLException e)</span>
         {

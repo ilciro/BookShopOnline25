@@ -80,10 +80,8 @@ public class ControllerPagamentoCC {
 	private CartaDiCredito cc;
 	private PersistenzaCC persistenzaCC;
 
-
-
-	public ControllerPagamentoCC(){}
-
+	public ControllerPagamentoCC() {
+	}
 
 
 	public boolean aggiungiCartaDB(String n, String c, String cod, java.sql.Date data, String civ, float prezzo,String persistenza)
@@ -116,7 +114,6 @@ public class ControllerPagamentoCC {
 		{
 			case DATABASE->persistenzaCC=new CartaCreditoDao();
 			case FILE->persistenzaCC=new CsvCartaCredito();
-			//case MEMORIA->pCC=new MemoriaCartaCredito();
 			default -> Logger.getLogger("elenco cc dal db").log(Level.SEVERE," list is empty");
 		}
 			persistenzaCC.inizializza();

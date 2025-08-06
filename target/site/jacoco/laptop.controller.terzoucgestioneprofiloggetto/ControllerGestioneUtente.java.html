@@ -86,42 +86,41 @@ import java.util.logging.Logger;
 <span class="fc" id="L86">        tu.setPasswordT(data[4]);</span>
 <span class="fc" id="L87">        tu.setDescrizioneT(data[5]);</span>
 <span class="fc" id="L88">        tu.setDataDiNascitaT(LocalDate.parse(data[6]));</span>
-<span class="fc" id="L89">        System.out.println(&quot;id in dati :&quot;+vis.getIdUtente());</span>
-<span class="fc" id="L90">        tu.setId(vis.getIdUtente());</span>
-<span class="fc" id="L91">        return tu;</span>
+<span class="fc" id="L89">        tu.setId(vis.getIdUtente());</span>
+<span class="fc" id="L90">        return tu;</span>
     }
 
 
 
     public boolean modifica(String[] data,String persistenza,String vecchiaMail) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
-<span class="fc" id="L97">        TempUser tu=new TempUser();</span>
-<span class="fc" id="L98">        vis.setTipoModifica(&quot;im&quot;);</span>
+<span class="fc" id="L96">        TempUser tu=new TempUser();</span>
+<span class="fc" id="L97">        vis.setTipoModifica(&quot;im&quot;);</span>
 
-<span class="fc" id="L100">        tu.setEmailT(vecchiaMail);</span>
+<span class="fc" id="L99">        tu.setEmailT(vecchiaMail);</span>
 
 
 
-<span class="pc bpc" id="L104" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L103" title="2 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="fc" id="L106">            case DATABASE -&gt; pU=new UsersDao();</span>
-<span class="fc" id="L107">            case FILE -&gt; pU=new CsvUtente();</span>
-<span class="nc" id="L108">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
-<span class="nc" id="L109">            default -&gt; Logger.getLogger(&quot;modifica utente&quot;).log(Level.SEVERE,&quot;error in persistency&quot;);</span>
+<span class="fc" id="L105">            case DATABASE -&gt; pU=new UsersDao();</span>
+<span class="fc" id="L106">            case FILE -&gt; pU=new CsvUtente();</span>
+<span class="nc" id="L107">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
+<span class="nc" id="L108">            default -&gt; Logger.getLogger(&quot;modifica utente&quot;).log(Level.SEVERE,&quot;error in persistency&quot;);</span>
         }
 
-<span class="fc bfc" id="L112" title="All 2 branches covered.">        for (int i=0;i&lt;pU.getUserData().size();i++)</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">        for (int i=0;i&lt;pU.getUserData().size();i++)</span>
         {
-<span class="pc bpc" id="L114" title="1 of 2 branches missed.">            if(pU.getUserData().get(i).getId()==vis.getIdUtente()-1</span>
-<span class="fc bfc" id="L115" title="All 2 branches covered.">            || pU.getUserData().get(i).getEmailT().equals(vecchiaMail))</span>
+<span class="pc bpc" id="L113" title="1 of 2 branches missed.">            if(pU.getUserData().get(i).getId()==vis.getIdUtente()-1</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">            || pU.getUserData().get(i).getEmailT().equals(vecchiaMail))</span>
             {
 
-<span class="fc" id="L118">                vis.setIdUtente(pU.getUserData().get(i).getId()+1);</span>
-<span class="fc" id="L119">                pU.removeUserByIdEmailPwd(tu);</span>
+<span class="fc" id="L117">                vis.setIdUtente(pU.getUserData().get(i).getId()+1);</span>
+<span class="fc" id="L118">                pU.removeUserByIdEmailPwd(tu);</span>
 
             }
         }
-<span class="fc" id="L123">       tu=dati(data);</span>
-<span class="fc" id="L124">        return pU.inserisciUtente(tu);</span>
+<span class="fc" id="L122">       tu=dati(data);</span>
+<span class="fc" id="L123">        return pU.inserisciUtente(tu);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

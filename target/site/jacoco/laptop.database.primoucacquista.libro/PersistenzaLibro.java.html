@@ -22,16 +22,19 @@ import java.util.logging.Logger;
 
 <span class="nc" id="L23">    public  ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException { return FXCollections.observableArrayList();}</span>
 
-<span class="nc" id="L25">    public ObservableList&lt;Libro&gt; getLibroByIdTitoloAutoreLibro(Libro l) throws CsvValidationException, IOException, IdException, ClassNotFoundException { return FXCollections.observableArrayList();}</span>
+    public ObservableList&lt;Libro&gt; getLibroByIdTitoloAutoreLibro(Libro l) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+<span class="nc" id="L26">        Logger.getLogger(&quot;lista  persistenza libro&quot;).log(Level.INFO,&quot;lista libro by id .{0}&quot;,l.getId());</span>
 
-    public void initializza() throws IOException, CsvValidationException, ClassNotFoundException, SQLException, IdException {
+<span class="nc" id="L28">        return FXCollections.observableArrayList();}</span>
 
-<span class="fc" id="L29">        Logger.getLogger(&quot;inizializza persistenza libro&quot;).log(Level.INFO,&quot; persistenza libro inizializza&quot;);</span>
+    public void initializza() throws  CsvValidationException, IdException, IOException, ClassNotFoundException {
+
+<span class="fc" id="L32">        Logger.getLogger(&quot;inizializza persistenza libro&quot;).log(Level.INFO,&quot; persistenza libro inizializza&quot;);</span>
 
 
 
-<span class="fc" id="L33">    }</span>
-<span class="nc" id="L34">    public ObservableList&lt;Libro&gt; getLibri() throws IOException, ClassNotFoundException, CsvValidationException, IdException { return FXCollections.observableArrayList();}</span>
+<span class="fc" id="L36">    }</span>
+<span class="nc" id="L37">    public ObservableList&lt;Libro&gt; getLibri() throws IOException, ClassNotFoundException, CsvValidationException, IdException { return FXCollections.observableArrayList();}</span>
 
 
 

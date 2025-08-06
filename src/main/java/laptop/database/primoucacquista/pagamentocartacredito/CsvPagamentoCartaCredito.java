@@ -254,60 +254,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
         return id;
     }
 
-    /*
 
-    @Override
-    public ObservableList<PagamentoCartaCredito> listPagamentiByUser(PagamentoCartaCredito p) throws CsvValidationException, IOException {
-        ObservableList<PagamentoCartaCredito> list= FXCollections.observableArrayList();
-        synchronized (this.cachePagamento)
-        {
-
-
-            for(Map.Entry<String,PagamentoCartaCredito> id:cachePagamento.entrySet())
-            {
-                boolean recordFound=(id.getValue().getIdPagCC()==p.getIdPagCC());
-                if(recordFound)
-                    list.add(id.getValue());
-            }
-        }
-        if(list.isEmpty())
-        {
-            list=retriveListPagamento(this.filePagamento,p);
-            synchronized (this.cachePagamento)
-            {
-                for(PagamentoCartaCredito pagamento : list)
-                    this.cachePagamento.put(String.valueOf(p.getEmail()),pagamento);
-            }
-
-        }
-        return list;
-    }
-    private static  synchronized  ObservableList<Pagamento> retriveListPagamento(File fd, Pagamento p) throws IOException, CsvValidationException {
-        ObservableList<Pagamento> list;
-        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fd)))) {
-            String[] gVector;
-            list = FXCollections.observableArrayList();
-            while ((gVector = reader.readNext()) != null) {
-                boolean recordFound = gVector[GETINDEXEIAMILP].equals(p.getEmail());
-                if (recordFound) {
-                    Pagamento pag = new Pagamento();
-                    pag.setIdPag(Integer.parseInt(gVector[GETINDEXIDP]));
-                    pag.setMetodo(gVector[GETINDEXMETODOP]);
-                    pag.setAmmontare(Float.parseFloat(gVector[GETINDEXSPESAP]));
-                    pag.setTipo(gVector[GETINDEXACQUISTOP]);
-                    pag.setIdOggetto(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));
-                    list.add(pag);
-
-
-                }
-            }
-        }
-
-        return list;
-
-    }
-
-     */
 
     @Override
     public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(PagamentoCartaCredito pcc) throws IOException,  CsvValidationException, IdException {

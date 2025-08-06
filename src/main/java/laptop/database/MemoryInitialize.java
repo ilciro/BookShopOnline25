@@ -179,7 +179,7 @@ public class MemoryInitialize {
             else if (vis.getTipoModifica().equals(INSERT)) l.setId(listL.size() + 1);
             listL.add(l);
 
-            Logger.getLogger("inserisci").log(Level.INFO,"inserted libro in list {0}",listL.get(0).getTitolo());
+            Logger.getLogger("inserisci libro").log(Level.INFO,"inserted libro in list {0}",listL.get(0).getTitolo());
             //scrivo lista in appoggio
 
             scriviInFile(appoggio,null,listL,null);
@@ -195,7 +195,7 @@ public class MemoryInitialize {
             else if (vis.getTipoModifica().equals(INSERT)) g.setId(listG.size() + 1);
             listG.add(g);
             //scrivo lista in appoggio
-            Logger.getLogger("inserisci").log(Level.INFO,"inserted giornale in list {0}",listG.get(0).getTitolo());
+            Logger.getLogger("inserisci giiornale").log(Level.INFO,"inserted giornale in list {0}",listG.get(0).getTitolo());
 
 
             scriviInFile(appoggio,listG,null,null);
@@ -211,7 +211,7 @@ public class MemoryInitialize {
             else if (vis.getTipoModifica().equals(INSERT)) r.setId(listR.size() + 1);
             listR.add(r);
             //scrivo lista in appoggio
-            Logger.getLogger("inserisci").log(Level.INFO,"inserted rivista in list {0}",listR.get(0).getTitolo());
+            Logger.getLogger("inserisci rivista").log(Level.INFO,"inserted rivista in list {0}",listR.get(0).getTitolo());
 
 
             scriviInFile(appoggio,null,null,listR);

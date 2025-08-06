@@ -46,7 +46,7 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
             }
         }catch (SQLException e)
         {
-            Logger.getLogger("listaPagamentiUSerByCC").log(Level.SEVERE,"exception .{0}",e);
+            Logger.getLogger("get libro id autore obes").log(Level.SEVERE, "eccezione :.{0}", e);
         }
         return list;
 
@@ -61,7 +61,7 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
     }
 
     @Override
-    public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p) throws IOException, CsvValidationException, ClassNotFoundException {
+    public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p)  {
         int row=0;
        query="delete from pagamentoCartaCredito where idPagamento=?";
        try(Connection conn=ConnToDb.connectionToDB();
@@ -126,7 +126,7 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
 
     private void creaTrigger() {
         try(Connection conn=ConnToDb.connectionToDB();
-            PreparedStatement prepQ=conn.prepareStatement(PERMESSI.getString("query")))
+            PreparedStatement prepQ=conn.prepareStatement(PERMESSI.getString("queryP")))
         {
             prepQ.execute();
         }catch (SQLException e)
@@ -136,14 +136,14 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
 
 
         try (Connection conn=ConnToDb.connectionToDB();
-             PreparedStatement prepQ= conn.prepareStatement(TRIGGERCC.getString("query"))){
+             PreparedStatement prepQ= conn.prepareStatement(TRIGGERCC.getString("queryTCC"))){
             prepQ.executeUpdate();
         }catch (SQLException e)
         {
             Logger.getLogger("crea trigger inserisci in pagaemnto toale").log(Level.SEVERE," error with fattura trigger",e);
         }
         try (Connection conn=ConnToDb.connectionToDB();
-             PreparedStatement prepQ= conn.prepareStatement(CANCELLAPAGAMENTOCARTACREDITO.getString("query"))){
+             PreparedStatement prepQ= conn.prepareStatement(CANCELLAPAGAMENTOCARTACREDITO.getString("queryCancCC"))){
             prepQ.executeUpdate();
         }catch (SQLException e)
         {

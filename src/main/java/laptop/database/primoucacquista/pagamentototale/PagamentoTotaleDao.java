@@ -1,7 +1,6 @@
 package laptop.database.primoucacquista.pagamentototale;
 
 import com.opencsv.exceptions.CsvValidationException;
-import laptop.controller.ControllerSystemState;
 import laptop.database.DaoInitialize;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
@@ -16,7 +15,6 @@ import java.util.logging.Logger;
 
 public class PagamentoTotaleDao extends PersistenzzaPagamentoTotale {
 
-    private static final ControllerSystemState vis=ControllerSystemState.getInstance();
 
 
     @Override
@@ -29,11 +27,15 @@ public class PagamentoTotaleDao extends PersistenzzaPagamentoTotale {
 
     @Override
     public boolean inserisciPagamentoFattura(PagamentoFattura p) throws CsvValidationException, IOException, ClassNotFoundException {
+        Logger.getLogger("inseirmento pagamento fattura dao").log(Level.INFO,"fattura inserted {0}",p.getIdFattura());
+
         return super.inserisciPagamentoFattura(p);
     }
 
     @Override
     public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito pCC) throws CsvValidationException, IOException, ClassNotFoundException {
+        Logger.getLogger("inseirmento pagamento cc dao").log(Level.INFO,"cc inserted {0}",pCC.getIdPagCC());
+
         return super.inserisciPagamentoCartaCredito(pCC);
     }
 
@@ -50,7 +52,8 @@ public class PagamentoTotaleDao extends PersistenzzaPagamentoTotale {
 
       }catch (SQLException e)
       {
-          Logger.getLogger("cancella fattura").log(Level.SEVERE,"exception with cash {0}",e);
+          Logger.getLogger("cacnella fattura").log(Level.INFO,"exception in delete fattura .{0}",e);
+
       }
       return row==1;
 
@@ -69,7 +72,7 @@ public class PagamentoTotaleDao extends PersistenzzaPagamentoTotale {
 
         }catch (SQLException e)
         {
-            Logger.getLogger("cancella pagaemnto").log(Level.SEVERE,"exception with cc{0}",e);
+            Logger.getLogger("cancella pagamento cc dao").log(Level.INFO,"payment deleted with exception . {0}",e);
         }
         return row==1;
     }

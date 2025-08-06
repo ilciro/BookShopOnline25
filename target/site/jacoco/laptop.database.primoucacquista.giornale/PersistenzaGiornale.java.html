@@ -9,31 +9,31 @@ import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Raccolta;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-<span class="fc" id="L19">public class PersistenzaGiornale {</span>
+<span class="fc" id="L18">public class PersistenzaGiornale {</span>
 
 
 
     public  boolean inserisciGiornale(Giornale g) throws CsvValidationException, IOException,  ClassNotFoundException {
 
 
-<span class="nc bnc" id="L26" title="All 2 branches missed.">        return g.getId()!=0;}</span>
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        return g.getId()!=0;}</span>
     public  boolean removeGiornaleById(Giornale g) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
 
-<span class="nc bnc" id="L29" title="All 2 branches missed.">        return g.getId()!=-1;}</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        return g.getId()!=-1;}</span>
     public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="nc" id="L31">        return FXCollections.observableArrayList();</span>
+<span class="nc" id="L30">        return FXCollections.observableArrayList();</span>
     }
     public ObservableList&lt;Giornale&gt; getGiornaleByIdTitoloAutoreLibro(Giornale g) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+<span class="nc" id="L33">        Logger.getLogger(&quot;giornale by id&quot;).log(Level.INFO,&quot;id giornale .{0}&quot;,g.getId());</span>
 
 <span class="nc" id="L35">        return FXCollections.observableArrayList();}</span>
-    public void initializza() throws CsvValidationException, IdException, IOException, SQLException, ClassNotFoundException {
+    public void initializza() throws IOException, SQLException, CsvValidationException, IdException, ClassNotFoundException{
 
 <span class="fc" id="L38">        Logger.getLogger(&quot;inizializza persistenza giornale&quot;).log(Level.INFO,&quot; persistenza giornale inizializza&quot;);</span>
 

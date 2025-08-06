@@ -22,9 +22,12 @@ public  class PersistenzaLibro {
 
     public  ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException { return FXCollections.observableArrayList();}
 
-    public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l) throws CsvValidationException, IOException, IdException, ClassNotFoundException { return FXCollections.observableArrayList();}
+    public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+        Logger.getLogger("lista  persistenza libro").log(Level.INFO,"lista libro by id .{0}",l.getId());
 
-    public void initializza() throws IOException, CsvValidationException, ClassNotFoundException, SQLException, IdException {
+        return FXCollections.observableArrayList();}
+
+    public void initializza() throws  CsvValidationException, IdException, IOException, ClassNotFoundException {
 
         Logger.getLogger("inizializza persistenza libro").log(Level.INFO," persistenza libro inizializza");
 

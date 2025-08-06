@@ -83,7 +83,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
     }
 
     @Override
-    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
+    public void inizializza() throws IOException {
         Path path = Path.of(SERIALIZZAZIONE);
         try
        {

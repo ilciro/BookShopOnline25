@@ -60,7 +60,10 @@ public class ControllerPagamentoCash {
 	private PersistenzaRivista pR;
 	private PersistenzaReport pRepo;
 
-    public void controlla(String nome, String cognome, String via, String com,String type) throws IOException, ClassNotFoundException, SQLException, CsvValidationException, IdException {
+	public ControllerPagamentoCash() {
+	}
+
+	public void controlla(String nome, String cognome, String via, String com,String type) throws IOException, ClassNotFoundException, SQLException, CsvValidationException, IdException {
 
 
 		//1
@@ -160,7 +163,6 @@ public class ControllerPagamentoCash {
 
 	}
 
-	public ControllerPagamentoCash()  { }
 
 	public String[] getInfo()
 	{

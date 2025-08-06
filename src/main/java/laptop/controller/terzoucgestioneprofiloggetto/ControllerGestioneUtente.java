@@ -86,7 +86,6 @@ public class ControllerGestioneUtente {
         tu.setPasswordT(data[4]);
         tu.setDescrizioneT(data[5]);
         tu.setDataDiNascitaT(LocalDate.parse(data[6]));
-        System.out.println("id in dati :"+vis.getIdUtente());
         tu.setId(vis.getIdUtente());
         return tu;
     }

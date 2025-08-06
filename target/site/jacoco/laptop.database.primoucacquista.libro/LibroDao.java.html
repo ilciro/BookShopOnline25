@@ -204,12 +204,12 @@ public class LibroDao extends PersistenzaLibro{
     }
 
     @Override
-    public void initializza() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
+    public void initializza() throws CsvValidationException, IdException, IOException, ClassNotFoundException {
 
 <span class="fc" id="L209">        super.initializza();</span>
 <span class="fc" id="L210">        Logger.getLogger(&quot;libro dao inizializza&quot;).log(Level.INFO, &quot;inizializza libro dao&quot;);</span>
 <span class="fc" id="L211">        DaoInitialize dI=new DaoInitialize();</span>
-<span class="fc" id="L212">        dI.inizializza(&quot;libro&quot;);</span>
+<span class="fc" id="L212">        dI.inizializza(LIBRO);</span>
 
 <span class="fc" id="L214">    }</span>
 

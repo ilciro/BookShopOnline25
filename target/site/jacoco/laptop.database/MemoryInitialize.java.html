@@ -179,7 +179,7 @@ import java.util.logging.Logger;
 <span class="nc bnc" id="L179" title="All 2 branches missed.">            else if (vis.getTipoModifica().equals(INSERT)) l.setId(listL.size() + 1);</span>
 <span class="fc" id="L180">            listL.add(l);</span>
 
-<span class="fc" id="L182">            Logger.getLogger(&quot;inserisci&quot;).log(Level.INFO,&quot;inserted libro in list {0}&quot;,listL.get(0).getTitolo());</span>
+<span class="fc" id="L182">            Logger.getLogger(&quot;inserisci libro&quot;).log(Level.INFO,&quot;inserted libro in list {0}&quot;,listL.get(0).getTitolo());</span>
             //scrivo lista in appoggio
 
 <span class="fc" id="L185">            scriviInFile(appoggio,null,listL,null);</span>
@@ -195,7 +195,7 @@ import java.util.logging.Logger;
 <span class="nc bnc" id="L195" title="All 2 branches missed.">            else if (vis.getTipoModifica().equals(INSERT)) g.setId(listG.size() + 1);</span>
 <span class="nc" id="L196">            listG.add(g);</span>
             //scrivo lista in appoggio
-<span class="nc" id="L198">            Logger.getLogger(&quot;inserisci&quot;).log(Level.INFO,&quot;inserted giornale in list {0}&quot;,listG.get(0).getTitolo());</span>
+<span class="nc" id="L198">            Logger.getLogger(&quot;inserisci giiornale&quot;).log(Level.INFO,&quot;inserted giornale in list {0}&quot;,listG.get(0).getTitolo());</span>
 
 
 <span class="nc" id="L201">            scriviInFile(appoggio,listG,null,null);</span>
@@ -211,7 +211,7 @@ import java.util.logging.Logger;
 <span class="nc bnc" id="L211" title="All 2 branches missed.">            else if (vis.getTipoModifica().equals(INSERT)) r.setId(listR.size() + 1);</span>
 <span class="fc" id="L212">            listR.add(r);</span>
             //scrivo lista in appoggio
-<span class="fc" id="L214">            Logger.getLogger(&quot;inserisci&quot;).log(Level.INFO,&quot;inserted rivista in list {0}&quot;,listR.get(0).getTitolo());</span>
+<span class="fc" id="L214">            Logger.getLogger(&quot;inserisci rivista&quot;).log(Level.INFO,&quot;inserted rivista in list {0}&quot;,listR.get(0).getTitolo());</span>
 
 
 <span class="fc" id="L217">            scriviInFile(appoggio,null,null,listR);</span>

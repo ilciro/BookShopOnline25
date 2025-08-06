@@ -9,8 +9,7 @@ import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Raccolta;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,9 +30,10 @@ public class PersistenzaGiornale {
         return FXCollections.observableArrayList();
     }
     public ObservableList<Giornale> getGiornaleByIdTitoloAutoreLibro(Giornale g) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+        Logger.getLogger("giornale by id").log(Level.INFO,"id giornale .{0}",g.getId());
 
         return FXCollections.observableArrayList();}
-    public void initializza() throws CsvValidationException, IdException, IOException, SQLException, ClassNotFoundException {
+    public void initializza() throws IOException, SQLException, CsvValidationException, IdException, ClassNotFoundException{
 
         Logger.getLogger("inizializza persistenza giornale").log(Level.INFO," persistenza giornale inizializza");
 
