@@ -2,6 +2,7 @@ secondouclogin/TestRegistraUItente.class
 primoucacquista/TestAcquistoGiornale.class
 demo/terzoucgestione/TestGestioneOrdini.class
 demo/primoucacquista/TestDemoAcquista.class
+terzoucgestione/gestioneutente/TestGestioneUtenteByUtente.class
 demo/secondouclogin/TestDemoLogin.class
 terzoucgestione/gestioneutente/TestGestioneUtenteByAdmin.class
 terzoucgestione/gestioneoggetto/TestGestioneOggettoLibro.class

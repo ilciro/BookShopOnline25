@@ -2,9 +2,9 @@ GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_
 BookShopOnline25 Maven Webapp,laptop.database,MemoryInitialize,157,804,19,39,25,158,14,36,1,18
 BookShopOnline25 Maven Webapp,laptop.database,DaoInitialize,44,408,4,20,11,131,4,24,0,10
 BookShopOnline25 Maven Webapp,laptop.model.user,TempUser.RuoliT,0,33,0,0,0,6,0,1,0,1
-BookShopOnline25 Maven Webapp,laptop.model.user,User,20,141,0,7,3,41,3,22,3,17
+BookShopOnline25 Maven Webapp,laptop.model.user,User,14,147,0,7,1,43,1,24,1,19
 BookShopOnline25 Maven Webapp,laptop.model.user,User.Ruoli,0,33,0,0,0,6,0,1,0,1
-BookShopOnline25 Maven Webapp,laptop.model.user,TempUser,12,103,0,5,1,30,1,21,1,17
+BookShopOnline25 Maven Webapp,laptop.model.user,TempUser,0,115,0,5,0,31,0,22,0,18
 BookShopOnline25 Maven Webapp,laptop.database.terzoucgestioneprofiloggetto.report,ReportDao,34,219,4,10,9,64,4,11,0,7
 BookShopOnline25 Maven Webapp,laptop.database.terzoucgestioneprofiloggetto.report,CsvReport,13,458,2,16,3,104,2,18,0,10
 BookShopOnline25 Maven Webapp,laptop.database.terzoucgestioneprofiloggetto.report,MemoriaReport,80,93,6,2,21,22,5,4,1,3
@@ -57,6 +57,7 @@ BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.pagamentototale,Pa
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.pagamentototale,PagamentoTotaleDao,20,68,2,2,5,22,3,6,1,6
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.pagamentototale,PersistenzzaPagamentoTotale,19,13,6,2,3,3,7,3,3,3
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofiloggetto,ControllerVisualizzaOrdini,17,231,8,22,3,47,8,16,0,6
+BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofiloggetto,ControllerVisualizzaProfilo,22,296,12,20,4,61,12,13,0,7
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofiloggetto,ControllerAdmin,11,130,4,8,2,29,4,6,0,3
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofiloggetto,ControllerRaccolta,76,283,16,22,14,49,16,18,0,7
 BookShopOnline25 Maven Webapp,laptop.controller.terzoucgestioneprofiloggetto,ControllerReport,163,84,16,4,31,17,16,5,3,3

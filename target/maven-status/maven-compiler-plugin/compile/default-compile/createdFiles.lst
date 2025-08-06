@@ -89,6 +89,7 @@ laptop/database/terzoucgestioneprofiloggetto/report/ReportDao.class
 laptop/database/primoucacquista/libro/MemoriaLibro.class
 laptop/boundary/terzoucgestioneprofilooggetto/BoundaryReport.class
 laptop/controller/secondouclogin/ControllerLogin.class
+laptop/boundary/terzoucgestioneprofilooggetto/BoundaryVisualizzaProfilo.class
 laptop/controller/secondouclogin/ControllerRegistraUtente.class
 laptop/database/primoucacquista/libro/CsvLibro.class
 laptop/boundary/secondouclogin/BoundaryAggiornaPassword.class
@@ -97,6 +98,7 @@ laptop/model/user/TempUser.class
 laptop/controller/terzoucgestioneprofiloggetto/ControllerUtenti.class
 laptop/utilities/ConnToDb.class
 laptop/controller/primoucacquista/ControllerPagamentoCash.class
+laptop/controller/terzoucgestioneprofiloggetto/ControllerVisualizzaProfilo.class
 laptop/database/primoucacquista/libro/PersistenzaLibro.class
 laptop/database/primoucacquista/cartacredito/PersistenzaCC.class
 laptop/database/primoucacquista/libro/LibroDao.class
