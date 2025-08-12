@@ -17,21 +17,44 @@ import java.util.logging.Logger;
 <span class="fc" id="L17">public class PersistenzaUtente {</span>
 
     public boolean inserisciUtente(TempUser tu) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
-<span class="nc bnc" id="L20" title="All 2 branches missed.">        return tu.getId()!=-1;}</span>
+
+<span class="nc" id="L21">       getException();</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">       return tu.getId()!=-1;}</span>
     public ObservableList&lt;TempUser&gt; getUserData() throws IOException, CsvValidationException, SQLException {
 
-<span class="nc" id="L23">        return FXCollections.observableArrayList();}</span>
+<span class="nc" id="L25">        return FXCollections.observableArrayList();}</span>
     public boolean removeUserByIdEmailPwd(TempUser tu) throws CsvValidationException, IOException, SQLException {
-<span class="nc bnc" id="L25" title="All 2 branches missed.">        return tu.getId()!=-0;</span>
+<span class="nc" id="L27">        getException();</span>
+
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        return tu.getId()!=-0;</span>
     }
 
 
 
     public void initializza() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
-<span class="fc" id="L31">        Logger.getLogger(&quot;inizializza persistenza utente&quot;).log(Level.INFO,&quot;peristenza utente initialize&quot;);</span>
-<span class="fc" id="L32">        DaoInitialize daoI=new DaoInitialize();</span>
-<span class="fc" id="L33">        daoI.inizializza(&quot;utenti&quot;);</span>
+<span class="fc" id="L35">        getException();</span>
 
-<span class="fc" id="L35">    }</span>
+<span class="fc" id="L37">        Logger.getLogger(&quot;inizializza persistenza utente&quot;).log(Level.INFO,&quot;peristenza utente initialize&quot;);</span>
+<span class="fc" id="L38">        DaoInitialize daoI=new DaoInitialize();</span>
+<span class="fc" id="L39">        daoI.inizializza(&quot;utenti&quot;);</span>
+
+<span class="fc" id="L41">    }</span>
+    private void getException() {
+<span class="fc" id="L43">        Logger.getLogger(&quot;persistenza pagamento totale&quot;).log(Level.INFO, &quot;checking files...&quot;);</span>
+
+        try {
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">            if (!Files.exists(Path.of(&quot;report/reportUtente.csv&quot;))) throw new CsvValidationException(&quot;CSVException&quot;);</span>
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">            if (!Files.exists(Path.of(&quot;sql/tableCreate.sql&quot;))) throw new SQLException(&quot;SQLException&quot;);</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;memory/serializzazioneUtente.ser&quot;))) throw new ClassNotFoundException(&quot;ClassNotFoundException&quot;);</span>
+<span class="nc" id="L49">        } catch (CsvValidationException e) {</span>
+<span class="nc" id="L50">            Logger.getLogger(&quot;exception modalita file&quot;).log(Level.SEVERE, &quot;exception csv :{0}&quot;, e);</span>
+<span class="fc" id="L51">        } catch (SQLException e) {</span>
+<span class="fc" id="L52">            Logger.getLogger(&quot;exception modalita database&quot;).log(Level.SEVERE, &quot;exception database :{0}&quot;, e);</span>
+
+<span class="nc" id="L54">        } catch (ClassNotFoundException e) {</span>
+<span class="nc" id="L55">            Logger.getLogger(&quot;exception modalita memoria&quot;).log(Level.SEVERE, &quot;exception memory :{0}&quot;, e);</span>
+
+<span class="pc" id="L57">        }</span>
+<span class="fc" id="L58">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

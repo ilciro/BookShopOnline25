@@ -51,7 +51,7 @@ public  class PersistenzaLibro {
 
 
     private void getException()  {
-        Logger.getLogger("persistenza libro libro").log(Level.INFO,"checking files...");
+        Logger.getLogger("persistenza libro ").log(Level.INFO,"checking files...");
 
         try {
             if (!Files.exists(Path.of("report/reportLibro.csv")))throw  new CsvValidationException("CSVException");

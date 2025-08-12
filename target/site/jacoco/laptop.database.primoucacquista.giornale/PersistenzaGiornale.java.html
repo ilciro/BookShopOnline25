@@ -10,39 +10,72 @@ import laptop.model.raccolta.Raccolta;
 
 import java.io.IOException;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-<span class="fc" id="L18">public class PersistenzaGiornale {</span>
+<span class="fc" id="L20">public class PersistenzaGiornale {</span>
 
 
 
     public  boolean inserisciGiornale(Giornale g) throws CsvValidationException, IOException,  ClassNotFoundException {
 
-
-<span class="nc bnc" id="L25" title="All 2 branches missed.">        return g.getId()!=0;}</span>
+<span class="nc" id="L26">        getException();</span>
+<span class="nc bnc" id="L27" title="All 2 branches missed.">        return g.getId()!=0;}</span>
     public  boolean removeGiornaleById(Giornale g) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+<span class="nc" id="L29">        getException();</span>
 
-<span class="nc bnc" id="L28" title="All 2 branches missed.">        return g.getId()!=-1;}</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        return g.getId()!=-1;}</span>
     public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="nc" id="L30">        return FXCollections.observableArrayList();</span>
+<span class="nc" id="L33">        getException();</span>
+
+<span class="nc" id="L35">        return FXCollections.observableArrayList();</span>
     }
     public ObservableList&lt;Giornale&gt; getGiornaleByIdTitoloAutoreLibro(Giornale g) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="nc" id="L33">        Logger.getLogger(&quot;giornale by id&quot;).log(Level.INFO,&quot;id giornale .{0}&quot;,g.getId());</span>
+<span class="nc" id="L38">        getException();</span>
 
-<span class="nc" id="L35">        return FXCollections.observableArrayList();}</span>
+<span class="nc" id="L40">        Logger.getLogger(&quot;giornale by id&quot;).log(Level.INFO,&quot;id giornale .{0}&quot;,g.getId());</span>
+
+<span class="nc" id="L42">        return FXCollections.observableArrayList();}</span>
     public void initializza() throws IOException, SQLException, CsvValidationException, IdException, ClassNotFoundException{
 
-<span class="fc" id="L38">        Logger.getLogger(&quot;inizializza persistenza giornale&quot;).log(Level.INFO,&quot; persistenza giornale inizializza&quot;);</span>
+<span class="fc" id="L45">        Logger.getLogger(&quot;inizializza persistenza giornale&quot;).log(Level.INFO,&quot; persistenza giornale inizializza&quot;);</span>
 
 
 
-<span class="fc" id="L42">    }</span>
+<span class="fc" id="L49">    }</span>
     public ObservableList&lt;Giornale&gt; getGiornali() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-<span class="nc" id="L44">       return FXCollections.observableArrayList();</span>
+<span class="nc" id="L51">        getException();</span>
+
+<span class="nc" id="L53">        return FXCollections.observableArrayList();</span>
     }
+
+    private void getException()  {
+<span class="nc" id="L57">        Logger.getLogger(&quot;persistenza giornale&quot;).log(Level.INFO,&quot;checking files...&quot;);</span>
+
+        try {
+<span class="nc bnc" id="L60" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;report/reportGiornale.csv&quot;)))throw  new CsvValidationException(&quot;CSVException&quot;);</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;sql/tableCreate.sql&quot;))) throw  new SQLException(&quot;SQLException&quot;);</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">            if(!Files.exists(Path.of(&quot;memory/serializzazioneGiornale.ser&quot;))) throw new ClassNotFoundException(&quot;ClassNotFoundException&quot;);</span>
+<span class="nc" id="L63">        }catch (CsvValidationException e)</span>
+        {
+<span class="nc" id="L65">            Logger.getLogger(&quot;exception modalita file&quot;).log(Level.SEVERE,&quot;exception csv :{0}&quot;,e);</span>
+        }
+<span class="nc" id="L67">        catch (SQLException e)</span>
+        {
+<span class="nc" id="L69">            Logger.getLogger(&quot;exception modalita database&quot;).log(Level.SEVERE,&quot;exception database :{0}&quot;,e);</span>
+
+        }
+<span class="nc" id="L72">        catch (ClassNotFoundException e)</span>
+        {
+<span class="nc" id="L74">            Logger.getLogger(&quot;exception modalita memoria&quot;).log(Level.SEVERE,&quot;exception memory :{0}&quot;,e);</span>
+
+<span class="nc" id="L76">        }</span>
+
+<span class="nc" id="L78">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

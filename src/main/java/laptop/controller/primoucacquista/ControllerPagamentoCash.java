@@ -61,6 +61,7 @@ public class ControllerPagamentoCash {
 	private PersistenzaReport pRepo;
 
 	public ControllerPagamentoCash() {
+		Logger.getLogger("controlla pagamento cash").log(Level.INFO,"costructor");
 	}
 
 	public void controlla(String nome, String cognome, String via, String com,String type) throws IOException, ClassNotFoundException, SQLException, CsvValidationException, IdException {

@@ -8,7 +8,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.opencsv.exceptions.CsvValidationException;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 
@@ -81,6 +80,8 @@ public class ControllerPagamentoCC {
 	private PersistenzaCC persistenzaCC;
 
 	public ControllerPagamentoCC() {
+		Logger.getLogger("controlla pagamento cc").log(Level.INFO,"costructor");
+
 	}
 
 
