@@ -1,7 +1,9 @@
 package laptop.boundary.demo;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,11 +13,16 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import laptop.controller.ControllerSystemState;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
-public class BoundarySceltaModalita {
+public class BoundarySceltaModalita implements Initializable {
     @FXML
     private Pane pane;
     @FXML
@@ -60,4 +67,13 @@ public class BoundarySceltaModalita {
 
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        File path=new File("memory");
+        File[] files = path.listFiles();
+        for(int i = 0; i< Objects.requireNonNull(files).length; i++) {
+            Logger.getLogger("inizializza modalita file").log(Level.INFO,"file name :{0} -> esito {1}",new Object[]{files[i].getName(),files[i].delete()});
+        }
+
+    }
 }

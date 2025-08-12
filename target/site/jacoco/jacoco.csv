@@ -35,7 +35,7 @@ BookShopOnline25 Maven Webapp,laptop.exception,IdException,0,4,0,0,0,2,0,1,0,1
 BookShopOnline25 Maven Webapp,laptop.exception,AcquistaException,4,0,0,0,2,0,1,0,1,0
 BookShopOnline25 Maven Webapp,laptop.exception,LogoutException,4,0,0,0,2,0,1,0,1,0
 BookShopOnline25 Maven Webapp,laptop.exception,PersistenzaException,4,0,0,0,2,0,1,0,1,0
-BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.libro,PersistenzaLibro,29,9,4,0,6,3,7,2,5,2
+BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.libro,PersistenzaLibro,58,59,7,3,13,13,9,4,5,3
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.libro,MemoriaLibro,0,111,4,8,0,21,4,10,0,8
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.libro,LibroDao,37,593,3,11,10,104,3,12,0,8
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.libro,CsvLibro,36,969,36,82,4,194,35,43,0,19
@@ -72,7 +72,7 @@ BookShopOnline25 Maven Webapp,laptop.model.raccolta,Libro,324,442,42,18,64,124,4
 BookShopOnline25 Maven Webapp,laptop.model.raccolta,CategorieLibro,0,177,0,0,0,10,0,1,0,1
 BookShopOnline25 Maven Webapp,laptop.model.raccolta,Rivista,65,299,12,7,24,87,12,34,0,30
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.cartacredito,CartaCreditoDao,15,121,1,3,4,32,1,5,0,4
-BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.cartacredito,PersistenzaCC,22,3,2,0,5,1,4,1,3,1
+BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.cartacredito,PersistenzaCC,68,3,6,0,15,1,7,1,4,1
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.cartacredito,CsvCartaCredito,9,193,6,10,0,40,5,8,0,5
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.giornale,PersistenzaGiornale,29,9,4,0,6,3,7,2,5,2
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.giornale,GiornaleDao,37,409,3,11,10,84,3,11,0,7
