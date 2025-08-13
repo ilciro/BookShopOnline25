@@ -119,7 +119,7 @@ public class MemoryInitialize {
                     }
                 }
             }catch (IOException e1){
-                Logger.getLogger("remove file").log(Level.SEVERE,"remove file mi exception : {}",e1);
+                Logger.getLogger("remove file").log(Level.SEVERE,"remove file mi exception : ",e1);
 
             }
 
@@ -183,7 +183,7 @@ public class MemoryInitialize {
                 else if (vis.getTipoModifica().equals(INSERT)) l.setId(listL.size() + 1);
                 listL.add(l);
 
-                Logger.getLogger("inserisci libro").log(Level.INFO, "inserted libro in list :{}", listL.get(0).getTitolo());
+                Logger.getLogger("inserisci libro").log(Level.INFO, "inserted libro in list :", listL.get(0).getTitolo());
                 //scrivo lista in appoggio
 
                 scriviInFile(appoggio, null, listL, null);
@@ -199,7 +199,7 @@ public class MemoryInitialize {
                 else if (vis.getTipoModifica().equals(INSERT)) g.setId(listG.size() + 1);
                 listG.add(g);
                 //scrivo lista in appoggio
-                Logger.getLogger("inserisci giiornale").log(Level.INFO, "inserted giornale in list :{}", listG.get(0).getTitolo());
+                Logger.getLogger("inserisci giiornale").log(Level.INFO, "inserted giornale in list :", listG.get(0).getTitolo());
 
 
                 scriviInFile(appoggio, listG, null, null);
@@ -215,7 +215,7 @@ public class MemoryInitialize {
                 else if (vis.getTipoModifica().equals(INSERT)) r.setId(listR.size() + 1);
                 listR.add(r);
                 //scrivo lista in appoggio
-                Logger.getLogger("inserisci rivista").log(Level.INFO, "inserted rivista in list : {}", listR.get(0).getTitolo());
+                Logger.getLogger("inserisci rivista").log(Level.INFO, "inserted rivista in list : ", listR.get(0).getTitolo());
 
 
                 scriviInFile(appoggio, null, null, listR);
@@ -228,7 +228,7 @@ public class MemoryInitialize {
             }
         }catch (IOException e)
         {
-            Logger.getLogger("inserisci").log(Level.SEVERE,"inserisci io exception : {}",e);
+            Logger.getLogger("inserisci").log(Level.SEVERE,"inserisci io exception : ",e);
 
         }
         return true;
@@ -251,7 +251,7 @@ public class MemoryInitialize {
 
         }catch (IOException e)
         {
-            Logger.getLogger("scrivi in file").log(Level.SEVERE,"scrivi in file mi exception : {}",e);
+            Logger.getLogger("scrivi in file").log(Level.SEVERE,"scrivi in file mi exception : ",e);
 
         }
 
@@ -265,11 +265,11 @@ public class MemoryInitialize {
             listG=(ArrayList<Giornale>) ois.readObject();
         }catch (IOException e)
         {
-            Logger.getLogger("leggi da file giornale io").log(Level.SEVERE,"leggi da file io giornale exception :{}",e);
+            Logger.getLogger("leggi da file giornale io").log(Level.SEVERE,"leggi da file io giornale exception :",e);
 
         }catch (ClassNotFoundException e1)
         {
-            Logger.getLogger("leggi da file giornale class").log(Level.SEVERE,"leggi da file class giornale exception :{}",e1);
+            Logger.getLogger("leggi da file giornale class").log(Level.SEVERE,"leggi da file class giornale exception :",e1);
 
         }
         return listG;
@@ -281,11 +281,11 @@ public class MemoryInitialize {
             listL=(ArrayList<Libro>) ois.readObject();
         }catch (IOException e)
         {
-            Logger.getLogger("leggi da file libro io").log(Level.SEVERE,"leggi da file io libro exception: {}",e);
+            Logger.getLogger("leggi da file libro io").log(Level.SEVERE,"leggi da file io libro exception: ",e);
 
         }catch (ClassNotFoundException e1)
         {
-            Logger.getLogger("leggi da file libro class").log(Level.SEVERE,"leggi da file class libro exception: {}",e1);
+            Logger.getLogger("leggi da file libro class").log(Level.SEVERE,"leggi da file class libro exception: ",e1);
 
         }
 
@@ -298,11 +298,11 @@ public class MemoryInitialize {
             listR=(ArrayList<Rivista>) ois.readObject();
         }catch (IOException e)
         {
-            Logger.getLogger("leggi da file rivista io").log(Level.SEVERE,"leggi da file io rivista exception :{}",e);
+            Logger.getLogger("leggi da file rivista io").log(Level.SEVERE,"leggi da file io rivista exception :",e);
 
         }catch (ClassNotFoundException e1)
         {
-            Logger.getLogger("leggi da file rivista class").log(Level.SEVERE,"leggi da file class rivista exception :{}",e1);
+            Logger.getLogger("leggi da file rivista class").log(Level.SEVERE,"leggi da file class rivista exception :",e1);
 
         }
         return listR;
@@ -337,7 +337,7 @@ public class MemoryInitialize {
             }
         }catch (IOException e)
         {
-            Logger.getLogger("getGiornale").log(Level.SEVERE," get giornale exception : {}",e);
+            Logger.getLogger("getGiornale").log(Level.SEVERE," get giornale exception : ",e);
         }
         Giornale g = new Giornale();
         g.setTitolo(listaG.get(0));
@@ -362,7 +362,7 @@ public class MemoryInitialize {
             }
         }catch (IOException e)
         {
-            Logger.getLogger("getLibro").log(Level.SEVERE,"get libro exception : {}",e);
+            Logger.getLogger("getLibro").log(Level.SEVERE,"get libro exception : ",e);
         }
         return getLibro(listaL);
 
@@ -397,7 +397,7 @@ public class MemoryInitialize {
                 }
             }catch (IOException e)
             {
-                Logger.getLogger("getRivista").log(Level.SEVERE,"getRivista mi exception : {}",e);
+                Logger.getLogger("getRivista").log(Level.SEVERE,"getRivista mi exception : ",e);
             }
 
 
