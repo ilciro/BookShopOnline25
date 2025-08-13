@@ -14,12 +14,9 @@ public class TempUser implements Serializable {
 		UTENTE,
 		SCRITTORE,
 		EDITORE,
-		NONVALIDO;
+		NONVALIDO
  }
-	@Override
-	public String toString() {
-		return "User [nome=" + nomeT + ", Cognome=" + cognomeT + ", email=" + emailT +  ", Password =" + passwordT +", idRuolo=" + ruoloT + "]";
-	}
+
 	
 	
 
@@ -123,6 +120,14 @@ public String getIdRuoloT()  {
 
 	}
 
-
-	
+	@Override
+	public String toString() {
+		return "TempUser{" +
+				"id=" + id +
+				", nomeT='" + nomeT + '\'' +
+				", cognomeT='" + cognomeT + '\'' +
+				", emailT='" + emailT + '\'' +
+				", ruoloT='" + ruoloT + '\'' +
+				'}';
+	}
 }

@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L16">public class PagamentoTotaleDao extends PersistenzzaPagamentoTotale {</span>
+<span class="fc" id="L16">public class PagamentoTotaleDao extends PersistenzaPagamentoTotale {</span>
 
 
 
@@ -26,21 +26,21 @@ import java.util.logging.Logger;
 <span class="fc" id="L26">    }</span>
 
     @Override
-    public boolean inserisciPagamentoFattura(PagamentoFattura p) throws CsvValidationException, IOException, ClassNotFoundException {
+    public boolean inserisciPagamentoFattura(PagamentoFattura p)  {
 <span class="fc" id="L30">        Logger.getLogger(&quot;inseirmento pagamento fattura dao&quot;).log(Level.INFO,&quot;fattura inserted {0}&quot;,p.getIdFattura());</span>
 
 <span class="fc" id="L32">        return super.inserisciPagamentoFattura(p);</span>
     }
 
     @Override
-    public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito pCC) throws CsvValidationException, IOException, ClassNotFoundException {
+    public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito pCC)  {
 <span class="nc" id="L37">        Logger.getLogger(&quot;inseirmento pagamento cc dao&quot;).log(Level.INFO,&quot;cc inserted {0}&quot;,pCC.getIdPagCC());</span>
 
 <span class="nc" id="L39">        return super.inserisciPagamentoCartaCredito(pCC);</span>
     }
 
     @Override
-    public boolean cancellaFattura(PagamentoFattura p) throws IOException, ClassNotFoundException, CsvValidationException {
+    public boolean cancellaFattura(PagamentoFattura p)  {
 <span class="fc" id="L44">        int row=0;</span>
 <span class="fc" id="L45">        String query=&quot;delete from pagamentoFattura where idFattura=?&quot;;</span>
 <span class="fc" id="L46">      try(Connection conn=ConnToDb.connectionToDB();</span>
@@ -60,7 +60,7 @@ import java.util.logging.Logger;
     }
 
     @Override
-    public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException, CsvValidationException {
+    public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC)  {
 <span class="fc" id="L64">        int row=0;</span>
 <span class="fc" id="L65">        String query=&quot;delete from pagamentoCartaCredito where idPagamento=?&quot;;</span>
 <span class="fc" id="L66">        try(Connection conn=ConnToDb.connectionToDB();</span>

@@ -1,12 +1,8 @@
 package laptop.controller.primoucacquista;
 
-import java.io.IOException;
-
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -38,7 +34,7 @@ public class ControllerCompravendita {
 	private PersistenzaGiornale pG;
 	private PersistenzaRivista pR;
 
-	public ObservableList<Raccolta> getLista(String type, String database) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
+	public ObservableList<Raccolta> getLista(String type, String database)  {
 
 		ObservableList<Raccolta> catalogo = FXCollections.observableArrayList();
 
@@ -94,12 +90,12 @@ public class ControllerCompravendita {
 	}
 
 
-	public boolean checkId(int id,String type,String typeObj) throws CsvValidationException, IOException, ClassNotFoundException {
+	public boolean checkId(int id,String type,String typeObj)  {
 		 boolean status=true;
 		 try {
 			if (id <= 0 || id > getLista(typeObj, type).size())
 				throw new IdException("id is wrong!! grater than size");
-		}catch (IdException | SQLException e)
+		}catch (IdException  e)
 		{
 			Logger.getLogger("checkId").log(Level.SEVERE,e.getMessage());
 			status=false;

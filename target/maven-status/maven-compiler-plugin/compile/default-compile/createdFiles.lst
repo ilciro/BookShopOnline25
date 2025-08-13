@@ -21,7 +21,6 @@ laptop/boundary/Main.class
 laptop/database/primoucacquista/pagamentofattura/PersistenzaPagamentoFattura.class
 laptop/database/primoucacquista/negozio/NegozioDao.class
 laptop/database/primoucacquista/pagamentocartacredito/PagamentoCartaCreditoDao.class
-laptop/database/primoucacquista/pagamentototale/PersistenzzaPagamentoTotale.class
 laptop/boundary/terzoucgestioneprofilooggetto/BoundaryUtenti.class
 laptop/exception/PersistenzaException.class
 laptop/database/primoucacquista/giornale/PersistenzaGiornale.class
@@ -47,6 +46,7 @@ laptop/boundary/terzoucgestioneprofilooggetto/BoundaryGestioneUtente.class
 laptop/boundary/terzoucgestioneprofilooggetto/BoundaryRaccolta.class
 laptop/boundary/primoucacquista/BoundaryScegliNegozio.class
 laptop/database/primoucacquista/pagamentocartacredito/CsvPagamentoCartaCredito.class
+laptop/database/primoucacquista/pagamentototale/PersistenzaPagamentoTotale.class
 laptop/controller/primoucacquista/ControllerAnnullaPagamento.class
 laptop/controller/primoucacquista/ControllerHomePage.class
 laptop/controller/terzoucgestioneprofiloggetto/ControllerGestione.class

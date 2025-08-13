@@ -19,21 +19,18 @@ public class PersistenzaNegozio {
 
 
 
-     public ObservableList<Negozio> getNegozi()throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        getException();
+     public ObservableList<Negozio> getNegozi() {
          return FXCollections.observableArrayList();
      }
-     public boolean checkOpen(Negozio  shop) throws CsvValidationException, IOException, ClassNotFoundException {
-         getException();
+     public boolean checkOpen(Negozio  shop)  {
 
          return shop.getIsOpen();
      }
-     public boolean checkRitiro(Negozio shop) throws IOException, CsvValidationException, ClassNotFoundException {
-         getException();
+     public boolean checkRitiro(Negozio shop)  {
 
          return shop.getIsValid();
      }
-     public void initializza() throws IOException, SQLException {
+     public void initializza() {
          getException();
 
          Logger.getLogger("inizializza persistenza negozio").log(Level.INFO," persistenza negozio inizializza");
@@ -43,21 +40,21 @@ public class PersistenzaNegozio {
         Logger.getLogger("persistenza negozio").log(Level.INFO,"checking files...");
 
         try {
-            if (!Files.exists(Path.of("report/reportNegozio.csv")))throw  new CsvValidationException("CSVException");
-            if (!Files.exists(Path.of("sql/tableCreate.sql"))) throw  new SQLException("SQLException");
-            if(!Files.exists(Path.of("memory/serializzazioneNegozio.ser"))) throw new ClassNotFoundException("ClassNotFoundException");
+            if (!Files.exists(Path.of("report/reportNegozio.csv")))throw  new CsvValidationException("CSVException shop");
+            if (!Files.exists(Path.of("sql/tableCreate.sql"))) throw  new SQLException("SQLException shop");
+            if(!Files.exists(Path.of("memory/serializzazioneNegozio.ser"))) throw new ClassNotFoundException("ClassNotFoundException shop");
         }catch (CsvValidationException e)
         {
-            Logger.getLogger("exception modalita file").log(Level.SEVERE,"exception csv :{0}",e);
+            Logger.getLogger("exception modalita file").log(Level.SEVERE,"exception csv shop :{0}",e);
         }
         catch (SQLException e)
         {
-            Logger.getLogger("exception modalita database").log(Level.SEVERE,"exception database :{0}",e);
+            Logger.getLogger("exception modalita database").log(Level.SEVERE,"exception database shop :{0}",e);
 
         }
         catch (ClassNotFoundException e)
         {
-            Logger.getLogger("exception modalita memoria").log(Level.SEVERE,"exception memory :{0}",e);
+            Logger.getLogger("exception modalita memoria").log(Level.SEVERE,"exception memory shop :{0}",e);
 
         }
 

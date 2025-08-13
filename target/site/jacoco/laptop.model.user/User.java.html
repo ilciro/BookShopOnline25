@@ -8,18 +8,25 @@ import java.util.logging.Logger;
 
 
 public class User implements Serializable {
-	
-<span class="fc" id="L12"> enum Ruoli {</span>
-<span class="fc" id="L13">		ADMIN,</span>
-<span class="fc" id="L14">		UTENTE,</span>
-<span class="fc" id="L15">		SCRITTORE,</span>
-<span class="fc" id="L16">		EDITORE,</span>
-<span class="fc" id="L17">		NONVALIDO;</span>
- }
+
 	@Override
 	public String toString() {
-<span class="nc" id="L21">		return &quot;User [nome=&quot; + nome + &quot;, Cognome=&quot; + cognome + &quot;, email=&quot; + email + &quot; , pass=&quot; + password +&quot;, idRuolo=&quot; + r + &quot;, id=&quot; + id +&quot;]&quot;;</span>
+<span class="nc" id="L14">		return &quot;User{&quot; +</span>
+				&quot;id=&quot; + id +
+				&quot;, nome='&quot; + nome + '\'' +
+				&quot;, cognome='&quot; + cognome + '\'' +
+				&quot;, email='&quot; + email + '\'' +
+				&quot;, r='&quot; + r + '\'' +
+				'}';
 	}
+
+<span class="fc" id="L23">	enum Ruoli {</span>
+<span class="fc" id="L24">		ADMIN,</span>
+<span class="fc" id="L25">		UTENTE,</span>
+<span class="fc" id="L26">		SCRITTORE,</span>
+<span class="fc" id="L27">		EDITORE,</span>
+<span class="fc" id="L28">		NONVALIDO</span>
+ }
 
 
 	@Serial
@@ -35,18 +42,18 @@ public class User implements Serializable {
 	private LocalDate dataDiNascita;
 	private String r;
 	
-<span class="fc" id="L38">	private static User userInstance = null;</span>
+<span class="fc" id="L45">	private static User userInstance = null;</span>
 
     private User() {}
 
 
 		public static User getInstance() {
-<span class="fc bfc" id="L44" title="All 2 branches covered.">			if (userInstance == null) {</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">			if (userInstance == null) {</span>
 
-<span class="fc" id="L46">				userInstance = new User();</span>
+<span class="fc" id="L53">				userInstance = new User();</span>
 			}
 
-<span class="fc" id="L49">			return userInstance;</span>
+<span class="fc" id="L56">			return userInstance;</span>
 		}
 
 
@@ -54,81 +61,81 @@ public class User implements Serializable {
 	
 
 	public int getId() {
-<span class="fc" id="L57">		return id;</span>
+<span class="fc" id="L64">		return id;</span>
 	}
 	public void setId(int id) {
-<span class="fc" id="L60">		this.id = id;</span>
-<span class="fc" id="L61">	}</span>
+<span class="fc" id="L67">		this.id = id;</span>
+<span class="fc" id="L68">	}</span>
 	public String getNome() {
-<span class="fc" id="L63">		return nome;</span>
+<span class="fc" id="L70">		return nome;</span>
 	}
 	public void setNome(String nome) {
-<span class="fc" id="L66">		this.nome = nome;</span>
-<span class="fc" id="L67">	}</span>
+<span class="fc" id="L73">		this.nome = nome;</span>
+<span class="fc" id="L74">	}</span>
 	public String getCognome() {
-<span class="fc" id="L69">		return cognome;</span>
+<span class="fc" id="L76">		return cognome;</span>
 	}
 	public void setCognome(String cognome) {
-<span class="fc" id="L72">		this.cognome = cognome;</span>
-<span class="fc" id="L73">	}</span>
+<span class="fc" id="L79">		this.cognome = cognome;</span>
+<span class="fc" id="L80">	}</span>
 	public String getEmail() {
-<span class="fc" id="L75">		return email;</span>
+<span class="fc" id="L82">		return email;</span>
 	}
 	public void setEmail(String email) {
-<span class="fc" id="L78">		this.email = email;</span>
-<span class="fc" id="L79">	}</span>
+<span class="fc" id="L85">		this.email = email;</span>
+<span class="fc" id="L86">	}</span>
 	public String getPassword() {
-<span class="fc" id="L81">		return password;</span>
+<span class="fc" id="L88">		return password;</span>
 	}
 	public void setPassword(String password) {
-<span class="fc" id="L84">		this.password = password;</span>
-<span class="fc" id="L85">	}</span>
+<span class="fc" id="L91">		this.password = password;</span>
+<span class="fc" id="L92">	}</span>
 	public String getDescrizione() {
-<span class="fc" id="L87">		return descrizione;</span>
+<span class="fc" id="L94">		return descrizione;</span>
 	}
 	public void setDescrizione(String descrizione) {
-<span class="fc" id="L90">		this.descrizione = descrizione;</span>
-<span class="fc" id="L91">	}</span>
+<span class="fc" id="L97">		this.descrizione = descrizione;</span>
+<span class="fc" id="L98">	}</span>
 	public LocalDate getDataDiNascita() {
-<span class="fc" id="L93">		return dataDiNascita;</span>
+<span class="fc" id="L100">		return dataDiNascita;</span>
 	}
 	public void setDataDiNascita(LocalDate dataDiNascita) {
-<span class="fc" id="L96">		this.dataDiNascita = dataDiNascita;</span>
-<span class="fc" id="L97">	}</span>
+<span class="fc" id="L103">		this.dataDiNascita = dataDiNascita;</span>
+<span class="fc" id="L104">	}</span>
 	
 	public String getIdRuolo()  {
 		
-<span class="fc" id="L101">		return r;</span>
+<span class="fc" id="L108">		return r;</span>
 	}
 
 
 
 	public void setIdRuolo(String ruolo) {
 
-<span class="fc bfc" id="L108" title="All 5 branches covered.">		 switch (ruolo){</span>
-<span class="fc" id="L109">			case &quot;ADMIN&quot;, &quot;A&quot;-&gt; r = Ruoli.ADMIN.toString().substring(0,1);</span>
-<span class="fc" id="L110">			case &quot;EDITORE&quot;, &quot;E&quot;-&gt;r = Ruoli.EDITORE.toString().substring(0,1);</span>
-<span class="fc" id="L111">			case &quot;SCRITTORE&quot;, &quot;W&quot;, &quot;S&quot;-&gt;r = Ruoli.SCRITTORE.toString().substring(0,1);</span>
-<span class="fc" id="L112">			case &quot;UTENTE&quot;,&quot;U&quot;-&gt;r=Ruoli.UTENTE.toString().substring(0,1);</span>
-<span class="fc" id="L113">             default-&gt;r= Ruoli.NONVALIDO.toString().substring(0,1);</span>
+<span class="fc bfc" id="L115" title="All 5 branches covered.">		 switch (ruolo){</span>
+<span class="fc" id="L116">			case &quot;ADMIN&quot;, &quot;A&quot;-&gt; r = Ruoli.ADMIN.toString().substring(0,1);</span>
+<span class="fc" id="L117">			case &quot;EDITORE&quot;, &quot;E&quot;-&gt;r = Ruoli.EDITORE.toString().substring(0,1);</span>
+<span class="fc" id="L118">			case &quot;SCRITTORE&quot;, &quot;W&quot;, &quot;S&quot;-&gt;r = Ruoli.SCRITTORE.toString().substring(0,1);</span>
+<span class="fc" id="L119">			case &quot;UTENTE&quot;,&quot;U&quot;-&gt;r=Ruoli.UTENTE.toString().substring(0,1);</span>
+<span class="fc" id="L120">             default-&gt;r= Ruoli.NONVALIDO.toString().substring(0,1);</span>
 
 			}
 		
 
-<span class="fc" id="L118">	}</span>
+<span class="fc" id="L125">	}</span>
 	//usato per &quot;pulire&quot; utente dopo modifica
 	public boolean annullaUtente()
 	{
-<span class="fc" id="L122">		setId(-1);</span>
-<span class="fc" id="L123">		setNome(&quot;&quot;);</span>
-<span class="fc" id="L124">		setCognome(&quot;&quot;);</span>
-<span class="fc" id="L125">		setEmail(&quot;&quot;);</span>
-<span class="fc" id="L126">		setPassword(&quot;&quot;);</span>
-<span class="fc" id="L127">		setDescrizione(&quot;&quot;);</span>
-<span class="fc" id="L128">		setDataDiNascita(LocalDate.of(1900,1,1));</span>
-<span class="fc" id="L129">		setIdRuolo(&quot;NONVALIDO&quot;);</span>
-<span class="fc" id="L130">		Logger.getLogger(&quot;annulla utente&quot;).log(Level.INFO,&quot; user data is cleaned&quot;);</span>
-<span class="fc" id="L131">		return nome.isEmpty();</span>
+<span class="fc" id="L129">		setId(-1);</span>
+<span class="fc" id="L130">		setNome(&quot;&quot;);</span>
+<span class="fc" id="L131">		setCognome(&quot;&quot;);</span>
+<span class="fc" id="L132">		setEmail(&quot;&quot;);</span>
+<span class="fc" id="L133">		setPassword(&quot;&quot;);</span>
+<span class="fc" id="L134">		setDescrizione(&quot;&quot;);</span>
+<span class="fc" id="L135">		setDataDiNascita(LocalDate.of(1900,1,1));</span>
+<span class="fc" id="L136">		setIdRuolo(&quot;NONVALIDO&quot;);</span>
+<span class="fc" id="L137">		Logger.getLogger(&quot;annulla utente&quot;).log(Level.INFO,&quot; user data is cleaned&quot;);</span>
+<span class="fc" id="L138">		return nome.isEmpty();</span>
 	}
 
 

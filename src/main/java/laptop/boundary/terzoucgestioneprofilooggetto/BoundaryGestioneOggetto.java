@@ -1,6 +1,5 @@
 package laptop.boundary.terzoucgestioneprofilooggetto;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,10 +14,8 @@ import javafx.stage.Stage;
 import laptop.controller.terzoucgestioneprofiloggetto.ControllerGestione;
 import laptop.controller.ControllerSystemState;
 import laptop.exception.IdException;
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -120,56 +117,73 @@ public class BoundaryGestioneOggetto implements Initializable {
     private static final String RACCOLTA= "view/terzoucgestioneprofilooggetto/raccolta.fxml";
     private static final String INFORMATICA="INFORMATICA";
     @FXML
-    private void inserisci() throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
+    private void inserisci()  {
+        try {
 
-        String type="";
-        if(databaseButton.isSelected()) type=DATABASE;
-        if(fileButton.isSelected()) type=FILE;
-        if(memoriaButton.isSelected()) type=MEMORIA;
-        if(cG.inserisci(dati(),type))
+            String type = "";
+            if (databaseButton.isSelected()) type = DATABASE;
+            if (fileButton.isSelected()) type = FILE;
+            if (memoriaButton.isSelected()) type = MEMORIA;
+            if (cG.inserisci(dati(), type)) {
+                Stage stage;
+                Parent root;
+                stage = (Stage) buttonIns.getScene().getWindow();
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(RACCOLTA)));
+                stage.setTitle("Benvenuto nella schermata per inserire");
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } else throw new IdException(" id is incorrect");
+        }catch (IOException e)
         {
-            Stage stage;
-            Parent root;
-            stage = (Stage) buttonIns.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(RACCOLTA)));
-            stage.setTitle("Benvenuto nella schermata per inserire");
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            Logger.getLogger("insert").log(Level.SEVERE,"insert error {0}",e);
+        }catch (IdException e1)
+        {
+            Logger.getLogger("insert id").log(Level.SEVERE,"id insert is null {0}",e1);
         }
-        else throw new IdException(" id is incorrect");
 
     }
     @FXML
-    private void modifica() throws IOException, IdException, CsvValidationException, SQLException, ClassNotFoundException {
-        String type="";
-        if(databaseButton.isSelected()) type=DATABASE;
-        if(fileButton.isSelected()) type=FILE;
-        if(memoriaButton.isSelected()) type=MEMORIA;
-        if(cG.modifica(dati(),type))
+    private void modifica() {
+        try {
+            String type = "";
+            if (databaseButton.isSelected()) type = DATABASE;
+            if (fileButton.isSelected()) type = FILE;
+            if (memoriaButton.isSelected()) type = MEMORIA;
+            if (cG.modifica(dati(), type)) {
+                Stage stage;
+                Parent root;
+                stage = (Stage) modButton.getScene().getWindow();
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(RACCOLTA)));
+                stage.setTitle("Benvenuto nella schermata della raccolta");
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } else throw new IdException(" id is incorrect");
+        }catch (IOException e)
         {
+            Logger.getLogger("modif").log(Level.SEVERE,"modif error not avalaible {0}",e);
+        }catch (IdException e1)
+        {
+            Logger.getLogger("modif id").log(Level.SEVERE,"modif id is null {0}",e1);
+        }
+
+    }
+    @FXML
+    private void indietro() {
+        try {
             Stage stage;
             Parent root;
-            stage = (Stage) modButton.getScene().getWindow();
+            stage = (Stage) indietroB.getScene().getWindow();
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(RACCOLTA)));
             stage.setTitle("Benvenuto nella schermata della raccolta");
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("indietro").log(Level.SEVERE,"go back not avalaible {0}",e);
         }
-        else throw new IdException(" id is incorrect");
-
-    }
-    @FXML
-    private void indietro() throws IOException {
-        Stage stage;
-        Parent root;
-        stage = (Stage) indietroB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(RACCOLTA)));
-        stage.setTitle("Benvenuto nella schermata della raccolta");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 
     @FXML
@@ -181,8 +195,7 @@ public class BoundaryGestioneOggetto implements Initializable {
         if(fileButton.isSelected()) type=FILE;
         if(memoriaButton.isSelected()) type=MEMORIA;
 
-        try {
-            switch (vis.getType()) {
+        switch (vis.getType()) {
                 case LIBRO -> {
 
                     titoloTF.setText(cG.libroById(type).get(0).getTitolo());
@@ -269,9 +282,6 @@ public class BoundaryGestioneOggetto implements Initializable {
             }
 
 
-        } catch (CsvValidationException | IOException | IdException | ClassNotFoundException e) {
-            Logger.getLogger("modif").log(Level.SEVERE," error in list", e);
-        }
 
 
     }

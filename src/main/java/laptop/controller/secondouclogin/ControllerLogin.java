@@ -1,18 +1,11 @@
 package laptop.controller.secondouclogin;
 
-import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
 import laptop.database.secondouclogin.users.MemoriaUtente;
 import laptop.database.secondouclogin.users.PersistenzaUtente;
 import laptop.database.secondouclogin.users.UsersDao;
 import laptop.database.secondouclogin.users.CsvUtente;
-import laptop.exception.IdException;
 import laptop.model.user.User;
-
-import java.io.IOException;
-
-
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,7 +18,7 @@ public class ControllerLogin {
     private static final String MEMORIA="memoria";
 
 
-    public String login(String email,String pwd,String type) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
+    public String login(String email,String pwd,String type)  {
 
 
         u.setEmail(email);
@@ -111,7 +104,7 @@ public class ControllerLogin {
 
     //used for change pass
     //passo a user e poi cancello
-    public boolean userPresente(String email,String pwd,String type) throws CsvValidationException, IOException, SQLException {
+    public boolean userPresente(String email,String pwd,String type)  {
 
         boolean status=false;
 

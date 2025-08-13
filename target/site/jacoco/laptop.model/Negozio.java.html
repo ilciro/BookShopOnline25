@@ -55,20 +55,24 @@ public class Negozio implements Serializable {
 <span class="fc" id="L55">		this.isOpen = isOpen;</span>
 <span class="fc" id="L56">	}</span>
 
-	
-	
-	@Override
-	public String toString() {
-<span class="nc" id="L62">		return &quot;Negozio [nome=&quot; + nome + &quot;, via=&quot; + via + &quot;, isOpen=&quot; + isOpen + &quot;, isValid=&quot; + isValid+&quot;]&quot;;</span>
-	}
 
-
-    public int getId() {
-<span class="nc" id="L67">        return id;</span>
+	public int getId() {
+<span class="nc" id="L60">        return id;</span>
     }
 
     public void setId(int id) {
-<span class="fc" id="L71">        this.id = id;</span>
-<span class="fc" id="L72">    }</span>
+<span class="fc" id="L64">        this.id = id;</span>
+<span class="fc" id="L65">    }</span>
+
+	@Override
+	public String toString() {
+<span class="nc" id="L69">		return &quot;Negozio{&quot; +</span>
+				&quot;nome='&quot; + nome + '\'' +
+				&quot;, via='&quot; + via + '\'' +
+				&quot;, isValid=&quot; + isValid +
+				&quot;, isOpen=&quot; + isOpen +
+				&quot;, id=&quot; + id +
+				'}';
+	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

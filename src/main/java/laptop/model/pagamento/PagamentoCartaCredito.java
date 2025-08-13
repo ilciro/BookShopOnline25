@@ -108,4 +108,16 @@ public class PagamentoCartaCredito extends Pagamento implements Serializable {
     public void setCognomeUtente(String cognomeUtente) {
         this.cognomeUtente = cognomeUtente;
     }
+
+    @Override
+    public String toString() {
+        return "PagamentoCartaCredito{" +
+                "idProdotto=" + idProdotto +
+                ", cognomeUtente='" + cognomeUtente + '\'' +
+                ", idPagCC=" + idPagCC +
+                ", nomeUtente='" + nomeUtente + '\'' +
+                ", spesaTotale=" + spesaTotale +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

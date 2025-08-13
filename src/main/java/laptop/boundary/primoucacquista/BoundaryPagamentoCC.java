@@ -1,7 +1,6 @@
 package laptop.boundary.primoucacquista;
 
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,11 +16,8 @@ import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.ControllerPagamentoCC;
 import laptop.exception.IdException;
 import laptop.model.CartaDiCredito;
-
 import java.io.IOException;
 import java.net.URL;
-
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -99,7 +95,7 @@ public class BoundaryPagamentoCC implements Initializable {
 	protected Stage stage;
 
 	@FXML
-	private void registraCC() throws CsvValidationException, IOException, ParseException, ClassNotFoundException, SQLException {
+	private void registraCC() throws ParseException {
 
 		String persistenza="";
 		if(databaseButton.isSelected()) persistenza=DATABASE;
@@ -126,7 +122,7 @@ public class BoundaryPagamentoCC implements Initializable {
 	}
 
 	@FXML
-	private void popolaTabella() throws IOException, ClassNotFoundException, CsvValidationException,  SQLException {
+	private void popolaTabella()  {
 		String persistenza="";
 		if(databaseButton.isSelected()) persistenza=DATABASE;
 		if(fileButton.isSelected()) persistenza=FILE;
@@ -137,7 +133,7 @@ public class BoundaryPagamentoCC implements Initializable {
 	}
 
 	@FXML
-	private void procediCC() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
+	private void procediCC() throws IdException, IOException {
 
 
 		if(vis.getIsPickup())
@@ -221,7 +217,7 @@ public class BoundaryPagamentoCC implements Initializable {
 
 	}
 	@FXML
-	private void completa() throws CsvValidationException, SQLException, IOException, ClassNotFoundException {
+	private void completa() {
 
 
 		//provo a prendere i dati dal db

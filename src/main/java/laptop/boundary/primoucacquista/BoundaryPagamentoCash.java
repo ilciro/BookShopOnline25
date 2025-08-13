@@ -2,13 +2,10 @@ package laptop.boundary.primoucacquista;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,7 +17,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.ControllerPagamentoCash;
-import laptop.exception.IdException;
+
 
 public class BoundaryPagamentoCash implements Initializable{
 	@FXML
@@ -68,7 +65,7 @@ public class BoundaryPagamentoCash implements Initializable{
 	private static final ControllerSystemState vis = ControllerSystemState.getInstance();
 
 	@FXML
-	private void procediCash() throws IOException, SQLException, ClassNotFoundException, CsvValidationException, IdException {
+	private void procediCash()  {
 		
 			vis.setMetodoP("cash");
 
@@ -85,13 +82,18 @@ public class BoundaryPagamentoCash implements Initializable{
 			if (n.isEmpty() || c.isEmpty() || v.isEmpty()) {
 				Logger.getLogger("procedi cash").log(Level.SEVERE,"\n errore nel pagamento");
 
+				try {
 
-				stage = (Stage) buttonI.getScene().getWindow();
-				root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/pagamentoContrassegno.fxml")));
-				stage.setTitle("Benvenuto nella schermata del riepilogo ordine");
-				scene = new Scene(root);
-				stage.setScene(scene);
-				stage.show();
+					stage = (Stage) buttonI.getScene().getWindow();
+					root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/pagamentoContrassegno.fxml")));
+					stage.setTitle("Benvenuto nella schermata del riepilogo ordine");
+					scene = new Scene(root);
+					stage.setScene(scene);
+					stage.show();
+				}catch (IOException e)
+				{
+					Logger.getLogger("procedi cash").log(Level.SEVERE,"payment fattura not avalaible {0}",e);
+				}
 
 			} else {
 
@@ -108,13 +110,17 @@ public class BoundaryPagamentoCash implements Initializable{
 
 				if(vis.getIsPickup()) 
 				{
-
-					stage = (Stage) buttonI.getScene().getWindow();
-					root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/scegliNegozio.fxml")));
-					stage.setTitle("Benvenuto nella schermata per scegliere il negozio");
-					scene = new Scene(root);
-					stage.setScene(scene);
-					stage.show();	
+					try {
+						stage = (Stage) buttonI.getScene().getWindow();
+						root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/scegliNegozio.fxml")));
+						stage.setTitle("Benvenuto nella schermata per scegliere il negozio");
+						scene = new Scene(root);
+						stage.setScene(scene);
+						stage.show();
+					}catch (IOException e)
+						{
+							Logger.getLogger("procedi cash negozio").log(Level.SEVERE,"display shop not avalaible {0}",e);
+						}
 				}
 				else
 				{
@@ -164,15 +170,20 @@ public class BoundaryPagamentoCash implements Initializable{
 
 	}
 
-	private void download() throws IOException {
-		Stage stage;
-		Parent root;
-		stage = (Stage) buttonI.getScene().getWindow();
-		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/download.fxml")));
-		stage.setTitle("Benvenuto nella schermata per il download");
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+	private void download()  {
+		try {
+			Stage stage;
+			Parent root;
+			stage = (Stage) buttonI.getScene().getWindow();
+			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/download.fxml")));
+			stage.setTitle("Benvenuto nella schermata per il download");
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		}catch (IOException e)
+		{
+			Logger.getLogger("download cash").log(Level.SEVERE,"download not avalaible {0}",e);
+		}
 	}
 
 }

@@ -29,10 +29,10 @@ public class CsvNegozio extends PersistenzaNegozio{
 
 
     @Override
-    public ObservableList<Negozio> getNegozi() throws CsvValidationException, IOException, IdException {
+    public ObservableList<Negozio> getNegozi()  {
         return retrieveNegozi(this.fdn);
     }
-    private static synchronized ObservableList<Negozio> retrieveNegozi(File fd) throws IOException, CsvValidationException,IdException {
+    private static synchronized ObservableList<Negozio> retrieveNegozi(File fd)  {
         ObservableList<Negozio> gList=  FXCollections.observableArrayList();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {
             String[] gVector;
@@ -52,32 +52,41 @@ public class CsvNegozio extends PersistenzaNegozio{
                 throw new IdException("list libro is empty");
             }
 
-
-
+        }catch (IOException e){
+            Logger.getLogger("retrieveNegozi file").log(Level.SEVERE,"retrieveNegozi io exception {0}",e);
+        }catch (CsvValidationException e1){
+            Logger.getLogger("retrieveNegozi csv").log(Level.SEVERE,"retrieveNEgozi csv exception {0}",e1);
+        }catch (IdException e2)
+        {
+            Logger.getLogger("retrieveNegozi id").log(Level.SEVERE,"retrieveNegozi id exception {0}",e2);
         }
 
         return gList;
     }
 
     @Override
-    public boolean checkOpen(Negozio shop) throws CsvValidationException, IOException {
+    public boolean checkOpen(Negozio shop)  {
         return checkOpenIsValid(shop,"isOpen");
 
     }
 
     @Override
-   public boolean checkRitiro(Negozio shop) throws IOException, CsvValidationException {
+   public boolean checkRitiro(Negozio shop)  {
         return checkOpenIsValid(shop,"isValid");
     }
 
     @Override
-    public void initializza() throws IOException {
+    public void initializza()  {
         try{
             if(!this.fdn.exists()) throw new IOException();
         }catch (IOException e)
         {
             Logger.getLogger("initialize csvNEgozio").log(Level.SEVERE,"file not exists!!");
-            Files.copy(Path.of(NEGOZIOP), Path.of(LOCATIONEGOZIO), REPLACE_EXISTING);
+            try {
+                Files.copy(Path.of(NEGOZIOP), Path.of(LOCATIONEGOZIO), REPLACE_EXISTING);
+            } catch (IOException ex) {
+                Logger.getLogger("inizializza negozi").log(Level.SEVERE,"inizialize shop exception {0}",ex);
+            }
 
             Logger.getLogger("crea negpzio file").log(Level.SEVERE, "\n eccezione ottenuta nella modalità file.", e);
 
@@ -85,7 +94,7 @@ public class CsvNegozio extends PersistenzaNegozio{
     }
 
 
-    private boolean checkOpenIsValid(Negozio shop,String s) throws CsvValidationException, IOException {
+    private boolean checkOpenIsValid(Negozio shop,String s)  {
         // s o per il valid o per isopen
         boolean status=false;
         String[] gVector;
@@ -117,6 +126,11 @@ public class CsvNegozio extends PersistenzaNegozio{
 
 
             }
+        }catch (IOException e){
+            Logger.getLogger("checkOpenValid").log(Level.SEVERE,"openValid io exception {0}",e);
+        }catch (CsvValidationException e1){
+            Logger.getLogger("checkOpenValid csv").log(Level.SEVERE,"openValid csv exception {0}",e1);
+
         }
 
         return status;

@@ -58,7 +58,7 @@ public class CsvRivista extends PersistenzaRivista {
 
 
     @Override
-    public boolean inserisciRivista(Rivista r) throws CsvValidationException, IOException {
+    public boolean inserisciRivista(Rivista r)  {
         boolean duplicatedR = false;
         boolean duplicatedT = false;
         boolean duplicatedA = false;
@@ -93,7 +93,7 @@ public class CsvRivista extends PersistenzaRivista {
         return inserimentoRivista(this.fdR, r);
     }
 
-    private static synchronized boolean inserimentoRivista(File fd, Rivista r) throws IOException, CsvValidationException {
+    private static synchronized boolean inserimentoRivista(File fd, Rivista r)  {
         try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(fd, true)))) {
             String[] gVector = new String[11];
 
@@ -113,12 +113,14 @@ public class CsvRivista extends PersistenzaRivista {
             else throw new CsvValidationException(" type of modif at magazine is wrong !!");
             csvWriter.writeNext(gVector);
             csvWriter.flush();
+        }catch (IOException |CsvValidationException e){
+            Logger.getLogger("inserimento riviste csv").log(Level.SEVERE,"insert rivista csv exception {0}",e);
         }
         return getIdMax() != 0;
     }
 
-    private static synchronized List<Rivista> returnRivistaByTAE(File fd, String tit, String autor, String edit) throws IOException, CsvValidationException {
-        List<Rivista> rivistaList;
+    private static synchronized List<Rivista> returnRivistaByTAE(File fd, String tit, String autor, String edit)  {
+        List<Rivista> rivistaList=new ArrayList<>();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {
             String[] gVector;
             boolean recordFound;
@@ -138,6 +140,8 @@ public class CsvRivista extends PersistenzaRivista {
 
                 }
             }
+        }catch (IOException |CsvValidationException e){
+            Logger.getLogger("listarivista").log(Level.SEVERE,"list is empty  exception {0}",e);
         }
         return rivistaList;
 
@@ -175,7 +179,7 @@ public class CsvRivista extends PersistenzaRivista {
 
     }
 
-    private static synchronized int getIdMax() throws IOException, CsvValidationException {
+    private static synchronized int getIdMax()  {
         //used for insert correct idOgg
 
         String []gVector;
@@ -187,6 +191,9 @@ public class CsvRivista extends PersistenzaRivista {
                 if(Integer.parseInt(gVector[GETINDEXIDR])>max)
                     max= Integer.parseInt(gVector[GETINDEXIDR]);
             }
+        }catch (IOException |CsvValidationException e)
+        {
+            Logger.getLogger("idMax rivista").log(Level.SEVERE," id error {0}",e);
         }
 
 
@@ -196,37 +203,42 @@ public class CsvRivista extends PersistenzaRivista {
     }
 
     @Override
-    public boolean removeRivistaById(Rivista r) throws CsvValidationException, IOException {
+    public boolean removeRivistaById(Rivista r)  {
         synchronized (this.cacheRivista) {
             this.cacheRivista.remove(r.getId());
         }
         return removeRivistaId(this.fdR, r);
     }
 
-    private static synchronized boolean removeRivistaId(File fd, Rivista r) throws IOException, CsvValidationException {
+    private static synchronized boolean removeRivistaId(File fd, Rivista r)  {
         return deleteByType(r, fd);
     }
 
-    private static synchronized boolean deleteByType(Rivista r, File fd) throws IOException, CsvValidationException {
+    private static synchronized boolean deleteByType(Rivista r, File fd) {
         boolean status = false;
-        if (SystemUtils.IS_OS_UNIX) {
-            FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));
-            Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant
-        }
-        File tmpFile = new File(APPOGGIO);
-        boolean found = isFound(r, fd, tmpFile);
-        if (found) {
-            Files.move(tmpFile.toPath(), fd.toPath(), REPLACE_EXISTING);
-            status = true;
+        try {
+            if (SystemUtils.IS_OS_UNIX) {
+                FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));
+                Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant
+            }
+            File tmpFile = new File(APPOGGIO);
+            boolean found = isFound(r, fd, tmpFile);
+            if (found) {
+                Files.move(tmpFile.toPath(), fd.toPath(), REPLACE_EXISTING);
+                status = true;
 
-        } else {
-            cleanUp(Path.of(tmpFile.toURI()));
+            } else {
+                cleanUp(Path.of(tmpFile.toURI()));
+            }
+        }catch (IOException e)
+        {
+            Logger.getLogger("delete by type").log(Level.SEVERE,"error with delete {0}",e);
         }
         return status;
 
     }
 
-    private static boolean isFound(Rivista r, File fd, File tmpFile) throws IOException, CsvValidationException {
+    private static boolean isFound(Rivista r, File fd, File tmpFile) {
         boolean found = false;
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fd)));
              CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true)))) {
@@ -244,16 +256,18 @@ public class CsvRivista extends PersistenzaRivista {
                     found = true;
             }
             writer.flush();
+        }catch (IOException | CsvValidationException e){
+            Logger.getLogger("isFoundR").log(Level.SEVERE,"listaR empty exception {0}",e);
         }
         return found;
     }
 
     @Override
-    public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException {
+    public ObservableList<Raccolta> retrieveRaccoltaData()  {
         return retrieveData(this.fdR);
     }
 
-    private static synchronized ObservableList<Raccolta> retrieveData(File fd) throws CsvValidationException, IOException, IdException {
+    private static synchronized ObservableList<Raccolta> retrieveData(File fd)  {
         ObservableList<Raccolta> gList = FXCollections.observableArrayList();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {
             String[] gVector;
@@ -268,6 +282,8 @@ public class CsvRivista extends PersistenzaRivista {
             }
 
 
+        }catch (IOException | CsvValidationException | IdException e){
+            Logger.getLogger("retrieve riviste").log(Level.SEVERE,"retrieve error exception {0}",e);
         }
 
         return gList;
@@ -275,7 +291,7 @@ public class CsvRivista extends PersistenzaRivista {
     }
 
     @Override
-    public ObservableList<Rivista> getRiviste() throws CsvValidationException, IOException, IdException {
+    public ObservableList<Rivista> getRiviste()  {
         ObservableList<Rivista> list = FXCollections.observableArrayList();
         synchronized (this.cacheRivista) {
             for (Map.Entry<Integer, Rivista> id : cacheRivista.entrySet()) {
@@ -296,8 +312,8 @@ public class CsvRivista extends PersistenzaRivista {
         return list;
     }
 
-    private static synchronized ObservableList<Rivista> retrieveRivista(File fdR) throws IOException, CsvValidationException, IdException {
-        ObservableList<Rivista> rivistaList;
+    private static synchronized ObservableList<Rivista> retrieveRivista(File fdR){
+        ObservableList<Rivista> rivistaList=FXCollections.observableArrayList();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fdR)))) {
             String[] gVector;
 
@@ -309,16 +325,26 @@ public class CsvRivista extends PersistenzaRivista {
 
 
             }
+        }catch (IOException e){
+            Logger.getLogger("listaRiviste io").log(Level.SEVERE,"listaRiviste io exception {0}",e);
+        }catch (CsvValidationException e1){
+            Logger.getLogger("listaRiviste csv").log(Level.SEVERE,"listaRiviste csv exception {0}",e1);
+
         }
+        try{
         if (rivistaList.isEmpty()) {
             throw new IdException("rivista not found!!");
+        }
+        }catch (IdException e)
+        {
+            Logger.getLogger("idRivista ").log(Level.SEVERE,"id error magazine {0}",e);
         }
 
         return rivistaList;
     }
 
     @Override
-    public ObservableList<Rivista> getRivistaByIdTitoloAutoreRivista(Rivista r) throws CsvValidationException, IOException, IdException {
+    public ObservableList<Rivista> getRivistaByIdTitoloAutoreRivista(Rivista r) {
         ObservableList<Rivista> list = FXCollections.observableArrayList();
         synchronized (this.cacheRivista) {
             for (Map.Entry<Integer, Rivista> id : cacheRivista.entrySet()) {
@@ -341,8 +367,8 @@ public class CsvRivista extends PersistenzaRivista {
         return list;
     }
 
-    private static synchronized ObservableList<Rivista> retrieveRivistaByIdTitoloEditore(File fd, Rivista rivista) throws CsvValidationException, IOException, IdException {
-        ObservableList<Rivista> rivistaList;
+    private static synchronized ObservableList<Rivista> retrieveRivistaByIdTitoloEditore(File fd, Rivista rivista)  {
+        ObservableList<Rivista> rivistaList=FXCollections.observableArrayList();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {
             String[] gVector;
 
@@ -356,9 +382,16 @@ public class CsvRivista extends PersistenzaRivista {
 
                 }
             }
+        }catch (IOException |CsvValidationException e){
+            Logger.getLogger("rivista by titolo id autore").log(Level.SEVERE,"wrong data exception {0}",e);
         }
-        if (rivistaList.isEmpty()) {
-            throw new IdException("rivista not found!!");
+        try {
+            if (rivistaList.isEmpty()) {
+                throw new IdException("rivista not found!!");
+            }
+        }catch (IdException e1)
+        {
+            Logger.getLogger("rivistaList").log(Level.SEVERE,"list magazine is empty {0}",e1);
         }
 
         return rivistaList;
@@ -368,7 +401,7 @@ public class CsvRivista extends PersistenzaRivista {
 
 
     @Override
-    public void initializza() throws IOException, CsvValidationException {
+    public void initializza() {
         try {
             File directory=new File("report");
 
@@ -387,12 +420,20 @@ public class CsvRivista extends PersistenzaRivista {
 
             Logger.getLogger("creazione db file").log(Level.INFO, "\n creating files ..");
 
-            Files.copy(Path.of(RIVISTAP), Path.of(LOCATIONR), REPLACE_EXISTING);
+            try {
+                Files.copy(Path.of(RIVISTAP), Path.of(LOCATIONR), REPLACE_EXISTING);
+            } catch (IOException e) {
+                Logger.getLogger("inizializza rivista csv").log(Level.SEVERE,"error with copy {0}",e);
+            }
 
             Logger.getLogger("crea db file").log(Level.SEVERE, "\n eccezione ottenuta nella modalità file.", eFile);
         }
     }
-    private static void cleanUp(Path path) throws IOException {
-        Files.delete(path);
+    private static void cleanUp(Path path) {
+        try {
+            Files.delete(path);
+        } catch (IOException e) {
+           Logger.getLogger("cleanupR").log(Level.SEVERE,"error with delete magazine file {0}",e);
+        }
     }
 }

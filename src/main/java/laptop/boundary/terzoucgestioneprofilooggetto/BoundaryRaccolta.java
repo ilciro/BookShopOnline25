@@ -1,6 +1,5 @@
 package laptop.boundary.terzoucgestioneprofilooggetto;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,10 +15,8 @@ import laptop.controller.terzoucgestioneprofiloggetto.ControllerRaccolta;
 import laptop.controller.ControllerSystemState;
 import laptop.exception.IdException;
 import laptop.model.raccolta.Raccolta;
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -81,7 +78,7 @@ public class BoundaryRaccolta implements Initializable
 
 
     @FXML
-    private void inserisci() throws IOException {
+    private void inserisci()  {
         vis.setTipoModifica("inserisci");
 
         if(radioL.isSelected()) vis.setTypeAsBook();
@@ -105,21 +102,27 @@ public class BoundaryRaccolta implements Initializable
                 }
             } catch (IOException e) {
                 Logger.getLogger("inserisci").log(Level.SEVERE, " exeption has occurred !!.", e);
-                Stage stage;
-                Parent root;
-                stage = (Stage) inserisciB.getScene().getWindow();
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(RACCOLTA)));
-                stage.setTitle("Benvenuto nella schermata della gestione per inserire");
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+                try {
+                    Stage stage;
+                    Parent root;
+                    stage = (Stage) inserisciB.getScene().getWindow();
+
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(RACCOLTA)));
+
+                    stage.setTitle("Benvenuto nella schermata della gestione per inserire");
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException ex) {
+                    Logger.getLogger("inserisci").log(Level.SEVERE, "return to manage page {0}", e);
+                }
             }
         }
 
 
     }
     @FXML
-    private void modifica() throws IOException, ClassNotFoundException {
+    private void modifica()  {
         vis.setTipoModifica("modifica");
         String type="";
         if(databaseButton.isSelected()) type=DATABASE;
@@ -140,22 +143,27 @@ public class BoundaryRaccolta implements Initializable
                     stage.setScene(scene);
                     stage.show();
                 }
-            } catch (IdException | CsvValidationException | NullPointerException | SQLException e) {
+            } catch (IdException | IOException e) {
                 Logger.getLogger("modifica").log(Level.SEVERE, " error in modif .", e);
-                Stage stage;
-                Parent root;
-                stage = (Stage) modificaB.getScene().getWindow();
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(RACCOLTA)));
-                stage.setTitle("Benvenuto nella schermata della modifica");
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+                try {
+                    Stage stage;
+                    Parent root;
+                    stage = (Stage) modificaB.getScene().getWindow();
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(RACCOLTA)));
+                    stage.setTitle("Benvenuto nella schermata della modifica");
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                }catch (IOException e1)
+                {
+                    Logger.getLogger("modif").log(Level.SEVERE,"return to manage page {0}",e);
+                }
             }
         }
 
     }
     @FXML
-    private void elimina() throws IOException {
+    private void elimina()  {
         checkTipologia(Integer.parseInt(idTF.getText()));
 
         String type="";
@@ -179,28 +187,33 @@ public class BoundaryRaccolta implements Initializable
                 stage.show();
                 Logger.getLogger(" elimina ok").log(Level.INFO, " deleted successfully");
             }
-        }catch (IdException | CsvValidationException | IOException | SQLException | ClassNotFoundException e)
+        }catch (IOException | IdException e)
         {
             Logger.getLogger("elimina").log(Level.SEVERE, " error in elimina");
-            Stage stage;
-            Parent root;
-            stage = (Stage) eliminaB.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(RACCOLTA)));
-            stage.setTitle("Benvenuto nella schermata della gestione");
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            try {
+                Stage stage;
+                Parent root;
+                stage = (Stage) eliminaB.getScene().getWindow();
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(RACCOLTA)));
+                stage.setTitle("Benvenuto nella schermata della gestione");
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }catch (IOException e1)
+            {
+                Logger.getLogger("elimnina").log(Level.SEVERE,"delete not possible {0}",e);
+            }
         }
 
 
 
     }
     @FXML
-    private void indietro() throws IOException {
+    private void indietro()  {
        admin();
     }
     @FXML
-    private void genera() throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
+    private void genera()  {
         if(radioL.isSelected()) vis.setTypeAsBook();
         if(radioG.isSelected()) vis.setTypeAsDaily();
         if(radioR.isSelected()) vis.setTypeAsMagazine();
@@ -244,14 +257,19 @@ public class BoundaryRaccolta implements Initializable
         }
     }
 
-    private void admin() throws IOException {
-        Stage stage;
-        Parent root;
-        stage = (Stage) indietroB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/admin.fxml")));
-        stage.setTitle("Benvenuto nella schermata di admin");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    private void admin()  {
+        try {
+            Stage stage;
+            Parent root;
+            stage = (Stage) indietroB.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/admin.fxml")));
+            stage.setTitle("Benvenuto nella schermata di admin");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("admin").log(Level.SEVERE,"admin status not avalaible {0}",e);
+        }
     }
 }

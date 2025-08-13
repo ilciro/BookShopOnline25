@@ -1,6 +1,5 @@
 package laptop.boundary.terzoucgestioneprofilooggetto;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,10 +14,8 @@ import laptop.controller.ControllerSystemState;
 import laptop.controller.terzoucgestioneprofiloggetto.ControllerUtenti;
 import laptop.exception.IdException;
 import laptop.model.user.TempUser;
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -64,7 +61,7 @@ public class BoundaryUtenti implements Initializable {
     private ToggleGroup toggleGroup;
 
     @FXML
-    private void genera() throws CsvValidationException, SQLException, IOException {
+    private void genera()  {
         String type="";
         if(databaseButton.isSelected()) type="database";
         if(fileButton.isSelected()) type="file";
@@ -72,52 +69,61 @@ public class BoundaryUtenti implements Initializable {
         tableview.setItems(cU.getList(type));
     }
     @FXML
-    private void inserisci() throws IOException {
-        vis.setTipoModifica("inserisci");
-        Stage stage;
-        Parent root;
-        stage = (Stage) inserisciB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/gestioneUtente.fxml")));
-        stage.setTitle("Benvenuto nella schermata della gestione");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    private void inserisci()  {
+        try {
+            vis.setTipoModifica("inserisci");
+            Stage stage;
+            Parent root;
+            stage = (Stage) inserisciB.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/gestioneUtente.fxml")));
+            stage.setTitle("Benvenuto nella schermata della gestione");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("inserisci").log(Level.SEVERE,"insert error {0}",e);
+        }
     }
     @FXML
-    private void modifica() throws IOException,IdException {
-        int idM=tableview.getSelectionModel().getSelectedItem().getId();
-        if(idM==0 )throw new IdException("id is wrong");
-        vis.setIdUtente(idM);
-        vis.setTipoModifica("modifica");
-        Stage stage;
-        Parent root;
-        stage = (Stage) modificaB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/gestioneUtente.fxml")));
-        stage.setTitle("Benvenuto nella schermata della gestione");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    private void modifica()  {
+        try {
+            int idM = tableview.getSelectionModel().getSelectedItem().getId();
+            if (idM == 0) throw new IdException("id is wrong");
+            vis.setIdUtente(idM);
+            vis.setTipoModifica("modifica");
+            Stage stage;
+            Parent root;
+            stage = (Stage) modificaB.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/gestioneUtente.fxml")));
+            stage.setTitle("Benvenuto nella schermata della gestione");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("modif").log(Level.SEVERE,"modif not avalaible {0}",e);
+        }catch (IdException e1)
+        {
+            Logger.getLogger("modif id").log(Level.SEVERE,"modif id is null {0}",e1);
+        }
     }
     @FXML
-    private void cancella() throws IOException, IdException, CsvValidationException, SQLException {
-
-
-
+    private void cancella() {
 
         int idC=tableview.getSelectionModel().getSelectedItem().getId();
-
+        try{
 
         if(idC<=0 ) throw new IdException(" selectd id is null");
         else {
-            String type="";
-            if(databaseButton.isSelected()) type="database";
-            if(fileButton.isSelected()) type="file";
-            if(memoriaButton.isSelected()) type="memoria";
+            String type = "";
+            if (databaseButton.isSelected()) type = "database";
+            if (fileButton.isSelected()) type = "file";
+            if (memoriaButton.isSelected()) type = "memoria";
             vis.setIdUtente(idC);
-            Logger.getLogger(CANCELLA).log(Level.INFO," id : {0}", vis.getIdUtente());
-            if (cU.elimina(tableview.getSelectionModel().getSelectedItem().getEmailT(),type))
-            {
-                Logger.getLogger(CANCELLA).log(Level.INFO," deleted successfully");
+            Logger.getLogger(CANCELLA).log(Level.INFO, " id : {0}", vis.getIdUtente());
+            if (cU.elimina(tableview.getSelectionModel().getSelectedItem().getEmailT(), type)) {
+                Logger.getLogger(CANCELLA).log(Level.INFO, " deleted successfully");
                 Stage stage;
                 Parent root;
                 stage = (Stage) cancellaB.getScene().getWindow();
@@ -127,22 +133,29 @@ public class BoundaryUtenti implements Initializable {
                 stage.setScene(scene);
                 stage.show();
 
-            }
-            else{
+            } else {
                 utenti();
 
             }
-
-
-
         }
+        }catch (IOException e)
+            {
+                Logger.getLogger("cancella").log(Level.SEVERE,"delete not avalaible {0}",e);
+            }catch (IdException e1)
+            {
+                Logger.getLogger("delete id").log(Level.SEVERE,"delete id is null {0}",e1);
+            }
+
+
+
+
 
 
 
 
     }
     @FXML
-    private void indietro() throws IOException {
+    private void indietro() {
        if(databaseButton.isSelected() || fileButton.isSelected())indietroToAdmin();
     }
 
@@ -161,25 +174,35 @@ public class BoundaryUtenti implements Initializable {
 
     }
 
-    private void utenti() throws IOException {
-        Logger.getLogger(CANCELLA).log(Level.INFO," deleted unsuccessfully");
-        Stage stage;
-        Parent root;
-        stage = (Stage) cancellaB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/utenti.fxml")));
-        stage.setTitle("Benvenuto nella schermata di utente");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    private void utenti() {
+        try {
+            Logger.getLogger(CANCELLA).log(Level.INFO, " deleted unsuccessfully");
+            Stage stage;
+            Parent root;
+            stage = (Stage) cancellaB.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/utenti.fxml")));
+            stage.setTitle("Benvenuto nella schermata di utente");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("utenti").log(Level.SEVERE,"users not avalaible {0}",e);
+        }
     }
-    private void indietroToAdmin() throws IOException {
-        Stage stage;
-        Parent root;
-        stage = (Stage) indietroB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/admin.fxml")));
-        stage.setTitle("Benvenuto nella schermata di admin");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    private void indietroToAdmin(){
+        try {
+            Stage stage;
+            Parent root;
+            stage = (Stage) indietroB.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/admin.fxml")));
+            stage.setTitle("Benvenuto nella schermata di admin");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("admin").log(Level.SEVERE,"go back to admin not avalaible {0}",e);
+        }
     }
 }

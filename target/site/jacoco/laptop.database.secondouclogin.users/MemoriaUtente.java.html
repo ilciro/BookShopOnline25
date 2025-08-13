@@ -24,79 +24,93 @@ import java.util.logging.Logger;
 <span class="fc" id="L24">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
-    public boolean inserisciUtente(TempUser u) throws IOException, ClassNotFoundException {
+    public boolean inserisciUtente(TempUser u)  {
 
 
 <span class="nc" id="L30">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
 <span class="nc" id="L31">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
 <span class="nc" id="L32">            listaTU= (ArrayList&lt;TempUser&gt;) ois.readObject();</span>
-        }
-<span class="nc bnc" id="L34" title="All 2 branches missed.">        if(vis.getTipoModifica().equals(&quot;im&quot;)) u.setId(u.getId());</span>
-<span class="nc bnc" id="L35" title="All 2 branches missed.">        else if(vis.getTipoModifica().equals(&quot;insert&quot;)) u.setId(listaTU.size()+1);</span>
-<span class="nc" id="L36">        listaTU.add(u);</span>
-
-<span class="nc" id="L38">        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
-<span class="nc" id="L39">            ObjectOutputStream oos=new ObjectOutputStream(fos))</span>
+<span class="nc" id="L33">        }catch (IOException|ClassNotFoundException e)</span>
         {
-<span class="nc" id="L41">            oos.writeObject(new ArrayList&lt;&gt;(listaTU));</span>
-        }
+<span class="nc" id="L35">            Logger.getLogger(&quot;inserisciUtente&quot;).log(Level.SEVERE,&quot;error {0}&quot;,e);</span>
+<span class="nc" id="L36">        }</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        if(vis.getTipoModifica().equals(&quot;im&quot;)) u.setId(u.getId());</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        else if(vis.getTipoModifica().equals(&quot;insert&quot;)) u.setId(listaTU.size()+1);</span>
+<span class="nc" id="L39">        listaTU.add(u);</span>
 
-<span class="nc" id="L44">        return true;</span>
+<span class="nc" id="L41">        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L42">            ObjectOutputStream oos=new ObjectOutputStream(fos))</span>
+        {
+<span class="nc" id="L44">            oos.writeObject(new ArrayList&lt;&gt;(listaTU));</span>
+<span class="nc" id="L45">        }catch (IOException e)</span>
+        {
+<span class="nc" id="L47">            Logger.getLogger(&quot;lettura utente&quot;).log(Level.SEVERE,&quot;reading error {0}&quot;,e);</span>
+<span class="nc" id="L48">        }</span>
+
+<span class="nc" id="L50">        return true;</span>
     }
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
-    public ObservableList&lt;TempUser&gt; getUserData() throws IOException {
-<span class="fc" id="L50">        List&lt;TempUser&gt; listaRecuperata = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L51">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L52">            ObjectInputStream ois = new ObjectInputStream(fis)){</span>
-<span class="fc" id="L53">            listaRecuperata= (List&lt;TempUser&gt;) ois.readObject();</span>
-<span class="nc" id="L54">        }  catch (ClassNotFoundException e) {</span>
-<span class="nc" id="L55">            Logger.getLogger(&quot;lista utenti&quot;).log(Level.SEVERE,&quot;exception in list users&quot;,e);</span>
-<span class="fc" id="L56">        }</span>
-<span class="fc" id="L57">        return FXCollections.observableArrayList(listaRecuperata);</span>
+    public ObservableList&lt;TempUser&gt; getUserData()  {
+<span class="fc" id="L56">        List&lt;TempUser&gt; listaRecuperata = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L57">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L58">            ObjectInputStream ois = new ObjectInputStream(fis)){</span>
+<span class="fc" id="L59">            listaRecuperata= (List&lt;TempUser&gt;) ois.readObject();</span>
+<span class="nc" id="L60">        }  catch (ClassNotFoundException  |IOException e) {</span>
+<span class="nc" id="L61">            Logger.getLogger(&quot;lista utenti&quot;).log(Level.SEVERE,&quot;exception in list users&quot;,e);</span>
+<span class="fc" id="L62">        }</span>
+<span class="fc" id="L63">        return FXCollections.observableArrayList(listaRecuperata);</span>
     }
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
-    public boolean removeUserByIdEmailPwd(TempUser u) throws  IOException {
-<span class="nc" id="L63">        boolean status=false;</span>
+    public boolean removeUserByIdEmailPwd(TempUser u) {
+<span class="nc" id="L69">        boolean status=false;</span>
 
-<span class="nc" id="L65">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="nc" id="L66">            ObjectInputStream ois = new ObjectInputStream(fis)){</span>
-<span class="nc" id="L67">            listaTU=(ArrayList&lt;TempUser&gt;) ois.readObject();</span>
+<span class="nc" id="L71">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L72">            ObjectInputStream ois = new ObjectInputStream(fis)){</span>
+<span class="nc" id="L73">            listaTU=(ArrayList&lt;TempUser&gt;) ois.readObject();</span>
 
-<span class="nc" id="L69">        }  catch (ClassNotFoundException e) {</span>
-<span class="nc" id="L70">            Logger.getLogger(&quot;lista libri&quot;).log(Level.SEVERE,&quot;exception .&quot;,e);</span>
-<span class="nc" id="L71">        }</span>
+<span class="nc" id="L75">        }  catch (ClassNotFoundException |IOException e) {</span>
+<span class="nc" id="L76">            Logger.getLogger(&quot;lista libri&quot;).log(Level.SEVERE,&quot;exception .&quot;,e);</span>
+<span class="nc" id="L77">        }</span>
 
-<span class="nc bnc" id="L73" title="All 2 branches missed.">        for(int i=0;i&lt;listaTU.size();i++)</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        for(int i=0;i&lt;listaTU.size();i++)</span>
         {
-<span class="nc bnc" id="L75" title="All 4 branches missed.">            if (i==(u.getId()-1) || listaTU.get(i).getEmailT().equals(u.getEmailT())) {</span>
-<span class="nc" id="L76">                status = listaTU.remove(listaTU.get(i));</span>
-<span class="nc" id="L77">                break;</span>
+<span class="nc bnc" id="L81" title="All 4 branches missed.">            if (i==(u.getId()-1) || listaTU.get(i).getEmailT().equals(u.getEmailT())) {</span>
+<span class="nc" id="L82">                status = listaTU.remove(listaTU.get(i));</span>
+<span class="nc" id="L83">                break;</span>
             }
         }
-<span class="nc" id="L80">        Path path = Path.of(SERIALIZZAZIONE);</span>
+<span class="nc" id="L86">        Path path = Path.of(SERIALIZZAZIONE);</span>
         try {
-<span class="nc" id="L82">            Files.delete(path);</span>
-<span class="nc bnc" id="L83" title="All 2 branches missed.">            if(!Files.exists(path))</span>
+<span class="nc" id="L88">            Files.delete(path);</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">            if(!Files.exists(path))</span>
             {
-<span class="nc" id="L85">                throw new IOException(&quot;file is deleted!!&quot;);</span>
+<span class="nc" id="L91">                throw new IOException(&quot;file is deleted!!&quot;);</span>
 
             }
 
-<span class="nc" id="L89">        }catch (IOException e)</span>
+<span class="nc" id="L95">        }catch (IOException e)</span>
         {
-<span class="nc" id="L91">            Files.createFile(path);</span>
-<span class="nc" id="L92">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
-<span class="nc" id="L93">                ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
-<span class="nc" id="L94">                oos.writeObject(listaTU);</span>
-            }
-<span class="nc" id="L96">        }</span>
+            try {
+<span class="nc" id="L98">                Files.createFile(path);</span>
+<span class="nc" id="L99">            } catch (IOException ex) {</span>
+<span class="nc" id="L100">               Logger.getLogger(&quot;creazione file&quot;).log(Level.SEVERE,&quot;error with creating file {0}&quot;,e);</span>
+<span class="nc" id="L101">            }</span>
+<span class="nc" id="L102">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L103">                ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
+<span class="nc" id="L104">                oos.writeObject(listaTU);</span>
+<span class="nc" id="L105">            }catch (IOException e1)</span>
+            {
+<span class="nc" id="L107">                Logger.getLogger(&quot;scrittura nel nuovo file&quot;).log(Level.SEVERE,&quot;error with writing file {0}&quot;,e);</span>
+
+<span class="nc" id="L109">            }</span>
+<span class="nc" id="L110">        }</span>
 
 
-<span class="nc" id="L99">        return status;</span>
+<span class="nc" id="L113">        return status;</span>
 
     }
 
@@ -104,47 +118,58 @@ import java.util.logging.Logger;
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
-    public void initializza() throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+    public void initializza()  {
 
-<span class="fc bfc" id="L109" title="All 2 branches covered.">        for(int i=1;i&lt;=7;i++)</span>
+<span class="fc bfc" id="L123" title="All 2 branches covered.">        for(int i=1;i&lt;=7;i++)</span>
         {
             String line;
 
 
-<span class="fc" id="L114">            ArrayList&lt;String&gt; listaR = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L128">            ArrayList&lt;String&gt; listaR = new ArrayList&lt;&gt;();</span>
 
 
-<span class="fc" id="L117">            try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/utente&quot; + i + &quot;.txt&quot;);</span>
-<span class="fc" id="L118">                 BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
-<span class="fc bfc" id="L119" title="All 2 branches covered.">                while ((line = bufferedReader.readLine()) != null) {</span>
-<span class="fc" id="L120">                    listaR.add(line);</span>
+<span class="fc" id="L131">            try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/utente&quot; + i + &quot;.txt&quot;);</span>
+<span class="fc" id="L132">                 BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
+<span class="fc bfc" id="L133" title="All 2 branches covered.">                while ((line = bufferedReader.readLine()) != null) {</span>
+<span class="fc" id="L134">                    listaR.add(line);</span>
 
                 }
-            }
-<span class="fc" id="L124">            TempUser tu=new TempUser();</span>
-<span class="fc" id="L125">            tu.setId(Integer.parseInt(listaR.get(0)));</span>
-<span class="fc" id="L126">            tu.setIdRuoloT(listaR.get(1));</span>
-<span class="fc" id="L127">            tu.setNomeT(listaR.get(2));</span>
-<span class="fc" id="L128">            tu.setCognomeT(listaR.get(3));</span>
-<span class="fc" id="L129">            tu.setEmailT(listaR.get(4));</span>
-<span class="fc" id="L130">            tu.setPasswordT(listaR.get(5));</span>
-<span class="fc" id="L131">            tu.setDescrizioneT(listaR.get(6));</span>
-<span class="fc" id="L132">            tu.setDataDiNascitaT(LocalDate.parse(listaR.get(7)));</span>
-<span class="fc" id="L133">            listaTU.add(tu);</span>
+<span class="nc" id="L137">            }catch (IOException e)</span>
+            {
+<span class="nc" id="L139">                Logger.getLogger(&quot;inizializza&quot;).log(Level.SEVERE,&quot;error with copy file {0}&quot;,e);</span>
+<span class="fc" id="L140">            }</span>
+<span class="fc" id="L141">            TempUser tu=new TempUser();</span>
+<span class="fc" id="L142">            tu.setId(Integer.parseInt(listaR.get(0)));</span>
+<span class="fc" id="L143">            tu.setIdRuoloT(listaR.get(1));</span>
+<span class="fc" id="L144">            tu.setNomeT(listaR.get(2));</span>
+<span class="fc" id="L145">            tu.setCognomeT(listaR.get(3));</span>
+<span class="fc" id="L146">            tu.setEmailT(listaR.get(4));</span>
+<span class="fc" id="L147">            tu.setPasswordT(listaR.get(5));</span>
+<span class="fc" id="L148">            tu.setDescrizioneT(listaR.get(6));</span>
+<span class="fc" id="L149">            tu.setDataDiNascitaT(LocalDate.parse(listaR.get(7)));</span>
+<span class="fc" id="L150">            listaTU.add(tu);</span>
 
         }
-<span class="fc" id="L136">        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L137">            ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
-<span class="fc" id="L138">            oos.writeObject(listaTU);</span>
-        }
+<span class="fc" id="L153">        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L154">            ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
+<span class="fc" id="L155">            oos.writeObject(listaTU);</span>
+<span class="nc" id="L156">        }catch (IOException e)</span>
+        {
+<span class="nc" id="L158">            Logger.getLogger(&quot;scrittura file iniziale&quot;).log(Level.SEVERE,&quot;error with writing file {0}&quot;,e);</span>
 
-<span class="fc" id="L141">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L142">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
-<span class="fc" id="L143">            listaTU= (ArrayList&lt;TempUser&gt;) ois.readObject();</span>
-        }
+<span class="fc" id="L160">        }</span>
+
+<span class="fc" id="L162">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L163">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="fc" id="L164">            listaTU= (ArrayList&lt;TempUser&gt;) ois.readObject();</span>
+<span class="nc" id="L165">        }catch (IOException |ClassNotFoundException e1)</span>
+        {
+<span class="nc" id="L167">            Logger.getLogger(&quot;lettura file iniziale&quot;).log(Level.SEVERE,&quot;error with reading file {0}&quot;,e1);</span>
+
+<span class="fc" id="L169">        }</span>
 
 
-<span class="fc" id="L147">    }</span>
+<span class="fc" id="L172">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

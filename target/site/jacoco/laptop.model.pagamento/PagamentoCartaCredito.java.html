@@ -108,5 +108,17 @@ public class PagamentoCartaCredito extends Pagamento implements Serializable {
     public void setCognomeUtente(String cognomeUtente) {
 <span class="fc" id="L109">        this.cognomeUtente = cognomeUtente;</span>
 <span class="fc" id="L110">    }</span>
+
+    @Override
+    public String toString() {
+<span class="fc" id="L114">        return &quot;PagamentoCartaCredito{&quot; +</span>
+                &quot;idProdotto=&quot; + idProdotto +
+                &quot;, cognomeUtente='&quot; + cognomeUtente + '\'' +
+                &quot;, idPagCC=&quot; + idPagCC +
+                &quot;, nomeUtente='&quot; + nomeUtente + '\'' +
+                &quot;, spesaTotale=&quot; + spesaTotale +
+                &quot;, email='&quot; + email + '\'' +
+                '}';
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

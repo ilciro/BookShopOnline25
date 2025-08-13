@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
-public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
+public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
 
     private static final String PAGAMENTOTOTALE="report/reportPagamentoTotale.csv";
     private static final String APPOGGIO="report/appoggioPagamentoTotale.csv";
@@ -50,8 +50,9 @@ public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
     private static final int IDPAGAMENTO=9;
     private static final String PERMESSI="rwx------";
 
+
     @Override
-    public boolean cancellaFattura(PagamentoFattura p) throws IOException, CsvValidationException {
+    public boolean cancellaFattura(PagamentoFattura p)  {
         synchronized (this.cachePagamentoTotale) {
             this.cachePagamentoTotale.remove(String.valueOf(p.getIdFattura()));
         }
@@ -62,8 +63,10 @@ public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
     }
 
 
-    private static synchronized boolean removeFattura(PagamentoFattura p) throws IOException, CsvValidationException {
+    private static synchronized boolean removeFattura(PagamentoFattura p) {
         boolean status=false;
+        Path target = Path.of(PAGAMENTOTOTALE);
+        try{
         if (SystemUtils.IS_OS_UNIX) {
             FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));
             Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant
@@ -71,17 +74,21 @@ public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
         File tmpFile = new File(APPOGGIO);
         boolean found = isFound(p, tmpFile);
         if (found) {
-            Files.move(tmpFile.toPath(), Path.of(PAGAMENTOTOTALE), REPLACE_EXISTING);
+            Files.move(tmpFile.toPath(), target, REPLACE_EXISTING);
             status=true;
         } else {
             cleanUp(Path.of(tmpFile.toURI()));
         }
+        }catch (IOException e) {
+            Logger.getLogger("removeFatturaPagTotale").log(Level.SEVERE, "removeFattura payTot io exception {0}", e);
+        }
+
         return status;
     }
 
 
 
-    private static boolean isFound(PagamentoFattura f, File tmpFile) throws IOException, CsvValidationException {
+    private static boolean isFound(PagamentoFattura f, File tmpFile)  {
         boolean found = false;
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(PAGAMENTOTOTALE)));
              CSVWriter writer= new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true)))) {
@@ -100,6 +107,11 @@ public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
             }
             writer.flush();
 
+        }catch (IOException e){
+            Logger.getLogger("isFoundPagamentoToale").log(Level.SEVERE,"isFound io exception payTot{0}",e);
+        }catch (CsvValidationException e1){
+            Logger.getLogger("isFoundPagaemntoTotale csv").log(Level.SEVERE,"isFOund csv exception payTot {0}",e1);
+
         }
         return found;
     }
@@ -108,15 +120,16 @@ public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
 
 
     @Override
-    public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException, CsvValidationException {
+    public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC)  {
         synchronized (this.cachePagamentoTotale) {
             this.cachePagamentoTotale.remove(String.valueOf(pCC.getIdPagCC()));
         }
         return removePagamentoCC(pCC);
     }
 
-    private static synchronized boolean removePagamentoCC(PagamentoCartaCredito pCC) throws IOException, CsvValidationException {
+    private static synchronized boolean removePagamentoCC(PagamentoCartaCredito pCC)  {
         boolean status=false;
+        try{
         if (SystemUtils.IS_OS_UNIX) {
             FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));
             Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant
@@ -129,9 +142,12 @@ public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
         } else {
             cleanUp(Path.of(tmpFile.toURI()));
         }
+        }catch (IOException e){
+                Logger.getLogger("removePagamentoCC").log(Level.SEVERE,"removePaymentCC io exception {0}",e);
+            }
         return status;
     }
-    private static boolean isFoundCartaCredito(PagamentoCartaCredito pCC, File tmpFile) throws IOException, CsvValidationException {
+    private static boolean isFoundCartaCredito(PagamentoCartaCredito pCC, File tmpFile)  {
         boolean found = false;
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(PAGAMENTOTOTALE)));
              CSVWriter writer= new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true)))) {
@@ -149,6 +165,11 @@ public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
                     found = true;
             }
             writer.flush();
+
+        }catch (IOException e){
+            Logger.getLogger("isFoundCC").log(Level.SEVERE,"isFoundCC tot io exception {0}",e);
+        }catch (CsvValidationException e1){
+            Logger.getLogger("isFoundCC csv").log(Level.SEVERE,"isFOundCC tot csv exception {0}",e1);
 
         }
         return found;
@@ -171,22 +192,28 @@ public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
 
 
 
-    public PagamentoTotaleCsv() throws IOException {
-        this.file=new File(PAGAMENTOTOTALE);
-        if(!this.file.exists())
+    public PagamentoTotaleCsv()  {
 
-            Files.createFile(Path.of(this.file.toURI()));
-        this.cachePagamentoTotale=new HashMap<>();
+        this.cachePagamentoTotale = new HashMap<>();
 
-        //richiamo entrambi i sottopagamenti dao
-        if(vis.getMetodoP().equals("cash")) csvFattura=new CsvFattura();
-        else csvPagamentoCartaCredito=new CsvPagamentoCartaCredito();
+        try {
+            this.file = new File(PAGAMENTOTOTALE);
+            if (!this.file.exists())
 
+                Files.createFile(Path.of(this.file.toURI()));
+
+            //richiamo entrambi i sottopagamenti dao
+            if (vis.getMetodoP().equals("cash")) csvFattura = new CsvFattura();
+            else csvPagamentoCartaCredito = new CsvPagamentoCartaCredito();
+        }catch (IOException e)
+        {
+            Logger.getLogger("costruttore pagTotate").log(Level.SEVERE,"error with creation file {0}",e);
+        }
 
     }
 
     @Override
-    public boolean inserisciPagamentoFattura(PagamentoFattura p) throws CsvValidationException, IOException, ClassNotFoundException {
+    public boolean inserisciPagamentoFattura(PagamentoFattura p)  {
         super.inserisciPagamentoFattura(p);
          p=csvFattura.ultimaFattura();
 
@@ -212,11 +239,7 @@ public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
             this.cachePagamentoTotale.put(String.valueOf(getIdMax()+1),p);
 
 
-
-
-
-
-        }catch (CsvValidationException e)
+        }catch (IOException e)
         {
             Logger.getLogger("inset pagamentoTotaleFattura").log(Level.SEVERE,"error in insert payment total fattura csv");
 
@@ -225,7 +248,7 @@ public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
     }
 
     @Override
-    public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito pCC) throws IOException, CsvValidationException, ClassNotFoundException {
+    public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito pCC) {
         super.inserisciPagamentoCartaCredito(pCC);
          pCC=csvPagamentoCartaCredito.ultimoPagamentoCartaCredito();
         pCC.setMetodo("cCredito");
@@ -246,6 +269,9 @@ public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
 
 
         }
+        catch (IOException e){
+            Logger.getLogger("getNegozi").log(Level.SEVERE,"getNegozi io exception {0}",e);
+        }
 
 
 
@@ -255,7 +281,7 @@ public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
 
 
     @Override
-    public void inizializza() throws IOException {
+    public void inizializza() {
 
         Path path = Path.of(PAGAMENTOTOTALE);
         try
@@ -265,7 +291,11 @@ public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
         }catch (IOException e)
         {
             Logger.getLogger(" inizializza pagamentoTotale").log(Level.SEVERE," file not exists .{0}",PAGAMENTOTOTALE);
-            Files.createFile(path);
+            try {
+                Files.createFile(path);
+            } catch (IOException ex) {
+                Logger.getLogger("inizializzazione").log(Level.SEVERE,"error with creation file {0}",ex);
+            }
             Logger.getLogger(" inizializza pagamentoTotale creazione").log(Level.INFO," file created .{0}",PAGAMENTOTOTALE);
 
 
@@ -273,7 +303,7 @@ public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
         }
 
     }
-    private static  int getIdMax() throws IOException, CsvValidationException {
+    private static  int getIdMax() {
         //used for insert correct idOgg
         String[] gVector;
         int id = 0;
@@ -291,7 +321,7 @@ public class PagamentoTotaleCsv extends PersistenzzaPagamentoTotale {
             if (id == 0) throw new IdException("id == 0 ");
 
 
-        } catch (IdException |NumberFormatException e) {
+        } catch (IdException |IOException |CsvValidationException |NumberFormatException e) {
             Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR);
         }
 

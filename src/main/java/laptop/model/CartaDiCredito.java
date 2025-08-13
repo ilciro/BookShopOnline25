@@ -104,9 +104,15 @@ public class 	CartaDiCredito implements Serializable {
 		return types;
 	}
 
-	
 
-	
-	
-	
+	@Override
+	public String toString() {
+		return "CartaDiCredito{" +
+				"numeroCC='" + numeroCC + '\'' +
+				", scadenza=" + scadenza +
+				", nomeUser='" + nomeUser + '\'' +
+				", prezzoTransazine=" + prezzoTransazine +
+				", cognomeUser='" + cognomeUser + '\'' +
+				'}';
+	}
 }

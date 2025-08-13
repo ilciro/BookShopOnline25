@@ -118,7 +118,7 @@ public class ReportDao extends PersistenzaReport {
     }
 
     @Override
-    public ObservableList<TempUser> reportU() throws SQLException {
+    public ObservableList<TempUser> reportU()  {
         ObservableList<TempUser> lista=FXCollections.observableArrayList();
         query="select * from utenti";
         try(Connection conn=ConnToDb.connectionToDB();
@@ -130,21 +130,28 @@ public class ReportDao extends PersistenzaReport {
                  TempUser tu = getTempUser(rs);
                  lista.add(tu);
              }
+        }catch (SQLException e)
+        {
+            Logger.getLogger("reportU").log(Level.SEVERE,"reportU is empty {0}",e);
         }
         return lista;
 
     }
 
-    private static @NotNull TempUser getTempUser(ResultSet rs) throws SQLException {
+    private static @NotNull TempUser getTempUser(ResultSet rs)  {
         TempUser tu=new TempUser();
-        tu.setId(rs.getInt(1));
-        tu.setIdRuoloT(rs.getString(2));
-        tu.setNomeT(rs.getString(3));
-        tu.setCognomeT(rs.getString(4));
-        tu.setEmailT(rs.getString(5));
-        tu.setPasswordT(rs.getString(6));
-        tu.setDescrizioneT(rs.getString(7));
-        tu.setDataDiNascitaT(rs.getDate(8).toLocalDate());
+        try {
+            tu.setId(rs.getInt(1));
+            tu.setIdRuoloT(rs.getString(2));
+            tu.setNomeT(rs.getString(3));
+            tu.setCognomeT(rs.getString(4));
+            tu.setEmailT(rs.getString(5));
+            tu.setPasswordT(rs.getString(6));
+            tu.setDescrizioneT(rs.getString(7));
+            tu.setDataDiNascitaT(rs.getDate(8).toLocalDate());
+        } catch (SQLException e) {
+           Logger.getLogger("getTempUser").log(Level.SEVERE,"tempUser is null {0}",e);
+        }
         return tu;
     }
 
@@ -152,7 +159,7 @@ public class ReportDao extends PersistenzaReport {
 
 
     @Override
-    public void inizializza() throws IOException, ClassNotFoundException {
+    public void inizializza()  {
         Logger.getLogger("inizializza reportDao").log(Level.INFO,"initialize report dao");
     }
 }

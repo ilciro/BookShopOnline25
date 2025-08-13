@@ -1,25 +1,18 @@
 package laptop.controller.primoucacquista;
 
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
-
-
 import laptop.database.primoucacquista.giornale.CsvGiornale;
 import laptop.database.primoucacquista.giornale.GiornaleDao;
 import laptop.database.primoucacquista.giornale.MemoriaGiornale;
 import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
 import laptop.database.primoucacquista.libro.MemoriaLibro;
-
 import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
 import laptop.database.primoucacquista.rivista.RivistaDao;
-import laptop.exception.IdException;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Rivista;
@@ -67,7 +60,7 @@ public class ControllerVisualizza {
 		return id;
 	}
 
-	public ObservableList<Libro> getListLibro(String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+	public ObservableList<Libro> getListLibro(String type)  {
 
 		ObservableList<Libro> list;
 		l.setId(getID());
@@ -84,7 +77,7 @@ public class ControllerVisualizza {
 
 
 
-	public ObservableList<Giornale> getListGiornale(String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+	public ObservableList<Giornale> getListGiornale(String type)  {
 
 		ObservableList<Giornale> list;
 		g.setId(getID());
@@ -100,7 +93,7 @@ public class ControllerVisualizza {
 
 	}
 
-	public ObservableList<Rivista> getListRivista(String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+	public ObservableList<Rivista> getListRivista(String type) {
 		ObservableList<Rivista> list;
 		r.setId(getID());
         switch (type) {

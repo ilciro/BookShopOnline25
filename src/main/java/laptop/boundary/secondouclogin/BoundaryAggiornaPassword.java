@@ -1,6 +1,5 @@
 package laptop.boundary.secondouclogin;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,12 +12,12 @@ import javafx.stage.Stage;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.secondouclogin.ControllerAggiornaPassword;
 import laptop.exception.IdException;
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BoundaryAggiornaPassword implements Initializable {
     @FXML
@@ -51,29 +50,35 @@ public class BoundaryAggiornaPassword implements Initializable {
     private Scene scene;
 
     @FXML
-    private void aggiorna() throws IOException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
-        String type="";
-        if(databaseButton.isSelected()) type="database";
-        if(fileButton.isSelected()) type="file";
-        if(memoriaButton.isSelected()) type="memoria";
-        if(cAP.aggiorna(nuovaPTF.getText(),type))
+    private void aggiorna() {
+        try {
+            String type = "";
+            if (databaseButton.isSelected()) type = "database";
+            if (fileButton.isSelected()) type = "file";
+            if (memoriaButton.isSelected()) type = "memoria";
+            if (cAP.aggiorna(nuovaPTF.getText(), type)) {
+                Stage stage;
+                Parent root;
+                stage = (Stage) buttonI.getScene().getWindow();
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/secondouclogin/login.fxml")));
+                stage.setTitle("Benvenuto nella schermata del login");
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } else {
+                throw new IdException("not updated");
+            }
+        }catch (IOException e)
         {
-            Stage stage;
-            Parent root;
-            stage = (Stage) buttonI.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/secondouclogin/login.fxml")));
-            stage.setTitle("Benvenuto nella schermata del login");
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
-        else {
-            throw new SQLException(" not updated");
+            Logger.getLogger("aggiorna").log(Level.SEVERE,"update error {0}",e);
+        }catch (IdException e1)
+        {
+            Logger.getLogger("id error").log(Level.SEVERE,"id is null {0}",e1);
         }
     }
 
     @FXML
-    private void indietro() throws IOException {
+    private void indietro()  {
         if(databaseButton.isSelected()||fileButton.isSelected()||memoriaButton.isSelected())
             ritorna();
     }
@@ -92,14 +97,19 @@ public class BoundaryAggiornaPassword implements Initializable {
 
     }
 
-    private void ritorna() throws IOException {
-        Stage stage;
-        Parent root;
-        stage = (Stage) buttonI.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/secondouclogin/login.fxml")));
-        stage.setTitle("Benvenuto nella schermata del login");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    private void ritorna() {
+        try {
+            Stage stage;
+            Parent root;
+            stage = (Stage) buttonI.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/secondouclogin/login.fxml")));
+            stage.setTitle("Benvenuto nella schermata del login");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("ritorna").log(Level.SEVERE,"return to login not avalaible {0}",e);
+        }
     }
 }

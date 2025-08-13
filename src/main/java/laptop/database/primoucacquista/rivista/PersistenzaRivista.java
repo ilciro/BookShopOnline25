@@ -19,34 +19,29 @@ import java.util.logging.Logger;
 public class PersistenzaRivista {
 
 
-    public  boolean inserisciRivista(Rivista r) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
-        getException();
+    public  boolean inserisciRivista(Rivista r){
         return r.getId()!=0;
     }
-    public  boolean removeRivistaById(Rivista r) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
-        getException();
-
+    public  boolean removeRivistaById(Rivista r)  {
         return r.getId()!=-1;}
 
-    public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
-        getException();
+    public ObservableList<Raccolta> retrieveRaccoltaData()  {
 
         return FXCollections.observableArrayList();
 
     }
-    public ObservableList<Rivista> getRivistaByIdTitoloAutoreRivista(Rivista r) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public ObservableList<Rivista> getRivistaByIdTitoloAutoreRivista(Rivista r)  {
 
-        getException();
         return FXCollections.observableArrayList();
     }
-    public void initializza() throws CsvValidationException, IdException, IOException ,SQLException,ClassNotFoundException{
+    public void initializza() {
         getException();
 
 
         Logger.getLogger("inizializza persistenza rivista").log(Level.INFO,"persistenza rivista inizializza");
 
     }
-    public ObservableList<Rivista> getRiviste() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public ObservableList<Rivista> getRiviste()  {
      return FXCollections.observableArrayList();
     }
 
@@ -54,16 +49,16 @@ public class PersistenzaRivista {
         Logger.getLogger("persistenza rivista").log(Level.INFO, "checking files...");
 
         try {
-            if (!Files.exists(Path.of("report/reportRivista.csv"))) throw new CsvValidationException("CSVException");
-            if (!Files.exists(Path.of("sql/tableCreate.sql"))) throw new SQLException("SQLException");
-            if (!Files.exists(Path.of("memory/serializzazioneRivista.ser"))) throw new ClassNotFoundException("ClassNotFoundException");
+            if (!Files.exists(Path.of("report/reportRivista.csv"))) throw new CsvValidationException("CSVException rivista");
+            if (!Files.exists(Path.of("sql/tableCreate.sql"))) throw new SQLException("SQLException rivista");
+            if (!Files.exists(Path.of("memory/serializzazioneRivista.ser"))) throw new ClassNotFoundException("ClassNotFoundException rivista");
         } catch (CsvValidationException e) {
-            Logger.getLogger("exception modalita file").log(Level.SEVERE, "exception csv :{0}", e);
+            Logger.getLogger("exception modalita file rivista").log(Level.SEVERE, "exception csv rivista :{0}", e);
         } catch (SQLException e) {
-            Logger.getLogger("exception modalita database").log(Level.SEVERE, "exception database :{0}", e);
+            Logger.getLogger("exception modalita database rivista").log(Level.SEVERE, "exception database rivista :{0}", e);
 
         } catch (ClassNotFoundException e) {
-            Logger.getLogger("exception modalita memoria").log(Level.SEVERE, "exception memory :{0}", e);
+            Logger.getLogger("exception modalita memoria rivista").log(Level.SEVERE, "exception memory  rivista:{0}", e);
 
         }
     }

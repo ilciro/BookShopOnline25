@@ -1,6 +1,5 @@
 package laptop.controller.terzoucgestioneprofiloggetto;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 import laptop.database.secondouclogin.users.CsvUtente;
@@ -8,9 +7,6 @@ import laptop.database.secondouclogin.users.MemoriaUtente;
 import laptop.database.secondouclogin.users.PersistenzaUtente;
 import laptop.database.secondouclogin.users.UsersDao;
 import laptop.model.user.TempUser;
-
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,7 +22,7 @@ public class ControllerUtenti {
 
 
 
-    public ObservableList<TempUser> getList(String persistenza) throws SQLException, CsvValidationException, IOException {
+    public ObservableList<TempUser> getList(String persistenza)  {
         ObservableList<TempUser> list;
 
         switch (persistenza){
@@ -41,7 +37,7 @@ public class ControllerUtenti {
 
 
 
-    public boolean elimina(String emailT,String persistenza) throws SQLException, CsvValidationException, IOException {
+    public boolean elimina(String emailT,String persistenza)  {
         boolean status ;
 
 

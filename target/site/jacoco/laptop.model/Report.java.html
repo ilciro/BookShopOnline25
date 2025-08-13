@@ -65,5 +65,17 @@ import java.io.Serializable;
     public void setTotale(float totale) {
 <span class="fc" id="L66">        this.totale = totale;</span>
 <span class="fc" id="L67">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L71">        return &quot;Report{&quot; +</span>
+                &quot;idReport=&quot; + idReport +
+                &quot;, titoloOggetto='&quot; + titoloOggetto + '\'' +
+                &quot;, tipologiaOggetto='&quot; + tipologiaOggetto + '\'' +
+                &quot;, nrPezzi=&quot; + nrPezzi +
+                &quot;, prezzo=&quot; + prezzo +
+                &quot;, totale=&quot; + totale +
+                '}';
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

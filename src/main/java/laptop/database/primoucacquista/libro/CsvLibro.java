@@ -66,7 +66,7 @@ public class CsvLibro extends PersistenzaLibro{
 
 
     @Override
-   public boolean inserisciLibro(Libro l) throws CsvValidationException, IOException {
+   public boolean inserisciLibro(Libro l)  {
         //provo con titolo ed autore ed editore
         //visto che id non buono in quanto non gli e lo assegno
 
@@ -115,7 +115,7 @@ public class CsvLibro extends PersistenzaLibro{
 
 
     }
-    private static synchronized boolean inserimentoLibro(File fd, Libro l) throws IOException, CsvValidationException {
+    private static synchronized boolean inserimentoLibro(File fd, Libro l)  {
 
         try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(fd, true)))) {
             String[] gVector = new String[14];
@@ -138,12 +138,15 @@ public class CsvLibro extends PersistenzaLibro{
             else if (vis.getTipoModifica().equals("insert"))gVector[GETINDEXIDL] = String.valueOf(getIdMax() + 1);
             csvWriter.writeNext(gVector);
             csvWriter.flush();
+        }catch (IOException e)
+        {
+            Logger.getLogger("inserisci libro csv").log(Level.SEVERE,"insert book csv exception {0}",e);
         }
 
         return getIdMax()!=0;
 
     }
-    private static synchronized List<Libro> returnLibriByTAE(File fd,String tit,String aut,String edit,int id) throws IOException, CsvValidationException {
+    private static synchronized List<Libro> returnLibriByTAE(File fd,String tit,String aut,String edit,int id)  {
         String[] gVector;
         List<Libro> list=new ArrayList<>();
         boolean recordFound;
@@ -160,9 +163,11 @@ public class CsvLibro extends PersistenzaLibro{
                     list.add(l);
 
                 }
-
-
             }
+        }catch (IOException e){
+            Logger.getLogger("return libro").log(Level.SEVERE,"return libro io exception !! {0}",e);
+        }catch (CsvValidationException e1){
+            Logger.getLogger("return libro list").log(Level.SEVERE,"list is empty !! {0}",e1);
         }
 
         return list;
@@ -209,7 +214,7 @@ public class CsvLibro extends PersistenzaLibro{
         return l;
     }
 
-    private static synchronized int getIdMax() throws IOException, CsvValidationException {
+    private static synchronized int getIdMax() {
         //used for insert correct idOgg
 
         String []gVector;
@@ -218,21 +223,21 @@ public class CsvLibro extends PersistenzaLibro{
     
         try (CSVReader reader = new CSVReader(new FileReader(LOCATIONL))) {
             while ((gVector = reader.readNext()) != null) {
-               if(Integer.parseInt(gVector[GETINDEXIDL])>max)
-                   max= Integer.parseInt(gVector[GETINDEXIDL]);
+                if (Integer.parseInt(gVector[GETINDEXIDL]) > max)
+                    max = Integer.parseInt(gVector[GETINDEXIDL]);
             }
+        }catch (IOException e)
+        {
+            Logger.getLogger("id max").log(Level.SEVERE,"id error file{0}",e);
+        }catch (CsvValidationException e1)
+        {
+            Logger.getLogger("id max csv").log(Level.SEVERE,"id is null {0}",e1);
         }
-
-
-            
-        
         return max;
-
-
     }
 
     @Override
-    public boolean removeLibroById(Libro l) throws CsvValidationException, IOException {
+    public boolean removeLibroById(Libro l)  {
         synchronized (this.cacheLibro) {
             this.cacheLibro.remove(l.getId());
         }
@@ -242,29 +247,33 @@ public class CsvLibro extends PersistenzaLibro{
 
 
 
-    private static synchronized boolean removeLibroId(File fd, Libro l) throws IOException, CsvValidationException {
+    private static synchronized boolean removeLibroId(File fd, Libro l)  {
         return deleteByType(l,fd);
     }
-    private static synchronized  boolean deleteByType( Libro l, File fd) throws IOException, CsvValidationException {
+    private static synchronized  boolean deleteByType( Libro l, File fd)  {
         boolean status=false;
-        if (SystemUtils.IS_OS_UNIX) {
-            FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));
-            Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant
-        }
-        File tmpFile = new File(APPOGGIO);
-        boolean found = isFound(l, fd, tmpFile);
-        if (found) {
-            Files.move(tmpFile.toPath(), fd.toPath(), REPLACE_EXISTING);
-            status=true;
+        try {
+            if (SystemUtils.IS_OS_UNIX) {
+                FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));
+                Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant
+            }
+            File tmpFile = new File(APPOGGIO);
+            boolean found = isFound(l, fd, tmpFile);
+            if (found) {
+                Files.move(tmpFile.toPath(), fd.toPath(), REPLACE_EXISTING);
+                status = true;
 
-        } else {
-            cleanUp(Path.of(tmpFile.toURI()));
+            } else {
+                cleanUp(Path.of(tmpFile.toURI()));
+            }
+        }catch (IOException e){
+            Logger.getLogger("delete libro").log(Level.SEVERE,"error with delete book {0}",e);
         }
         return status;
 
     }
 
-    private static boolean isFound(Libro l, File fd, File tmpFile) throws IOException, CsvValidationException {
+    private static boolean isFound(Libro l, File fd, File tmpFile) {
         boolean found = false;
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fd)));
              CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true))))
@@ -284,16 +293,22 @@ public class CsvLibro extends PersistenzaLibro{
                     found = true;
             }
             writer.flush();
+        }catch (IOException e)
+        {
+            Logger.getLogger("isFound book").log(Level.SEVERE,"id book file exception {0}",e);
+        }catch (CsvValidationException e1)
+        {
+            Logger.getLogger("idFound csv libro").log(Level.SEVERE," id book csv error {0}",e1);
         }
         return found;
     }
 
 
     @Override
-    public ObservableList<Raccolta> retrieveRaccoltaData() throws IOException, IdException, CsvValidationException {
+    public ObservableList<Raccolta> retrieveRaccoltaData() {
         return retrieveData(this.fdL);
     }
-    private static synchronized ObservableList<Raccolta> retrieveData(File fd) throws CsvValidationException, IOException, IdException {
+    private static synchronized ObservableList<Raccolta> retrieveData(File fd) {
         ObservableList<Raccolta> gList = FXCollections.observableArrayList();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {
             String[] gVector;
@@ -308,6 +323,12 @@ public class CsvLibro extends PersistenzaLibro{
 
 
 
+        }catch (IOException e){
+            Logger.getLogger("retrieveRaccoltaData libro").log(Level.SEVERE,"error with file {0}",e);
+        }catch (CsvValidationException e1){
+            Logger.getLogger("retrieveRaccoltaData libro csv").log(Level.SEVERE,"error with csv {0}",e1);
+        }catch (IdException e2){
+            Logger.getLogger("retrieveRaccoltaData idLibro").log(Level.SEVERE,"error with idLibro {0}",e2);
         }
 
         return gList;
@@ -317,7 +338,7 @@ public class CsvLibro extends PersistenzaLibro{
 
 
     @Override
-    public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l) throws CsvValidationException, IOException, IdException {
+    public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l)  {
         ObservableList<Libro> list=FXCollections.observableArrayList();
         synchronized (this.cacheLibro)
         {
@@ -346,8 +367,8 @@ public class CsvLibro extends PersistenzaLibro{
         }
         return list;
     }
-    private static synchronized ObservableList<Libro> retrieveLibroByIdAutoreTitolo(File fd,Libro libro) throws IOException, CsvValidationException, IdException {
-        ObservableList<Libro> list;
+    private static synchronized ObservableList<Libro> retrieveLibroByIdAutoreTitolo(File fd,Libro libro)  {
+        ObservableList<Libro> list=FXCollections.observableArrayList();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {
             String[] gVector;
             list = FXCollections.observableArrayList();
@@ -367,9 +388,19 @@ public class CsvLibro extends PersistenzaLibro{
                 }
 
             }
+        }catch (IOException e)
+        {
+            Logger.getLogger("retrieveLibro").log(Level.SEVERE,"file book error {0}",e);
+        }catch (CsvValidationException e1)
+        {
+            Logger.getLogger("retriveLibro csv").log(Level.SEVERE,"error with csvLibroFile {0}",e1);
         }
+        try {
         if (list.isEmpty()) {
             throw new IdException("book not found!!");
+            }
+        } catch (IdException e) {
+            Logger.getLogger("libro non ha id").log(Level.SEVERE,"id book is null {0}",e);
         }
 
         return list;
@@ -377,7 +408,7 @@ public class CsvLibro extends PersistenzaLibro{
     }
 
     @Override
-    public ObservableList<Libro> getLibri() throws CsvValidationException, IOException, IdException {
+    public ObservableList<Libro> getLibri()  {
         ObservableList<Libro> list=FXCollections.observableArrayList();
         synchronized (this.cacheLibro)
         {
@@ -406,8 +437,8 @@ public class CsvLibro extends PersistenzaLibro{
         return list;
     }
 
-    private static synchronized ObservableList<Libro> retrieveLibro(File fdL) throws IOException,IdException,CsvValidationException {
-        ObservableList<Libro> list;
+    private static synchronized ObservableList<Libro> retrieveLibro(File fdL) {
+        ObservableList<Libro> list=FXCollections.observableArrayList();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fdL)))) {
             String[] gVector;
             list = FXCollections.observableArrayList();
@@ -416,16 +447,26 @@ public class CsvLibro extends PersistenzaLibro{
             while ((gVector = csvReader.readNext()) != null) {
                     list.add(getLibro(gVector));
             }
+        }catch (IOException e){
+            Logger.getLogger("retrieveLibro io").log(Level.SEVERE,"io exception {0}",e);
+        }catch (CsvValidationException e1){
+            Logger.getLogger("retrieveLibro csv").log(Level.SEVERE,"csv exception {0}",e1);
+
         }
-        if (list.isEmpty()) {
-            throw new IdException("book not found!!");
+        try{
+            if (list.isEmpty()) {
+                throw new IdException("book not found!!");
+            }
+        }catch (IdException e2){
+            Logger.getLogger("retrieveLibro id").log(Level.SEVERE,"id exception {0}",e2);
+
         }
 
         return list;
     }
 
     @Override
-    public void initializza() throws IOException, CsvValidationException {
+    public void initializza() {
         try {
             File directory=new File("report");
 
@@ -446,7 +487,11 @@ public class CsvLibro extends PersistenzaLibro{
 
             Logger.getLogger("creazione db file").log(Level.INFO, "\n creating files ..");
 
-            Files.copy(Path.of(LIBROP), Path.of(LOCATIONL), REPLACE_EXISTING);
+            try {
+                Files.copy(Path.of(LIBROP), Path.of(LOCATIONL), REPLACE_EXISTING);
+            } catch (IOException e) {
+                Logger.getLogger("inizializza libro csv").log(Level.SEVERE,"io exception initialize {0}",e);
+            }
 
             Logger.getLogger("crea db file").log(Level.SEVERE, "\n eccezione ottenuta nella modalità file.", eFile);
         }

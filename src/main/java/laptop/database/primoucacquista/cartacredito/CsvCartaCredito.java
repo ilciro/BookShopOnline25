@@ -11,7 +11,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,7 +26,7 @@ public class CsvCartaCredito extends PersistenzaCC{
     private static final int GETINDEXID=6;
 
     @Override
-    public boolean insCC(CartaDiCredito cc) throws IOException, CsvValidationException, ClassNotFoundException {
+    public boolean insCC(CartaDiCredito cc)  {
         try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(LOCATIONCC, true)))) {
             String[] gVector = new String[7];
             gVector[GETINDEXNOME] = cc.getNomeUser();
@@ -40,11 +39,15 @@ public class CsvCartaCredito extends PersistenzaCC{
 
             csvWriter.writeNext(gVector);
             csvWriter.flush();
+        }catch (IOException e1)
+        {
+            Logger.getLogger("ins cc io").log(Level.SEVERE,"ins cc io exception {0}",e1);
+
         }
         return getIdMax() != 0;
 
     }
-    private static synchronized int getIdMax() throws IOException, CsvValidationException {
+    private static synchronized int getIdMax()  {
         //used for insert correct idOgg
 
         String []gVector;
@@ -56,7 +59,15 @@ public class CsvCartaCredito extends PersistenzaCC{
                 if(Integer.parseInt(gVector[GETINDEXID])>max)
                     max= Integer.parseInt(gVector[GETINDEXID]);
             }
-        }
+        } catch (CsvValidationException e)
+    {
+        Logger.getLogger("get id max cc csv ").log(Level.SEVERE,"id max cc csv exception {0}",e);
+
+    }catch (IOException e1)
+    {
+        Logger.getLogger("get id max cc io ").log(Level.SEVERE,"id max cc io exception {0}",e1);
+
+    }
 
 
 
@@ -68,7 +79,7 @@ public class CsvCartaCredito extends PersistenzaCC{
 
 
     @Override
-    public ObservableList<CartaDiCredito> getCarteDiCredito(CartaDiCredito cc) throws IOException, CsvValidationException {
+    public ObservableList<CartaDiCredito> getCarteDiCredito(CartaDiCredito cc)  {
 
         String[] gVector;
         ObservableList<CartaDiCredito>list=FXCollections.observableArrayList();
@@ -87,20 +98,31 @@ public class CsvCartaCredito extends PersistenzaCC{
                     list.add(cc1);
                 }
             }
+        }catch (IOException e){
+            Logger.getLogger("lista cc").log(Level.SEVERE,"lista cc ioexception {0}",e);
+        }
+        catch (CsvValidationException e1){
+            Logger.getLogger("lista csv").log(Level.SEVERE,"lista csv exception {0}",e1);
+
         }
 
             return list;
     }
 
     @Override
-    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
+    public void inizializza()  {
         Path path = Path.of(LOCATIONCC);
         try{
            if(!Files.exists(path)) throw new IOException("file not exists");
        }catch (IOException e)
        {
            Logger.getLogger("inizializza").log(Level.SEVERE," file .{0} not exists",LOCATIONCC);
-           Files.createFile(path);
+           try {
+               Files.createFile(path);
+           } catch (IOException ex) {
+               Logger.getLogger("inizializza cc csv ").log(Level.SEVERE,"inizializza csv with ioexception {0}",e);
+
+           }
            Logger.getLogger("inizializza").log(Level.INFO," file .{0} created",LOCATIONCC);
 
        }

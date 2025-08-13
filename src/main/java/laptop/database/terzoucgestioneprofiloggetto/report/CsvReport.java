@@ -37,8 +37,7 @@ public class CsvReport extends PersistenzaReport{
     private static final File fileReport=new File(LOCATIONR);
 
     @Override
-    public boolean insertReport(Report r) throws CsvValidationException, IOException {
-        boolean status=false;
+    public boolean insertReport(Report r)  {
         try (CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(fileReport, true)))) {
 
             String[] gVectore = new String[6];
@@ -53,11 +52,13 @@ public class CsvReport extends PersistenzaReport{
 
             writer.flush();
 
+        }catch (IOException e)
+        {
+            Logger.getLogger("insert report").log(Level.SEVERE,"report not inserted {0}",e);
         }
-        if (r.getIdReport()!=0) status=true;
-        return status;
+        return (r.getIdReport()!=0);
     }
-    private static  int getIdMax() throws IOException, CsvValidationException {
+    private static  int getIdMax() {
         //used for insert correct idOgg
         String[] gVector;
         int id = 0;
@@ -65,21 +66,29 @@ public class CsvReport extends PersistenzaReport{
             while ((gVector = reader.readNext()) != null) {
                 id = Integer.parseInt(gVector[GETINDEXIDR]);
             }
+        }catch (IOException |CsvValidationException e)
+        {
+            Logger.getLogger("idMax").log(Level.SEVERE,"id is null {0}",e);
         }
         return id;
 
     }
 
     @Override
-    public void inizializza() throws IOException, ClassNotFoundException {
+    public void inizializza()  {
         Path path = Path.of(LOCATIONR);
-        if(!Files.exists(path)) Files.createFile(path);
         Path path2 = Path.of(LOCATIONUSER);
-        if(!Files.exists(path2)) Files.createFile(path2);
+        try {
+            if (!Files.exists(path)) Files.createFile(path);
+            if (!Files.exists(path2)) Files.createFile(path2);
+        }catch (IOException e)
+        {
+            Logger.getLogger("inizializza").log(Level.SEVERE," files not created {0}",e);
+        }
     }
 
     @Override
-    public ObservableList<Report> report(String type) throws IOException {
+    public ObservableList<Report> report(String type)  {
 
         ObservableList<Report> list = FXCollections.observableArrayList();
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fileReport)))) {
@@ -114,7 +123,7 @@ public class CsvReport extends PersistenzaReport{
             }
 
 
-        } catch (CsvValidationException e) {
+        } catch (CsvValidationException  |IOException e) {
             Logger.getLogger("csv report eccexione").log(Level.SEVERE,"csv file not exists!");
         }
         return list;
@@ -189,7 +198,7 @@ public class CsvReport extends PersistenzaReport{
     }
 
     @Override
-    public ObservableList<TempUser> reportU() throws IOException, CsvValidationException {
+    public ObservableList<TempUser> reportU()  {
         ObservableList<TempUser> list = FXCollections.observableArrayList();
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(LOCATIONUSER)))) {
             String[] gVector;
@@ -202,6 +211,9 @@ public class CsvReport extends PersistenzaReport{
                 list.add(tu);
             }
 
+        }catch (IOException|CsvValidationException e)
+        {
+            Logger.getLogger("reportU").log(Level.SEVERE," reportU not generated {0}",e);
         }
         return list;
     }

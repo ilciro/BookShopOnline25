@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PagamentoTotaleDao extends PersistenzzaPagamentoTotale {
+public class PagamentoTotaleDao extends PersistenzaPagamentoTotale {
 
 
 
@@ -26,21 +26,21 @@ public class PagamentoTotaleDao extends PersistenzzaPagamentoTotale {
     }
 
     @Override
-    public boolean inserisciPagamentoFattura(PagamentoFattura p) throws CsvValidationException, IOException, ClassNotFoundException {
+    public boolean inserisciPagamentoFattura(PagamentoFattura p)  {
         Logger.getLogger("inseirmento pagamento fattura dao").log(Level.INFO,"fattura inserted {0}",p.getIdFattura());
 
         return super.inserisciPagamentoFattura(p);
     }
 
     @Override
-    public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito pCC) throws CsvValidationException, IOException, ClassNotFoundException {
+    public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito pCC)  {
         Logger.getLogger("inseirmento pagamento cc dao").log(Level.INFO,"cc inserted {0}",pCC.getIdPagCC());
 
         return super.inserisciPagamentoCartaCredito(pCC);
     }
 
     @Override
-    public boolean cancellaFattura(PagamentoFattura p) throws IOException, ClassNotFoundException, CsvValidationException {
+    public boolean cancellaFattura(PagamentoFattura p)  {
         int row=0;
         String query="delete from pagamentoFattura where idFattura=?";
       try(Connection conn=ConnToDb.connectionToDB();
@@ -60,7 +60,7 @@ public class PagamentoTotaleDao extends PersistenzzaPagamentoTotale {
     }
 
     @Override
-    public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC) throws IOException, ClassNotFoundException, CsvValidationException {
+    public boolean cancellaPagamentoCC(PagamentoCartaCredito pCC)  {
         int row=0;
         String query="delete from pagamentoCartaCredito where idPagamento=?";
         try(Connection conn=ConnToDb.connectionToDB();

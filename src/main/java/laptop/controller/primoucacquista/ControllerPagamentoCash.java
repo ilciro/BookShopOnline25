@@ -21,7 +21,7 @@ import laptop.database.primoucacquista.libro.PersistenzaLibro;
 import laptop.database.primoucacquista.pagamentofattura.CsvFattura;
 import laptop.database.primoucacquista.pagamentofattura.MemoriaFattura;
 import laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura;
-import laptop.database.primoucacquista.pagamentototale.PersistenzzaPagamentoTotale;
+import laptop.database.primoucacquista.pagamentototale.PersistenzaPagamentoTotale;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleCsv;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria;
@@ -47,7 +47,7 @@ import laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao;
 public class ControllerPagamentoCash {
 
 	private final ControllerSystemState vis= ControllerSystemState.getInstance();
-	private PersistenzzaPagamentoTotale pT;
+	private PersistenzaPagamentoTotale pT;
 	private PersistenzaPagamentoFattura pF;
     private static final String DATABASE="database";
 	private static final String FILE="file";
@@ -64,7 +64,7 @@ public class ControllerPagamentoCash {
 		Logger.getLogger("controlla pagamento cash").log(Level.INFO,"costructor");
 	}
 
-	public void controlla(String nome, String cognome, String via, String com,String type) throws IOException, ClassNotFoundException, SQLException, CsvValidationException, IdException {
+	public void controlla(String nome, String cognome, String via, String com,String type)  {
 
 
 		//1
@@ -174,7 +174,7 @@ public class ControllerPagamentoCash {
 	}
 
 
-	private String ritornaTipoOggetto(String persistenza,String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+	private String ritornaTipoOggetto(String persistenza,String type)  {
 		String tipologia = "";
 
 

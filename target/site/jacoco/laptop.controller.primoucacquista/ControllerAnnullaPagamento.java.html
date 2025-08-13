@@ -12,7 +12,7 @@ import laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao;
 import laptop.database.primoucacquista.pagamentofattura.CsvFattura;
 import laptop.database.primoucacquista.pagamentofattura.MemoriaFattura;
 import laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura;
-import laptop.database.primoucacquista.pagamentototale.PersistenzzaPagamentoTotale;
+import laptop.database.primoucacquista.pagamentototale.PersistenzaPagamentoTotale;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleCsv;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria;
@@ -32,13 +32,13 @@ import java.util.logging.Logger;
 
     private PersistenzaPagamentoFattura pPF;
     private PersistenzaPagamentoCartaCredito pPCC;
-    private PersistenzzaPagamentoTotale pT;
+    private PersistenzaPagamentoTotale pT;
 
 
 
 
 
-    public ObservableList&lt;PagamentoFattura&gt; getFattura(String persistenza) throws CsvValidationException, IOException, ClassNotFoundException {
+    public ObservableList&lt;PagamentoFattura&gt; getFattura(String persistenza) {
 <span class="fc" id="L42">        ObservableList&lt;PagamentoFattura&gt; list= FXCollections.observableArrayList();</span>
 <span class="pc bpc" id="L43" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
@@ -53,7 +53,7 @@ import java.util.logging.Logger;
 
     }
 
-    public boolean cancellaFattura(int idFattura,String persistency) throws IOException, CsvValidationException, ClassNotFoundException {
+    public boolean cancellaFattura(int idFattura,String persistency)  {
 <span class="fc" id="L57">        boolean status=false;</span>
 <span class="pc bpc" id="L58" title="1 of 4 branches missed.">        switch (persistency) {</span>
             case DATABASE -&gt;
@@ -82,7 +82,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L82">        return status;</span>
     }
 
-    public ObservableList&lt;PagamentoCartaCredito&gt; getPagamentoCartaCredito(String persistenza) throws IOException, CsvValidationException, ClassNotFoundException {
+    public ObservableList&lt;PagamentoCartaCredito&gt; getPagamentoCartaCredito(String persistenza)  {
 <span class="fc" id="L86">        ObservableList&lt;PagamentoCartaCredito&gt; list= FXCollections.observableArrayList();</span>
 <span class="pc bpc" id="L87" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
@@ -96,7 +96,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L96">        return list;</span>
     }
 
-    public boolean cancellaPagamentoCC(int idPagamentoCC,String persistency) throws IOException, CsvValidationException, ClassNotFoundException {
+    public boolean cancellaPagamentoCC(int idPagamentoCC,String persistency)  {
 <span class="fc" id="L100">        boolean status=false;</span>
 <span class="pc bpc" id="L101" title="1 of 4 branches missed.">        switch (persistency) {</span>
             case DATABASE -&gt;

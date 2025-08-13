@@ -1,9 +1,7 @@
 package laptop.controller.primoucacquista;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import laptop.database.primoucacquista.giornale.CsvGiornale;
 import laptop.database.primoucacquista.giornale.GiornaleDao;
 import laptop.database.primoucacquista.giornale.MemoriaGiornale;
@@ -16,12 +14,10 @@ import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
 import laptop.database.primoucacquista.rivista.RivistaDao;
-
 import laptop.database.secondouclogin.users.CsvUtente;
 import laptop.database.secondouclogin.users.MemoriaUtente;
 import laptop.database.secondouclogin.users.PersistenzaUtente;
 import laptop.database.secondouclogin.users.UsersDao;
-import laptop.exception.IdException;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
@@ -29,9 +25,6 @@ import laptop.model.raccolta.Rivista;
 import laptop.model.user.TempUser;
 import laptop.model.user.User;
 import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,7 +45,7 @@ public class ControllerRicerca {
     private static final User u= User.getInstance();
 
 
-    public ObservableList<Raccolta> listaLibri(String nome, String persistenza) throws CsvValidationException, IOException, ClassNotFoundException, IdException, SQLException {
+    public ObservableList<Raccolta> listaLibri(String nome, String persistenza)  {
 
         ObservableList<Raccolta> listaR=FXCollections.observableArrayList();
         switch (persistenza)
@@ -81,7 +74,7 @@ public class ControllerRicerca {
 
     }
 
-    public ObservableList<Raccolta> listaGiornali(String nome, String persistenza) throws CsvValidationException, IOException, ClassNotFoundException, IdException, SQLException {
+    public ObservableList<Raccolta> listaGiornali(String nome, String persistenza)  {
 
         ObservableList<Raccolta> listaR=FXCollections.observableArrayList();
         switch (persistenza)
@@ -108,7 +101,7 @@ public class ControllerRicerca {
         return FXCollections.observableArrayList(listaR);
 
     }
-    public ObservableList<Raccolta> listaRiviste(String nome, String persistenza) throws CsvValidationException, IOException, ClassNotFoundException, IdException, SQLException {
+    public ObservableList<Raccolta> listaRiviste(String nome, String persistenza)  {
 
         ObservableList<Raccolta> listaR=FXCollections.observableArrayList();
         switch (persistenza)
@@ -137,7 +130,7 @@ public class ControllerRicerca {
 
     }
 
-    public boolean logout(String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
+    public boolean logout(String persistenza)  {
         boolean status=false;
         switch (persistenza)
         {
@@ -157,7 +150,7 @@ public class ControllerRicerca {
 
     }
 
-    private @NotNull TempUser getTempUser() throws IOException, CsvValidationException, SQLException {
+    private @NotNull TempUser getTempUser() {
         TempUser tu=new TempUser();
         tu.setEmailT(u.getEmail());
         tu.setPasswordT(u.getPassword());

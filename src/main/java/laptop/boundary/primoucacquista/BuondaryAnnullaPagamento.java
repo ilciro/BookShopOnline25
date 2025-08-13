@@ -1,7 +1,6 @@
 package laptop.boundary.primoucacquista;
 
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -26,6 +25,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BuondaryAnnullaPagamento implements Initializable {
 
@@ -110,86 +111,65 @@ public class BuondaryAnnullaPagamento implements Initializable {
     private static final String MEMORIA="memoria";
 
     @FXML
-    private void generaFattura() throws CsvValidationException, IOException, ClassNotFoundException {
+    private void generaFattura()  {
         if(databaseB.isSelected()) pagamentoFattura.setItems(cAP.getFattura(DATABASE));
         if(fileB.isSelected()) pagamentoFattura.setItems(cAP.getFattura(FILE));
         if(memoriaB.isSelected())pagamentoFattura.setItems(cAP.getFattura(MEMORIA));
 
     }
     @FXML
-    private void cancellaFattura() throws CsvValidationException, IOException, ClassNotFoundException {
-        String persistency="";
-        if(databaseB.isSelected()) persistency=DATABASE;
-        if(fileB.isSelected()) persistency=FILE;
-        if(memoriaB.isSelected()) persistency=MEMORIA;
-        if(!persistency.isEmpty())
-        {
-        if(cAP.cancellaFattura(Integer.parseInt(fatturaTF.getText()),persistency)) {
-            if (vis.getTipologiaApplicazione().equals("demo")) {
-                Platform.exit();
-                File path = new File("memory");
-                File[] files = path.listFiles();
-                for (int i = 0; i < Objects.requireNonNull(files).length; i++) {
+    private void cancellaFattura()  {
+        try {
+            String persistency = "";
+            if (databaseB.isSelected()) persistency = DATABASE;
+            if (fileB.isSelected()) persistency = FILE;
+            if (memoriaB.isSelected()) persistency = MEMORIA;
+            if (!persistency.isEmpty()) {
+                if (cAP.cancellaFattura(Integer.parseInt(fatturaTF.getText()), persistency)) {
 
-                    files[i].delete();
+                    Stage stage;
+                    Parent root;
+                    stage = (Stage) cancellaF.getScene().getWindow();
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+
                 }
-
             } else {
                 Stage stage;
                 Parent root;
                 stage = (Stage) cancellaF.getScene().getWindow();
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/annullaPagamento.fxml")));
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
             }
-        }
-        }
-        else {
-            Stage stage;
-            Parent root;
-            stage = (Stage) cancellaF.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/annullaPagamento.fxml")));
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("cancelal fattura").log(Level.SEVERE,"delete fattura not avalaible {0}",e);
         }
 
 
 
     }
     @FXML
-    private void generaPagamento() throws CsvValidationException, IOException, ClassNotFoundException {
+    private void generaPagamento()  {
         if(databaseB.isSelected()) pagamentoCC.setItems(cAP.getPagamentoCartaCredito(DATABASE));
         if(fileB.isSelected()) pagamentoCC.setItems(cAP.getPagamentoCartaCredito(FILE));
         if(memoriaB.isSelected())pagamentoCC.setItems(cAP.getPagamentoCartaCredito(MEMORIA));
     }
     @FXML
-    private void cancellaPagCC() throws CsvValidationException, IOException, ClassNotFoundException {
-        String persistency="";
-        if(databaseB.isSelected()) persistency=DATABASE;
-        if(fileB.isSelected()) persistency=FILE;
-        if(memoriaB.isSelected()) persistency=MEMORIA;
+    private void cancellaPagCC()  {
+        try {
+            String persistency = "";
+            if (databaseB.isSelected()) persistency = DATABASE;
+            if (fileB.isSelected()) persistency = FILE;
+            if (memoriaB.isSelected()) persistency = MEMORIA;
 
 
+            if (cAP.cancellaPagamentoCC(Integer.parseInt(ccTF.getText()), persistency)) {
 
-        if(cAP.cancellaPagamentoCC(Integer.parseInt(ccTF.getText()),persistency))
-        {
-            /*
-            if(vis.getTipologiaApplicazione().equals("demo"))
-            {
-
-                Platform.exit();
-                File path=new File("memory");
-                File[] files = path.listFiles();
-                for(int i = 0; i< Objects.requireNonNull(files).length; i++) {
-
-                    files[i].delete();
-                }
-
-            }else {
-
-             */
                 Stage stage;
                 Parent root;
                 stage = (Stage) cancellaCC.getScene().getWindow();
@@ -198,27 +178,35 @@ public class BuondaryAnnullaPagamento implements Initializable {
                 stage.setScene(scene);
                 stage.show();
 
-        }
-        else {
-            Stage stage;
-            Parent root;
-            stage = (Stage) cancellaCC.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/annullaPagamento.fxml")));
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            } else {
+                Stage stage;
+                Parent root;
+                stage = (Stage) cancellaCC.getScene().getWindow();
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/annullaPagamento.fxml")));
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }catch (IOException e)
+        {
+            Logger.getLogger("cancella cc").log(Level.SEVERE,"delete cc  not avalaible {0}",e);
         }
     }
 
     @FXML
-    private void indietro() throws IOException {
-        Stage stage;
-        Parent root;
-        stage = (Stage) buttonI.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/download.fxml")));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    private void indietro()  {
+        try {
+            Stage stage;
+            Parent root;
+            stage = (Stage) buttonI.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/download.fxml")));
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("indietro").log(Level.SEVERE,"go back not possible {0}",e);
+        }
     }
 
     @Override

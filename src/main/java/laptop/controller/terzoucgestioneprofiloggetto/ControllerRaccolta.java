@@ -1,6 +1,5 @@
 package laptop.controller.terzoucgestioneprofiloggetto;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
@@ -18,14 +17,10 @@ import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
 import laptop.database.primoucacquista.rivista.RivistaDao;
-import laptop.exception.IdException;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
 import laptop.model.raccolta.Rivista;
-
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -48,7 +43,7 @@ public class ControllerRaccolta {
     private PersistenzaRivista pR;
     private PersistenzaGiornale pG;
 
-    public ObservableList<Raccolta> getRaccoltaLista(String type,String persistenza) throws IOException, CsvValidationException, IdException, SQLException, ClassNotFoundException {
+    public ObservableList<Raccolta> getRaccoltaLista(String type,String persistenza)  {
 
         ObservableList <Raccolta> catalogo= FXCollections.observableArrayList();
 
@@ -63,7 +58,7 @@ public class ControllerRaccolta {
         return catalogo;
     }
 
-    private ObservableList<Raccolta> prendiRiviste(String persistenza) throws IOException, CsvValidationException, IdException, SQLException, ClassNotFoundException {
+    private ObservableList<Raccolta> prendiRiviste(String persistenza) {
             switch (persistenza){
                 case DATABASE -> pR=new RivistaDao();
                 case FILE -> pR=new CsvRivista();
@@ -81,7 +76,7 @@ public class ControllerRaccolta {
 
 
 
-    private ObservableList<Raccolta> prendiLibri(String persistenza) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
+    private ObservableList<Raccolta> prendiLibri(String persistenza)  {
         switch (persistenza){
             case DATABASE -> pL=new LibroDao();
             case FILE -> pL=new CsvLibro();
@@ -95,7 +90,7 @@ public class ControllerRaccolta {
 
         return pL.retrieveRaccoltaData();
     }
-    private ObservableList<Raccolta> prendiGiornali(String persistenza) throws IOException, CsvValidationException, IdException, SQLException, ClassNotFoundException {
+    private ObservableList<Raccolta> prendiGiornali(String persistenza)  {
         switch (persistenza){
             case DATABASE -> pG=new GiornaleDao();
             case FILE -> pG=new CsvGiornale();
@@ -117,7 +112,7 @@ public class ControllerRaccolta {
 
     }
 
-    public boolean elimina(String type) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+    public boolean elimina(String type)  {
         boolean status = false;
 
             switch (vis.getType())

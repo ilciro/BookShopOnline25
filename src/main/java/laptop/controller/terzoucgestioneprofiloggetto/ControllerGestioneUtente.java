@@ -1,18 +1,11 @@
 package laptop.controller.terzoucgestioneprofiloggetto;
 
-import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
-
 import laptop.database.secondouclogin.users.CsvUtente;
 import laptop.database.secondouclogin.users.MemoriaUtente;
 import laptop.database.secondouclogin.users.PersistenzaUtente;
 import laptop.database.secondouclogin.users.UsersDao;
-import laptop.exception.IdException;
 import laptop.model.user.TempUser;
-
-
-import java.io.IOException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +20,7 @@ public class ControllerGestioneUtente {
     private static final String MEMORIA="memoria";
 
 
-    public TempUser getDataUser(String type) throws CsvValidationException, SQLException, IOException {
+    public TempUser getDataUser(String type)  {
 
         TempUser tu = null;
         switch (type)
@@ -48,7 +41,7 @@ public class ControllerGestioneUtente {
 
 
 
-    public boolean inserisciUtente(String []data ,String type) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public boolean inserisciUtente(String []data ,String type)  {
 
 
         vis.setTipoModifica("insert");
@@ -92,7 +85,7 @@ public class ControllerGestioneUtente {
 
 
 
-    public boolean modifica(String[] data,String persistenza,String vecchiaMail) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
+    public boolean modifica(String[] data,String persistenza,String vecchiaMail)  {
         TempUser tu=new TempUser();
         vis.setTipoModifica("im");
 

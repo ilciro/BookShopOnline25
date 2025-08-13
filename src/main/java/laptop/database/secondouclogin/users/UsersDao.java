@@ -69,7 +69,7 @@ public class UsersDao extends PersistenzaUtente {
 	}
 
 	@Override
-	public ObservableList<TempUser> getUserData() throws SQLException {
+	public ObservableList<TempUser> getUserData()  {
 		ObservableList<TempUser> lista=FXCollections.observableArrayList();
 		query="select * from utenti";
 		try(Connection conn=ConnToDb.connectionToDB();
@@ -90,6 +90,9 @@ public class UsersDao extends PersistenzaUtente {
 				lista.add(tu);
 			}
 
+		}catch (SQLException e) {
+			Logger.getLogger("getUserData").log(Level.INFO, ECCEZIONE, e);
+
 		}
 		return lista;
 	}
@@ -97,7 +100,7 @@ public class UsersDao extends PersistenzaUtente {
 
 
 	@Override
-	public boolean removeUserByIdEmailPwd(TempUser u) throws SQLException {
+	public boolean removeUserByIdEmailPwd(TempUser u)  {
 		query="delete from utenti where idUser=? or email=? or pwd=?";
 
 		try(Connection conn=ConnToDb.connectionToDB();
@@ -108,13 +111,17 @@ public class UsersDao extends PersistenzaUtente {
 			prepQ.setString(3,u.getPasswordT());
 			row=prepQ.executeUpdate();
 		}
+		catch (SQLException e) {
+			Logger.getLogger("removeUserByIdEmailPwd").log(Level.INFO, ECCEZIONE, e);
+
+		}
 		return row==1;
 	}
 
 
 
 	@Override
-	public void initializza() throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
+	public void initializza() {
 	super.initializza();
     }
 

@@ -1,6 +1,5 @@
 package laptop.controller.terzoucgestioneprofiloggetto;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.ObservableList;
 
 
@@ -13,17 +12,13 @@ import laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao;
 import laptop.database.primoucacquista.pagamentofattura.CsvFattura;
 import laptop.database.primoucacquista.pagamentofattura.MemoriaFattura;
 import laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura;
-import laptop.database.primoucacquista.pagamentototale.PersistenzzaPagamentoTotale;
+import laptop.database.primoucacquista.pagamentototale.PersistenzaPagamentoTotale;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleCsv;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria;
-import laptop.exception.IdException;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
 import laptop.model.user.User;
-
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,7 +29,7 @@ public class ControllerVisualizzaOrdini {
     private static final String FILE="file";
     private static final String MEMORIA="memoria";
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
-    private PersistenzzaPagamentoTotale pT;
+    private PersistenzaPagamentoTotale pT;
 
 
 
@@ -43,7 +38,7 @@ public class ControllerVisualizzaOrdini {
         return User.getInstance().getEmail();
     }
 
-    public ObservableList<PagamentoFattura> getListaFattura(String persistenza) throws CsvValidationException, IOException, ClassNotFoundException, SQLException, IdException {
+    public ObservableList<PagamentoFattura> getListaFattura(String persistenza)  {
 
 
 
@@ -62,7 +57,7 @@ public class ControllerVisualizzaOrdini {
         return pPF.listPagamentiByUserF(pf);
     }
 
-    public ObservableList<PagamentoCartaCredito> getListaCC(String persistenza) throws IOException, ClassNotFoundException, CsvValidationException, IdException {
+    public ObservableList<PagamentoCartaCredito> getListaCC(String persistenza)  {
         switch (persistenza)
         {
             case DATABASE->pCC=new PagamentoCartaCreditoDao();
@@ -76,7 +71,7 @@ public class ControllerVisualizzaOrdini {
         return pCC.listaPagamentiUserByCC(pCC1);
     }
 
-    public boolean cancellaPagamento(int id,String persistenza) throws CsvValidationException, IOException, ClassNotFoundException, SQLException {
+    public boolean cancellaPagamento(int id,String persistenza)  {
 
         boolean status;
         switch (persistenza)

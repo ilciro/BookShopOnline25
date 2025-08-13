@@ -1,9 +1,7 @@
 package laptop.boundary.primoucacquista;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,12 +14,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import laptop.controller.primoucacquista.ControllerRicerca;
 import laptop.controller.ControllerSystemState;
-import laptop.exception.IdException;
 import laptop.model.raccolta.Raccolta;
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -87,7 +82,7 @@ public class BoundaryRicerca implements Initializable {
 
 
     @FXML
-    private void cerca() throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
+    private void cerca() {
 
         String type="";
         if(databaseButton.isSelected()) type=DATABASE;
@@ -130,7 +125,7 @@ public class BoundaryRicerca implements Initializable {
 
     }
     @FXML
-    private void mostra() throws IOException {
+    private void mostra()  {
         if(checkPersistenza()) {
 
 
@@ -144,21 +139,26 @@ public class BoundaryRicerca implements Initializable {
                     default -> Logger.getLogger("check tipologia riverca").log(Level.SEVERE, "id ricerca not correct assigned!!");
 
                 }
+                try {
 
-            Stage stage;
-            Parent root;
-            stage = (Stage) mostraB.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/visualizzaPage.fxml")));
-            stage.setTitle("Benvenuto nella schermata del riepilogo di oggetto");
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+                    Stage stage;
+                    Parent root;
+                    stage = (Stage) mostraB.getScene().getWindow();
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/visualizzaPage.fxml")));
+                    stage.setTitle("Benvenuto nella schermata del riepilogo di oggetto");
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                }catch (IOException e)
+                {
+                    Logger.getLogger("mostra").log(Level.SEVERE,"show not possible {0}",e);
+                }
         }
 
 
     }
     @FXML
-    private void indietro() throws IOException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
+    private void indietro()  {
         String type="";
         Stage stage;
         Parent root;
@@ -166,24 +166,28 @@ public class BoundaryRicerca implements Initializable {
         if (fileButton.isSelected()) type=FILE;
         if (memoriaButton.isSelected()) type=MEMORIA;
 
+        try {
+            if (cR.logout(type)) {
 
-        if(cR.logout(type)) {
 
-            stage = (Stage) buttonI.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
-            stage.setTitle("Benvenuto nella schermata della home Page");
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
-        else {
+                stage = (Stage) buttonI.getScene().getWindow();
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
+                stage.setTitle("Benvenuto nella schermata della home Page");
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } else {
 
-            stage = (Stage) buttonI.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/ricerca.fxml")));
-            stage.setTitle("Benvenuto nella schermata della ricerca");
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+                stage = (Stage) buttonI.getScene().getWindow();
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/ricerca.fxml")));
+                stage.setTitle("Benvenuto nella schermata della ricerca");
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }catch (IOException e)
+        {
+            Logger.getLogger("indietro").log(Level.SEVERE,"error  {0}",e);
         }
 
 

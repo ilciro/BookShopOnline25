@@ -1,19 +1,14 @@
 package laptop.database.primoucacquista.libro;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 import laptop.database.DaoInitialize;
-import laptop.exception.IdException;
 import laptop.model.raccolta.Factory;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
 import laptop.utilities.ConnToDb;
-
-import java.io.*;
 import java.sql.*;
-import java.util.SortedMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,12 +36,12 @@ public class LibroDao extends PersistenzaLibro{
 
 
     @Override
-    public boolean inserisciLibro(Libro l) throws IOException, CsvValidationException{
+    public boolean inserisciLibro(Libro l){
         int row=0;
         query="insert into libro values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try(Connection conn= ConnToDb.connectionToDB();
-            PreparedStatement prepQ= conn.prepareStatement(query);
+            PreparedStatement prepQ= conn.prepareStatement(query)
             )
         {
 
@@ -80,7 +75,7 @@ public class LibroDao extends PersistenzaLibro{
     }
 
     @Override
-   public boolean removeLibroById(Libro l) throws CsvValidationException, IOException {
+   public boolean removeLibroById(Libro l) {
         int row=0;
         query = "delete from libro where idLibro=? or idLibro=?";
         try (Connection conn = ConnToDb.connectionToDB();
@@ -204,7 +199,7 @@ public class LibroDao extends PersistenzaLibro{
     }
 
     @Override
-    public void initializza() throws CsvValidationException, IdException, IOException, ClassNotFoundException {
+    public void initializza()  {
 
         super.initializza();
         Logger.getLogger("libro dao inizializza").log(Level.INFO, "inizializza libro dao");

@@ -1,10 +1,8 @@
 package laptop.database.primoucacquista.libro;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.database.MemoryInitialize;
-import laptop.exception.IdException;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
 
@@ -13,6 +11,8 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class MemoriaLibro extends PersistenzaLibro{
@@ -22,17 +22,21 @@ public class MemoriaLibro extends PersistenzaLibro{
     private static final MemoryInitialize mI = new MemoryInitialize();
 
     @Override
-    public void initializza() throws IOException, CsvValidationException, ClassNotFoundException {
+    public void initializza(){
      mI.inizializza(SERIALIZZAZIONE);
     }
 
 
     @Override
-    public boolean inserisciLibro(Libro l) throws  IOException, ClassNotFoundException {
+    public boolean inserisciLibro(Libro l)  {
         Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);
         if (!Files.exists(path2))
         {
-            Files.createFile(path2);
+            try {
+                Files.createFile(path2);
+            } catch (IOException e) {
+                Logger.getLogger("inserisci libro").log(Level.SEVERE,"inseirsci libro exception {0}",e);
+            }
         }
 
 
@@ -41,14 +45,14 @@ public class MemoriaLibro extends PersistenzaLibro{
     }
 
     @Override
-    public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public ObservableList<Raccolta> retrieveRaccoltaData()  {
 
 
         return FXCollections.observableArrayList(mI.listaLibri(SERIALIZZAZIONE));
     }
 
     @Override
-    public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l) throws IOException, ClassNotFoundException {
+    public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l) {
         ObservableList<Libro> listaRecuperata = FXCollections.observableArrayList();
 
         List<Libro> list=mI.listaLibri(SERIALIZZAZIONE);
@@ -72,14 +76,14 @@ public class MemoriaLibro extends PersistenzaLibro{
     }
 
     @Override
-    public ObservableList<Libro> getLibri() throws IOException, ClassNotFoundException {
+    public ObservableList<Libro> getLibri() {
         List<Libro> list=mI.listaLibri(SERIALIZZAZIONE);
         return FXCollections.observableList(list);
     }
 
     @Override
 
-    public boolean removeLibroById(Libro l) throws IOException, ClassNotFoundException {
+    public boolean removeLibroById(Libro l)  {
         return mI.cancellaLibro(l);
     }
 

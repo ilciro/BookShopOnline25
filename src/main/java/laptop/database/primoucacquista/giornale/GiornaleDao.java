@@ -1,17 +1,14 @@
 package laptop.database.primoucacquista.giornale;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 import laptop.database.DaoInitialize;
-import laptop.exception.IdException;
 import laptop.model.raccolta.Factory;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Raccolta;
 import laptop.utilities.ConnToDb;
 
-import java.io.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.logging.Level;
@@ -115,7 +112,7 @@ public class GiornaleDao extends PersistenzaGiornale{
     }
 
     @Override
-    public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException {
+    public ObservableList<Raccolta> retrieveRaccoltaData()  {
         ObservableList<Raccolta> catalogo= FXCollections.observableArrayList();
         query = "select  * from giornale";
         try (Connection conn = ConnToDb.connectionToDB();
@@ -186,7 +183,7 @@ public class GiornaleDao extends PersistenzaGiornale{
     }
 
     @Override
-    public void initializza() throws IOException, SQLException, CsvValidationException, IdException, ClassNotFoundException {
+    public void initializza(){
 
     super.initializza();
         DaoInitialize daoI=new DaoInitialize();

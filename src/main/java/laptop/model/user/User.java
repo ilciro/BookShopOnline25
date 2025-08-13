@@ -8,18 +8,25 @@ import java.util.logging.Logger;
 
 
 public class User implements Serializable {
-	
- enum Ruoli {
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", cognome='" + cognome + '\'' +
+				", email='" + email + '\'' +
+				", r='" + r + '\'' +
+				'}';
+	}
+
+	enum Ruoli {
 		ADMIN,
 		UTENTE,
 		SCRITTORE,
 		EDITORE,
-		NONVALIDO;
+		NONVALIDO
  }
-	@Override
-	public String toString() {
-		return "User [nome=" + nome + ", Cognome=" + cognome + ", email=" + email + " , pass=" + password +", idRuolo=" + r + ", id=" + id +"]";
-	}
 
 
 	@Serial

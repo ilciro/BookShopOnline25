@@ -2,7 +2,6 @@ package laptop.model.raccolta;
 
 import java.awt.Desktop;
 import java.io.*;
-import java.net.URISyntaxException;
 
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -14,7 +13,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 
 
-public class 	Libro implements Raccolta , Serializable  {
+public class Libro implements Raccolta , Serializable  {
 	@Serial
 	private static final long serialVersionUID = 2L;
 
@@ -305,7 +304,7 @@ public class 	Libro implements Raccolta , Serializable  {
 
 	}
 	@Override
-	public void scarica(int i) throws DocumentException, IOException {
+	public void scarica(int i)  {
 
 		//here is copy of file
 
@@ -333,7 +332,7 @@ public class 	Libro implements Raccolta , Serializable  {
 }
 
 	@Override
-	public void leggi(int i) throws IOException, DocumentException, URISyntaxException {
+	public void leggi(int i)  {
 
 		switch (i) {
 			case 1 -> this.f=new File(rbTitoli.getString(DSTPATH) + rbTitoli.getString("titolo1"));
@@ -419,5 +418,15 @@ public class 	Libro implements Raccolta , Serializable  {
 
 	public void setNrPagine(int nrPagine) {
 		this.nrPagine = nrPagine;
+	}
+
+	@Override
+	public String toString() {
+		return "Libro{" +
+				"titolo='" + titolo + '\'' +
+				", editore='" + editore + '\'' +
+				", autore='" + autore + '\'' +
+				", id=" + id +
+				'}';
 	}
 }

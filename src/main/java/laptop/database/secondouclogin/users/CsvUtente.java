@@ -53,7 +53,7 @@ public class CsvUtente extends PersistenzaUtente {
 
 
      @Override
-    public boolean inserisciUtente(TempUser tu) throws IOException, CsvValidationException, IdException {
+    public boolean inserisciUtente(TempUser tu) {
 
         boolean duplicated;
         synchronized (this.cacheU) {
@@ -88,7 +88,7 @@ public class CsvUtente extends PersistenzaUtente {
 
 
     @Override
-    public void initializza() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public void initializza()  {
         try {
             File directory=new File("report");
 
@@ -113,7 +113,11 @@ public class CsvUtente extends PersistenzaUtente {
 
             Logger.getLogger("creazione db file").log(Level.INFO, "\n creating files ..");
 
-            Files.copy(Path.of(UTENTEP), Path.of(LOCATIONU), REPLACE_EXISTING);
+            try {
+                Files.copy(Path.of(UTENTEP), Path.of(LOCATIONU), REPLACE_EXISTING);
+            } catch (IOException e) {
+                Logger.getLogger("inizializza").log(Level.SEVERE,"error with copy {0}",e);
+            }
 
             Logger.getLogger("crea db file").log(Level.SEVERE, "\n eccezione ottenuta nella modalità file.", eFile);
         }
@@ -121,7 +125,7 @@ public class CsvUtente extends PersistenzaUtente {
 
 
     @Override
-    public boolean removeUserByIdEmailPwd(TempUser tu) throws CsvValidationException, IOException {
+    public boolean removeUserByIdEmailPwd(TempUser tu)  {
         synchronized (this.cacheU) {
             this.cacheU.remove(tu.getEmailT());
         }
@@ -129,7 +133,7 @@ public class CsvUtente extends PersistenzaUtente {
     }
 
 
-    private static synchronized boolean insertUser(TempUser u) throws IOException, CsvValidationException {
+    private static synchronized boolean insertUser(TempUser u)  {
         try (CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(LOCATIONU, true)))) {
             String[] gVector = new String[8];
 
@@ -145,6 +149,9 @@ public class CsvUtente extends PersistenzaUtente {
             writer.writeNext(gVector);
             writer.flush();
 
+        }catch (IOException  e)
+        {
+            Logger.getLogger("insert user").log(Level.SEVERE,"error with insert {0}",e);
         }
 
         return getIdMax() != 0;
@@ -152,71 +159,68 @@ public class CsvUtente extends PersistenzaUtente {
 
     }
 
-    private static synchronized List<TempUser> getUserData(File fd, int id, String mail, String pass) throws IOException, CsvValidationException {
-        List<TempUser> list;
+    private static synchronized List<TempUser> getUserData(File fd, int id, String mail, String pass)  {
+        List<TempUser> list=new ArrayList<>();
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fd)))) {
             String[] gVector;
             boolean recordFound;
             list = new ArrayList<>();
-
-
             while ((gVector = reader.readNext()) != null) {
-
-
                 recordFound = gVector[GETINDEXIDUSER].equals(String.valueOf(id)) || gVector[GETINDEXEMAIL].equals(mail) || gVector[GETINDEXPWD].equals(pass);
-
                 if (recordFound) {
-
                     TempUser tu = getTempUser(gVector);
-
-
-
-
                     list.add(tu);
                 }
-
             }
-
-
+        }catch (IOException|CsvValidationException e)
+        {
+            Logger.getLogger("getUserData").log(Level.SEVERE,"error with list {0}",e);
         }
         return list;
     }
 
 
 
-    private static synchronized int getIdMax() throws IOException, CsvValidationException {
+    private static synchronized int getIdMax(){
         //used for insert correct idOgg
-        int id;
+        int id=0;
         try (CSVReader reader = new CSVReader(new FileReader(LOCATIONU))) {
             String[] gVector;
-            id = 0;
             while ((gVector = reader.readNext()) != null)
                 id = Integer.parseInt(gVector[GETINDEXIDUSER]);
+         }catch  (IOException|CsvValidationException e)
+        {
+            Logger.getLogger("idMax").log(Level.SEVERE,"id not found {0}",e);
         }
 
         return id;
 
     }
 
-    private static synchronized boolean cancellaUserById(File fd, TempUser u1) throws IOException, CsvValidationException {
+    private static synchronized boolean cancellaUserById(File fd, TempUser u1) {
         boolean status = false;
-        if (SystemUtils.IS_OS_UNIX) {
-            FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString("rwx------"));
-            Files.createTempFile("prefix", "suffix", attr); // Compliant
-        }
-        File tmpFD = new File("report/appoggioUser.csv");
-        boolean found = isFound(fd, u1, tmpFD);
-        if (found) {
-            Files.move(tmpFD.toPath(), fd.toPath(), REPLACE_EXISTING);
-            status = true;
-        } else {
-            cleanUp(Path.of(tmpFD.toURI()));
+        try {
+            if (SystemUtils.IS_OS_UNIX) {
+                FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString("rwx------"));
+                Files.createTempFile("prefix", "suffix", attr); // Compliant
+            }
+            File tmpFD = new File("report/appoggioUser.csv");
+            boolean found = isFound(fd, u1, tmpFD);
+            if (found) {
+                Files.move(tmpFD.toPath(), fd.toPath(), REPLACE_EXISTING);
+                status = true;
+            } else {
+                cleanUp(Path.of(tmpFD.toURI()));
+            }
+        }catch (IOException e)
+        {
+            Logger.getLogger("cancella user").log(Level.SEVERE,"cancella user {0}",e);
         }
         return status;
 
     }
 
-    private static boolean isFound(File fd, TempUser u1, File tmpFD) throws IOException, CsvValidationException {
+    private static boolean isFound(File fd, TempUser u1, File tmpFD) {
         boolean found = false;
         // create csvReader object passing file reader as a parameter
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)));
@@ -240,31 +244,27 @@ public class CsvUtente extends PersistenzaUtente {
 
 
             csvWriter.flush();
+        }catch (IOException|CsvValidationException e)
+        {
+            Logger.getLogger("isFound").log(Level.SEVERE,"isFound exception {0}",e);
         }
         return found;
     }
 
 
 @Override
-    public synchronized ObservableList<TempUser> getUserData() throws IOException, CsvValidationException {
-        ObservableList<TempUser> list;
+    public synchronized ObservableList<TempUser> getUserData() {
+        ObservableList<TempUser> list=FXCollections.observableArrayList();
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(this.fdU)))) {
             String[] gVector;
-
             list = FXCollections.observableArrayList();
-
-
             while ((gVector = reader.readNext()) != null) {
-
                 TempUser tu = getTempUser(gVector);
-
-
                 list.add(tu);
-
-
             }
-
-
+        }catch (IOException|CsvValidationException e)
+        {
+            Logger.getLogger("user data retrieve").log(Level.SEVERE,"error {0}",e);
         }
         return list;
     }

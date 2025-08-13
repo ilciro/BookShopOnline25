@@ -1,6 +1,5 @@
 package laptop.boundary.demo;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -40,29 +39,34 @@ public class BoundarySceltaModalita implements Initializable {
 
 
     @FXML
-    private void demo() throws IOException {
+    private void demo()  {
         vis.setTipologiaApplicazione("demo");
         homePage();
     }
 
     @FXML
-    private void full() throws IOException {
+    private void full()  {
         vis.setTipologiaApplicazione("full");
         homePage();
     }
 
 
-    private void homePage() throws IOException {
-        Stage stage;
-        Parent root;
-        Scene scene;
-        if(vis.getTipologiaApplicazione().equals("demo")) stage = (Stage) demoB.getScene().getWindow();
-        else stage = (Stage) fullB.getScene().getWindow();
+    private void homePage() {
+        try {
+            Stage stage;
+            Parent root;
+            Scene scene;
+            if (vis.getTipologiaApplicazione().equals("demo")) stage = (Stage) demoB.getScene().getWindow();
+            else stage = (Stage) fullB.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("home page").log(Level.SEVERE,"exception :{0}",e);
 
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        }
 
 
     }

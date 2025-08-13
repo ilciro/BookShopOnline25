@@ -1,7 +1,6 @@
 package laptop.controller.primoucacquista;
 
 
-import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
 
 import laptop.database.primoucacquista.giornale.CsvGiornale;
@@ -11,21 +10,13 @@ import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
 import laptop.database.primoucacquista.libro.LibroDao;
 import laptop.database.primoucacquista.libro.MemoriaLibro;
 import laptop.database.primoucacquista.libro.PersistenzaLibro;
-
 import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
 import laptop.database.primoucacquista.rivista.RivistaDao;
-import laptop.exception.IdException;
 import laptop.exception.LogoutException;
 import laptop.model.user.User;
 import laptop.database.primoucacquista.libro.CsvLibro;
-
-
-
-import java.io.IOException;
-
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -82,7 +73,7 @@ public class ControllerHomePage {
 
 
 
-    public void persistenza(String type) throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException {
+    public void persistenza(String type) {
 
         switch (vis.getType())
         {

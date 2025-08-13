@@ -1,6 +1,5 @@
 package laptop.controller.terzoucgestioneprofiloggetto;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
@@ -11,9 +10,6 @@ import laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport;
 import laptop.database.terzoucgestioneprofiloggetto.report.ReportDao;
 import laptop.model.Report;
 import laptop.model.user.TempUser;
-
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,7 +23,7 @@ public class ControllerReport {
 
 
 
-    public ObservableList<Report> reportTotale(String persistenza) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
+    public ObservableList<Report> reportTotale(String persistenza)  {
 
         ObservableList<Report> list=FXCollections.observableArrayList();
 
@@ -50,7 +46,7 @@ public class ControllerReport {
 
 
 
-    public ObservableList<Report> reportL(String persistenza) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
+    public ObservableList<Report> reportL(String persistenza)  {
 
 
         ObservableList<Report> list= FXCollections.observableArrayList();
@@ -71,7 +67,7 @@ public class ControllerReport {
 
     }
 
-    public ObservableList<Report> reportG(String persistenza) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
+    public ObservableList<Report> reportG(String persistenza)  {
         ObservableList<Report> list= FXCollections.observableArrayList();
 
         switch (persistenza)
@@ -90,7 +86,7 @@ public class ControllerReport {
 
 
     }
-    public ObservableList<Report> reportR(String persistenza) throws IOException, ClassNotFoundException, SQLException, CsvValidationException {
+    public ObservableList<Report> reportR(String persistenza)  {
         ObservableList<Report> list= FXCollections.observableArrayList();
 
         switch (persistenza)
@@ -107,7 +103,7 @@ public class ControllerReport {
 
 
     }
-    public ObservableList<TempUser> reportUser(String persistenza) throws SQLException, CsvValidationException, IOException {
+    public ObservableList<TempUser> reportUser(String persistenza) {
         ObservableList<TempUser> list=FXCollections.observableArrayList();
         switch (persistenza)
         {

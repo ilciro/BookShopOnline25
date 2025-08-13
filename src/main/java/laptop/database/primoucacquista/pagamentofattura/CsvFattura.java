@@ -6,7 +6,6 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.exception.IdException;
-import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
 import org.apache.commons.lang.SystemUtils;
 import org.jetbrains.annotations.NotNull;
@@ -17,7 +16,6 @@ import java.nio.file.Path;
 import java.nio.file.attribute.FileAttribute;
 import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.logging.Level;
@@ -47,32 +45,45 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
     private static final String IDWRONG="id wrong ..!!";
     private static final String IDERROR="id error !!..";
 
-    public CsvFattura() throws IOException {
+    public CsvFattura() {
         this.fileFattura=new File(FATTURA);
-        if(!this.fileFattura.exists())
-            Files.createFile(Path.of(this.fileFattura.toURI()));
+        if(!this.fileFattura.exists()) {
+            try {
+                Files.createFile(Path.of(this.fileFattura.toURI()));
+            } catch (IOException e) {
+                Logger.getLogger("costruttore").log(Level.SEVERE,"error with file creation {0}",e);
+            }
+        }
         this.cacheFattura=new HashMap<>();
 
     }
 
-    private static void cleanUp(Path path) throws IOException {
-        Files.delete(path);
+    private static void cleanUp(Path path)  {
+        try {
+            Files.delete(path);
+        } catch (IOException e) {
+            Logger.getLogger("cleanUpF").log(Level.SEVERE,"error with del file f {0}",e);
+        }
     }
 
     @Override
-    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
+    public void inizializza() {
         Path path = Path.of(FATTURA);
         try{
             if(!Files.exists(path)) throw new IOException(" file is empty");
 
         }catch (IOException e)
         {
-            Files.createFile(path);
+            try {
+                Files.createFile(path);
+            } catch (IOException ex) {
+                Logger.getLogger("inizializza csv fattura").log(Level.SEVERE,"error with creation file {0}",ex);
+            }
         }
     }
 
     @Override
-    public boolean inserisciPagamentoFattura(PagamentoFattura f) throws IOException {
+    public boolean inserisciPagamentoFattura(PagamentoFattura f)  {
 
 
         try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.fileFattura, true)))) {
@@ -92,7 +103,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
 
             csvWriter.flush();
 
-        } catch (CsvValidationException e) {
+        } catch ( IOException e) {
             Logger.getLogger("insert fattura").log(Level.SEVERE,"error in insert fattura csv");
         }
 
@@ -104,7 +115,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
 
     }
 
-    private static  int getIdMax() throws IOException, CsvValidationException {
+    private static  int getIdMax()  {
         //used for insert correct idOgg
         String[] gVector;
         int id = 0;
@@ -128,7 +139,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
             if (id == 0)
                 throw new IdException("id == 0 ");
 
-        }catch (IdException  e)
+        }catch (IdException |IOException |CsvValidationException e)
         {
 
             Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR);
@@ -140,32 +151,37 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
     }
 
     @Override
-    public boolean cancellaPagamentoFattura(PagamentoFattura f) throws CsvValidationException, IOException {
+    public boolean cancellaPagamentoFattura(PagamentoFattura f)  {
         synchronized (this.cacheFattura) {
             this.cacheFattura.remove(String.valueOf(f.getNome()));
         }
         return removeFattura(f);
     }
-    private static synchronized boolean removeFattura(PagamentoFattura f) throws IOException, CsvValidationException {
+    private static synchronized boolean removeFattura(PagamentoFattura f) {
         boolean status=false;
-        if (SystemUtils.IS_OS_UNIX) {
-            FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));
-            Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant
-        }
-        File tmpFile = new File(APPOGGIO);
-        boolean found = isFound(f, tmpFile);
-        if (found) {
-            Files.move(tmpFile.toPath(), Path.of(FATTURA), REPLACE_EXISTING);
-            status=true;
-        } else {
-            cleanUp(Path.of(tmpFile.toURI()));
+        try {
+            if (SystemUtils.IS_OS_UNIX) {
+                FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));
+                Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant
+            }
+            File tmpFile = new File(APPOGGIO);
+            boolean found = isFound(f, tmpFile);
+            if (found) {
+                Files.move(tmpFile.toPath(), Path.of(FATTURA), REPLACE_EXISTING);
+                status = true;
+            } else {
+                cleanUp(Path.of(tmpFile.toURI()));
+            }
+        }catch (IOException e)
+        {
+            Logger.getLogger("removeFattura").log(Level.SEVERE,"error with remove fattura {0}",e);
         }
         return status;
 
 
     }
 
-    private static boolean isFound(PagamentoFattura f, File tmpFile) throws IOException, CsvValidationException {
+    private static boolean isFound(PagamentoFattura f, File tmpFile) {
         boolean found = false;
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(FATTURA)));
              CSVWriter writer= new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true)))) {
@@ -184,22 +200,30 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
             }
             writer.flush();
 
+        }catch (IOException e){
+            Logger.getLogger("isFound").log(Level.SEVERE,"isFound io exception {0}",e);
+        }catch (CsvValidationException e1){
+            Logger.getLogger("isFound csv").log(Level.SEVERE,"idFound csv exception {0}",e1);
+
         }
         return found;
     }
 
     @Override
-    public PagamentoFattura ultimaFattura() throws IOException, CsvValidationException {
-        ObservableList<PagamentoFattura> list;
+    public PagamentoFattura ultimaFattura()  {
+        ObservableList<PagamentoFattura> list=FXCollections.observableArrayList();
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(this.fileFattura)))) {
             list = FXCollections.observableArrayList();
             String[] gVector;
             while ((gVector = reader.readNext()) != null) {
                 PagamentoFattura f = getPagamentoFattura(gVector);
                 list.add(f);
-
-
             }
+        }catch (IOException e){
+            Logger.getLogger("ultimaFattura").log(Level.SEVERE,"ultimaFattura io exception {0}",e);
+        }catch (CsvValidationException e1){
+            Logger.getLogger("ultimaFattura csv").log(Level.SEVERE,"ultimaFattura csv exception {0}",e1);
+
         }
         return list.get(list.size()-1);
     }
@@ -219,8 +243,8 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
     }
 
     @Override
-    public ObservableList<PagamentoFattura> listPagamentiByUserF(PagamentoFattura pF) throws IOException,  CsvValidationException, IdException {
-        ObservableList<PagamentoFattura> list;
+    public ObservableList<PagamentoFattura> listPagamentiByUserF(PagamentoFattura pF)  {
+        ObservableList<PagamentoFattura> list=FXCollections.observableArrayList();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fileFattura)))) {
             String[] gVector;
             list = FXCollections.observableArrayList();
@@ -238,6 +262,11 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
                 }
 
             }
+        }catch (IOException e){
+            Logger.getLogger("ListPagamentiUserF").log(Level.SEVERE,"listFattura io exception {0}",e);
+        }catch (CsvValidationException e1){
+            Logger.getLogger("listPagaemntiUserF csv").log(Level.SEVERE,"listFattura csv exception {0}",e1);
+
         }
         try {
             if (list.isEmpty()) {

@@ -1,10 +1,8 @@
 package laptop.database.primoucacquista.rivista;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.database.MemoryInitialize;
-import laptop.exception.IdException;
 import laptop.model.raccolta.Raccolta;
 import laptop.model.raccolta.Rivista;
 
@@ -12,8 +10,9 @@ import java.io.*;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class MemoriaRivista extends PersistenzaRivista{
@@ -22,12 +21,16 @@ public class MemoriaRivista extends PersistenzaRivista{
 
    private static final MemoryInitialize mI=new MemoryInitialize();
     @Override
-    public boolean inserisciRivista(Rivista r) throws IOException, ClassNotFoundException {
+    public boolean inserisciRivista(Rivista r)  {
 
         Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);
         if (!Files.exists(path2))
         {
-            Files.createFile(path2);
+            try {
+                Files.createFile(path2);
+            } catch (IOException e) {
+                Logger.getLogger("insiert rivista mem").log(Level.SEVERE,"error with crate file mem {0}",e);
+            }
         }
 
         return mI.inserisci(null,null,r,SERIALIZZAZIONE,SERIALIZZAZIONEAPPOGGIO);
@@ -36,7 +39,7 @@ public class MemoriaRivista extends PersistenzaRivista{
     }
 
     @Override
-    public boolean removeRivistaById(Rivista r) throws IOException, ClassNotFoundException {
+    public boolean removeRivistaById(Rivista r)  {
 
         return mI.cancellaRivista(r);
     }
@@ -44,13 +47,13 @@ public class MemoriaRivista extends PersistenzaRivista{
 
 
     @Override
-    public ObservableList<Rivista> getRiviste() throws IOException, ClassNotFoundException {
+    public ObservableList<Rivista> getRiviste()  {
 
         return FXCollections.observableList(mI.listaRiviste(SERIALIZZAZIONE));
     }
 
     @Override
-    public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public ObservableList<Raccolta> retrieveRaccoltaData() {
 
         return FXCollections.observableArrayList(mI.listaRiviste(SERIALIZZAZIONE));
 
@@ -61,7 +64,7 @@ public class MemoriaRivista extends PersistenzaRivista{
 
     @Override
 
-    public ObservableList<Rivista> getRivistaByIdTitoloAutoreRivista(Rivista r) throws IOException, ClassNotFoundException {
+    public ObservableList<Rivista> getRivistaByIdTitoloAutoreRivista(Rivista r)  {
 
 
         ObservableList<Rivista> listaRecuperata = FXCollections.observableArrayList();
@@ -82,7 +85,7 @@ public class MemoriaRivista extends PersistenzaRivista{
     }
 
     @Override
-    public void initializza() throws CsvValidationException, SQLException, ClassNotFoundException, IOException {
+    public void initializza()  {
 
 
 

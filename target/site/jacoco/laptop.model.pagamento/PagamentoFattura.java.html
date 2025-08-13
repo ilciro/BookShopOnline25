@@ -114,5 +114,17 @@ public class PagamentoFattura extends Pagamento implements Serializable {
 
 <span class="fc" id="L115">    }</span>
 <span class="fc" id="L116">    public PagamentoFattura(){}</span>
+
+    @Override
+    public String toString() {
+<span class="fc" id="L120">        return &quot;PagamentoFattura{&quot; +</span>
+                &quot;nome='&quot; + nome + '\'' +
+                &quot;, cognome='&quot; + cognome + '\'' +
+                &quot;, ammontare=&quot; + ammontare +
+                &quot;, idFattura=&quot; + idFattura +
+                &quot;, email='&quot; + email + '\'' +
+                &quot;, idProdotto=&quot; + idProdotto +
+                '}';
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

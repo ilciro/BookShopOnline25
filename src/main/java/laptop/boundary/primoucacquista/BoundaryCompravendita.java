@@ -2,13 +2,11 @@ package laptop.boundary.primoucacquista;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -28,8 +26,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import laptop.controller.primoucacquista.ControllerCompravendita;
 import laptop.controller.ControllerSystemState;
-
-import laptop.exception.IdException;
 import laptop.model.raccolta.Raccolta;
 
 
@@ -88,64 +84,80 @@ public class BoundaryCompravendita implements Initializable {
 
 
 	@FXML
-	private void prendiLista() throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
-		 type=controllaPersistenza();
-		 table.setItems(cCV.getLista(vis.getType(),type));
+	private void prendiLista()  {
 
 
-	}
+            type=controllaPersistenza();
+            table.setItems(cCV.getLista(vis.getType(),type));
+
+
+    }
 	@FXML
-	private void mostra() throws IOException, CsvValidationException, ClassNotFoundException {
+	private void mostra()  {
 		int id=Integer.parseInt(idOggetto.getText());
-		type=controllaPersistenza();
-		if(cCV.checkId(id,type,vis.getType())) {
+        try {
+            type=controllaPersistenza();
+            if(cCV.checkId(id,type,vis.getType())) {
 
-			checkTipologiaCompravendita(id);
+                checkTipologiaCompravendita(id);
 
 
-			Stage stage;
-			Parent root;
-			stage = (Stage) buttonMostra.getScene().getWindow();
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/visualizzaPage.fxml")));
-			stage.setTitle("Benvenuto nella schermata del riepilogo");
+                Stage stage;
+                Parent root;
+                stage = (Stage) buttonMostra.getScene().getWindow();
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/visualizzaPage.fxml")));
+                stage.setTitle("Benvenuto nella schermata del riepilogo");
 
-			scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+
+        } catch (IOException e1) {
+			Logger.getLogger("mostra io").log(Level.SEVERE,"mostsra io exception {0}",e1);
 		}
 
-	}
+    }
 	@FXML
-	private void acquista() throws IOException, CsvValidationException,  ClassNotFoundException {
+	private void acquista() {
 		int id=Integer.parseInt(idOggetto.getText());
-		type=controllaPersistenza();
+        try {
+            type=controllaPersistenza();
+            if(cCV.checkId(id,type,vis.getType()))
+            {
+                checkTipologiaCompravendita(id);
 
-		if(cCV.checkId(id,type,vis.getType()))
+
+                Stage stage;
+                Parent root;
+                stage = (Stage) buttonAcquista.getScene().getWindow();
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/acquista.fxml")));
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+        } catch (IOException e1) {
+			Logger.getLogger("acquista io").log(Level.SEVERE,"acquista io exception {0}",e1);
+		}
+
+    }
+	@FXML
+	private void homePage()  {
+		try {
+			if (controllaPersistenza() != null) {
+
+				Stage stage;
+				Parent root;
+				stage = (Stage) buttonHomePage.getScene().getWindow();
+				root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
+				scene = new Scene(root);
+				stage.setScene(scene);
+				stage.show();
+			}
+		}catch (IOException e)
 		{
-			checkTipologiaCompravendita(id);
+			Logger.getLogger("home page").log(Level.SEVERE,"home page ioexception {0}",e);
 
-
-			Stage stage;
-			Parent root;
-			stage = (Stage) buttonAcquista.getScene().getWindow();
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/acquista.fxml")));
-			scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		}
-
-	}
-	@FXML
-	private void homePage() throws IOException {
-		if(controllaPersistenza()!=null) {
-
-			Stage stage;
-			Parent root;
-			stage = (Stage) buttonHomePage.getScene().getWindow();
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
-			scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
 		}
 
 
@@ -208,12 +220,12 @@ public class BoundaryCompravendita implements Initializable {
 
 	}
 
-	private String controllaPersistenza() throws IOException {
+	private String controllaPersistenza()  {
 
 		if(buttonDatabase.isSelected()) type="database";
 		else if(buttonFile.isSelected())type="file";
 		else if(buttonMemoria.isSelected()) type="memoria";
-		else throw new IOException("persistency non scelta");
+
 		return type;
 	}
 

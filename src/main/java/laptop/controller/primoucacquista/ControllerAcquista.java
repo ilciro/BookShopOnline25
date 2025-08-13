@@ -1,11 +1,9 @@
 package laptop.controller.primoucacquista;
 
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-import com.opencsv.exceptions.CsvValidationException;
 
 import laptop.controller.ControllerSystemState;
 import laptop.database.primoucacquista.giornale.CsvGiornale;
@@ -18,7 +16,6 @@ import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
 import laptop.database.primoucacquista.rivista.RivistaDao;
-import laptop.exception.IdException;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Rivista;
@@ -61,7 +58,7 @@ public class ControllerAcquista {
 	}
 
 	//uso una stringa di 3
-	public String[] getNomeCostoDisp(String string) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+	public String[] getNomeCostoDisp(String string)  {
 
 
 	    String [] dati=new String[3];
@@ -133,7 +130,7 @@ public class ControllerAcquista {
 	}
 
 
-	public float getPrezzo(String q,String string) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+	public float getPrezzo(String q,String string)  {
 		int quantita=Integer.parseInt(q);
 		float prezzo=Float.parseFloat(getNomeCostoDisp(string)[1]);
 		vis.setQuantita(quantita);

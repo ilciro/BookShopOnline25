@@ -7,7 +7,6 @@ import laptop.database.DaoInitialize;
 import laptop.model.pagamento.PagamentoFattura;
 import laptop.utilities.ConnToDb;
 
-import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -113,7 +112,7 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
 
 
     @Override
-    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
+    public void inizializza()  {
         super.inizializza();
         DaoInitialize daoI=new DaoInitialize();
         daoI.inizializza("pagamentoFattura");

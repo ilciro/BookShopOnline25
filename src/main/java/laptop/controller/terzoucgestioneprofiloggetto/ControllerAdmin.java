@@ -1,17 +1,12 @@
 package laptop.controller.terzoucgestioneprofiloggetto;
 
-import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
 import laptop.database.secondouclogin.users.CsvUtente;
 import laptop.database.secondouclogin.users.MemoriaUtente;
 import laptop.database.secondouclogin.users.PersistenzaUtente;
 import laptop.database.secondouclogin.users.UsersDao;
-import laptop.exception.IdException;
 import laptop.model.user.TempUser;
 import laptop.model.user.User;
-
-import java.io.IOException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +16,7 @@ public class ControllerAdmin {
     private PersistenzaUtente pU;
     private static final User u=User.getInstance();
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
-    public boolean logout(String type) throws SQLException, CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public boolean logout(String type)  {
         boolean stastus = false;
         TempUser tu=new TempUser();
 

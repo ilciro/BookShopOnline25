@@ -24,12 +24,15 @@ public class MemoriaUtente extends PersistenzaUtente{
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
     @Override
     @SuppressWarnings("unchecked")
-    public boolean inserisciUtente(TempUser u) throws IOException, ClassNotFoundException {
+    public boolean inserisciUtente(TempUser u)  {
 
 
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois=new ObjectInputStream(fis)){
             listaTU= (ArrayList<TempUser>) ois.readObject();
+        }catch (IOException|ClassNotFoundException e)
+        {
+            Logger.getLogger("inserisciUtente").log(Level.SEVERE,"error {0}",e);
         }
         if(vis.getTipoModifica().equals("im")) u.setId(u.getId());
         else if(vis.getTipoModifica().equals("insert")) u.setId(listaTU.size()+1);
@@ -39,6 +42,9 @@ public class MemoriaUtente extends PersistenzaUtente{
             ObjectOutputStream oos=new ObjectOutputStream(fos))
         {
             oos.writeObject(new ArrayList<>(listaTU));
+        }catch (IOException e)
+        {
+            Logger.getLogger("lettura utente").log(Level.SEVERE,"reading error {0}",e);
         }
 
         return true;
@@ -46,12 +52,12 @@ public class MemoriaUtente extends PersistenzaUtente{
 
     @Override
     @SuppressWarnings("unchecked")
-    public ObservableList<TempUser> getUserData() throws IOException {
+    public ObservableList<TempUser> getUserData()  {
         List<TempUser> listaRecuperata = new ArrayList<>();
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois = new ObjectInputStream(fis)){
             listaRecuperata= (List<TempUser>) ois.readObject();
-        }  catch (ClassNotFoundException e) {
+        }  catch (ClassNotFoundException  |IOException e) {
             Logger.getLogger("lista utenti").log(Level.SEVERE,"exception in list users",e);
         }
         return FXCollections.observableArrayList(listaRecuperata);
@@ -59,14 +65,14 @@ public class MemoriaUtente extends PersistenzaUtente{
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean removeUserByIdEmailPwd(TempUser u) throws  IOException {
+    public boolean removeUserByIdEmailPwd(TempUser u) {
         boolean status=false;
 
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois = new ObjectInputStream(fis)){
             listaTU=(ArrayList<TempUser>) ois.readObject();
 
-        }  catch (ClassNotFoundException e) {
+        }  catch (ClassNotFoundException |IOException e) {
             Logger.getLogger("lista libri").log(Level.SEVERE,"exception .",e);
         }
 
@@ -88,10 +94,18 @@ public class MemoriaUtente extends PersistenzaUtente{
 
         }catch (IOException e)
         {
-            Files.createFile(path);
+            try {
+                Files.createFile(path);
+            } catch (IOException ex) {
+               Logger.getLogger("creazione file").log(Level.SEVERE,"error with creating file {0}",e);
+            }
             try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
                 ObjectOutputStream oos=new ObjectOutputStream(fos)){
                 oos.writeObject(listaTU);
+            }catch (IOException e1)
+            {
+                Logger.getLogger("scrittura nel nuovo file").log(Level.SEVERE,"error with writing file {0}",e);
+
             }
         }
 
@@ -104,7 +118,7 @@ public class MemoriaUtente extends PersistenzaUtente{
 
     @Override
     @SuppressWarnings("unchecked")
-    public void initializza() throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+    public void initializza()  {
 
         for(int i=1;i<=7;i++)
         {
@@ -120,6 +134,9 @@ public class MemoriaUtente extends PersistenzaUtente{
                     listaR.add(line);
 
                 }
+            }catch (IOException e)
+            {
+                Logger.getLogger("inizializza").log(Level.SEVERE,"error with copy file {0}",e);
             }
             TempUser tu=new TempUser();
             tu.setId(Integer.parseInt(listaR.get(0)));
@@ -136,11 +153,19 @@ public class MemoriaUtente extends PersistenzaUtente{
         try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
             ObjectOutputStream oos=new ObjectOutputStream(fos)){
             oos.writeObject(listaTU);
+        }catch (IOException e)
+        {
+            Logger.getLogger("scrittura file iniziale").log(Level.SEVERE,"error with writing file {0}",e);
+
         }
 
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois=new ObjectInputStream(fis)){
             listaTU= (ArrayList<TempUser>) ois.readObject();
+        }catch (IOException |ClassNotFoundException e1)
+        {
+            Logger.getLogger("lettura file iniziale").log(Level.SEVERE,"error with reading file {0}",e1);
+
         }
 
 

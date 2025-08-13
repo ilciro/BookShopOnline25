@@ -1,6 +1,5 @@
 package laptop.boundary.secondouclogin;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,14 +14,13 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.secondouclogin.ControllerRegistraUtente;
-import laptop.exception.IdException;
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BoundaryRegistra implements Initializable {
     @FXML
@@ -82,10 +80,11 @@ public class BoundaryRegistra implements Initializable {
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
 
     @FXML
-    private boolean registra() throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
+    private boolean registra()  {
 
 
         boolean state = false;
+        try{
         if (checkPersistenza()) {
 
             String type = "";
@@ -118,12 +117,17 @@ public class BoundaryRegistra implements Initializable {
                 stage.setScene(scene);
                 stage.show();
             }
-
         }
+        }catch (IOException e)
+        {
+            Logger.getLogger("regista").log(Level.SEVERE,"register error {0}",e);
+        }
+
+
         return state;
     }
     @FXML
-    private void indietro() throws IOException {
+    private void indietro() {
         if(checkPersistenza())
             login();
     }
@@ -148,14 +152,19 @@ public class BoundaryRegistra implements Initializable {
         return databaseButton.isSelected() || fileButton.isSelected() || memoriaButton.isSelected();
     }
 
-    private void login() throws IOException {
-        Stage stage;
-        Parent root;
-        stage = (Stage) buttonI.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/secondouclogin/login.fxml")));
-        stage.setTitle("Benvenuto nella schermata del login");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    private void login() {
+        try {
+            Stage stage;
+            Parent root;
+            stage = (Stage) buttonI.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/secondouclogin/login.fxml")));
+            stage.setTitle("Benvenuto nella schermata del login");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("login").log(Level.SEVERE,"login error {0}",e);
+        }
     }
 }

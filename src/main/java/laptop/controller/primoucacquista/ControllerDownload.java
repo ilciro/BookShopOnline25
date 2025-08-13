@@ -1,21 +1,10 @@
 package laptop.controller.primoucacquista;
 
 
-import java.io.*;
-import java.net.URISyntaxException;
-
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
-import com.itextpdf.text.DocumentException;
-
-
-import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
-
 import laptop.database.primoucacquista.giornale.CsvGiornale;
 import laptop.database.primoucacquista.giornale.GiornaleDao;
 import laptop.database.primoucacquista.giornale.MemoriaGiornale;
@@ -29,7 +18,6 @@ import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
 import laptop.database.primoucacquista.rivista.RivistaDao;
-import laptop.exception.IdException;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Rivista;
@@ -57,7 +45,7 @@ public class ControllerDownload {
 
 
 
-	private void acquistaLibro(String persistenza) throws DocumentException, IOException, URISyntaxException, CsvValidationException, IdException, ClassNotFoundException {
+	private void acquistaLibro(String persistenza) {
 		l.setId(vis.getIdLibro());
 		l.scarica(vis.getIdLibro());
 		l.leggi(vis.getIdLibro());
@@ -94,7 +82,7 @@ public class ControllerDownload {
 
 	}
 
-	private void acquistaGiornale(String persistenza) throws IOException, DocumentException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
+	private void acquistaGiornale(String persistenza) {
 		g.setId(vis.getIdGiornale());
 		g.scarica(vis.getIdGiornale());
 		g.leggi(vis.getIdGiornale());
@@ -129,7 +117,7 @@ public class ControllerDownload {
 		if(pG.inserisciGiornale(tempG)) Logger.getLogger("aggiorno giornale").log(Level.INFO,"update daily succesfully!!");
 
 	}
-	private void acquistaRivista(String persistenza) throws IOException, DocumentException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
+	private void acquistaRivista(String persistenza)  {
 		r.setId(vis.getIdRivista());
 		r.scarica(vis.getIdRivista());
 		r.leggi(vis.getIdRivista());
@@ -165,7 +153,7 @@ public class ControllerDownload {
 
 
 
-		public void scarica(String type,String persistenza) throws IOException, URISyntaxException, DocumentException, SQLException, CsvValidationException, IdException, ClassNotFoundException {
+		public void scarica(String type,String persistenza)  {
 
 			vis.setTipoModifica("im");
 

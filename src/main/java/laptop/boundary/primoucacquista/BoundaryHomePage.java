@@ -2,15 +2,10 @@ package laptop.boundary.primoucacquista;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import com.opencsv.exceptions.CsvValidationException;
-import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,14 +13,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.ControllerHomePage;
-import laptop.exception.IdException;
 import laptop.exception.PersistenzaException;
 
 public class BoundaryHomePage implements Initializable {
@@ -97,19 +89,19 @@ public class BoundaryHomePage implements Initializable {
 
 
 	@FXML
-	private void getListaGiornali() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException, PersistenzaException {
+	private void getListaGiornali()  {
 		vis.setTypeAsDaily();
 		getLista(vis.getType());
 	}
 
 	@FXML
-	private void getListaRiviste() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException, PersistenzaException {
+	private void getListaRiviste()  {
 		vis.setTypeAsMagazine();
 		getLista(vis.getType());
 	}
 
 	@FXML
-	private void getListaLibri() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, IdException, PersistenzaException {
+	private void getListaLibri()  {
 
 		vis.setTypeAsBook();
 		getLista(vis.getType());
@@ -154,7 +146,7 @@ public class BoundaryHomePage implements Initializable {
 
 
 
-	private void getPersistency() throws CsvValidationException, IOException, SQLException, ClassNotFoundException, IdException {
+	private void getPersistency() {
 		tArea.clear();
 
 		String type = "";
@@ -324,26 +316,33 @@ public class BoundaryHomePage implements Initializable {
 
     }
 
-	private void getLista(String type) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException, PersistenzaException {
-		if (checkPersitenza()) {
-			vis.setIsSearch(false);
-			getPersistency();
-			Stage stage;
-			Parent root;
-			stage = (Stage) buttonL.getScene().getWindow();
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(COMPRAVENDITA)));
-            switch (type) {
-                case "libro" -> stage.setTitle("Benvenuto nella schermata del riepilogo dei libri");
-                case "giornale" -> stage.setTitle("Benvenuto nella schermata del riepilogo dei giornali");
-                case "rivista" -> stage.setTitle("Benvenuto nella schermata del riepilogo delle riviste");
-				default -> Logger.getLogger("get lista").log(Level.SEVERE," error with type");
-            }
+	private void getLista(String type)  {
+		try {
+			if (checkPersitenza()) {
+				vis.setIsSearch(false);
+				getPersistency();
+				Stage stage;
+				Parent root;
+				stage = (Stage) buttonL.getScene().getWindow();
+				root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(COMPRAVENDITA)));
+				switch (type) {
+					case "libro" -> stage.setTitle("Benvenuto nella schermata del riepilogo dei libri");
+					case "giornale" -> stage.setTitle("Benvenuto nella schermata del riepilogo dei giornali");
+					case "rivista" -> stage.setTitle("Benvenuto nella schermata del riepilogo delle riviste");
+					default -> Logger.getLogger("get lista").log(Level.SEVERE, " error with type");
+				}
 
 
-			scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		} else throw new PersistenzaException("lista giornali " + PERSISTENZANULLA);
+				scene = new Scene(root);
+				stage.setScene(scene);
+				stage.show();
+			} else throw new PersistenzaException("lista giornali " + PERSISTENZANULLA);
+		}catch (IOException e) {
+			Logger.getLogger("lista io").log(Level.SEVERE,"lista exception {0}",e);
+		}catch (PersistenzaException e1)
+		{
+			Logger.getLogger("lista persistenza").log(Level.SEVERE,"persistency not correct {0}",e1);
+		}
 	}
 
 }

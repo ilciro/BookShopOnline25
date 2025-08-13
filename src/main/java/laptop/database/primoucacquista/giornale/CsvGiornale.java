@@ -60,7 +60,7 @@ public class CsvGiornale extends PersistenzaGiornale{
         Files.delete(path);
     }
 
-    private static synchronized int getIdMax() throws IOException, CsvValidationException {
+    private static synchronized int getIdMax()  {
         //used for insert correct idOgg
 
         String []gVector;
@@ -72,6 +72,11 @@ public class CsvGiornale extends PersistenzaGiornale{
                 if(Integer.parseInt(gVector[GETINDEXIDG])>max)
                     max= Integer.parseInt(gVector[GETINDEXIDG]);
             }
+        }catch (IOException e){
+            Logger.getLogger("id max io csv").log(Level.SEVERE,"id exception in io :{0}",e);
+        }catch (CsvValidationException e1)
+        {
+            Logger.getLogger("id max  csv").log(Level.SEVERE,"id exception csv :{0}",e1);
         }
         return max;
 
@@ -82,42 +87,51 @@ public class CsvGiornale extends PersistenzaGiornale{
 
 
     @Override
-    public boolean inserisciGiornale(Giornale g) throws CsvValidationException, IOException{
-        boolean duplicatedG=false;
-        boolean duplicatedT=false;
-        boolean duplicatedE=false;
-        synchronized (this.cacheGiornale)
-        {
-            for(Map.Entry<Integer,Giornale>mapG:this.cacheGiornale.entrySet())
-            {
-                if(mapG.getValue().getTitolo()!=null)
-                    duplicatedT=mapG.getValue().getTitolo()!=null;
-                if(mapG.getValue().getEditore()!=null)
-                    duplicatedE=mapG.getValue().getEditore()!=null;
-                duplicatedG=duplicatedT&&duplicatedE;
+    public boolean inserisciGiornale(Giornale g) {
+        boolean status=false;
+        try {
+            boolean duplicatedG = false;
+            boolean duplicatedT = false;
+            boolean duplicatedE = false;
+            synchronized (this.cacheGiornale) {
+                for (Map.Entry<Integer, Giornale> mapG : this.cacheGiornale.entrySet()) {
+                    if (mapG.getValue().getTitolo() != null)
+                        duplicatedT = mapG.getValue().getTitolo() != null;
+                    if (mapG.getValue().getEditore() != null)
+                        duplicatedE = mapG.getValue().getEditore() != null;
+                    duplicatedG = duplicatedT && duplicatedE;
+
+                }
 
             }
+            if (!duplicatedG) {
+                List<Giornale> list = returnGiornaleByTE(this.fdG, g.getTitolo(), g.getEditore(), g.getId());
+                duplicatedG = (!list.isEmpty());
+            }
+            if (duplicatedG)
+                try {
+                    Logger.getLogger("try giornale").log(Level.INFO, "id giornale sbagliato !!");
+                    throw new IdException(" id giornale sbagliato or duplicated");
+                } catch (IdException e) {
+                    Logger.getLogger("catch giornale").log(Level.SEVERE, "remove giornale...");
+                    //rimuovo e se lista vuota
+                    removeGiornaleById(g);
+                }
+
+         status= inserimentoGiornale(this.fdG,g);
+
+        }catch (IOException e){
+            Logger.getLogger("inserisci giornale io csv").log(Level.SEVERE,"csv insert giornale io exception :{0}",e);
+
+        }catch (CsvValidationException e1)
+        {
+            Logger.getLogger("inserisci giornale  csv").log(Level.SEVERE,"csv insert giornale csv exception :{0}",e1);
 
         }
-        if(!duplicatedG)
-        {
-            List<Giornale> list=returnGiornaleByTE(this.fdG,g.getTitolo(),g.getEditore(),g.getId());
-            duplicatedG=(!list.isEmpty());
-        }
-        if(duplicatedG)
-            try{
-                Logger.getLogger("try giornale").log(Level.INFO,"id giornale sbagliato !!");
-                throw new IdException(" id giornale sbagliato or duplicated");
-            }catch (IdException e)
-            {
-                Logger.getLogger("catch giornale").log(Level.SEVERE,"remove giornale...");
-                //rimuovo e se lista vuota
-                removeGiornaleById(g);
-            }
-        return inserimentoGiornale(this.fdG,g);
+        return status;
     }
 
-    private static synchronized boolean inserimentoGiornale(File fd, Giornale g) throws IOException, CsvValidationException {
+    private static synchronized boolean inserimentoGiornale(File fd, Giornale g)  {
         try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(fd, true)))) {
             String[] gVector = new String[9];
 
@@ -135,6 +149,14 @@ public class CsvGiornale extends PersistenzaGiornale{
             else throw new CsvValidationException("type of modif in daily files is wrong !!");
             csvWriter.writeNext(gVector);
             csvWriter.flush();
+        }catch (IOException e)
+        {
+            Logger.getLogger("inserimento giornale csv").log(Level.SEVERE,"csv inserimento giornale io exception :{0}",e);
+
+        }catch (CsvValidationException e1)
+        {
+            Logger.getLogger("inserimento giornale io csv").log(Level.SEVERE,"inserimento giornale csv exception :{0}",e1);
+
         }
         return getIdMax()!=0;
     }
@@ -191,36 +213,43 @@ public class CsvGiornale extends PersistenzaGiornale{
     }
 
     @Override
-    public boolean removeGiornaleById(Giornale g) throws CsvValidationException, IOException {
+    public boolean removeGiornaleById(Giornale g)  {
         synchronized (this.cacheGiornale) {
             this.cacheGiornale.remove(g.getId(),g);
         }
         return removeGiornaleId(this.fdG, g);
     }
-    private static synchronized boolean removeGiornaleId(File fd,Giornale g) throws IOException, CsvValidationException {
+    private static synchronized boolean removeGiornaleId(File fd,Giornale g)  {
         return deleteByType(g,fd);
 
     }
-    private static synchronized  boolean deleteByType(Giornale g,File fd) throws IOException, CsvValidationException {
-        boolean status=false;
-        if (SystemUtils.IS_OS_UNIX) {
-            FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));
-            Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant
-        }
-        File tmpFile = new File(APPOGGIO);
-        boolean found = isFound(g, fd, tmpFile);
-        if (found) {
-            Files.move(tmpFile.toPath(), fd.toPath(), REPLACE_EXISTING);
-            status=true;
+    private static synchronized  boolean deleteByType(Giornale g,File fd)  {
+        boolean status = false;
+        try {
 
-        } else {
-            cleanUp(Path.of(tmpFile.toURI()));
+            if (SystemUtils.IS_OS_UNIX) {
+                FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));
+                Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant
+            }
+            File tmpFile = new File(APPOGGIO);
+            boolean found = isFound(g, fd, tmpFile);
+            if (found) {
+                Files.move(tmpFile.toPath(), fd.toPath(), REPLACE_EXISTING);
+                status = true;
+
+            } else {
+                cleanUp(Path.of(tmpFile.toURI()));
+            }
+        }catch (IOException e){
+            Logger.getLogger("delete by type io").log(Level.SEVERE,"id delete io exception :{0}",e);
+
         }
+
         return status;
 
     }
 
-    private static boolean isFound(Giornale g, File fd, File tmpFile) throws IOException, CsvValidationException {
+    private static boolean isFound(Giornale g, File fd, File tmpFile) {
         boolean found = false;
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fd)));
              CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true))))
@@ -241,12 +270,19 @@ public class CsvGiornale extends PersistenzaGiornale{
                     found = true;
             }
             writer.flush();
+        }catch (IOException e)
+        {
+            Logger.getLogger("isFound io").log(Level.SEVERE,"idFound io excpetion :{0}",e);
+        }catch (CsvValidationException e1)
+        {
+            Logger.getLogger("isFound csv").log(Level.SEVERE,"idFound csv excpetion :{0}",e1);
+
         }
         return found;
     }
 
     @Override
-    public ObservableList<Giornale> getGiornali() throws CsvValidationException, IOException, IdException {
+    public ObservableList<Giornale> getGiornali()  {
         ObservableList<Giornale> list=FXCollections.observableArrayList();
         synchronized (this.cacheGiornale) {
 
@@ -275,8 +311,8 @@ public class CsvGiornale extends PersistenzaGiornale{
         return list;
     }
 
-    private static synchronized ObservableList<Giornale> retrieveGiornali(File fdG) throws IOException, CsvValidationException, IdException {
-        ObservableList<Giornale> list;
+    private static synchronized ObservableList<Giornale> retrieveGiornali(File fdG)  {
+        ObservableList<Giornale> list = FXCollections.observableArrayList();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fdG)))) {
             String[] gVector;
             list = FXCollections.observableArrayList();
@@ -285,19 +321,31 @@ public class CsvGiornale extends PersistenzaGiornale{
             while ((gVector = csvReader.readNext()) != null) {
                 list.add(getGiornale(gVector));
             }
+        }catch (IOException e)
+        {
+            Logger.getLogger("retrieve giornali csv io").log(Level.SEVERE,"retrieve giornali io excpetion :{0}",e);
+        }catch (CsvValidationException e1)
+        {
+            Logger.getLogger("retrieve giornali csv").log(Level.SEVERE,"retrieve giornali csv excpetion :{0}",e1);
+
         }
-        if (list.isEmpty()) {
-            throw new IdException("daily not found!!");
+        try{
+            if (list.isEmpty()) {
+                throw new IdException("daily not found!!");
+            }
+        }catch (IdException e2){
+            Logger.getLogger("retrieve giornali").log(Level.SEVERE,"list is empty !!  :{0}",e2);
+
         }
 
         return list;
     }
 
     @Override
-    public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException {
+    public ObservableList<Raccolta> retrieveRaccoltaData() {
         return retrieveData(this.fdG);
     }
-    private static synchronized ObservableList<Raccolta> retrieveData(File fd) throws CsvValidationException, IOException, IdException {
+    private static synchronized ObservableList<Raccolta> retrieveData(File fd) {
         ObservableList<Raccolta> gList = FXCollections.observableArrayList();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {
             String[] gVector;
@@ -310,6 +358,15 @@ public class CsvGiornale extends PersistenzaGiornale{
             if (gList.isEmpty()) {
                 throw new IdException("lista giornale is empty");
             }
+        }catch (IOException e){
+            Logger.getLogger("retrieve data csv io").log(Level.SEVERE,"retrieve data io excpetion :{0}",e);
+        }catch (IdException e1)
+        {
+            Logger.getLogger("retrieve data csv id").log(Level.SEVERE,"id exception :{0}",e1);
+        }catch (CsvValidationException e2)
+        {
+            Logger.getLogger("retrieve data csv").log(Level.SEVERE,"retrieve data csv excpetion :{0}",e2);
+
         }
 
         return gList;
@@ -319,7 +376,7 @@ public class CsvGiornale extends PersistenzaGiornale{
 
 
     @Override
-    public ObservableList<Giornale> getGiornaleByIdTitoloAutoreLibro(Giornale g) throws CsvValidationException, IOException, IdException {
+    public ObservableList<Giornale> getGiornaleByIdTitoloAutoreLibro(Giornale g) {
         ObservableList<Giornale> list=FXCollections.observableArrayList();
         synchronized (this.cacheGiornale) {
 
@@ -351,8 +408,8 @@ public class CsvGiornale extends PersistenzaGiornale{
 
     }
 
-    private static synchronized ObservableList<Giornale> retrieveGiornaleByIdTitoloEditore(File fd,Giornale giornale) throws IOException, CsvValidationException, IdException {
-        ObservableList<Giornale> list;
+    private static synchronized ObservableList<Giornale> retrieveGiornaleByIdTitoloEditore(File fd,Giornale giornale)  {
+        ObservableList<Giornale> list=FXCollections.observableArrayList();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {
             String[] gVector;
 
@@ -368,9 +425,23 @@ public class CsvGiornale extends PersistenzaGiornale{
                     list.add(getGiornale(gVector));
                 }
             }
+        }catch (IOException e)
+        {
+            Logger.getLogger("giornale by id titolo autore io").log(Level.SEVERE,"giornale not found  :{0}",e);
+
+        }catch (CsvValidationException e1)
+        {
+            Logger.getLogger("giornale by id titolo autore csv").log(Level.SEVERE,"giornale not found csv  :{0}",e1);
+
         }
-        if (list.isEmpty()) {
-            throw new IdException("giornale not found!!");
+        try {
+            if (list.isEmpty()) {
+                throw new IdException("giornale not found!!");
+            }
+        }catch (IdException e2)
+        {
+            Logger.getLogger("lista").log(Level.SEVERE,"lista is empty :{0}",e2);
+
         }
 
 
@@ -378,7 +449,7 @@ public class CsvGiornale extends PersistenzaGiornale{
 
     }
     @Override
-    public void initializza() throws IOException {
+    public void initializza()  {
         try {
             File directory=new File("report");
 
@@ -400,7 +471,11 @@ public class CsvGiornale extends PersistenzaGiornale{
 
             Logger.getLogger("creazione db file").log(Level.INFO, "\n creating files ..");
 
-            Files.copy(Path.of(GIORNALEP), Path.of(LOCATIONG), REPLACE_EXISTING);
+            try {
+                Files.copy(Path.of(GIORNALEP), Path.of(LOCATIONG), REPLACE_EXISTING);
+            } catch (IOException e) {
+                Logger.getLogger("inizializza csv giornale io").log(Level.SEVERE,"inizializza io in csv  :{0}",e);
+            }
 
             Logger.getLogger("crea db file").log(Level.SEVERE, "\n eccezione ottenuta nella modalità file.", eFile);
         }

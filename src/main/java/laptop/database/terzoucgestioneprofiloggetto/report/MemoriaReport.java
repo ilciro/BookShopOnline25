@@ -22,16 +22,16 @@ public class MemoriaReport extends PersistenzaReport{
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean insertReport(Report r) throws  IOException, ClassNotFoundException {
+    public boolean insertReport(Report r)  {
 
 
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois=new ObjectInputStream(fis)) {
             list = (ArrayList<Report>) ois.readObject();
 
-        }catch (EOFException e)
+        }catch (IOException | ClassNotFoundException e)
         {
-            Logger.getLogger("insert report").log(Level.SEVERE," exception {0}",e);
+            Logger.getLogger("insert report mem").log(Level.SEVERE," mem read report exception {0}",e);
         }
 
             r.setIdReport(list.size()+1);
@@ -42,13 +42,17 @@ public class MemoriaReport extends PersistenzaReport{
                 ObjectOutputStream oos=new ObjectOutputStream(fos))
             {
                 oos.writeObject(list);
+            }catch (IOException e)
+            {
+                Logger.getLogger("scrivo report mem ").log(Level.SEVERE," mem report exception {0}",e);
+
             }
         return true;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public ObservableList<Report> report(String type) throws IOException, ClassNotFoundException {
+    public ObservableList<Report> report(String type) {
 
         ArrayList<Report> repoLibri=new ArrayList<>();
         ArrayList<Report> repoGiornali=new ArrayList<>();
@@ -57,6 +61,10 @@ public class MemoriaReport extends PersistenzaReport{
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois=new ObjectInputStream(fis)){
             list= (ArrayList<Report>) ois.readObject();
+        }catch (IOException |ClassNotFoundException e)
+        {
+            Logger.getLogger("report oggetti ").log(Level.SEVERE,"objects report exception {0}",e);
+
         }
         for (Report report : list) {
             switch (type) {
@@ -79,21 +87,12 @@ public class MemoriaReport extends PersistenzaReport{
        return reportFinale;
 
     }
-    /*
-
-    @Override
-    public ObservableList<TempUser> reportU() throws SQLException, IOException, CsvValidationException {
-        MemoriaUtente mU=new MemoriaUtente();
-        return mU.getUserData();
-    }
-
-     */
 
 
 
     @Override
 
-    public void inizializza() throws IOException, ClassNotFoundException {
+    public void inizializza()   {
 
         Path path = Path.of(SERIALIZZAZIONE);
         try
@@ -102,7 +101,12 @@ public class MemoriaReport extends PersistenzaReport{
         }catch (IOException e)
         {
             Logger.getLogger("inizializza memoria report").log(Level.SEVERE,"file not exists .",SERIALIZZAZIONE);
-            Files.createFile(path);
+            try {
+                Files.createFile(path);
+            } catch (IOException ex) {
+                Logger.getLogger("inizializza report mem report mem ").log(Level.SEVERE,"report file mem not created exception {0}",e);
+
+            }
             Logger.getLogger("inizializza memoria report").log(Level.INFO,"file created");
 
 

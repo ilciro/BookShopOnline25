@@ -12,7 +12,7 @@ import laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao;
 import laptop.database.primoucacquista.pagamentofattura.CsvFattura;
 import laptop.database.primoucacquista.pagamentofattura.MemoriaFattura;
 import laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura;
-import laptop.database.primoucacquista.pagamentototale.PersistenzzaPagamentoTotale;
+import laptop.database.primoucacquista.pagamentototale.PersistenzaPagamentoTotale;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleCsv;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria;
@@ -32,13 +32,13 @@ public class ControllerAnnullaPagamento  {
 
     private PersistenzaPagamentoFattura pPF;
     private PersistenzaPagamentoCartaCredito pPCC;
-    private PersistenzzaPagamentoTotale pT;
+    private PersistenzaPagamentoTotale pT;
 
 
 
 
 
-    public ObservableList<PagamentoFattura> getFattura(String persistenza) throws CsvValidationException, IOException, ClassNotFoundException {
+    public ObservableList<PagamentoFattura> getFattura(String persistenza) {
         ObservableList<PagamentoFattura> list= FXCollections.observableArrayList();
         switch (persistenza)
         {
@@ -53,7 +53,7 @@ public class ControllerAnnullaPagamento  {
 
     }
 
-    public boolean cancellaFattura(int idFattura,String persistency) throws IOException, CsvValidationException, ClassNotFoundException {
+    public boolean cancellaFattura(int idFattura,String persistency)  {
         boolean status=false;
         switch (persistency) {
             case DATABASE ->
@@ -82,7 +82,7 @@ public class ControllerAnnullaPagamento  {
         return status;
     }
 
-    public ObservableList<PagamentoCartaCredito> getPagamentoCartaCredito(String persistenza) throws IOException, CsvValidationException, ClassNotFoundException {
+    public ObservableList<PagamentoCartaCredito> getPagamentoCartaCredito(String persistenza)  {
         ObservableList<PagamentoCartaCredito> list= FXCollections.observableArrayList();
         switch (persistenza)
         {
@@ -96,7 +96,7 @@ public class ControllerAnnullaPagamento  {
         return list;
     }
 
-    public boolean cancellaPagamentoCC(int idPagamentoCC,String persistency) throws IOException, CsvValidationException, ClassNotFoundException {
+    public boolean cancellaPagamentoCC(int idPagamentoCC,String persistency)  {
         boolean status=false;
         switch (persistency) {
             case DATABASE ->

@@ -65,4 +65,16 @@ public class Report implements Serializable {
     public void setTotale(float totale) {
         this.totale = totale;
     }
+
+    @Override
+    public String toString() {
+        return "Report{" +
+                "idReport=" + idReport +
+                ", titoloOggetto='" + titoloOggetto + '\'' +
+                ", tipologiaOggetto='" + tipologiaOggetto + '\'' +
+                ", nrPezzi=" + nrPezzi +
+                ", prezzo=" + prezzo +
+                ", totale=" + totale +
+                '}';
+    }
 }

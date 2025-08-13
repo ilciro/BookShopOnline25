@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerRicerca.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.controller.primoucacquista</a> &gt; <span class="el_source">ControllerRicerca.java</span></div><h1>ControllerRicerca.java</h1><pre class="source lang-java linenums">package laptop.controller.primoucacquista;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import laptop.database.primoucacquista.giornale.CsvGiornale;
 import laptop.database.primoucacquista.giornale.GiornaleDao;
 import laptop.database.primoucacquista.giornale.MemoriaGiornale;
@@ -16,12 +14,10 @@ import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
 import laptop.database.primoucacquista.rivista.RivistaDao;
-
 import laptop.database.secondouclogin.users.CsvUtente;
 import laptop.database.secondouclogin.users.MemoriaUtente;
 import laptop.database.secondouclogin.users.PersistenzaUtente;
 import laptop.database.secondouclogin.users.UsersDao;
-import laptop.exception.IdException;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
@@ -29,14 +25,11 @@ import laptop.model.raccolta.Rivista;
 import laptop.model.user.TempUser;
 import laptop.model.user.User;
 import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L39">public class ControllerRicerca {</span>
+<span class="fc" id="L32">public class ControllerRicerca {</span>
 
 
     private static final String DATABASE=&quot;database&quot;;
@@ -49,136 +42,136 @@ import java.util.logging.Logger;
     private PersistenzaRivista pR;
     private PersistenzaUtente pU;
 
-<span class="fc" id="L52">    private static final User u= User.getInstance();</span>
+<span class="fc" id="L45">    private static final User u= User.getInstance();</span>
 
 
-    public ObservableList&lt;Raccolta&gt; listaLibri(String nome, String persistenza) throws CsvValidationException, IOException, ClassNotFoundException, IdException, SQLException {
+    public ObservableList&lt;Raccolta&gt; listaLibri(String nome, String persistenza)  {
 
-<span class="fc" id="L57">        ObservableList&lt;Raccolta&gt; listaR=FXCollections.observableArrayList();</span>
-<span class="pc bpc" id="L58" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="fc" id="L50">        ObservableList&lt;Raccolta&gt; listaR=FXCollections.observableArrayList();</span>
+<span class="pc bpc" id="L51" title="2 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="fc" id="L60">            case DATABASE -&gt; pL=new LibroDao();</span>
-<span class="fc" id="L61">            case FILE -&gt; pL=new CsvLibro();</span>
-<span class="nc" id="L62">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
-<span class="nc" id="L63">            default -&gt; Logger.getLogger(&quot;id oggetto libro&quot;).log(Level.SEVERE,&quot; id book in null or zero&quot;);</span>
+<span class="fc" id="L53">            case DATABASE -&gt; pL=new LibroDao();</span>
+<span class="fc" id="L54">            case FILE -&gt; pL=new CsvLibro();</span>
+<span class="nc" id="L55">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
+<span class="nc" id="L56">            default -&gt; Logger.getLogger(&quot;id oggetto libro&quot;).log(Level.SEVERE,&quot; id book in null or zero&quot;);</span>
         }
-<span class="fc" id="L65">        Libro l=new Libro();</span>
-<span class="fc" id="L66">        l.setTitolo(nome);</span>
-<span class="fc" id="L67">        l.setEditore(nome);</span>
-<span class="fc" id="L68">        l.setAutore(nome);</span>
-<span class="fc bfc" id="L69" title="All 2 branches covered.">        for(int i=0;i&lt;pL.getLibri().size();i++)</span>
+<span class="fc" id="L58">        Libro l=new Libro();</span>
+<span class="fc" id="L59">        l.setTitolo(nome);</span>
+<span class="fc" id="L60">        l.setEditore(nome);</span>
+<span class="fc" id="L61">        l.setAutore(nome);</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        for(int i=0;i&lt;pL.getLibri().size();i++)</span>
         {
-<span class="pc bpc" id="L71" title="1 of 2 branches missed.">            if(pL.getLibri().get(i).getId()==l.getId()</span>
-<span class="fc bfc" id="L72" title="All 2 branches covered.">                    || pL.getLibri().get(i).getTitolo().equals(l.getTitolo())</span>
-<span class="fc bfc" id="L73" title="All 2 branches covered.">                    || pL.getLibri().get(i).getAutore().equals(l.getAutore())</span>
-<span class="fc bfc" id="L74" title="All 2 branches covered.">                    || pL.getLibri().get(i).getEditore().equals(l.getEditore()))</span>
+<span class="pc bpc" id="L64" title="1 of 2 branches missed.">            if(pL.getLibri().get(i).getId()==l.getId()</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">                    || pL.getLibri().get(i).getTitolo().equals(l.getTitolo())</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">                    || pL.getLibri().get(i).getAutore().equals(l.getAutore())</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">                    || pL.getLibri().get(i).getEditore().equals(l.getEditore()))</span>
             {
 
-<span class="fc" id="L77">                listaR.add(pL.getLibri().get(i));</span>
+<span class="fc" id="L70">                listaR.add(pL.getLibri().get(i));</span>
             }
         }
-<span class="fc" id="L80">        return FXCollections.observableArrayList(listaR);</span>
+<span class="fc" id="L73">        return FXCollections.observableArrayList(listaR);</span>
 
     }
 
-    public ObservableList&lt;Raccolta&gt; listaGiornali(String nome, String persistenza) throws CsvValidationException, IOException, ClassNotFoundException, IdException, SQLException {
+    public ObservableList&lt;Raccolta&gt; listaGiornali(String nome, String persistenza)  {
 
-<span class="fc" id="L86">        ObservableList&lt;Raccolta&gt; listaR=FXCollections.observableArrayList();</span>
-<span class="pc bpc" id="L87" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="fc" id="L79">        ObservableList&lt;Raccolta&gt; listaR=FXCollections.observableArrayList();</span>
+<span class="pc bpc" id="L80" title="2 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="fc" id="L89">            case DATABASE -&gt; pG=new GiornaleDao();</span>
-<span class="fc" id="L90">            case FILE -&gt; pG=new CsvGiornale();</span>
-<span class="nc" id="L91">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
-<span class="nc" id="L92">            default -&gt; Logger.getLogger(&quot;id oggetto giornale&quot;).log(Level.SEVERE,&quot; id daily in null or zero&quot;);</span>
+<span class="fc" id="L82">            case DATABASE -&gt; pG=new GiornaleDao();</span>
+<span class="fc" id="L83">            case FILE -&gt; pG=new CsvGiornale();</span>
+<span class="nc" id="L84">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
+<span class="nc" id="L85">            default -&gt; Logger.getLogger(&quot;id oggetto giornale&quot;).log(Level.SEVERE,&quot; id daily in null or zero&quot;);</span>
         }
-<span class="fc" id="L94">        Giornale g=new Giornale();</span>
-<span class="fc" id="L95">        g.setTitolo(nome);</span>
-<span class="fc" id="L96">        g.setEditore(nome);</span>
+<span class="fc" id="L87">        Giornale g=new Giornale();</span>
+<span class="fc" id="L88">        g.setTitolo(nome);</span>
+<span class="fc" id="L89">        g.setEditore(nome);</span>
 
-<span class="fc bfc" id="L98" title="All 2 branches covered.">        for(int i=0;i&lt;pG.getGiornali().size();i++)</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">        for(int i=0;i&lt;pG.getGiornali().size();i++)</span>
         {
-<span class="pc bpc" id="L100" title="1 of 2 branches missed.">            if(pG.getGiornali().get(i).getId()==g.getId()</span>
-<span class="fc bfc" id="L101" title="All 2 branches covered.">                    || pG.getGiornali().get(i).getTitolo().equals(g.getTitolo())</span>
-<span class="fc bfc" id="L102" title="All 2 branches covered.">                    || pG.getGiornali().get(i).getEditore().equals(g.getEditore()))</span>
+<span class="pc bpc" id="L93" title="1 of 2 branches missed.">            if(pG.getGiornali().get(i).getId()==g.getId()</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">                    || pG.getGiornali().get(i).getTitolo().equals(g.getTitolo())</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">                    || pG.getGiornali().get(i).getEditore().equals(g.getEditore()))</span>
             {
 
-<span class="fc" id="L105">                listaR.add(pG.getGiornali().get(i));</span>
+<span class="fc" id="L98">                listaR.add(pG.getGiornali().get(i));</span>
             }
         }
-<span class="fc" id="L108">        return FXCollections.observableArrayList(listaR);</span>
+<span class="fc" id="L101">        return FXCollections.observableArrayList(listaR);</span>
 
     }
-    public ObservableList&lt;Raccolta&gt; listaRiviste(String nome, String persistenza) throws CsvValidationException, IOException, ClassNotFoundException, IdException, SQLException {
+    public ObservableList&lt;Raccolta&gt; listaRiviste(String nome, String persistenza)  {
 
-<span class="fc" id="L113">        ObservableList&lt;Raccolta&gt; listaR=FXCollections.observableArrayList();</span>
-<span class="pc bpc" id="L114" title="3 of 4 branches missed.">        switch (persistenza)</span>
+<span class="fc" id="L106">        ObservableList&lt;Raccolta&gt; listaR=FXCollections.observableArrayList();</span>
+<span class="pc bpc" id="L107" title="3 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="fc" id="L116">            case DATABASE -&gt; pR=new RivistaDao();</span>
-<span class="nc" id="L117">            case FILE -&gt; pR=new CsvRivista();</span>
-<span class="nc" id="L118">            case MEMORIA -&gt; pR=new MemoriaRivista();</span>
-<span class="nc" id="L119">            default -&gt; Logger.getLogger(&quot;id oggetto rivista&quot;).log(Level.SEVERE,&quot; id magazine in null or zero&quot;);</span>
+<span class="fc" id="L109">            case DATABASE -&gt; pR=new RivistaDao();</span>
+<span class="nc" id="L110">            case FILE -&gt; pR=new CsvRivista();</span>
+<span class="nc" id="L111">            case MEMORIA -&gt; pR=new MemoriaRivista();</span>
+<span class="nc" id="L112">            default -&gt; Logger.getLogger(&quot;id oggetto rivista&quot;).log(Level.SEVERE,&quot; id magazine in null or zero&quot;);</span>
         }
-<span class="fc" id="L121">        Rivista r=new Rivista();</span>
-<span class="fc" id="L122">        r.setTitolo(nome);</span>
-<span class="fc" id="L123">        r.setEditore(nome);</span>
-<span class="fc" id="L124">        r.setAutore(nome);</span>
-<span class="fc bfc" id="L125" title="All 2 branches covered.">        for(int i=0;i&lt;pR.getRiviste().size();i++)</span>
+<span class="fc" id="L114">        Rivista r=new Rivista();</span>
+<span class="fc" id="L115">        r.setTitolo(nome);</span>
+<span class="fc" id="L116">        r.setEditore(nome);</span>
+<span class="fc" id="L117">        r.setAutore(nome);</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">        for(int i=0;i&lt;pR.getRiviste().size();i++)</span>
         {
-<span class="pc bpc" id="L127" title="1 of 2 branches missed.">            if(pR.getRiviste().get(i).getId()==r.getId()</span>
-<span class="fc bfc" id="L128" title="All 2 branches covered.">                    || pR.getRiviste().get(i).getTitolo().equals(r.getTitolo())</span>
-<span class="fc bfc" id="L129" title="All 2 branches covered.">                    || pR.getRiviste().get(i).getAutore().equals(r.getAutore())</span>
-<span class="fc bfc" id="L130" title="All 2 branches covered.">                    || pR.getRiviste().get(i).getEditore().equals(r.getEditore()))</span>
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">            if(pR.getRiviste().get(i).getId()==r.getId()</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">                    || pR.getRiviste().get(i).getTitolo().equals(r.getTitolo())</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">                    || pR.getRiviste().get(i).getAutore().equals(r.getAutore())</span>
+<span class="fc bfc" id="L123" title="All 2 branches covered.">                    || pR.getRiviste().get(i).getEditore().equals(r.getEditore()))</span>
             {
 
-<span class="fc" id="L133">                listaR.add(pR.getRiviste().get(i));</span>
+<span class="fc" id="L126">                listaR.add(pR.getRiviste().get(i));</span>
             }
         }
-<span class="fc" id="L136">        return FXCollections.observableArrayList(listaR);</span>
+<span class="fc" id="L129">        return FXCollections.observableArrayList(listaR);</span>
 
     }
 
-    public boolean logout(String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
-<span class="nc" id="L141">        boolean status=false;</span>
-<span class="nc bnc" id="L142" title="All 4 branches missed.">        switch (persistenza)</span>
+    public boolean logout(String persistenza)  {
+<span class="nc" id="L134">        boolean status=false;</span>
+<span class="nc bnc" id="L135" title="All 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="nc" id="L144">            case DATABASE -&gt; pU=new UsersDao();</span>
-<span class="nc" id="L145">            case FILE -&gt; pU=new CsvUtente();</span>
-<span class="nc" id="L146">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
-<span class="nc" id="L147">            default -&gt; Logger.getLogger(&quot;logout&quot;).log(Level.SEVERE,&quot; persistency logout is wrong!!&quot;);</span>
+<span class="nc" id="L137">            case DATABASE -&gt; pU=new UsersDao();</span>
+<span class="nc" id="L138">            case FILE -&gt; pU=new CsvUtente();</span>
+<span class="nc" id="L139">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
+<span class="nc" id="L140">            default -&gt; Logger.getLogger(&quot;logout&quot;).log(Level.SEVERE,&quot; persistency logout is wrong!!&quot;);</span>
         }
-<span class="nc" id="L149">        pU.initializza();</span>
-<span class="nc bnc" id="L150" title="All 4 branches missed.">        if(u.getEmail()!=null &amp;&amp; u.getPassword()!=null) status=true;</span>
+<span class="nc" id="L142">        pU.initializza();</span>
+<span class="nc bnc" id="L143" title="All 4 branches missed.">        if(u.getEmail()!=null &amp;&amp; u.getPassword()!=null) status=true;</span>
         else {
-<span class="nc" id="L152">            TempUser tu = getTempUser();</span>
-<span class="nc bnc" id="L153" title="All 2 branches missed.">            if(tu.getEmailT()==null) status=true;</span>
+<span class="nc" id="L145">            TempUser tu = getTempUser();</span>
+<span class="nc bnc" id="L146" title="All 2 branches missed.">            if(tu.getEmailT()==null) status=true;</span>
 
         }
-<span class="nc" id="L156">        return status;</span>
+<span class="nc" id="L149">        return status;</span>
 
     }
 
-    private @NotNull TempUser getTempUser() throws IOException, CsvValidationException, SQLException {
-<span class="nc" id="L161">        TempUser tu=new TempUser();</span>
-<span class="nc" id="L162">        tu.setEmailT(u.getEmail());</span>
-<span class="nc" id="L163">        tu.setPasswordT(u.getPassword());</span>
-<span class="nc bnc" id="L164" title="All 2 branches missed.">        for(int i=0;i&lt;pU.getUserData().size();i++)</span>
+    private @NotNull TempUser getTempUser() {
+<span class="nc" id="L154">        TempUser tu=new TempUser();</span>
+<span class="nc" id="L155">        tu.setEmailT(u.getEmail());</span>
+<span class="nc" id="L156">        tu.setPasswordT(u.getPassword());</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">        for(int i=0;i&lt;pU.getUserData().size();i++)</span>
         {
-<span class="nc bnc" id="L166" title="All 2 branches missed.">            if(pU.getUserData().get(i).getEmailT().equals(u.getEmail())</span>
-<span class="nc bnc" id="L167" title="All 2 branches missed.">            &amp;&amp; pU.getUserData().get(i).getPasswordT().equals(u.getEmail()))</span>
+<span class="nc bnc" id="L159" title="All 2 branches missed.">            if(pU.getUserData().get(i).getEmailT().equals(u.getEmail())</span>
+<span class="nc bnc" id="L160" title="All 2 branches missed.">            &amp;&amp; pU.getUserData().get(i).getPasswordT().equals(u.getEmail()))</span>
             {
-<span class="nc" id="L169">                tu.setId(0);</span>
-<span class="nc" id="L170">                tu.setIdRuoloT(&quot;x&quot;);</span>
-<span class="nc" id="L171">                tu.setNomeT(&quot;&quot;);</span>
-<span class="nc" id="L172">                tu.setCognomeT(&quot;&quot;);</span>
-<span class="nc" id="L173">                tu.setPasswordT(&quot;&quot;);</span>
-<span class="nc" id="L174">                tu.setEmailT(&quot;&quot;);</span>
-<span class="nc" id="L175">                tu.setDescrizioneT(&quot;&quot;);</span>
-<span class="nc" id="L176">                tu.setDataDiNascitaT(LocalDate.of(1900,1,1));</span>
-<span class="nc" id="L177">                u.setEmail(tu.getEmailT());</span>
-<span class="nc" id="L178">                u.setPassword(tu.getPasswordT());</span>
+<span class="nc" id="L162">                tu.setId(0);</span>
+<span class="nc" id="L163">                tu.setIdRuoloT(&quot;x&quot;);</span>
+<span class="nc" id="L164">                tu.setNomeT(&quot;&quot;);</span>
+<span class="nc" id="L165">                tu.setCognomeT(&quot;&quot;);</span>
+<span class="nc" id="L166">                tu.setPasswordT(&quot;&quot;);</span>
+<span class="nc" id="L167">                tu.setEmailT(&quot;&quot;);</span>
+<span class="nc" id="L168">                tu.setDescrizioneT(&quot;&quot;);</span>
+<span class="nc" id="L169">                tu.setDataDiNascitaT(LocalDate.of(1900,1,1));</span>
+<span class="nc" id="L170">                u.setEmail(tu.getEmailT());</span>
+<span class="nc" id="L171">                u.setPassword(tu.getPasswordT());</span>
             }
         }
-<span class="nc" id="L181">        return tu;</span>
+<span class="nc" id="L174">        return tu;</span>
     }
 
 

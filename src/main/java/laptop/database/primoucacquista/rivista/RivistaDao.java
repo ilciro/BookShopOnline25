@@ -1,17 +1,14 @@
 package laptop.database.primoucacquista.rivista;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 import laptop.database.DaoInitialize;
-import laptop.exception.IdException;
 import laptop.model.raccolta.Factory;
 import laptop.model.raccolta.Raccolta;
 import laptop.model.raccolta.Rivista;
 import laptop.utilities.ConnToDb;
 
-import java.io.*;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,7 +31,7 @@ public class RivistaDao extends PersistenzaRivista{
     }
 
     @Override
-    public boolean inserisciRivista(Rivista r) throws CsvValidationException, IOException, SQLException {
+    public boolean inserisciRivista(Rivista r)  {
         int row=0;
 
 
@@ -71,7 +68,7 @@ public class RivistaDao extends PersistenzaRivista{
     }
 
     @Override
-    public boolean removeRivistaById(Rivista r) throws CsvValidationException, IOException, SQLException {
+    public boolean removeRivistaById(Rivista r)  {
         int row = 0;
 
         query="delete from rivista where idRivista=? or idRivista=?";
@@ -91,7 +88,7 @@ public class RivistaDao extends PersistenzaRivista{
     }
 
     @Override
-    public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException {
+    public ObservableList<Raccolta> retrieveRaccoltaData() {
         ObservableList<Raccolta> catalogo = FXCollections.observableArrayList();
 
         query = "select * from rivista";
@@ -118,7 +115,7 @@ public class RivistaDao extends PersistenzaRivista{
     }
 
     @Override
-    public ObservableList<Rivista> getRiviste() throws CsvValidationException, IOException, IdException {
+    public ObservableList<Rivista> getRiviste()  {
         ObservableList<Rivista> catalogo = FXCollections.observableArrayList();
 
         query = "select * from rivista";
@@ -147,7 +144,7 @@ public class RivistaDao extends PersistenzaRivista{
     }
 
     @Override
-    public ObservableList<Rivista> getRivistaByIdTitoloAutoreRivista(Rivista r) throws CsvValidationException, IOException, IdException {
+    public ObservableList<Rivista> getRivistaByIdTitoloAutoreRivista(Rivista r) {
         ObservableList<Rivista> catalogo = FXCollections.observableArrayList();
         String[] info=new String[7];
 
@@ -178,7 +175,7 @@ public class RivistaDao extends PersistenzaRivista{
     }
 
     @Override
-    public void initializza() throws IOException, CsvValidationException, SQLException, IdException, ClassNotFoundException {
+    public void initializza()  {
         super.initializza();
         DaoInitialize dI=new DaoInitialize();
         dI.inizializza("rivista");

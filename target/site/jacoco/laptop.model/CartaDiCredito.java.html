@@ -104,10 +104,16 @@ public class 	CartaDiCredito implements Serializable {
 <span class="nc" id="L104">		return types;</span>
 	}
 
-	
 
-	
-	
-	
+	@Override
+	public String toString() {
+<span class="nc" id="L110">		return &quot;CartaDiCredito{&quot; +</span>
+				&quot;numeroCC='&quot; + numeroCC + '\'' +
+				&quot;, scadenza=&quot; + scadenza +
+				&quot;, nomeUser='&quot; + nomeUser + '\'' +
+				&quot;, prezzoTransazine=&quot; + prezzoTransazine +
+				&quot;, cognomeUser='&quot; + cognomeUser + '\'' +
+				'}';
+	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

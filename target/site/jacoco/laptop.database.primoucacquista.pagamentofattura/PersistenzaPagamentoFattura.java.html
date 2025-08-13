@@ -3,66 +3,55 @@
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import laptop.exception.IdException;
-import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L18">public class PersistenzaPagamentoFattura {</span>
+<span class="fc" id="L13">public class PersistenzaPagamentoFattura {</span>
 
-    public boolean inserisciPagamentoFattura(PagamentoFattura f) throws IOException, ClassNotFoundException {
-<span class="nc" id="L21">        getException();</span>
-
-<span class="nc bnc" id="L23" title="All 2 branches missed.">        return f.getIdFattura()!=-1;</span>
+    public boolean inserisciPagamentoFattura(PagamentoFattura f) {
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        return f.getIdFattura()!=-1;</span>
     }
-    public boolean cancellaPagamentoFattura(PagamentoFattura f) throws CsvValidationException, IOException, ClassNotFoundException {
-<span class="nc" id="L26">        getException();</span>
+    public boolean cancellaPagamentoFattura(PagamentoFattura f) {
 
-<span class="nc bnc" id="L28" title="All 2 branches missed.">        return f.getIdFattura()!=-1;</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        return f.getIdFattura()!=-1;</span>
     }
-    public void inizializza() throws IOException, ClassNotFoundException, SQLException  {
-<span class="fc" id="L31">        getException();</span>
+    public void inizializza()   {
 
-<span class="fc" id="L33">        Logger.getLogger(&quot;persistenza fattura inizializza&quot;).log(Level.INFO,&quot;persistenza pagamento fattura inizializza&quot;);</span>
-<span class="fc" id="L34">          }</span>
+<span class="fc" id="L24">        Logger.getLogger(&quot;persistenza fattura inizializza&quot;).log(Level.INFO,&quot;persistenza pagamento fattura inizializza&quot;);</span>
+<span class="fc" id="L25">        getException();</span>
+<span class="fc" id="L26">          }</span>
 
-    public PagamentoFattura ultimaFattura() throws IOException, CsvValidationException, ClassNotFoundException {
-<span class="nc" id="L37">        getException();</span>
+    public PagamentoFattura ultimaFattura()  {
 
-<span class="nc" id="L39">        Logger.getLogger(&quot;Persistenza pagamento fattura&quot;).log(Level.INFO,&quot;ultima fattura&quot;);</span>
-<span class="nc" id="L40">        return null;</span>
+<span class="nc" id="L30">        Logger.getLogger(&quot;Persistenza pagamento fattura&quot;).log(Level.INFO,&quot;ultima fattura&quot;);</span>
+<span class="nc" id="L31">        return null;</span>
     }
-    public ObservableList&lt;PagamentoFattura&gt; listPagamentiByUserF(PagamentoFattura pF) throws IOException, ClassNotFoundException, CsvValidationException, IdException {
-<span class="nc" id="L43">        Logger.getLogger(&quot;Persistenza pagamento fattura by user&quot;).log(Level.INFO,&quot;lisa payment by user:.{0}&quot;,pF.getNome());</span>
-<span class="nc" id="L44">        getException();</span>
+    public ObservableList&lt;PagamentoFattura&gt; listPagamentiByUserF(PagamentoFattura pF)  {
+<span class="nc" id="L34">        Logger.getLogger(&quot;Persistenza pagamento fattura by user&quot;).log(Level.INFO,&quot;lisa payment by user:.{0}&quot;,pF.getNome());</span>
 
 
-<span class="nc" id="L47">        return FXCollections.observableArrayList();}</span>
+<span class="nc" id="L37">        return FXCollections.observableArrayList();}</span>
 
     private void getException() {
-<span class="fc" id="L50">        Logger.getLogger(&quot;persistenza pagamento fattura&quot;).log(Level.INFO, &quot;checking files...&quot;);</span>
+<span class="fc" id="L40">        Logger.getLogger(&quot;persistenza pagamento fattura&quot;).log(Level.INFO, &quot;checking files...&quot;);</span>
 
         try {
-<span class="pc bpc" id="L53" title="1 of 2 branches missed.">            if (!Files.exists(Path.of(&quot;report/reportPagamentoFattura.csv&quot;))) throw new CsvValidationException(&quot;CSVException&quot;);</span>
-<span class="nc bnc" id="L54" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;sql/tableCreate.sql&quot;))) throw new SQLException(&quot;SQLException&quot;);</span>
-<span class="nc bnc" id="L55" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;memory/serializzazionePagamentoFattura.ser&quot;))) throw new ClassNotFoundException(&quot;ClassNotFoundException&quot;);</span>
-<span class="fc" id="L56">        } catch (CsvValidationException e) {</span>
-<span class="fc" id="L57">            Logger.getLogger(&quot;exception modalita file&quot;).log(Level.SEVERE, &quot;exception csv :{0}&quot;, e);</span>
-<span class="nc" id="L58">        } catch (SQLException e) {</span>
-<span class="nc" id="L59">            Logger.getLogger(&quot;exception modalita database&quot;).log(Level.SEVERE, &quot;exception database :{0}&quot;, e);</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">            if (!Files.exists(Path.of(&quot;report/reportPagamentoFattura.csv&quot;))) throw new CsvValidationException(&quot;CSVException fattura&quot;);</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;sql/tableCreate.sql&quot;))) throw new SQLException(&quot;SQLException fattura&quot;);</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;memory/serializzazionePagamentoFattura.ser&quot;))) throw new ClassNotFoundException(&quot;ClassNotFoundException fattura&quot;);</span>
+<span class="fc" id="L46">        } catch (CsvValidationException e) {</span>
+<span class="fc" id="L47">            Logger.getLogger(&quot;exception modalita file&quot;).log(Level.SEVERE, &quot;exception csv fattura :{0}&quot;, e);</span>
+<span class="nc" id="L48">        } catch (SQLException e) {</span>
+<span class="nc" id="L49">            Logger.getLogger(&quot;exception modalita database&quot;).log(Level.SEVERE, &quot;exception database fattura:{0}&quot;, e);</span>
+<span class="nc" id="L50">        } catch (ClassNotFoundException e) {</span>
+<span class="nc" id="L51">            Logger.getLogger(&quot;exception modalita memoria&quot;).log(Level.SEVERE, &quot;exception memory fattura :{0}&quot;, e);</span>
 
-<span class="nc" id="L61">        } catch (ClassNotFoundException e) {</span>
-<span class="nc" id="L62">            Logger.getLogger(&quot;exception modalita memoria&quot;).log(Level.SEVERE, &quot;exception memory :{0}&quot;, e);</span>
-
-<span class="pc" id="L64">        }</span>
-<span class="fc" id="L65">    }</span>
+<span class="pc" id="L53">        }</span>
+<span class="fc" id="L54">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

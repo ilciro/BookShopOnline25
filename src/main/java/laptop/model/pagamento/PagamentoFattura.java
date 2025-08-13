@@ -114,4 +114,16 @@ public class PagamentoFattura extends Pagamento implements Serializable {
 
     }
     public PagamentoFattura(){}
+
+    @Override
+    public String toString() {
+        return "PagamentoFattura{" +
+                "nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", ammontare=" + ammontare +
+                ", idFattura=" + idFattura +
+                ", email='" + email + '\'' +
+                ", idProdotto=" + idProdotto +
+                '}';
+    }
 }

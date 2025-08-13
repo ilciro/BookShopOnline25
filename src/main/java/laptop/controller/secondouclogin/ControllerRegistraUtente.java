@@ -1,15 +1,9 @@
 package laptop.controller.secondouclogin;
 
-import java.io.IOException;
-
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-
-import com.opencsv.exceptions.CsvValidationException;
-
 import laptop.controller.ControllerSystemState;
 import laptop.database.secondouclogin.users.CsvUtente;
 import laptop.database.secondouclogin.users.MemoriaUtente;
@@ -40,7 +34,7 @@ public class ControllerRegistraUtente {
 		this.type = type;
 	}
 
-	public Boolean registra(String n, String c, String email, String pwd,String desc, LocalDate localDate,String ruolo) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
+	public Boolean registra(String n, String c, String email, String pwd,String desc, LocalDate localDate,String ruolo) {
 
 		vis.setTipoModifica("insert");
 
@@ -59,10 +53,14 @@ public class ControllerRegistraUtente {
 		{
 			if(nomePresente(pU.getUserData().get(i).getNomeT(),n)&&
 			cognomePresente(pU.getUserData().get(i).getCognomeT(),c)&&
-			emailPresente(pU.getUserData().get(i).getEmailT(),email)) throw new IdException(" user already inserted!!");
+			emailPresente(pU.getUserData().get(i).getEmailT(),email)) try {
+                throw new IdException(" user already inserted!!");
+            } catch (IdException e) {
+               Logger.getLogger("registraUtente").log(Level.SEVERE,"duplicated user {0}",e);
+            }
 
 
-		}
+        }
 		if(checkData(n,c,email,pwd))
 		{
 			tu.setNomeT(n);

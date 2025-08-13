@@ -6,7 +6,6 @@ import laptop.database.DaoInitialize;
 import laptop.model.CartaDiCredito;
 import laptop.utilities.ConnToDb;
 
-import java.io.*;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,7 +13,7 @@ import java.util.logging.Logger;
 public class CartaCreditoDao extends PersistenzaCC{
 
     @Override
-    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
+    public void inizializza()  {
         DaoInitialize daoI=new DaoInitialize();
         daoI.inizializza("cartacredito");
 

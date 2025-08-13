@@ -1,6 +1,5 @@
 package laptop.boundary.terzoucgestioneprofilooggetto;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,13 +13,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.terzoucgestioneprofiloggetto.ControllerVisualizzaOrdini;
-import laptop.exception.IdException;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -80,7 +76,7 @@ public class BoundaryVisualizzaOrdini implements Initializable {
     protected Scene scene;
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
     @FXML
-    private void genera() throws CsvValidationException, IOException, ClassNotFoundException, SQLException, IdException {
+    private void genera() {
 
 
 
@@ -110,7 +106,7 @@ public class BoundaryVisualizzaOrdini implements Initializable {
     }
 
     @FXML
-    private void elimina() throws CsvValidationException, IOException, ClassNotFoundException, SQLException {
+    private void elimina() {
         String type="";
         if(databaseButton.isSelected()) type="database";
         if(fileButton.isSelected()) type="file";
@@ -131,15 +127,20 @@ public class BoundaryVisualizzaOrdini implements Initializable {
         if(cV.cancellaPagamento(id,type))
         {
 
+            try {
 
-            Stage stage;
-            Parent root;
-            stage = (Stage) eliminaB.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
-            stage.setTitle("Benvenuto nella home page");
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+                Stage stage;
+                Parent root;
+                stage = (Stage) eliminaB.getScene().getWindow();
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
+                stage.setTitle("Benvenuto nella home page");
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }catch (IOException e)
+            {
+                Logger.getLogger("elimina").log(Level.SEVERE,"delete not avalaible {0}",e);
+            }
         }
         else {
            eliminaEVisualizza();
@@ -148,7 +149,7 @@ public class BoundaryVisualizzaOrdini implements Initializable {
 
     }
     @FXML
-    private void indietro() throws IOException {
+    private void indietro()  {
         if(checkPersistenza()) homePage();
     }
     @Override
@@ -182,25 +183,36 @@ public class BoundaryVisualizzaOrdini implements Initializable {
         return databaseButton.isSelected()|| fileButton.isSelected()||memoriaButton.isSelected();
     }
 
-    private void eliminaEVisualizza() throws IOException {
-        Logger.getLogger("elimina").log(Level.SEVERE," deleted payment failed");
-        Stage stage;
-        Parent root;
-        stage = (Stage) indietroB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/visualizzaOrdini.fxml")));
-        stage.setTitle("Benvenuto nella schermata degli ordini");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    private void eliminaEVisualizza()  {
+        try {
+            Logger.getLogger("elimina").log(Level.SEVERE, " deleted payment failed");
+            Stage stage;
+            Parent root;
+            stage = (Stage) indietroB.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/visualizzaOrdini.fxml")));
+            stage.setTitle("Benvenuto nella schermata degli ordini");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("elimina").log(Level.SEVERE,"delete error {0}",e);
+        }
+
     }
-    private void homePage() throws IOException {
-        Stage stage;
-        Parent root;
-        stage = (Stage) indietroB.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
-        stage.setTitle("Benvenuto nella home page");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    private void homePage()  {
+        try {
+            Stage stage;
+            Parent root;
+            stage = (Stage) indietroB.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
+            stage.setTitle("Benvenuto nella home page");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("home page").log(Level.SEVERE,"homepage not avalaible {0}",e);
+        }
     }
 }

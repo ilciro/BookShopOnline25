@@ -1,6 +1,5 @@
 package laptop.database.primoucacquista.negozio;
 
-import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -107,7 +106,7 @@ public class NegozioDao extends PersistenzaNegozio{
 	}
 
 	@Override
-	public void initializza() throws IOException, SQLException {
+	public void initializza()  {
 		super.initializza();
 		DaoInitialize daoI=new DaoInitialize();
 		daoI.inizializza("negozio");

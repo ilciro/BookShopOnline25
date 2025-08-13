@@ -1,12 +1,13 @@
 package laptop.database.primoucacquista.negozio;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.model.Negozio;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class MemoriaNegozio extends PersistenzaNegozio{
@@ -15,24 +16,34 @@ public class MemoriaNegozio extends PersistenzaNegozio{
 
     @Override
     @SuppressWarnings("unchecked")
-    public ObservableList<Negozio> getNegozi() throws IOException, ClassNotFoundException {
+    public ObservableList<Negozio> getNegozi()  {
 
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois = new ObjectInputStream(fis)){
             lista= (ArrayList<Negozio>) ois.readObject();
-           }
+           }catch (IOException e){
+            Logger.getLogger("getNegozi").log(Level.SEVERE,"getNegozi io exception {0}",e);
+        }catch (ClassNotFoundException e1){
+            Logger.getLogger("getNegozi csv").log(Level.SEVERE,"getNegozi csv exception {0}",e1);
+
+        }
         return FXCollections.observableArrayList(lista);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean checkOpen(Negozio shop) throws IOException, ClassNotFoundException {
+    public boolean checkOpen(Negozio shop){
 
         boolean status=false;
 
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois = new ObjectInputStream(fis)) {
             lista = (ArrayList<Negozio>) ois.readObject();
+        }catch (IOException e){
+            Logger.getLogger("checkOpen").log(Level.SEVERE,"checkOpen io exception {0}",e);
+        }catch (ClassNotFoundException e1){
+            Logger.getLogger("checkOpen csv").log(Level.SEVERE,"checkOpen csv exception {0}",e1);
+
         }
 
         for (Negozio negozio : lista) {
@@ -49,11 +60,16 @@ public class MemoriaNegozio extends PersistenzaNegozio{
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean checkRitiro(Negozio shop) throws IOException,  ClassNotFoundException {
+    public boolean checkRitiro(Negozio shop)  {
         boolean status=false;
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois = new ObjectInputStream(fis)){
             lista=(ArrayList<Negozio>) ois.readObject();
+
+        }catch (IOException e){
+            Logger.getLogger("checkRitiro").log(Level.SEVERE,"checkRitiro io exception {0}",e);
+        }catch (ClassNotFoundException e1){
+            Logger.getLogger("checkRitiro csv").log(Level.SEVERE,"checkRitiro csv exception {0}",e1);
 
         }
         for (Negozio negozio : lista) {
@@ -64,7 +80,7 @@ public class MemoriaNegozio extends PersistenzaNegozio{
     }
 
     @Override
-    public void initializza() throws IOException {
+    public void initializza() {
         for(int i=1;i<=4;i++) {
             lista.add(leggiNegozio(i));
 
@@ -72,17 +88,19 @@ public class MemoriaNegozio extends PersistenzaNegozio{
         inserisciNegozio();
     }
 
-    private void inserisciNegozio() throws IOException {
-        //inserisco lista a posto di libro
+    private void inserisciNegozio() {
         try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
             ObjectOutputStream oos=new ObjectOutputStream(fos))
         {
             oos.writeObject(new ArrayList<>(lista));
+        }catch (IOException e)
+        {
+            Logger.getLogger("inserisciNegozio").log(Level.SEVERE,"insert negozio exception {0}",e);
         }
 
     }
 
-    private Negozio leggiNegozio(int i) throws IOException {
+    private Negozio leggiNegozio(int i) {
         String line;
         ArrayList<String> listaR = new ArrayList<>();
         try (FileReader fileReader = new FileReader("src/main/resources/tmpFiles/negozio"+ i +".txt");
@@ -91,6 +109,9 @@ public class MemoriaNegozio extends PersistenzaNegozio{
                 listaR.add(line);
 
             }
+        }catch (IOException e)
+        {
+            Logger.getLogger("leggiNegozio").log(Level.SEVERE,"read shop exception {0}",e);
         }
             Negozio n=new Negozio();
             n.setId(Integer.parseInt(listaR.get(0)));

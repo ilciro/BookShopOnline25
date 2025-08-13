@@ -33,25 +33,26 @@ public class MemoryInitialize {
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
 
 
-    public boolean cancellaGiornale(Giornale g) throws IOException, ClassNotFoundException {
+    public boolean cancellaGiornale(Giornale g)  {
 
 
         boolean status=false;
-        listG=leggiDaFileGiornale(SERIALIZZAZIONEGIORNALE);
+
+            listG = leggiDaFileGiornale(SERIALIZZAZIONEGIORNALE);
 
 
-        for(int i=0;i<listG.size();i++)
-        {
-            if(i== (g.getId()-1)) {
-                status = listG.remove(listG.get(i));
+            for (int i = 0; i < listG.size(); i++) {
+                if (i == (g.getId() - 1)) {
+                    status = listG.remove(listG.get(i));
+                }
             }
-        }
-        removeFile(SERIALIZZAZIONEGIORNALE,listG,new ArrayList<>(),new ArrayList<>());
+            removeFile(SERIALIZZAZIONEGIORNALE, listG, new ArrayList<>(), new ArrayList<>());
+
 
         return status;
     }
 
-    public boolean cancellaLibro(Libro l) throws IOException, ClassNotFoundException {
+    public boolean cancellaLibro(Libro l) {
 
         boolean status=false;
        listL=leggiDaFileLibro(SERIALIZZAZIONELIBRO);
@@ -68,7 +69,7 @@ public class MemoryInitialize {
         return status;
     }
 
-    public boolean cancellaRivista(Rivista r) throws IOException, ClassNotFoundException {
+    public boolean cancellaRivista(Rivista r) {
 
         boolean status=false;
         listR=leggiDaFileRivista(SERIALIZZAZIONERIVISTA);
@@ -84,7 +85,7 @@ public class MemoryInitialize {
         return status;
     }
 
-    private void removeFile(String stringPath,ArrayList<Giornale> listG,ArrayList<Libro> listL,ArrayList<Rivista> listR) throws IOException {
+    private void removeFile(String stringPath,ArrayList<Giornale> listG,ArrayList<Libro> listL,ArrayList<Rivista> listR) {
 
         Path path = Path.of(stringPath);
         try {
@@ -95,35 +96,37 @@ public class MemoryInitialize {
             }
         }catch (IOException e)
         {
-            if(!listG.isEmpty())
-            {
-                Files.createFile(path);
-                try(FileOutputStream fos=new FileOutputStream(stringPath);
-                    ObjectOutputStream oos=new ObjectOutputStream(fos)){
-                    oos.writeObject(listG);
+            try {
+                if (!listG.isEmpty()) {
+                    Files.createFile(path);
+                    try (FileOutputStream fos = new FileOutputStream(stringPath);
+                         ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+                        oos.writeObject(listG);
+                    }
                 }
-            }
-            if(!listL.isEmpty())
-            {
-                Files.createFile(path);
-                try(FileOutputStream fos=new FileOutputStream(stringPath);
-                    ObjectOutputStream oos=new ObjectOutputStream(fos)){
-                    oos.writeObject(listL);
+                if (!listL.isEmpty()) {
+                    Files.createFile(path);
+                    try (FileOutputStream fos = new FileOutputStream(stringPath);
+                         ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+                        oos.writeObject(listL);
+                    }
                 }
-            }
-            if(!listR.isEmpty())
-            {
-                Files.createFile(path);
-                try(FileOutputStream fos=new FileOutputStream(stringPath);
-                    ObjectOutputStream oos=new ObjectOutputStream(fos)){
-                    oos.writeObject(listR);
+                if (!listR.isEmpty()) {
+                    Files.createFile(path);
+                    try (FileOutputStream fos = new FileOutputStream(stringPath);
+                         ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+                        oos.writeObject(listR);
+                    }
                 }
+            }catch (IOException e1){
+                Logger.getLogger("remove file").log(Level.SEVERE,"remove file mi exception {0}",e1);
+
             }
 
         }
     }
 
-    public void inizializza(String file) throws IOException, ClassNotFoundException {
+    public void inizializza(String file)  {
 
         switch (vis.getType())
         {
@@ -171,56 +174,62 @@ public class MemoryInitialize {
 
     }
 
-    public boolean inserisci(Libro l,Giornale g,Rivista r,String file,String appoggio) throws IOException, ClassNotFoundException {
+    public boolean inserisci(Libro l,Giornale g,Rivista r,String file,String appoggio) {
         Path path2 = Path.of(appoggio);
         Path path1=Path.of(file);
-        if(l!=null){
-            if (vis.getTipoModifica().equals("im")) l.setId(vis.getIdLibro());
-            else if (vis.getTipoModifica().equals(INSERT)) l.setId(listL.size() + 1);
-            listL.add(l);
+        try {
+            if (l != null) {
+                if (vis.getTipoModifica().equals("im")) l.setId(vis.getIdLibro());
+                else if (vis.getTipoModifica().equals(INSERT)) l.setId(listL.size() + 1);
+                listL.add(l);
 
-            Logger.getLogger("inserisci libro").log(Level.INFO,"inserted libro in list {0}",listL.get(0).getTitolo());
-            //scrivo lista in appoggio
+                Logger.getLogger("inserisci libro").log(Level.INFO, "inserted libro in list {0}", listL.get(0).getTitolo());
+                //scrivo lista in appoggio
 
-            scriviInFile(appoggio,null,listL,null);
-            listL=leggiDaFileLibro(appoggio);
-            Files.delete(path1);
-            Files.createFile(path1);
-            scriviInFile(file,null,listL,null);
+                scriviInFile(appoggio, null, listL, null);
+                listL = leggiDaFileLibro(appoggio);
+                Files.delete(path1);
+                Files.createFile(path1);
+                scriviInFile(file, null, listL, null);
 
-            Files.delete(path2);
-        }
-        if(g!=null){
-            if (vis.getTipoModifica().equals("im")) g.setId(vis.getIdGiornale());
-            else if (vis.getTipoModifica().equals(INSERT)) g.setId(listG.size() + 1);
-            listG.add(g);
-            //scrivo lista in appoggio
-            Logger.getLogger("inserisci giiornale").log(Level.INFO,"inserted giornale in list {0}",listG.get(0).getTitolo());
-
-
-            scriviInFile(appoggio,listG,null,null);
-            listG=leggiDaFileGiornale(appoggio);
-            Files.delete(path1);
-            Files.createFile(path1);
-            scriviInFile(file,listG,null,null);
-
-            Files.delete(path2);
-        }
-        if(r!=null){
-            if (vis.getTipoModifica().equals("im")) r.setId(vis.getIdRivista());
-            else if (vis.getTipoModifica().equals(INSERT)) r.setId(listR.size() + 1);
-            listR.add(r);
-            //scrivo lista in appoggio
-            Logger.getLogger("inserisci rivista").log(Level.INFO,"inserted rivista in list {0}",listR.get(0).getTitolo());
+                Files.delete(path2);
+            }
+            if (g != null) {
+                if (vis.getTipoModifica().equals("im")) g.setId(vis.getIdGiornale());
+                else if (vis.getTipoModifica().equals(INSERT)) g.setId(listG.size() + 1);
+                listG.add(g);
+                //scrivo lista in appoggio
+                Logger.getLogger("inserisci giiornale").log(Level.INFO, "inserted giornale in list {0}", listG.get(0).getTitolo());
 
 
-            scriviInFile(appoggio,null,null,listR);
-            listR=leggiDaFileRivista(appoggio);
-            Files.delete(path1);
-            Files.createFile(path1);
-            scriviInFile(file,null,null,listR);
+                scriviInFile(appoggio, listG, null, null);
+                listG = leggiDaFileGiornale(appoggio);
+                Files.delete(path1);
+                Files.createFile(path1);
+                scriviInFile(file, listG, null, null);
 
-            Files.delete(path2);
+                Files.delete(path2);
+            }
+            if (r != null) {
+                if (vis.getTipoModifica().equals("im")) r.setId(vis.getIdRivista());
+                else if (vis.getTipoModifica().equals(INSERT)) r.setId(listR.size() + 1);
+                listR.add(r);
+                //scrivo lista in appoggio
+                Logger.getLogger("inserisci rivista").log(Level.INFO, "inserted rivista in list {0}", listR.get(0).getTitolo());
+
+
+                scriviInFile(appoggio, null, null, listR);
+                listR = leggiDaFileRivista(appoggio);
+                Files.delete(path1);
+                Files.createFile(path1);
+                scriviInFile(file, null, null, listR);
+
+                Files.delete(path2);
+            }
+        }catch (IOException e)
+        {
+            Logger.getLogger("inserisci").log(Level.SEVERE,"inserisci io exception {0}",e);
+
         }
         return true;
     }
@@ -228,7 +237,7 @@ public class MemoryInitialize {
 
 
 
-    private void scriviInFile(String nome,ArrayList<Giornale> listaG,ArrayList<Libro> listaL,ArrayList<Rivista> listaR) throws IOException
+    private void scriviInFile(String nome,ArrayList<Giornale> listaG,ArrayList<Libro> listaL,ArrayList<Rivista> listaR)
     {
         try(FileOutputStream fos=new FileOutputStream(nome,true);
             ObjectOutputStream oos=new ObjectOutputStream(fos)) {
@@ -240,54 +249,80 @@ public class MemoryInitialize {
             }
             oos.flush();
 
+        }catch (IOException e)
+        {
+            Logger.getLogger("scrivi in file").log(Level.SEVERE,"scrivi in file mi exception {0}",e);
+
         }
 
 
 
     }
     @SuppressWarnings("unchecked")
-    private ArrayList<Giornale> leggiDaFileGiornale(String nome) throws IOException ,ClassNotFoundException{
+    private ArrayList<Giornale> leggiDaFileGiornale(String nome) {
         try(FileInputStream fis=new FileInputStream(nome);
             ObjectInputStream ois=new ObjectInputStream(fis)){
             listG=(ArrayList<Giornale>) ois.readObject();
+        }catch (IOException e)
+        {
+            Logger.getLogger("leggi da file giornale io").log(Level.SEVERE,"leggi da file io giornale exception {0}",e);
+
+        }catch (ClassNotFoundException e1)
+        {
+            Logger.getLogger("leggi da file giornale class").log(Level.SEVERE,"leggi da file class giornale exception {0}",e1);
+
         }
         return listG;
     }
     @SuppressWarnings("unchecked")
-    private ArrayList<Libro> leggiDaFileLibro(String nome) throws IOException, ClassNotFoundException {
+    private ArrayList<Libro> leggiDaFileLibro(String nome)  {
         try(FileInputStream fis=new FileInputStream(nome);
             ObjectInputStream ois=new ObjectInputStream(fis)){
             listL=(ArrayList<Libro>) ois.readObject();
+        }catch (IOException e)
+        {
+            Logger.getLogger("leggi da file libro io").log(Level.SEVERE,"leggi da file io libro exception {0}",e);
 
+        }catch (ClassNotFoundException e1)
+        {
+            Logger.getLogger("leggi da file libro class").log(Level.SEVERE,"leggi da file class libro exception {0}",e1);
 
         }
 
         return listL;
     }
     @SuppressWarnings("unchecked")
-    private ArrayList<Rivista> leggiDaFileRivista(String nome) throws IOException ,ClassNotFoundException{
+    private ArrayList<Rivista> leggiDaFileRivista(String nome) {
         try(FileInputStream fis=new FileInputStream(nome);
             ObjectInputStream ois=new ObjectInputStream(fis)){
             listR=(ArrayList<Rivista>) ois.readObject();
+        }catch (IOException e)
+        {
+            Logger.getLogger("leggi da file rivista io").log(Level.SEVERE,"leggi da file io rivista exception {0}",e);
+
+        }catch (ClassNotFoundException e1)
+        {
+            Logger.getLogger("leggi da file rivista class").log(Level.SEVERE,"leggi da file class rivista exception {0}",e1);
+
         }
         return listR;
     }
 
 
-    public List<Giornale> listaGiornali(String file) throws IOException, ClassNotFoundException {
+    public List<Giornale> listaGiornali(String file)  {
         return  leggiDaFileGiornale(file);
     }
 
-    public List<Libro> listaLibri(String file) throws IOException, ClassNotFoundException {
+    public List<Libro> listaLibri(String file)  {
         return  leggiDaFileLibro(file);
     }
-    public List<Rivista> listaRiviste(String file) throws IOException, ClassNotFoundException {
+    public List<Rivista> listaRiviste(String file)  {
         return  leggiDaFileRivista(file);
     }
 
 
 
-    private static @NotNull Giornale getGiornale(int i) throws IOException {
+    private static @NotNull Giornale getGiornale(int i) {
         String line;
 
 
@@ -300,6 +335,9 @@ public class MemoryInitialize {
                 listaG.add(line);
 
             }
+        }catch (IOException e)
+        {
+            Logger.getLogger("getGiornale").log(Level.SEVERE," get giornale exception {0}",e);
         }
         Giornale g = new Giornale();
         g.setTitolo(listaG.get(0));
@@ -314,19 +352,17 @@ public class MemoryInitialize {
         return g;
     }
 
-    private static @NotNull Libro getLibro(int i) throws IOException {
+    private static @NotNull Libro getLibro(int i)  {
         String line;
-
-
         ArrayList<String> listaL = new ArrayList<>();
-
-
         try (FileReader fileReader = new FileReader("src/main/resources/tmpFiles/libro" + i + ".txt");
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
             while ((line = bufferedReader.readLine()) != null) {
                 listaL.add(line);
-
             }
+        }catch (IOException e)
+        {
+            Logger.getLogger("getLibro").log(Level.SEVERE," get libro exception {0}",e);
         }
             Libro l = new Libro();
             l.setTitolo(listaL.get(0));
@@ -347,21 +383,17 @@ public class MemoryInitialize {
 
     }
 
-    private static @NotNull Rivista getRivista(int i) throws IOException{
-
-
+    private static @NotNull Rivista getRivista(int i) {
             String line;
-
-
             ArrayList<String> listaR = new ArrayList<>();
-
-
             try (FileReader fileReader = new FileReader("src/main/resources/tmpFiles/rivista" + i + ".txt");
                  BufferedReader bufferedReader = new BufferedReader(fileReader)) {
                 while ((line = bufferedReader.readLine()) != null) {
                     listaR.add(line);
-
                 }
+            }catch (IOException e)
+            {
+                Logger.getLogger("getRivista").log(Level.SEVERE,"getRivista mi exception {0}",e);
             }
 
 

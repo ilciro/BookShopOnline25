@@ -1,17 +1,11 @@
 package laptop.boundary.primoucacquista;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import com.opencsv.exceptions.CsvValidationException;
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +24,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.ControllerScegliNegozio;
-import laptop.exception.IdException;
 import laptop.model.Negozio;
 
 
@@ -85,7 +78,7 @@ public class BoundaryScegliNegozio implements Initializable {
 
 
 	@FXML
-	private void database() throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
+	private void database()  {
 		listOfNegozi = cSN.getNegozi("database");
 		radio1.setText(listOfNegozi.get(0).getNome());
 		radio2.setText(listOfNegozi.get(1).getNome());
@@ -94,7 +87,7 @@ public class BoundaryScegliNegozio implements Initializable {
 	}
 
 	@FXML
-	private void file() throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
+	private void file()  {
 		listOfNegozi = cSN.getNegozi("file");
 		radio1.setText(listOfNegozi.get(0).getNome());
 		radio2.setText(listOfNegozi.get(1).getNome());
@@ -103,7 +96,7 @@ public class BoundaryScegliNegozio implements Initializable {
 	}
 
 	@FXML
-	private void memoria() throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
+	private void memoria()  {
 		listOfNegozi = cSN.getNegozi("memoria");
 		radio1.setText(listOfNegozi.get(0).getNome());
 		radio2.setText(listOfNegozi.get(1).getNome());
@@ -112,7 +105,7 @@ public class BoundaryScegliNegozio implements Initializable {
 	}
 
 	@FXML
-	private void verifica() throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
+	private void verifica()  {
 
 		if (databaseButton.isSelected()) type = "database";
 		if (fileButton.isSelected()) type = "file";
@@ -128,7 +121,7 @@ public class BoundaryScegliNegozio implements Initializable {
 	}
 
 
-	private  void checkNegozio1(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
+	private  void checkNegozio1(String type)  {
 
 		verificaDispApertura(type,1);
 
@@ -136,21 +129,21 @@ public class BoundaryScegliNegozio implements Initializable {
 
 	}
 
-	private void checkNegozio2(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
+	private void checkNegozio2(String type)  {
 		verificaDispApertura(type,2);
 
 
 
 	}
 
-	private void checkNegozio3(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
+	private void checkNegozio3(String type)  {
 		verificaDispApertura(type,3);
 
 
 
 	}
 
-	private void checkNegozio4(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
+	private void checkNegozio4(String type)  {
 
 		verificaDispApertura(type,4);
 	}
@@ -158,7 +151,7 @@ public class BoundaryScegliNegozio implements Initializable {
 
 
 
-private void negozioGiusto() throws IOException {
+private void negozioGiusto()  {
 	alert = new Alert(AlertType.CONFIRMATION);
 	alert.setTitle(ALERTITLE);
 	alert.setHeaderText(ALERTHEADERTEXT);
@@ -168,21 +161,8 @@ private void negozioGiusto() throws IOException {
 
 
 	if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
-		/*
-		if (vis.getTipologiaApplicazione().equals("demo"))
-		{
 
-				Platform.exit();
-				File path=new File("memory");
-				File[] files = path.listFiles();
-				for(int i = 0; i< Objects.requireNonNull(files).length; i++) {
-
-					files[i].delete();
-				}
-		}
-
-		 */
-		//else {
+		try {
 
 			Stage stage;
 			Parent root;
@@ -192,11 +172,14 @@ private void negozioGiusto() throws IOException {
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
-	//	}
+		}catch (IOException e)
+		{
+			Logger.getLogger("negozio giusto").log(Level.SEVERE,"choose a shop {0}",e);
+		}
 		}
 	}
 
-	private void verificaDispApertura(String type, int idNegozio) throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException {
+	private void verificaDispApertura(String type, int idNegozio)  {
 
 		listOfNegozi = cSN.getNegozi(type);
 		boolean statusA = false;
@@ -228,7 +211,8 @@ private void negozioGiusto() throws IOException {
 
 
 
-		if (statusA && statusB) { negozioGiusto();
+		if (statusA && statusB) {
+			negozioGiusto();
 
 		} else {
 

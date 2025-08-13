@@ -20,7 +20,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean inserisciPagamentoFattura(PagamentoFattura f) throws IOException, ClassNotFoundException {
+    public boolean inserisciPagamentoFattura(PagamentoFattura f)  {
 
 
 
@@ -29,7 +29,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
 
             list = (ArrayList<PagamentoFattura>) ois.readObject();
 
-        }catch (EOFException e)
+        }catch (IOException |ClassNotFoundException e)
         {
            Logger.getLogger("pagaemnto fattura").log(Level.SEVERE," error with file payment .",e);
         }
@@ -40,6 +40,8 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
         try (FileOutputStream fout = new FileOutputStream(SERIALIZZAZIONE);
              ObjectOutputStream oos = new ObjectOutputStream(fout)) {
             oos.writeObject(list);
+        }catch (IOException e1){
+            Logger.getLogger("inserisciPagamentofattura").log(Level.SEVERE,"error with write exception {0}",e1);
         }
 
 
@@ -51,11 +53,16 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean cancellaPagamentoFattura(PagamentoFattura f) throws  IOException, ClassNotFoundException {
+    public boolean cancellaPagamentoFattura(PagamentoFattura f) {
         boolean status = false;
         try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             list = (ArrayList<PagamentoFattura>) ois.readObject();
+        }catch (IOException e){
+            Logger.getLogger("cancellaPagamentoFattura").log(Level.SEVERE,"delPaymentF io exception {0}",e);
+        }catch (ClassNotFoundException e1){
+            Logger.getLogger("cancellaPAgamentoFattura csv").log(Level.SEVERE,"delPaymentF csv exception {0}",e1);
+
         }
 
         for (int i = 0; i <list.size(); i++) {
@@ -73,48 +80,60 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
             if(!Files.exists(path)) throw new IOException("file "+SERIALIZZAZIONE+" cancellato");
         }catch (IOException e)
         {
-            Files.createFile(path);
+            try {
+                Files.createFile(path);
+            } catch (IOException ex) {
+                Logger.getLogger("creazione Fattura file").log(Level.SEVERE,"file not created {0}",ex);
+            }
             try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
                 ObjectOutputStream oos=new ObjectOutputStream(fos)){
                 oos.writeObject(list);
+            }catch (IOException e1)
+            {
+             Logger.getLogger("scrittura").log(Level.SEVERE,"error with write {0}",e1);
             }
         }
         return status;
     }
 
     @Override
-    public void inizializza() throws IOException {
+    public void inizializza()  {
         Path path = Path.of(SERIALIZZAZIONE);
         try
        {
            if(!Files.exists(path)) throw new IOException(" file fattura.ser not exists");
        }catch (IOException e)
        {
-           Files.createFile(path);
+           try {
+               Files.createFile(path);
+           } catch (IOException ex) {
+              Logger.getLogger("inizializza").log(Level.SEVERE,"error with file {0}",ex);
+           }
            Logger.getLogger("inizializza memoria fattura").log(Level.INFO," file has been created");
        }
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public PagamentoFattura ultimaFattura() throws IOException,  ClassNotFoundException {
+    public PagamentoFattura ultimaFattura()  {
         try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             list = (ArrayList<PagamentoFattura>) ois.readObject();
-
-
+        }catch (IOException |ClassNotFoundException e)
+        {
+            Logger.getLogger("ultimaFattura").log(Level.SEVERE,"error withh last fattura {0}",e);
         }
         return list.get(list.size() - 1);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public ObservableList<PagamentoFattura> listPagamentiByUserF(PagamentoFattura pF) throws IOException, ClassNotFoundException {
+    public ObservableList<PagamentoFattura> listPagamentiByUserF(PagamentoFattura pF)  {
         ObservableList<PagamentoFattura> listFatture= FXCollections.observableArrayList();
         try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             list = (ArrayList<PagamentoFattura>) ois.readObject();
-        }catch (EOFException e)
+        }catch (IOException |ClassNotFoundException  e)
         {
             Logger.getLogger("listPagemntoFatturaUser").log(Level.SEVERE,"file is empty");
         }

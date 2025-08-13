@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MemoriaLibro.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.primoucacquista.libro</a> &gt; <span class="el_source">MemoriaLibro.java</span></div><h1>MemoriaLibro.java</h1><pre class="source lang-java linenums">package laptop.database.primoucacquista.libro;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.database.MemoryInitialize;
-import laptop.exception.IdException;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
 
@@ -13,6 +11,8 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 <span class="fc" id="L18">public class MemoriaLibro extends PersistenzaLibro{</span>
@@ -22,65 +22,69 @@ import java.util.List;
 <span class="fc" id="L22">    private static final MemoryInitialize mI = new MemoryInitialize();</span>
 
     @Override
-    public void initializza() throws IOException, CsvValidationException, ClassNotFoundException {
+    public void initializza(){
 <span class="fc" id="L26">     mI.inizializza(SERIALIZZAZIONE);</span>
 <span class="fc" id="L27">    }</span>
 
 
     @Override
-    public boolean inserisciLibro(Libro l) throws  IOException, ClassNotFoundException {
+    public boolean inserisciLibro(Libro l)  {
 <span class="fc" id="L32">        Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);</span>
 <span class="pc bpc" id="L33" title="1 of 2 branches missed.">        if (!Files.exists(path2))</span>
         {
-<span class="fc" id="L35">            Files.createFile(path2);</span>
+            try {
+<span class="fc" id="L36">                Files.createFile(path2);</span>
+<span class="nc" id="L37">            } catch (IOException e) {</span>
+<span class="nc" id="L38">                Logger.getLogger(&quot;inserisci libro&quot;).log(Level.SEVERE,&quot;inseirsci libro exception {0}&quot;,e);</span>
+<span class="fc" id="L39">            }</span>
         }
 
 
-<span class="fc" id="L39">        return mI.inserisci(l,null,null,SERIALIZZAZIONE,SERIALIZZAZIONEAPPOGGIO);</span>
+<span class="fc" id="L43">        return mI.inserisci(l,null,null,SERIALIZZAZIONE,SERIALIZZAZIONEAPPOGGIO);</span>
 
     }
 
     @Override
-    public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData()  {
 
 
-<span class="fc" id="L47">        return FXCollections.observableArrayList(mI.listaLibri(SERIALIZZAZIONE));</span>
+<span class="fc" id="L51">        return FXCollections.observableArrayList(mI.listaLibri(SERIALIZZAZIONE));</span>
     }
 
     @Override
-    public ObservableList&lt;Libro&gt; getLibroByIdTitoloAutoreLibro(Libro l) throws IOException, ClassNotFoundException {
-<span class="fc" id="L52">        ObservableList&lt;Libro&gt; listaRecuperata = FXCollections.observableArrayList();</span>
+    public ObservableList&lt;Libro&gt; getLibroByIdTitoloAutoreLibro(Libro l) {
+<span class="fc" id="L56">        ObservableList&lt;Libro&gt; listaRecuperata = FXCollections.observableArrayList();</span>
 
-<span class="fc" id="L54">        List&lt;Libro&gt; list=mI.listaLibri(SERIALIZZAZIONE);</span>
+<span class="fc" id="L58">        List&lt;Libro&gt; list=mI.listaLibri(SERIALIZZAZIONE);</span>
 
 
-<span class="fc bfc" id="L57" title="All 2 branches covered.">        for(int i=0;i&lt;list.size();i++)</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        for(int i=0;i&lt;list.size();i++)</span>
         {
-<span class="fc bfc" id="L59" title="All 2 branches covered.">            if(i==l.getId()-1</span>
-<span class="pc bpc" id="L60" title="1 of 2 branches missed.">                    || list.get(i).getTitolo().equals(l.getTitolo())</span>
-<span class="pc bpc" id="L61" title="1 of 2 branches missed.">                    || list.get(i).getEditore().equals(l.getEditore())</span>
-<span class="pc bpc" id="L62" title="1 of 2 branches missed.">                    || list.get(i).getAutore().equals(l.getAutore()))</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">            if(i==l.getId()-1</span>
+<span class="pc bpc" id="L64" title="1 of 2 branches missed.">                    || list.get(i).getTitolo().equals(l.getTitolo())</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">                    || list.get(i).getEditore().equals(l.getEditore())</span>
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">                    || list.get(i).getAutore().equals(l.getAutore()))</span>
             {
-<span class="fc" id="L64">                listaRecuperata=FXCollections.observableArrayList(list.get(i));</span>
+<span class="fc" id="L68">                listaRecuperata=FXCollections.observableArrayList(list.get(i));</span>
             }
 
 
         }
 
 
-<span class="fc" id="L71">        return listaRecuperata;</span>
+<span class="fc" id="L75">        return listaRecuperata;</span>
     }
 
     @Override
-    public ObservableList&lt;Libro&gt; getLibri() throws IOException, ClassNotFoundException {
-<span class="fc" id="L76">        List&lt;Libro&gt; list=mI.listaLibri(SERIALIZZAZIONE);</span>
-<span class="fc" id="L77">        return FXCollections.observableList(list);</span>
+    public ObservableList&lt;Libro&gt; getLibri() {
+<span class="fc" id="L80">        List&lt;Libro&gt; list=mI.listaLibri(SERIALIZZAZIONE);</span>
+<span class="fc" id="L81">        return FXCollections.observableList(list);</span>
     }
 
     @Override
 
-    public boolean removeLibroById(Libro l) throws IOException, ClassNotFoundException {
-<span class="fc" id="L83">        return mI.cancellaLibro(l);</span>
+    public boolean removeLibroById(Libro l)  {
+<span class="fc" id="L87">        return mI.cancellaLibro(l);</span>
     }
 
 

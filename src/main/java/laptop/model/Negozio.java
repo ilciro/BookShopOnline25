@@ -55,19 +55,23 @@ public class Negozio implements Serializable {
 		this.isOpen = isOpen;
 	}
 
-	
-	
-	@Override
-	public String toString() {
-		return "Negozio [nome=" + nome + ", via=" + via + ", isOpen=" + isOpen + ", isValid=" + isValid+"]";
-	}
 
-
-    public int getId() {
+	public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
     }
+
+	@Override
+	public String toString() {
+		return "Negozio{" +
+				"nome='" + nome + '\'' +
+				", via='" + via + '\'' +
+				", isValid=" + isValid +
+				", isOpen=" + isOpen +
+				", id=" + id +
+				'}';
+	}
 }

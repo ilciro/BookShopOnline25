@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MemoriaRivista.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.primoucacquista.rivista</a> &gt; <span class="el_source">MemoriaRivista.java</span></div><h1>MemoriaRivista.java</h1><pre class="source lang-java linenums">package laptop.database.primoucacquista.rivista;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.database.MemoryInitialize;
-import laptop.exception.IdException;
 import laptop.model.raccolta.Raccolta;
 import laptop.model.raccolta.Rivista;
 
@@ -12,47 +10,52 @@ import java.io.*;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
-<span class="fc" id="L19">public class MemoriaRivista extends PersistenzaRivista{</span>
+<span class="fc" id="L18">public class MemoriaRivista extends PersistenzaRivista{</span>
     private static final String SERIALIZZAZIONE=&quot;memory/serializzazioneRivista.ser&quot;;
     private static final String SERIALIZZAZIONEAPPOGGIO=&quot;memory/serializzazioneRivistaAppoggio.ser&quot;;
 
-<span class="fc" id="L23">   private static final MemoryInitialize mI=new MemoryInitialize();</span>
+<span class="fc" id="L22">   private static final MemoryInitialize mI=new MemoryInitialize();</span>
     @Override
-    public boolean inserisciRivista(Rivista r) throws IOException, ClassNotFoundException {
+    public boolean inserisciRivista(Rivista r)  {
 
-<span class="fc" id="L27">        Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);</span>
-<span class="pc bpc" id="L28" title="1 of 2 branches missed.">        if (!Files.exists(path2))</span>
+<span class="fc" id="L26">        Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);</span>
+<span class="pc bpc" id="L27" title="1 of 2 branches missed.">        if (!Files.exists(path2))</span>
         {
-<span class="fc" id="L30">            Files.createFile(path2);</span>
+            try {
+<span class="fc" id="L30">                Files.createFile(path2);</span>
+<span class="nc" id="L31">            } catch (IOException e) {</span>
+<span class="nc" id="L32">                Logger.getLogger(&quot;insiert rivista mem&quot;).log(Level.SEVERE,&quot;error with crate file mem {0}&quot;,e);</span>
+<span class="fc" id="L33">            }</span>
         }
 
-<span class="fc" id="L33">        return mI.inserisci(null,null,r,SERIALIZZAZIONE,SERIALIZZAZIONEAPPOGGIO);</span>
+<span class="fc" id="L36">        return mI.inserisci(null,null,r,SERIALIZZAZIONE,SERIALIZZAZIONEAPPOGGIO);</span>
 
 
     }
 
     @Override
-    public boolean removeRivistaById(Rivista r) throws IOException, ClassNotFoundException {
+    public boolean removeRivistaById(Rivista r)  {
 
-<span class="fc" id="L41">        return mI.cancellaRivista(r);</span>
+<span class="fc" id="L44">        return mI.cancellaRivista(r);</span>
     }
 
 
 
     @Override
-    public ObservableList&lt;Rivista&gt; getRiviste() throws IOException, ClassNotFoundException {
+    public ObservableList&lt;Rivista&gt; getRiviste()  {
 
-<span class="fc" id="L49">        return FXCollections.observableList(mI.listaRiviste(SERIALIZZAZIONE));</span>
+<span class="fc" id="L52">        return FXCollections.observableList(mI.listaRiviste(SERIALIZZAZIONE));</span>
     }
 
     @Override
-    public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() {
 
-<span class="fc" id="L55">        return FXCollections.observableArrayList(mI.listaRiviste(SERIALIZZAZIONE));</span>
+<span class="fc" id="L58">        return FXCollections.observableArrayList(mI.listaRiviste(SERIALIZZAZIONE));</span>
 
 
     }
@@ -61,36 +64,36 @@ import java.util.List;
 
     @Override
 
-    public ObservableList&lt;Rivista&gt; getRivistaByIdTitoloAutoreRivista(Rivista r) throws IOException, ClassNotFoundException {
+    public ObservableList&lt;Rivista&gt; getRivistaByIdTitoloAutoreRivista(Rivista r)  {
 
 
-<span class="fc" id="L67">        ObservableList&lt;Rivista&gt; listaRecuperata = FXCollections.observableArrayList();</span>
-<span class="fc" id="L68">        List&lt;Rivista&gt; list=mI.listaRiviste(SERIALIZZAZIONE);</span>
+<span class="fc" id="L70">        ObservableList&lt;Rivista&gt; listaRecuperata = FXCollections.observableArrayList();</span>
+<span class="fc" id="L71">        List&lt;Rivista&gt; list=mI.listaRiviste(SERIALIZZAZIONE);</span>
 
-<span class="fc bfc" id="L70" title="All 2 branches covered.">        for(int i=0;i&lt;list.size();i++)</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">        for(int i=0;i&lt;list.size();i++)</span>
         {
-<span class="fc bfc" id="L72" title="All 2 branches covered.">            if(i==r.getId()-1</span>
-<span class="pc bpc" id="L73" title="1 of 2 branches missed.">                    || list.get(i).getTitolo().equals(r.getTitolo())</span>
-<span class="pc bpc" id="L74" title="1 of 2 branches missed.">                    || list.get(i).getAutore().equals(r.getAutore()))</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">            if(i==r.getId()-1</span>
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">                    || list.get(i).getTitolo().equals(r.getTitolo())</span>
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">                    || list.get(i).getAutore().equals(r.getAutore()))</span>
             {
 
-<span class="fc" id="L77">                listaRecuperata=FXCollections.observableArrayList(list.get(i));</span>
+<span class="fc" id="L80">                listaRecuperata=FXCollections.observableArrayList(list.get(i));</span>
             }
 
         }
-<span class="fc" id="L81">        return listaRecuperata;</span>
+<span class="fc" id="L84">        return listaRecuperata;</span>
     }
 
     @Override
-    public void initializza() throws CsvValidationException, SQLException, ClassNotFoundException, IOException {
+    public void initializza()  {
 
 
 
-<span class="fc" id="L89">        mI.inizializza(SERIALIZZAZIONE);</span>
+<span class="fc" id="L92">        mI.inizializza(SERIALIZZAZIONE);</span>
 
 
 
-<span class="fc" id="L93">    }</span>
+<span class="fc" id="L96">    }</span>
 
 
 

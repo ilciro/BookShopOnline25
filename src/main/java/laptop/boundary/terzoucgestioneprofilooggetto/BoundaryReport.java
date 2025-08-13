@@ -1,6 +1,5 @@
 package laptop.boundary.terzoucgestioneprofilooggetto;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,13 +15,13 @@ import laptop.controller.ControllerSystemState;
 import laptop.controller.terzoucgestioneprofiloggetto.ControllerReport;
 import laptop.model.Report;
 import laptop.model.user.TempUser;
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BoundaryReport implements Initializable {
     @FXML
@@ -83,7 +82,7 @@ public class BoundaryReport implements Initializable {
     private final ControllerSystemState vis=ControllerSystemState.getInstance();
 
     @FXML
-    private void genera() throws SQLException, CsvValidationException, IOException, ClassNotFoundException {
+    private void genera()  {
 
         String type="";
         if(databaseButton.isSelected()) type="database";
@@ -132,7 +131,7 @@ public class BoundaryReport implements Initializable {
 
 
     @FXML
-    private void indietro() throws IOException {
+    private void indietro()  {
        if(databaseButton.isSelected()||fileButton.isSelected())
            login();
     }
@@ -156,15 +155,20 @@ public class BoundaryReport implements Initializable {
 
     }
 
-    private void login() throws IOException {
-        Stage stage;
-        Parent root;
-        stage = (Stage) buttonI.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/secondouclogin/login.fxml")));
-        stage.setTitle("Benvenuto nella schermata del login");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    private void login() {
+        try {
+            Stage stage;
+            Parent root;
+            stage = (Stage) buttonI.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/secondouclogin/login.fxml")));
+            stage.setTitle("Benvenuto nella schermata del login");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("login").log(Level.SEVERE,"login not avalaible {0}",e);
+        }
     }
 }
 

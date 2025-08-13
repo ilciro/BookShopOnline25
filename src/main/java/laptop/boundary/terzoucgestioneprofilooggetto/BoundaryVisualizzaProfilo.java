@@ -1,6 +1,5 @@
 package laptop.boundary.terzoucgestioneprofilooggetto;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,10 +13,8 @@ import javafx.stage.Stage;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.terzoucgestioneprofiloggetto.ControllerVisualizzaProfilo;
 import laptop.exception.IdException;
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -103,7 +100,7 @@ public class BoundaryVisualizzaProfilo implements Initializable {
 
 
     @FXML
-    private void prendi() throws CsvValidationException, SQLException, IOException {
+    private void prendi() {
 
 
         ta.setEditable(false);
@@ -118,73 +115,83 @@ public class BoundaryVisualizzaProfilo implements Initializable {
 
 
     @FXML
-    private void mostra() throws IdException {
+    private void mostra()  {
+        try {
 
-        if (ruolo.isSelected()) ruoloM();
-        else if (nome.isSelected()) nomeM();
-        else if (cognome.isSelected()) cognomeM();
-        else if (email.isSelected()) emailM();
-        else if (pwd.isSelected()) passwordM();
-        else if (descrizione.isSelected()) descrizioneM();
-        else if (tutto.isSelected()) tuttoM();
+            if (ruolo.isSelected()) ruoloM();
+            else if (nome.isSelected()) nomeM();
+            else if (cognome.isSelected()) cognomeM();
+            else if (email.isSelected()) emailM();
+            else if (pwd.isSelected()) passwordM();
+            else if (descrizione.isSelected()) descrizioneM();
+            else if (tutto.isSelected()) tuttoM();
 
-        else {
-            Logger.getLogger("mostra").log(Level.SEVERE, "click one button!!");
-            throw new IdException(" campi da modificare non ce ne sono!!");
-        }
-
-
-    }
-
-    @FXML
-    private void modifica() throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
-        if (radioU.isSelected()) ruoloTF.setText("UTENTE");
-        else if (radioS.isSelected()) ruoloTF.setText("SCRITTORE");
-        else if (radioE.isSelected()) ruoloTF.setText("EDITORE");
-        else if (radioA.isSelected()) ruoloTF.setText("ADMIN");
-
-        String[] dataU = new String[6];
-        dataU[0] = ruoloTF.getText();
-        dataU[1] = nomeTF.getText();
-        dataU[2] = cognomeTF.getText();
-        dataU[3] = emailTF.getText();
-        dataU[4] = passTF.getText();
-        dataU[5] = descTA.getText();
-
-
-        String type = "";
-        if (databaseButton.isSelected()) type = "database";
-        if (fileButton.isSelected()) type = "file";
-        if (memoriaButton.isSelected()) type = "memoria";
-        if (checkPersistenza()) {
-            if (cV.modifica(dataU, type)) {
-                Stage stage;
-                Parent root;
-                stage = (Stage) buttonM.getScene().getWindow();
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
-                stage.setTitle("Benvenuto nella home page");
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } else {
-                Logger.getLogger("modif").log(Level.SEVERE, " modif not correct!!");
-                Stage stage;
-                Parent root;
-                stage = (Stage) buttonM.getScene().getWindow();
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/visualizzaProfilo.fxml")));
-                stage.setTitle("Benvenuto nella schermata della modifica");
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-
+            else {
+                Logger.getLogger("mostra").log(Level.SEVERE, "click one button!!");
+                throw new IdException(" campi da modificare non ce ne sono!!");
             }
+        }catch (IdException e)
+        {
+            Logger.getLogger("mostra").log(Level.SEVERE,"field is not selected {0}",e);
         }
 
 
     }
 
     @FXML
-    private void indietro() throws IOException {
+    private void modifica()  {
+        try {
+            if (radioU.isSelected()) ruoloTF.setText("UTENTE");
+            else if (radioS.isSelected()) ruoloTF.setText("SCRITTORE");
+            else if (radioE.isSelected()) ruoloTF.setText("EDITORE");
+            else if (radioA.isSelected()) ruoloTF.setText("ADMIN");
+
+            String[] dataU = new String[6];
+            dataU[0] = ruoloTF.getText();
+            dataU[1] = nomeTF.getText();
+            dataU[2] = cognomeTF.getText();
+            dataU[3] = emailTF.getText();
+            dataU[4] = passTF.getText();
+            dataU[5] = descTA.getText();
+
+
+            String type = "";
+            if (databaseButton.isSelected()) type = "database";
+            if (fileButton.isSelected()) type = "file";
+            if (memoriaButton.isSelected()) type = "memoria";
+            if (checkPersistenza()) {
+                if (cV.modifica(dataU, type)) {
+                    Stage stage;
+                    Parent root;
+                    stage = (Stage) buttonM.getScene().getWindow();
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
+                    stage.setTitle("Benvenuto nella home page");
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                } else {
+                    Logger.getLogger("modif").log(Level.SEVERE, " modif not correct!!");
+                    Stage stage;
+                    Parent root;
+                    stage = (Stage) buttonM.getScene().getWindow();
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/visualizzaProfilo.fxml")));
+                    stage.setTitle("Benvenuto nella schermata della modifica");
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+
+                }
+            }
+        }catch (IOException e)
+        {
+            Logger.getLogger("modif user").log(Level.SEVERE,"modif error {0}",e);
+        }
+
+
+    }
+
+    @FXML
+    private void indietro(){
         if (checkPersistenza()) {
             homePage();
         }
@@ -291,14 +298,19 @@ public class BoundaryVisualizzaProfilo implements Initializable {
         return databaseButton.isSelected() || fileButton.isSelected() || memoriaButton.isSelected();
     }
 
-    private void homePage() throws IOException {
-        Stage stage;
-        Parent root;
-        stage = (Stage) buttonI.getScene().getWindow();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
-        stage.setTitle("Benvenuto nella schermata home page");
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    private void homePage(){
+        try {
+            Stage stage;
+            Parent root;
+            stage = (Stage) buttonI.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
+            stage.setTitle("Benvenuto nella schermata home page");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("homePage").log(Level.SEVERE,"home Page not avalaible {0}",e);
+        }
     }
 }

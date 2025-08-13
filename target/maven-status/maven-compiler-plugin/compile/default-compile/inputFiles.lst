@@ -71,7 +71,7 @@
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/primoucacquista/pagamentototale/PagamentoTotaleCsv.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/primoucacquista/pagamentototale/PagamentoTotaleDao.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/primoucacquista/pagamentototale/PagamentoTotaleMemoria.java
-/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/primoucacquista/pagamentototale/PersistenzzaPagamentoTotale.java
+/home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/primoucacquista/pagamentototale/PersistenzaPagamentoTotale.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/primoucacquista/rivista/CsvRivista.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/primoucacquista/rivista/MemoriaRivista.java
 /home/daniele/IdeaProjects/BookShopOnline25/src/main/java/laptop/database/primoucacquista/rivista/PersistenzaRivista.java

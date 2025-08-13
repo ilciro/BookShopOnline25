@@ -15,6 +15,8 @@ import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class  MemoriaGiornale extends PersistenzaGiornale{
@@ -27,7 +29,7 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
     private static final MemoryInitialize mI=new MemoryInitialize() ;
 
     @Override
-    public void initializza() throws CsvValidationException, SQLException,  IOException, ClassNotFoundException {
+    public void initializza()  {
 
         mI.inizializza(SERIALIZZAZIONE);
 
@@ -40,12 +42,16 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
 
     @Override
 
-    public boolean inserisciGiornale(Giornale g) throws IOException, ClassNotFoundException {
+    public boolean inserisciGiornale(Giornale g)  {
 
         Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);
         if (!Files.exists(path2))
         {
-            Files.createFile(path2);
+            try {
+                Files.createFile(path2);
+            } catch (IOException e) {
+                Logger.getLogger("inserisci giornale").log(Level.SEVERE,"insert giornale exception {0}",e);
+            }
         }
         return mI.inserisci(null,g,null,SERIALIZZAZIONE,SERIALIZZAZIONEAPPOGGIO);
 
@@ -55,14 +61,14 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
 
     @Override
 
-    public ObservableList<Raccolta> retrieveRaccoltaData() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public ObservableList<Raccolta> retrieveRaccoltaData() {
 
         return FXCollections.observableArrayList(mI.listaGiornali(SERIALIZZAZIONE));
     }
 
     @Override
 
-    public ObservableList<Giornale> getGiornaleByIdTitoloAutoreLibro(Giornale g) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public ObservableList<Giornale> getGiornaleByIdTitoloAutoreLibro(Giornale g)  {
         ObservableList<Giornale> listaRecuperata = FXCollections.observableArrayList();
 
         List<Giornale> list=mI.listaGiornali(SERIALIZZAZIONE);
@@ -83,14 +89,14 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
     }
 
     @Override
-    public ObservableList<Giornale> getGiornali() throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public ObservableList<Giornale> getGiornali()  {
 
         List<Giornale> list=mI.listaGiornali(SERIALIZZAZIONE);
         return FXCollections.observableList(list);
     }
 
     @Override
-    public boolean removeGiornaleById(Giornale g) throws  IOException,  ClassNotFoundException {
+    public boolean removeGiornaleById(Giornale g)  {
         return mI.cancellaGiornale(g);
     }
 

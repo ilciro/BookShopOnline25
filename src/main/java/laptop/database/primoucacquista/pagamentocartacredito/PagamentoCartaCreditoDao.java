@@ -1,13 +1,11 @@
 package laptop.database.primoucacquista.pagamentocartacredito;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.database.DaoInitialize;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.utilities.ConnToDb;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

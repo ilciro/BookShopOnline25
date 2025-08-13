@@ -1,8 +1,8 @@
 package laptop.controller.primoucacquista;
 
-import java.io.File;
 import java.io.IOException;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,7 +37,7 @@ import laptop.database.primoucacquista.rivista.RivistaDao;
 import laptop.database.primoucacquista.pagamentocartacredito.CsvPagamentoCartaCredito;
 import laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCreditoDao;
 import laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito;
-import laptop.database.primoucacquista.pagamentototale.PersistenzzaPagamentoTotale;
+import laptop.database.primoucacquista.pagamentototale.PersistenzaPagamentoTotale;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
 import laptop.database.terzoucgestioneprofiloggetto.report.CsvReport;
 import laptop.database.terzoucgestioneprofiloggetto.report.MemoriaReport;
@@ -72,7 +72,7 @@ public class ControllerPagamentoCC {
 	private  PersistenzaLibro pL;
 	private PersistenzaGiornale pG;
 	private PersistenzaRivista pR;
-    private PersistenzzaPagamentoTotale pT;
+    private PersistenzaPagamentoTotale pT;
 	private PersistenzaPagamentoCartaCredito pCC;
 	private PersistenzaReport pRepo;
 
@@ -85,8 +85,7 @@ public class ControllerPagamentoCC {
 	}
 
 
-	public boolean aggiungiCartaDB(String n, String c, String cod, java.sql.Date data, String civ, float prezzo,String persistenza)
-            throws CsvValidationException, IOException, ClassNotFoundException, SQLException {
+	public boolean aggiungiCartaDB(String n, String c, String cod, Date data, String civ, float prezzo,String persistenza) {
    			cc= new CartaDiCredito(n, c, cod,  data, civ, prezzo);
 
 
@@ -105,7 +104,7 @@ public class ControllerPagamentoCC {
 
 
 
-	public ObservableList<CartaDiCredito> ritornaElencoCC(String nomeU, String persistenza,String numero) throws IOException, ClassNotFoundException, CsvValidationException, SQLException {
+	public ObservableList<CartaDiCredito> ritornaElencoCC(String nomeU, String persistenza,String numero) {
 
 		cc=new CartaDiCredito();
 		cc.setNomeUser(nomeU);
@@ -126,7 +125,7 @@ public class ControllerPagamentoCC {
 	
 
 
-	private PagamentoCartaCredito pagamentoLibroCC(String nome,String database,String cognome,String mail) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+	private PagamentoCartaCredito pagamentoLibroCC(String nome,String database,String cognome,String mail)  {
 		Libro l=new Libro();
 		l.setId(vis.getIdLibro());
 		int id=l.getId();
@@ -143,7 +142,7 @@ public class ControllerPagamentoCC {
 		return p;
 	}
 
-	private PagamentoCartaCredito pagamentoGiornaleCC(String nome,String database,String cognome,String mail) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+	private PagamentoCartaCredito pagamentoGiornaleCC(String nome,String database,String cognome,String mail)  {
 		Giornale g=new Giornale();
 		g.setId(vis.getIdGiornale());
 		int id=g.getId();
@@ -160,7 +159,7 @@ public class ControllerPagamentoCC {
 		return p;
 	}
 
-	private PagamentoCartaCredito pagamentoRivistaCC(String nome,String database,String cognome,String mail) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+	private PagamentoCartaCredito pagamentoRivistaCC(String nome,String database,String cognome,String mail) {
 		Rivista r=new Rivista();
 		r.setId(vis.getIdRivista());
 		int id=r.getId();
@@ -179,7 +178,7 @@ public class ControllerPagamentoCC {
 	}
 
 
-	public void pagamentoCC(String nome,String database,String cognome) throws IdException, IOException, CsvValidationException, ClassNotFoundException, SQLException {
+	public void pagamentoCC(String nome,String database,String cognome)  {
   		String mail;
 		  if(vis.getIsLogged())
 			  mail=User.getInstance().getEmail();
@@ -189,15 +188,13 @@ public class ControllerPagamentoCC {
 		vis.setTipoModifica("insert");
 
 
-        PagamentoCartaCredito p ;
+        PagamentoCartaCredito p = null;
 
         switch (vis.getType()) {
 			case LIBRO-> p=pagamentoLibroCC(nome,database,cognome,mail);
 			case GIORNALE ->p= pagamentoGiornaleCC(nome,database,cognome,mail);
 			case RIVISTA -> p=pagamentoRivistaCC(nome,database,cognome,mail);
-
-
-			default -> throw new IdException(" id not found");
+			default ->Logger.getLogger("pagamentoCC").log(Level.SEVERE,"persistency incorrect");
 
 		}
 
@@ -227,7 +224,8 @@ public class ControllerPagamentoCC {
 		pCC.inizializza();
 
 
-		if(pCC.inserisciPagamentoCartaCredito(p)) {
+        assert p != null;
+        if(pCC.inserisciPagamentoCartaCredito(p)) {
 			Logger.getLogger("pagamento effettuato ").log(Level.INFO," payment success with id . {0}", p.getIdPagCC());
 			if(database.equals(FILE))
 			{

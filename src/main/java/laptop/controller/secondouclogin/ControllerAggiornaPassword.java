@@ -1,18 +1,13 @@
 package laptop.controller.secondouclogin;
 
-import com.opencsv.exceptions.CsvValidationException;
 
 import laptop.controller.ControllerSystemState;
 import laptop.database.secondouclogin.users.CsvUtente;
 import laptop.database.secondouclogin.users.MemoriaUtente;
 import laptop.database.secondouclogin.users.PersistenzaUtente;
 import laptop.database.secondouclogin.users.UsersDao;
-import laptop.exception.IdException;
 import laptop.model.user.TempUser;
 import laptop.model.user.User;
-
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,7 +24,7 @@ public class ControllerAggiornaPassword {
      return u.getPassword();
     }
 
-    public boolean aggiorna( String nuovaP,String type) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
+    public boolean aggiorna( String nuovaP,String type)  {
 
 
         vis.setTipoModifica("im");

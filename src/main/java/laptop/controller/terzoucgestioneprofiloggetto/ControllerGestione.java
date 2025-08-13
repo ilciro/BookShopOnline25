@@ -1,6 +1,5 @@
 package laptop.controller.terzoucgestioneprofiloggetto;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 import laptop.database.primoucacquista.giornale.CsvGiornale;
@@ -15,13 +14,9 @@ import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
 import laptop.database.primoucacquista.rivista.RivistaDao;
-import laptop.exception.IdException;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Rivista;
-
-import java.io.IOException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,7 +38,7 @@ public class ControllerGestione {
     private PersistenzaRivista pR;
 
 
-    public boolean inserisci(String[] param,String persistenza) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+    public boolean inserisci(String[] param,String persistenza) {
         boolean status = false;
         vis.setTipoModifica("insert");
 
@@ -99,7 +94,7 @@ public class ControllerGestione {
     }
 
 
-    public ObservableList<Libro>libroById(String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public ObservableList<Libro>libroById(String persistenza)  {
 
 
         switch (persistenza)
@@ -112,7 +107,7 @@ public class ControllerGestione {
         l.setId(vis.getIdLibro());
         return pL.getLibroByIdTitoloAutoreLibro(l);
     }
-    public ObservableList<Giornale> giornaleById(String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public ObservableList<Giornale> giornaleById(String persistenza) {
         switch (persistenza)
         {
             case DATABASE -> pG=new GiornaleDao();
@@ -124,7 +119,7 @@ public class ControllerGestione {
         return pG.getGiornaleByIdTitoloAutoreLibro(g);
 
     }
-    public ObservableList<Rivista> rivistaById(String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    public ObservableList<Rivista> rivistaById(String persistenza)  {
         switch (persistenza)
         {
             case DATABASE -> pR=new RivistaDao();
@@ -139,7 +134,7 @@ public class ControllerGestione {
 
 
 
-    public boolean modifica(String[] dati,String persistenza) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
+    public boolean modifica(String[] dati,String persistenza)  {
        boolean status=false;
        vis.setTipoModifica("im");
 
@@ -158,7 +153,7 @@ public class ControllerGestione {
         return status;
     }
 
-    private boolean modificaLibro(String[] dati, String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException {
+    private boolean modificaLibro(String[] dati, String persistenza)  {
         vis.setTipoModifica("im");
 
         //prendo giornale
@@ -189,7 +184,7 @@ public class ControllerGestione {
 
     }
 
-    private boolean modificaGiornale(String[] dati, String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
+    private boolean modificaGiornale(String[] dati, String persistenza)  {
 
         vis.setTipoModifica("im");
 
@@ -273,7 +268,7 @@ public class ControllerGestione {
         return r;
     }
 
-    private boolean modificaRivista(String[]dati,String persistenza) throws CsvValidationException, IOException, IdException, ClassNotFoundException, SQLException {
+    private boolean modificaRivista(String[]dati,String persistenza) {
 
         vis.setTipoModifica("im");
 

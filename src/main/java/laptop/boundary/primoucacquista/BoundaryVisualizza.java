@@ -5,8 +5,8 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,9 +20,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import laptop.controller.ControllerSystemState;
-
 import laptop.controller.primoucacquista.ControllerVisualizza;
-import laptop.exception.IdException;
 
 
 public class BoundaryVisualizza implements Initializable {
@@ -105,39 +103,47 @@ public class BoundaryVisualizza implements Initializable {
 
 	
 	@FXML
-	private void acquista() throws IOException
+	private void acquista()
 	{
-		Stage stage;
-		Parent root;
-		stage = (Stage) buttonA.getScene().getWindow();
-		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/acquista.fxml")));
-		stage.setTitle("Benvenuto nella schermata del riepilogo ordine");
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
-	@FXML
-	private void annulla() throws IOException
-	{
-		if (!vis.getIsSearch()) {
-		Stage stage;
-		Parent root;
-		stage = (Stage) buttonBack.getScene().getWindow();
-		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/compravendita.fxml")));
-
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-		}
-		else
-		{
+		try {
 			Stage stage;
 			Parent root;
-			stage = (Stage) buttonBack.getScene().getWindow();
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/ricerca.fxml")));
+			stage = (Stage) buttonA.getScene().getWindow();
+			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/acquista.fxml")));
+			stage.setTitle("Benvenuto nella schermata del riepilogo ordine");
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
+		}catch (IOException e)
+			{
+				Logger.getLogger("acquista").log(Level.SEVERE,"acquista not avalaible {0}",e);
+			}
+	}
+	@FXML
+	private void annulla()
+	{
+		try {
+			if (!vis.getIsSearch()) {
+				Stage stage;
+				Parent root;
+				stage = (Stage) buttonBack.getScene().getWindow();
+				root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/compravendita.fxml")));
+
+				Scene scene = new Scene(root);
+				stage.setScene(scene);
+				stage.show();
+			} else {
+				Stage stage;
+				Parent root;
+				stage = (Stage) buttonBack.getScene().getWindow();
+				root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/ricerca.fxml")));
+				Scene scene = new Scene(root);
+				stage.setScene(scene);
+				stage.show();
+			}
+		}catch (IOException e)
+		{
+			Logger.getLogger("annulla").log(Level.SEVERE,"delete not possible {0}",e);
 		}
 	}
 	@FXML
@@ -152,7 +158,7 @@ public class BoundaryVisualizza implements Initializable {
 		else if(buttonFile.isSelected()) type="file";
 		else if(memoriaButton.isSelected()) type="memoria";
 
-		try {
+
 			switch (tipo)
 			{
 				case "libro"->
@@ -216,10 +222,7 @@ public class BoundaryVisualizza implements Initializable {
 			}
 
 
-		}catch (IOException | IdException | CsvValidationException | ClassNotFoundException e)
-		{
-			java.util.logging.Logger.getLogger("initialize").log(Level.SEVERE," eccezione ottenuta");
-		}
+
 
 
 

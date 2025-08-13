@@ -118,7 +118,7 @@ import java.util.logging.Logger;
     }
 
     @Override
-    public ObservableList&lt;TempUser&gt; reportU() throws SQLException {
+    public ObservableList&lt;TempUser&gt; reportU()  {
 <span class="fc" id="L122">        ObservableList&lt;TempUser&gt; lista=FXCollections.observableArrayList();</span>
 <span class="fc" id="L123">        query=&quot;select * from utenti&quot;;</span>
 <span class="fc" id="L124">        try(Connection conn=ConnToDb.connectionToDB();</span>
@@ -130,30 +130,37 @@ import java.util.logging.Logger;
 <span class="fc" id="L130">                 TempUser tu = getTempUser(rs);</span>
 <span class="fc" id="L131">                 lista.add(tu);</span>
 <span class="fc" id="L132">             }</span>
-        }
-<span class="fc" id="L134">        return lista;</span>
+<span class="nc" id="L133">        }catch (SQLException e)</span>
+        {
+<span class="nc" id="L135">            Logger.getLogger(&quot;reportU&quot;).log(Level.SEVERE,&quot;reportU is empty {0}&quot;,e);</span>
+<span class="fc" id="L136">        }</span>
+<span class="fc" id="L137">        return lista;</span>
 
     }
 
-    private static @NotNull TempUser getTempUser(ResultSet rs) throws SQLException {
-<span class="fc" id="L139">        TempUser tu=new TempUser();</span>
-<span class="fc" id="L140">        tu.setId(rs.getInt(1));</span>
-<span class="fc" id="L141">        tu.setIdRuoloT(rs.getString(2));</span>
-<span class="fc" id="L142">        tu.setNomeT(rs.getString(3));</span>
-<span class="fc" id="L143">        tu.setCognomeT(rs.getString(4));</span>
-<span class="fc" id="L144">        tu.setEmailT(rs.getString(5));</span>
-<span class="fc" id="L145">        tu.setPasswordT(rs.getString(6));</span>
-<span class="fc" id="L146">        tu.setDescrizioneT(rs.getString(7));</span>
-<span class="fc" id="L147">        tu.setDataDiNascitaT(rs.getDate(8).toLocalDate());</span>
-<span class="fc" id="L148">        return tu;</span>
+    private static @NotNull TempUser getTempUser(ResultSet rs)  {
+<span class="fc" id="L142">        TempUser tu=new TempUser();</span>
+        try {
+<span class="fc" id="L144">            tu.setId(rs.getInt(1));</span>
+<span class="fc" id="L145">            tu.setIdRuoloT(rs.getString(2));</span>
+<span class="fc" id="L146">            tu.setNomeT(rs.getString(3));</span>
+<span class="fc" id="L147">            tu.setCognomeT(rs.getString(4));</span>
+<span class="fc" id="L148">            tu.setEmailT(rs.getString(5));</span>
+<span class="fc" id="L149">            tu.setPasswordT(rs.getString(6));</span>
+<span class="fc" id="L150">            tu.setDescrizioneT(rs.getString(7));</span>
+<span class="fc" id="L151">            tu.setDataDiNascitaT(rs.getDate(8).toLocalDate());</span>
+<span class="nc" id="L152">        } catch (SQLException e) {</span>
+<span class="nc" id="L153">           Logger.getLogger(&quot;getTempUser&quot;).log(Level.SEVERE,&quot;tempUser is null {0}&quot;,e);</span>
+<span class="fc" id="L154">        }</span>
+<span class="fc" id="L155">        return tu;</span>
     }
 
 
 
 
     @Override
-    public void inizializza() throws IOException, ClassNotFoundException {
-<span class="fc" id="L156">        Logger.getLogger(&quot;inizializza reportDao&quot;).log(Level.INFO,&quot;initialize report dao&quot;);</span>
-<span class="fc" id="L157">    }</span>
+    public void inizializza()  {
+<span class="fc" id="L163">        Logger.getLogger(&quot;inizializza reportDao&quot;).log(Level.INFO,&quot;initialize report dao&quot;);</span>
+<span class="fc" id="L164">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

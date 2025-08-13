@@ -69,7 +69,7 @@ import laptop.model.user.TempUser;
 	}
 
 	@Override
-	public ObservableList&lt;TempUser&gt; getUserData() throws SQLException {
+	public ObservableList&lt;TempUser&gt; getUserData()  {
 <span class="fc" id="L73">		ObservableList&lt;TempUser&gt; lista=FXCollections.observableArrayList();</span>
 <span class="fc" id="L74">		query=&quot;select * from utenti&quot;;</span>
 <span class="fc" id="L75">		try(Connection conn=ConnToDb.connectionToDB();</span>
@@ -90,33 +90,40 @@ import laptop.model.user.TempUser;
 <span class="fc" id="L90">				lista.add(tu);</span>
 <span class="fc" id="L91">			}</span>
 
-		}
-<span class="fc" id="L94">		return lista;</span>
+<span class="nc" id="L93">		}catch (SQLException e) {</span>
+<span class="nc" id="L94">			Logger.getLogger(&quot;getUserData&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+
+<span class="fc" id="L96">		}</span>
+<span class="fc" id="L97">		return lista;</span>
 	}
 
 
 
 	@Override
-	public boolean removeUserByIdEmailPwd(TempUser u) throws SQLException {
-<span class="fc" id="L101">		query=&quot;delete from utenti where idUser=? or email=? or pwd=?&quot;;</span>
+	public boolean removeUserByIdEmailPwd(TempUser u)  {
+<span class="fc" id="L104">		query=&quot;delete from utenti where idUser=? or email=? or pwd=?&quot;;</span>
 
-<span class="fc" id="L103">		try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L104">		PreparedStatement prepQ=conn.prepareStatement(query))</span>
+<span class="fc" id="L106">		try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L107">		PreparedStatement prepQ=conn.prepareStatement(query))</span>
 		{
-<span class="fc" id="L106">			prepQ.setInt(1,u.getId());</span>
-<span class="fc" id="L107">			prepQ.setString(2,u.getEmailT());</span>
-<span class="fc" id="L108">			prepQ.setString(3,u.getPasswordT());</span>
-<span class="fc" id="L109">			row=prepQ.executeUpdate();</span>
+<span class="fc" id="L109">			prepQ.setInt(1,u.getId());</span>
+<span class="fc" id="L110">			prepQ.setString(2,u.getEmailT());</span>
+<span class="fc" id="L111">			prepQ.setString(3,u.getPasswordT());</span>
+<span class="fc" id="L112">			row=prepQ.executeUpdate();</span>
 		}
-<span class="fc bfc" id="L111" title="All 2 branches covered.">		return row==1;</span>
+<span class="nc" id="L114">		catch (SQLException e) {</span>
+<span class="nc" id="L115">			Logger.getLogger(&quot;removeUserByIdEmailPwd&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+
+<span class="fc" id="L117">		}</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">		return row==1;</span>
 	}
 
 
 
 	@Override
-	public void initializza() throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
-<span class="fc" id="L118">	super.initializza();</span>
-<span class="fc" id="L119">    }</span>
+	public void initializza() {
+<span class="fc" id="L125">	super.initializza();</span>
+<span class="fc" id="L126">    }</span>
 
 
 

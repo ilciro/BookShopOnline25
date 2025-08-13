@@ -13,6 +13,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfCopy;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
+import laptop.exception.IdException;
 
 
 	public class Giornale implements Raccolta, Serializable {
@@ -131,29 +132,34 @@ import com.itextpdf.text.pdf.PdfWriter;
 		this.id = id;
 	}
 
-	private void readPdf() throws IOException, DocumentException {
+	private void readPdf() {
+		try {
 
 
-		Document document = new Document();
+			Document document = new Document();
 
-		PdfReader reader = new PdfReader(rbTitoli.getString("srcPath") + rbTitoli.getString(TITOLOG));
-		PdfCopy copy=new PdfCopy(document,new FileOutputStream(rbTitoli.getString(DSTPATH)+ rbTitoli.getString(TITOLOG)));
-		document.open();
+			PdfReader reader = new PdfReader(rbTitoli.getString("srcPath") + rbTitoli.getString(TITOLOG));
+			PdfCopy copy = new PdfCopy(document, new FileOutputStream(rbTitoli.getString(DSTPATH) + rbTitoli.getString(TITOLOG)));
+			document.open();
 
-		int pages = reader.getNumberOfPages();
-		for (int i = 1; i <= pages; i++) {
-			copy.addPage(copy.getImportedPage(reader,i));
+			int pages = reader.getNumberOfPages();
+			for (int i = 1; i <= pages; i++) {
+				copy.addPage(copy.getImportedPage(reader, i));
 
+			}
+
+
+			reader.close();
+			document.close();
+		}catch (IOException |DocumentException e)
+		{
+			Logger.getLogger("read pdf daily").log(Level.SEVERE,"daily not exists {0}",e);
 		}
-
-
-		reader.close();
-		document.close();
 
 	}
 
 	@Override
-	public void scarica(int i) throws IOException {
+	public void scarica(int i)  {
 
 		Document document=new Document();
 		try{
@@ -189,7 +195,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 	}
 
 	@Override
-	public void leggi(int i) throws DocumentException, IOException {
+	public void leggi(int i)  {
 		if (Desktop.isDesktopSupported()) {
 			new Thread(() -> {
 				try {
@@ -217,4 +223,13 @@ import com.itextpdf.text.pdf.PdfWriter;
         public void setCategoria(String categoria) {
             this.categoria = categoria;
         }
-    }
+
+		@Override
+		public String toString() {
+			return "Giornale{" +
+					"titolo='" + titolo + '\'' +
+					", editore='" + editore + '\'' +
+					", id=" + id +
+					'}';
+		}
+	}

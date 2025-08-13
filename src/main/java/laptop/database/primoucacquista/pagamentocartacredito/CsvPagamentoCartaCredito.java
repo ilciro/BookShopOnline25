@@ -18,7 +18,6 @@ import java.nio.file.Path;
 import java.nio.file.attribute.FileAttribute;
 import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.logging.Level;
@@ -47,10 +46,15 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
 
-    public CsvPagamentoCartaCredito() throws IOException {
+    public CsvPagamentoCartaCredito() {
         this.filePagamento=new File(PAGAMENTO);
-        if(!this.filePagamento.exists())
-            Files.createFile(Path.of(this.filePagamento.toURI()));
+        if(!this.filePagamento.exists()) {
+            try {
+                Files.createFile(Path.of(this.filePagamento.toURI()));
+            } catch (IOException e) {
+                Logger.getLogger("costruttore").log(Level.SEVERE,"File not created {0}",e);
+            }
+        }
         this.cachePagamento=new HashMap<>();
 
     }
@@ -58,14 +62,14 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
         Files.delete(path);
     }
     @Override
-    public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito p) throws CsvValidationException, IOException {
+    public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito p)  {
         return creaPagamento(p);
 
     }
 
     @Override
-    public PagamentoCartaCredito ultimoPagamentoCartaCredito() throws IOException, CsvValidationException {
-        ObservableList<PagamentoCartaCredito> list;
+    public PagamentoCartaCredito ultimoPagamentoCartaCredito()  {
+        ObservableList<PagamentoCartaCredito> list=FXCollections.observableArrayList();
         try(CSVReader reader=new CSVReader(new BufferedReader(new FileReader(this.filePagamento))))
         {
             list=FXCollections.observableArrayList();
@@ -74,11 +78,12 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
             {
                 PagamentoCartaCredito pCC = getPagamentoCartaCredito(gVector);
                 list.add(pCC);
-
-
-
-
             }
+        }catch (IOException e){
+            Logger.getLogger("ultimoPagamentoCC io").log(Level.SEVERE,"ultimoPagamento io exception {0}",e);
+        }catch (CsvValidationException e1){
+            Logger.getLogger("ultimoPagamento csv").log(Level.SEVERE,"ultimoPagamento csv exception {0}",e1);
+
         }
 
         return list.get(list.size()-1);
@@ -97,7 +102,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
         return pCC;
     }
 
-    private boolean creaPagamento(PagamentoCartaCredito p) throws IOException, CsvValidationException {
+    private boolean creaPagamento(PagamentoCartaCredito p) {
         boolean stauts=false;
         try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.filePagamento, true)))) {
             String[] gVectore = new String[8];
@@ -115,12 +120,15 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
             csvWriter.writeNext(gVectore);
             csvWriter.flush();
             this.cachePagamento.put(String.valueOf(getIdMax()+1),p);
+        }catch (IOException e)
+        {
+            Logger.getLogger("creaPagamento").log(Level.SEVERE,"makePayment exception {0}",e);
         }
         if (p.getNomeUtente()!=null) stauts=true;
         return stauts;
 
     }
-    private static int getIdMaxPagamento() throws IOException, CsvValidationException {
+    private static int getIdMaxPagamento()  {
         String[] gVector;
         int id = 0;
 
@@ -133,15 +141,20 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
                 while ((gVector = reader.readNext()) != null) {
                     id = Integer.parseInt(gVector[GETINDEXIDP]);
                 }
+            }catch (IOException e){
+                Logger.getLogger("idPagamento").log(Level.SEVERE,"idPayment io exception {0}",e);
+            }catch (CsvValidationException e1){
+                Logger.getLogger("idPagamento csv").log(Level.SEVERE,"idPayment csv exception {0}",e1);
+
             }
 
             if (id == 0)
                 throw new IdException("id == 0 ");
 
-        }catch (IdException  e)
+        }catch (IdException  e1)
         {
 
-            Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR);
+            Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR+"{0}",e1);
 
         }
 
@@ -165,8 +178,9 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 
 
     @Override
-    public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p) throws IOException, CsvValidationException {
+    public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p)  {
         boolean status = false;
+        try {
         if (SystemUtils.IS_OS_UNIX) {
             FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));
             Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant
@@ -179,14 +193,26 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
         } else {
             cleanUp(Path.of(tmpFile.toURI()));
         }
+        }catch (IOException e){
+            Logger.getLogger("cancellaPagCC").log(Level.SEVERE,"delPaymentCC io exception {0}",e);
+        }catch (CsvValidationException e1){
+            Logger.getLogger("cancellaPagCC csv").log(Level.SEVERE,"delPaymentCC csv exception {0}",e1);
+
+        }
         return status;
 
     }
 
     @Override
-    public void inizializza() throws IOException, ClassNotFoundException, SQLException {
+    public void inizializza()  {
         Path path = Path.of(PAGAMENTO);
-        if(!Files.exists(path)) Files.createFile(path);
+        if(!Files.exists(path)) {
+            try {
+                Files.createFile(path);
+            } catch (IOException e) {
+                Logger.getLogger("inizializza pagamentoCC csv").log(Level.SEVERE,"exception in initialize {0}",e);
+            }
+        }
     }
 
     private static boolean isFound(PagamentoCartaCredito p, File tmpFile) throws IOException, CsvValidationException {
@@ -214,14 +240,14 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
         return found;
     }
 
-    private static  int getIdMax() throws IOException, CsvValidationException {
+    private static  int getIdMax(){
         //used for insert correct idOgg
        return id();
 
     }
 
 
-    private static synchronized int id() throws IOException, CsvValidationException {
+    private static synchronized int id()  {
         String[] gVector;
         int id = 0;
 
@@ -244,7 +270,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
             if (id == 0)
                 throw new IdException("id == 0 ");
 
-        }catch (IdException | FileNotFoundException e)
+        }catch (IdException | IOException |CsvValidationException e)
         {
 
             Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR);
@@ -257,8 +283,8 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 
 
     @Override
-    public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(PagamentoCartaCredito pcc) throws IOException,  CsvValidationException, IdException {
-        ObservableList<PagamentoCartaCredito> list;
+    public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(PagamentoCartaCredito pcc)  {
+        ObservableList<PagamentoCartaCredito> list=FXCollections.observableArrayList();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(filePagamento)))) {
             String[] gVector;
             list = FXCollections.observableArrayList();
@@ -276,6 +302,11 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
                 }
 
             }
+        }catch (IOException e){
+            Logger.getLogger("listPagamento").log(Level.SEVERE,"listPayment io exception {0}",e);
+        }catch (CsvValidationException e1){
+            Logger.getLogger("listPagamento csv").log(Level.SEVERE,"listPayment csv exception {0}",e1);
+
         }
         try {
             if (list.isEmpty()) {

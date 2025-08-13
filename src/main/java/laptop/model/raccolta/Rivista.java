@@ -15,7 +15,6 @@ import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
 
 
-
 public class Rivista implements Raccolta, Serializable {
 	@Serial
 	private static final long serialVersionUID = 2L;
@@ -179,7 +178,7 @@ public class Rivista implements Raccolta, Serializable {
 	}
 	
 	@Override
-	public void scarica(int i) throws IOException {
+	public void scarica(int i) {
 		Document document=new Document();
 		try{
 			PdfWriter writer=PdfWriter.getInstance(document,new FileOutputStream(rbTitoli.getString(DSTPATH)+ rbTitoli.getString(TITOLOR)));
@@ -211,7 +210,7 @@ public class Rivista implements Raccolta, Serializable {
 		}
 	}
 	@Override
-	public void leggi(int i) throws IOException, DocumentException {
+	public void leggi(int i)  {
 		if (Desktop.isDesktopSupported()) {
 			new Thread(() -> {
 				try {
@@ -231,23 +230,28 @@ public class Rivista implements Raccolta, Serializable {
 		this.infoGenerali = infoGenerali;
 	}
 
-	private void readPdf() throws IOException, DocumentException {
+	private void readPdf() {
+		try {
 
-		Document document = new Document();
+			Document document = new Document();
 
-		PdfReader reader = new PdfReader(rbTitoli.getString("srcPath") + rbTitoli.getString(TITOLOR));
-		PdfCopy copy=new PdfCopy(document,new FileOutputStream(rbTitoli.getString(DSTPATH)+ rbTitoli.getString(TITOLOR)));
-		document.open();
+			PdfReader reader = new PdfReader(rbTitoli.getString("srcPath") + rbTitoli.getString(TITOLOR));
+			PdfCopy copy = new PdfCopy(document, new FileOutputStream(rbTitoli.getString(DSTPATH) + rbTitoli.getString(TITOLOR)));
+			document.open();
 
-		int pages = reader.getNumberOfPages();
-		for (int i = 1; i <= pages; i++) {
-			copy.addPage(copy.getImportedPage(reader,i));
+			int pages = reader.getNumberOfPages();
+			for (int i = 1; i <= pages; i++) {
+				copy.addPage(copy.getImportedPage(reader, i));
 
+			}
+
+
+			reader.close();
+			document.close();
+		}catch (IOException |DocumentException e)
+		{
+			Logger.getLogger("read pdf magazine").log(Level.SEVERE,"magazine not exists {0}",e);
 		}
-
-
-		reader.close();
-		document.close();
 
 	}
 
@@ -258,4 +262,14 @@ public class Rivista implements Raccolta, Serializable {
     public void setNrCopie(int nrCopie) {
         this.nrCopie = nrCopie;
     }
+
+	@Override
+	public String toString() {
+		return "Rivista{" +
+				"titolo='" + titolo + '\'' +
+				", editore='" + editore + '\'' +
+				", id=" + id +
+				", autore='" + autore + '\'' +
+				'}';
+	}
 }

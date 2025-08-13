@@ -1,17 +1,12 @@
 package laptop.controller.primoucacquista;
 
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.ObservableList;
 import laptop.database.primoucacquista.negozio.CsvNegozio;
 import laptop.database.primoucacquista.negozio.MemoriaNegozio;
 import laptop.database.primoucacquista.negozio.NegozioDao;
 import laptop.database.primoucacquista.negozio.PersistenzaNegozio;
-import laptop.exception.IdException;
 import laptop.model.Negozio;
-
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,11 +17,8 @@ public class ControllerScegliNegozio {
 	private static final String MEMORIA="memoria";
 
 
-
 	
-
-	
-	public ObservableList<Negozio> getNegozi(String type) throws IOException, CsvValidationException, IdException, ClassNotFoundException, SQLException {
+	public ObservableList<Negozio> getNegozi(String type)  {
 		switch (type) {
 			case DATABASE -> pN = new NegozioDao();
 			case FILE -> pN = new CsvNegozio();
@@ -37,7 +29,7 @@ public class ControllerScegliNegozio {
 		return pN.getNegozi();
 	}
 
-	public boolean isOpen(String type,int id) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+	public boolean isOpen(String type,int id) {
 
 		switch (type) {
 			case DATABASE -> pN = new NegozioDao();
@@ -48,7 +40,7 @@ public class ControllerScegliNegozio {
 		}
 		return pN.checkRitiro(pN.getNegozi().get(id-1));
 	}
-	public boolean isValid(String type,int id) throws IOException, CsvValidationException, IdException, ClassNotFoundException {
+	public boolean isValid(String type,int id)  {
 
 		switch (type) {
 			case DATABASE -> pN = new NegozioDao();

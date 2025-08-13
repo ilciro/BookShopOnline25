@@ -1,17 +1,12 @@
 package laptop.controller.terzoucgestioneprofiloggetto;
 
-import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
 import laptop.database.secondouclogin.users.CsvUtente;
 import laptop.database.secondouclogin.users.MemoriaUtente;
 import laptop.database.secondouclogin.users.PersistenzaUtente;
 import laptop.database.secondouclogin.users.UsersDao;
-import laptop.exception.IdException;
 import laptop.model.user.TempUser;
 import laptop.model.user.User;
-
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,7 +19,7 @@ public class ControllerVisualizzaProfilo {
     private static final User u = User.getInstance();
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
 
-    public String infoUtente(String persistenza) throws CsvValidationException, SQLException, IOException {
+    public String infoUtente(String persistenza)  {
         String utente = "";
         switch (persistenza) {
             case DATABASE -> pU = new UsersDao();
@@ -41,7 +36,7 @@ public class ControllerVisualizzaProfilo {
     }
 
 
-    public boolean modifica(String[] dataU, String persistenza) throws CsvValidationException, IOException, IdException, SQLException, ClassNotFoundException {
+    public boolean modifica(String[] dataU, String persistenza)  {
         boolean status = false;
         String vecchiaMail = u.getEmail();
 
