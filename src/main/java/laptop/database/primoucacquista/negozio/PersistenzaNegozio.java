@@ -45,16 +45,16 @@ public class PersistenzaNegozio {
             if(!Files.exists(Path.of("memory/serializzazioneNegozio.ser"))) throw new ClassNotFoundException("ClassNotFoundException shop");
         }catch (CsvValidationException e)
         {
-            Logger.getLogger("exception modalita file").log(Level.SEVERE,"exception csv shop :{0}",e);
+            Logger.getLogger("exception modalita file negozio").log(Level.SEVERE,"exception csv shop :",e);
         }
         catch (SQLException e)
         {
-            Logger.getLogger("exception modalita database").log(Level.SEVERE,"exception database shop :{0}",e);
+            Logger.getLogger("exception modalita database negozio").log(Level.SEVERE,"exception database shop :",e);
 
         }
         catch (ClassNotFoundException e)
         {
-            Logger.getLogger("exception modalita memoria").log(Level.SEVERE,"exception memory shop :{0}",e);
+            Logger.getLogger("exception modalita memoria negozio").log(Level.SEVERE,"exception memory shop :",e);
 
         }
 

@@ -53,12 +53,12 @@ import java.util.logging.Logger;
 <span class="pc bpc" id="L53" title="1 of 2 branches missed.">            if (!Files.exists(Path.of(&quot;sql/tableCreate.sql&quot;))) throw new SQLException(&quot;SQLException rivista&quot;);</span>
 <span class="nc bnc" id="L54" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;memory/serializzazioneRivista.ser&quot;))) throw new ClassNotFoundException(&quot;ClassNotFoundException rivista&quot;);</span>
 <span class="fc" id="L55">        } catch (CsvValidationException e) {</span>
-<span class="fc" id="L56">            Logger.getLogger(&quot;exception modalita file rivista&quot;).log(Level.SEVERE, &quot;exception csv rivista :{0}&quot;, e);</span>
+<span class="fc" id="L56">            Logger.getLogger(&quot;exception modalita file rivista&quot;).log(Level.SEVERE, &quot;exception csv rivista :&quot;, e);</span>
 <span class="fc" id="L57">        } catch (SQLException e) {</span>
-<span class="fc" id="L58">            Logger.getLogger(&quot;exception modalita database rivista&quot;).log(Level.SEVERE, &quot;exception database rivista :{0}&quot;, e);</span>
+<span class="fc" id="L58">            Logger.getLogger(&quot;exception modalita database rivista&quot;).log(Level.SEVERE, &quot;exception database rivista :&quot;, e);</span>
 
 <span class="nc" id="L60">        } catch (ClassNotFoundException e) {</span>
-<span class="nc" id="L61">            Logger.getLogger(&quot;exception modalita memoria rivista&quot;).log(Level.SEVERE, &quot;exception memory  rivista:{0}&quot;, e);</span>
+<span class="nc" id="L61">            Logger.getLogger(&quot;exception modalita memoria rivista&quot;).log(Level.SEVERE, &quot;exception memory  rivista:&quot;, e);</span>
 
 <span class="pc" id="L63">        }</span>
 <span class="fc" id="L64">    }</span>

@@ -6,8 +6,6 @@ import laptop.model.Report;
 import laptop.model.user.TempUser;
 import laptop.utilities.ConnToDb;
 import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -52,7 +50,7 @@ public class ReportDao extends PersistenzaReport {
                         }
                         catch (SQLException e)
                         {
-                            Logger.getLogger("report libri view").log(Level.SEVERE,"error with book .{0}",e);
+                            Logger.getLogger("report libri view").log(Level.SEVERE,"error with book .:",e);
                         }
 
                         if(row==0) query="select distinct * from reportL";
@@ -70,7 +68,7 @@ public class ReportDao extends PersistenzaReport {
                         }
                         catch (SQLException e)
                         {
-                            Logger.getLogger("report giornali view").log(Level.SEVERE,"error with daily .{0}",e);
+                            Logger.getLogger("report giornali view").log(Level.SEVERE,"error with daily .:",e);
                         }
 
                         if(row==0) query="select distinct * from reportG";
@@ -86,7 +84,7 @@ public class ReportDao extends PersistenzaReport {
                 }
                 catch (SQLException e)
                 {
-                    Logger.getLogger("report magazine view").log(Level.SEVERE,"error with magazine .{0}",e);
+                    Logger.getLogger("report magazine view").log(Level.SEVERE,"error with magazine .:",e);
                 }
 
                 if(row==0) query="select distinct * from reportR";
@@ -112,7 +110,7 @@ public class ReportDao extends PersistenzaReport {
             }
 
         } catch (SQLException e) {
-            Logger.getLogger(" report ").log(Level.SEVERE, " REPORTL is empty {0}",e.getMessage());
+            Logger.getLogger(" report ").log(Level.SEVERE, " REPORTL is empty :",e.getMessage());
         }
         return list;
     }
@@ -132,7 +130,7 @@ public class ReportDao extends PersistenzaReport {
              }
         }catch (SQLException e)
         {
-            Logger.getLogger("reportU").log(Level.SEVERE,"reportU is empty {0}",e);
+            Logger.getLogger("reportU").log(Level.SEVERE,"reportU is empty :",e);
         }
         return lista;
 
@@ -150,7 +148,7 @@ public class ReportDao extends PersistenzaReport {
             tu.setDescrizioneT(rs.getString(7));
             tu.setDataDiNascitaT(rs.getDate(8).toLocalDate());
         } catch (SQLException e) {
-           Logger.getLogger("getTempUser").log(Level.SEVERE,"tempUser is null {0}",e);
+           Logger.getLogger("getTempUser").log(Level.SEVERE,"tempUser is null :",e);
         }
         return tu;
     }

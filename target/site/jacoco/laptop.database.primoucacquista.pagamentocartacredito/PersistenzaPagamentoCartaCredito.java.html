@@ -32,7 +32,7 @@ import java.util.logging.Logger;
 <span class="nc" id="L32">        return new PagamentoCartaCredito();}</span>
 
     public ObservableList&lt;PagamentoCartaCredito&gt; listaPagamentiUserByCC(PagamentoCartaCredito pcc)  {
-<span class="nc" id="L35">        Logger.getLogger(&quot;list pagamenti cc&quot;).log(Level.SEVERE, &quot;list pf paymeny of : .{0}&quot;, pcc.getNomeUtente());</span>
+<span class="nc" id="L35">        Logger.getLogger(&quot;list pagamenti cc&quot;).log(Level.SEVERE, &quot;list pf paymeny of : .&quot;, pcc.getNomeUtente());</span>
 
 <span class="nc" id="L37">        return FXCollections.observableArrayList();}</span>
 
@@ -44,12 +44,12 @@ import java.util.logging.Logger;
 <span class="nc bnc" id="L44" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;sql/tableCreate.sql&quot;))) throw new SQLException(&quot;SQLException cc&quot;);</span>
 <span class="nc bnc" id="L45" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;memory/serializzazionePagamentoCartaCredito.ser&quot;))) throw new ClassNotFoundException(&quot;ClassNotFoundException cc&quot;);</span>
 <span class="nc" id="L46">        } catch (CsvValidationException e) {</span>
-<span class="nc" id="L47">            Logger.getLogger(&quot;exception modalita file&quot;).log(Level.SEVERE, &quot;exception csv cc :{0}&quot;, e);</span>
+<span class="nc" id="L47">            Logger.getLogger(&quot;exception modalita file cc&quot;).log(Level.SEVERE, &quot;exception csv cc :&quot;, e);</span>
 <span class="nc" id="L48">        } catch (SQLException e) {</span>
-<span class="nc" id="L49">            Logger.getLogger(&quot;exception modalita database&quot;).log(Level.SEVERE, &quot;exception database cc :{0}&quot;, e);</span>
+<span class="nc" id="L49">            Logger.getLogger(&quot;exception modalita database cc&quot;).log(Level.SEVERE, &quot;exception database cc :&quot;, e);</span>
 
 <span class="nc" id="L51">        } catch (ClassNotFoundException e) {</span>
-<span class="nc" id="L52">            Logger.getLogger(&quot;exception modalita memoria&quot;).log(Level.SEVERE, &quot;exception memory cc :{0}&quot;, e);</span>
+<span class="nc" id="L52">            Logger.getLogger(&quot;exception modalita memoria cc&quot;).log(Level.SEVERE, &quot;exception memory cc :&quot;, e);</span>
 
 <span class="nc" id="L54">        }</span>
 <span class="nc" id="L55">    }</span>

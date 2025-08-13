@@ -45,16 +45,16 @@ import java.util.logging.Logger;
 <span class="nc bnc" id="L45" title="All 2 branches missed.">            if(!Files.exists(Path.of(&quot;memory/serializzazioneNegozio.ser&quot;))) throw new ClassNotFoundException(&quot;ClassNotFoundException shop&quot;);</span>
 <span class="fc" id="L46">        }catch (CsvValidationException e)</span>
         {
-<span class="fc" id="L48">            Logger.getLogger(&quot;exception modalita file&quot;).log(Level.SEVERE,&quot;exception csv shop :{0}&quot;,e);</span>
+<span class="fc" id="L48">            Logger.getLogger(&quot;exception modalita file negozio&quot;).log(Level.SEVERE,&quot;exception csv shop :&quot;,e);</span>
         }
 <span class="fc" id="L50">        catch (SQLException e)</span>
         {
-<span class="fc" id="L52">            Logger.getLogger(&quot;exception modalita database&quot;).log(Level.SEVERE,&quot;exception database shop :{0}&quot;,e);</span>
+<span class="fc" id="L52">            Logger.getLogger(&quot;exception modalita database negozio&quot;).log(Level.SEVERE,&quot;exception database shop :&quot;,e);</span>
 
         }
 <span class="nc" id="L55">        catch (ClassNotFoundException e)</span>
         {
-<span class="nc" id="L57">            Logger.getLogger(&quot;exception modalita memoria&quot;).log(Level.SEVERE,&quot;exception memory shop :{0}&quot;,e);</span>
+<span class="nc" id="L57">            Logger.getLogger(&quot;exception modalita memoria negozio&quot;).log(Level.SEVERE,&quot;exception memory shop :&quot;,e);</span>
 
 <span class="pc" id="L59">        }</span>
 

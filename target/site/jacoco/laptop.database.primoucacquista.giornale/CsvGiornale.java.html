@@ -73,10 +73,10 @@ public class CsvGiornale extends PersistenzaGiornale{
 <span class="fc" id="L73">                    max= Integer.parseInt(gVector[GETINDEXIDG]);</span>
             }
 <span class="nc" id="L75">        }catch (IOException e){</span>
-<span class="nc" id="L76">            Logger.getLogger(&quot;id max io csv&quot;).log(Level.SEVERE,&quot;id exception in io :{0}&quot;,e);</span>
+<span class="nc" id="L76">            Logger.getLogger(&quot;id max io csv&quot;).log(Level.SEVERE,&quot;id exception in io :&quot;,e);</span>
 <span class="nc" id="L77">        }catch (CsvValidationException e1)</span>
         {
-<span class="nc" id="L79">            Logger.getLogger(&quot;id max  csv&quot;).log(Level.SEVERE,&quot;id exception csv :{0}&quot;,e1);</span>
+<span class="nc" id="L79">            Logger.getLogger(&quot;id max  csv&quot;).log(Level.SEVERE,&quot;id exception csv :&quot;,e1);</span>
 <span class="pc" id="L80">        }</span>
 <span class="fc" id="L81">        return max;</span>
 
@@ -121,11 +121,11 @@ public class CsvGiornale extends PersistenzaGiornale{
 <span class="fc" id="L121">         status= inserimentoGiornale(this.fdG,g);</span>
 
 <span class="nc" id="L123">        }catch (IOException e){</span>
-<span class="nc" id="L124">            Logger.getLogger(&quot;inserisci giornale io csv&quot;).log(Level.SEVERE,&quot;csv insert giornale io exception :{0}&quot;,e);</span>
+<span class="nc" id="L124">            Logger.getLogger(&quot;inserisci giornale io csv&quot;).log(Level.SEVERE,&quot;csv insert giornale io exception :&quot;,e);</span>
 
 <span class="nc" id="L126">        }catch (CsvValidationException e1)</span>
         {
-<span class="nc" id="L128">            Logger.getLogger(&quot;inserisci giornale  csv&quot;).log(Level.SEVERE,&quot;csv insert giornale csv exception :{0}&quot;,e1);</span>
+<span class="nc" id="L128">            Logger.getLogger(&quot;inserisci giornale  csv&quot;).log(Level.SEVERE,&quot;csv insert giornale csv exception :&quot;,e1);</span>
 
 <span class="pc" id="L130">        }</span>
 <span class="fc" id="L131">        return status;</span>
@@ -151,11 +151,11 @@ public class CsvGiornale extends PersistenzaGiornale{
 <span class="fc" id="L151">            csvWriter.flush();</span>
 <span class="nc" id="L152">        }catch (IOException e)</span>
         {
-<span class="nc" id="L154">            Logger.getLogger(&quot;inserimento giornale csv&quot;).log(Level.SEVERE,&quot;csv inserimento giornale io exception :{0}&quot;,e);</span>
+<span class="nc" id="L154">            Logger.getLogger(&quot;inserimento giornale csv&quot;).log(Level.SEVERE,&quot;csv inserimento giornale io exception :&quot;,e);</span>
 
 <span class="nc" id="L156">        }catch (CsvValidationException e1)</span>
         {
-<span class="nc" id="L158">            Logger.getLogger(&quot;inserimento giornale io csv&quot;).log(Level.SEVERE,&quot;inserimento giornale csv exception :{0}&quot;,e1);</span>
+<span class="nc" id="L158">            Logger.getLogger(&quot;inserimento giornale io csv&quot;).log(Level.SEVERE,&quot;inserimento giornale csv exception :&quot;,e1);</span>
 
 <span class="pc" id="L160">        }</span>
 <span class="pc bpc" id="L161" title="1 of 2 branches missed.">        return getIdMax()!=0;</span>
@@ -241,7 +241,7 @@ public class CsvGiornale extends PersistenzaGiornale{
 <span class="fc" id="L241">                cleanUp(Path.of(tmpFile.toURI()));</span>
             }
 <span class="nc" id="L243">        }catch (IOException e){</span>
-<span class="nc" id="L244">            Logger.getLogger(&quot;delete by type io&quot;).log(Level.SEVERE,&quot;id delete io exception :{0}&quot;,e);</span>
+<span class="nc" id="L244">            Logger.getLogger(&quot;delete by type io&quot;).log(Level.SEVERE,&quot;id delete io exception :&quot;,e);</span>
 
 <span class="fc" id="L246">        }</span>
 
@@ -272,10 +272,10 @@ public class CsvGiornale extends PersistenzaGiornale{
 <span class="fc" id="L272">            writer.flush();</span>
 <span class="nc" id="L273">        }catch (IOException e)</span>
         {
-<span class="nc" id="L275">            Logger.getLogger(&quot;isFound io&quot;).log(Level.SEVERE,&quot;idFound io excpetion :{0}&quot;,e);</span>
+<span class="nc" id="L275">            Logger.getLogger(&quot;isFound io&quot;).log(Level.SEVERE,&quot;idFound io excpetion :&quot;,e);</span>
 <span class="nc" id="L276">        }catch (CsvValidationException e1)</span>
         {
-<span class="nc" id="L278">            Logger.getLogger(&quot;isFound csv&quot;).log(Level.SEVERE,&quot;idFound csv excpetion :{0}&quot;,e1);</span>
+<span class="nc" id="L278">            Logger.getLogger(&quot;isFound csv&quot;).log(Level.SEVERE,&quot;idFound csv excpetion :&quot;,e1);</span>
 
 <span class="pc" id="L280">        }</span>
 <span class="fc" id="L281">        return found;</span>
@@ -323,10 +323,10 @@ public class CsvGiornale extends PersistenzaGiornale{
             }
 <span class="nc" id="L324">        }catch (IOException e)</span>
         {
-<span class="nc" id="L326">            Logger.getLogger(&quot;retrieve giornali csv io&quot;).log(Level.SEVERE,&quot;retrieve giornali io excpetion :{0}&quot;,e);</span>
+<span class="nc" id="L326">            Logger.getLogger(&quot;retrieve giornali csv io&quot;).log(Level.SEVERE,&quot;retrieve giornali io excpetion :&quot;,e);</span>
 <span class="nc" id="L327">        }catch (CsvValidationException e1)</span>
         {
-<span class="nc" id="L329">            Logger.getLogger(&quot;retrieve giornali csv&quot;).log(Level.SEVERE,&quot;retrieve giornali csv excpetion :{0}&quot;,e1);</span>
+<span class="nc" id="L329">            Logger.getLogger(&quot;retrieve giornali csv&quot;).log(Level.SEVERE,&quot;retrieve giornali csv excpetion :&quot;,e1);</span>
 
 <span class="pc" id="L331">        }</span>
         try{
@@ -334,7 +334,7 @@ public class CsvGiornale extends PersistenzaGiornale{
 <span class="nc" id="L334">                throw new IdException(&quot;daily not found!!&quot;);</span>
             }
 <span class="nc" id="L336">        }catch (IdException e2){</span>
-<span class="nc" id="L337">            Logger.getLogger(&quot;retrieve giornali&quot;).log(Level.SEVERE,&quot;list is empty !!  :{0}&quot;,e2);</span>
+<span class="nc" id="L337">            Logger.getLogger(&quot;retrieve giornali&quot;).log(Level.SEVERE,&quot;list is empty !!  :&quot;,e2);</span>
 
 <span class="fc" id="L339">        }</span>
 
@@ -359,13 +359,13 @@ public class CsvGiornale extends PersistenzaGiornale{
 <span class="nc" id="L359">                throw new IdException(&quot;lista giornale is empty&quot;);</span>
             }
 <span class="nc" id="L361">        }catch (IOException e){</span>
-<span class="nc" id="L362">            Logger.getLogger(&quot;retrieve data csv io&quot;).log(Level.SEVERE,&quot;retrieve data io excpetion :{0}&quot;,e);</span>
+<span class="nc" id="L362">            Logger.getLogger(&quot;retrieve data csv io&quot;).log(Level.SEVERE,&quot;retrieve data io excpetion :&quot;,e);</span>
 <span class="nc" id="L363">        }catch (IdException e1)</span>
         {
-<span class="nc" id="L365">            Logger.getLogger(&quot;retrieve data csv id&quot;).log(Level.SEVERE,&quot;id exception :{0}&quot;,e1);</span>
+<span class="nc" id="L365">            Logger.getLogger(&quot;retrieve data csv id&quot;).log(Level.SEVERE,&quot;id exception :&quot;,e1);</span>
 <span class="nc" id="L366">        }catch (CsvValidationException e2)</span>
         {
-<span class="nc" id="L368">            Logger.getLogger(&quot;retrieve data csv&quot;).log(Level.SEVERE,&quot;retrieve data csv excpetion :{0}&quot;,e2);</span>
+<span class="nc" id="L368">            Logger.getLogger(&quot;retrieve data csv&quot;).log(Level.SEVERE,&quot;retrieve data csv excpetion :&quot;,e2);</span>
 
 <span class="pc" id="L370">        }</span>
 
@@ -427,11 +427,11 @@ public class CsvGiornale extends PersistenzaGiornale{
 <span class="fc" id="L427">            }</span>
 <span class="nc" id="L428">        }catch (IOException e)</span>
         {
-<span class="nc" id="L430">            Logger.getLogger(&quot;giornale by id titolo autore io&quot;).log(Level.SEVERE,&quot;giornale not found  :{0}&quot;,e);</span>
+<span class="nc" id="L430">            Logger.getLogger(&quot;giornale by id titolo autore io&quot;).log(Level.SEVERE,&quot;giornale not found  :&quot;,e);</span>
 
 <span class="nc" id="L432">        }catch (CsvValidationException e1)</span>
         {
-<span class="nc" id="L434">            Logger.getLogger(&quot;giornale by id titolo autore csv&quot;).log(Level.SEVERE,&quot;giornale not found csv  :{0}&quot;,e1);</span>
+<span class="nc" id="L434">            Logger.getLogger(&quot;giornale by id titolo autore csv&quot;).log(Level.SEVERE,&quot;giornale not found csv  :&quot;,e1);</span>
 
 <span class="pc" id="L436">        }</span>
         try {
@@ -440,7 +440,7 @@ public class CsvGiornale extends PersistenzaGiornale{
             }
 <span class="nc" id="L441">        }catch (IdException e2)</span>
         {
-<span class="nc" id="L443">            Logger.getLogger(&quot;lista&quot;).log(Level.SEVERE,&quot;lista is empty :{0}&quot;,e2);</span>
+<span class="nc" id="L443">            Logger.getLogger(&quot;lista&quot;).log(Level.SEVERE,&quot;lista is empty :&quot;,e2);</span>
 
 <span class="fc" id="L445">        }</span>
 
@@ -474,7 +474,7 @@ public class CsvGiornale extends PersistenzaGiornale{
             try {
 <span class="fc" id="L475">                Files.copy(Path.of(GIORNALEP), Path.of(LOCATIONG), REPLACE_EXISTING);</span>
 <span class="nc" id="L476">            } catch (IOException e) {</span>
-<span class="nc" id="L477">                Logger.getLogger(&quot;inizializza csv giornale io&quot;).log(Level.SEVERE,&quot;inizializza io in csv  :{0}&quot;,e);</span>
+<span class="nc" id="L477">                Logger.getLogger(&quot;inizializza csv giornale io&quot;).log(Level.SEVERE,&quot;inizializza io in csv  :&quot;,e);</span>
 <span class="fc" id="L478">            }</span>
 
 <span class="fc" id="L480">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>

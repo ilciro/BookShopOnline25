@@ -35,7 +35,7 @@ public class MemoriaLibro extends PersistenzaLibro{
             try {
                 Files.createFile(path2);
             } catch (IOException e) {
-                Logger.getLogger("inserisci libro").log(Level.SEVERE,"inseirsci libro exception {0}",e);
+                Logger.getLogger("inserisci libro").log(Level.SEVERE,"inseirsci libro exception ",e);
             }
         }
 

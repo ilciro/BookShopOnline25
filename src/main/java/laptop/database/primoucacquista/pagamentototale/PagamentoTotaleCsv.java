@@ -80,7 +80,7 @@ public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
             cleanUp(Path.of(tmpFile.toURI()));
         }
         }catch (IOException e) {
-            Logger.getLogger("removeFatturaPagTotale").log(Level.SEVERE, "removeFattura payTot io exception {0}", e);
+            Logger.getLogger("removeFatturaPagTotale").log(Level.SEVERE, "removeFattura payTot io exception :", e);
         }
 
         return status;
@@ -108,9 +108,9 @@ public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
             writer.flush();
 
         }catch (IOException e){
-            Logger.getLogger("isFoundPagamentoToale").log(Level.SEVERE,"isFound io exception payTot{0}",e);
+            Logger.getLogger("isFoundPagamentoToale").log(Level.SEVERE,"isFound io exception payTot:",e);
         }catch (CsvValidationException e1){
-            Logger.getLogger("isFoundPagaemntoTotale csv").log(Level.SEVERE,"isFOund csv exception payTot {0}",e1);
+            Logger.getLogger("isFoundPagaemntoTotale csv").log(Level.SEVERE,"isFOund csv exception payTot :",e1);
 
         }
         return found;
@@ -143,7 +143,7 @@ public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
             cleanUp(Path.of(tmpFile.toURI()));
         }
         }catch (IOException e){
-                Logger.getLogger("removePagamentoCC").log(Level.SEVERE,"removePaymentCC io exception {0}",e);
+                Logger.getLogger("removePagamentoCC").log(Level.SEVERE,"removePaymentCC io exception :",e);
             }
         return status;
     }
@@ -167,9 +167,9 @@ public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
             writer.flush();
 
         }catch (IOException e){
-            Logger.getLogger("isFoundCC").log(Level.SEVERE,"isFoundCC tot io exception {0}",e);
+            Logger.getLogger("isFoundCC").log(Level.SEVERE,"isFoundCC tot io exception :",e);
         }catch (CsvValidationException e1){
-            Logger.getLogger("isFoundCC csv").log(Level.SEVERE,"isFOundCC tot csv exception {0}",e1);
+            Logger.getLogger("isFoundCC csv").log(Level.SEVERE,"isFOundCC tot csv exception :",e1);
 
         }
         return found;
@@ -207,7 +207,7 @@ public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
             else csvPagamentoCartaCredito = new CsvPagamentoCartaCredito();
         }catch (IOException e)
         {
-            Logger.getLogger("costruttore pagTotate").log(Level.SEVERE,"error with creation file {0}",e);
+            Logger.getLogger("costruttore pagTotate").log(Level.SEVERE,"error with creation file :",e);
         }
 
     }
@@ -270,7 +270,7 @@ public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
 
         }
         catch (IOException e){
-            Logger.getLogger("getNegozi").log(Level.SEVERE,"getNegozi io exception {0}",e);
+            Logger.getLogger("getNegozi").log(Level.SEVERE,"getNegozi io exception :",e);
         }
 
 
@@ -290,13 +290,13 @@ public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
                 throw new IOException("il file pagamentoTotale non esiste");
         }catch (IOException e)
         {
-            Logger.getLogger(" inizializza pagamentoTotale").log(Level.SEVERE," file not exists .{0}",PAGAMENTOTOTALE);
+            Logger.getLogger(" inizializza pagamentoTotale").log(Level.SEVERE," file not exists .:",PAGAMENTOTOTALE);
             try {
                 Files.createFile(path);
             } catch (IOException ex) {
-                Logger.getLogger("inizializzazione").log(Level.SEVERE,"error with creation file {0}",ex);
+                Logger.getLogger("inizializzazione").log(Level.SEVERE,"error with creation file :",ex);
             }
-            Logger.getLogger(" inizializza pagamentoTotale creazione").log(Level.INFO," file created .{0}",PAGAMENTOTOTALE);
+            Logger.getLogger(" inizializza pagamentoTotale creazione").log(Level.INFO," file created .:",PAGAMENTOTOTALE);
 
 
 

@@ -81,14 +81,14 @@ public class DaoInitialize {
             case CREA -> {
                 if(getPresente()==0)
                     crea(type);
-                else Logger.getLogger("tabella creata").log(Level.WARNING,"table already created .{0}",type);
+                else Logger.getLogger("tabella creata").log(Level.WARNING,"table already created .:",type);
 
             }
             case POPOLA -> {
                 if (getPresente() == 0)
                     popola(type);
             }
-            default -> Logger.getLogger("errore ad esegire procedura").log(Level.SEVERE, "erroro while execute procedure with type .{0}", type);
+            default -> Logger.getLogger("errore ad esegire procedura").log(Level.SEVERE, "erroro while execute procedure with type .:", type);
 
         }
     }
@@ -105,9 +105,9 @@ public class DaoInitialize {
 
 
         } catch (SQLException e) {
-            Logger.getLogger("esegui esiste").log(Level.SEVERE, "exists procedure called badly {0}", e.getMessage());
+            Logger.getLogger("esegui esiste").log(Level.SEVERE, "exists procedure called badly :", e.getMessage());
         }
-        Logger.getLogger("tabella presente :").log(Level.INFO, " type is present :{0}", getPresente());
+        Logger.getLogger("tabella presente :").log(Level.INFO, " type is present ::", getPresente());
     }
 
     private void crea(String type)
@@ -121,7 +121,7 @@ public class DaoInitialize {
                 callQ.execute();
             }catch (SQLException e)
             {
-                Logger.getLogger("crea tabella errore").log(Level.SEVERE," create table error .{0}",e.getMessage());
+                Logger.getLogger("crea tabella errore").log(Level.SEVERE," create table error .:",e.getMessage());
             }
     }
 

@@ -116,7 +116,7 @@ public class CsvUtente extends PersistenzaUtente {
             try {
                 Files.copy(Path.of(UTENTEP), Path.of(LOCATIONU), REPLACE_EXISTING);
             } catch (IOException e) {
-                Logger.getLogger("inizializza").log(Level.SEVERE,"error with copy {0}",e);
+                Logger.getLogger("inizializza").log(Level.SEVERE,"error with copy :",e);
             }
 
             Logger.getLogger("crea db file").log(Level.SEVERE, "\n eccezione ottenuta nella modalità file.", eFile);
@@ -151,7 +151,7 @@ public class CsvUtente extends PersistenzaUtente {
 
         }catch (IOException  e)
         {
-            Logger.getLogger("insert user").log(Level.SEVERE,"error with insert {0}",e);
+            Logger.getLogger("insert user").log(Level.SEVERE,"error with insert :",e);
         }
 
         return getIdMax() != 0;
@@ -174,7 +174,7 @@ public class CsvUtente extends PersistenzaUtente {
             }
         }catch (IOException|CsvValidationException e)
         {
-            Logger.getLogger("getUserData").log(Level.SEVERE,"error with list {0}",e);
+            Logger.getLogger("getUserData").log(Level.SEVERE,"error with list :",e);
         }
         return list;
     }
@@ -190,7 +190,7 @@ public class CsvUtente extends PersistenzaUtente {
                 id = Integer.parseInt(gVector[GETINDEXIDUSER]);
          }catch  (IOException|CsvValidationException e)
         {
-            Logger.getLogger("idMax").log(Level.SEVERE,"id not found {0}",e);
+            Logger.getLogger("idMax").log(Level.SEVERE,"id not found :",e);
         }
 
         return id;
@@ -214,7 +214,7 @@ public class CsvUtente extends PersistenzaUtente {
             }
         }catch (IOException e)
         {
-            Logger.getLogger("cancella user").log(Level.SEVERE,"cancella user {0}",e);
+            Logger.getLogger("cancella user").log(Level.SEVERE,"cancella user :",e);
         }
         return status;
 
@@ -246,7 +246,7 @@ public class CsvUtente extends PersistenzaUtente {
             csvWriter.flush();
         }catch (IOException|CsvValidationException e)
         {
-            Logger.getLogger("isFound").log(Level.SEVERE,"isFound exception {0}",e);
+            Logger.getLogger("isFound").log(Level.SEVERE,"isFound exception :",e);
         }
         return found;
     }
@@ -264,7 +264,7 @@ public class CsvUtente extends PersistenzaUtente {
             }
         }catch (IOException|CsvValidationException e)
         {
-            Logger.getLogger("user data retrieve").log(Level.SEVERE,"error {0}",e);
+            Logger.getLogger("user data retrieve").log(Level.SEVERE,"error :",e);
         }
         return list;
     }

@@ -14,8 +14,8 @@ BookShopOnline25 Maven Webapp,laptop.database.secondouclogin.users,MemoriaUtente
 BookShopOnline25 Maven Webapp,laptop.database.secondouclogin.users,PersistenzaUtente,51,53,8,2,8,13,8,3,3,3
 BookShopOnline25 Maven Webapp,laptop.database.secondouclogin.users,CsvUtente,135,460,20,34,31,96,20,20,1,12
 BookShopOnline25 Maven Webapp,laptop.model.pagamento,Pagamento,16,3,4,0,2,1,4,1,2,1
-BookShopOnline25 Maven Webapp,laptop.model.pagamento,PagamentoCartaCredito,6,97,0,0,2,36,2,19,2,19
-BookShopOnline25 Maven Webapp,laptop.model.pagamento,PagamentoFattura,11,104,2,0,2,38,3,21,2,21
+BookShopOnline25 Maven Webapp,laptop.model.pagamento,PagamentoCartaCredito,20,83,0,0,3,35,3,18,3,18
+BookShopOnline25 Maven Webapp,laptop.model.pagamento,PagamentoFattura,25,90,2,0,3,37,4,20,3,20
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.pagamentocartacredito,PagamentoCartaCreditoDao,62,241,3,5,18,66,3,9,1,7
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.pagamentocartacredito,MemoriaPagamentoCartaCredito,72,264,3,9,21,59,3,9,0,6
 BookShopOnline25 Maven Webapp,laptop.database.primoucacquista.pagamentocartacredito,PersistenzaPagamentoCartaCredito,105,3,10,0,20,1,11,1,6,1

@@ -2,12 +2,8 @@ package laptop.database.terzoucgestioneprofiloggetto.report;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-//import laptop.database.secondouclogin.users.MemoriaUtente;
 import laptop.model.Report;
-//import laptop.model.user.TempUser;
-
 import java.io.*;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -31,7 +27,7 @@ public class MemoriaReport extends PersistenzaReport{
 
         }catch (IOException | ClassNotFoundException e)
         {
-            Logger.getLogger("insert report mem").log(Level.SEVERE," mem read report exception {0}",e);
+            Logger.getLogger("insert report mem").log(Level.SEVERE," mem read report exception :",e);
         }
 
             r.setIdReport(list.size()+1);
@@ -44,7 +40,7 @@ public class MemoriaReport extends PersistenzaReport{
                 oos.writeObject(list);
             }catch (IOException e)
             {
-                Logger.getLogger("scrivo report mem ").log(Level.SEVERE," mem report exception {0}",e);
+                Logger.getLogger("scrivo report mem ").log(Level.SEVERE," mem report exception :",e);
 
             }
         return true;
@@ -63,7 +59,7 @@ public class MemoriaReport extends PersistenzaReport{
             list= (ArrayList<Report>) ois.readObject();
         }catch (IOException |ClassNotFoundException e)
         {
-            Logger.getLogger("report oggetti ").log(Level.SEVERE,"objects report exception {0}",e);
+            Logger.getLogger("report oggetti ").log(Level.SEVERE,"objects report exception :",e);
 
         }
         for (Report report : list) {
@@ -104,7 +100,7 @@ public class MemoriaReport extends PersistenzaReport{
             try {
                 Files.createFile(path);
             } catch (IOException ex) {
-                Logger.getLogger("inizializza report mem report mem ").log(Level.SEVERE,"report file mem not created exception {0}",e);
+                Logger.getLogger("inizializza report mem report mem ").log(Level.SEVERE,"report file mem not created exception :",e);
 
             }
             Logger.getLogger("inizializza memoria report").log(Level.INFO,"file created");

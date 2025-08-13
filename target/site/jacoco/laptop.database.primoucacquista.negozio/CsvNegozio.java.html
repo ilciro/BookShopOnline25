@@ -53,12 +53,12 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
             }
 
 <span class="nc" id="L55">        }catch (IOException e){</span>
-<span class="nc" id="L56">            Logger.getLogger(&quot;retrieveNegozi file&quot;).log(Level.SEVERE,&quot;retrieveNegozi io exception {0}&quot;,e);</span>
+<span class="nc" id="L56">            Logger.getLogger(&quot;retrieveNegozi file&quot;).log(Level.SEVERE,&quot;retrieveNegozi io exception :&quot;,e);</span>
 <span class="nc" id="L57">        }catch (CsvValidationException e1){</span>
-<span class="nc" id="L58">            Logger.getLogger(&quot;retrieveNegozi csv&quot;).log(Level.SEVERE,&quot;retrieveNEgozi csv exception {0}&quot;,e1);</span>
+<span class="nc" id="L58">            Logger.getLogger(&quot;retrieveNegozi csv&quot;).log(Level.SEVERE,&quot;retrieveNEgozi csv exception :&quot;,e1);</span>
 <span class="nc" id="L59">        }catch (IdException e2)</span>
         {
-<span class="nc" id="L61">            Logger.getLogger(&quot;retrieveNegozi id&quot;).log(Level.SEVERE,&quot;retrieveNegozi id exception {0}&quot;,e2);</span>
+<span class="nc" id="L61">            Logger.getLogger(&quot;retrieveNegozi id&quot;).log(Level.SEVERE,&quot;retrieveNegozi id exception :&quot;,e2);</span>
 <span class="pc" id="L62">        }</span>
 
 <span class="fc" id="L64">        return gList;</span>
@@ -85,7 +85,7 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
             try {
 <span class="fc" id="L86">                Files.copy(Path.of(NEGOZIOP), Path.of(LOCATIONEGOZIO), REPLACE_EXISTING);</span>
 <span class="nc" id="L87">            } catch (IOException ex) {</span>
-<span class="nc" id="L88">                Logger.getLogger(&quot;inizializza negozi&quot;).log(Level.SEVERE,&quot;inizialize shop exception {0}&quot;,ex);</span>
+<span class="nc" id="L88">                Logger.getLogger(&quot;inizializza negozi&quot;).log(Level.SEVERE,&quot;inizialize shop exception :&quot;,ex);</span>
 <span class="fc" id="L89">            }</span>
 
 <span class="fc" id="L91">            Logger.getLogger(&quot;crea negpzio file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, e);</span>
@@ -127,9 +127,9 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
             }
 <span class="nc" id="L129">        }catch (IOException e){</span>
-<span class="nc" id="L130">            Logger.getLogger(&quot;checkOpenValid&quot;).log(Level.SEVERE,&quot;openValid io exception {0}&quot;,e);</span>
+<span class="nc" id="L130">            Logger.getLogger(&quot;checkOpenValid&quot;).log(Level.SEVERE,&quot;openValid io exception :&quot;,e);</span>
 <span class="nc" id="L131">        }catch (CsvValidationException e1){</span>
-<span class="nc" id="L132">            Logger.getLogger(&quot;checkOpenValid csv&quot;).log(Level.SEVERE,&quot;openValid csv exception {0}&quot;,e1);</span>
+<span class="nc" id="L132">            Logger.getLogger(&quot;checkOpenValid csv&quot;).log(Level.SEVERE,&quot;openValid csv exception :&quot;,e1);</span>
 
 <span class="pc" id="L134">        }</span>
 

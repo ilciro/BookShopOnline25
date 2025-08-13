@@ -41,7 +41,7 @@ public class CsvCartaCredito extends PersistenzaCC{
             csvWriter.flush();
         }catch (IOException e1)
         {
-            Logger.getLogger("ins cc io").log(Level.SEVERE,"ins cc io exception {0}",e1);
+            Logger.getLogger("ins cc io").log(Level.SEVERE,"ins cc io exception",e1);
 
         }
         return getIdMax() != 0;
@@ -61,11 +61,11 @@ public class CsvCartaCredito extends PersistenzaCC{
             }
         } catch (CsvValidationException e)
     {
-        Logger.getLogger("get id max cc csv ").log(Level.SEVERE,"id max cc csv exception {0}",e);
+        Logger.getLogger("get id max cc csv ").log(Level.SEVERE,"id max cc csv exception",e);
 
     }catch (IOException e1)
     {
-        Logger.getLogger("get id max cc io ").log(Level.SEVERE,"id max cc io exception {0}",e1);
+        Logger.getLogger("get id max cc io ").log(Level.SEVERE,"id max cc io exception",e1);
 
     }
 
@@ -99,10 +99,10 @@ public class CsvCartaCredito extends PersistenzaCC{
                 }
             }
         }catch (IOException e){
-            Logger.getLogger("lista cc").log(Level.SEVERE,"lista cc ioexception {0}",e);
+            Logger.getLogger("lista cc").log(Level.SEVERE,"lista cc ioexception",e);
         }
         catch (CsvValidationException e1){
-            Logger.getLogger("lista csv").log(Level.SEVERE,"lista csv exception {0}",e1);
+            Logger.getLogger("lista csv").log(Level.SEVERE,"lista csv exception",e1);
 
         }
 
@@ -116,14 +116,14 @@ public class CsvCartaCredito extends PersistenzaCC{
            if(!Files.exists(path)) throw new IOException("file not exists");
        }catch (IOException e)
        {
-           Logger.getLogger("inizializza").log(Level.SEVERE," file .{0} not exists",LOCATIONCC);
+           Logger.getLogger("inizializza").log(Level.SEVERE," file  not exists",LOCATIONCC);
            try {
                Files.createFile(path);
            } catch (IOException ex) {
-               Logger.getLogger("inizializza cc csv ").log(Level.SEVERE,"inizializza csv with ioexception {0}",e);
+               Logger.getLogger("inizializza cc csv ").log(Level.SEVERE,"inizializza csv with ioexception",e);
 
            }
-           Logger.getLogger("inizializza").log(Level.INFO," file .{0} created",LOCATIONCC);
+           Logger.getLogger("inizializza").log(Level.INFO," file  created",LOCATIONCC);
 
        }
     }

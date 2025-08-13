@@ -22,9 +22,9 @@ import java.util.logging.Logger;
 <span class="fc" id="L22">            ObjectInputStream ois = new ObjectInputStream(fis)){</span>
 <span class="fc" id="L23">            lista= (ArrayList&lt;Negozio&gt;) ois.readObject();</span>
 <span class="nc" id="L24">           }catch (IOException e){</span>
-<span class="nc" id="L25">            Logger.getLogger(&quot;getNegozi&quot;).log(Level.SEVERE,&quot;getNegozi io exception {0}&quot;,e);</span>
+<span class="nc" id="L25">            Logger.getLogger(&quot;getNegozi&quot;).log(Level.SEVERE,&quot;getNegozi io exception :&quot;,e);</span>
 <span class="nc" id="L26">        }catch (ClassNotFoundException e1){</span>
-<span class="nc" id="L27">            Logger.getLogger(&quot;getNegozi csv&quot;).log(Level.SEVERE,&quot;getNegozi csv exception {0}&quot;,e1);</span>
+<span class="nc" id="L27">            Logger.getLogger(&quot;getNegozi csv&quot;).log(Level.SEVERE,&quot;getNegozi csv exception :&quot;,e1);</span>
 
 <span class="pc" id="L29">        }</span>
 <span class="fc" id="L30">        return FXCollections.observableArrayList(lista);</span>
@@ -40,9 +40,9 @@ import java.util.logging.Logger;
 <span class="fc" id="L40">            ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
 <span class="fc" id="L41">            lista = (ArrayList&lt;Negozio&gt;) ois.readObject();</span>
 <span class="nc" id="L42">        }catch (IOException e){</span>
-<span class="nc" id="L43">            Logger.getLogger(&quot;checkOpen&quot;).log(Level.SEVERE,&quot;checkOpen io exception {0}&quot;,e);</span>
+<span class="nc" id="L43">            Logger.getLogger(&quot;checkOpen&quot;).log(Level.SEVERE,&quot;checkOpen io exception :&quot;,e);</span>
 <span class="nc" id="L44">        }catch (ClassNotFoundException e1){</span>
-<span class="nc" id="L45">            Logger.getLogger(&quot;checkOpen csv&quot;).log(Level.SEVERE,&quot;checkOpen csv exception {0}&quot;,e1);</span>
+<span class="nc" id="L45">            Logger.getLogger(&quot;checkOpen csv&quot;).log(Level.SEVERE,&quot;checkOpen csv exception :&quot;,e1);</span>
 
 <span class="pc" id="L47">        }</span>
 
@@ -67,9 +67,9 @@ import java.util.logging.Logger;
 <span class="fc" id="L67">            lista=(ArrayList&lt;Negozio&gt;) ois.readObject();</span>
 
 <span class="nc" id="L69">        }catch (IOException e){</span>
-<span class="nc" id="L70">            Logger.getLogger(&quot;checkRitiro&quot;).log(Level.SEVERE,&quot;checkRitiro io exception {0}&quot;,e);</span>
+<span class="nc" id="L70">            Logger.getLogger(&quot;checkRitiro&quot;).log(Level.SEVERE,&quot;checkRitiro io exception :&quot;,e);</span>
 <span class="nc" id="L71">        }catch (ClassNotFoundException e1){</span>
-<span class="nc" id="L72">            Logger.getLogger(&quot;checkRitiro csv&quot;).log(Level.SEVERE,&quot;checkRitiro csv exception {0}&quot;,e1);</span>
+<span class="nc" id="L72">            Logger.getLogger(&quot;checkRitiro csv&quot;).log(Level.SEVERE,&quot;checkRitiro csv exception :&quot;,e1);</span>
 
 <span class="pc" id="L74">        }</span>
 <span class="fc bfc" id="L75" title="All 2 branches covered.">        for (Negozio negozio : lista) {</span>
@@ -95,7 +95,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L95">            oos.writeObject(new ArrayList&lt;&gt;(lista));</span>
 <span class="nc" id="L96">        }catch (IOException e)</span>
         {
-<span class="nc" id="L98">            Logger.getLogger(&quot;inserisciNegozio&quot;).log(Level.SEVERE,&quot;insert negozio exception {0}&quot;,e);</span>
+<span class="nc" id="L98">            Logger.getLogger(&quot;inserisciNegozio&quot;).log(Level.SEVERE,&quot;insert negozio exception :&quot;,e);</span>
 <span class="fc" id="L99">        }</span>
 
 <span class="fc" id="L101">    }</span>
@@ -111,7 +111,7 @@ import java.util.logging.Logger;
             }
 <span class="nc" id="L112">        }catch (IOException e)</span>
         {
-<span class="nc" id="L114">            Logger.getLogger(&quot;leggiNegozio&quot;).log(Level.SEVERE,&quot;read shop exception {0}&quot;,e);</span>
+<span class="nc" id="L114">            Logger.getLogger(&quot;leggiNegozio&quot;).log(Level.SEVERE,&quot;read shop exception :&quot;,e);</span>
 <span class="fc" id="L115">        }</span>
 <span class="fc" id="L116">            Negozio n=new Negozio();</span>
 <span class="fc" id="L117">            n.setId(Integer.parseInt(listaR.get(0)));</span>

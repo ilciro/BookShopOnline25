@@ -32,7 +32,7 @@ public class MemoriaUtente extends PersistenzaUtente{
             listaTU= (ArrayList<TempUser>) ois.readObject();
         }catch (IOException|ClassNotFoundException e)
         {
-            Logger.getLogger("inserisciUtente").log(Level.SEVERE,"error {0}",e);
+            Logger.getLogger("inserisciUtente").log(Level.SEVERE,"error :",e);
         }
         if(vis.getTipoModifica().equals("im")) u.setId(u.getId());
         else if(vis.getTipoModifica().equals("insert")) u.setId(listaTU.size()+1);
@@ -44,7 +44,7 @@ public class MemoriaUtente extends PersistenzaUtente{
             oos.writeObject(new ArrayList<>(listaTU));
         }catch (IOException e)
         {
-            Logger.getLogger("lettura utente").log(Level.SEVERE,"reading error {0}",e);
+            Logger.getLogger("lettura utente").log(Level.SEVERE,"reading error :",e);
         }
 
         return true;
@@ -97,14 +97,14 @@ public class MemoriaUtente extends PersistenzaUtente{
             try {
                 Files.createFile(path);
             } catch (IOException ex) {
-               Logger.getLogger("creazione file").log(Level.SEVERE,"error with creating file {0}",e);
+               Logger.getLogger("creazione file").log(Level.SEVERE,"error with creating file :",e);
             }
             try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
                 ObjectOutputStream oos=new ObjectOutputStream(fos)){
                 oos.writeObject(listaTU);
             }catch (IOException e1)
             {
-                Logger.getLogger("scrittura nel nuovo file").log(Level.SEVERE,"error with writing file {0}",e);
+                Logger.getLogger("scrittura nel nuovo file").log(Level.SEVERE,"error with writing file :",e);
 
             }
         }
@@ -136,7 +136,7 @@ public class MemoriaUtente extends PersistenzaUtente{
                 }
             }catch (IOException e)
             {
-                Logger.getLogger("inizializza").log(Level.SEVERE,"error with copy file {0}",e);
+                Logger.getLogger("inizializza").log(Level.SEVERE,"error with copy file :",e);
             }
             TempUser tu=new TempUser();
             tu.setId(Integer.parseInt(listaR.get(0)));
@@ -155,7 +155,7 @@ public class MemoriaUtente extends PersistenzaUtente{
             oos.writeObject(listaTU);
         }catch (IOException e)
         {
-            Logger.getLogger("scrittura file iniziale").log(Level.SEVERE,"error with writing file {0}",e);
+            Logger.getLogger("scrittura file iniziale").log(Level.SEVERE,"error with writing file :",e);
 
         }
 
@@ -164,7 +164,7 @@ public class MemoriaUtente extends PersistenzaUtente{
             listaTU= (ArrayList<TempUser>) ois.readObject();
         }catch (IOException |ClassNotFoundException e1)
         {
-            Logger.getLogger("lettura file iniziale").log(Level.SEVERE,"error with reading file {0}",e1);
+            Logger.getLogger("lettura file iniziale").log(Level.SEVERE,"error with reading file :",e1);
 
         }
 

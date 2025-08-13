@@ -35,11 +35,11 @@ import java.util.logging.Logger;
 <span class="pc bpc" id="L35" title="1 of 2 branches missed.">            if (!Files.exists(Path.of(&quot;sql/tableCreate.sql&quot;))) throw new SQLException(&quot;SQLException utente&quot;);</span>
 <span class="nc bnc" id="L36" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;memory/serializzazioneUtente.ser&quot;))) throw new ClassNotFoundException(&quot;ClassNotFoundException utente&quot;);</span>
 <span class="nc" id="L37">        } catch (CsvValidationException e) {</span>
-<span class="nc" id="L38">            Logger.getLogger(&quot;exception modalita file&quot;).log(Level.SEVERE, &quot;exception utente csv :{0}&quot;, e);</span>
+<span class="nc" id="L38">            Logger.getLogger(&quot;exception modalita file utente&quot;).log(Level.SEVERE, &quot;exception utente csv :&quot;, e);</span>
 <span class="fc" id="L39">        } catch (SQLException e) {</span>
-<span class="fc" id="L40">            Logger.getLogger(&quot;exception modalita database&quot;).log(Level.SEVERE, &quot;exception utente database :{0}&quot;, e);</span>
+<span class="fc" id="L40">            Logger.getLogger(&quot;exception modalita database utente&quot;).log(Level.SEVERE, &quot;exception utente database :&quot;, e);</span>
 <span class="nc" id="L41">        } catch (ClassNotFoundException e) {</span>
-<span class="nc" id="L42">            Logger.getLogger(&quot;exception modalita memoria&quot;).log(Level.SEVERE, &quot;exception utente memory :{0}&quot;, e);</span>
+<span class="nc" id="L42">            Logger.getLogger(&quot;exception modalita memoria utente&quot;).log(Level.SEVERE, &quot;exception utente memory :&quot;, e);</span>
 <span class="pc" id="L43">        }</span>
 <span class="fc" id="L44">    }</span>
 }

@@ -27,14 +27,14 @@ public class PagamentoTotaleDao extends PersistenzaPagamentoTotale {
 
     @Override
     public boolean inserisciPagamentoFattura(PagamentoFattura p)  {
-        Logger.getLogger("inseirmento pagamento fattura dao").log(Level.INFO,"fattura inserted {0}",p.getIdFattura());
+        Logger.getLogger("inseirmento pagamento fattura dao").log(Level.INFO,"fattura inserted :",p.getIdFattura());
 
         return super.inserisciPagamentoFattura(p);
     }
 
     @Override
     public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito pCC)  {
-        Logger.getLogger("inseirmento pagamento cc dao").log(Level.INFO,"cc inserted {0}",pCC.getIdPagCC());
+        Logger.getLogger("inseirmento pagamento cc dao").log(Level.INFO,"cc inserted :",pCC.getIdPagCC());
 
         return super.inserisciPagamentoCartaCredito(pCC);
     }
@@ -52,7 +52,7 @@ public class PagamentoTotaleDao extends PersistenzaPagamentoTotale {
 
       }catch (SQLException e)
       {
-          Logger.getLogger("cacnella fattura").log(Level.INFO,"exception in delete fattura .{0}",e);
+          Logger.getLogger("cacnella fattura").log(Level.INFO,"exception in delete fattura  :",e);
 
       }
       return row==1;
@@ -72,7 +72,7 @@ public class PagamentoTotaleDao extends PersistenzaPagamentoTotale {
 
         }catch (SQLException e)
         {
-            Logger.getLogger("cancella pagamento cc dao").log(Level.INFO,"payment deleted with exception . {0}",e);
+            Logger.getLogger("cancella pagamento cc dao").log(Level.INFO,"payment deleted with exception :",e);
         }
         return row==1;
     }

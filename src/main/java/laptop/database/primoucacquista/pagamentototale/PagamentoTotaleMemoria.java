@@ -27,7 +27,7 @@ public class PagamentoTotaleMemoria extends PersistenzaPagamentoTotale {
             try {
                 Files.createFile(path);
             } catch (IOException ex) {
-                Logger.getLogger("inizializza pagTotaleMem").log(Level.SEVERE,"error with file total payment {0}",e);
+                Logger.getLogger("inizializza pagTotaleMem").log(Level.SEVERE,"error with file total payment :",e);
             }
             Logger.getLogger("inizializza memoria fattura").log(Level.INFO," file has been created");
         }
@@ -52,7 +52,7 @@ public class PagamentoTotaleMemoria extends PersistenzaPagamentoTotale {
 
 
         list.add(p1);
-        Logger.getLogger("lista dopo insert").log(Level.INFO," list  after insert : .{0}",list);
+        Logger.getLogger("lista dopo insert").log(Level.INFO," list  after insert : .:",list);
 
 
 
@@ -61,7 +61,7 @@ public class PagamentoTotaleMemoria extends PersistenzaPagamentoTotale {
             oos.writeObject(list);
         }catch (IOException e)
         {
-            Logger.getLogger("inserisciPagamentoFattura totale csv").log(Level.SEVERE,"error with list {0}",e);
+            Logger.getLogger("inserisciPagamentoFattura totale csv").log(Level.SEVERE,"error with list :",e);
         }
 
         return true;
@@ -92,7 +92,7 @@ public class PagamentoTotaleMemoria extends PersistenzaPagamentoTotale {
             oos.writeObject(list);
         }catch (IOException e)
         {
-            Logger.getLogger("inserisciPagCC").log(Level.SEVERE,"error witd cc list {0}",e);
+            Logger.getLogger("inserisciPagCC").log(Level.SEVERE,"error witd cc list :",e);
         }
         return true;
     }
@@ -106,11 +106,11 @@ public class PagamentoTotaleMemoria extends PersistenzaPagamentoTotale {
             list = (ArrayList<Pagamento>) ois.readObject();
         }catch (IOException |ClassNotFoundException e)
         {
-            Logger.getLogger("cancella fattura csv da totale").log(Level.SEVERE,"delete f from total {0}",e);
+            Logger.getLogger("cancella fattura csv da totale").log(Level.SEVERE,"delete f from total :",e);
         }
         for (int i = 0; i < list.size(); i++) {
             if (i == p.getIdFattura()-1) {
-                Logger.getLogger("cancella fattura").log(Level.INFO,"id payment {0}.",p.getIdFattura());
+                Logger.getLogger("cancella fattura").log(Level.INFO,"id payment :.",p.getIdFattura());
 
                 status = list.remove(list.get(i));
             }
@@ -130,14 +130,14 @@ public class PagamentoTotaleMemoria extends PersistenzaPagamentoTotale {
             try {
                 Files.createFile(path);
             } catch (IOException ex) {
-                Logger.getLogger("cancelloCreo file").log(Level.SEVERE,"error with creation {0}",ex);
+                Logger.getLogger("cancelloCreo file").log(Level.SEVERE,"error with creation :",ex);
             }
             try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
                 ObjectOutputStream oos=new ObjectOutputStream(fos)){
                 oos.writeObject(list);
             }catch (IOException e2)
             {
-             Logger.getLogger("scrittura doppo canc").log(Level.SEVERE,"error with list after del {0}",e2);
+             Logger.getLogger("scrittura doppo canc").log(Level.SEVERE,"error with list after del :",e2);
             }
         }
     }
@@ -149,14 +149,14 @@ public class PagamentoTotaleMemoria extends PersistenzaPagamentoTotale {
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             list = (ArrayList<Pagamento>) ois.readObject();
         }catch (IOException e){
-            Logger.getLogger("cancellaPagamentoCC").log(Level.SEVERE,"cancPagCC from total io exception {0}",e);
+            Logger.getLogger("cancellaPagamentoCC").log(Level.SEVERE,"cancPagCC from total io exception :",e);
         }catch (ClassNotFoundException e1){
-            Logger.getLogger("cancellaPAgamentoCC csv").log(Level.SEVERE,"cancPagCC from total csv exception {0}",e1);
+            Logger.getLogger("cancellaPAgamentoCC csv").log(Level.SEVERE,"cancPagCC from total csv exception :",e1);
 
         }
         for (int i = 1; i <= list.size(); i++) {
             if (i == pCC.getIdPagCC()) {
-                Logger.getLogger("cancella pagaemnto cc").log(Level.INFO,"id payment {0}.",pCC.getIdPagCC());
+                Logger.getLogger("cancella pagaemnto cc").log(Level.INFO,"id payment :.",pCC.getIdPagCC());
 
                 status = list.remove(list.get(i - 1));
                 break;

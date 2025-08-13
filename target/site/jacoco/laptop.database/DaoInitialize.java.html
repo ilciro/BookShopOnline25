@@ -81,14 +81,14 @@ import java.util.logging.Logger;
             case CREA -&gt; {
 <span class="fc bfc" id="L82" title="All 2 branches covered.">                if(getPresente()==0)</span>
 <span class="fc" id="L83">                    crea(type);</span>
-<span class="fc" id="L84">                else Logger.getLogger(&quot;tabella creata&quot;).log(Level.WARNING,&quot;table already created .{0}&quot;,type);</span>
+<span class="fc" id="L84">                else Logger.getLogger(&quot;tabella creata&quot;).log(Level.WARNING,&quot;table already created .:&quot;,type);</span>
 
 <span class="fc" id="L86">            }</span>
             case POPOLA -&gt; {
 <span class="fc bfc" id="L88" title="All 2 branches covered.">                if (getPresente() == 0)</span>
 <span class="fc" id="L89">                    popola(type);</span>
             }
-<span class="nc" id="L91">            default -&gt; Logger.getLogger(&quot;errore ad esegire procedura&quot;).log(Level.SEVERE, &quot;erroro while execute procedure with type .{0}&quot;, type);</span>
+<span class="nc" id="L91">            default -&gt; Logger.getLogger(&quot;errore ad esegire procedura&quot;).log(Level.SEVERE, &quot;erroro while execute procedure with type .:&quot;, type);</span>
 
         }
 <span class="fc" id="L94">    }</span>
@@ -105,9 +105,9 @@ import java.util.logging.Logger;
 
 
 <span class="nc" id="L107">        } catch (SQLException e) {</span>
-<span class="nc" id="L108">            Logger.getLogger(&quot;esegui esiste&quot;).log(Level.SEVERE, &quot;exists procedure called badly {0}&quot;, e.getMessage());</span>
+<span class="nc" id="L108">            Logger.getLogger(&quot;esegui esiste&quot;).log(Level.SEVERE, &quot;exists procedure called badly :&quot;, e.getMessage());</span>
 <span class="fc" id="L109">        }</span>
-<span class="fc" id="L110">        Logger.getLogger(&quot;tabella presente :&quot;).log(Level.INFO, &quot; type is present :{0}&quot;, getPresente());</span>
+<span class="fc" id="L110">        Logger.getLogger(&quot;tabella presente :&quot;).log(Level.INFO, &quot; type is present ::&quot;, getPresente());</span>
 <span class="fc" id="L111">    }</span>
 
     private void crea(String type)
@@ -121,7 +121,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L121">                callQ.execute();</span>
 <span class="nc" id="L122">            }catch (SQLException e)</span>
             {
-<span class="nc" id="L124">                Logger.getLogger(&quot;crea tabella errore&quot;).log(Level.SEVERE,&quot; create table error .{0}&quot;,e.getMessage());</span>
+<span class="nc" id="L124">                Logger.getLogger(&quot;crea tabella errore&quot;).log(Level.SEVERE,&quot; create table error .:&quot;,e.getMessage());</span>
 <span class="fc" id="L125">            }</span>
 <span class="fc" id="L126">    }</span>
 

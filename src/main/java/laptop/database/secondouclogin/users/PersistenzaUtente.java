@@ -35,11 +35,11 @@ public class PersistenzaUtente {
             if (!Files.exists(Path.of("sql/tableCreate.sql"))) throw new SQLException("SQLException utente");
             if (!Files.exists(Path.of("memory/serializzazioneUtente.ser"))) throw new ClassNotFoundException("ClassNotFoundException utente");
         } catch (CsvValidationException e) {
-            Logger.getLogger("exception modalita file").log(Level.SEVERE, "exception utente csv :{0}", e);
+            Logger.getLogger("exception modalita file utente").log(Level.SEVERE, "exception utente csv :", e);
         } catch (SQLException e) {
-            Logger.getLogger("exception modalita database").log(Level.SEVERE, "exception utente database :{0}", e);
+            Logger.getLogger("exception modalita database utente").log(Level.SEVERE, "exception utente database :", e);
         } catch (ClassNotFoundException e) {
-            Logger.getLogger("exception modalita memoria").log(Level.SEVERE, "exception utente memory :{0}", e);
+            Logger.getLogger("exception modalita memoria utente").log(Level.SEVERE, "exception utente memory :", e);
         }
     }
 }

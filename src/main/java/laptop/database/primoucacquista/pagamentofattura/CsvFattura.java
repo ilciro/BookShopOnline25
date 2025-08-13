@@ -51,7 +51,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
             try {
                 Files.createFile(Path.of(this.fileFattura.toURI()));
             } catch (IOException e) {
-                Logger.getLogger("costruttore").log(Level.SEVERE,"error with file creation {0}",e);
+                Logger.getLogger("costruttore").log(Level.SEVERE,"error with file creation :",e);
             }
         }
         this.cacheFattura=new HashMap<>();
@@ -62,7 +62,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
         try {
             Files.delete(path);
         } catch (IOException e) {
-            Logger.getLogger("cleanUpF").log(Level.SEVERE,"error with del file f {0}",e);
+            Logger.getLogger("cleanUpF").log(Level.SEVERE,"error with del file f :",e);
         }
     }
 
@@ -77,7 +77,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
             try {
                 Files.createFile(path);
             } catch (IOException ex) {
-                Logger.getLogger("inizializza csv fattura").log(Level.SEVERE,"error with creation file {0}",ex);
+                Logger.getLogger("inizializza csv fattura").log(Level.SEVERE,"error with creation file :",ex);
             }
         }
     }
@@ -174,7 +174,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
             }
         }catch (IOException e)
         {
-            Logger.getLogger("removeFattura").log(Level.SEVERE,"error with remove fattura {0}",e);
+            Logger.getLogger("removeFattura").log(Level.SEVERE,"error with remove fattura :",e);
         }
         return status;
 
@@ -201,9 +201,9 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
             writer.flush();
 
         }catch (IOException e){
-            Logger.getLogger("isFound").log(Level.SEVERE,"isFound io exception {0}",e);
+            Logger.getLogger("isFound").log(Level.SEVERE,"isFound io exception :",e);
         }catch (CsvValidationException e1){
-            Logger.getLogger("isFound csv").log(Level.SEVERE,"idFound csv exception {0}",e1);
+            Logger.getLogger("isFound csv").log(Level.SEVERE,"idFound csv exception :",e1);
 
         }
         return found;
@@ -220,9 +220,9 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
                 list.add(f);
             }
         }catch (IOException e){
-            Logger.getLogger("ultimaFattura").log(Level.SEVERE,"ultimaFattura io exception {0}",e);
+            Logger.getLogger("ultimaFattura").log(Level.SEVERE,"ultimaFattura io exception :",e);
         }catch (CsvValidationException e1){
-            Logger.getLogger("ultimaFattura csv").log(Level.SEVERE,"ultimaFattura csv exception {0}",e1);
+            Logger.getLogger("ultimaFattura csv").log(Level.SEVERE,"ultimaFattura csv exception :",e1);
 
         }
         return list.get(list.size()-1);
@@ -263,9 +263,9 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
 
             }
         }catch (IOException e){
-            Logger.getLogger("ListPagamentiUserF").log(Level.SEVERE,"listFattura io exception {0}",e);
+            Logger.getLogger("ListPagamentiUserF").log(Level.SEVERE,"listFattura io exception :",e);
         }catch (CsvValidationException e1){
-            Logger.getLogger("listPagaemntiUserF csv").log(Level.SEVERE,"listFattura csv exception {0}",e1);
+            Logger.getLogger("listPagaemntiUserF csv").log(Level.SEVERE,"listFattura csv exception :",e1);
 
         }
         try {

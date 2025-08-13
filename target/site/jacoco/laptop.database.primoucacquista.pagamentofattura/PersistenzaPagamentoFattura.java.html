@@ -31,7 +31,7 @@ import java.util.logging.Logger;
 <span class="nc" id="L31">        return null;</span>
     }
     public ObservableList&lt;PagamentoFattura&gt; listPagamentiByUserF(PagamentoFattura pF)  {
-<span class="nc" id="L34">        Logger.getLogger(&quot;Persistenza pagamento fattura by user&quot;).log(Level.INFO,&quot;lisa payment by user:.{0}&quot;,pF.getNome());</span>
+<span class="nc" id="L34">        Logger.getLogger(&quot;Persistenza pagamento fattura by user&quot;).log(Level.INFO,&quot;lisa payment by user:.&quot;,pF.getNome());</span>
 
 
 <span class="nc" id="L37">        return FXCollections.observableArrayList();}</span>
@@ -44,11 +44,11 @@ import java.util.logging.Logger;
 <span class="nc bnc" id="L44" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;sql/tableCreate.sql&quot;))) throw new SQLException(&quot;SQLException fattura&quot;);</span>
 <span class="nc bnc" id="L45" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;memory/serializzazionePagamentoFattura.ser&quot;))) throw new ClassNotFoundException(&quot;ClassNotFoundException fattura&quot;);</span>
 <span class="fc" id="L46">        } catch (CsvValidationException e) {</span>
-<span class="fc" id="L47">            Logger.getLogger(&quot;exception modalita file&quot;).log(Level.SEVERE, &quot;exception csv fattura :{0}&quot;, e);</span>
+<span class="fc" id="L47">            Logger.getLogger(&quot;exception modalita file fattura&quot;).log(Level.SEVERE, &quot;exception csv fattura :&quot;, e);</span>
 <span class="nc" id="L48">        } catch (SQLException e) {</span>
-<span class="nc" id="L49">            Logger.getLogger(&quot;exception modalita database&quot;).log(Level.SEVERE, &quot;exception database fattura:{0}&quot;, e);</span>
+<span class="nc" id="L49">            Logger.getLogger(&quot;exception modalita database fattura&quot;).log(Level.SEVERE, &quot;exception database fattura:&quot;, e);</span>
 <span class="nc" id="L50">        } catch (ClassNotFoundException e) {</span>
-<span class="nc" id="L51">            Logger.getLogger(&quot;exception modalita memoria&quot;).log(Level.SEVERE, &quot;exception memory fattura :{0}&quot;, e);</span>
+<span class="nc" id="L51">            Logger.getLogger(&quot;exception modalita memoria fattura&quot;).log(Level.SEVERE, &quot;exception memory fattura :&quot;, e);</span>
 
 <span class="pc" id="L53">        }</span>
 <span class="fc" id="L54">    }</span>

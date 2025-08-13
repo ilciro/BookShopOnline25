@@ -29,7 +29,7 @@ public class MemoriaRivista extends PersistenzaRivista{
             try {
                 Files.createFile(path2);
             } catch (IOException e) {
-                Logger.getLogger("insiert rivista mem").log(Level.SEVERE,"error with crate file mem {0}",e);
+                Logger.getLogger("insiert rivista mem").log(Level.SEVERE,"error with crate file mem :",e);
             }
         }
 

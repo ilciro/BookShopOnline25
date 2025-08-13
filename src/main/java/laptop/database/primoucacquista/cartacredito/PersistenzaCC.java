@@ -20,7 +20,7 @@ public class PersistenzaCC {
     }
     public ObservableList<CartaDiCredito> getCarteDiCredito(CartaDiCredito cc)  {
 
-        Logger.getLogger("get cartecredito").log(Level.INFO,"lista cc con nome: {0}",cc.getNomeUser());
+        Logger.getLogger("get cartecredito").log(Level.INFO,"lista cc con nome: ",cc.getNomeUser());
 
         return FXCollections.observableArrayList();
 
@@ -39,10 +39,10 @@ public class PersistenzaCC {
             if (!Files.exists(Path.of("sql/tableCreate.sql"))) throw new SQLException("persistenza cc SQLException");
         }catch (CsvValidationException e)
         {
-            Logger.getLogger("getException persistenca cc csv").log(Level.SEVERE,"persistenza cc csv exception :{0}",e);
+            Logger.getLogger("getException persistenca cc csv").log(Level.SEVERE,"persistenza cc csv exception :",e);
         }catch (SQLException e1)
         {
-            Logger.getLogger("getException persistenca cc sql").log(Level.SEVERE," persistenza cc sql exception :{0}",e1);
+            Logger.getLogger("getException persistenca cc sql").log(Level.SEVERE," persistenza cc sql exception :",e1);
 
         }
 

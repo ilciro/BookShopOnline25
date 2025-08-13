@@ -119,7 +119,7 @@ import java.util.logging.Logger;
                     }
                 }
 <span class="nc" id="L121">            }catch (IOException e1){</span>
-<span class="nc" id="L122">                Logger.getLogger(&quot;remove file&quot;).log(Level.SEVERE,&quot;remove file mi exception : {}&quot;,e1);</span>
+<span class="nc" id="L122">                Logger.getLogger(&quot;remove file&quot;).log(Level.SEVERE,&quot;remove file mi exception : &quot;,e1);</span>
 
 <span class="fc" id="L124">            }</span>
 
@@ -183,7 +183,7 @@ import java.util.logging.Logger;
 <span class="nc bnc" id="L183" title="All 2 branches missed.">                else if (vis.getTipoModifica().equals(INSERT)) l.setId(listL.size() + 1);</span>
 <span class="fc" id="L184">                listL.add(l);</span>
 
-<span class="fc" id="L186">                Logger.getLogger(&quot;inserisci libro&quot;).log(Level.INFO, &quot;inserted libro in list :{}&quot;, listL.get(0).getTitolo());</span>
+<span class="fc" id="L186">                Logger.getLogger(&quot;inserisci libro&quot;).log(Level.INFO, &quot;inserted libro in list :&quot;, listL.get(0).getTitolo());</span>
                 //scrivo lista in appoggio
 
 <span class="fc" id="L189">                scriviInFile(appoggio, null, listL, null);</span>
@@ -199,7 +199,7 @@ import java.util.logging.Logger;
 <span class="nc bnc" id="L199" title="All 2 branches missed.">                else if (vis.getTipoModifica().equals(INSERT)) g.setId(listG.size() + 1);</span>
 <span class="nc" id="L200">                listG.add(g);</span>
                 //scrivo lista in appoggio
-<span class="nc" id="L202">                Logger.getLogger(&quot;inserisci giiornale&quot;).log(Level.INFO, &quot;inserted giornale in list :{}&quot;, listG.get(0).getTitolo());</span>
+<span class="nc" id="L202">                Logger.getLogger(&quot;inserisci giiornale&quot;).log(Level.INFO, &quot;inserted giornale in list :&quot;, listG.get(0).getTitolo());</span>
 
 
 <span class="nc" id="L205">                scriviInFile(appoggio, listG, null, null);</span>
@@ -215,7 +215,7 @@ import java.util.logging.Logger;
 <span class="nc bnc" id="L215" title="All 2 branches missed.">                else if (vis.getTipoModifica().equals(INSERT)) r.setId(listR.size() + 1);</span>
 <span class="fc" id="L216">                listR.add(r);</span>
                 //scrivo lista in appoggio
-<span class="fc" id="L218">                Logger.getLogger(&quot;inserisci rivista&quot;).log(Level.INFO, &quot;inserted rivista in list : {}&quot;, listR.get(0).getTitolo());</span>
+<span class="fc" id="L218">                Logger.getLogger(&quot;inserisci rivista&quot;).log(Level.INFO, &quot;inserted rivista in list : &quot;, listR.get(0).getTitolo());</span>
 
 
 <span class="fc" id="L221">                scriviInFile(appoggio, null, null, listR);</span>
@@ -228,7 +228,7 @@ import java.util.logging.Logger;
             }
 <span class="nc" id="L229">        }catch (IOException e)</span>
         {
-<span class="nc" id="L231">            Logger.getLogger(&quot;inserisci&quot;).log(Level.SEVERE,&quot;inserisci io exception : {}&quot;,e);</span>
+<span class="nc" id="L231">            Logger.getLogger(&quot;inserisci&quot;).log(Level.SEVERE,&quot;inserisci io exception : &quot;,e);</span>
 
 <span class="fc" id="L233">        }</span>
 <span class="fc" id="L234">        return true;</span>
@@ -251,7 +251,7 @@ import java.util.logging.Logger;
 
 <span class="nc" id="L252">        }catch (IOException e)</span>
         {
-<span class="nc" id="L254">            Logger.getLogger(&quot;scrivi in file&quot;).log(Level.SEVERE,&quot;scrivi in file mi exception : {}&quot;,e);</span>
+<span class="nc" id="L254">            Logger.getLogger(&quot;scrivi in file&quot;).log(Level.SEVERE,&quot;scrivi in file mi exception : &quot;,e);</span>
 
 <span class="fc" id="L256">        }</span>
 
@@ -265,11 +265,11 @@ import java.util.logging.Logger;
 <span class="fc" id="L265">            listG=(ArrayList&lt;Giornale&gt;) ois.readObject();</span>
 <span class="nc" id="L266">        }catch (IOException e)</span>
         {
-<span class="nc" id="L268">            Logger.getLogger(&quot;leggi da file giornale io&quot;).log(Level.SEVERE,&quot;leggi da file io giornale exception :{}&quot;,e);</span>
+<span class="nc" id="L268">            Logger.getLogger(&quot;leggi da file giornale io&quot;).log(Level.SEVERE,&quot;leggi da file io giornale exception :&quot;,e);</span>
 
 <span class="nc" id="L270">        }catch (ClassNotFoundException e1)</span>
         {
-<span class="nc" id="L272">            Logger.getLogger(&quot;leggi da file giornale class&quot;).log(Level.SEVERE,&quot;leggi da file class giornale exception :{}&quot;,e1);</span>
+<span class="nc" id="L272">            Logger.getLogger(&quot;leggi da file giornale class&quot;).log(Level.SEVERE,&quot;leggi da file class giornale exception :&quot;,e1);</span>
 
 <span class="pc" id="L274">        }</span>
 <span class="fc" id="L275">        return listG;</span>
@@ -281,11 +281,11 @@ import java.util.logging.Logger;
 <span class="fc" id="L281">            listL=(ArrayList&lt;Libro&gt;) ois.readObject();</span>
 <span class="nc" id="L282">        }catch (IOException e)</span>
         {
-<span class="nc" id="L284">            Logger.getLogger(&quot;leggi da file libro io&quot;).log(Level.SEVERE,&quot;leggi da file io libro exception: {}&quot;,e);</span>
+<span class="nc" id="L284">            Logger.getLogger(&quot;leggi da file libro io&quot;).log(Level.SEVERE,&quot;leggi da file io libro exception: &quot;,e);</span>
 
 <span class="nc" id="L286">        }catch (ClassNotFoundException e1)</span>
         {
-<span class="nc" id="L288">            Logger.getLogger(&quot;leggi da file libro class&quot;).log(Level.SEVERE,&quot;leggi da file class libro exception: {}&quot;,e1);</span>
+<span class="nc" id="L288">            Logger.getLogger(&quot;leggi da file libro class&quot;).log(Level.SEVERE,&quot;leggi da file class libro exception: &quot;,e1);</span>
 
 <span class="pc" id="L290">        }</span>
 
@@ -298,11 +298,11 @@ import java.util.logging.Logger;
 <span class="fc" id="L298">            listR=(ArrayList&lt;Rivista&gt;) ois.readObject();</span>
 <span class="nc" id="L299">        }catch (IOException e)</span>
         {
-<span class="nc" id="L301">            Logger.getLogger(&quot;leggi da file rivista io&quot;).log(Level.SEVERE,&quot;leggi da file io rivista exception :{}&quot;,e);</span>
+<span class="nc" id="L301">            Logger.getLogger(&quot;leggi da file rivista io&quot;).log(Level.SEVERE,&quot;leggi da file io rivista exception :&quot;,e);</span>
 
 <span class="nc" id="L303">        }catch (ClassNotFoundException e1)</span>
         {
-<span class="nc" id="L305">            Logger.getLogger(&quot;leggi da file rivista class&quot;).log(Level.SEVERE,&quot;leggi da file class rivista exception :{}&quot;,e1);</span>
+<span class="nc" id="L305">            Logger.getLogger(&quot;leggi da file rivista class&quot;).log(Level.SEVERE,&quot;leggi da file class rivista exception :&quot;,e1);</span>
 
 <span class="pc" id="L307">        }</span>
 <span class="fc" id="L308">        return listR;</span>
@@ -337,7 +337,7 @@ import java.util.logging.Logger;
             }
 <span class="nc" id="L338">        }catch (IOException e)</span>
         {
-<span class="nc" id="L340">            Logger.getLogger(&quot;getGiornale&quot;).log(Level.SEVERE,&quot; get giornale exception : {}&quot;,e);</span>
+<span class="nc" id="L340">            Logger.getLogger(&quot;getGiornale&quot;).log(Level.SEVERE,&quot; get giornale exception : &quot;,e);</span>
 <span class="fc" id="L341">        }</span>
 <span class="fc" id="L342">        Giornale g = new Giornale();</span>
 <span class="fc" id="L343">        g.setTitolo(listaG.get(0));</span>
@@ -362,7 +362,7 @@ import java.util.logging.Logger;
             }
 <span class="nc" id="L363">        }catch (IOException e)</span>
         {
-<span class="nc" id="L365">            Logger.getLogger(&quot;getLibro&quot;).log(Level.SEVERE,&quot;get libro exception : {}&quot;,e);</span>
+<span class="nc" id="L365">            Logger.getLogger(&quot;getLibro&quot;).log(Level.SEVERE,&quot;get libro exception : &quot;,e);</span>
 <span class="fc" id="L366">        }</span>
 <span class="fc" id="L367">        return getLibro(listaL);</span>
 
@@ -397,7 +397,7 @@ import java.util.logging.Logger;
                 }
 <span class="nc" id="L398">            }catch (IOException e)</span>
             {
-<span class="nc" id="L400">                Logger.getLogger(&quot;getRivista&quot;).log(Level.SEVERE,&quot;getRivista mi exception : {}&quot;,e);</span>
+<span class="nc" id="L400">                Logger.getLogger(&quot;getRivista&quot;).log(Level.SEVERE,&quot;getRivista mi exception : &quot;,e);</span>
 <span class="fc" id="L401">            }</span>
 
 

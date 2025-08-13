@@ -20,7 +20,7 @@ import java.util.logging.Logger;
     }
     public ObservableList&lt;CartaDiCredito&gt; getCarteDiCredito(CartaDiCredito cc)  {
 
-<span class="nc" id="L23">        Logger.getLogger(&quot;get cartecredito&quot;).log(Level.INFO,&quot;lista cc con nome: {0}&quot;,cc.getNomeUser());</span>
+<span class="nc" id="L23">        Logger.getLogger(&quot;get cartecredito&quot;).log(Level.INFO,&quot;lista cc con nome: &quot;,cc.getNomeUser());</span>
 
 <span class="nc" id="L25">        return FXCollections.observableArrayList();</span>
 
@@ -39,10 +39,10 @@ import java.util.logging.Logger;
 <span class="nc bnc" id="L39" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;sql/tableCreate.sql&quot;))) throw new SQLException(&quot;persistenza cc SQLException&quot;);</span>
 <span class="nc" id="L40">        }catch (CsvValidationException e)</span>
         {
-<span class="nc" id="L42">            Logger.getLogger(&quot;getException persistenca cc csv&quot;).log(Level.SEVERE,&quot;persistenza cc csv exception :{0}&quot;,e);</span>
+<span class="nc" id="L42">            Logger.getLogger(&quot;getException persistenca cc csv&quot;).log(Level.SEVERE,&quot;persistenza cc csv exception :&quot;,e);</span>
 <span class="nc" id="L43">        }catch (SQLException e1)</span>
         {
-<span class="nc" id="L45">            Logger.getLogger(&quot;getException persistenca cc sql&quot;).log(Level.SEVERE,&quot; persistenza cc sql exception :{0}&quot;,e1);</span>
+<span class="nc" id="L45">            Logger.getLogger(&quot;getException persistenca cc sql&quot;).log(Level.SEVERE,&quot; persistenza cc sql exception :&quot;,e1);</span>
 
 <span class="nc" id="L47">        }</span>
 

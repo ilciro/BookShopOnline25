@@ -25,12 +25,12 @@ public class PersistenzaPagamentoTotale {
             if (!Files.exists(Path.of("sql/tableCreate.sql"))) throw new SQLException("SQLException pagamentoTotale");
             if (!Files.exists(Path.of("memory/serializzazionePagamentoTotale.ser"))) throw new ClassNotFoundException("ClassNotFoundException pagamentoTotale");
         } catch (CsvValidationException e) {
-            Logger.getLogger("exception modalita file pagTotale").log(Level.SEVERE, "exception csv payTot :{0}", e);
+            Logger.getLogger("exception modalita file pagTotale").log(Level.SEVERE, "exception csv payTot :", e);
         } catch (SQLException e) {
-            Logger.getLogger("exception modalita database pagTotale").log(Level.SEVERE, "exception database payTot :{0}", e);
+            Logger.getLogger("exception modalita database pagTotale").log(Level.SEVERE, "exception database payTot :", e);
 
         } catch (ClassNotFoundException e) {
-            Logger.getLogger("exception modalita memoria pagTotale").log(Level.SEVERE, "exception memory payTot :{0}", e);
+            Logger.getLogger("exception modalita memoria pagTotale").log(Level.SEVERE, "exception memory payTot :", e);
 
         }
     }

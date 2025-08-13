@@ -25,7 +25,7 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
             try {
                 Files.createFile(path);
             } catch (IOException ex) {
-                Logger.getLogger("inizializzaPagamentoCC memoria").log(Level.SEVERE,"exception {0}",e);
+                Logger.getLogger("inizializzaPagamentoCC memoria").log(Level.SEVERE,"exception :",e);
             }
             Logger.getLogger("inizializza memoria pagamentoCC").log(Level.INFO," file has been created");
         }
@@ -40,9 +40,9 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
             list = (ArrayList<PagamentoCartaCredito>) ois.readObject();
 
         }catch (IOException e){
-            Logger.getLogger("inserisciPagamento").log(Level.SEVERE,"insPag io exception {0}",e);
+            Logger.getLogger("inserisciPagamento").log(Level.SEVERE,"insPag io exception :",e);
         }catch (ClassNotFoundException e1){
-            Logger.getLogger("inserisciPagaemnto csv").log(Level.SEVERE,"insPag csv exception {0}",e1);
+            Logger.getLogger("inserisciPagaemnto csv").log(Level.SEVERE,"insPag csv exception :",e1);
 
         }
         p.setIdPagCC(list.size()+1);
@@ -54,7 +54,7 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
             oos.writeObject(list);
         }catch (IOException e2)
         {
-            Logger.getLogger("scrittura pagamento").log(Level.SEVERE,"payment error {0}",e2);
+            Logger.getLogger("scrittura pagamento").log(Level.SEVERE,"payment error :",e2);
         }
 
 
@@ -73,14 +73,14 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
             list = (ArrayList<PagamentoCartaCredito>) ois.readObject();
         }catch (IOException e)
         {
-            Logger.getLogger("cancella pagamento io").log(Level.SEVERE,"del payment io error {0}",e);
+            Logger.getLogger("cancella pagamento io").log(Level.SEVERE,"del payment io error :",e);
         }catch (ClassNotFoundException e1)
         {
-            Logger.getLogger("cancella pagamento csv").log(Level.SEVERE,"del payment csv error {0}",e1);
+            Logger.getLogger("cancella pagamento csv").log(Level.SEVERE,"del payment csv error :",e1);
         }
         for (int i = 0; i < list.size(); i++) {
             if (i == p.getIdPagCC()-1) {
-                Logger.getLogger("cancella fattura").log(Level.INFO,"id payment {0}.",p.getIdPagCC());
+                Logger.getLogger("cancella fattura").log(Level.INFO,"id payment :.",p.getIdPagCC());
 
                 status = list.remove(list.get(i));
 
@@ -95,14 +95,14 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
             try {
                 Files.createFile(path);
             } catch (IOException e3) {
-               Logger.getLogger("create file").log(Level.SEVERE,"error with creation {0}",e3);
+               Logger.getLogger("create file").log(Level.SEVERE,"error with creation :",e3);
             }
             try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
                 ObjectOutputStream oos=new ObjectOutputStream(fos)){
                 oos.writeObject(list);
             }catch (IOException e4)
             {
-                Logger.getLogger("scrittura su nuovo file").log(Level.SEVERE,"writing error {0}",e4);
+                Logger.getLogger("scrittura su nuovo file").log(Level.SEVERE,"writing error :",e4);
             }
         }
         return status;
@@ -115,9 +115,9 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             list = (ArrayList<PagamentoCartaCredito>) ois.readObject();
         }catch (IOException e){
-            Logger.getLogger("ultimoPagamentoCC").log(Level.SEVERE,"lastPaymentCC io exception {0}",e);
+            Logger.getLogger("ultimoPagamentoCC").log(Level.SEVERE,"lastPaymentCC io exception :",e);
         }catch (ClassNotFoundException e1){
-            Logger.getLogger("ultimoPagamentoCC csv").log(Level.SEVERE,"lastPaymentCC csv exception {0}",e1);
+            Logger.getLogger("ultimoPagamentoCC csv").log(Level.SEVERE,"lastPaymentCC csv exception :",e1);
 
         }
         return list.get(list.size() - 1);

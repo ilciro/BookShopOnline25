@@ -41,7 +41,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
              ObjectOutputStream oos = new ObjectOutputStream(fout)) {
             oos.writeObject(list);
         }catch (IOException e1){
-            Logger.getLogger("inserisciPagamentofattura").log(Level.SEVERE,"error with write exception {0}",e1);
+            Logger.getLogger("inserisciPagamentofattura").log(Level.SEVERE,"error with write exception :",e1);
         }
 
 
@@ -59,15 +59,15 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             list = (ArrayList<PagamentoFattura>) ois.readObject();
         }catch (IOException e){
-            Logger.getLogger("cancellaPagamentoFattura").log(Level.SEVERE,"delPaymentF io exception {0}",e);
+            Logger.getLogger("cancellaPagamentoFattura").log(Level.SEVERE,"delPaymentF io exception :",e);
         }catch (ClassNotFoundException e1){
-            Logger.getLogger("cancellaPAgamentoFattura csv").log(Level.SEVERE,"delPaymentF csv exception {0}",e1);
+            Logger.getLogger("cancellaPAgamentoFattura csv").log(Level.SEVERE,"delPaymentF csv exception :",e1);
 
         }
 
         for (int i = 0; i <list.size(); i++) {
             if (i == f.getIdFattura()-1) {
-                Logger.getLogger("cancella fattura").log(Level.INFO,"id fattura {0}.",f.getIdFattura());
+                Logger.getLogger("cancella fattura").log(Level.INFO,"id fattura :.",f.getIdFattura());
 
                 status = list.remove(list.get(i));
 
@@ -83,14 +83,14 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
             try {
                 Files.createFile(path);
             } catch (IOException ex) {
-                Logger.getLogger("creazione Fattura file").log(Level.SEVERE,"file not created {0}",ex);
+                Logger.getLogger("creazione Fattura file").log(Level.SEVERE,"file not created :",ex);
             }
             try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
                 ObjectOutputStream oos=new ObjectOutputStream(fos)){
                 oos.writeObject(list);
             }catch (IOException e1)
             {
-             Logger.getLogger("scrittura").log(Level.SEVERE,"error with write {0}",e1);
+             Logger.getLogger("scrittura").log(Level.SEVERE,"error with write :",e1);
             }
         }
         return status;
@@ -107,7 +107,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
            try {
                Files.createFile(path);
            } catch (IOException ex) {
-              Logger.getLogger("inizializza").log(Level.SEVERE,"error with file {0}",ex);
+              Logger.getLogger("inizializza").log(Level.SEVERE,"error with file :",ex);
            }
            Logger.getLogger("inizializza memoria fattura").log(Level.INFO," file has been created");
        }
@@ -121,7 +121,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
             list = (ArrayList<PagamentoFattura>) ois.readObject();
         }catch (IOException |ClassNotFoundException e)
         {
-            Logger.getLogger("ultimaFattura").log(Level.SEVERE,"error withh last fattura {0}",e);
+            Logger.getLogger("ultimaFattura").log(Level.SEVERE,"error withh last fattura :",e);
         }
         return list.get(list.size() - 1);
     }

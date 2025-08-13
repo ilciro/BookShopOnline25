@@ -53,12 +53,12 @@ public class PersistenzaRivista {
             if (!Files.exists(Path.of("sql/tableCreate.sql"))) throw new SQLException("SQLException rivista");
             if (!Files.exists(Path.of("memory/serializzazioneRivista.ser"))) throw new ClassNotFoundException("ClassNotFoundException rivista");
         } catch (CsvValidationException e) {
-            Logger.getLogger("exception modalita file rivista").log(Level.SEVERE, "exception csv rivista :{0}", e);
+            Logger.getLogger("exception modalita file rivista").log(Level.SEVERE, "exception csv rivista :", e);
         } catch (SQLException e) {
-            Logger.getLogger("exception modalita database rivista").log(Level.SEVERE, "exception database rivista :{0}", e);
+            Logger.getLogger("exception modalita database rivista").log(Level.SEVERE, "exception database rivista :", e);
 
         } catch (ClassNotFoundException e) {
-            Logger.getLogger("exception modalita memoria rivista").log(Level.SEVERE, "exception memory  rivista:{0}", e);
+            Logger.getLogger("exception modalita memoria rivista").log(Level.SEVERE, "exception memory  rivista:", e);
 
         }
     }

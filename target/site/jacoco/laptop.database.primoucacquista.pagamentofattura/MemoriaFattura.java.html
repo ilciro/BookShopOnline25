@@ -41,7 +41,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L41">             ObjectOutputStream oos = new ObjectOutputStream(fout)) {</span>
 <span class="fc" id="L42">            oos.writeObject(list);</span>
 <span class="nc" id="L43">        }catch (IOException e1){</span>
-<span class="nc" id="L44">            Logger.getLogger(&quot;inserisciPagamentofattura&quot;).log(Level.SEVERE,&quot;error with write exception {0}&quot;,e1);</span>
+<span class="nc" id="L44">            Logger.getLogger(&quot;inserisciPagamentofattura&quot;).log(Level.SEVERE,&quot;error with write exception :&quot;,e1);</span>
 <span class="fc" id="L45">        }</span>
 
 
@@ -59,15 +59,15 @@ import java.util.logging.Logger;
 <span class="fc" id="L59">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
 <span class="fc" id="L60">            list = (ArrayList&lt;PagamentoFattura&gt;) ois.readObject();</span>
 <span class="nc" id="L61">        }catch (IOException e){</span>
-<span class="nc" id="L62">            Logger.getLogger(&quot;cancellaPagamentoFattura&quot;).log(Level.SEVERE,&quot;delPaymentF io exception {0}&quot;,e);</span>
+<span class="nc" id="L62">            Logger.getLogger(&quot;cancellaPagamentoFattura&quot;).log(Level.SEVERE,&quot;delPaymentF io exception :&quot;,e);</span>
 <span class="nc" id="L63">        }catch (ClassNotFoundException e1){</span>
-<span class="nc" id="L64">            Logger.getLogger(&quot;cancellaPAgamentoFattura csv&quot;).log(Level.SEVERE,&quot;delPaymentF csv exception {0}&quot;,e1);</span>
+<span class="nc" id="L64">            Logger.getLogger(&quot;cancellaPAgamentoFattura csv&quot;).log(Level.SEVERE,&quot;delPaymentF csv exception :&quot;,e1);</span>
 
 <span class="pc" id="L66">        }</span>
 
 <span class="fc bfc" id="L68" title="All 2 branches covered.">        for (int i = 0; i &lt;list.size(); i++) {</span>
 <span class="fc bfc" id="L69" title="All 2 branches covered.">            if (i == f.getIdFattura()-1) {</span>
-<span class="fc" id="L70">                Logger.getLogger(&quot;cancella fattura&quot;).log(Level.INFO,&quot;id fattura {0}.&quot;,f.getIdFattura());</span>
+<span class="fc" id="L70">                Logger.getLogger(&quot;cancella fattura&quot;).log(Level.INFO,&quot;id fattura :.&quot;,f.getIdFattura());</span>
 
 <span class="fc" id="L72">                status = list.remove(list.get(i));</span>
 
@@ -83,14 +83,14 @@ import java.util.logging.Logger;
             try {
 <span class="fc" id="L84">                Files.createFile(path);</span>
 <span class="nc" id="L85">            } catch (IOException ex) {</span>
-<span class="nc" id="L86">                Logger.getLogger(&quot;creazione Fattura file&quot;).log(Level.SEVERE,&quot;file not created {0}&quot;,ex);</span>
+<span class="nc" id="L86">                Logger.getLogger(&quot;creazione Fattura file&quot;).log(Level.SEVERE,&quot;file not created :&quot;,ex);</span>
 <span class="fc" id="L87">            }</span>
 <span class="fc" id="L88">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
 <span class="fc" id="L89">                ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
 <span class="fc" id="L90">                oos.writeObject(list);</span>
 <span class="nc" id="L91">            }catch (IOException e1)</span>
             {
-<span class="nc" id="L93">             Logger.getLogger(&quot;scrittura&quot;).log(Level.SEVERE,&quot;error with write {0}&quot;,e1);</span>
+<span class="nc" id="L93">             Logger.getLogger(&quot;scrittura&quot;).log(Level.SEVERE,&quot;error with write :&quot;,e1);</span>
 <span class="fc" id="L94">            }</span>
 <span class="nc" id="L95">        }</span>
 <span class="fc" id="L96">        return status;</span>
@@ -107,7 +107,7 @@ import java.util.logging.Logger;
            try {
 <span class="fc" id="L108">               Files.createFile(path);</span>
 <span class="nc" id="L109">           } catch (IOException ex) {</span>
-<span class="nc" id="L110">              Logger.getLogger(&quot;inizializza&quot;).log(Level.SEVERE,&quot;error with file {0}&quot;,ex);</span>
+<span class="nc" id="L110">              Logger.getLogger(&quot;inizializza&quot;).log(Level.SEVERE,&quot;error with file :&quot;,ex);</span>
 <span class="fc" id="L111">           }</span>
 <span class="fc" id="L112">           Logger.getLogger(&quot;inizializza memoria fattura&quot;).log(Level.INFO,&quot; file has been created&quot;);</span>
 <span class="fc" id="L113">       }</span>
@@ -121,7 +121,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L121">            list = (ArrayList&lt;PagamentoFattura&gt;) ois.readObject();</span>
 <span class="nc" id="L122">        }catch (IOException |ClassNotFoundException e)</span>
         {
-<span class="nc" id="L124">            Logger.getLogger(&quot;ultimaFattura&quot;).log(Level.SEVERE,&quot;error withh last fattura {0}&quot;,e);</span>
+<span class="nc" id="L124">            Logger.getLogger(&quot;ultimaFattura&quot;).log(Level.SEVERE,&quot;error withh last fattura :&quot;,e);</span>
 <span class="fc" id="L125">        }</span>
 <span class="fc" id="L126">        return list.get(list.size() - 1);</span>
     }

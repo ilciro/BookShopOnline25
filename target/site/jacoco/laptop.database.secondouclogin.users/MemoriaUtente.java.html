@@ -32,7 +32,7 @@ import java.util.logging.Logger;
 <span class="nc" id="L32">            listaTU= (ArrayList&lt;TempUser&gt;) ois.readObject();</span>
 <span class="nc" id="L33">        }catch (IOException|ClassNotFoundException e)</span>
         {
-<span class="nc" id="L35">            Logger.getLogger(&quot;inserisciUtente&quot;).log(Level.SEVERE,&quot;error {0}&quot;,e);</span>
+<span class="nc" id="L35">            Logger.getLogger(&quot;inserisciUtente&quot;).log(Level.SEVERE,&quot;error :&quot;,e);</span>
 <span class="nc" id="L36">        }</span>
 <span class="nc bnc" id="L37" title="All 2 branches missed.">        if(vis.getTipoModifica().equals(&quot;im&quot;)) u.setId(u.getId());</span>
 <span class="nc bnc" id="L38" title="All 2 branches missed.">        else if(vis.getTipoModifica().equals(&quot;insert&quot;)) u.setId(listaTU.size()+1);</span>
@@ -44,7 +44,7 @@ import java.util.logging.Logger;
 <span class="nc" id="L44">            oos.writeObject(new ArrayList&lt;&gt;(listaTU));</span>
 <span class="nc" id="L45">        }catch (IOException e)</span>
         {
-<span class="nc" id="L47">            Logger.getLogger(&quot;lettura utente&quot;).log(Level.SEVERE,&quot;reading error {0}&quot;,e);</span>
+<span class="nc" id="L47">            Logger.getLogger(&quot;lettura utente&quot;).log(Level.SEVERE,&quot;reading error :&quot;,e);</span>
 <span class="nc" id="L48">        }</span>
 
 <span class="nc" id="L50">        return true;</span>
@@ -97,14 +97,14 @@ import java.util.logging.Logger;
             try {
 <span class="nc" id="L98">                Files.createFile(path);</span>
 <span class="nc" id="L99">            } catch (IOException ex) {</span>
-<span class="nc" id="L100">               Logger.getLogger(&quot;creazione file&quot;).log(Level.SEVERE,&quot;error with creating file {0}&quot;,e);</span>
+<span class="nc" id="L100">               Logger.getLogger(&quot;creazione file&quot;).log(Level.SEVERE,&quot;error with creating file :&quot;,e);</span>
 <span class="nc" id="L101">            }</span>
 <span class="nc" id="L102">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
 <span class="nc" id="L103">                ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
 <span class="nc" id="L104">                oos.writeObject(listaTU);</span>
 <span class="nc" id="L105">            }catch (IOException e1)</span>
             {
-<span class="nc" id="L107">                Logger.getLogger(&quot;scrittura nel nuovo file&quot;).log(Level.SEVERE,&quot;error with writing file {0}&quot;,e);</span>
+<span class="nc" id="L107">                Logger.getLogger(&quot;scrittura nel nuovo file&quot;).log(Level.SEVERE,&quot;error with writing file :&quot;,e);</span>
 
 <span class="nc" id="L109">            }</span>
 <span class="nc" id="L110">        }</span>
@@ -136,7 +136,7 @@ import java.util.logging.Logger;
                 }
 <span class="nc" id="L137">            }catch (IOException e)</span>
             {
-<span class="nc" id="L139">                Logger.getLogger(&quot;inizializza&quot;).log(Level.SEVERE,&quot;error with copy file {0}&quot;,e);</span>
+<span class="nc" id="L139">                Logger.getLogger(&quot;inizializza&quot;).log(Level.SEVERE,&quot;error with copy file :&quot;,e);</span>
 <span class="fc" id="L140">            }</span>
 <span class="fc" id="L141">            TempUser tu=new TempUser();</span>
 <span class="fc" id="L142">            tu.setId(Integer.parseInt(listaR.get(0)));</span>
@@ -155,7 +155,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L155">            oos.writeObject(listaTU);</span>
 <span class="nc" id="L156">        }catch (IOException e)</span>
         {
-<span class="nc" id="L158">            Logger.getLogger(&quot;scrittura file iniziale&quot;).log(Level.SEVERE,&quot;error with writing file {0}&quot;,e);</span>
+<span class="nc" id="L158">            Logger.getLogger(&quot;scrittura file iniziale&quot;).log(Level.SEVERE,&quot;error with writing file :&quot;,e);</span>
 
 <span class="fc" id="L160">        }</span>
 
@@ -164,7 +164,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L164">            listaTU= (ArrayList&lt;TempUser&gt;) ois.readObject();</span>
 <span class="nc" id="L165">        }catch (IOException |ClassNotFoundException e1)</span>
         {
-<span class="nc" id="L167">            Logger.getLogger(&quot;lettura file iniziale&quot;).log(Level.SEVERE,&quot;error with reading file {0}&quot;,e1);</span>
+<span class="nc" id="L167">            Logger.getLogger(&quot;lettura file iniziale&quot;).log(Level.SEVERE,&quot;error with reading file :&quot;,e1);</span>
 
 <span class="fc" id="L169">        }</span>
 

@@ -50,7 +50,7 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
             try {
                 Files.createFile(path2);
             } catch (IOException e) {
-                Logger.getLogger("inserisci giornale").log(Level.SEVERE,"insert giornale exception {0}",e);
+                Logger.getLogger("inserisci giornale").log(Level.SEVERE,"insert giornale exception ",e);
             }
         }
         return mI.inserisci(null,g,null,SERIALIZZAZIONE,SERIALIZZAZIONEAPPOGGIO);

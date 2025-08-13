@@ -32,7 +32,7 @@ public class PersistenzaPagamentoCartaCredito {
         return new PagamentoCartaCredito();}
 
     public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(PagamentoCartaCredito pcc)  {
-        Logger.getLogger("list pagamenti cc").log(Level.SEVERE, "list pf paymeny of : .{0}", pcc.getNomeUtente());
+        Logger.getLogger("list pagamenti cc").log(Level.SEVERE, "list pf paymeny of : .", pcc.getNomeUtente());
 
         return FXCollections.observableArrayList();}
 
@@ -44,12 +44,12 @@ public class PersistenzaPagamentoCartaCredito {
             if (!Files.exists(Path.of("sql/tableCreate.sql"))) throw new SQLException("SQLException cc");
             if (!Files.exists(Path.of("memory/serializzazionePagamentoCartaCredito.ser"))) throw new ClassNotFoundException("ClassNotFoundException cc");
         } catch (CsvValidationException e) {
-            Logger.getLogger("exception modalita file").log(Level.SEVERE, "exception csv cc :{0}", e);
+            Logger.getLogger("exception modalita file cc").log(Level.SEVERE, "exception csv cc :", e);
         } catch (SQLException e) {
-            Logger.getLogger("exception modalita database").log(Level.SEVERE, "exception database cc :{0}", e);
+            Logger.getLogger("exception modalita database cc").log(Level.SEVERE, "exception database cc :", e);
 
         } catch (ClassNotFoundException e) {
-            Logger.getLogger("exception modalita memoria").log(Level.SEVERE, "exception memory cc :{0}", e);
+            Logger.getLogger("exception modalita memoria cc").log(Level.SEVERE, "exception memory cc :", e);
 
         }
     }

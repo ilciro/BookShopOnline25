@@ -8,7 +8,6 @@ import javafx.collections.ObservableList;
 import laptop.model.Report;
 import laptop.model.user.TempUser;
 import org.jetbrains.annotations.NotNull;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -54,7 +53,7 @@ public class CsvReport extends PersistenzaReport{
 
         }catch (IOException e)
         {
-            Logger.getLogger("insert report").log(Level.SEVERE,"report not inserted {0}",e);
+            Logger.getLogger("insert report").log(Level.SEVERE,"report not inserted :",e);
         }
         return (r.getIdReport()!=0);
     }
@@ -68,7 +67,7 @@ public class CsvReport extends PersistenzaReport{
             }
         }catch (IOException |CsvValidationException e)
         {
-            Logger.getLogger("idMax").log(Level.SEVERE,"id is null {0}",e);
+            Logger.getLogger("idMax").log(Level.SEVERE,"id is null :",e);
         }
         return id;
 
@@ -83,7 +82,7 @@ public class CsvReport extends PersistenzaReport{
             if (!Files.exists(path2)) Files.createFile(path2);
         }catch (IOException e)
         {
-            Logger.getLogger("inizializza").log(Level.SEVERE," files not created {0}",e);
+            Logger.getLogger("inizializza").log(Level.SEVERE," files not created :",e);
         }
     }
 
@@ -213,7 +212,7 @@ public class CsvReport extends PersistenzaReport{
 
         }catch (IOException|CsvValidationException e)
         {
-            Logger.getLogger("reportU").log(Level.SEVERE," reportU not generated {0}",e);
+            Logger.getLogger("reportU").log(Level.SEVERE," reportU not generated :",e);
         }
         return list;
     }

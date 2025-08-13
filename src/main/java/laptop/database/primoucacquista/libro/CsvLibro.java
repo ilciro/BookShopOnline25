@@ -140,7 +140,7 @@ public class CsvLibro extends PersistenzaLibro{
             csvWriter.flush();
         }catch (IOException e)
         {
-            Logger.getLogger("inserisci libro csv").log(Level.SEVERE,"insert book csv exception {0}",e);
+            Logger.getLogger("inserisci libro csv").log(Level.SEVERE,"insert book csv exception :",e);
         }
 
         return getIdMax()!=0;
@@ -165,9 +165,9 @@ public class CsvLibro extends PersistenzaLibro{
                 }
             }
         }catch (IOException e){
-            Logger.getLogger("return libro").log(Level.SEVERE,"return libro io exception !! {0}",e);
+            Logger.getLogger("return libro").log(Level.SEVERE,"return libro io exception !! :",e);
         }catch (CsvValidationException e1){
-            Logger.getLogger("return libro list").log(Level.SEVERE,"list is empty !! {0}",e1);
+            Logger.getLogger("return libro list").log(Level.SEVERE,"list is empty !! :",e1);
         }
 
         return list;
@@ -228,10 +228,10 @@ public class CsvLibro extends PersistenzaLibro{
             }
         }catch (IOException e)
         {
-            Logger.getLogger("id max").log(Level.SEVERE,"id error file{0}",e);
+            Logger.getLogger("id max").log(Level.SEVERE,"id error file:",e);
         }catch (CsvValidationException e1)
         {
-            Logger.getLogger("id max csv").log(Level.SEVERE,"id is null {0}",e1);
+            Logger.getLogger("id max csv").log(Level.SEVERE,"id is null :",e1);
         }
         return max;
     }
@@ -267,7 +267,7 @@ public class CsvLibro extends PersistenzaLibro{
                 cleanUp(Path.of(tmpFile.toURI()));
             }
         }catch (IOException e){
-            Logger.getLogger("delete libro").log(Level.SEVERE,"error with delete book {0}",e);
+            Logger.getLogger("delete libro").log(Level.SEVERE,"error with delete book :",e);
         }
         return status;
 
@@ -295,10 +295,10 @@ public class CsvLibro extends PersistenzaLibro{
             writer.flush();
         }catch (IOException e)
         {
-            Logger.getLogger("isFound book").log(Level.SEVERE,"id book file exception {0}",e);
+            Logger.getLogger("isFound book").log(Level.SEVERE,"id book file exception :",e);
         }catch (CsvValidationException e1)
         {
-            Logger.getLogger("idFound csv libro").log(Level.SEVERE," id book csv error {0}",e1);
+            Logger.getLogger("idFound csv libro").log(Level.SEVERE," id book csv error :",e1);
         }
         return found;
     }
@@ -324,11 +324,11 @@ public class CsvLibro extends PersistenzaLibro{
 
 
         }catch (IOException e){
-            Logger.getLogger("retrieveRaccoltaData libro").log(Level.SEVERE,"error with file {0}",e);
+            Logger.getLogger("retrieveRaccoltaData libro").log(Level.SEVERE,"error with file :",e);
         }catch (CsvValidationException e1){
-            Logger.getLogger("retrieveRaccoltaData libro csv").log(Level.SEVERE,"error with csv {0}",e1);
+            Logger.getLogger("retrieveRaccoltaData libro csv").log(Level.SEVERE,"error with csv :",e1);
         }catch (IdException e2){
-            Logger.getLogger("retrieveRaccoltaData idLibro").log(Level.SEVERE,"error with idLibro {0}",e2);
+            Logger.getLogger("retrieveRaccoltaData idLibro").log(Level.SEVERE,"error with idLibro :",e2);
         }
 
         return gList;
@@ -390,17 +390,17 @@ public class CsvLibro extends PersistenzaLibro{
             }
         }catch (IOException e)
         {
-            Logger.getLogger("retrieveLibro").log(Level.SEVERE,"file book error {0}",e);
+            Logger.getLogger("retrieveLibro").log(Level.SEVERE,"file book error :",e);
         }catch (CsvValidationException e1)
         {
-            Logger.getLogger("retriveLibro csv").log(Level.SEVERE,"error with csvLibroFile {0}",e1);
+            Logger.getLogger("retriveLibro csv").log(Level.SEVERE,"error with csvLibroFile :",e1);
         }
         try {
         if (list.isEmpty()) {
             throw new IdException("book not found!!");
             }
         } catch (IdException e) {
-            Logger.getLogger("libro non ha id").log(Level.SEVERE,"id book is null {0}",e);
+            Logger.getLogger("libro non ha id").log(Level.SEVERE,"id book is null :",e);
         }
 
         return list;
@@ -448,9 +448,9 @@ public class CsvLibro extends PersistenzaLibro{
                     list.add(getLibro(gVector));
             }
         }catch (IOException e){
-            Logger.getLogger("retrieveLibro io").log(Level.SEVERE,"io exception {0}",e);
+            Logger.getLogger("retrieveLibro io").log(Level.SEVERE,"io exception :",e);
         }catch (CsvValidationException e1){
-            Logger.getLogger("retrieveLibro csv").log(Level.SEVERE,"csv exception {0}",e1);
+            Logger.getLogger("retrieveLibro csv").log(Level.SEVERE,"csv exception :",e1);
 
         }
         try{
@@ -458,7 +458,7 @@ public class CsvLibro extends PersistenzaLibro{
                 throw new IdException("book not found!!");
             }
         }catch (IdException e2){
-            Logger.getLogger("retrieveLibro id").log(Level.SEVERE,"id exception {0}",e2);
+            Logger.getLogger("retrieveLibro id").log(Level.SEVERE,"id exception :",e2);
 
         }
 
@@ -490,7 +490,7 @@ public class CsvLibro extends PersistenzaLibro{
             try {
                 Files.copy(Path.of(LIBROP), Path.of(LOCATIONL), REPLACE_EXISTING);
             } catch (IOException e) {
-                Logger.getLogger("inizializza libro csv").log(Level.SEVERE,"io exception initialize {0}",e);
+                Logger.getLogger("inizializza libro csv").log(Level.SEVERE,"io exception initialize :",e);
             }
 
             Logger.getLogger("crea db file").log(Level.SEVERE, "\n eccezione ottenuta nella modalità file.", eFile);

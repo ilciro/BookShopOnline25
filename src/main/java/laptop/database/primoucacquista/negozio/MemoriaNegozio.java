@@ -22,9 +22,9 @@ public class MemoriaNegozio extends PersistenzaNegozio{
             ObjectInputStream ois = new ObjectInputStream(fis)){
             lista= (ArrayList<Negozio>) ois.readObject();
            }catch (IOException e){
-            Logger.getLogger("getNegozi").log(Level.SEVERE,"getNegozi io exception {0}",e);
+            Logger.getLogger("getNegozi").log(Level.SEVERE,"getNegozi io exception :",e);
         }catch (ClassNotFoundException e1){
-            Logger.getLogger("getNegozi csv").log(Level.SEVERE,"getNegozi csv exception {0}",e1);
+            Logger.getLogger("getNegozi csv").log(Level.SEVERE,"getNegozi csv exception :",e1);
 
         }
         return FXCollections.observableArrayList(lista);
@@ -40,9 +40,9 @@ public class MemoriaNegozio extends PersistenzaNegozio{
             ObjectInputStream ois = new ObjectInputStream(fis)) {
             lista = (ArrayList<Negozio>) ois.readObject();
         }catch (IOException e){
-            Logger.getLogger("checkOpen").log(Level.SEVERE,"checkOpen io exception {0}",e);
+            Logger.getLogger("checkOpen").log(Level.SEVERE,"checkOpen io exception :",e);
         }catch (ClassNotFoundException e1){
-            Logger.getLogger("checkOpen csv").log(Level.SEVERE,"checkOpen csv exception {0}",e1);
+            Logger.getLogger("checkOpen csv").log(Level.SEVERE,"checkOpen csv exception :",e1);
 
         }
 
@@ -67,9 +67,9 @@ public class MemoriaNegozio extends PersistenzaNegozio{
             lista=(ArrayList<Negozio>) ois.readObject();
 
         }catch (IOException e){
-            Logger.getLogger("checkRitiro").log(Level.SEVERE,"checkRitiro io exception {0}",e);
+            Logger.getLogger("checkRitiro").log(Level.SEVERE,"checkRitiro io exception :",e);
         }catch (ClassNotFoundException e1){
-            Logger.getLogger("checkRitiro csv").log(Level.SEVERE,"checkRitiro csv exception {0}",e1);
+            Logger.getLogger("checkRitiro csv").log(Level.SEVERE,"checkRitiro csv exception :",e1);
 
         }
         for (Negozio negozio : lista) {
@@ -95,7 +95,7 @@ public class MemoriaNegozio extends PersistenzaNegozio{
             oos.writeObject(new ArrayList<>(lista));
         }catch (IOException e)
         {
-            Logger.getLogger("inserisciNegozio").log(Level.SEVERE,"insert negozio exception {0}",e);
+            Logger.getLogger("inserisciNegozio").log(Level.SEVERE,"insert negozio exception :",e);
         }
 
     }
@@ -111,7 +111,7 @@ public class MemoriaNegozio extends PersistenzaNegozio{
             }
         }catch (IOException e)
         {
-            Logger.getLogger("leggiNegozio").log(Level.SEVERE,"read shop exception {0}",e);
+            Logger.getLogger("leggiNegozio").log(Level.SEVERE,"read shop exception :",e);
         }
             Negozio n=new Negozio();
             n.setId(Integer.parseInt(listaR.get(0)));

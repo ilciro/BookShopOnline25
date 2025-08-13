@@ -35,11 +35,11 @@ public class PersistenzaReport {
             if (!Files.exists(Path.of("sql/tableCreate.sql"))) throw new SQLException("SQLException report");
             if (!Files.exists(Path.of("memory/serializzazioneReport.ser"))) throw new ClassNotFoundException("ClassNotFoundException report");
         } catch (CsvValidationException e) {
-            Logger.getLogger("exception modalita file report").log(Level.SEVERE, "exception report csv :{0}", e);
+            Logger.getLogger("exception modalita file report").log(Level.SEVERE, "exception report csv :", e);
         } catch (SQLException e) {
-            Logger.getLogger("exception modalita database report").log(Level.SEVERE, "exception report database :{0}", e);
+            Logger.getLogger("exception modalita database report").log(Level.SEVERE, "exception report database :", e);
         } catch (ClassNotFoundException e) {
-            Logger.getLogger("exception modalita memoria report").log(Level.SEVERE, "exception report memory :{0}", e);
+            Logger.getLogger("exception modalita memoria report").log(Level.SEVERE, "exception report memory :", e);
         }
     }
 }

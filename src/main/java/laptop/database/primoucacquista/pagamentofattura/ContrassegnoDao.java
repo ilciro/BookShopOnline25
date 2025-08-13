@@ -176,7 +176,7 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
             }
         }catch (SQLException e)
         {
-            Logger.getLogger("pagamenti fattura di utente").log(Level.SEVERE,"exception :{0}",e);
+            Logger.getLogger("pagamenti fattura di utente").log(Level.SEVERE,"exception :",e);
         }
         return list;
     }

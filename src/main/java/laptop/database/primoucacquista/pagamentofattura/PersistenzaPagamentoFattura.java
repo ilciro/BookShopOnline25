@@ -31,7 +31,7 @@ public class PersistenzaPagamentoFattura {
         return null;
     }
     public ObservableList<PagamentoFattura> listPagamentiByUserF(PagamentoFattura pF)  {
-        Logger.getLogger("Persistenza pagamento fattura by user").log(Level.INFO,"lisa payment by user:.{0}",pF.getNome());
+        Logger.getLogger("Persistenza pagamento fattura by user").log(Level.INFO,"lisa payment by user:.",pF.getNome());
 
 
         return FXCollections.observableArrayList();}
@@ -44,11 +44,11 @@ public class PersistenzaPagamentoFattura {
             if (!Files.exists(Path.of("sql/tableCreate.sql"))) throw new SQLException("SQLException fattura");
             if (!Files.exists(Path.of("memory/serializzazionePagamentoFattura.ser"))) throw new ClassNotFoundException("ClassNotFoundException fattura");
         } catch (CsvValidationException e) {
-            Logger.getLogger("exception modalita file").log(Level.SEVERE, "exception csv fattura :{0}", e);
+            Logger.getLogger("exception modalita file fattura").log(Level.SEVERE, "exception csv fattura :", e);
         } catch (SQLException e) {
-            Logger.getLogger("exception modalita database").log(Level.SEVERE, "exception database fattura:{0}", e);
+            Logger.getLogger("exception modalita database fattura").log(Level.SEVERE, "exception database fattura:", e);
         } catch (ClassNotFoundException e) {
-            Logger.getLogger("exception modalita memoria").log(Level.SEVERE, "exception memory fattura :{0}", e);
+            Logger.getLogger("exception modalita memoria fattura").log(Level.SEVERE, "exception memory fattura :", e);
 
         }
     }

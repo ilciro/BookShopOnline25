@@ -53,12 +53,12 @@ public class CsvNegozio extends PersistenzaNegozio{
             }
 
         }catch (IOException e){
-            Logger.getLogger("retrieveNegozi file").log(Level.SEVERE,"retrieveNegozi io exception {0}",e);
+            Logger.getLogger("retrieveNegozi file").log(Level.SEVERE,"retrieveNegozi io exception :",e);
         }catch (CsvValidationException e1){
-            Logger.getLogger("retrieveNegozi csv").log(Level.SEVERE,"retrieveNEgozi csv exception {0}",e1);
+            Logger.getLogger("retrieveNegozi csv").log(Level.SEVERE,"retrieveNEgozi csv exception :",e1);
         }catch (IdException e2)
         {
-            Logger.getLogger("retrieveNegozi id").log(Level.SEVERE,"retrieveNegozi id exception {0}",e2);
+            Logger.getLogger("retrieveNegozi id").log(Level.SEVERE,"retrieveNegozi id exception :",e2);
         }
 
         return gList;
@@ -85,7 +85,7 @@ public class CsvNegozio extends PersistenzaNegozio{
             try {
                 Files.copy(Path.of(NEGOZIOP), Path.of(LOCATIONEGOZIO), REPLACE_EXISTING);
             } catch (IOException ex) {
-                Logger.getLogger("inizializza negozi").log(Level.SEVERE,"inizialize shop exception {0}",ex);
+                Logger.getLogger("inizializza negozi").log(Level.SEVERE,"inizialize shop exception :",ex);
             }
 
             Logger.getLogger("crea negpzio file").log(Level.SEVERE, "\n eccezione ottenuta nella modalità file.", e);
@@ -127,9 +127,9 @@ public class CsvNegozio extends PersistenzaNegozio{
 
             }
         }catch (IOException e){
-            Logger.getLogger("checkOpenValid").log(Level.SEVERE,"openValid io exception {0}",e);
+            Logger.getLogger("checkOpenValid").log(Level.SEVERE,"openValid io exception :",e);
         }catch (CsvValidationException e1){
-            Logger.getLogger("checkOpenValid csv").log(Level.SEVERE,"openValid csv exception {0}",e1);
+            Logger.getLogger("checkOpenValid csv").log(Level.SEVERE,"openValid csv exception :",e1);
 
         }
 

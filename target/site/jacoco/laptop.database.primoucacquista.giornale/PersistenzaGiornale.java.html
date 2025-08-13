@@ -30,7 +30,7 @@ import java.util.logging.Logger;
     }
     public ObservableList&lt;Giornale&gt; getGiornaleByIdTitoloAutoreLibro(Giornale g) {
 
-<span class="nc" id="L33">        Logger.getLogger(&quot;giornale by id&quot;).log(Level.INFO,&quot;id giornale .{0}&quot;,g.getId());</span>
+<span class="nc" id="L33">        Logger.getLogger(&quot;giornale by id&quot;).log(Level.INFO,&quot;id giornale .&quot;,g.getId());</span>
 
 <span class="nc" id="L35">        return FXCollections.observableArrayList();}</span>
     public void initializza(){
@@ -55,16 +55,16 @@ import java.util.logging.Logger;
 <span class="nc bnc" id="L55" title="All 2 branches missed.">            if(!Files.exists(Path.of(&quot;memory/serializzazioneGiornale.ser&quot;))) throw new ClassNotFoundException(&quot;persistenza giornale ClassNotFoundException&quot;);</span>
 <span class="fc" id="L56">        }catch (CsvValidationException e)</span>
         {
-<span class="fc" id="L58">            Logger.getLogger(&quot;exception modalita file&quot;).log(Level.SEVERE,&quot; persistenza giornale exception csv :{0}&quot;,e);</span>
+<span class="fc" id="L58">            Logger.getLogger(&quot;exception modalita file giornale&quot;).log(Level.SEVERE,&quot; persistenza giornale exception csv :&quot;,e);</span>
         }
 <span class="fc" id="L60">        catch (SQLException e1)</span>
         {
-<span class="fc" id="L62">            Logger.getLogger(&quot;exception modalita database&quot;).log(Level.SEVERE,&quot;persistenza giornale exception database :{0}&quot;,e1);</span>
+<span class="fc" id="L62">            Logger.getLogger(&quot;exception modalita database giornale&quot;).log(Level.SEVERE,&quot;persistenza giornale exception database :&quot;,e1);</span>
 
         }
 <span class="nc" id="L65">        catch (ClassNotFoundException e2)</span>
         {
-<span class="nc" id="L67">            Logger.getLogger(&quot;exception modalita memoria&quot;).log(Level.SEVERE,&quot; persistenza giornale exception memory :{0}&quot;,e2);</span>
+<span class="nc" id="L67">            Logger.getLogger(&quot;exception modalita memoria giornale&quot;).log(Level.SEVERE,&quot; persistenza giornale exception memory :&quot;,e2);</span>
 
 <span class="pc" id="L69">        }</span>
 

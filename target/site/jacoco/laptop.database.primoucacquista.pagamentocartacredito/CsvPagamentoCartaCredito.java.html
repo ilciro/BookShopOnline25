@@ -52,7 +52,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
             try {
 <span class="fc" id="L53">                Files.createFile(Path.of(this.filePagamento.toURI()));</span>
 <span class="nc" id="L54">            } catch (IOException e) {</span>
-<span class="nc" id="L55">                Logger.getLogger(&quot;costruttore&quot;).log(Level.SEVERE,&quot;File not created {0}&quot;,e);</span>
+<span class="nc" id="L55">                Logger.getLogger(&quot;costruttore&quot;).log(Level.SEVERE,&quot;File not created :&quot;,e);</span>
 <span class="fc" id="L56">            }</span>
         }
 <span class="fc" id="L58">        this.cachePagamento=new HashMap&lt;&gt;();</span>
@@ -80,9 +80,9 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 <span class="fc" id="L80">                list.add(pCC);</span>
 <span class="fc" id="L81">            }</span>
 <span class="nc" id="L82">        }catch (IOException e){</span>
-<span class="nc" id="L83">            Logger.getLogger(&quot;ultimoPagamentoCC io&quot;).log(Level.SEVERE,&quot;ultimoPagamento io exception {0}&quot;,e);</span>
+<span class="nc" id="L83">            Logger.getLogger(&quot;ultimoPagamentoCC io&quot;).log(Level.SEVERE,&quot;ultimoPagamento io exception :&quot;,e);</span>
 <span class="nc" id="L84">        }catch (CsvValidationException e1){</span>
-<span class="nc" id="L85">            Logger.getLogger(&quot;ultimoPagamento csv&quot;).log(Level.SEVERE,&quot;ultimoPagamento csv exception {0}&quot;,e1);</span>
+<span class="nc" id="L85">            Logger.getLogger(&quot;ultimoPagamento csv&quot;).log(Level.SEVERE,&quot;ultimoPagamento csv exception :&quot;,e1);</span>
 
 <span class="pc" id="L87">        }</span>
 
@@ -122,7 +122,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 <span class="fc" id="L122">            this.cachePagamento.put(String.valueOf(getIdMax()+1),p);</span>
 <span class="nc" id="L123">        }catch (IOException e)</span>
         {
-<span class="nc" id="L125">            Logger.getLogger(&quot;creaPagamento&quot;).log(Level.SEVERE,&quot;makePayment exception {0}&quot;,e);</span>
+<span class="nc" id="L125">            Logger.getLogger(&quot;creaPagamento&quot;).log(Level.SEVERE,&quot;makePayment exception :&quot;,e);</span>
 <span class="fc" id="L126">        }</span>
 <span class="pc bpc" id="L127" title="1 of 2 branches missed.">        if (p.getNomeUtente()!=null) stauts=true;</span>
 <span class="fc" id="L128">        return stauts;</span>
@@ -142,9 +142,9 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 <span class="fc" id="L142">                    id = Integer.parseInt(gVector[GETINDEXIDP]);</span>
                 }
 <span class="nc" id="L144">            }catch (IOException e){</span>
-<span class="nc" id="L145">                Logger.getLogger(&quot;idPagamento&quot;).log(Level.SEVERE,&quot;idPayment io exception {0}&quot;,e);</span>
+<span class="nc" id="L145">                Logger.getLogger(&quot;idPagamento&quot;).log(Level.SEVERE,&quot;idPayment io exception :&quot;,e);</span>
 <span class="nc" id="L146">            }catch (CsvValidationException e1){</span>
-<span class="nc" id="L147">                Logger.getLogger(&quot;idPagamento csv&quot;).log(Level.SEVERE,&quot;idPayment csv exception {0}&quot;,e1);</span>
+<span class="nc" id="L147">                Logger.getLogger(&quot;idPagamento csv&quot;).log(Level.SEVERE,&quot;idPayment csv exception :&quot;,e1);</span>
 
 <span class="pc" id="L149">            }</span>
 
@@ -154,7 +154,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 <span class="fc" id="L154">        }catch (IdException  e1)</span>
         {
 
-<span class="fc" id="L157">            Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR+&quot;{0}&quot;,e1);</span>
+<span class="fc" id="L157">            Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR+&quot;:&quot;,e1);</span>
 
 <span class="fc" id="L159">        }</span>
 
@@ -194,9 +194,9 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 <span class="nc" id="L194">            cleanUp(Path.of(tmpFile.toURI()));</span>
         }
 <span class="nc" id="L196">        }catch (IOException e){</span>
-<span class="nc" id="L197">            Logger.getLogger(&quot;cancellaPagCC&quot;).log(Level.SEVERE,&quot;delPaymentCC io exception {0}&quot;,e);</span>
+<span class="nc" id="L197">            Logger.getLogger(&quot;cancellaPagCC&quot;).log(Level.SEVERE,&quot;delPaymentCC io exception :&quot;,e);</span>
 <span class="nc" id="L198">        }catch (CsvValidationException e1){</span>
-<span class="nc" id="L199">            Logger.getLogger(&quot;cancellaPagCC csv&quot;).log(Level.SEVERE,&quot;delPaymentCC csv exception {0}&quot;,e1);</span>
+<span class="nc" id="L199">            Logger.getLogger(&quot;cancellaPagCC csv&quot;).log(Level.SEVERE,&quot;delPaymentCC csv exception :&quot;,e1);</span>
 
 <span class="pc" id="L201">        }</span>
 <span class="fc" id="L202">        return status;</span>
@@ -210,7 +210,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
             try {
 <span class="nc" id="L211">                Files.createFile(path);</span>
 <span class="nc" id="L212">            } catch (IOException e) {</span>
-<span class="nc" id="L213">                Logger.getLogger(&quot;inizializza pagamentoCC csv&quot;).log(Level.SEVERE,&quot;exception in initialize {0}&quot;,e);</span>
+<span class="nc" id="L213">                Logger.getLogger(&quot;inizializza pagamentoCC csv&quot;).log(Level.SEVERE,&quot;exception in initialize :&quot;,e);</span>
 <span class="nc" id="L214">            }</span>
         }
 <span class="fc" id="L216">    }</span>
@@ -303,9 +303,9 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 
 <span class="fc" id="L304">            }</span>
 <span class="nc" id="L305">        }catch (IOException e){</span>
-<span class="nc" id="L306">            Logger.getLogger(&quot;listPagamento&quot;).log(Level.SEVERE,&quot;listPayment io exception {0}&quot;,e);</span>
+<span class="nc" id="L306">            Logger.getLogger(&quot;listPagamento&quot;).log(Level.SEVERE,&quot;listPayment io exception :&quot;,e);</span>
 <span class="nc" id="L307">        }catch (CsvValidationException e1){</span>
-<span class="nc" id="L308">            Logger.getLogger(&quot;listPagamento csv&quot;).log(Level.SEVERE,&quot;listPayment csv exception {0}&quot;,e1);</span>
+<span class="nc" id="L308">            Logger.getLogger(&quot;listPagamento csv&quot;).log(Level.SEVERE,&quot;listPayment csv exception :&quot;,e1);</span>
 
 <span class="pc" id="L310">        }</span>
         try {

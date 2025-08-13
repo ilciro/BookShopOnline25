@@ -25,12 +25,12 @@ import java.util.logging.Logger;
 <span class="nc bnc" id="L25" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;sql/tableCreate.sql&quot;))) throw new SQLException(&quot;SQLException pagamentoTotale&quot;);</span>
 <span class="nc bnc" id="L26" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;memory/serializzazionePagamentoTotale.ser&quot;))) throw new ClassNotFoundException(&quot;ClassNotFoundException pagamentoTotale&quot;);</span>
 <span class="nc" id="L27">        } catch (CsvValidationException e) {</span>
-<span class="nc" id="L28">            Logger.getLogger(&quot;exception modalita file pagTotale&quot;).log(Level.SEVERE, &quot;exception csv payTot :{0}&quot;, e);</span>
+<span class="nc" id="L28">            Logger.getLogger(&quot;exception modalita file pagTotale&quot;).log(Level.SEVERE, &quot;exception csv payTot :&quot;, e);</span>
 <span class="nc" id="L29">        } catch (SQLException e) {</span>
-<span class="nc" id="L30">            Logger.getLogger(&quot;exception modalita database pagTotale&quot;).log(Level.SEVERE, &quot;exception database payTot :{0}&quot;, e);</span>
+<span class="nc" id="L30">            Logger.getLogger(&quot;exception modalita database pagTotale&quot;).log(Level.SEVERE, &quot;exception database payTot :&quot;, e);</span>
 
 <span class="nc" id="L32">        } catch (ClassNotFoundException e) {</span>
-<span class="nc" id="L33">            Logger.getLogger(&quot;exception modalita memoria pagTotale&quot;).log(Level.SEVERE, &quot;exception memory payTot :{0}&quot;, e);</span>
+<span class="nc" id="L33">            Logger.getLogger(&quot;exception modalita memoria pagTotale&quot;).log(Level.SEVERE, &quot;exception memory payTot :&quot;, e);</span>
 
 <span class="nc" id="L35">        }</span>
 <span class="nc" id="L36">    }</span>

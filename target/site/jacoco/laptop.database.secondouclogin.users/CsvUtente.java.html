@@ -116,7 +116,7 @@ public class CsvUtente extends PersistenzaUtente {
             try {
 <span class="nc" id="L117">                Files.copy(Path.of(UTENTEP), Path.of(LOCATIONU), REPLACE_EXISTING);</span>
 <span class="nc" id="L118">            } catch (IOException e) {</span>
-<span class="nc" id="L119">                Logger.getLogger(&quot;inizializza&quot;).log(Level.SEVERE,&quot;error with copy {0}&quot;,e);</span>
+<span class="nc" id="L119">                Logger.getLogger(&quot;inizializza&quot;).log(Level.SEVERE,&quot;error with copy :&quot;,e);</span>
 <span class="nc" id="L120">            }</span>
 
 <span class="nc" id="L122">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
@@ -151,7 +151,7 @@ public class CsvUtente extends PersistenzaUtente {
 
 <span class="nc" id="L152">        }catch (IOException  e)</span>
         {
-<span class="nc" id="L154">            Logger.getLogger(&quot;insert user&quot;).log(Level.SEVERE,&quot;error with insert {0}&quot;,e);</span>
+<span class="nc" id="L154">            Logger.getLogger(&quot;insert user&quot;).log(Level.SEVERE,&quot;error with insert :&quot;,e);</span>
 <span class="fc" id="L155">        }</span>
 
 <span class="pc bpc" id="L157" title="1 of 2 branches missed.">        return getIdMax() != 0;</span>
@@ -174,7 +174,7 @@ public class CsvUtente extends PersistenzaUtente {
             }
 <span class="nc" id="L175">        }catch (IOException|CsvValidationException e)</span>
         {
-<span class="nc" id="L177">            Logger.getLogger(&quot;getUserData&quot;).log(Level.SEVERE,&quot;error with list {0}&quot;,e);</span>
+<span class="nc" id="L177">            Logger.getLogger(&quot;getUserData&quot;).log(Level.SEVERE,&quot;error with list :&quot;,e);</span>
 <span class="fc" id="L178">        }</span>
 <span class="fc" id="L179">        return list;</span>
     }
@@ -190,7 +190,7 @@ public class CsvUtente extends PersistenzaUtente {
 <span class="fc" id="L190">                id = Integer.parseInt(gVector[GETINDEXIDUSER]);</span>
 <span class="nc" id="L191">         }catch  (IOException|CsvValidationException e)</span>
         {
-<span class="nc" id="L193">            Logger.getLogger(&quot;idMax&quot;).log(Level.SEVERE,&quot;id not found {0}&quot;,e);</span>
+<span class="nc" id="L193">            Logger.getLogger(&quot;idMax&quot;).log(Level.SEVERE,&quot;id not found :&quot;,e);</span>
 <span class="fc" id="L194">        }</span>
 
 <span class="fc" id="L196">        return id;</span>
@@ -214,7 +214,7 @@ public class CsvUtente extends PersistenzaUtente {
             }
 <span class="nc" id="L215">        }catch (IOException e)</span>
         {
-<span class="nc" id="L217">            Logger.getLogger(&quot;cancella user&quot;).log(Level.SEVERE,&quot;cancella user {0}&quot;,e);</span>
+<span class="nc" id="L217">            Logger.getLogger(&quot;cancella user&quot;).log(Level.SEVERE,&quot;cancella user :&quot;,e);</span>
 <span class="fc" id="L218">        }</span>
 <span class="fc" id="L219">        return status;</span>
 
@@ -246,7 +246,7 @@ public class CsvUtente extends PersistenzaUtente {
 <span class="fc" id="L246">            csvWriter.flush();</span>
 <span class="nc" id="L247">        }catch (IOException|CsvValidationException e)</span>
         {
-<span class="nc" id="L249">            Logger.getLogger(&quot;isFound&quot;).log(Level.SEVERE,&quot;isFound exception {0}&quot;,e);</span>
+<span class="nc" id="L249">            Logger.getLogger(&quot;isFound&quot;).log(Level.SEVERE,&quot;isFound exception :&quot;,e);</span>
 <span class="fc" id="L250">        }</span>
 <span class="fc" id="L251">        return found;</span>
     }
@@ -264,7 +264,7 @@ public class CsvUtente extends PersistenzaUtente {
 <span class="fc" id="L264">            }</span>
 <span class="nc" id="L265">        }catch (IOException|CsvValidationException e)</span>
         {
-<span class="nc" id="L267">            Logger.getLogger(&quot;user data retrieve&quot;).log(Level.SEVERE,&quot;error {0}&quot;,e);</span>
+<span class="nc" id="L267">            Logger.getLogger(&quot;user data retrieve&quot;).log(Level.SEVERE,&quot;error :&quot;,e);</span>
 <span class="fc" id="L268">        }</span>
 <span class="fc" id="L269">        return list;</span>
     }

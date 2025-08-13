@@ -140,7 +140,7 @@ public class CsvLibro extends PersistenzaLibro{
 <span class="fc" id="L140">            csvWriter.flush();</span>
 <span class="nc" id="L141">        }catch (IOException e)</span>
         {
-<span class="nc" id="L143">            Logger.getLogger(&quot;inserisci libro csv&quot;).log(Level.SEVERE,&quot;insert book csv exception {0}&quot;,e);</span>
+<span class="nc" id="L143">            Logger.getLogger(&quot;inserisci libro csv&quot;).log(Level.SEVERE,&quot;insert book csv exception :&quot;,e);</span>
 <span class="fc" id="L144">        }</span>
 
 <span class="pc bpc" id="L146" title="1 of 2 branches missed.">        return getIdMax()!=0;</span>
@@ -165,9 +165,9 @@ public class CsvLibro extends PersistenzaLibro{
 <span class="fc" id="L165">                }</span>
             }
 <span class="nc" id="L167">        }catch (IOException e){</span>
-<span class="nc" id="L168">            Logger.getLogger(&quot;return libro&quot;).log(Level.SEVERE,&quot;return libro io exception !! {0}&quot;,e);</span>
+<span class="nc" id="L168">            Logger.getLogger(&quot;return libro&quot;).log(Level.SEVERE,&quot;return libro io exception !! :&quot;,e);</span>
 <span class="nc" id="L169">        }catch (CsvValidationException e1){</span>
-<span class="nc" id="L170">            Logger.getLogger(&quot;return libro list&quot;).log(Level.SEVERE,&quot;list is empty !! {0}&quot;,e1);</span>
+<span class="nc" id="L170">            Logger.getLogger(&quot;return libro list&quot;).log(Level.SEVERE,&quot;list is empty !! :&quot;,e1);</span>
 <span class="pc" id="L171">        }</span>
 
 <span class="fc" id="L173">        return list;</span>
@@ -228,10 +228,10 @@ public class CsvLibro extends PersistenzaLibro{
             }
 <span class="nc" id="L229">        }catch (IOException e)</span>
         {
-<span class="nc" id="L231">            Logger.getLogger(&quot;id max&quot;).log(Level.SEVERE,&quot;id error file{0}&quot;,e);</span>
+<span class="nc" id="L231">            Logger.getLogger(&quot;id max&quot;).log(Level.SEVERE,&quot;id error file:&quot;,e);</span>
 <span class="nc" id="L232">        }catch (CsvValidationException e1)</span>
         {
-<span class="nc" id="L234">            Logger.getLogger(&quot;id max csv&quot;).log(Level.SEVERE,&quot;id is null {0}&quot;,e1);</span>
+<span class="nc" id="L234">            Logger.getLogger(&quot;id max csv&quot;).log(Level.SEVERE,&quot;id is null :&quot;,e1);</span>
 <span class="pc" id="L235">        }</span>
 <span class="fc" id="L236">        return max;</span>
     }
@@ -267,7 +267,7 @@ public class CsvLibro extends PersistenzaLibro{
 <span class="fc" id="L267">                cleanUp(Path.of(tmpFile.toURI()));</span>
             }
 <span class="nc" id="L269">        }catch (IOException e){</span>
-<span class="nc" id="L270">            Logger.getLogger(&quot;delete libro&quot;).log(Level.SEVERE,&quot;error with delete book {0}&quot;,e);</span>
+<span class="nc" id="L270">            Logger.getLogger(&quot;delete libro&quot;).log(Level.SEVERE,&quot;error with delete book :&quot;,e);</span>
 <span class="fc" id="L271">        }</span>
 <span class="fc" id="L272">        return status;</span>
 
@@ -295,10 +295,10 @@ public class CsvLibro extends PersistenzaLibro{
 <span class="fc" id="L295">            writer.flush();</span>
 <span class="nc" id="L296">        }catch (IOException e)</span>
         {
-<span class="nc" id="L298">            Logger.getLogger(&quot;isFound book&quot;).log(Level.SEVERE,&quot;id book file exception {0}&quot;,e);</span>
+<span class="nc" id="L298">            Logger.getLogger(&quot;isFound book&quot;).log(Level.SEVERE,&quot;id book file exception :&quot;,e);</span>
 <span class="nc" id="L299">        }catch (CsvValidationException e1)</span>
         {
-<span class="nc" id="L301">            Logger.getLogger(&quot;idFound csv libro&quot;).log(Level.SEVERE,&quot; id book csv error {0}&quot;,e1);</span>
+<span class="nc" id="L301">            Logger.getLogger(&quot;idFound csv libro&quot;).log(Level.SEVERE,&quot; id book csv error :&quot;,e1);</span>
 <span class="pc" id="L302">        }</span>
 <span class="fc" id="L303">        return found;</span>
     }
@@ -324,11 +324,11 @@ public class CsvLibro extends PersistenzaLibro{
 
 
 <span class="nc" id="L326">        }catch (IOException e){</span>
-<span class="nc" id="L327">            Logger.getLogger(&quot;retrieveRaccoltaData libro&quot;).log(Level.SEVERE,&quot;error with file {0}&quot;,e);</span>
+<span class="nc" id="L327">            Logger.getLogger(&quot;retrieveRaccoltaData libro&quot;).log(Level.SEVERE,&quot;error with file :&quot;,e);</span>
 <span class="nc" id="L328">        }catch (CsvValidationException e1){</span>
-<span class="nc" id="L329">            Logger.getLogger(&quot;retrieveRaccoltaData libro csv&quot;).log(Level.SEVERE,&quot;error with csv {0}&quot;,e1);</span>
+<span class="nc" id="L329">            Logger.getLogger(&quot;retrieveRaccoltaData libro csv&quot;).log(Level.SEVERE,&quot;error with csv :&quot;,e1);</span>
 <span class="nc" id="L330">        }catch (IdException e2){</span>
-<span class="nc" id="L331">            Logger.getLogger(&quot;retrieveRaccoltaData idLibro&quot;).log(Level.SEVERE,&quot;error with idLibro {0}&quot;,e2);</span>
+<span class="nc" id="L331">            Logger.getLogger(&quot;retrieveRaccoltaData idLibro&quot;).log(Level.SEVERE,&quot;error with idLibro :&quot;,e2);</span>
 <span class="pc" id="L332">        }</span>
 
 <span class="fc" id="L334">        return gList;</span>
@@ -390,17 +390,17 @@ public class CsvLibro extends PersistenzaLibro{
 <span class="fc" id="L390">            }</span>
 <span class="nc" id="L391">        }catch (IOException e)</span>
         {
-<span class="nc" id="L393">            Logger.getLogger(&quot;retrieveLibro&quot;).log(Level.SEVERE,&quot;file book error {0}&quot;,e);</span>
+<span class="nc" id="L393">            Logger.getLogger(&quot;retrieveLibro&quot;).log(Level.SEVERE,&quot;file book error :&quot;,e);</span>
 <span class="nc" id="L394">        }catch (CsvValidationException e1)</span>
         {
-<span class="nc" id="L396">            Logger.getLogger(&quot;retriveLibro csv&quot;).log(Level.SEVERE,&quot;error with csvLibroFile {0}&quot;,e1);</span>
+<span class="nc" id="L396">            Logger.getLogger(&quot;retriveLibro csv&quot;).log(Level.SEVERE,&quot;error with csvLibroFile :&quot;,e1);</span>
 <span class="pc" id="L397">        }</span>
         try {
 <span class="pc bpc" id="L399" title="1 of 2 branches missed.">        if (list.isEmpty()) {</span>
 <span class="nc" id="L400">            throw new IdException(&quot;book not found!!&quot;);</span>
             }
 <span class="nc" id="L402">        } catch (IdException e) {</span>
-<span class="nc" id="L403">            Logger.getLogger(&quot;libro non ha id&quot;).log(Level.SEVERE,&quot;id book is null {0}&quot;,e);</span>
+<span class="nc" id="L403">            Logger.getLogger(&quot;libro non ha id&quot;).log(Level.SEVERE,&quot;id book is null :&quot;,e);</span>
 <span class="fc" id="L404">        }</span>
 
 <span class="fc" id="L406">        return list;</span>
@@ -448,9 +448,9 @@ public class CsvLibro extends PersistenzaLibro{
 <span class="fc" id="L448">                    list.add(getLibro(gVector));</span>
             }
 <span class="nc" id="L450">        }catch (IOException e){</span>
-<span class="nc" id="L451">            Logger.getLogger(&quot;retrieveLibro io&quot;).log(Level.SEVERE,&quot;io exception {0}&quot;,e);</span>
+<span class="nc" id="L451">            Logger.getLogger(&quot;retrieveLibro io&quot;).log(Level.SEVERE,&quot;io exception :&quot;,e);</span>
 <span class="nc" id="L452">        }catch (CsvValidationException e1){</span>
-<span class="nc" id="L453">            Logger.getLogger(&quot;retrieveLibro csv&quot;).log(Level.SEVERE,&quot;csv exception {0}&quot;,e1);</span>
+<span class="nc" id="L453">            Logger.getLogger(&quot;retrieveLibro csv&quot;).log(Level.SEVERE,&quot;csv exception :&quot;,e1);</span>
 
 <span class="pc" id="L455">        }</span>
         try{
@@ -458,7 +458,7 @@ public class CsvLibro extends PersistenzaLibro{
 <span class="nc" id="L458">                throw new IdException(&quot;book not found!!&quot;);</span>
             }
 <span class="nc" id="L460">        }catch (IdException e2){</span>
-<span class="nc" id="L461">            Logger.getLogger(&quot;retrieveLibro id&quot;).log(Level.SEVERE,&quot;id exception {0}&quot;,e2);</span>
+<span class="nc" id="L461">            Logger.getLogger(&quot;retrieveLibro id&quot;).log(Level.SEVERE,&quot;id exception :&quot;,e2);</span>
 
 <span class="fc" id="L463">        }</span>
 
@@ -490,7 +490,7 @@ public class CsvLibro extends PersistenzaLibro{
             try {
 <span class="fc" id="L491">                Files.copy(Path.of(LIBROP), Path.of(LOCATIONL), REPLACE_EXISTING);</span>
 <span class="nc" id="L492">            } catch (IOException e) {</span>
-<span class="nc" id="L493">                Logger.getLogger(&quot;inizializza libro csv&quot;).log(Level.SEVERE,&quot;io exception initialize {0}&quot;,e);</span>
+<span class="nc" id="L493">                Logger.getLogger(&quot;inizializza libro csv&quot;).log(Level.SEVERE,&quot;io exception initialize :&quot;,e);</span>
 <span class="fc" id="L494">            }</span>
 
 <span class="fc" id="L496">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>

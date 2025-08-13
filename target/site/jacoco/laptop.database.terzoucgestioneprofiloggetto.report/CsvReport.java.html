@@ -8,7 +8,6 @@ import javafx.collections.ObservableList;
 import laptop.model.Report;
 import laptop.model.user.TempUser;
 import org.jetbrains.annotations.NotNull;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-<span class="fc" id="L20">public class CsvReport extends PersistenzaReport{</span>
+<span class="fc" id="L19">public class CsvReport extends PersistenzaReport{</span>
     private static final String LOCATIONR = &quot;report/reportFinale.csv&quot;;
     private static final String LOCATIONUSER = &quot;report/reportUtente.csv&quot;;
 
@@ -34,188 +33,188 @@ import java.util.logging.Logger;
 
 
 
-<span class="fc" id="L37">    private static final File fileReport=new File(LOCATIONR);</span>
+<span class="fc" id="L36">    private static final File fileReport=new File(LOCATIONR);</span>
 
     @Override
     public boolean insertReport(Report r)  {
-<span class="fc" id="L41">        try (CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(fileReport, true)))) {</span>
+<span class="fc" id="L40">        try (CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(fileReport, true)))) {</span>
 
-<span class="fc" id="L43">            String[] gVectore = new String[6];</span>
+<span class="fc" id="L42">            String[] gVectore = new String[6];</span>
 
-<span class="fc" id="L45">            gVectore[GETINDEXIDR] = String.valueOf(getIdMax() + 1);</span>
-<span class="fc" id="L46">            gVectore[GETINDEXTIPOOGG] = r.getTipologiaOggetto();</span>
-<span class="fc" id="L47">            gVectore[GETINDEXTITOLOOGG] = r.getTitoloOggetto();</span>
-<span class="fc" id="L48">            gVectore[GETINDEXNRPEZZI] = String.valueOf(r.getNrPezzi());</span>
-<span class="fc" id="L49">            gVectore[GETINDEXPREZZO] = String.valueOf(r.getPrezzo());</span>
-<span class="fc" id="L50">            gVectore[GETINDEXTOTALE] = String.valueOf(r.getTotale());</span>
-<span class="fc" id="L51">            writer.writeNext(gVectore);</span>
+<span class="fc" id="L44">            gVectore[GETINDEXIDR] = String.valueOf(getIdMax() + 1);</span>
+<span class="fc" id="L45">            gVectore[GETINDEXTIPOOGG] = r.getTipologiaOggetto();</span>
+<span class="fc" id="L46">            gVectore[GETINDEXTITOLOOGG] = r.getTitoloOggetto();</span>
+<span class="fc" id="L47">            gVectore[GETINDEXNRPEZZI] = String.valueOf(r.getNrPezzi());</span>
+<span class="fc" id="L48">            gVectore[GETINDEXPREZZO] = String.valueOf(r.getPrezzo());</span>
+<span class="fc" id="L49">            gVectore[GETINDEXTOTALE] = String.valueOf(r.getTotale());</span>
+<span class="fc" id="L50">            writer.writeNext(gVectore);</span>
 
-<span class="fc" id="L53">            writer.flush();</span>
+<span class="fc" id="L52">            writer.flush();</span>
 
-<span class="nc" id="L55">        }catch (IOException e)</span>
+<span class="nc" id="L54">        }catch (IOException e)</span>
         {
-<span class="nc" id="L57">            Logger.getLogger(&quot;insert report&quot;).log(Level.SEVERE,&quot;report not inserted {0}&quot;,e);</span>
-<span class="fc" id="L58">        }</span>
-<span class="pc bpc" id="L59" title="1 of 2 branches missed.">        return (r.getIdReport()!=0);</span>
+<span class="nc" id="L56">            Logger.getLogger(&quot;insert report&quot;).log(Level.SEVERE,&quot;report not inserted :&quot;,e);</span>
+<span class="fc" id="L57">        }</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">        return (r.getIdReport()!=0);</span>
     }
     private static  int getIdMax() {
         //used for insert correct idOgg
         String[] gVector;
-<span class="fc" id="L64">        int id = 0;</span>
-<span class="fc" id="L65">        try (CSVReader reader = new CSVReader(new FileReader(LOCATIONR))) {</span>
-<span class="fc bfc" id="L66" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
-<span class="fc" id="L67">                id = Integer.parseInt(gVector[GETINDEXIDR]);</span>
+<span class="fc" id="L63">        int id = 0;</span>
+<span class="fc" id="L64">        try (CSVReader reader = new CSVReader(new FileReader(LOCATIONR))) {</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
+<span class="fc" id="L66">                id = Integer.parseInt(gVector[GETINDEXIDR]);</span>
             }
-<span class="nc" id="L69">        }catch (IOException |CsvValidationException e)</span>
+<span class="nc" id="L68">        }catch (IOException |CsvValidationException e)</span>
         {
-<span class="nc" id="L71">            Logger.getLogger(&quot;idMax&quot;).log(Level.SEVERE,&quot;id is null {0}&quot;,e);</span>
-<span class="fc" id="L72">        }</span>
-<span class="fc" id="L73">        return id;</span>
+<span class="nc" id="L70">            Logger.getLogger(&quot;idMax&quot;).log(Level.SEVERE,&quot;id is null :&quot;,e);</span>
+<span class="fc" id="L71">        }</span>
+<span class="fc" id="L72">        return id;</span>
 
     }
 
     @Override
     public void inizializza()  {
-<span class="fc" id="L79">        Path path = Path.of(LOCATIONR);</span>
-<span class="fc" id="L80">        Path path2 = Path.of(LOCATIONUSER);</span>
+<span class="fc" id="L78">        Path path = Path.of(LOCATIONR);</span>
+<span class="fc" id="L79">        Path path2 = Path.of(LOCATIONUSER);</span>
         try {
-<span class="fc bfc" id="L82" title="All 2 branches covered.">            if (!Files.exists(path)) Files.createFile(path);</span>
-<span class="fc bfc" id="L83" title="All 2 branches covered.">            if (!Files.exists(path2)) Files.createFile(path2);</span>
-<span class="nc" id="L84">        }catch (IOException e)</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">            if (!Files.exists(path)) Files.createFile(path);</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">            if (!Files.exists(path2)) Files.createFile(path2);</span>
+<span class="nc" id="L83">        }catch (IOException e)</span>
         {
-<span class="nc" id="L86">            Logger.getLogger(&quot;inizializza&quot;).log(Level.SEVERE,&quot; files not created {0}&quot;,e);</span>
-<span class="fc" id="L87">        }</span>
-<span class="fc" id="L88">    }</span>
+<span class="nc" id="L85">            Logger.getLogger(&quot;inizializza&quot;).log(Level.SEVERE,&quot; files not created :&quot;,e);</span>
+<span class="fc" id="L86">        }</span>
+<span class="fc" id="L87">    }</span>
 
     @Override
     public ObservableList&lt;Report&gt; report(String type)  {
 
-<span class="fc" id="L93">        ObservableList&lt;Report&gt; list = FXCollections.observableArrayList();</span>
-<span class="fc" id="L94">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fileReport)))) {</span>
+<span class="fc" id="L92">        ObservableList&lt;Report&gt; list = FXCollections.observableArrayList();</span>
+<span class="fc" id="L93">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fileReport)))) {</span>
             String[] gVector;
-<span class="fc" id="L96">            boolean found = false;</span>
+<span class="fc" id="L95">            boolean found = false;</span>
 
-<span class="fc bfc" id="L98" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
 
                 //vedere come prendere le categorie
-<span class="pc bpc" id="L101" title="1 of 4 branches missed.">                switch (type) {</span>
-<span class="fc" id="L102">                    case &quot;giornale&quot; -&gt; found = gVector[GETINDEXTIPOOGG].equals(&quot;QUOTIDIANO&quot;);</span>
+<span class="pc bpc" id="L100" title="1 of 4 branches missed.">                switch (type) {</span>
+<span class="fc" id="L101">                    case &quot;giornale&quot; -&gt; found = gVector[GETINDEXTIPOOGG].equals(&quot;QUOTIDIANO&quot;);</span>
 
 
                     case &quot;libro&quot; -&gt;
-<span class="fc" id="L106">                        found= getStrings().contains(gVector[GETINDEXTIPOOGG]);</span>
+<span class="fc" id="L105">                        found= getStrings().contains(gVector[GETINDEXTIPOOGG]);</span>
 
 
                     case &quot;rivista&quot; -&gt;
 
-<span class="fc" id="L111">                            found = getCatR().contains(gVector[GETINDEXTIPOOGG]);</span>
+<span class="fc" id="L110">                            found = getCatR().contains(gVector[GETINDEXTIPOOGG]);</span>
 
 
-<span class="nc" id="L114">                    default -&gt; Logger.getLogger(&quot;report csv&quot;).log(Level.SEVERE, &quot;error in report csv&quot;);</span>
+<span class="nc" id="L113">                    default -&gt; Logger.getLogger(&quot;report csv&quot;).log(Level.SEVERE, &quot;error in report csv&quot;);</span>
 
                 }
-<span class="fc bfc" id="L117" title="All 2 branches covered.">                if (found) {</span>
-<span class="fc" id="L118">                    Report r = getReport(gVector);</span>
-<span class="fc" id="L119">                    list.add(r);</span>
-<span class="fc" id="L120">                }</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">                if (found) {</span>
+<span class="fc" id="L117">                    Report r = getReport(gVector);</span>
+<span class="fc" id="L118">                    list.add(r);</span>
+<span class="fc" id="L119">                }</span>
 
 
             }
 
 
-<span class="nc" id="L126">        } catch (CsvValidationException  |IOException e) {</span>
-<span class="nc" id="L127">            Logger.getLogger(&quot;csv report eccexione&quot;).log(Level.SEVERE,&quot;csv file not exists!&quot;);</span>
-<span class="fc" id="L128">        }</span>
-<span class="fc" id="L129">        return list;</span>
+<span class="nc" id="L125">        } catch (CsvValidationException  |IOException e) {</span>
+<span class="nc" id="L126">            Logger.getLogger(&quot;csv report eccexione&quot;).log(Level.SEVERE,&quot;csv file not exists!&quot;);</span>
+<span class="fc" id="L127">        }</span>
+<span class="fc" id="L128">        return list;</span>
     }
 
 
 
     private static @NotNull ObservableList&lt;String&gt; getCatR() {
-<span class="fc" id="L135">        ObservableList&lt;String&gt; catR=FXCollections.observableArrayList();</span>
-<span class="fc" id="L136">        catR.add(&quot;SETTIMANALE&quot;);</span>
-<span class="fc" id="L137">        catR.add(&quot;BISETTIMANALE&quot;);</span>
-<span class="fc" id="L138">        catR.add(&quot;MENSILE&quot;);</span>
-<span class="fc" id="L139">        catR.add(&quot;BIMESTRALE&quot;);</span>
-<span class="fc" id="L140">        catR.add(&quot;TRIMESTRALE&quot;);</span>
-<span class="fc" id="L141">        catR.add(&quot;ANNUALE&quot;);</span>
-<span class="fc" id="L142">        catR.add(&quot;ESTIVO&quot;);</span>
-<span class="fc" id="L143">        catR.add(&quot;INVERNALE&quot;);</span>
-<span class="fc" id="L144">        catR.add(&quot;SPORTIVO&quot;);</span>
-<span class="fc" id="L145">        catR.add(&quot;CINEMATOGRAFICA&quot;);</span>
-<span class="fc" id="L146">        catR.add(&quot;GOSSIP&quot;);</span>
-<span class="fc" id="L147">        catR.add(&quot;TELEVISIVO&quot;);</span>
-<span class="fc" id="L148">        catR.add(&quot;MILITARE&quot;);</span>
-<span class="fc" id="L149">        catR.add(&quot;INFORMATICA&quot;);</span>
+<span class="fc" id="L134">        ObservableList&lt;String&gt; catR=FXCollections.observableArrayList();</span>
+<span class="fc" id="L135">        catR.add(&quot;SETTIMANALE&quot;);</span>
+<span class="fc" id="L136">        catR.add(&quot;BISETTIMANALE&quot;);</span>
+<span class="fc" id="L137">        catR.add(&quot;MENSILE&quot;);</span>
+<span class="fc" id="L138">        catR.add(&quot;BIMESTRALE&quot;);</span>
+<span class="fc" id="L139">        catR.add(&quot;TRIMESTRALE&quot;);</span>
+<span class="fc" id="L140">        catR.add(&quot;ANNUALE&quot;);</span>
+<span class="fc" id="L141">        catR.add(&quot;ESTIVO&quot;);</span>
+<span class="fc" id="L142">        catR.add(&quot;INVERNALE&quot;);</span>
+<span class="fc" id="L143">        catR.add(&quot;SPORTIVO&quot;);</span>
+<span class="fc" id="L144">        catR.add(&quot;CINEMATOGRAFICA&quot;);</span>
+<span class="fc" id="L145">        catR.add(&quot;GOSSIP&quot;);</span>
+<span class="fc" id="L146">        catR.add(&quot;TELEVISIVO&quot;);</span>
+<span class="fc" id="L147">        catR.add(&quot;MILITARE&quot;);</span>
+<span class="fc" id="L148">        catR.add(&quot;INFORMATICA&quot;);</span>
 
-<span class="fc" id="L151">        return catR;</span>
+<span class="fc" id="L150">        return catR;</span>
     }
 
     private static @NotNull ObservableList&lt;String&gt; getStrings() {
-<span class="fc" id="L155">        ObservableList&lt;String&gt; catL=FXCollections.observableArrayList();</span>
-<span class="fc" id="L156">        catL.add(&quot;ADOLESCENTI_RAGAZZI&quot;);</span>
-<span class="fc" id="L157">        catL.add(&quot;ARTE&quot;);</span>
-<span class="fc" id="L158">        catL.add(&quot;CINEMA_FOTOGRAFIA&quot;);</span>
-<span class="fc" id="L159">        catL.add(&quot;BIOGRAFIE&quot;);</span>
-<span class="fc" id="L160">        catL.add(&quot;DIARI_MEMORIE&quot;);</span>
-<span class="fc" id="L161">        catL.add(&quot;CALENDARI_AGENDE&quot;);</span>
-<span class="fc" id="L162">        catL.add(&quot;DIRITTO&quot;);</span>
-<span class="fc" id="L163">        catL.add(&quot;DIZINARI_OPERE&quot;);</span>
-<span class="fc" id="L164">        catL.add(&quot;ECONOMIA&quot;);</span>
-<span class="fc" id="L165">        catL.add(&quot;FAMIGLIA&quot;);</span>
-<span class="fc" id="L166">        catL.add(&quot;FANTASCIENZA_FANTASY&quot;);</span>
-<span class="fc" id="L167">        catL.add(&quot;FUMETTI_MANGA&quot;);</span>
-<span class="fc" id="L168">        catL.add(&quot;GIALLI_THRILLER&quot;);</span>
-<span class="fc" id="L169">        catL.add(&quot;COMPUTER_GIOCHI&quot;);</span>
-<span class="fc" id="L170">        catL.add(&quot;HUMOR&quot;);</span>
-<span class="fc" id="L171">        catL.add(&quot;INFORMATICA&quot;);</span>
-<span class="fc" id="L172">        catL.add(&quot;WEB_DIGITAL_MEDIA&quot;);</span>
-<span class="fc" id="L173">        catL.add(&quot;LETTERATURA_NARRATIVA&quot;);</span>
-<span class="fc" id="L174">        catL.add(&quot;LIBRI_BAMBINI&quot;);</span>
-<span class="fc" id="L175">        catL.add(&quot;LIBRI_SCOLASTICI&quot;);</span>
-<span class="fc" id="L176">        catL.add(&quot;LIBRI_UNIVERSITARI&quot;);</span>
-<span class="fc" id="L177">        catL.add(&quot;RICETTARI_GENERALI&quot;);</span>
-<span class="fc" id="L178">        catL.add(&quot;LINGUISTICA_SCRITTURA&quot;);</span>
-<span class="fc" id="L179">        catL.add(&quot;POLITICA&quot;);</span>
-<span class="fc" id="L180">        catL.add(&quot;RELIGIONE&quot;);</span>
-<span class="fc" id="L181">        catL.add(&quot;ROMANZI_ROSA&quot;);</span>
-<span class="fc" id="L182">        catL.add(&quot;SCIENZE&quot;);</span>
-<span class="fc" id="L183">        catL.add(&quot;TECNOLOGIA_MEDICINA&quot;);</span>
-<span class="fc" id="L184">        catL.add(&quot;ALTRO&quot;);</span>
-<span class="fc" id="L185">        return catL;</span>
+<span class="fc" id="L154">        ObservableList&lt;String&gt; catL=FXCollections.observableArrayList();</span>
+<span class="fc" id="L155">        catL.add(&quot;ADOLESCENTI_RAGAZZI&quot;);</span>
+<span class="fc" id="L156">        catL.add(&quot;ARTE&quot;);</span>
+<span class="fc" id="L157">        catL.add(&quot;CINEMA_FOTOGRAFIA&quot;);</span>
+<span class="fc" id="L158">        catL.add(&quot;BIOGRAFIE&quot;);</span>
+<span class="fc" id="L159">        catL.add(&quot;DIARI_MEMORIE&quot;);</span>
+<span class="fc" id="L160">        catL.add(&quot;CALENDARI_AGENDE&quot;);</span>
+<span class="fc" id="L161">        catL.add(&quot;DIRITTO&quot;);</span>
+<span class="fc" id="L162">        catL.add(&quot;DIZINARI_OPERE&quot;);</span>
+<span class="fc" id="L163">        catL.add(&quot;ECONOMIA&quot;);</span>
+<span class="fc" id="L164">        catL.add(&quot;FAMIGLIA&quot;);</span>
+<span class="fc" id="L165">        catL.add(&quot;FANTASCIENZA_FANTASY&quot;);</span>
+<span class="fc" id="L166">        catL.add(&quot;FUMETTI_MANGA&quot;);</span>
+<span class="fc" id="L167">        catL.add(&quot;GIALLI_THRILLER&quot;);</span>
+<span class="fc" id="L168">        catL.add(&quot;COMPUTER_GIOCHI&quot;);</span>
+<span class="fc" id="L169">        catL.add(&quot;HUMOR&quot;);</span>
+<span class="fc" id="L170">        catL.add(&quot;INFORMATICA&quot;);</span>
+<span class="fc" id="L171">        catL.add(&quot;WEB_DIGITAL_MEDIA&quot;);</span>
+<span class="fc" id="L172">        catL.add(&quot;LETTERATURA_NARRATIVA&quot;);</span>
+<span class="fc" id="L173">        catL.add(&quot;LIBRI_BAMBINI&quot;);</span>
+<span class="fc" id="L174">        catL.add(&quot;LIBRI_SCOLASTICI&quot;);</span>
+<span class="fc" id="L175">        catL.add(&quot;LIBRI_UNIVERSITARI&quot;);</span>
+<span class="fc" id="L176">        catL.add(&quot;RICETTARI_GENERALI&quot;);</span>
+<span class="fc" id="L177">        catL.add(&quot;LINGUISTICA_SCRITTURA&quot;);</span>
+<span class="fc" id="L178">        catL.add(&quot;POLITICA&quot;);</span>
+<span class="fc" id="L179">        catL.add(&quot;RELIGIONE&quot;);</span>
+<span class="fc" id="L180">        catL.add(&quot;ROMANZI_ROSA&quot;);</span>
+<span class="fc" id="L181">        catL.add(&quot;SCIENZE&quot;);</span>
+<span class="fc" id="L182">        catL.add(&quot;TECNOLOGIA_MEDICINA&quot;);</span>
+<span class="fc" id="L183">        catL.add(&quot;ALTRO&quot;);</span>
+<span class="fc" id="L184">        return catL;</span>
     }
 
 
     private static @NotNull Report getReport(String[] gVector) {
-<span class="fc" id="L190">        Report report=new Report();</span>
-<span class="fc" id="L191">        report.setIdReport(Integer.parseInt(gVector[GETINDEXIDR]));</span>
-<span class="fc" id="L192">        report.setTipologiaOggetto(gVector[GETINDEXTIPOOGG]);</span>
-<span class="fc" id="L193">        report.setTitoloOggetto(gVector[GETINDEXTITOLOOGG]);</span>
-<span class="fc" id="L194">        report.setNrPezzi(Integer.parseInt(gVector[GETINDEXNRPEZZI]));</span>
-<span class="fc" id="L195">        report.setPrezzo(Float.parseFloat(gVector[GETINDEXPREZZO]));</span>
-<span class="fc" id="L196">        report.setTotale(Float.parseFloat(gVector[GETINDEXNRPEZZI])*Float.parseFloat(gVector[GETINDEXPREZZO]));</span>
-<span class="fc" id="L197">        return report;</span>
+<span class="fc" id="L189">        Report report=new Report();</span>
+<span class="fc" id="L190">        report.setIdReport(Integer.parseInt(gVector[GETINDEXIDR]));</span>
+<span class="fc" id="L191">        report.setTipologiaOggetto(gVector[GETINDEXTIPOOGG]);</span>
+<span class="fc" id="L192">        report.setTitoloOggetto(gVector[GETINDEXTITOLOOGG]);</span>
+<span class="fc" id="L193">        report.setNrPezzi(Integer.parseInt(gVector[GETINDEXNRPEZZI]));</span>
+<span class="fc" id="L194">        report.setPrezzo(Float.parseFloat(gVector[GETINDEXPREZZO]));</span>
+<span class="fc" id="L195">        report.setTotale(Float.parseFloat(gVector[GETINDEXNRPEZZI])*Float.parseFloat(gVector[GETINDEXPREZZO]));</span>
+<span class="fc" id="L196">        return report;</span>
     }
 
     @Override
     public ObservableList&lt;TempUser&gt; reportU()  {
-<span class="fc" id="L202">        ObservableList&lt;TempUser&gt; list = FXCollections.observableArrayList();</span>
-<span class="fc" id="L203">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(LOCATIONUSER)))) {</span>
+<span class="fc" id="L201">        ObservableList&lt;TempUser&gt; list = FXCollections.observableArrayList();</span>
+<span class="fc" id="L202">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(LOCATIONUSER)))) {</span>
             String[] gVector;
 
-<span class="fc bfc" id="L206" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
-<span class="fc" id="L207">                TempUser tu = new TempUser();</span>
-<span class="fc" id="L208">                tu.setId(Integer.parseInt(gVector[GETINDEXIDUTENTE]));</span>
-<span class="fc" id="L209">                tu.setEmailT(gVector[GETINDEXEMAIL]);</span>
-<span class="fc" id="L210">                tu.setDataDiNascitaT(LocalDate.parse(gVector[GETINDEXDATANASCITA]));</span>
-<span class="fc" id="L211">                list.add(tu);</span>
-<span class="fc" id="L212">            }</span>
+<span class="fc bfc" id="L205" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
+<span class="fc" id="L206">                TempUser tu = new TempUser();</span>
+<span class="fc" id="L207">                tu.setId(Integer.parseInt(gVector[GETINDEXIDUTENTE]));</span>
+<span class="fc" id="L208">                tu.setEmailT(gVector[GETINDEXEMAIL]);</span>
+<span class="fc" id="L209">                tu.setDataDiNascitaT(LocalDate.parse(gVector[GETINDEXDATANASCITA]));</span>
+<span class="fc" id="L210">                list.add(tu);</span>
+<span class="fc" id="L211">            }</span>
 
-<span class="nc" id="L214">        }catch (IOException|CsvValidationException e)</span>
+<span class="nc" id="L213">        }catch (IOException|CsvValidationException e)</span>
         {
-<span class="nc" id="L216">            Logger.getLogger(&quot;reportU&quot;).log(Level.SEVERE,&quot; reportU not generated {0}&quot;,e);</span>
-<span class="fc" id="L217">        }</span>
-<span class="fc" id="L218">        return list;</span>
+<span class="nc" id="L215">            Logger.getLogger(&quot;reportU&quot;).log(Level.SEVERE,&quot; reportU not generated :&quot;,e);</span>
+<span class="fc" id="L216">        }</span>
+<span class="fc" id="L217">        return list;</span>
     }
 
 

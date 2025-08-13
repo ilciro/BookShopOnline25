@@ -44,7 +44,7 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
             }
         }catch (SQLException e)
         {
-            Logger.getLogger("get libro id autore obes").log(Level.SEVERE, "eccezione :.{0}", e);
+            Logger.getLogger("get libro id autore obes").log(Level.SEVERE, "eccezione :", e);
         }
         return list;
 

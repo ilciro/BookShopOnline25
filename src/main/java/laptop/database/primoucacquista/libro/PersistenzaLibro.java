@@ -26,7 +26,7 @@ public  class PersistenzaLibro {
 
     public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l) {
 
-        Logger.getLogger("lista  persistenza libro").log(Level.INFO,"lista libro by id .{0}",l.getId());
+        Logger.getLogger("lista  persistenza libro").log(Level.INFO,"lista libro by id .",l.getId());
 
         return FXCollections.observableArrayList();}
 
@@ -51,15 +51,15 @@ public  class PersistenzaLibro {
             if(!Files.exists(Path.of("memory/serializzazioneLibro.ser"))) throw new ClassNotFoundException("ClassNotFoundException libro");
         }catch (CsvValidationException e)
         {
-            Logger.getLogger("exception modalita file").log(Level.SEVERE,"exception csv book :{0}",e);
+            Logger.getLogger("exception modalita file libro").log(Level.SEVERE,"exception csv book :",e);
         }
         catch (SQLException e)
         {
-            Logger.getLogger("exception modalita database").log(Level.SEVERE,"exception database book :{0}",e);
+            Logger.getLogger("exception modalita database libro").log(Level.SEVERE,"exception database book :",e);
         }
         catch (ClassNotFoundException e)
         {
-            Logger.getLogger("exception modalita memoria").log(Level.SEVERE,"exception memory book :{0}",e);
+            Logger.getLogger("exception modalita memoria libro").log(Level.SEVERE,"exception memory book :",e);
         }
 
     }

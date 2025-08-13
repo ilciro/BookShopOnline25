@@ -30,7 +30,7 @@ public class PersistenzaGiornale {
     }
     public ObservableList<Giornale> getGiornaleByIdTitoloAutoreLibro(Giornale g) {
 
-        Logger.getLogger("giornale by id").log(Level.INFO,"id giornale .{0}",g.getId());
+        Logger.getLogger("giornale by id").log(Level.INFO,"id giornale .",g.getId());
 
         return FXCollections.observableArrayList();}
     public void initializza(){
@@ -55,16 +55,16 @@ public class PersistenzaGiornale {
             if(!Files.exists(Path.of("memory/serializzazioneGiornale.ser"))) throw new ClassNotFoundException("persistenza giornale ClassNotFoundException");
         }catch (CsvValidationException e)
         {
-            Logger.getLogger("exception modalita file").log(Level.SEVERE," persistenza giornale exception csv :{0}",e);
+            Logger.getLogger("exception modalita file giornale").log(Level.SEVERE," persistenza giornale exception csv :",e);
         }
         catch (SQLException e1)
         {
-            Logger.getLogger("exception modalita database").log(Level.SEVERE,"persistenza giornale exception database :{0}",e1);
+            Logger.getLogger("exception modalita database giornale").log(Level.SEVERE,"persistenza giornale exception database :",e1);
 
         }
         catch (ClassNotFoundException e2)
         {
-            Logger.getLogger("exception modalita memoria").log(Level.SEVERE," persistenza giornale exception memory :{0}",e2);
+            Logger.getLogger("exception modalita memoria giornale").log(Level.SEVERE," persistenza giornale exception memory :",e2);
 
         }
 

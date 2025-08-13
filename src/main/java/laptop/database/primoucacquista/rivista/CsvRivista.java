@@ -114,7 +114,7 @@ public class CsvRivista extends PersistenzaRivista {
             csvWriter.writeNext(gVector);
             csvWriter.flush();
         }catch (IOException |CsvValidationException e){
-            Logger.getLogger("inserimento riviste csv").log(Level.SEVERE,"insert rivista csv exception {0}",e);
+            Logger.getLogger("inserimento riviste csv").log(Level.SEVERE,"insert rivista csv exception :",e);
         }
         return getIdMax() != 0;
     }
@@ -141,7 +141,7 @@ public class CsvRivista extends PersistenzaRivista {
                 }
             }
         }catch (IOException |CsvValidationException e){
-            Logger.getLogger("listarivista").log(Level.SEVERE,"list is empty  exception {0}",e);
+            Logger.getLogger("listarivista").log(Level.SEVERE,"list is empty  exception :",e);
         }
         return rivistaList;
 
@@ -193,7 +193,7 @@ public class CsvRivista extends PersistenzaRivista {
             }
         }catch (IOException |CsvValidationException e)
         {
-            Logger.getLogger("idMax rivista").log(Level.SEVERE," id error {0}",e);
+            Logger.getLogger("idMax rivista").log(Level.SEVERE," id error :",e);
         }
 
 
@@ -232,7 +232,7 @@ public class CsvRivista extends PersistenzaRivista {
             }
         }catch (IOException e)
         {
-            Logger.getLogger("delete by type").log(Level.SEVERE,"error with delete {0}",e);
+            Logger.getLogger("delete by type").log(Level.SEVERE,"error with delete :",e);
         }
         return status;
 
@@ -257,7 +257,7 @@ public class CsvRivista extends PersistenzaRivista {
             }
             writer.flush();
         }catch (IOException | CsvValidationException e){
-            Logger.getLogger("isFoundR").log(Level.SEVERE,"listaR empty exception {0}",e);
+            Logger.getLogger("isFoundR").log(Level.SEVERE,"listaR empty exception :",e);
         }
         return found;
     }
@@ -283,7 +283,7 @@ public class CsvRivista extends PersistenzaRivista {
 
 
         }catch (IOException | CsvValidationException | IdException e){
-            Logger.getLogger("retrieve riviste").log(Level.SEVERE,"retrieve error exception {0}",e);
+            Logger.getLogger("retrieve riviste").log(Level.SEVERE,"retrieve error exception :",e);
         }
 
         return gList;
@@ -326,9 +326,9 @@ public class CsvRivista extends PersistenzaRivista {
 
             }
         }catch (IOException e){
-            Logger.getLogger("listaRiviste io").log(Level.SEVERE,"listaRiviste io exception {0}",e);
+            Logger.getLogger("listaRiviste io").log(Level.SEVERE,"listaRiviste io exception :",e);
         }catch (CsvValidationException e1){
-            Logger.getLogger("listaRiviste csv").log(Level.SEVERE,"listaRiviste csv exception {0}",e1);
+            Logger.getLogger("listaRiviste csv").log(Level.SEVERE,"listaRiviste csv exception :",e1);
 
         }
         try{
@@ -337,7 +337,7 @@ public class CsvRivista extends PersistenzaRivista {
         }
         }catch (IdException e)
         {
-            Logger.getLogger("idRivista ").log(Level.SEVERE,"id error magazine {0}",e);
+            Logger.getLogger("idRivista ").log(Level.SEVERE,"id error magazine :",e);
         }
 
         return rivistaList;
@@ -383,7 +383,7 @@ public class CsvRivista extends PersistenzaRivista {
                 }
             }
         }catch (IOException |CsvValidationException e){
-            Logger.getLogger("rivista by titolo id autore").log(Level.SEVERE,"wrong data exception {0}",e);
+            Logger.getLogger("rivista by titolo id autore").log(Level.SEVERE,"wrong data exception :",e);
         }
         try {
             if (rivistaList.isEmpty()) {
@@ -391,7 +391,7 @@ public class CsvRivista extends PersistenzaRivista {
             }
         }catch (IdException e1)
         {
-            Logger.getLogger("rivistaList").log(Level.SEVERE,"list magazine is empty {0}",e1);
+            Logger.getLogger("rivistaList").log(Level.SEVERE,"list magazine is empty :",e1);
         }
 
         return rivistaList;
@@ -423,7 +423,7 @@ public class CsvRivista extends PersistenzaRivista {
             try {
                 Files.copy(Path.of(RIVISTAP), Path.of(LOCATIONR), REPLACE_EXISTING);
             } catch (IOException e) {
-                Logger.getLogger("inizializza rivista csv").log(Level.SEVERE,"error with copy {0}",e);
+                Logger.getLogger("inizializza rivista csv").log(Level.SEVERE,"error with copy :",e);
             }
 
             Logger.getLogger("crea db file").log(Level.SEVERE, "\n eccezione ottenuta nella modalità file.", eFile);
@@ -433,7 +433,7 @@ public class CsvRivista extends PersistenzaRivista {
         try {
             Files.delete(path);
         } catch (IOException e) {
-           Logger.getLogger("cleanupR").log(Level.SEVERE,"error with delete magazine file {0}",e);
+           Logger.getLogger("cleanupR").log(Level.SEVERE,"error with delete magazine file :",e);
         }
     }
 }

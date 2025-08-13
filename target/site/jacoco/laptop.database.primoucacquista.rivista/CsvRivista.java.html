@@ -114,7 +114,7 @@ public class CsvRivista extends PersistenzaRivista {
 <span class="fc" id="L114">            csvWriter.writeNext(gVector);</span>
 <span class="fc" id="L115">            csvWriter.flush();</span>
 <span class="nc" id="L116">        }catch (IOException |CsvValidationException e){</span>
-<span class="nc" id="L117">            Logger.getLogger(&quot;inserimento riviste csv&quot;).log(Level.SEVERE,&quot;insert rivista csv exception {0}&quot;,e);</span>
+<span class="nc" id="L117">            Logger.getLogger(&quot;inserimento riviste csv&quot;).log(Level.SEVERE,&quot;insert rivista csv exception :&quot;,e);</span>
 <span class="fc" id="L118">        }</span>
 <span class="pc bpc" id="L119" title="1 of 2 branches missed.">        return getIdMax() != 0;</span>
     }
@@ -141,7 +141,7 @@ public class CsvRivista extends PersistenzaRivista {
 <span class="fc" id="L141">                }</span>
             }
 <span class="nc" id="L143">        }catch (IOException |CsvValidationException e){</span>
-<span class="nc" id="L144">            Logger.getLogger(&quot;listarivista&quot;).log(Level.SEVERE,&quot;list is empty  exception {0}&quot;,e);</span>
+<span class="nc" id="L144">            Logger.getLogger(&quot;listarivista&quot;).log(Level.SEVERE,&quot;list is empty  exception :&quot;,e);</span>
 <span class="fc" id="L145">        }</span>
 <span class="fc" id="L146">        return rivistaList;</span>
 
@@ -193,7 +193,7 @@ public class CsvRivista extends PersistenzaRivista {
             }
 <span class="nc" id="L194">        }catch (IOException |CsvValidationException e)</span>
         {
-<span class="nc" id="L196">            Logger.getLogger(&quot;idMax rivista&quot;).log(Level.SEVERE,&quot; id error {0}&quot;,e);</span>
+<span class="nc" id="L196">            Logger.getLogger(&quot;idMax rivista&quot;).log(Level.SEVERE,&quot; id error :&quot;,e);</span>
 <span class="fc" id="L197">        }</span>
 
 
@@ -232,7 +232,7 @@ public class CsvRivista extends PersistenzaRivista {
             }
 <span class="nc" id="L233">        }catch (IOException e)</span>
         {
-<span class="nc" id="L235">            Logger.getLogger(&quot;delete by type&quot;).log(Level.SEVERE,&quot;error with delete {0}&quot;,e);</span>
+<span class="nc" id="L235">            Logger.getLogger(&quot;delete by type&quot;).log(Level.SEVERE,&quot;error with delete :&quot;,e);</span>
 <span class="fc" id="L236">        }</span>
 <span class="fc" id="L237">        return status;</span>
 
@@ -257,7 +257,7 @@ public class CsvRivista extends PersistenzaRivista {
             }
 <span class="fc" id="L258">            writer.flush();</span>
 <span class="nc" id="L259">        }catch (IOException | CsvValidationException e){</span>
-<span class="nc" id="L260">            Logger.getLogger(&quot;isFoundR&quot;).log(Level.SEVERE,&quot;listaR empty exception {0}&quot;,e);</span>
+<span class="nc" id="L260">            Logger.getLogger(&quot;isFoundR&quot;).log(Level.SEVERE,&quot;listaR empty exception :&quot;,e);</span>
 <span class="fc" id="L261">        }</span>
 <span class="fc" id="L262">        return found;</span>
     }
@@ -283,7 +283,7 @@ public class CsvRivista extends PersistenzaRivista {
 
 
 <span class="nc" id="L285">        }catch (IOException | CsvValidationException | IdException e){</span>
-<span class="nc" id="L286">            Logger.getLogger(&quot;retrieve riviste&quot;).log(Level.SEVERE,&quot;retrieve error exception {0}&quot;,e);</span>
+<span class="nc" id="L286">            Logger.getLogger(&quot;retrieve riviste&quot;).log(Level.SEVERE,&quot;retrieve error exception :&quot;,e);</span>
 <span class="fc" id="L287">        }</span>
 
 <span class="fc" id="L289">        return gList;</span>
@@ -326,9 +326,9 @@ public class CsvRivista extends PersistenzaRivista {
 
             }
 <span class="nc" id="L328">        }catch (IOException e){</span>
-<span class="nc" id="L329">            Logger.getLogger(&quot;listaRiviste io&quot;).log(Level.SEVERE,&quot;listaRiviste io exception {0}&quot;,e);</span>
+<span class="nc" id="L329">            Logger.getLogger(&quot;listaRiviste io&quot;).log(Level.SEVERE,&quot;listaRiviste io exception :&quot;,e);</span>
 <span class="nc" id="L330">        }catch (CsvValidationException e1){</span>
-<span class="nc" id="L331">            Logger.getLogger(&quot;listaRiviste csv&quot;).log(Level.SEVERE,&quot;listaRiviste csv exception {0}&quot;,e1);</span>
+<span class="nc" id="L331">            Logger.getLogger(&quot;listaRiviste csv&quot;).log(Level.SEVERE,&quot;listaRiviste csv exception :&quot;,e1);</span>
 
 <span class="pc" id="L333">        }</span>
         try{
@@ -337,7 +337,7 @@ public class CsvRivista extends PersistenzaRivista {
         }
 <span class="nc" id="L338">        }catch (IdException e)</span>
         {
-<span class="nc" id="L340">            Logger.getLogger(&quot;idRivista &quot;).log(Level.SEVERE,&quot;id error magazine {0}&quot;,e);</span>
+<span class="nc" id="L340">            Logger.getLogger(&quot;idRivista &quot;).log(Level.SEVERE,&quot;id error magazine :&quot;,e);</span>
 <span class="fc" id="L341">        }</span>
 
 <span class="fc" id="L343">        return rivistaList;</span>
@@ -383,7 +383,7 @@ public class CsvRivista extends PersistenzaRivista {
                 }
 <span class="fc" id="L384">            }</span>
 <span class="nc" id="L385">        }catch (IOException |CsvValidationException e){</span>
-<span class="nc" id="L386">            Logger.getLogger(&quot;rivista by titolo id autore&quot;).log(Level.SEVERE,&quot;wrong data exception {0}&quot;,e);</span>
+<span class="nc" id="L386">            Logger.getLogger(&quot;rivista by titolo id autore&quot;).log(Level.SEVERE,&quot;wrong data exception :&quot;,e);</span>
 <span class="fc" id="L387">        }</span>
         try {
 <span class="pc bpc" id="L389" title="1 of 2 branches missed.">            if (rivistaList.isEmpty()) {</span>
@@ -391,7 +391,7 @@ public class CsvRivista extends PersistenzaRivista {
             }
 <span class="nc" id="L392">        }catch (IdException e1)</span>
         {
-<span class="nc" id="L394">            Logger.getLogger(&quot;rivistaList&quot;).log(Level.SEVERE,&quot;list magazine is empty {0}&quot;,e1);</span>
+<span class="nc" id="L394">            Logger.getLogger(&quot;rivistaList&quot;).log(Level.SEVERE,&quot;list magazine is empty :&quot;,e1);</span>
 <span class="fc" id="L395">        }</span>
 
 <span class="fc" id="L397">        return rivistaList;</span>
@@ -423,7 +423,7 @@ public class CsvRivista extends PersistenzaRivista {
             try {
 <span class="fc" id="L424">                Files.copy(Path.of(RIVISTAP), Path.of(LOCATIONR), REPLACE_EXISTING);</span>
 <span class="nc" id="L425">            } catch (IOException e) {</span>
-<span class="nc" id="L426">                Logger.getLogger(&quot;inizializza rivista csv&quot;).log(Level.SEVERE,&quot;error with copy {0}&quot;,e);</span>
+<span class="nc" id="L426">                Logger.getLogger(&quot;inizializza rivista csv&quot;).log(Level.SEVERE,&quot;error with copy :&quot;,e);</span>
 <span class="fc" id="L427">            }</span>
 
 <span class="fc" id="L429">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
@@ -433,7 +433,7 @@ public class CsvRivista extends PersistenzaRivista {
         try {
 <span class="fc" id="L434">            Files.delete(path);</span>
 <span class="nc" id="L435">        } catch (IOException e) {</span>
-<span class="nc" id="L436">           Logger.getLogger(&quot;cleanupR&quot;).log(Level.SEVERE,&quot;error with delete magazine file {0}&quot;,e);</span>
+<span class="nc" id="L436">           Logger.getLogger(&quot;cleanupR&quot;).log(Level.SEVERE,&quot;error with delete magazine file :&quot;,e);</span>
 <span class="fc" id="L437">        }</span>
 <span class="fc" id="L438">    }</span>
 }

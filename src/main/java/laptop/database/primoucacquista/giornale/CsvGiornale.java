@@ -73,10 +73,10 @@ public class CsvGiornale extends PersistenzaGiornale{
                     max= Integer.parseInt(gVector[GETINDEXIDG]);
             }
         }catch (IOException e){
-            Logger.getLogger("id max io csv").log(Level.SEVERE,"id exception in io :{0}",e);
+            Logger.getLogger("id max io csv").log(Level.SEVERE,"id exception in io :",e);
         }catch (CsvValidationException e1)
         {
-            Logger.getLogger("id max  csv").log(Level.SEVERE,"id exception csv :{0}",e1);
+            Logger.getLogger("id max  csv").log(Level.SEVERE,"id exception csv :",e1);
         }
         return max;
 
@@ -121,11 +121,11 @@ public class CsvGiornale extends PersistenzaGiornale{
          status= inserimentoGiornale(this.fdG,g);
 
         }catch (IOException e){
-            Logger.getLogger("inserisci giornale io csv").log(Level.SEVERE,"csv insert giornale io exception :{0}",e);
+            Logger.getLogger("inserisci giornale io csv").log(Level.SEVERE,"csv insert giornale io exception :",e);
 
         }catch (CsvValidationException e1)
         {
-            Logger.getLogger("inserisci giornale  csv").log(Level.SEVERE,"csv insert giornale csv exception :{0}",e1);
+            Logger.getLogger("inserisci giornale  csv").log(Level.SEVERE,"csv insert giornale csv exception :",e1);
 
         }
         return status;
@@ -151,11 +151,11 @@ public class CsvGiornale extends PersistenzaGiornale{
             csvWriter.flush();
         }catch (IOException e)
         {
-            Logger.getLogger("inserimento giornale csv").log(Level.SEVERE,"csv inserimento giornale io exception :{0}",e);
+            Logger.getLogger("inserimento giornale csv").log(Level.SEVERE,"csv inserimento giornale io exception :",e);
 
         }catch (CsvValidationException e1)
         {
-            Logger.getLogger("inserimento giornale io csv").log(Level.SEVERE,"inserimento giornale csv exception :{0}",e1);
+            Logger.getLogger("inserimento giornale io csv").log(Level.SEVERE,"inserimento giornale csv exception :",e1);
 
         }
         return getIdMax()!=0;
@@ -241,7 +241,7 @@ public class CsvGiornale extends PersistenzaGiornale{
                 cleanUp(Path.of(tmpFile.toURI()));
             }
         }catch (IOException e){
-            Logger.getLogger("delete by type io").log(Level.SEVERE,"id delete io exception :{0}",e);
+            Logger.getLogger("delete by type io").log(Level.SEVERE,"id delete io exception :",e);
 
         }
 
@@ -272,10 +272,10 @@ public class CsvGiornale extends PersistenzaGiornale{
             writer.flush();
         }catch (IOException e)
         {
-            Logger.getLogger("isFound io").log(Level.SEVERE,"idFound io excpetion :{0}",e);
+            Logger.getLogger("isFound io").log(Level.SEVERE,"idFound io excpetion :",e);
         }catch (CsvValidationException e1)
         {
-            Logger.getLogger("isFound csv").log(Level.SEVERE,"idFound csv excpetion :{0}",e1);
+            Logger.getLogger("isFound csv").log(Level.SEVERE,"idFound csv excpetion :",e1);
 
         }
         return found;
@@ -323,10 +323,10 @@ public class CsvGiornale extends PersistenzaGiornale{
             }
         }catch (IOException e)
         {
-            Logger.getLogger("retrieve giornali csv io").log(Level.SEVERE,"retrieve giornali io excpetion :{0}",e);
+            Logger.getLogger("retrieve giornali csv io").log(Level.SEVERE,"retrieve giornali io excpetion :",e);
         }catch (CsvValidationException e1)
         {
-            Logger.getLogger("retrieve giornali csv").log(Level.SEVERE,"retrieve giornali csv excpetion :{0}",e1);
+            Logger.getLogger("retrieve giornali csv").log(Level.SEVERE,"retrieve giornali csv excpetion :",e1);
 
         }
         try{
@@ -334,7 +334,7 @@ public class CsvGiornale extends PersistenzaGiornale{
                 throw new IdException("daily not found!!");
             }
         }catch (IdException e2){
-            Logger.getLogger("retrieve giornali").log(Level.SEVERE,"list is empty !!  :{0}",e2);
+            Logger.getLogger("retrieve giornali").log(Level.SEVERE,"list is empty !!  :",e2);
 
         }
 
@@ -359,13 +359,13 @@ public class CsvGiornale extends PersistenzaGiornale{
                 throw new IdException("lista giornale is empty");
             }
         }catch (IOException e){
-            Logger.getLogger("retrieve data csv io").log(Level.SEVERE,"retrieve data io excpetion :{0}",e);
+            Logger.getLogger("retrieve data csv io").log(Level.SEVERE,"retrieve data io excpetion :",e);
         }catch (IdException e1)
         {
-            Logger.getLogger("retrieve data csv id").log(Level.SEVERE,"id exception :{0}",e1);
+            Logger.getLogger("retrieve data csv id").log(Level.SEVERE,"id exception :",e1);
         }catch (CsvValidationException e2)
         {
-            Logger.getLogger("retrieve data csv").log(Level.SEVERE,"retrieve data csv excpetion :{0}",e2);
+            Logger.getLogger("retrieve data csv").log(Level.SEVERE,"retrieve data csv excpetion :",e2);
 
         }
 
@@ -427,11 +427,11 @@ public class CsvGiornale extends PersistenzaGiornale{
             }
         }catch (IOException e)
         {
-            Logger.getLogger("giornale by id titolo autore io").log(Level.SEVERE,"giornale not found  :{0}",e);
+            Logger.getLogger("giornale by id titolo autore io").log(Level.SEVERE,"giornale not found  :",e);
 
         }catch (CsvValidationException e1)
         {
-            Logger.getLogger("giornale by id titolo autore csv").log(Level.SEVERE,"giornale not found csv  :{0}",e1);
+            Logger.getLogger("giornale by id titolo autore csv").log(Level.SEVERE,"giornale not found csv  :",e1);
 
         }
         try {
@@ -440,7 +440,7 @@ public class CsvGiornale extends PersistenzaGiornale{
             }
         }catch (IdException e2)
         {
-            Logger.getLogger("lista").log(Level.SEVERE,"lista is empty :{0}",e2);
+            Logger.getLogger("lista").log(Level.SEVERE,"lista is empty :",e2);
 
         }
 
@@ -474,7 +474,7 @@ public class CsvGiornale extends PersistenzaGiornale{
             try {
                 Files.copy(Path.of(GIORNALEP), Path.of(LOCATIONG), REPLACE_EXISTING);
             } catch (IOException e) {
-                Logger.getLogger("inizializza csv giornale io").log(Level.SEVERE,"inizializza io in csv  :{0}",e);
+                Logger.getLogger("inizializza csv giornale io").log(Level.SEVERE,"inizializza io in csv  :",e);
             }
 
             Logger.getLogger("crea db file").log(Level.SEVERE, "\n eccezione ottenuta nella modalità file.", eFile);

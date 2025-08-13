@@ -80,7 +80,7 @@ public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
 <span class="nc" id="L80">            cleanUp(Path.of(tmpFile.toURI()));</span>
         }
 <span class="nc" id="L82">        }catch (IOException e) {</span>
-<span class="nc" id="L83">            Logger.getLogger(&quot;removeFatturaPagTotale&quot;).log(Level.SEVERE, &quot;removeFattura payTot io exception {0}&quot;, e);</span>
+<span class="nc" id="L83">            Logger.getLogger(&quot;removeFatturaPagTotale&quot;).log(Level.SEVERE, &quot;removeFattura payTot io exception :&quot;, e);</span>
 <span class="fc" id="L84">        }</span>
 
 <span class="fc" id="L86">        return status;</span>
@@ -108,9 +108,9 @@ public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
 <span class="fc" id="L108">            writer.flush();</span>
 
 <span class="nc" id="L110">        }catch (IOException e){</span>
-<span class="nc" id="L111">            Logger.getLogger(&quot;isFoundPagamentoToale&quot;).log(Level.SEVERE,&quot;isFound io exception payTot{0}&quot;,e);</span>
+<span class="nc" id="L111">            Logger.getLogger(&quot;isFoundPagamentoToale&quot;).log(Level.SEVERE,&quot;isFound io exception payTot:&quot;,e);</span>
 <span class="nc" id="L112">        }catch (CsvValidationException e1){</span>
-<span class="nc" id="L113">            Logger.getLogger(&quot;isFoundPagaemntoTotale csv&quot;).log(Level.SEVERE,&quot;isFOund csv exception payTot {0}&quot;,e1);</span>
+<span class="nc" id="L113">            Logger.getLogger(&quot;isFoundPagaemntoTotale csv&quot;).log(Level.SEVERE,&quot;isFOund csv exception payTot :&quot;,e1);</span>
 
 <span class="pc" id="L115">        }</span>
 <span class="fc" id="L116">        return found;</span>
@@ -143,7 +143,7 @@ public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
 <span class="nc" id="L143">            cleanUp(Path.of(tmpFile.toURI()));</span>
         }
 <span class="nc" id="L145">        }catch (IOException e){</span>
-<span class="nc" id="L146">                Logger.getLogger(&quot;removePagamentoCC&quot;).log(Level.SEVERE,&quot;removePaymentCC io exception {0}&quot;,e);</span>
+<span class="nc" id="L146">                Logger.getLogger(&quot;removePagamentoCC&quot;).log(Level.SEVERE,&quot;removePaymentCC io exception :&quot;,e);</span>
 <span class="fc" id="L147">            }</span>
 <span class="fc" id="L148">        return status;</span>
     }
@@ -167,9 +167,9 @@ public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
 <span class="fc" id="L167">            writer.flush();</span>
 
 <span class="nc" id="L169">        }catch (IOException e){</span>
-<span class="nc" id="L170">            Logger.getLogger(&quot;isFoundCC&quot;).log(Level.SEVERE,&quot;isFoundCC tot io exception {0}&quot;,e);</span>
+<span class="nc" id="L170">            Logger.getLogger(&quot;isFoundCC&quot;).log(Level.SEVERE,&quot;isFoundCC tot io exception :&quot;,e);</span>
 <span class="nc" id="L171">        }catch (CsvValidationException e1){</span>
-<span class="nc" id="L172">            Logger.getLogger(&quot;isFoundCC csv&quot;).log(Level.SEVERE,&quot;isFOundCC tot csv exception {0}&quot;,e1);</span>
+<span class="nc" id="L172">            Logger.getLogger(&quot;isFoundCC csv&quot;).log(Level.SEVERE,&quot;isFOundCC tot csv exception :&quot;,e1);</span>
 
 <span class="pc" id="L174">        }</span>
 <span class="fc" id="L175">        return found;</span>
@@ -207,7 +207,7 @@ public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
 <span class="fc" id="L207">            else csvPagamentoCartaCredito = new CsvPagamentoCartaCredito();</span>
 <span class="nc" id="L208">        }catch (IOException e)</span>
         {
-<span class="nc" id="L210">            Logger.getLogger(&quot;costruttore pagTotate&quot;).log(Level.SEVERE,&quot;error with creation file {0}&quot;,e);</span>
+<span class="nc" id="L210">            Logger.getLogger(&quot;costruttore pagTotate&quot;).log(Level.SEVERE,&quot;error with creation file :&quot;,e);</span>
 <span class="fc" id="L211">        }</span>
 
 <span class="fc" id="L213">    }</span>
@@ -270,7 +270,7 @@ public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
 
         }
 <span class="nc" id="L272">        catch (IOException e){</span>
-<span class="nc" id="L273">            Logger.getLogger(&quot;getNegozi&quot;).log(Level.SEVERE,&quot;getNegozi io exception {0}&quot;,e);</span>
+<span class="nc" id="L273">            Logger.getLogger(&quot;getNegozi&quot;).log(Level.SEVERE,&quot;getNegozi io exception :&quot;,e);</span>
 <span class="fc" id="L274">        }</span>
 
 
@@ -290,13 +290,13 @@ public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
 <span class="nc" id="L290">                throw new IOException(&quot;il file pagamentoTotale non esiste&quot;);</span>
 <span class="nc" id="L291">        }catch (IOException e)</span>
         {
-<span class="nc" id="L293">            Logger.getLogger(&quot; inizializza pagamentoTotale&quot;).log(Level.SEVERE,&quot; file not exists .{0}&quot;,PAGAMENTOTOTALE);</span>
+<span class="nc" id="L293">            Logger.getLogger(&quot; inizializza pagamentoTotale&quot;).log(Level.SEVERE,&quot; file not exists .:&quot;,PAGAMENTOTOTALE);</span>
             try {
 <span class="nc" id="L295">                Files.createFile(path);</span>
 <span class="nc" id="L296">            } catch (IOException ex) {</span>
-<span class="nc" id="L297">                Logger.getLogger(&quot;inizializzazione&quot;).log(Level.SEVERE,&quot;error with creation file {0}&quot;,ex);</span>
+<span class="nc" id="L297">                Logger.getLogger(&quot;inizializzazione&quot;).log(Level.SEVERE,&quot;error with creation file :&quot;,ex);</span>
 <span class="nc" id="L298">            }</span>
-<span class="nc" id="L299">            Logger.getLogger(&quot; inizializza pagamentoTotale creazione&quot;).log(Level.INFO,&quot; file created .{0}&quot;,PAGAMENTOTOTALE);</span>
+<span class="nc" id="L299">            Logger.getLogger(&quot; inizializza pagamentoTotale creazione&quot;).log(Level.INFO,&quot; file created .:&quot;,PAGAMENTOTOTALE);</span>
 
 
 
