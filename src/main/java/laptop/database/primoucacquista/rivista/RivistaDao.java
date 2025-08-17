@@ -178,7 +178,7 @@ public class RivistaDao extends PersistenzaRivista{
     public void initializza()  {
         super.initializza();
         DaoInitialize dI=new DaoInitialize();
-        dI.inizializza("rivista");
+        dI.inizializza(RIVISTA);
         }
 
 

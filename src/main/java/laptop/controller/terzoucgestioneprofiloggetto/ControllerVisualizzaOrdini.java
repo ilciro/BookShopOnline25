@@ -40,7 +40,8 @@ public class ControllerVisualizzaOrdini {
 
     public ObservableList<PagamentoFattura> getListaFattura(String persistenza)  {
 
-
+        PagamentoFattura pf=new PagamentoFattura();
+        pf.setEmail(getEmail());
 
         switch (persistenza)
         {
@@ -51,8 +52,7 @@ public class ControllerVisualizzaOrdini {
         }
 
         pPF.inizializza();
-        PagamentoFattura pf=new PagamentoFattura();
-        pf.setEmail(getEmail());
+
 
         return pPF.listPagamentiByUserF(pf);
     }

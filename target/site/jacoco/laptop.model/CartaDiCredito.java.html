@@ -20,32 +20,32 @@ public class 	CartaDiCredito implements Serializable {
 	private String cognomeUser; 
 	private String civ;
 
-<span class="fc" id="L23">	private static final String[] types = {&quot;DINER'S&quot;,&quot;JCB&quot;,&quot;MASTER&quot;,&quot;VISA&quot;,&quot;POSTEPAY&quot;};</span>
+<span class="nc" id="L23">	private static final String[] types = {&quot;DINER'S&quot;,&quot;JCB&quot;,&quot;MASTER&quot;,&quot;VISA&quot;,&quot;POSTEPAY&quot;};</span>
 
-<span class="fc" id="L25">	public CartaDiCredito() {</span>
-<span class="fc" id="L26">	}</span>
+<span class="nc" id="L25">	public CartaDiCredito() {</span>
+<span class="nc" id="L26">	}</span>
 	
 
 
 	public CartaDiCredito(String n,String c,String cod,java.util.Date date,String civ,float prezzo)
-<span class="fc" id="L31">	{</span>
+<span class="nc" id="L31">	{</span>
 		
-<span class="fc" id="L33">		this.nomeUser=n;</span>
-<span class="fc" id="L34">		this.cognomeUser=c;</span>
-<span class="fc" id="L35">		this.numeroCC=cod;</span>
-<span class="fc" id="L36">		this.ammontare=1000.0;</span>
-<span class="fc" id="L37">		this.scadenza=date;</span>
-<span class="fc" id="L38">		this.civ=civ;</span>
-<span class="fc" id="L39">		this.prezzoTransazine=prezzo;</span>
-<span class="fc" id="L40">	}</span>
+<span class="nc" id="L33">		this.nomeUser=n;</span>
+<span class="nc" id="L34">		this.cognomeUser=c;</span>
+<span class="nc" id="L35">		this.numeroCC=cod;</span>
+<span class="nc" id="L36">		this.ammontare=1000.0;</span>
+<span class="nc" id="L37">		this.scadenza=date;</span>
+<span class="nc" id="L38">		this.civ=civ;</span>
+<span class="nc" id="L39">		this.prezzoTransazine=prezzo;</span>
+<span class="nc" id="L40">	}</span>
 
 	public String getNumeroCC() {
-<span class="fc" id="L43">		return numeroCC;</span>
+<span class="nc" id="L43">		return numeroCC;</span>
 	}
 	public void setNumeroCC(String numeroCC)  {
 
-<span class="fc" id="L47">		this.numeroCC = numeroCC;</span>
-<span class="fc" id="L48">	}</span>
+<span class="nc" id="L47">		this.numeroCC = numeroCC;</span>
+<span class="nc" id="L48">	}</span>
 	public double getLimite() {
 <span class="nc" id="L50">		return limite;</span>
 	}
@@ -54,28 +54,28 @@ public class 	CartaDiCredito implements Serializable {
 <span class="nc" id="L54">		this.limite = limite;</span>
 <span class="nc" id="L55">	}</span>
 	public double getAmmontare() {
-<span class="fc" id="L57">		return ammontare;</span>
+<span class="nc" id="L57">		return ammontare;</span>
 	}
 	public void setAmmontare(double ammontare)  {
 
 <span class="nc" id="L61">		this.ammontare = ammontare;</span>
 <span class="nc" id="L62">	}</span>
 	public java.util.Date getScadenza() {
-<span class="fc" id="L64">		return scadenza;</span>
+<span class="nc" id="L64">		return scadenza;</span>
 	}
 	public void setScadenza(Date scadenza)  {
 
-<span class="fc" id="L68">		this.scadenza = scadenza;</span>
-<span class="fc" id="L69">	}</span>
+<span class="nc" id="L68">		this.scadenza = scadenza;</span>
+<span class="nc" id="L69">	}</span>
 	public String getNomeUser() {
-<span class="fc" id="L71">		return nomeUser;</span>
+<span class="nc" id="L71">		return nomeUser;</span>
 	}
 	public void setNomeUser(String nomeUser)  {
 
-<span class="fc" id="L75">		this.nomeUser = nomeUser;</span>
-<span class="fc" id="L76">	}</span>
+<span class="nc" id="L75">		this.nomeUser = nomeUser;</span>
+<span class="nc" id="L76">	}</span>
 	public float getPrezzoTransazine() {
-<span class="fc" id="L78">		return prezzoTransazine;</span>
+<span class="nc" id="L78">		return prezzoTransazine;</span>
 	}
 	public void setPrezzoTransazine(float prezzoTransazine)  {
 
@@ -83,7 +83,7 @@ public class 	CartaDiCredito implements Serializable {
 <span class="nc" id="L83">	}</span>
 
 	public String getCognomeUser() {
-<span class="fc" id="L86">		return cognomeUser;</span>
+<span class="nc" id="L86">		return cognomeUser;</span>
 	}
 
 	public void setCognomeUser(String cognomeUser)  {
@@ -92,13 +92,13 @@ public class 	CartaDiCredito implements Serializable {
 <span class="nc" id="L92">	}</span>
 
 	public String getCiv() { 
-<span class="fc" id="L95">		return civ;</span>
+<span class="nc" id="L95">		return civ;</span>
 	}
 
 	public void setCiv(String civ) {
 
-<span class="fc" id="L100">		this.civ = civ;</span>
-<span class="fc" id="L101">	}</span>
+<span class="nc" id="L100">		this.civ = civ;</span>
+<span class="nc" id="L101">	}</span>
 
 	public static String[] getTypes() {
 <span class="nc" id="L104">		return types;</span>

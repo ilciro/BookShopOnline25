@@ -96,7 +96,7 @@ public class MemoriaReport extends PersistenzaReport{
            if(!Files.exists(path)) throw new IOException("report memoria non esiste!!");
         }catch (IOException e)
         {
-            Logger.getLogger("inizializza memoria report").log(Level.SEVERE,"file not exists .",SERIALIZZAZIONE);
+            Logger.getLogger("inizializza memoria report").log(Level.SEVERE,"file not exists : {0}",SERIALIZZAZIONE);
             try {
                 Files.createFile(path);
             } catch (IOException ex) {

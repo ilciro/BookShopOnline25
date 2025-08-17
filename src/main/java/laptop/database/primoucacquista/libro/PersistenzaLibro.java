@@ -1,13 +1,10 @@
 package laptop.database.primoucacquista.libro;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.database.PersistenzaGenerale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Raccolta;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,10 +28,10 @@ public  class PersistenzaLibro {
         return FXCollections.observableArrayList();}
 
     public void initializza()  {
-        getException();
-
 
         Logger.getLogger("inizializza persistenza libro").log(Level.INFO," persistenza libro inizializza");
+        PersistenzaGenerale pG=new PersistenzaGenerale();
+        pG.getExcepptionInit("libro");
 
 
 
@@ -42,26 +39,6 @@ public  class PersistenzaLibro {
     public ObservableList<Libro> getLibri()  { return FXCollections.observableArrayList();}
 
 
-    private void getException()  {
-        Logger.getLogger("persistenza libro ").log(Level.INFO,"checking files...");
 
-        try {
-            if (!Files.exists(Path.of("report/reportLibro.csv")))throw  new CsvValidationException("CSVException libro");
-            if (!Files.exists(Path.of("sql/tableCreate.sql"))) throw  new SQLException("SQLException libro");
-            if(!Files.exists(Path.of("memory/serializzazioneLibro.ser"))) throw new ClassNotFoundException("ClassNotFoundException libro");
-        }catch (CsvValidationException e)
-        {
-            Logger.getLogger("exception modalita file libro").log(Level.SEVERE,"exception csv book :",e);
-        }
-        catch (SQLException e)
-        {
-            Logger.getLogger("exception modalita database libro").log(Level.SEVERE,"exception database book :",e);
-        }
-        catch (ClassNotFoundException e)
-        {
-            Logger.getLogger("exception modalita memoria libro").log(Level.SEVERE,"exception memory book :",e);
-        }
-
-    }
 
 }

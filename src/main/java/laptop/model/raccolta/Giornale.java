@@ -153,7 +153,7 @@ import laptop.exception.IdException;
 			document.close();
 		}catch (IOException |DocumentException e)
 		{
-			Logger.getLogger("read pdf daily").log(Level.SEVERE,"daily not exists {0}",e);
+			Logger.getLogger("read pdf daily").log(Level.SEVERE,"daily not exists",e);
 		}
 
 	}

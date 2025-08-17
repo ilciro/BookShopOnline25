@@ -2,6 +2,8 @@ package laptop.model.pagamento;
 
 
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PagamentoCartaCredito extends Pagamento implements Serializable {
 
@@ -17,6 +19,7 @@ public class PagamentoCartaCredito extends Pagamento implements Serializable {
 
     @Override
     public boolean controllaPagamentCartaCredito(PagamentoCartaCredito pCC) {
+        Logger.getLogger("pagamentoCC").log(Level.INFO,"check payment cc");
         return super.controllaPagamentCartaCredito(pCC);
     }
 

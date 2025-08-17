@@ -116,14 +116,14 @@ public class CsvCartaCredito extends PersistenzaCC{
            if(!Files.exists(path)) throw new IOException("file not exists");
        }catch (IOException e)
        {
-           Logger.getLogger("inizializza").log(Level.SEVERE," file  not exists",LOCATIONCC);
+           Logger.getLogger("inizializza").log(Level.SEVERE," file  not exists : {0}",LOCATIONCC);
            try {
                Files.createFile(path);
            } catch (IOException ex) {
                Logger.getLogger("inizializza cc csv ").log(Level.SEVERE,"inizializza csv with ioexception",e);
 
            }
-           Logger.getLogger("inizializza").log(Level.INFO," file  created",LOCATIONCC);
+           Logger.getLogger("inizializza").log(Level.INFO," file  created : {0}",LOCATIONCC);
 
        }
     }

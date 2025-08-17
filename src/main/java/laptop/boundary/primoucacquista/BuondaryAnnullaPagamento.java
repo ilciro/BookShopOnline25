@@ -1,7 +1,6 @@
 package laptop.boundary.primoucacquista;
 
 
-import javafx.application.Platform;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
@@ -20,7 +19,6 @@ import laptop.controller.primoucacquista.ControllerAnnullaPagamento;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;

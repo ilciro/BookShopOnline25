@@ -109,14 +109,7 @@ public class CsvGiornale extends PersistenzaGiornale{
                 duplicatedG = (!list.isEmpty());
             }
             if (duplicatedG)
-                try {
-                    Logger.getLogger("try giornale").log(Level.INFO, "id giornale sbagliato !!");
-                    throw new IdException(" id giornale sbagliato or duplicated");
-                } catch (IdException e) {
-                    Logger.getLogger("catch giornale").log(Level.SEVERE, "remove giornale...");
-                    //rimuovo e se lista vuota
-                    removeGiornaleById(g);
-                }
+                cancellaGiornale(g);
 
          status= inserimentoGiornale(this.fdG,g);
 
@@ -129,6 +122,18 @@ public class CsvGiornale extends PersistenzaGiornale{
 
         }
         return status;
+    }
+
+    private  synchronized void cancellaGiornale(Giornale g)
+    {
+        try {
+            Logger.getLogger("try giornale").log(Level.INFO, "id giornale sbagliato !!");
+            throw new IdException(" id giornale sbagliato or duplicated");
+        } catch (IdException e) {
+            Logger.getLogger("catch giornale").log(Level.SEVERE, "remove giornale...");
+            //rimuovo e se lista vuota
+            removeGiornaleById(g);
+        }
     }
 
     private static synchronized boolean inserimentoGiornale(File fd, Giornale g)  {

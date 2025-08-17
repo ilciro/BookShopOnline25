@@ -2,13 +2,11 @@ package laptop.database.primoucacquista.pagamentofattura;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import laptop.model.pagamento.PagamentoFattura;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +19,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
     @Override
     @SuppressWarnings("unchecked")
     public boolean inserisciPagamentoFattura(PagamentoFattura f)  {
+
 
 
 
@@ -46,7 +45,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
 
 
 
-        Logger.getLogger("insert fattura in memory").log(Level.INFO, "fattura is wrote");
+        Logger.getLogger("insert fattura in memory").log(Level.INFO, "fattura is wrote {0}",list);
 
         return true;
     }
@@ -129,7 +128,10 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
     @Override
     @SuppressWarnings("unchecked")
     public ObservableList<PagamentoFattura> listPagamentiByUserF(PagamentoFattura pF)  {
+
+
         ObservableList<PagamentoFattura> listFatture= FXCollections.observableArrayList();
+
         try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             list = (ArrayList<PagamentoFattura>) ois.readObject();
@@ -138,13 +140,20 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
             Logger.getLogger("listPagemntoFatturaUser").log(Level.SEVERE,"file is empty");
         }
 
+       Logger.getLogger("list pagamenti by user ").log(Level.INFO,"list payment by user : {0}",list);
+
+
         for (int i = 1; i <= list.size(); i++) {
             if (list.get(i-1).getEmail().equals(pF.getEmail())) {
                 PagamentoFattura pf=list.get(i-1);
                 listFatture.add(pf);
 
             }
+
         }
+
+
+
         return listFatture;
     }
 }

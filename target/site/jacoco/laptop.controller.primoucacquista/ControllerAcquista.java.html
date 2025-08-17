@@ -67,9 +67,9 @@ public class ControllerAcquista {
 			case LIBRO-&gt;
 			{
 <span class="fc" id="L69">				l.setId(vis.getIdLibro());</span>
-<span class="pc bpc" id="L70" title="1 of 4 branches missed.">                switch (string) {</span>
-<span class="fc" id="L71">                    case DATABASE -&gt; pL = new LibroDao();</span>
-<span class="fc" id="L72">                    case FILE -&gt; pL = new CsvLibro();</span>
+<span class="pc bpc" id="L70" title="3 of 4 branches missed.">                switch (string) {</span>
+<span class="nc" id="L71">                    case DATABASE -&gt; pL = new LibroDao();</span>
+<span class="nc" id="L72">                    case FILE -&gt; pL = new CsvLibro();</span>
 <span class="fc" id="L73">                    case MEMORIA -&gt; pL = new MemoriaLibro();</span>
 <span class="nc" id="L74">					default -&gt; Logger.getLogger(&quot;cALibro&quot;).log(Level.SEVERE,&quot;cost/name book is empty is null&quot;);</span>
 
@@ -86,9 +86,9 @@ public class ControllerAcquista {
 			{
 <span class="fc" id="L87">				g.setId(vis.getIdGiornale());</span>
 
-<span class="pc bpc" id="L89" title="1 of 4 branches missed.">                switch (string) {</span>
-<span class="fc" id="L90">                    case DATABASE -&gt; pG = new GiornaleDao();</span>
-<span class="fc" id="L91">                    case FILE -&gt; pG = new CsvGiornale();</span>
+<span class="pc bpc" id="L89" title="3 of 4 branches missed.">                switch (string) {</span>
+<span class="nc" id="L90">                    case DATABASE -&gt; pG = new GiornaleDao();</span>
+<span class="nc" id="L91">                    case FILE -&gt; pG = new CsvGiornale();</span>
 <span class="fc" id="L92">                   case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
 <span class="nc" id="L93">					default -&gt; Logger.getLogger(&quot;cAGiornale&quot;).log(Level.SEVERE,&quot;cost/name daily is empty is null&quot;);</span>
 
@@ -102,9 +102,9 @@ public class ControllerAcquista {
 
 			case RIVISTA-&gt;{
 <span class="fc" id="L104">				r.setId(vis.getIdRivista());</span>
-<span class="pc bpc" id="L105" title="1 of 4 branches missed.">                switch (string) {</span>
-<span class="fc" id="L106">                    case DATABASE -&gt; pR = new RivistaDao();</span>
-<span class="fc" id="L107">                    case FILE -&gt; pR = new CsvRivista();</span>
+<span class="pc bpc" id="L105" title="3 of 4 branches missed.">                switch (string) {</span>
+<span class="nc" id="L106">                    case DATABASE -&gt; pR = new RivistaDao();</span>
+<span class="nc" id="L107">                    case FILE -&gt; pR = new CsvRivista();</span>
 <span class="fc" id="L108">                    case MEMORIA -&gt; pR = new MemoriaRivista();</span>
 <span class="nc" id="L109">					default -&gt; Logger.getLogger(&quot;cARivista&quot;).log(Level.SEVERE,&quot;cost/name magazine is empty is null&quot;);</span>
 

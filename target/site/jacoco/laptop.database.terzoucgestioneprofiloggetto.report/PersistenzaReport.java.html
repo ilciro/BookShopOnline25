@@ -1,46 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PersistenzaReport.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.terzoucgestioneprofiloggetto.report</a> &gt; <span class="el_source">PersistenzaReport.java</span></div><h1>PersistenzaReport.java</h1><pre class="source lang-java linenums">package laptop.database.terzoucgestioneprofiloggetto.report;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.database.PersistenzaGenerale;
 import laptop.model.Report;
 import laptop.model.user.TempUser;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.sql.SQLException;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L15">public class PersistenzaReport {</span>
+<span class="fc" id="L12">public class PersistenzaReport {</span>
 
-<span class="nc" id="L17">    public ObservableList&lt;TempUser&gt; reportU() {return FXCollections.observableArrayList(); }</span>
+<span class="nc" id="L14">    public ObservableList&lt;TempUser&gt; reportU() {return FXCollections.observableArrayList(); }</span>
 
-<span class="nc" id="L19">    public ObservableList&lt;Report&gt; report(String type) {return FXCollections.observableArrayList();}</span>
+    public ObservableList&lt;Report&gt; report(String type) {
+<span class="nc" id="L17">        Logger.getLogger(&quot;report&quot;).log(Level.INFO,&quot;report of :{0}&quot;,type);</span>
+<span class="nc" id="L18">        return FXCollections.observableArrayList();}</span>
 
-<span class="nc bnc" id="L21" title="All 2 branches missed.">    public boolean insertReport(Report r)  { return r.getIdReport()!=0;}</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">    public boolean insertReport(Report r)  { return r.getIdReport()!=0;}</span>
 
 
 
     public void inizializza()  {
-<span class="nc" id="L26">        Logger.getLogger(&quot;inizializza gestione report&quot;).log(Level.INFO,&quot;inizializza&quot;);</span>
-<span class="nc" id="L27">        getException();</span>
+<span class="nc" id="L25">        Logger.getLogger(&quot;inizializza gestione report&quot;).log(Level.INFO,&quot;inizializza&quot;);</span>
+<span class="nc" id="L26">        PersistenzaGenerale pG=new PersistenzaGenerale();</span>
+<span class="nc" id="L27">        pG.getExcepptionInit(&quot;report&quot;);</span>
 
-<span class="nc" id="L29">    }</span>
 
-    private void getException() {
-<span class="nc" id="L32">        Logger.getLogger(&quot;persistenza report&quot;).log(Level.INFO, &quot;checking files...&quot;);</span>
-        try {
-<span class="nc bnc" id="L34" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;report/reportFinale.csv&quot;))) throw new CsvValidationException(&quot;CSVException report&quot;);</span>
-<span class="nc bnc" id="L35" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;sql/tableCreate.sql&quot;))) throw new SQLException(&quot;SQLException report&quot;);</span>
-<span class="nc bnc" id="L36" title="All 2 branches missed.">            if (!Files.exists(Path.of(&quot;memory/serializzazioneReport.ser&quot;))) throw new ClassNotFoundException(&quot;ClassNotFoundException report&quot;);</span>
-<span class="nc" id="L37">        } catch (CsvValidationException e) {</span>
-<span class="nc" id="L38">            Logger.getLogger(&quot;exception modalita file report&quot;).log(Level.SEVERE, &quot;exception report csv :&quot;, e);</span>
-<span class="nc" id="L39">        } catch (SQLException e) {</span>
-<span class="nc" id="L40">            Logger.getLogger(&quot;exception modalita database report&quot;).log(Level.SEVERE, &quot;exception report database :&quot;, e);</span>
-<span class="nc" id="L41">        } catch (ClassNotFoundException e) {</span>
-<span class="nc" id="L42">            Logger.getLogger(&quot;exception modalita memoria report&quot;).log(Level.SEVERE, &quot;exception report memory :&quot;, e);</span>
-<span class="nc" id="L43">        }</span>
-<span class="nc" id="L44">    }</span>
+<span class="nc" id="L30">    }</span>
+
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

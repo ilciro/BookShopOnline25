@@ -82,6 +82,7 @@ laptop/model/pagamento/Pagamento.class
 laptop/database/primoucacquista/rivista/RivistaDao.class
 laptop/database/terzoucgestioneprofiloggetto/report/MemoriaReport.class
 laptop/model/Report.class
+laptop/database/PersistenzaGenerale.class
 laptop/model/raccolta/CategorieLibro.class
 laptop/database/primoucacquista/rivista/MemoriaRivista.class
 laptop/database/primoucacquista/negozio/MemoriaNegozio.class

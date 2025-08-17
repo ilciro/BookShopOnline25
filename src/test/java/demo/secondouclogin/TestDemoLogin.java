@@ -1,21 +1,14 @@
 package demo.secondouclogin;
 
-import com.itextpdf.text.DocumentException;
-import com.opencsv.exceptions.CsvValidationException;
-import javafx.application.Platform;
+
 import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.*;
 import laptop.controller.secondouclogin.ControllerLogin;
 import laptop.exception.IdException;
-import laptop.model.user.User;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.sql.SQLException;
-import java.util.Objects;
+
+import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -31,12 +24,15 @@ class TestDemoLogin {
     private static final ControllerVisualizza cV = new ControllerVisualizza();
     private static final ControllerScegliNegozio cSN = new ControllerScegliNegozio();
     private static final ControllerLogin cL=new ControllerLogin();
+    private static final ResourceBundle RBUTENE =ResourceBundle.getBundle("configurations/users");
+    private static final ResourceBundle RBCC =ResourceBundle.getBundle("configurations/cartaCredito");
+
 
     @Test
-    void testLoginAsUser() throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException, DocumentException, URISyntaxException {
+    void testLoginAsUser()  {
         vis.setTipologiaApplicazione("demo");
         //loggo come user
-        cL.login("giuliaConforto@gmail.eu","12345678Gc",MEMORIA);
+        cL.login(RBUTENE.getString("emailU"),RBUTENE.getString("passU"),MEMORIA);
         //acquisto normale
         vis.setTypeAsBook();
         //inizializzo lista
@@ -48,7 +44,7 @@ class TestDemoLogin {
         //scelgo quantita e prezzo
         cA.getPrezzo("4",MEMORIA);
         //prendo oggetto e crea fattura
-        cPCash.controlla(User.getInstance().getNome(),User.getInstance().getCognome(), "via papaveri 8","dopo le 18",MEMORIA);
+        cPCash.controlla(RBUTENE.getString("nomeU"),RBUTENE.getString("cognomeU"), "via papaveri 8","dopo le 18",MEMORIA);
         //scarico oggetto
         cD.scarica(vis.getType(),MEMORIA);
         //logout
@@ -56,10 +52,10 @@ class TestDemoLogin {
 
     }
     @Test
-    void testLoginAsScrittore() throws CsvValidationException, SQLException, IOException, IdException, ClassNotFoundException, DocumentException, URISyntaxException {
+    void testLoginAsScrittore()  {
         vis.setTipologiaApplicazione("demo");
         //loggo come user
-        cL.login("zerocalcare@gmail.com","Zerocalcare21",MEMORIA);
+        cL.login(RBUTENE.getString("emailS"),RBUTENE.getString("passS"),MEMORIA);
         //acquisto normale
         vis.setTypeAsMagazine();
         //inizializzo lista
@@ -71,7 +67,7 @@ class TestDemoLogin {
         //scelgo quantita e prezzo
         cA.getPrezzo("4",MEMORIA);
         //prendo oggetto e crea fattura
-        cPCash.controlla(User.getInstance().getNome(),User.getInstance().getCognome(), "piazza sempio snc","dopo le 9",MEMORIA);
+        cPCash.controlla(RBUTENE.getString("nomeU"),RBUTENE.getString("cognomeU"), "piazza sempio snc","dopo le 9",MEMORIA);
         //scarico oggetto
         cD.scarica(vis.getType(),MEMORIA);
         //logout
@@ -80,9 +76,9 @@ class TestDemoLogin {
     }
 
     @Test
-    void testLoginAsEditore() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException{
+    void testLoginAsEditore() throws  IdException{
         vis.setTipologiaApplicazione("demo");
-        cL.login("editore185@gmail.com","EdiP415",MEMORIA);
+        cL.login(RBUTENE.getString("emailE"),RBUTENE.getString("passE"),MEMORIA);
         vis.setTypeAsDaily();
         //inizializzo lista
         cHP.persistenza(MEMORIA);
@@ -96,9 +92,9 @@ class TestDemoLogin {
         //scelgo quantita e prezzo
         cA.getPrezzo("3",MEMORIA);
         //controllo correttezza cc
-        cPCC.correttezza("1952-7488-1111-5252","2030/09/09","841");
+        cPCC.correttezza(RBCC.getString("codice1"),RBCC.getString("data1").replace("-","/"),RBCC.getString("civ1"));
         //effettuo pagamento
-        cPCC.pagamentoCC(User.getInstance().getNome(),MEMORIA,User.getInstance().getCognome());
+        cPCC.pagamentoCC(RBUTENE.getString("nomeE"),MEMORIA,RBUTENE.getString("cognomeE"));
         //scarico oggetto
         cSN.getNegozi(MEMORIA);
         cSN.isOpen(MEMORIA,2);
@@ -109,17 +105,5 @@ class TestDemoLogin {
 
     }
 
-    @AfterAll
-    public static void teardown()
-    {
-        boolean status=false;
-        Platform.exit();
-        File path=new File("memory");
-        File[] files = path.listFiles();
-        for(int i = 0; i< Objects.requireNonNull(files).length; i++) {
 
-            status=files[i].delete();
-        }
-        assertTrue(status);
-    }
 }

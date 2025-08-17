@@ -1,13 +1,9 @@
 package laptop.controller.primoucacquista;
 
-import java.io.IOException;
-
 import java.sql.Date;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 
@@ -125,7 +121,7 @@ public class ControllerPagamentoCC {
 	
 
 
-	private PagamentoCartaCredito pagamentoLibroCC(String nome,String database,String cognome,String mail)  {
+	private PagamentoCartaCredito pagamentoLibroCC(String nome, String database, String cognome, String mail)  {
 		Libro l=new Libro();
 		l.setId(vis.getIdLibro());
 		int id=l.getId();
@@ -142,7 +138,7 @@ public class ControllerPagamentoCC {
 		return p;
 	}
 
-	private PagamentoCartaCredito pagamentoGiornaleCC(String nome,String database,String cognome,String mail)  {
+	private PagamentoCartaCredito pagamentoGiornaleCC(String nome, String database, String cognome, String mail)  {
 		Giornale g=new Giornale();
 		g.setId(vis.getIdGiornale());
 		int id=g.getId();
@@ -159,7 +155,7 @@ public class ControllerPagamentoCC {
 		return p;
 	}
 
-	private PagamentoCartaCredito pagamentoRivistaCC(String nome,String database,String cognome,String mail) {
+	private PagamentoCartaCredito pagamentoRivistaCC(String nome, String database, String cognome, String mail) {
 		Rivista r=new Rivista();
 		r.setId(vis.getIdRivista());
 		int id=r.getId();

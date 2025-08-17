@@ -1,13 +1,9 @@
 package laptop.database.primoucacquista.cartacredito;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.database.PersistenzaGenerale;
 import laptop.model.CartaDiCredito;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,23 +24,12 @@ public class PersistenzaCC {
 
          }
     public void inizializza()  {
-        getException();
         Logger.getLogger("inizializza persistenza cc").log(Level.INFO,"persistenza cc inizializza");
+
+        PersistenzaGenerale pG=new PersistenzaGenerale();
+        pG.getExcepptionInit("cartaCredito");
     }
 
 
-    private void getException()  {
-        try {
-            if (!Files.exists(Path.of("report/reportCartaCredito.csv"))) throw  new CsvValidationException("persistenza cc CSVException");
-            if (!Files.exists(Path.of("sql/tableCreate.sql"))) throw new SQLException("persistenza cc SQLException");
-        }catch (CsvValidationException e)
-        {
-            Logger.getLogger("getException persistenca cc csv").log(Level.SEVERE,"persistenza cc csv exception :",e);
-        }catch (SQLException e1)
-        {
-            Logger.getLogger("getException persistenca cc sql").log(Level.SEVERE," persistenza cc sql exception :",e1);
 
-        }
-
-    }
 }

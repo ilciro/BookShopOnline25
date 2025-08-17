@@ -41,9 +41,9 @@ import laptop.database.primoucacquista.libro.PersistenzaLibro;
 <span class="pc bpc" id="L41" title="1 of 4 branches missed.">		switch (type) {</span>
 			case &quot;libro&quot; -&gt; {
 
-<span class="pc bpc" id="L44" title="1 of 4 branches missed.">				switch (database) {</span>
-<span class="fc" id="L45">					case DATABASE -&gt; pL = new LibroDao();</span>
-<span class="fc" id="L46">					case FILE -&gt; pL = new CsvLibro();</span>
+<span class="pc bpc" id="L44" title="3 of 4 branches missed.">				switch (database) {</span>
+<span class="nc" id="L45">					case DATABASE -&gt; pL = new LibroDao();</span>
+<span class="nc" id="L46">					case FILE -&gt; pL = new CsvLibro();</span>
 <span class="fc" id="L47">					case MEMORIA -&gt; pL = new MemoriaLibro();</span>
 <span class="nc" id="L48">					default -&gt; Logger.getLogger(&quot;lista libro&quot;).log(Level.SEVERE, &quot;book persistency not correct !!&quot;);</span>
 				}
@@ -56,9 +56,9 @@ import laptop.database.primoucacquista.libro.PersistenzaLibro;
 
 
 			case &quot;giornale&quot; -&gt; {
-<span class="pc bpc" id="L59" title="1 of 4 branches missed.">				switch (database) {</span>
-<span class="fc" id="L60">					case DATABASE -&gt; pG = new GiornaleDao();</span>
-<span class="fc" id="L61">					case FILE -&gt; pG = new CsvGiornale();</span>
+<span class="pc bpc" id="L59" title="3 of 4 branches missed.">				switch (database) {</span>
+<span class="nc" id="L60">					case DATABASE -&gt; pG = new GiornaleDao();</span>
+<span class="nc" id="L61">					case FILE -&gt; pG = new CsvGiornale();</span>
 <span class="fc" id="L62">					 case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
 <span class="nc" id="L63">					default -&gt; Logger.getLogger(&quot;lista giornale&quot;).log(Level.SEVERE, &quot;daily persistency not correct !!&quot;);</span>
 				}
@@ -69,9 +69,9 @@ import laptop.database.primoucacquista.libro.PersistenzaLibro;
 
 
 			case &quot;rivista&quot; -&gt; {
-<span class="pc bpc" id="L72" title="1 of 4 branches missed.">				switch (database) {</span>
-<span class="fc" id="L73">					case DATABASE -&gt; pR = new RivistaDao();</span>
-<span class="fc" id="L74">					case FILE -&gt; pR = new CsvRivista();</span>
+<span class="pc bpc" id="L72" title="3 of 4 branches missed.">				switch (database) {</span>
+<span class="nc" id="L73">					case DATABASE -&gt; pR = new RivistaDao();</span>
+<span class="nc" id="L74">					case FILE -&gt; pR = new CsvRivista();</span>
 <span class="fc" id="L75">					case MEMORIA -&gt; pR = new MemoriaRivista();</span>
 <span class="nc" id="L76">					default -&gt; Logger.getLogger(&quot;lista rivista&quot;).log(Level.SEVERE, &quot;magazine persistency not correct !!&quot;);</span>
 				}

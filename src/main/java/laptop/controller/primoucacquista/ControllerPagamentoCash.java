@@ -1,12 +1,9 @@
 package laptop.controller.primoucacquista;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
 
 
@@ -33,7 +30,6 @@ import laptop.database.terzoucgestioneprofiloggetto.report.CsvReport;
 import laptop.database.terzoucgestioneprofiloggetto.report.MemoriaReport;
 import laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport;
 import laptop.database.terzoucgestioneprofiloggetto.report.ReportDao;
-import laptop.exception.IdException;
 import laptop.model.Report;
 import laptop.model.pagamento.PagamentoFattura;
 import laptop.model.raccolta.Giornale;
@@ -101,8 +97,11 @@ public class ControllerPagamentoCash {
 
         PagamentoFattura p = new PagamentoFattura(nome, cognome, via, com, vis.getSpesaT(), 0, id);
 		p.setTipoAcquisto(ritornaTipoOggetto(type,vis.getType()));
+
+
 		if(vis.getIsLogged())
 			p.setEmail(User.getInstance().getEmail());
+		else p.setEmail("");
 
 
 
@@ -112,6 +111,7 @@ public class ControllerPagamentoCash {
 		if(pF.inserisciPagamentoFattura(p))
 		{
 			Logger.getLogger("pagamento effettuato ").log(Level.INFO,"payment success with id . {0}", p.getIdFattura());
+			//database with triggers
 			if(type.equals(FILE)) pT=new PagamentoTotaleCsv();
 			else if(type.equals(MEMORIA)) pT=new PagamentoTotaleMemoria();
 			pT.inserisciPagamentoFattura(p);

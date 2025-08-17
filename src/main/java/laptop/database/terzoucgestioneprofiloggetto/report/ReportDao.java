@@ -110,7 +110,7 @@ public class ReportDao extends PersistenzaReport {
             }
 
         } catch (SQLException e) {
-            Logger.getLogger(" report ").log(Level.SEVERE, " REPORTL is empty :",e.getMessage());
+            Logger.getLogger(" report ").log(Level.SEVERE, " REPORTL is empty : {0}",e.getMessage());
         }
         return list;
     }

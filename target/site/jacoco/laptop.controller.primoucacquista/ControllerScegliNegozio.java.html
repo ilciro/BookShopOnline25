@@ -19,9 +19,9 @@ import java.util.logging.Logger;
 
 	
 	public ObservableList&lt;Negozio&gt; getNegozi(String type)  {
-<span class="pc bpc" id="L22" title="1 of 4 branches missed.">		switch (type) {</span>
-<span class="fc" id="L23">			case DATABASE -&gt; pN = new NegozioDao();</span>
-<span class="fc" id="L24">			case FILE -&gt; pN = new CsvNegozio();</span>
+<span class="pc bpc" id="L22" title="3 of 4 branches missed.">		switch (type) {</span>
+<span class="nc" id="L23">			case DATABASE -&gt; pN = new NegozioDao();</span>
+<span class="nc" id="L24">			case FILE -&gt; pN = new CsvNegozio();</span>
 <span class="fc" id="L25">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
 <span class="nc" id="L26">			default -&gt; Logger.getLogger(&quot;get negozi&quot;).log(Level.SEVERE,&quot;  empty list!!&quot;);</span>
 		}
@@ -31,9 +31,9 @@ import java.util.logging.Logger;
 
 	public boolean isOpen(String type,int id) {
 
-<span class="pc bpc" id="L34" title="1 of 4 branches missed.">		switch (type) {</span>
-<span class="fc" id="L35">			case DATABASE -&gt; pN = new NegozioDao();</span>
-<span class="fc" id="L36">			case FILE -&gt; pN = new CsvNegozio();</span>
+<span class="pc bpc" id="L34" title="3 of 4 branches missed.">		switch (type) {</span>
+<span class="nc" id="L35">			case DATABASE -&gt; pN = new NegozioDao();</span>
+<span class="nc" id="L36">			case FILE -&gt; pN = new CsvNegozio();</span>
 <span class="fc" id="L37">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
 <span class="nc" id="L38">			default -&gt; Logger.getLogger(&quot;is open&quot;).log(Level.SEVERE,&quot;  is open il null!!&quot;);</span>
 
@@ -42,9 +42,9 @@ import java.util.logging.Logger;
 	}
 	public boolean isValid(String type,int id)  {
 
-<span class="pc bpc" id="L45" title="1 of 4 branches missed.">		switch (type) {</span>
-<span class="fc" id="L46">			case DATABASE -&gt; pN = new NegozioDao();</span>
-<span class="fc" id="L47">			case FILE -&gt; pN = new CsvNegozio();</span>
+<span class="pc bpc" id="L45" title="3 of 4 branches missed.">		switch (type) {</span>
+<span class="nc" id="L46">			case DATABASE -&gt; pN = new NegozioDao();</span>
+<span class="nc" id="L47">			case FILE -&gt; pN = new CsvNegozio();</span>
 <span class="fc" id="L48">			case MEMORIA -&gt; pN = new MemoriaNegozio();</span>
 <span class="nc" id="L49">			default -&gt; Logger.getLogger(&quot;is valid&quot;).log(Level.SEVERE,&quot;  is open il null!!&quot;);</span>
 

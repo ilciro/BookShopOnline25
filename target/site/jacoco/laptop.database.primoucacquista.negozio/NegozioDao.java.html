@@ -13,7 +13,7 @@ import laptop.utilities.ConnToDb;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-<span class="fc" id="L16">public class NegozioDao extends PersistenzaNegozio{</span>
+<span class="nc" id="L16">public class NegozioDao extends PersistenzaNegozio{</span>
 	private String query;
 	private static final String ECCEZIONE=&quot;eccezione ottenuta:&quot;;
 
@@ -21,27 +21,27 @@ import javafx.collections.ObservableList;
 	public ObservableList&lt;Negozio&gt; getNegozi() {
 		Negozio shop;
 		 ObservableList&lt;Negozio&gt; listOfNegozi;
-<span class="fc" id="L24">		listOfNegozi=FXCollections.observableArrayList();</span>
+<span class="nc" id="L24">		listOfNegozi=FXCollections.observableArrayList();</span>
 
-<span class="fc" id="L26">		query=&quot;SELECT  nome,via,isValid,isOpen from negozio&quot;;</span>
+<span class="nc" id="L26">		query=&quot;SELECT  nome,via,isValid,isOpen from negozio&quot;;</span>
 				
 
-<span class="fc" id="L29">			 try(Connection conn= ConnToDb.connectionToDB();</span>
-<span class="fc" id="L30">			 PreparedStatement prepQ=conn.prepareStatement(query))</span>
+<span class="nc" id="L29">			 try(Connection conn= ConnToDb.connectionToDB();</span>
+<span class="nc" id="L30">			 PreparedStatement prepQ=conn.prepareStatement(query))</span>
 			 {
-<span class="fc" id="L32">	 			ResultSet rs=prepQ.executeQuery();</span>
+<span class="nc" id="L32">	 			ResultSet rs=prepQ.executeQuery();</span>
 			
-<span class="fc bfc" id="L34" title="All 2 branches covered.">				while (rs.next())</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">				while (rs.next())</span>
 				{
-<span class="fc" id="L36">					shop = new Negozio(rs.getString(1),rs.getString(2),rs.getBoolean(3),rs.getBoolean(4));</span>
-<span class="fc" id="L37">					listOfNegozi.add(shop);</span>
+<span class="nc" id="L36">					shop = new Negozio(rs.getString(1),rs.getString(2),rs.getBoolean(3),rs.getBoolean(4));</span>
+<span class="nc" id="L37">					listOfNegozi.add(shop);</span>
 				}
 <span class="nc" id="L39">			 }catch(SQLException e)</span>
 			 {
 <span class="nc" id="L41">				java.util.logging.Logger.getLogger(&quot;get negozi&quot;).log(Level.INFO, ECCEZIONE, e);</span>
-<span class="fc" id="L42">			 }</span>
+<span class="nc" id="L42">			 }</span>
 		
-<span class="fc" id="L44">		return listOfNegozi;</span>
+<span class="nc" id="L44">		return listOfNegozi;</span>
 	}
 	
 
@@ -51,27 +51,27 @@ import javafx.collections.ObservableList;
 	// controllo che il negozio sia aperto
 	public boolean checkOpen(Negozio  shop) {
 		int aperto;
-<span class="fc" id="L54">		boolean state=false;</span>
-<span class="fc" id="L55">		query=&quot;select isOpen from negozio where nome=?&quot;;</span>
-<span class="fc" id="L56">		try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L57">				PreparedStatement prepQ=conn.prepareCall(query))</span>
+<span class="nc" id="L54">		boolean state=false;</span>
+<span class="nc" id="L55">		query=&quot;select isOpen from negozio where nome=?&quot;;</span>
+<span class="nc" id="L56">		try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="nc" id="L57">				PreparedStatement prepQ=conn.prepareCall(query))</span>
 		{
-<span class="fc" id="L59">			prepQ.setString(1, shop.getNome());</span>
-<span class="fc" id="L60">			ResultSet rs=prepQ.executeQuery();</span>
-<span class="fc bfc" id="L61" title="All 2 branches covered.">			while(rs.next()){</span>
-<span class="fc" id="L62">				aperto=rs.getInt(1);</span>
-<span class="pc bpc" id="L63" title="1 of 2 branches missed.">				if(aperto==1)</span>
-<span class="fc" id="L64">					state=true;</span>
+<span class="nc" id="L59">			prepQ.setString(1, shop.getNome());</span>
+<span class="nc" id="L60">			ResultSet rs=prepQ.executeQuery();</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">			while(rs.next()){</span>
+<span class="nc" id="L62">				aperto=rs.getInt(1);</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">				if(aperto==1)</span>
+<span class="nc" id="L64">					state=true;</span>
 				
 			}
 <span class="nc" id="L67">		}catch(SQLException e)</span>
 		{
 <span class="nc" id="L69">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, ECCEZIONE, e);</span>
-<span class="fc" id="L70">		}</span>
+<span class="nc" id="L70">		}</span>
 			 
 			
 		
-<span class="fc" id="L74">		return state;</span>
+<span class="nc" id="L74">		return state;</span>
 	}
 
 	
@@ -79,20 +79,20 @@ import javafx.collections.ObservableList;
 	@Override
 	public boolean checkRitiro(Negozio shop)
 	{
-<span class="fc" id="L82">		query=&quot;select isValid from negozio where nome=?&quot;;</span>
-<span class="fc" id="L83">		boolean state=false;</span>
+<span class="nc" id="L82">		query=&quot;select isValid from negozio where nome=?&quot;;</span>
+<span class="nc" id="L83">		boolean state=false;</span>
 		int disp;
 		
-<span class="fc" id="L86">		try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L87">				PreparedStatement prepQ=conn.prepareStatement(query))</span>
+<span class="nc" id="L86">		try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="nc" id="L87">				PreparedStatement prepQ=conn.prepareStatement(query))</span>
 		{
-<span class="fc" id="L89">			prepQ.setString(1, shop.getNome());</span>
-<span class="fc" id="L90">			ResultSet rs=prepQ.executeQuery();</span>
-<span class="fc bfc" id="L91" title="All 2 branches covered.">			while ( rs.next() ) {</span>
+<span class="nc" id="L89">			prepQ.setString(1, shop.getNome());</span>
+<span class="nc" id="L90">			ResultSet rs=prepQ.executeQuery();</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">			while ( rs.next() ) {</span>
 
-<span class="fc" id="L93">					disp=rs.getInt(1);</span>
-<span class="pc bpc" id="L94" title="1 of 2 branches missed.">					if (disp==1)</span>
-<span class="fc" id="L95">						state=true;</span>
+<span class="nc" id="L93">					disp=rs.getInt(1);</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">					if (disp==1)</span>
+<span class="nc" id="L95">						state=true;</span>
 				
 						
 			}
@@ -100,16 +100,16 @@ import javafx.collections.ObservableList;
 <span class="nc" id="L100">		}catch(SQLException e)</span>
 		{
 <span class="nc" id="L102">			java.util.logging.Logger.getLogger(&quot;Test Eccezione&quot;).log(Level.INFO, ECCEZIONE, e);</span>
-<span class="fc" id="L103">		}</span>
+<span class="nc" id="L103">		}</span>
 			
-<span class="fc" id="L105">		return state;</span>
+<span class="nc" id="L105">		return state;</span>
 	}
 
 	@Override
 	public void initializza()  {
-<span class="fc" id="L110">		super.initializza();</span>
-<span class="fc" id="L111">		DaoInitialize daoI=new DaoInitialize();</span>
-<span class="fc" id="L112">		daoI.inizializza(&quot;negozio&quot;);</span>
-<span class="fc" id="L113">	}</span>
+<span class="nc" id="L110">		super.initializza();</span>
+<span class="nc" id="L111">		DaoInitialize daoI=new DaoInitialize();</span>
+<span class="nc" id="L112">		daoI.inizializza(&quot;negozio&quot;);</span>
+<span class="nc" id="L113">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

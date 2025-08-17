@@ -1,21 +1,12 @@
 package demo.primoucacquista;
 
-import com.itextpdf.text.DocumentException;
-import com.opencsv.exceptions.CsvValidationException;
-import javafx.application.Platform;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.*;
 import laptop.exception.IdException;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.sql.SQLException;
-import java.util.Objects;
+import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -32,8 +23,11 @@ class TestDemoAcquista {
     private static final ControllerVisualizza cV=new ControllerVisualizza();
     private static final ControllerScegliNegozio cSN=new ControllerScegliNegozio();
     private static final ControllerAnnullaPagamento cAP=new ControllerAnnullaPagamento();
-     @Test
-    void testAcquistaLibroCashDownload() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException, DocumentException, URISyntaxException {
+    private static final ResourceBundle RBUTENE =ResourceBundle.getBundle("configurations/users");
+    private static final ResourceBundle RBCC =ResourceBundle.getBundle("configurations/cartaCredito");
+
+    @Test
+    void testAcquistaLibroCashDownload()  {
          vis.setTipologiaApplicazione("demo");
          vis.setTypeAsBook();
          //inizializzo lista
@@ -45,13 +39,13 @@ class TestDemoAcquista {
          //scelgo quantita e prezzo
          cA.getPrezzo("3",MEMORIA);
          //prendo oggetto e crea fattura
-         cPCash.controlla("prova","prova","via prova","",MEMORIA);
+         cPCash.controlla(RBUTENE.getString("prova"),RBUTENE.getString("prova"),"via"+RBUTENE.getString("prova"),"",MEMORIA);
          //scarico oggetto
          cD.scarica(vis.getType(),MEMORIA);
 
      }
     @Test
-    void testAcquistaGiornaleCCNegozio() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException{
+    void testAcquistaGiornaleCCNegozio() throws IdException {
         vis.setTipologiaApplicazione("demo");
         vis.setTypeAsDaily();
         //inizializzo lista
@@ -66,9 +60,9 @@ class TestDemoAcquista {
         //scelgo quantita e prezzo
         cA.getPrezzo("3",MEMORIA);
         //controllo correttezza cc
-        cPCC.correttezza("1952-7488-1111-5252","2030/09/09","841");
+        cPCC.correttezza(RBCC.getString("codice"),RBCC.getString("data").replace("-","/"),RBCC.getString("civ"));
         //effettuo pagamento
-        cPCC.pagamentoCC("prova",MEMORIA,"prova");
+        cPCC.pagamentoCC(RBUTENE.getString("prova"),MEMORIA,RBUTENE.getString("prova"));
         //scarico oggetto
         cSN.getNegozi(MEMORIA);
         boolean status= cSN.isOpen(MEMORIA,2)&&cSN.isValid(MEMORIA,2);
@@ -76,7 +70,7 @@ class TestDemoAcquista {
 
     }
     @Test
-    void testAnnullaRivistaCashDownload() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
+    void testAnnullaRivistaCashDownload()  {
         vis.setTipologiaApplicazione("demo");
         vis.setTypeAsMagazine();
         vis.setMetodoP("cash");
@@ -89,7 +83,7 @@ class TestDemoAcquista {
         //scelgo quantita e prezzo
         cA.getPrezzo("3",MEMORIA);
         //prendo oggetto e crea fattura
-        cPCash.controlla("prova","prova","via prova","",MEMORIA);
+        cPCash.controlla(RBUTENE.getString("prova"),RBUTENE.getString("prova"),"via"+RBUTENE.getString("prova"),"",MEMORIA);
         //annullo pagamento -> prendo lista
         PagamentoFattura pf=cAP.getFattura(MEMORIA).get(0);
         //cancello fattura
@@ -98,7 +92,7 @@ class TestDemoAcquista {
     }
 
     @Test
-    void testAnnullaGiornaleCCredito() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException {
+    void testAnnullaGiornaleCCredito() throws IdException {
         vis.setTipologiaApplicazione("demo");
         vis.setTypeAsDaily();
         vis.setMetodoP("cCredito");
@@ -114,7 +108,7 @@ class TestDemoAcquista {
         //scelgo quantita e prezzo
         cA.getPrezzo("3",MEMORIA);
         //controllo correttezza cc
-        cPCC.correttezza("1952-7488-1111-5252","2030/09/09","841");
+        cPCC.correttezza(RBCC.getString("codice1"),RBCC.getString("data1").replace("-","/"),RBCC.getString("civ1"));
         //effettuo pagamento
         cPCC.pagamentoCC("prova",MEMORIA,"prova");
         //annullo pagamento
@@ -125,18 +119,6 @@ class TestDemoAcquista {
 
 
 
-     @AfterAll
-     public static void teardown()
-     {
-         boolean status=false;
-         Platform.exit();
-         File path=new File("memory");
-         File[] files = path.listFiles();
-         for(int i = 0; i< Objects.requireNonNull(files).length; i++) {
 
-             status=files[i].delete();
-         }
-         assertTrue(status);
-     }
 
 }

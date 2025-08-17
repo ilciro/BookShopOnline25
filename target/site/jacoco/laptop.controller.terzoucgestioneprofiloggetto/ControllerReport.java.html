@@ -13,11 +13,11 @@ import laptop.model.user.TempUser;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L16">public class ControllerReport {</span>
+<span class="nc" id="L16">public class ControllerReport {</span>
     private static final String DATABASE=&quot;database&quot;;
     private static final String FILE=&quot;file&quot;;
     private static final String MEMEORIA=&quot;memoria&quot;;
-<span class="fc" id="L20">    private final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+<span class="nc" id="L20">    private final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
     private PersistenzaReport pRepo;
 
 
@@ -25,21 +25,21 @@ import java.util.logging.Logger;
 
     public ObservableList&lt;Report&gt; reportTotale(String persistenza)  {
 
-<span class="fc" id="L28">        ObservableList&lt;Report&gt; list=FXCollections.observableArrayList();</span>
+<span class="nc" id="L28">        ObservableList&lt;Report&gt; list=FXCollections.observableArrayList();</span>
 
-<span class="pc bpc" id="L30" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="nc bnc" id="L30" title="All 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="fc" id="L32">            case DATABASE -&gt; pRepo=new ReportDao();</span>
-<span class="fc" id="L33">            case FILE -&gt; pRepo=new CsvReport();</span>
+<span class="nc" id="L32">            case DATABASE -&gt; pRepo=new ReportDao();</span>
+<span class="nc" id="L33">            case FILE -&gt; pRepo=new CsvReport();</span>
 <span class="nc" id="L34">            case MEMEORIA -&gt; pRepo=new MemoriaReport();</span>
 <span class="nc" id="L35">            default -&gt; Logger.getLogger(&quot;report totale&quot;).log(Level.SEVERE,&quot; error in persitency!!&quot;);</span>
         }
-<span class="fc" id="L37">        pRepo.inizializza();</span>
-<span class="fc" id="L38">        list.addAll(pRepo.report(&quot;libro&quot;));</span>
-<span class="fc" id="L39">        list.addAll(pRepo.report(&quot;giornale&quot;));</span>
-<span class="fc" id="L40">        list.addAll(pRepo.report(&quot;rivista&quot;));</span>
+<span class="nc" id="L37">        pRepo.inizializza();</span>
+<span class="nc" id="L38">        list.addAll(pRepo.report(&quot;libro&quot;));</span>
+<span class="nc" id="L39">        list.addAll(pRepo.report(&quot;giornale&quot;));</span>
+<span class="nc" id="L40">        list.addAll(pRepo.report(&quot;rivista&quot;));</span>
 
-<span class="fc" id="L42">        return list;</span>
+<span class="nc" id="L42">        return list;</span>
 
     }
 
@@ -104,16 +104,16 @@ import java.util.logging.Logger;
 
     }
     public ObservableList&lt;TempUser&gt; reportUser(String persistenza) {
-<span class="fc" id="L107">        ObservableList&lt;TempUser&gt; list=FXCollections.observableArrayList();</span>
-<span class="pc bpc" id="L108" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="nc" id="L107">        ObservableList&lt;TempUser&gt; list=FXCollections.observableArrayList();</span>
+<span class="nc bnc" id="L108" title="All 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="fc" id="L110">            case DATABASE-&gt;pRepo=new ReportDao();</span>
-<span class="fc" id="L111">            case FILE -&gt; pRepo=new CsvReport();</span>
+<span class="nc" id="L110">            case DATABASE-&gt;pRepo=new ReportDao();</span>
+<span class="nc" id="L111">            case FILE -&gt; pRepo=new CsvReport();</span>
 <span class="nc" id="L112">            case MEMEORIA -&gt; pRepo=new MemoriaReport();</span>
 <span class="nc" id="L113">            default -&gt; Logger.getLogger(&quot;reportR&quot;).log(Level.SEVERE,&quot;report user not created!!&quot;);</span>
         }
-<span class="fc" id="L115">       list.addAll(pRepo.reportU());</span>
-<span class="fc" id="L116">        return list;</span>
+<span class="nc" id="L115">       list.addAll(pRepo.reportU());</span>
+<span class="nc" id="L116">        return list;</span>
     }
 
 

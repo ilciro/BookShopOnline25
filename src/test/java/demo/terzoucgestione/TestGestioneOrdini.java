@@ -1,24 +1,18 @@
 package demo.terzoucgestione;
 
-import com.itextpdf.text.DocumentException;
-import com.opencsv.exceptions.CsvValidationException;
+
 import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.*;
 import laptop.controller.secondouclogin.ControllerLogin;
 import laptop.controller.terzoucgestioneprofiloggetto.ControllerVisualizzaOrdini;
-import laptop.exception.IdException;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
-class TestGestioneOrdini {
+public class TestGestioneOrdini {
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
-    private static final String MEMORIA="memoria";
     private static final ControllerHomePage cHP=new ControllerHomePage();
     private static final ControllerCompravendita cCV=new ControllerCompravendita();
     private static final ControllerAcquista cA=new ControllerAcquista();
@@ -27,73 +21,51 @@ class TestGestioneOrdini {
     private static final ControllerPagamentoCC cPCC=new ControllerPagamentoCC();
     private static final ControllerVisualizza cV=new ControllerVisualizza();
     private static final ControllerScegliNegozio cSN=new ControllerScegliNegozio();
-    private static final ControllerAnnullaPagamento cAP=new ControllerAnnullaPagamento();
     private static final ControllerLogin cL=new ControllerLogin();
     private static final ControllerVisualizzaOrdini cVO=new ControllerVisualizzaOrdini();
+    private static final ResourceBundle RBUTENTE =ResourceBundle.getBundle("configurations/users");
+    private static final ResourceBundle RBCC =ResourceBundle.getBundle("configurations/cartaCredito");
+    private static final String MEMORIA="memoria";
+
+
+    //todo si rompe qui
+
+
 
     @Test
-    void testAnnullaOrdineCash() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException, DocumentException, URISyntaxException {
+    void testAnnullaOrdineCashByUserLogged() {
         vis.setTipologiaApplicazione("demo");
-        cL.login("giuliaConforto@gmail.eu","12345678Gc",MEMORIA);
-        vis.setTypeAsMagazine();
+        //homepage con login
+        cL.login(RBUTENTE.getString("emailU"),RBUTENTE.getString("passU"),MEMORIA);
+        // login fatto-> home page
+        //scelgo libro
+        vis.setTypeAsBook();
+        cCV.getLista(vis.getType(),MEMORIA);
+        //scelgo libro 10
+        vis.setIdLibro(10);
+        //acquista
+        cA.getNomeCostoDisp(MEMORIA);
+        cA.getPrezzo("5",MEMORIA);
+        //cash
         vis.setMetodoP("cash");
-        //inizializzo lista
-        cHP.persistenza(MEMORIA);
-        //scelgo id
-        cCV.checkId(3,MEMORIA,vis.getType());
-        //setto id
-        vis.setIdRivista(1);
-        //scelgo quantita e prezzo
-        cA.getPrezzo("3",MEMORIA);
-        //prendo oggetto e crea fattura
-        cPCash.controlla(cPCash.getInfo()[0],cPCash.getInfo()[1],"via prova","",MEMORIA);
-        //scarico
+        //pagamento fattura
+        cPCash.controlla(RBUTENTE.getString("nomeU"),RBUTENTE.getString("cognomeU"),"via papaveri 152","dopo le 13",MEMORIA);
+        //download
         cD.scarica(vis.getType(),MEMORIA);
-        //prendo lista
-        for(int i=0;i<cVO.getListaFattura(MEMORIA).size();i++)
-        {
-            cVO.cancellaPagamento(cVO.getListaFattura(MEMORIA).get(0).getIdFattura(), MEMORIA);
-        }
-        //logout
+        //torno ad home page da loggato
+        //prendo fattura
+        int id=cVO.getListaFattura(MEMORIA).get(cVO.getListaFattura(MEMORIA).size()-1).getIdFattura();
+        //cancello ordine
+         cVO.cancellaPagamento(id,MEMORIA);
         assertTrue(cHP.logout());
 
 
 
 
     }
-    @Test
-    void testAnnullaOrdineCredito() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, IdException { vis.setTipologiaApplicazione("demo");
-        vis.setTipologiaApplicazione("demo");
-        cL.login("giuliaConforto@gmail.eu","12345678Gc",MEMORIA);
-        vis.setTypeAsMagazine();
-        vis.setMetodoP("cCredito");
-        //inizializzo lista
-        cHP.persistenza(MEMORIA);
-        //scelgo id
-        cCV.checkId(3,MEMORIA,vis.getType());
-        //setto id
-        vis.setIdRivista(3);
-        //visualizza
-        cV.getID();
-        cV.getListRivista(MEMORIA);
-        //scelgo quantita e prezzo
-        cA.getPrezzo("3",MEMORIA);
-        //controllo correttezza cc
-        cPCC.correttezza("1952-7488-1111-5252","2030/09/09","841");
-        //effettuo pagamento
-        cPCC.pagamentoCC("prova",MEMORIA,"prova");
-        //scarico oggetto
-        cSN.getNegozi(MEMORIA);
-        //conbtrollo negozio
-         cSN.isOpen(MEMORIA,2);
-         cSN.isValid(MEMORIA,2);
-        for(int i=0;i<cVO.getListaCC(MEMORIA).size();i++)
-        {
-            cVO.cancellaPagamento(cVO.getListaCC(MEMORIA).get(0).getIdPagCC(), MEMORIA);
-        }
-        //logout
-        assertTrue(cHP.logout());
 
-    }
+    //fare quello annulla cc
+
+
 
 }

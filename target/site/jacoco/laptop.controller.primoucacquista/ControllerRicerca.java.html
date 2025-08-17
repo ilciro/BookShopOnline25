@@ -29,7 +29,7 @@ import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L32">public class ControllerRicerca {</span>
+<span class="nc" id="L32">public class ControllerRicerca {</span>
 
 
     private static final String DATABASE=&quot;database&quot;;
@@ -42,91 +42,91 @@ import java.util.logging.Logger;
     private PersistenzaRivista pR;
     private PersistenzaUtente pU;
 
-<span class="fc" id="L45">    private static final User u= User.getInstance();</span>
+<span class="nc" id="L45">    private static final User u= User.getInstance();</span>
 
 
     public ObservableList&lt;Raccolta&gt; listaLibri(String nome, String persistenza)  {
 
-<span class="fc" id="L50">        ObservableList&lt;Raccolta&gt; listaR=FXCollections.observableArrayList();</span>
-<span class="pc bpc" id="L51" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="nc" id="L50">        ObservableList&lt;Raccolta&gt; listaR=FXCollections.observableArrayList();</span>
+<span class="nc bnc" id="L51" title="All 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="fc" id="L53">            case DATABASE -&gt; pL=new LibroDao();</span>
-<span class="fc" id="L54">            case FILE -&gt; pL=new CsvLibro();</span>
+<span class="nc" id="L53">            case DATABASE -&gt; pL=new LibroDao();</span>
+<span class="nc" id="L54">            case FILE -&gt; pL=new CsvLibro();</span>
 <span class="nc" id="L55">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
 <span class="nc" id="L56">            default -&gt; Logger.getLogger(&quot;id oggetto libro&quot;).log(Level.SEVERE,&quot; id book in null or zero&quot;);</span>
         }
-<span class="fc" id="L58">        Libro l=new Libro();</span>
-<span class="fc" id="L59">        l.setTitolo(nome);</span>
-<span class="fc" id="L60">        l.setEditore(nome);</span>
-<span class="fc" id="L61">        l.setAutore(nome);</span>
-<span class="fc bfc" id="L62" title="All 2 branches covered.">        for(int i=0;i&lt;pL.getLibri().size();i++)</span>
+<span class="nc" id="L58">        Libro l=new Libro();</span>
+<span class="nc" id="L59">        l.setTitolo(nome);</span>
+<span class="nc" id="L60">        l.setEditore(nome);</span>
+<span class="nc" id="L61">        l.setAutore(nome);</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        for(int i=0;i&lt;pL.getLibri().size();i++)</span>
         {
-<span class="pc bpc" id="L64" title="1 of 2 branches missed.">            if(pL.getLibri().get(i).getId()==l.getId()</span>
-<span class="fc bfc" id="L65" title="All 2 branches covered.">                    || pL.getLibri().get(i).getTitolo().equals(l.getTitolo())</span>
-<span class="fc bfc" id="L66" title="All 2 branches covered.">                    || pL.getLibri().get(i).getAutore().equals(l.getAutore())</span>
-<span class="fc bfc" id="L67" title="All 2 branches covered.">                    || pL.getLibri().get(i).getEditore().equals(l.getEditore()))</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">            if(pL.getLibri().get(i).getId()==l.getId()</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">                    || pL.getLibri().get(i).getTitolo().equals(l.getTitolo())</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">                    || pL.getLibri().get(i).getAutore().equals(l.getAutore())</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">                    || pL.getLibri().get(i).getEditore().equals(l.getEditore()))</span>
             {
 
-<span class="fc" id="L70">                listaR.add(pL.getLibri().get(i));</span>
+<span class="nc" id="L70">                listaR.add(pL.getLibri().get(i));</span>
             }
         }
-<span class="fc" id="L73">        return FXCollections.observableArrayList(listaR);</span>
+<span class="nc" id="L73">        return FXCollections.observableArrayList(listaR);</span>
 
     }
 
     public ObservableList&lt;Raccolta&gt; listaGiornali(String nome, String persistenza)  {
 
-<span class="fc" id="L79">        ObservableList&lt;Raccolta&gt; listaR=FXCollections.observableArrayList();</span>
-<span class="pc bpc" id="L80" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="nc" id="L79">        ObservableList&lt;Raccolta&gt; listaR=FXCollections.observableArrayList();</span>
+<span class="nc bnc" id="L80" title="All 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="fc" id="L82">            case DATABASE -&gt; pG=new GiornaleDao();</span>
-<span class="fc" id="L83">            case FILE -&gt; pG=new CsvGiornale();</span>
+<span class="nc" id="L82">            case DATABASE -&gt; pG=new GiornaleDao();</span>
+<span class="nc" id="L83">            case FILE -&gt; pG=new CsvGiornale();</span>
 <span class="nc" id="L84">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
 <span class="nc" id="L85">            default -&gt; Logger.getLogger(&quot;id oggetto giornale&quot;).log(Level.SEVERE,&quot; id daily in null or zero&quot;);</span>
         }
-<span class="fc" id="L87">        Giornale g=new Giornale();</span>
-<span class="fc" id="L88">        g.setTitolo(nome);</span>
-<span class="fc" id="L89">        g.setEditore(nome);</span>
+<span class="nc" id="L87">        Giornale g=new Giornale();</span>
+<span class="nc" id="L88">        g.setTitolo(nome);</span>
+<span class="nc" id="L89">        g.setEditore(nome);</span>
 
-<span class="fc bfc" id="L91" title="All 2 branches covered.">        for(int i=0;i&lt;pG.getGiornali().size();i++)</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        for(int i=0;i&lt;pG.getGiornali().size();i++)</span>
         {
-<span class="pc bpc" id="L93" title="1 of 2 branches missed.">            if(pG.getGiornali().get(i).getId()==g.getId()</span>
-<span class="fc bfc" id="L94" title="All 2 branches covered.">                    || pG.getGiornali().get(i).getTitolo().equals(g.getTitolo())</span>
-<span class="fc bfc" id="L95" title="All 2 branches covered.">                    || pG.getGiornali().get(i).getEditore().equals(g.getEditore()))</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">            if(pG.getGiornali().get(i).getId()==g.getId()</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">                    || pG.getGiornali().get(i).getTitolo().equals(g.getTitolo())</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">                    || pG.getGiornali().get(i).getEditore().equals(g.getEditore()))</span>
             {
 
-<span class="fc" id="L98">                listaR.add(pG.getGiornali().get(i));</span>
+<span class="nc" id="L98">                listaR.add(pG.getGiornali().get(i));</span>
             }
         }
-<span class="fc" id="L101">        return FXCollections.observableArrayList(listaR);</span>
+<span class="nc" id="L101">        return FXCollections.observableArrayList(listaR);</span>
 
     }
     public ObservableList&lt;Raccolta&gt; listaRiviste(String nome, String persistenza)  {
 
-<span class="fc" id="L106">        ObservableList&lt;Raccolta&gt; listaR=FXCollections.observableArrayList();</span>
-<span class="pc bpc" id="L107" title="3 of 4 branches missed.">        switch (persistenza)</span>
+<span class="nc" id="L106">        ObservableList&lt;Raccolta&gt; listaR=FXCollections.observableArrayList();</span>
+<span class="nc bnc" id="L107" title="All 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="fc" id="L109">            case DATABASE -&gt; pR=new RivistaDao();</span>
+<span class="nc" id="L109">            case DATABASE -&gt; pR=new RivistaDao();</span>
 <span class="nc" id="L110">            case FILE -&gt; pR=new CsvRivista();</span>
 <span class="nc" id="L111">            case MEMORIA -&gt; pR=new MemoriaRivista();</span>
 <span class="nc" id="L112">            default -&gt; Logger.getLogger(&quot;id oggetto rivista&quot;).log(Level.SEVERE,&quot; id magazine in null or zero&quot;);</span>
         }
-<span class="fc" id="L114">        Rivista r=new Rivista();</span>
-<span class="fc" id="L115">        r.setTitolo(nome);</span>
-<span class="fc" id="L116">        r.setEditore(nome);</span>
-<span class="fc" id="L117">        r.setAutore(nome);</span>
-<span class="fc bfc" id="L118" title="All 2 branches covered.">        for(int i=0;i&lt;pR.getRiviste().size();i++)</span>
+<span class="nc" id="L114">        Rivista r=new Rivista();</span>
+<span class="nc" id="L115">        r.setTitolo(nome);</span>
+<span class="nc" id="L116">        r.setEditore(nome);</span>
+<span class="nc" id="L117">        r.setAutore(nome);</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">        for(int i=0;i&lt;pR.getRiviste().size();i++)</span>
         {
-<span class="pc bpc" id="L120" title="1 of 2 branches missed.">            if(pR.getRiviste().get(i).getId()==r.getId()</span>
-<span class="fc bfc" id="L121" title="All 2 branches covered.">                    || pR.getRiviste().get(i).getTitolo().equals(r.getTitolo())</span>
-<span class="fc bfc" id="L122" title="All 2 branches covered.">                    || pR.getRiviste().get(i).getAutore().equals(r.getAutore())</span>
-<span class="fc bfc" id="L123" title="All 2 branches covered.">                    || pR.getRiviste().get(i).getEditore().equals(r.getEditore()))</span>
+<span class="nc bnc" id="L120" title="All 2 branches missed.">            if(pR.getRiviste().get(i).getId()==r.getId()</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">                    || pR.getRiviste().get(i).getTitolo().equals(r.getTitolo())</span>
+<span class="nc bnc" id="L122" title="All 2 branches missed.">                    || pR.getRiviste().get(i).getAutore().equals(r.getAutore())</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">                    || pR.getRiviste().get(i).getEditore().equals(r.getEditore()))</span>
             {
 
-<span class="fc" id="L126">                listaR.add(pR.getRiviste().get(i));</span>
+<span class="nc" id="L126">                listaR.add(pR.getRiviste().get(i));</span>
             }
         }
-<span class="fc" id="L129">        return FXCollections.observableArrayList(listaR);</span>
+<span class="nc" id="L129">        return FXCollections.observableArrayList(listaR);</span>
 
     }
 

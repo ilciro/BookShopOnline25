@@ -1,5 +1,4 @@
 package laptop.database.secondouclogin.users;
-import java.io.*;
 import java.sql.*;
 import java.time.LocalDate;
 
@@ -7,10 +6,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
+import laptop.database.DaoInitialize;
 import laptop.utilities.ConnToDb;
 import laptop.model.user.TempUser;
 
@@ -120,7 +119,9 @@ public class UsersDao extends PersistenzaUtente {
 
 	@Override
 	public void initializza() {
-	super.initializza();
+	Logger.getLogger("inizializza users dao").log(Level.INFO,"initialize users dao");
+		DaoInitialize daoI=new DaoInitialize();
+		daoI.inizializza("utenti");
     }
 
 

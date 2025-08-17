@@ -15,10 +15,10 @@ import java.util.logging.Logger;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
-<span class="fc" id="L18">public class CsvNegozio extends PersistenzaNegozio{</span>
+<span class="nc" id="L18">public class CsvNegozio extends PersistenzaNegozio{</span>
     private static final String LOCATIONEGOZIO=&quot;report/reportNegozio.csv&quot;;
     private static final String NEGOZIOP=&quot;src/main/resources/csvfiles/negozio.csv&quot;;
-<span class="fc" id="L21">    private final File fdn=new File(LOCATIONEGOZIO);</span>
+<span class="nc" id="L21">    private final File fdn=new File(LOCATIONEGOZIO);</span>
 
 
     private static final int GETINDEXNEGOZIOID = 0;
@@ -30,25 +30,25 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
     @Override
     public ObservableList&lt;Negozio&gt; getNegozi()  {
-<span class="fc" id="L33">        return retrieveNegozi(this.fdn);</span>
+<span class="nc" id="L33">        return retrieveNegozi(this.fdn);</span>
     }
     private static synchronized ObservableList&lt;Negozio&gt; retrieveNegozi(File fd)  {
-<span class="fc" id="L36">        ObservableList&lt;Negozio&gt; gList=  FXCollections.observableArrayList();</span>
-<span class="fc" id="L37">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
+<span class="nc" id="L36">        ObservableList&lt;Negozio&gt; gList=  FXCollections.observableArrayList();</span>
+<span class="nc" id="L37">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
             String[] gVector;
 
-<span class="fc bfc" id="L40" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
 
-<span class="fc" id="L42">                Negozio n=new Negozio();</span>
-<span class="fc" id="L43">                n.setId(Integer.parseInt(gVector[GETINDEXNEGOZIOID]));</span>
-<span class="fc" id="L44">                n.setNome(gVector[GETINDEXNEGOZIONOME]);</span>
-<span class="fc" id="L45">                n.setVia(gVector[GETINDEXNEGOZIOVIA]);</span>
-<span class="fc" id="L46">                n.setIsOpen(Boolean.parseBoolean(gVector[GETINDEXNEGOZIOISOPEN]));</span>
-<span class="fc" id="L47">                n.setIsValid(Boolean.parseBoolean(gVector[GETINDEXNEGOZIOISVALID]));</span>
-<span class="fc" id="L48">                gList.add(n);</span>
+<span class="nc" id="L42">                Negozio n=new Negozio();</span>
+<span class="nc" id="L43">                n.setId(Integer.parseInt(gVector[GETINDEXNEGOZIOID]));</span>
+<span class="nc" id="L44">                n.setNome(gVector[GETINDEXNEGOZIONOME]);</span>
+<span class="nc" id="L45">                n.setVia(gVector[GETINDEXNEGOZIOVIA]);</span>
+<span class="nc" id="L46">                n.setIsOpen(Boolean.parseBoolean(gVector[GETINDEXNEGOZIOISOPEN]));</span>
+<span class="nc" id="L47">                n.setIsValid(Boolean.parseBoolean(gVector[GETINDEXNEGOZIOISVALID]));</span>
+<span class="nc" id="L48">                gList.add(n);</span>
 
-<span class="fc" id="L50">            }</span>
-<span class="pc bpc" id="L51" title="1 of 2 branches missed.">            if (gList.isEmpty()) {</span>
+<span class="nc" id="L50">            }</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">            if (gList.isEmpty()) {</span>
 <span class="nc" id="L52">                throw new IdException(&quot;list libro is empty&quot;);</span>
             }
 
@@ -59,70 +59,70 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 <span class="nc" id="L59">        }catch (IdException e2)</span>
         {
 <span class="nc" id="L61">            Logger.getLogger(&quot;retrieveNegozi id&quot;).log(Level.SEVERE,&quot;retrieveNegozi id exception :&quot;,e2);</span>
-<span class="pc" id="L62">        }</span>
+<span class="nc" id="L62">        }</span>
 
-<span class="fc" id="L64">        return gList;</span>
+<span class="nc" id="L64">        return gList;</span>
     }
 
     @Override
     public boolean checkOpen(Negozio shop)  {
-<span class="fc" id="L69">        return checkOpenIsValid(shop,&quot;isOpen&quot;);</span>
+<span class="nc" id="L69">        return checkOpenIsValid(shop,&quot;isOpen&quot;);</span>
 
     }
 
     @Override
    public boolean checkRitiro(Negozio shop)  {
-<span class="fc" id="L75">        return checkOpenIsValid(shop,&quot;isValid&quot;);</span>
+<span class="nc" id="L75">        return checkOpenIsValid(shop,&quot;isValid&quot;);</span>
     }
 
     @Override
     public void initializza()  {
         try{
-<span class="fc bfc" id="L81" title="All 2 branches covered.">            if(!this.fdn.exists()) throw new IOException();</span>
-<span class="fc" id="L82">        }catch (IOException e)</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">            if(!this.fdn.exists()) throw new IOException();</span>
+<span class="nc" id="L82">        }catch (IOException e)</span>
         {
-<span class="fc" id="L84">            Logger.getLogger(&quot;initialize csvNEgozio&quot;).log(Level.SEVERE,&quot;file not exists!!&quot;);</span>
+<span class="nc" id="L84">            Logger.getLogger(&quot;initialize csvNEgozio&quot;).log(Level.SEVERE,&quot;file not exists!!&quot;);</span>
             try {
-<span class="fc" id="L86">                Files.copy(Path.of(NEGOZIOP), Path.of(LOCATIONEGOZIO), REPLACE_EXISTING);</span>
+<span class="nc" id="L86">                Files.copy(Path.of(NEGOZIOP), Path.of(LOCATIONEGOZIO), REPLACE_EXISTING);</span>
 <span class="nc" id="L87">            } catch (IOException ex) {</span>
 <span class="nc" id="L88">                Logger.getLogger(&quot;inizializza negozi&quot;).log(Level.SEVERE,&quot;inizialize shop exception :&quot;,ex);</span>
-<span class="fc" id="L89">            }</span>
+<span class="nc" id="L89">            }</span>
 
-<span class="fc" id="L91">            Logger.getLogger(&quot;crea negpzio file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, e);</span>
+<span class="nc" id="L91">            Logger.getLogger(&quot;crea negpzio file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, e);</span>
 
-<span class="fc" id="L93">        }</span>
-<span class="fc" id="L94">    }</span>
+<span class="nc" id="L93">        }</span>
+<span class="nc" id="L94">    }</span>
 
 
     private boolean checkOpenIsValid(Negozio shop,String s)  {
         // s o per il valid o per isopen
-<span class="fc" id="L99">        boolean status=false;</span>
+<span class="nc" id="L99">        boolean status=false;</span>
         String[] gVector;
         boolean recordFound;
-<span class="fc" id="L102">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(this.fdn)))) {</span>
+<span class="nc" id="L102">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(this.fdn)))) {</span>
 
-<span class="fc bfc" id="L104" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
 
-<span class="fc" id="L106">                recordFound = gVector[GETINDEXNEGOZIONOME].equals(shop.getNome());</span>
-<span class="fc bfc" id="L107" title="All 2 branches covered.">                if (recordFound) {</span>
+<span class="nc" id="L106">                recordFound = gVector[GETINDEXNEGOZIONOME].equals(shop.getNome());</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">                if (recordFound) {</span>
 
-<span class="fc" id="L109">                    Negozio n=new Negozio();</span>
+<span class="nc" id="L109">                    Negozio n=new Negozio();</span>
 
-<span class="fc" id="L111">                    n.setId(Integer.parseInt(gVector[GETINDEXNEGOZIOID]));</span>
-<span class="fc" id="L112">                    n.setNome(gVector[GETINDEXNEGOZIONOME]);</span>
-<span class="fc bfc" id="L113" title="All 2 branches covered.">                    if(s.equals(&quot;isValid&quot;)) {</span>
-<span class="pc bpc" id="L114" title="1 of 2 branches missed.">                        if (gVector[GETINDEXNEGOZIOISVALID].equals(&quot;1&quot;)) {</span>
-<span class="fc" id="L115">                            n.setIsValid(true);</span>
-<span class="fc" id="L116">                            status = n.getIsValid();</span>
+<span class="nc" id="L111">                    n.setId(Integer.parseInt(gVector[GETINDEXNEGOZIOID]));</span>
+<span class="nc" id="L112">                    n.setNome(gVector[GETINDEXNEGOZIONOME]);</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">                    if(s.equals(&quot;isValid&quot;)) {</span>
+<span class="nc bnc" id="L114" title="All 2 branches missed.">                        if (gVector[GETINDEXNEGOZIOISVALID].equals(&quot;1&quot;)) {</span>
+<span class="nc" id="L115">                            n.setIsValid(true);</span>
+<span class="nc" id="L116">                            status = n.getIsValid();</span>
                         }
                     }
-<span class="pc bpc" id="L119" title="2 of 4 branches missed.">                    else if(s.equals(&quot;isOpen&quot;) &amp;&amp; gVector[GETINDEXNEGOZIOISOPEN].equals(&quot;1&quot;)) {</span>
-<span class="fc" id="L120">                            n.setIsOpen(true);</span>
-<span class="fc" id="L121">                             status = n.getIsOpen();</span>
+<span class="nc bnc" id="L119" title="All 4 branches missed.">                    else if(s.equals(&quot;isOpen&quot;) &amp;&amp; gVector[GETINDEXNEGOZIOISOPEN].equals(&quot;1&quot;)) {</span>
+<span class="nc" id="L120">                            n.setIsOpen(true);</span>
+<span class="nc" id="L121">                             status = n.getIsOpen();</span>
                         }
 
 
-<span class="fc" id="L125">                }</span>
+<span class="nc" id="L125">                }</span>
 
 
             }
@@ -131,9 +131,9 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 <span class="nc" id="L131">        }catch (CsvValidationException e1){</span>
 <span class="nc" id="L132">            Logger.getLogger(&quot;checkOpenValid csv&quot;).log(Level.SEVERE,&quot;openValid csv exception :&quot;,e1);</span>
 
-<span class="pc" id="L134">        }</span>
+<span class="nc" id="L134">        }</span>
 
-<span class="fc" id="L136">        return status;</span>
+<span class="nc" id="L136">        return status;</span>
 
     }
 }

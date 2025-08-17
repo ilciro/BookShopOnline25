@@ -48,11 +48,11 @@ public class ControllerVisualizza {
 	public int getID()
 	{
 <span class="fc" id="L50">		int id=0;</span>
-<span class="pc bpc" id="L51" title="1 of 4 branches missed.">		switch (vis.getType())</span>
+<span class="pc bpc" id="L51" title="3 of 4 branches missed.">		switch (vis.getType())</span>
 		{
-<span class="fc" id="L53">			case &quot;libro&quot;-&gt; id=vis.getIdLibro();</span>
+<span class="nc" id="L53">			case &quot;libro&quot;-&gt; id=vis.getIdLibro();</span>
 <span class="fc" id="L54">			case &quot;giornale&quot;-&gt;id=vis.getIdGiornale();</span>
-<span class="fc" id="L55">			case &quot;rivista&quot;-&gt;id=vis.getIdRivista();</span>
+<span class="nc" id="L55">			case &quot;rivista&quot;-&gt;id=vis.getIdRivista();</span>
 <span class="nc" id="L56">			default -&gt; Logger.getLogger(&quot;id&quot;).log(Level.SEVERE,&quot;get id error!!&quot;);</span>
 
 		}
@@ -63,16 +63,16 @@ public class ControllerVisualizza {
 	public ObservableList&lt;Libro&gt; getListLibro(String type)  {
 
 		ObservableList&lt;Libro&gt; list;
-<span class="fc" id="L66">		l.setId(getID());</span>
+<span class="nc" id="L66">		l.setId(getID());</span>
 
-<span class="pc bpc" id="L68" title="2 of 4 branches missed.">        switch (type) {</span>
-<span class="fc" id="L69">            case DATABASE -&gt; pL = new LibroDao();</span>
-<span class="fc" id="L70">            case FILE -&gt; pL = new CsvLibro();</span>
+<span class="nc bnc" id="L68" title="All 4 branches missed.">        switch (type) {</span>
+<span class="nc" id="L69">            case DATABASE -&gt; pL = new LibroDao();</span>
+<span class="nc" id="L70">            case FILE -&gt; pL = new CsvLibro();</span>
 <span class="nc" id="L71">            case MEMORIA -&gt; pL = new MemoriaLibro();</span>
 <span class="nc" id="L72">			default -&gt; Logger.getLogger(&quot;list libro&quot;).log(Level.SEVERE,&quot;book persistency is wrong!!&quot;);</span>
         }
-<span class="fc" id="L74">		list=pL.getLibroByIdTitoloAutoreLibro(l);</span>
-<span class="fc" id="L75">		return list;</span>
+<span class="nc" id="L74">		list=pL.getLibroByIdTitoloAutoreLibro(l);</span>
+<span class="nc" id="L75">		return list;</span>
 	}
 
 
@@ -81,9 +81,9 @@ public class ControllerVisualizza {
 
 		ObservableList&lt;Giornale&gt; list;
 <span class="fc" id="L83">		g.setId(getID());</span>
-<span class="pc bpc" id="L84" title="1 of 4 branches missed.">        switch (type) {</span>
-<span class="fc" id="L85">            case DATABASE -&gt; pG = new GiornaleDao();</span>
-<span class="fc" id="L86">            case FILE -&gt; pG = new CsvGiornale();</span>
+<span class="pc bpc" id="L84" title="3 of 4 branches missed.">        switch (type) {</span>
+<span class="nc" id="L85">            case DATABASE -&gt; pG = new GiornaleDao();</span>
+<span class="nc" id="L86">            case FILE -&gt; pG = new CsvGiornale();</span>
 <span class="fc" id="L87">            case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
 <span class="nc" id="L88">			default -&gt; Logger.getLogger(&quot;list giornale&quot;).log(Level.SEVERE,&quot;daily persistency is wrong!!&quot;);</span>
 
@@ -95,16 +95,16 @@ public class ControllerVisualizza {
 
 	public ObservableList&lt;Rivista&gt; getListRivista(String type) {
 		ObservableList&lt;Rivista&gt; list;
-<span class="fc" id="L98">		r.setId(getID());</span>
-<span class="pc bpc" id="L99" title="1 of 4 branches missed.">        switch (type) {</span>
-<span class="fc" id="L100">            case DATABASE -&gt; pR = new RivistaDao();</span>
-<span class="fc" id="L101">            case FILE -&gt; pR = new CsvRivista();</span>
-<span class="fc" id="L102">            case MEMORIA -&gt; pR = new MemoriaRivista();</span>
+<span class="nc" id="L98">		r.setId(getID());</span>
+<span class="nc bnc" id="L99" title="All 4 branches missed.">        switch (type) {</span>
+<span class="nc" id="L100">            case DATABASE -&gt; pR = new RivistaDao();</span>
+<span class="nc" id="L101">            case FILE -&gt; pR = new CsvRivista();</span>
+<span class="nc" id="L102">            case MEMORIA -&gt; pR = new MemoriaRivista();</span>
 <span class="nc" id="L103">			default -&gt; Logger.getLogger(&quot;list rivista&quot;).log(Level.SEVERE,&quot;magazine persisyency is wrong!!&quot;);</span>
 
 		}
-<span class="fc" id="L106">		list=pR.getRivistaByIdTitoloAutoreRivista(r);</span>
-<span class="fc" id="L107">		return list;</span>
+<span class="nc" id="L106">		list=pR.getRivistaByIdTitoloAutoreRivista(r);</span>
+<span class="nc" id="L107">		return list;</span>
 
 	}
 

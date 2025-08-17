@@ -250,7 +250,7 @@ public class Rivista implements Raccolta, Serializable {
 			document.close();
 		}catch (IOException |DocumentException e)
 		{
-			Logger.getLogger("read pdf magazine").log(Level.SEVERE,"magazine not exists {0}",e);
+			Logger.getLogger("read pdf magazine").log(Level.SEVERE,"magazine not exists ",e);
 		}
 
 	}

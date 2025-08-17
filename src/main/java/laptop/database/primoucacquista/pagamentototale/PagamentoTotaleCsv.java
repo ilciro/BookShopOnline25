@@ -290,13 +290,13 @@ public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
                 throw new IOException("il file pagamentoTotale non esiste");
         }catch (IOException e)
         {
-            Logger.getLogger(" inizializza pagamentoTotale").log(Level.SEVERE," file not exists .:",PAGAMENTOTOTALE);
+            Logger.getLogger(" inizializza pagamentoTotale").log(Level.SEVERE," file not exists : {0}",PAGAMENTOTOTALE);
             try {
                 Files.createFile(path);
             } catch (IOException ex) {
                 Logger.getLogger("inizializzazione").log(Level.SEVERE,"error with creation file :",ex);
             }
-            Logger.getLogger(" inizializza pagamentoTotale creazione").log(Level.INFO," file created .:",PAGAMENTOTOTALE);
+            Logger.getLogger(" inizializza pagamentoTotale creazione").log(Level.INFO," file created : {0}",PAGAMENTOTOTALE);
 
 
 

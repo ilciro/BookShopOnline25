@@ -96,7 +96,7 @@ import java.util.logging.Logger;
 <span class="fc bfc" id="L96" title="All 2 branches covered.">           if(!Files.exists(path)) throw new IOException(&quot;report memoria non esiste!!&quot;);</span>
 <span class="fc" id="L97">        }catch (IOException e)</span>
         {
-<span class="fc" id="L99">            Logger.getLogger(&quot;inizializza memoria report&quot;).log(Level.SEVERE,&quot;file not exists .&quot;,SERIALIZZAZIONE);</span>
+<span class="fc" id="L99">            Logger.getLogger(&quot;inizializza memoria report&quot;).log(Level.SEVERE,&quot;file not exists : {0}&quot;,SERIALIZZAZIONE);</span>
             try {
 <span class="fc" id="L101">                Files.createFile(path);</span>
 <span class="nc" id="L102">            } catch (IOException ex) {</span>

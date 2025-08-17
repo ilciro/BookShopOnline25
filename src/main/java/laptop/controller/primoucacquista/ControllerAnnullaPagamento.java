@@ -1,7 +1,6 @@
 package laptop.controller.primoucacquista;
 
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.database.primoucacquista.pagamentocartacredito.CsvPagamentoCartaCredito;
@@ -19,7 +18,6 @@ import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
 
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

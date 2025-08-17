@@ -141,17 +141,12 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
                 while ((gVector = reader.readNext()) != null) {
                     id = Integer.parseInt(gVector[GETINDEXIDP]);
                 }
-            }catch (IOException e){
-                Logger.getLogger("idPagamento").log(Level.SEVERE,"idPayment io exception :",e);
-            }catch (CsvValidationException e1){
-                Logger.getLogger("idPagamento csv").log(Level.SEVERE,"idPayment csv exception :",e1);
-
             }
 
             if (id == 0)
                 throw new IdException("id == 0 ");
 
-        }catch (IdException  e1)
+        }catch (IdException | IOException |CsvValidationException e1)
         {
 
             Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR+":",e1);

@@ -1,12 +1,10 @@
 package laptop.database.primoucacquista.pagamentototale;
 
-import com.opencsv.exceptions.CsvValidationException;
 import laptop.database.DaoInitialize;
 import laptop.model.pagamento.PagamentoCartaCredito;
 import laptop.model.pagamento.PagamentoFattura;
 import laptop.utilities.ConnToDb;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UsersDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.database.secondouclogin.users</a> &gt; <span class="el_source">UsersDao.java</span></div><h1>UsersDao.java</h1><pre class="source lang-java linenums">package laptop.database.secondouclogin.users;
-import java.io.*;
 import java.sql.*;
 import java.time.LocalDate;
 
@@ -7,22 +6,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
+import laptop.database.DaoInitialize;
 import laptop.utilities.ConnToDb;
 import laptop.model.user.TempUser;
 
 
-<span class="fc" id="L18">public class UsersDao extends PersistenzaUtente {</span>
+<span class="nc" id="L17">public class UsersDao extends PersistenzaUtente {</span>
 
 
-<span class="fc" id="L21">	private  String query=&quot;&quot;;</span>
+<span class="nc" id="L20">	private  String query=&quot;&quot;;</span>
 
 	private  static final String ECCEZIONE = &quot;errore in mysql :&quot;;
-<span class="fc" id="L24">	private  int row = 0;</span>
-<span class="fc" id="L25">	private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+<span class="nc" id="L23">	private  int row = 0;</span>
+<span class="nc" id="L24">	private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
 
 
 
@@ -34,94 +33,96 @@ import laptop.model.user.TempUser;
 
 
 
-<span class="fc" id="L37">		LocalDate d = tu.getDataDiNascitaT();</span>
+<span class="nc" id="L36">		LocalDate d = tu.getDataDiNascitaT();</span>
 
 
-<span class="fc" id="L40">		query = &quot;INSERT INTO `utenti` VALUES (?,?,?,?,?,?,?,?)&quot;;</span>
+<span class="nc" id="L39">		query = &quot;INSERT INTO `utenti` VALUES (?,?,?,?,?,?,?,?)&quot;;</span>
 
-<span class="fc" id="L42">		try (Connection conn = ConnToDb.connectionToDB();</span>
-<span class="fc" id="L43">			 PreparedStatement prepQ = conn.prepareStatement(query)) {</span>
+<span class="nc" id="L41">		try (Connection conn = ConnToDb.connectionToDB();</span>
+<span class="nc" id="L42">			 PreparedStatement prepQ = conn.prepareStatement(query)) {</span>
 
-<span class="fc bfc" id="L45" title="All 2 branches covered.">			if(vis.getTipoModifica().equals(&quot;im&quot;)) prepQ.setInt(1,tu.getId());</span>
-<span class="pc bpc" id="L46" title="1 of 2 branches missed.">			else if (vis.getTipoModifica().equals(&quot;insert&quot;))prepQ.setInt(1,0);</span>
-
-
-<span class="fc" id="L49">			prepQ.setString(2,tu.getIdRuoloT().substring(0,1));</span>
-<span class="fc" id="L50">			prepQ.setString(3, tu.getNomeT());</span>
-<span class="fc" id="L51">			prepQ.setString(4, tu.getCognomeT());</span>
-<span class="fc" id="L52">			prepQ.setString(5, tu.getEmailT());</span>
-<span class="fc" id="L53">			prepQ.setString(6, tu.getPasswordT());</span>
-<span class="fc" id="L54">			prepQ.setString(7, tu.getDescrizioneT());</span>
-<span class="fc" id="L55">			prepQ.setDate(8,Date.valueOf(d));</span>
-<span class="fc" id="L56">			row=prepQ.executeUpdate();</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">			if(vis.getTipoModifica().equals(&quot;im&quot;)) prepQ.setInt(1,tu.getId());</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">			else if (vis.getTipoModifica().equals(&quot;insert&quot;))prepQ.setInt(1,0);</span>
 
 
-<span class="nc" id="L59">		} catch (SQLException e) {</span>
-<span class="nc" id="L60">			Logger.getLogger(&quot;createUser&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+<span class="nc" id="L48">			prepQ.setString(2,tu.getIdRuoloT().substring(0,1));</span>
+<span class="nc" id="L49">			prepQ.setString(3, tu.getNomeT());</span>
+<span class="nc" id="L50">			prepQ.setString(4, tu.getCognomeT());</span>
+<span class="nc" id="L51">			prepQ.setString(5, tu.getEmailT());</span>
+<span class="nc" id="L52">			prepQ.setString(6, tu.getPasswordT());</span>
+<span class="nc" id="L53">			prepQ.setString(7, tu.getDescrizioneT());</span>
+<span class="nc" id="L54">			prepQ.setDate(8,Date.valueOf(d));</span>
+<span class="nc" id="L55">			row=prepQ.executeUpdate();</span>
 
-<span class="fc" id="L62">		}</span>
+
+<span class="nc" id="L58">		} catch (SQLException e) {</span>
+<span class="nc" id="L59">			Logger.getLogger(&quot;createUser&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+
+<span class="nc" id="L61">		}</span>
 
 
-<span class="pc bpc" id="L65" title="1 of 2 branches missed.">		return row==1;</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">		return row==1;</span>
 
 	}
 
 	@Override
 	public ObservableList&lt;TempUser&gt; getUserData()  {
-<span class="fc" id="L71">		ObservableList&lt;TempUser&gt; lista=FXCollections.observableArrayList();</span>
-<span class="fc" id="L72">		query=&quot;select * from utenti&quot;;</span>
-<span class="fc" id="L73">		try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L74">		PreparedStatement preQ=conn.prepareStatement(query)){</span>
+<span class="nc" id="L70">		ObservableList&lt;TempUser&gt; lista=FXCollections.observableArrayList();</span>
+<span class="nc" id="L71">		query=&quot;select * from utenti&quot;;</span>
+<span class="nc" id="L72">		try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="nc" id="L73">		PreparedStatement preQ=conn.prepareStatement(query)){</span>
 
-<span class="fc" id="L76">			ResultSet rs= preQ.executeQuery();</span>
-<span class="fc bfc" id="L77" title="All 2 branches covered.">			while (rs.next())</span>
+<span class="nc" id="L75">			ResultSet rs= preQ.executeQuery();</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">			while (rs.next())</span>
 			{
-<span class="fc" id="L79">				TempUser tu = new TempUser();</span>
-<span class="fc" id="L80">				tu.setId(rs.getInt(1));</span>
-<span class="fc" id="L81">				tu.setIdRuoloT(rs.getString(2));</span>
-<span class="fc" id="L82">				tu.setNomeT(rs.getString(3));</span>
-<span class="fc" id="L83">				tu.setCognomeT(rs.getString(4));</span>
-<span class="fc" id="L84">				tu.setEmailT(rs.getString(5));</span>
-<span class="fc" id="L85">				tu.setPasswordT(rs.getString(6));</span>
-<span class="fc" id="L86">				tu.setDescrizioneT(rs.getString(7));</span>
-<span class="fc" id="L87">				tu.setDataDiNascitaT(rs.getDate(8).toLocalDate());</span>
-<span class="fc" id="L88">				lista.add(tu);</span>
-<span class="fc" id="L89">			}</span>
+<span class="nc" id="L78">				TempUser tu = new TempUser();</span>
+<span class="nc" id="L79">				tu.setId(rs.getInt(1));</span>
+<span class="nc" id="L80">				tu.setIdRuoloT(rs.getString(2));</span>
+<span class="nc" id="L81">				tu.setNomeT(rs.getString(3));</span>
+<span class="nc" id="L82">				tu.setCognomeT(rs.getString(4));</span>
+<span class="nc" id="L83">				tu.setEmailT(rs.getString(5));</span>
+<span class="nc" id="L84">				tu.setPasswordT(rs.getString(6));</span>
+<span class="nc" id="L85">				tu.setDescrizioneT(rs.getString(7));</span>
+<span class="nc" id="L86">				tu.setDataDiNascitaT(rs.getDate(8).toLocalDate());</span>
+<span class="nc" id="L87">				lista.add(tu);</span>
+<span class="nc" id="L88">			}</span>
 
-<span class="nc" id="L91">		}catch (SQLException e) {</span>
-<span class="nc" id="L92">			Logger.getLogger(&quot;getUserData&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+<span class="nc" id="L90">		}catch (SQLException e) {</span>
+<span class="nc" id="L91">			Logger.getLogger(&quot;getUserData&quot;).log(Level.INFO, ECCEZIONE, e);</span>
 
-<span class="fc" id="L94">		}</span>
-<span class="fc" id="L95">		return lista;</span>
+<span class="nc" id="L93">		}</span>
+<span class="nc" id="L94">		return lista;</span>
 	}
 
 
 
 	@Override
 	public boolean removeUserByIdEmailPwd(TempUser u)  {
-<span class="fc" id="L102">		query=&quot;delete from utenti where idUser=? or email=? or pwd=?&quot;;</span>
+<span class="nc" id="L101">		query=&quot;delete from utenti where idUser=? or email=? or pwd=?&quot;;</span>
 
-<span class="fc" id="L104">		try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L105">		PreparedStatement prepQ=conn.prepareStatement(query))</span>
+<span class="nc" id="L103">		try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="nc" id="L104">		PreparedStatement prepQ=conn.prepareStatement(query))</span>
 		{
-<span class="fc" id="L107">			prepQ.setInt(1,u.getId());</span>
-<span class="fc" id="L108">			prepQ.setString(2,u.getEmailT());</span>
-<span class="fc" id="L109">			prepQ.setString(3,u.getPasswordT());</span>
-<span class="fc" id="L110">			row=prepQ.executeUpdate();</span>
+<span class="nc" id="L106">			prepQ.setInt(1,u.getId());</span>
+<span class="nc" id="L107">			prepQ.setString(2,u.getEmailT());</span>
+<span class="nc" id="L108">			prepQ.setString(3,u.getPasswordT());</span>
+<span class="nc" id="L109">			row=prepQ.executeUpdate();</span>
 		}
-<span class="nc" id="L112">		catch (SQLException e) {</span>
-<span class="nc" id="L113">			Logger.getLogger(&quot;removeUserByIdEmailPwd&quot;).log(Level.INFO, ECCEZIONE, e);</span>
+<span class="nc" id="L111">		catch (SQLException e) {</span>
+<span class="nc" id="L112">			Logger.getLogger(&quot;removeUserByIdEmailPwd&quot;).log(Level.INFO, ECCEZIONE, e);</span>
 
-<span class="fc" id="L115">		}</span>
-<span class="fc bfc" id="L116" title="All 2 branches covered.">		return row==1;</span>
+<span class="nc" id="L114">		}</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">		return row==1;</span>
 	}
 
 
 
 	@Override
 	public void initializza() {
-<span class="fc" id="L123">	super.initializza();</span>
-<span class="fc" id="L124">    }</span>
+<span class="nc" id="L122">	Logger.getLogger(&quot;inizializza users dao&quot;).log(Level.INFO,&quot;initialize users dao&quot;);</span>
+<span class="nc" id="L123">		DaoInitialize daoI=new DaoInitialize();</span>
+<span class="nc" id="L124">		daoI.inizializza(&quot;utenti&quot;);</span>
+<span class="nc" id="L125">    }</span>
 
 
 

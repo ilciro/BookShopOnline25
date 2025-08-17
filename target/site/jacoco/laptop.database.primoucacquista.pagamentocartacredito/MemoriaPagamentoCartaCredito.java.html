@@ -126,22 +126,22 @@ import java.util.logging.Logger;
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public ObservableList&lt;PagamentoCartaCredito&gt; listaPagamentiUserByCC(PagamentoCartaCredito pcc)  {
-<span class="fc" id="L129">        ObservableList&lt;PagamentoCartaCredito&gt; listCC= FXCollections.observableArrayList();</span>
-<span class="fc" id="L130">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L131">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
-<span class="fc" id="L132">            list = (ArrayList&lt;PagamentoCartaCredito&gt;) ois.readObject();</span>
+<span class="nc" id="L129">        ObservableList&lt;PagamentoCartaCredito&gt; listCC= FXCollections.observableArrayList();</span>
+<span class="nc" id="L130">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="nc" id="L131">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
+<span class="nc" id="L132">            list = (ArrayList&lt;PagamentoCartaCredito&gt;) ois.readObject();</span>
 <span class="nc" id="L133">        }catch (IOException | ClassNotFoundException e)</span>
         {
 <span class="nc" id="L135">            Logger.getLogger(&quot;listPagamentoCCUser&quot;).log(Level.SEVERE,&quot;file is empty&quot;);</span>
-<span class="fc" id="L136">        }</span>
-<span class="fc bfc" id="L137" title="All 2 branches covered.">        for (int i = 1; i &lt;= list.size(); i++) {</span>
-<span class="pc bpc" id="L138" title="1 of 2 branches missed.">            if (list.get(i-1).getEmail().equals(pcc.getEmail())) {</span>
-<span class="fc" id="L139">                PagamentoCartaCredito pCC=list.get(i-1);</span>
-<span class="fc" id="L140">                listCC.add(pCC);</span>
+<span class="nc" id="L136">        }</span>
+<span class="nc bnc" id="L137" title="All 2 branches missed.">        for (int i = 1; i &lt;= list.size(); i++) {</span>
+<span class="nc bnc" id="L138" title="All 2 branches missed.">            if (list.get(i-1).getEmail().equals(pcc.getEmail())) {</span>
+<span class="nc" id="L139">                PagamentoCartaCredito pCC=list.get(i-1);</span>
+<span class="nc" id="L140">                listCC.add(pCC);</span>
 
             }
         }
-<span class="fc" id="L144">        return listCC;</span>
+<span class="nc" id="L144">        return listCC;</span>
 
     }
 }

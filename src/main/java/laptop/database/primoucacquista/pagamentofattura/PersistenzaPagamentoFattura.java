@@ -1,12 +1,9 @@
 package laptop.database.primoucacquista.pagamentofattura;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.database.PersistenzaGenerale;
 import laptop.model.pagamento.PagamentoFattura;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,7 +19,8 @@ public class PersistenzaPagamentoFattura {
     public void inizializza()   {
 
         Logger.getLogger("persistenza fattura inizializza").log(Level.INFO,"persistenza pagamento fattura inizializza");
-        getException();
+        PersistenzaGenerale pG=new PersistenzaGenerale();
+        pG.getExcepptionInit("pagamentoFattura");
           }
 
     public PagamentoFattura ultimaFattura()  {
@@ -36,21 +34,5 @@ public class PersistenzaPagamentoFattura {
 
         return FXCollections.observableArrayList();}
 
-    private void getException() {
-        Logger.getLogger("persistenza pagamento fattura").log(Level.INFO, "checking files...");
-
-        try {
-            if (!Files.exists(Path.of("report/reportPagamentoFattura.csv"))) throw new CsvValidationException("CSVException fattura");
-            if (!Files.exists(Path.of("sql/tableCreate.sql"))) throw new SQLException("SQLException fattura");
-            if (!Files.exists(Path.of("memory/serializzazionePagamentoFattura.ser"))) throw new ClassNotFoundException("ClassNotFoundException fattura");
-        } catch (CsvValidationException e) {
-            Logger.getLogger("exception modalita file fattura").log(Level.SEVERE, "exception csv fattura :", e);
-        } catch (SQLException e) {
-            Logger.getLogger("exception modalita database fattura").log(Level.SEVERE, "exception database fattura:", e);
-        } catch (ClassNotFoundException e) {
-            Logger.getLogger("exception modalita memoria fattura").log(Level.SEVERE, "exception memory fattura :", e);
-
-        }
-    }
 
 }
