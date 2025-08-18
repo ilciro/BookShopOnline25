@@ -45,7 +45,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
     private static final String IDWRONG="id wrong ..!!";
     private static final String IDERROR="id error !!..";
 
-    private static PagamentoTotalePersistenza pT;
+    private  PagamentoTotalePersistenza pT;
 
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
 
@@ -237,45 +237,6 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
         return found;
     }
 
-    private static  int getIdMax(){
-        //used for insert correct idOgg
-       return id();
-
-    }
-
-
-    private static synchronized int id()  {
-        String[] gVector;
-        int id = 0;
-
-
-        try {
-
-
-
-            try(CSVReader reader = new CSVReader(new FileReader(PAGAMENTO))) {
-                while ((gVector = reader.readNext()) != null) {
-                    id = Integer.parseInt(gVector[GETINDEXIDP]);
-                }
-            }
-
-
-
-
-
-
-            if (id == 0)
-                throw new IdException("id == 0 ");
-
-        }catch (IdException | IOException |CsvValidationException e)
-        {
-
-            Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR);
-
-        }
-
-        return id;
-    }
 
 
 

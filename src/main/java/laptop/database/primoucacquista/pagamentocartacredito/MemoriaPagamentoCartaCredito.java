@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
     private  ArrayList<PagamentoCartaCredito> list= new ArrayList<>();
     private static final String SERIALIZZAZIONE="memory/serializzazionePagamentoCartaCredito.ser";
-    private static PagamentoTotalePersistenza pT;
+    private  PagamentoTotalePersistenza pT;
     @Override
     public void inizializza() {
         Path path = Path.of(SERIALIZZAZIONE);

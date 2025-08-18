@@ -199,7 +199,7 @@ public class MemoryInitialize {
                 else if (vis.getTipoModifica().equals(INSERT)) g.setId(listG.size() + 1);
                 listG.add(g);
                 //scrivo lista in appoggio
-                Logger.getLogger("inserisci giiornale").log(Level.INFO, "inserted giornale in list :", listG.get(0).getTitolo());
+                Logger.getLogger("inserisci giiornale").log(Level.INFO, "inserted giornale in list : {0}", listG.get(0).getTitolo());
 
 
                 scriviInFile(appoggio, listG, null, null);

@@ -17,6 +17,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
     private static final String SERIALIZZAZIONE="memory/serializzazionePagamentoFattura.ser";
     private ArrayList<PagamentoFattura> list=new ArrayList<>();
     private static PagamentoTotalePersistenza pT;
+    private static final String MEMORIA="memoria";
 
     @Override
     @SuppressWarnings("unchecked")
@@ -49,9 +50,9 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
 
         Logger.getLogger("insert fattura in memory").log(Level.INFO, "fattura is wrote {0}",list);
 
-        PagamentoTotalePersistenza pT=new PagamentoTotalePersistenza("memoria");
+        pT=new PagamentoTotalePersistenza(MEMORIA);
 
-        return pT.inserisciPagamentoTotaleFattura(f,"memoria");
+        return pT.inserisciPagamentoTotaleFattura(f,MEMORIA);
     }
 
     @Override
@@ -112,7 +113,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
        }catch (IOException ex) {
             Logger.getLogger("inizializza").log(Level.SEVERE,"error with file :",ex);
         }
-        pT=new PagamentoTotalePersistenza("memoria");
+        pT=new PagamentoTotalePersistenza(MEMORIA);
     }
 
     @Override

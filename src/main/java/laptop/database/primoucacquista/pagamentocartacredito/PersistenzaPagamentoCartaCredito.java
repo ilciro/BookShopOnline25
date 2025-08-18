@@ -29,7 +29,7 @@ public class PersistenzaPagamentoCartaCredito {
         return new PagamentoCartaCredito();}
 
     public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(PagamentoCartaCredito pcc)  {
-        Logger.getLogger("list pagamenti cc").log(Level.SEVERE, "list pf paymeny of : .", pcc.getNomeUtente());
+        Logger.getLogger("list pagamenti cc").log(Level.SEVERE, "list pf paymeny of : {0}", pcc.getNomeUtente());
 
         return FXCollections.observableArrayList();}
 
