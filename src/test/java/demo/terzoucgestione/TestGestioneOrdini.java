@@ -1,6 +1,5 @@
 package demo.terzoucgestione;
 
-
 import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.*;
 import laptop.controller.secondouclogin.ControllerLogin;
@@ -9,6 +8,8 @@ import laptop.exception.IdException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -51,7 +52,7 @@ public class TestGestioneOrdini {
         //prendo fattura
         int id=cVO.getListaFattura(MEMORIA).get(cVO.getListaFattura(MEMORIA).size()-1).getIdFattura();
         //cancello ordine
-         cVO.cancellaPagamento(id,MEMORIA);
+         Logger.getLogger("status").log(Level.INFO," status : {0}",cVO.cancellaPagamento(id,MEMORIA));
         assertTrue(cHP.logout());
     }
 
@@ -81,9 +82,11 @@ public class TestGestioneOrdini {
        //prendo fattura
        int id=cVO.getListaFattura(MEMORIA).get(cVO.getListaFattura(MEMORIA).size()-1).getIdFattura();
        //cancello ordine
-       cVO.cancellaPagamento(id,MEMORIA);
+       Logger.getLogger("status").log(Level.INFO," status : {0}",cVO.cancellaPagamento(id,MEMORIA));
        assertTrue(cHP.logout());
    }
+
+
 
 
 

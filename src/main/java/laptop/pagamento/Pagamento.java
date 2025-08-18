@@ -1,5 +1,6 @@
 package laptop.pagamento;
 
-public interface Pagamento {
+
+public interface Pagamento  {
     boolean controllaPagamento(String type);
 }

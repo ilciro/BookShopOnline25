@@ -2,6 +2,7 @@ package laptop.database.primoucacquista.pagamentocartacredito;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.database.PagamentoTotalePersistenza;
 import laptop.pagamento.PagamentoCartaCredito;
 
 import java.io.*;
@@ -14,6 +15,7 @@ import java.util.logging.Logger;
 public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
     private  ArrayList<PagamentoCartaCredito> list= new ArrayList<>();
     private static final String SERIALIZZAZIONE="memory/serializzazionePagamentoCartaCredito.ser";
+    private static PagamentoTotalePersistenza pT;
     @Override
     public void inizializza() {
         Path path = Path.of(SERIALIZZAZIONE);
@@ -29,6 +31,7 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
             }
             Logger.getLogger("inizializza memoria pagamentoCC").log(Level.INFO," file has been created");
         }
+        pT=new PagamentoTotalePersistenza("memoria");
     }
 
     @Override
@@ -59,9 +62,11 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
 
 
 
-        Logger.getLogger("insert payment in memory").log(Level.INFO, "payment is wrote");
+        Logger.getLogger("insert payment in memory").log(Level.INFO, "payment is wrote {0}",list);
 
-        return true;
+
+
+        return pT.inserisciPagamentoTotaleCC(p,"memoria");
     }
 
     @Override
@@ -105,7 +110,7 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
                 Logger.getLogger("scrittura su nuovo file").log(Level.SEVERE,"writing error :",e4);
             }
         }
-        return status;
+        return status&&pT.cancellaPagCCMem(p);
     }
 
     @Override

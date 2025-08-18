@@ -125,6 +125,7 @@ public class BoundaryVisualizzaOrdini implements Initializable {
 
         }
 
+        /*
         if(cV.cancellaPagamento(id,type))
         {
 
@@ -146,6 +147,8 @@ public class BoundaryVisualizzaOrdini implements Initializable {
         else {
            eliminaEVisualizza();
         }
+
+         */
 
 
     }

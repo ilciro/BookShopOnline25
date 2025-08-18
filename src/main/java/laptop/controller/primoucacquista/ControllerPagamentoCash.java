@@ -18,10 +18,6 @@ import laptop.database.primoucacquista.libro.PersistenzaLibro;
 import laptop.database.primoucacquista.pagamentofattura.CsvFattura;
 import laptop.database.primoucacquista.pagamentofattura.MemoriaFattura;
 import laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura;
-import laptop.database.primoucacquista.pagamentototale.PersistenzaPagamentoTotale;
-import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleCsv;
-import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
-import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria;
 import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
@@ -43,7 +39,6 @@ import laptop.pagamento.PagamentoFattura;
 public class ControllerPagamentoCash {
 
 	private final ControllerSystemState vis= ControllerSystemState.getInstance();
-	private PersistenzaPagamentoTotale pT;
 	private PersistenzaPagamentoFattura pF;
     private static final String DATABASE="database";
 	private static final String FILE="file";
@@ -63,16 +58,7 @@ public class ControllerPagamentoCash {
 	public void controlla(String nome, String cognome, String via, String com,String type)  {
 
 
-		//1
-		switch (type)
-		{
-			case DATABASE -> pT=new PagamentoTotaleDao();
-			case FILE -> pT=new PagamentoTotaleCsv();
-			case MEMORIA -> pT=new PagamentoTotaleMemoria();
-			default -> Logger.getLogger("controlla pagamento totale").log(Level.SEVERE," persistency total payment is wrong!!");
 
-		}
-		pT.inizializza();
 
 		//2
 		switch (type)
@@ -95,7 +81,10 @@ public class ControllerPagamentoCash {
         };
 
 
-        PagamentoFattura p = new PagamentoFattura(nome, cognome, via, com, vis.getSpesaT(), 0, id);
+		PagamentoFattura p;
+		if(type.equals(DATABASE))
+        	 p= new PagamentoFattura(nome, cognome, via, com, vis.getSpesaT(), 0, id);
+		else p= new PagamentoFattura(nome, cognome, via, com, vis.getSpesaT(), 1, id);
 		p.setTipoAcquisto(ritornaTipoOggetto(type,vis.getType()));
 
 
@@ -110,11 +99,9 @@ public class ControllerPagamentoCash {
 		//inserisco in pagamentoTotale
 		if(pF.inserisciPagamentoFattura(p))
 		{
-			Logger.getLogger("pagamento effettuato ").log(Level.INFO,"payment success with id . {0}", p.getIdFattura());
+			Logger.getLogger("pagamento effettuato ").log(Level.INFO,"payment success with id object : {0}", id);
 			//database with triggers
-			if(type.equals(FILE)) pT=new PagamentoTotaleCsv();
-			else if(type.equals(MEMORIA)) pT=new PagamentoTotaleMemoria();
-			pT.inserisciPagamentoFattura(p);
+
 
 		}
 		//inserisco in report finale

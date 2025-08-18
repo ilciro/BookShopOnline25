@@ -2,6 +2,7 @@ package laptop.database.primoucacquista.pagamentofattura;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.database.PagamentoTotalePersistenza;
 import laptop.pagamento.PagamentoFattura;
 
 import java.io.*;
@@ -15,6 +16,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
 
     private static final String SERIALIZZAZIONE="memory/serializzazionePagamentoFattura.ser";
     private ArrayList<PagamentoFattura> list=new ArrayList<>();
+    private static PagamentoTotalePersistenza pT;
 
     @Override
     @SuppressWarnings("unchecked")
@@ -47,7 +49,9 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
 
         Logger.getLogger("insert fattura in memory").log(Level.INFO, "fattura is wrote {0}",list);
 
-        return true;
+        PagamentoTotalePersistenza pT=new PagamentoTotalePersistenza("memoria");
+
+        return pT.inserisciPagamentoTotaleFattura(f,"memoria");
     }
 
     @Override
@@ -92,7 +96,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
              Logger.getLogger("scrittura").log(Level.SEVERE,"error with write :",e1);
             }
         }
-        return status;
+        return status&&pT.cancellaFatturaMem(f);
     }
 
     @Override
@@ -100,16 +104,15 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
         Path path = Path.of(SERIALIZZAZIONE);
         try
        {
-           if(!Files.exists(path)) throw new IOException(" file fattura.ser not exists");
-       }catch (IOException e)
-       {
-           try {
-               Files.createFile(path);
-           } catch (IOException ex) {
-              Logger.getLogger("inizializza").log(Level.SEVERE,"error with file :",ex);
-           }
-           Logger.getLogger("inizializza memoria fattura").log(Level.INFO," file has been created");
-       }
+           if(!Files.exists(path)) throw new IOException(" file serializzazionePagamentoFattura.ser not exists");
+
+           Files.createFile(path);
+
+           Logger.getLogger("inizializza memoria fattura").log(Level.INFO," file has been created {0}",SERIALIZZAZIONE);
+       }catch (IOException ex) {
+            Logger.getLogger("inizializza").log(Level.SEVERE,"error with file :",ex);
+        }
+        pT=new PagamentoTotalePersistenza("memoria");
     }
 
     @Override

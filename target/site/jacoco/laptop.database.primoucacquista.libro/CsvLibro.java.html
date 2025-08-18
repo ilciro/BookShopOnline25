@@ -447,62 +447,58 @@ public class CsvLibro extends PersistenzaLibro{
 <span class="fc bfc" id="L447" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
 <span class="fc" id="L448">                    list.add(getLibro(gVector));</span>
             }
-<span class="nc" id="L450">        }catch (IOException e){</span>
+<span class="nc" id="L450">        }catch (IOException |CsvValidationException e){</span>
 <span class="nc" id="L451">            Logger.getLogger(&quot;retrieveLibro io&quot;).log(Level.SEVERE,&quot;io exception :&quot;,e);</span>
-<span class="nc" id="L452">        }catch (CsvValidationException e1){</span>
-<span class="nc" id="L453">            Logger.getLogger(&quot;retrieveLibro csv&quot;).log(Level.SEVERE,&quot;csv exception :&quot;,e1);</span>
-
-<span class="pc" id="L455">        }</span>
+<span class="fc" id="L452">        }</span>
         try{
-<span class="pc bpc" id="L457" title="1 of 2 branches missed.">            if (list.isEmpty()) {</span>
-<span class="nc" id="L458">                throw new IdException(&quot;book not found!!&quot;);</span>
+<span class="pc bpc" id="L454" title="1 of 2 branches missed.">            if (list.isEmpty()) {</span>
+<span class="nc" id="L455">                throw new IdException(&quot;book not found!!&quot;);</span>
             }
-<span class="nc" id="L460">        }catch (IdException e2){</span>
-<span class="nc" id="L461">            Logger.getLogger(&quot;retrieveLibro id&quot;).log(Level.SEVERE,&quot;id exception :&quot;,e2);</span>
+<span class="nc" id="L457">        }catch (IdException e2){</span>
+<span class="nc" id="L458">            Logger.getLogger(&quot;retrieveLibro id&quot;).log(Level.SEVERE,&quot;id exception :&quot;,e2);</span>
 
-<span class="fc" id="L463">        }</span>
+<span class="fc" id="L460">        }</span>
 
-<span class="fc" id="L465">        return list;</span>
+<span class="fc" id="L462">        return list;</span>
     }
 
     @Override
     public void initializza() {
         try {
-<span class="fc" id="L471">            File directory=new File(&quot;report&quot;);</span>
+<span class="fc" id="L468">            File directory=new File(&quot;report&quot;);</span>
 
 
-<span class="pc bpc" id="L474" title="1 of 2 branches missed.">            if(directory.isDirectory())</span>
+<span class="pc bpc" id="L471" title="1 of 2 branches missed.">            if(directory.isDirectory())</span>
             {
-<span class="fc" id="L476">                String[] files = directory.list();</span>
+<span class="fc" id="L473">                String[] files = directory.list();</span>
 
 
-<span class="pc bpc" id="L479" title="1 of 2 branches missed.">                assert files != null;</span>
-<span class="pc bpc" id="L480" title="1 of 4 branches missed.">                if ( files.length == 0 || !this.fdL.exists())</span>
-<span class="fc" id="L481">                    throw new IOException(&quot;cartella vuota&quot;);</span>
+<span class="pc bpc" id="L476" title="1 of 4 branches missed.">                if ( Objects.requireNonNull(files).length == 0 || !this.fdL.exists())</span>
+<span class="fc" id="L477">                    throw new IOException(&quot;cartella vuota&quot;);</span>
 
             }
 
 
-<span class="fc" id="L486">        } catch (IOException eFile) {</span>
+<span class="fc" id="L482">        } catch (IOException eFile) {</span>
 
-<span class="fc" id="L488">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
+<span class="fc" id="L484">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
 
             try {
-<span class="fc" id="L491">                Files.copy(Path.of(LIBROP), Path.of(LOCATIONL), REPLACE_EXISTING);</span>
-<span class="nc" id="L492">            } catch (IOException e) {</span>
-<span class="nc" id="L493">                Logger.getLogger(&quot;inizializza libro csv&quot;).log(Level.SEVERE,&quot;io exception initialize :&quot;,e);</span>
-<span class="fc" id="L494">            }</span>
+<span class="fc" id="L487">                Files.copy(Path.of(LIBROP), Path.of(LOCATIONL), REPLACE_EXISTING);</span>
+<span class="nc" id="L488">            } catch (IOException e) {</span>
+<span class="nc" id="L489">                Logger.getLogger(&quot;inizializza libro csv&quot;).log(Level.SEVERE,&quot;io exception initialize :&quot;,e);</span>
+<span class="fc" id="L490">            }</span>
 
-<span class="fc" id="L496">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
-<span class="fc" id="L497">        }</span>
-<span class="fc" id="L498">        Logger.getLogger(&quot;files creati con successo&quot;).log(Level.INFO, &quot;\n files successfully created&quot;);</span>
+<span class="fc" id="L492">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
+<span class="fc" id="L493">        }</span>
+<span class="fc" id="L494">        Logger.getLogger(&quot;files creati con successo&quot;).log(Level.INFO, &quot;\n files successfully created&quot;);</span>
 
 
 
-<span class="fc" id="L502">    }</span>
+<span class="fc" id="L498">    }</span>
 
     private static void cleanUp(Path path) throws IOException {
-<span class="fc" id="L505">        Files.delete(path);</span>
-<span class="fc" id="L506">    }</span>
+<span class="fc" id="L501">        Files.delete(path);</span>
+<span class="fc" id="L502">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

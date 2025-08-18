@@ -12,10 +12,7 @@ import laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao;
 import laptop.database.primoucacquista.pagamentofattura.CsvFattura;
 import laptop.database.primoucacquista.pagamentofattura.MemoriaFattura;
 import laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura;
-import laptop.database.primoucacquista.pagamentototale.PersistenzaPagamentoTotale;
-import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleCsv;
-import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
-import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria;
+
 
 import laptop.model.user.User;
 import laptop.pagamento.PagamentoCartaCredito;
@@ -31,7 +28,6 @@ public class ControllerVisualizzaOrdini {
     private static final String FILE="file";
     private static final String MEMORIA="memoria";
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
-    private PersistenzaPagamentoTotale pT;
 
 
 
@@ -73,6 +69,7 @@ public class ControllerVisualizzaOrdini {
         return pCC.listaPagamentiUserByCC(pCC1);
     }
 
+
     public boolean cancellaPagamento(int id,String persistenza)  {
 
         boolean status;
@@ -80,25 +77,21 @@ public class ControllerVisualizzaOrdini {
         {
             case DATABASE->
                     {
-                        pT=new PagamentoTotaleDao();
                         pPF=new ContrassegnoDao();
                         pCC=new PagamentoCartaCreditoDao();
                     }
             case FILE->
                     {
-                        pT=new PagamentoTotaleCsv();
                         pPF=new CsvFattura();
                         pCC=new CsvPagamentoCartaCredito();
                     }
             case MEMORIA->
                     {
-                        pT=new PagamentoTotaleMemoria();
                         pPF=new MemoriaFattura();
                         pCC=new MemoriaPagamentoCartaCredito();
                     }
             default -> Logger.getLogger("cancella pagamento").log(Level.SEVERE,"delete payment has not occurred");
         }
-        pT.inizializza();
         pPF.inizializza();
         pCC.inizializza();
 
@@ -106,19 +99,20 @@ public class ControllerVisualizzaOrdini {
         {
             PagamentoFattura pF=new PagamentoFattura();
             pF.setIdFattura(id);
-            if(persistenza.equals(MEMORIA) || persistenza.equals(FILE))
-                status=pT.cancellaFattura(pF)&& pPF.cancellaPagamentoFattura(pF);
-            else status=pT.cancellaFattura(pF);
+           status=pPF.cancellaPagamentoFattura(pF);
+
         }
         else{
             PagamentoCartaCredito pagCC=new PagamentoCartaCredito();
             pagCC.setIdPagCC(id);
-            if(persistenza.equals(MEMORIA)|| persistenza.equals(FILE))
-                status=pT.cancellaPagamentoCC(pagCC)&&pCC.cancellaPagamentoCartaCredito(pagCC);
-            else status=pT.cancellaPagamentoCC(pagCC);
+
+            status=pCC.cancellaPagamentoCartaCredito(pagCC);
+
         }
         return status;
     }
+
+
 
 
 }

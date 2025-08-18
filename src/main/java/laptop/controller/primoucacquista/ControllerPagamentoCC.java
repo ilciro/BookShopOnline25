@@ -22,8 +22,6 @@ import laptop.database.primoucacquista.libro.MemoriaLibro;
 import laptop.database.primoucacquista.libro.PersistenzaLibro;
 
 import laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito;
-import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleCsv;
-import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria;
 import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
@@ -33,8 +31,7 @@ import laptop.database.primoucacquista.rivista.RivistaDao;
 import laptop.database.primoucacquista.pagamentocartacredito.CsvPagamentoCartaCredito;
 import laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCreditoDao;
 import laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito;
-import laptop.database.primoucacquista.pagamentototale.PersistenzaPagamentoTotale;
-import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
+
 import laptop.database.terzoucgestioneprofiloggetto.report.CsvReport;
 import laptop.database.terzoucgestioneprofiloggetto.report.MemoriaReport;
 import laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport;
@@ -68,7 +65,6 @@ public class ControllerPagamentoCC {
 	private  PersistenzaLibro pL;
 	private PersistenzaGiornale pG;
 	private PersistenzaRivista pR;
-    private PersistenzaPagamentoTotale pT;
 	private PersistenzaPagamentoCartaCredito pCC;
 	private PersistenzaReport pRepo;
 
@@ -183,31 +179,6 @@ public class ControllerPagamentoCC {
 
 		vis.setTipoModifica("insert");
 
-
-        PagamentoCartaCredito p = null;
-
-        switch (vis.getType()) {
-			case LIBRO-> p=pagamentoLibroCC(nome,database,cognome,mail);
-			case GIORNALE ->p= pagamentoGiornaleCC(nome,database,cognome,mail);
-			case RIVISTA -> p=pagamentoRivistaCC(nome,database,cognome,mail);
-			default ->Logger.getLogger("pagamentoCC").log(Level.SEVERE,"persistency incorrect");
-
-		}
-
-		//effettua pagamento
-
-		switch (database)
-		{
-			case DATABASE -> pT=new PagamentoTotaleDao();
-			case FILE -> pT=new PagamentoTotaleCsv();
-			case MEMORIA -> pT=new PagamentoTotaleMemoria();
-			default -> Logger.getLogger("pagamento totale ").log(Level.SEVERE," error total payment  persistency");
-
-		}
-		pT.inizializza();
-
-
-
 		switch (database)
 		{
 			case DATABASE ->pCC=new PagamentoCartaCreditoDao();
@@ -216,26 +187,23 @@ public class ControllerPagamentoCC {
 			default -> Logger.getLogger("controlla tipologia fattura").log(Level.SEVERE," persistency fattura is wrong!!");
 
 		}
-		//creo tabella fattuira
 		pCC.inizializza();
 
 
-        assert p != null;
+        PagamentoCartaCredito p = new PagamentoCartaCredito();
+
+        switch (vis.getType()) {
+			case LIBRO-> p=pagamentoLibroCC(nome,database,cognome,mail);
+			case GIORNALE ->p= pagamentoGiornaleCC(nome,database,cognome,mail);
+			case RIVISTA -> p=pagamentoRivistaCC(nome,database,cognome,mail);
+			default ->Logger.getLogger("pagamentoCC").log(Level.SEVERE,"persistency incorrect");
+
+		}
+		
+		
         if(pCC.inserisciPagamentoCartaCredito(p)) {
 			Logger.getLogger("pagamento effettuato ").log(Level.INFO," payment success with id . {0}", p.getIdPagCC());
-			if(database.equals(FILE))
-			{
-
-				pT=new PagamentoTotaleCsv();
-				pT.inizializza();
-				pT.inserisciPagamentoCartaCredito(new PagamentoCartaCredito());
-			}
-			if(database.equals(MEMORIA))
-			{
-				pT=new PagamentoTotaleMemoria();
-				pT.inizializza();
-				pT.inserisciPagamentoCartaCredito(new PagamentoCartaCredito());
-			}
+			
 		}
 		//creo report cc
 		switch (database) {
@@ -285,6 +253,8 @@ public class ControllerPagamentoCC {
 			Logger.getLogger("insert repo cc").log(Level.INFO, "repo cc correct inserted");
 
 
+
+		 
 	}
 
 	public String[] getInfo()
@@ -326,8 +296,8 @@ public class ControllerPagamentoCC {
 	}
 	private boolean checkCorrettezzaGiorno(String[] tokensData,int i) throws IdException {
 		if (tokensData[2].length() == 2)
-		{	tokensData[2]=getMeseGiorno(tokensData[1]);
-			if ((Integer.parseInt(tokensData[1]) >= 1 && Integer.parseInt(tokensData[1]) <= 12)) {
+		{	tokensData[2]=getMeseGiorno(tokensData[2]);
+			if ((Integer.parseInt(tokensData[2]) >= 1 && Integer.parseInt(tokensData[2]) <= 12)) {
 				Logger.getLogger("giorno controllato").log(Level.INFO, " giorno is correct . {0}",tokensData[1]);
 				i++;
 			}else throw new IdException("giorno è sbagliato");
@@ -396,6 +366,9 @@ public class ControllerPagamentoCC {
 			case "07"-> finale="7";
 			case "08"-> finale="8";
 			case "09"-> finale="9";
+			case "10"->finale="10";
+			case "11"->finale="11";
+			case "12"->finale="12";
 			default -> Logger.getLogger("getMeseGiorno").log(Level.SEVERE,"month/day is incorrect");
 
 		}

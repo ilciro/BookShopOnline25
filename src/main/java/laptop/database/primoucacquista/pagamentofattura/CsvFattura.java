@@ -5,6 +5,7 @@ import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import laptop.database.PagamentoTotalePersistenza;
 import laptop.exception.IdException;
 import laptop.pagamento.PagamentoFattura;
 import org.apache.commons.lang.SystemUtils;
@@ -45,6 +46,8 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
     private static final String IDWRONG="id wrong ..!!";
     private static final String IDERROR="id error !!..";
 
+    private static PagamentoTotalePersistenza pT;
+
     public CsvFattura() {
         this.fileFattura=new File(FATTURA);
         if(!this.fileFattura.exists()) {
@@ -80,6 +83,8 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
                 Logger.getLogger("inizializza csv fattura").log(Level.SEVERE,"error with creation file :",ex);
             }
         }
+         pT=new PagamentoTotalePersistenza("file");
+
     }
 
     @Override
@@ -100,15 +105,14 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
             gVectore[GETINDEXEMAIL]=f.getEmail();
             gVectore[GETINDEXTIPOACQUISTO]=f.getTipoAcquisto();
             csvWriter.writeNext(gVectore);
-
             csvWriter.flush();
 
         } catch ( IOException e) {
             Logger.getLogger("insert fattura").log(Level.SEVERE,"error in insert fattura csv");
         }
 
+        return pT.inserisciPagamentoTotaleFattura(f,"file");
 
-        return true;
 
 
 
@@ -176,7 +180,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
         {
             Logger.getLogger("removeFattura").log(Level.SEVERE,"error with remove fattura :",e);
         }
-        return status;
+        return status&&pT.cancellaFatturaFile(f);
 
 
     }

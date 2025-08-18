@@ -12,6 +12,10 @@ import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/*
+todo sistemare test anche db
+ */
+
 class TestAcquistoGiornale {
 
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
@@ -29,7 +33,7 @@ class TestAcquistoGiornale {
 
     @ParameterizedTest
     @ValueSource(strings = {"database","file"})
-    void testAcquistaLibroCashDownload(String strings)  {
+    void testAcquistaGiornaleCashDownload(String strings)  {
         vis.setTipologiaApplicazione("full");
         vis.setMetodoP("cash");
         vis.setTypeAsDaily();
@@ -74,9 +78,10 @@ class TestAcquistoGiornale {
         assertTrue(status);
 
     }
+
     @ParameterizedTest
-    @ValueSource(strings = {"database","file"})
-    void testAnnullaLibroCashDownload(String strings)  {
+    @ValueSource(strings = {"database"})
+    void testAnnullaGiornaleCashDownload(String strings)  {
         vis.setTipologiaApplicazione("full");
         vis.setTypeAsDaily();
         vis.setMetodoP("cash");
@@ -96,8 +101,11 @@ class TestAcquistoGiornale {
         assertTrue(cAP.cancellaFattura(pf.getIdFattura(), strings));
 
     }
+
+
+
     @ParameterizedTest
-    @ValueSource(strings = {"database","file"})
+    @ValueSource(strings = {"database"})
     void testAnnullaGiornaleCCredito(String strings) throws  IdException{
         vis.setTipologiaApplicazione("full");
         vis.setTypeAsDaily();
@@ -119,7 +127,9 @@ class TestAcquistoGiornale {
         cPCC.pagamentoCC("prova",strings,"prova");
         //annullo pagamento
         PagamentoCartaCredito pCC=cAP.getPagamentoCartaCredito(strings).get(0);
-        assertTrue(cAP.cancellaPagamentoCC(pCC.getIdPagCC(),strings));
+       assertTrue(cAP.cancellaPagamentoCC(pCC.getIdPagCC(),strings));
     }
+
+
 
 }

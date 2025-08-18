@@ -75,6 +75,7 @@ class TestAcquistoRivista {
         assertTrue(status);
 
     }
+
     @ParameterizedTest
     @ValueSource(strings = {"database","file"})
     void testAnnullaRivistaCashDownload(String strings)  {
@@ -122,5 +123,7 @@ class TestAcquistoRivista {
         PagamentoCartaCredito pCC=cAP.getPagamentoCartaCredito(strings).get(0);
         assertTrue(cAP.cancellaPagamentoCC(pCC.getIdPagCC(),strings));
     }
+
+
 
 }

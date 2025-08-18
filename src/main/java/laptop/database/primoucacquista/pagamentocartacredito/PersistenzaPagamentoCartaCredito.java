@@ -14,6 +14,7 @@ public class PersistenzaPagamentoCartaCredito {
         PersistenzaGenerale pG=new PersistenzaGenerale();
         pG.getExcepptionInit("pagamentoCC");
 
+
     }
 
     public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito p)  {

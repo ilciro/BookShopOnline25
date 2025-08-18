@@ -447,11 +447,8 @@ public class CsvLibro extends PersistenzaLibro{
             while ((gVector = csvReader.readNext()) != null) {
                     list.add(getLibro(gVector));
             }
-        }catch (IOException e){
+        }catch (IOException |CsvValidationException e){
             Logger.getLogger("retrieveLibro io").log(Level.SEVERE,"io exception :",e);
-        }catch (CsvValidationException e1){
-            Logger.getLogger("retrieveLibro csv").log(Level.SEVERE,"csv exception :",e1);
-
         }
         try{
             if (list.isEmpty()) {
@@ -476,8 +473,7 @@ public class CsvLibro extends PersistenzaLibro{
                 String[] files = directory.list();
 
 
-                assert files != null;
-                if ( files.length == 0 || !this.fdL.exists())
+                if ( Objects.requireNonNull(files).length == 0 || !this.fdL.exists())
                     throw new IOException("cartella vuota");
 
             }

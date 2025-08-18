@@ -6,6 +6,7 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
+import laptop.database.PagamentoTotalePersistenza;
 import laptop.exception.IdException;
 import laptop.model.user.User;
 import laptop.pagamento.PagamentoCartaCredito;
@@ -43,6 +44,8 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
     private static final String PAGAMENTO="report/reportPagamentoCartaCredito.csv";
     private static final String IDWRONG="id wrong ..!!";
     private static final String IDERROR="id error !!..";
+
+    private static PagamentoTotalePersistenza pT;
 
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
 
@@ -103,7 +106,6 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
     }
 
     private boolean creaPagamento(PagamentoCartaCredito p) {
-        boolean stauts=false;
         try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.filePagamento, true)))) {
             String[] gVectore = new String[8];
             //fare if su tipo pagamento
@@ -119,13 +121,11 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 
             csvWriter.writeNext(gVectore);
             csvWriter.flush();
-            this.cachePagamento.put(String.valueOf(getIdMax()+1),p);
         }catch (IOException e)
         {
             Logger.getLogger("creaPagamento").log(Level.SEVERE,"makePayment exception :",e);
         }
-        if (p.getNomeUtente()!=null) stauts=true;
-        return stauts;
+       return pT.inserisciPagamentoTotaleCC(p,"file");
 
     }
     private static int getIdMaxPagamento()  {
@@ -194,7 +194,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
             Logger.getLogger("cancellaPagCC csv").log(Level.SEVERE,"delPaymentCC csv exception :",e1);
 
         }
-        return status;
+        return status && pT.cancellaPagamentoFile(p);
 
     }
 
@@ -208,6 +208,8 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
                 Logger.getLogger("inizializza pagamentoCC csv").log(Level.SEVERE,"exception in initialize :",e);
             }
         }
+        pT=new PagamentoTotalePersistenza("file");
+
     }
 
     private static boolean isFound(PagamentoCartaCredito p, File tmpFile) throws IOException, CsvValidationException {

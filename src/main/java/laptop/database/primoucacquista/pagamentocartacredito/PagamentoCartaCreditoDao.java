@@ -54,6 +54,7 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
     @Override
     public void inizializza() {
         DaoInitialize dI=new DaoInitialize();
+        dI.inizializza("pagamentoTotale");
         dI.inizializza("pagamentoCartaCredito");
 
         creaTrigger();
@@ -117,7 +118,7 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
             row=prepQ.executeUpdate();
         }catch (SQLException e)
         {
-           Logger.getLogger("inserimento pagamento cc").log(Level.SEVERE," error with cc payment");
+           Logger.getLogger("inserimento pagamento cc").log(Level.SEVERE," error with cc payment :",e);
         }
         return row==1;
 

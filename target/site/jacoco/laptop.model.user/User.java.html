@@ -67,13 +67,13 @@ public class User implements Serializable {
 <span class="fc" id="L67">		this.id = id;</span>
 <span class="fc" id="L68">	}</span>
 	public String getNome() {
-<span class="nc" id="L70">		return nome;</span>
+<span class="fc" id="L70">		return nome;</span>
 	}
 	public void setNome(String nome) {
 <span class="fc" id="L73">		this.nome = nome;</span>
 <span class="fc" id="L74">	}</span>
 	public String getCognome() {
-<span class="nc" id="L76">		return cognome;</span>
+<span class="fc" id="L76">		return cognome;</span>
 	}
 	public void setCognome(String cognome) {
 <span class="fc" id="L79">		this.cognome = cognome;</span>
@@ -91,13 +91,13 @@ public class User implements Serializable {
 <span class="fc" id="L91">		this.password = password;</span>
 <span class="fc" id="L92">	}</span>
 	public String getDescrizione() {
-<span class="nc" id="L94">		return descrizione;</span>
+<span class="fc" id="L94">		return descrizione;</span>
 	}
 	public void setDescrizione(String descrizione) {
 <span class="fc" id="L97">		this.descrizione = descrizione;</span>
 <span class="fc" id="L98">	}</span>
 	public LocalDate getDataDiNascita() {
-<span class="nc" id="L100">		return dataDiNascita;</span>
+<span class="fc" id="L100">		return dataDiNascita;</span>
 	}
 	public void setDataDiNascita(LocalDate dataDiNascita) {
 <span class="fc" id="L103">		this.dataDiNascita = dataDiNascita;</span>
@@ -112,9 +112,9 @@ public class User implements Serializable {
 
 	public void setIdRuolo(String ruolo) {
 
-<span class="pc bpc" id="L115" title="1 of 5 branches missed.">		 switch (ruolo){</span>
+<span class="fc bfc" id="L115" title="All 5 branches covered.">		 switch (ruolo){</span>
 <span class="fc" id="L116">			case &quot;ADMIN&quot;, &quot;A&quot;-&gt; r = Ruoli.ADMIN.toString().substring(0,1);</span>
-<span class="nc" id="L117">			case &quot;EDITORE&quot;, &quot;E&quot;-&gt;r = Ruoli.EDITORE.toString().substring(0,1);</span>
+<span class="fc" id="L117">			case &quot;EDITORE&quot;, &quot;E&quot;-&gt;r = Ruoli.EDITORE.toString().substring(0,1);</span>
 <span class="fc" id="L118">			case &quot;SCRITTORE&quot;, &quot;W&quot;, &quot;S&quot;-&gt;r = Ruoli.SCRITTORE.toString().substring(0,1);</span>
 <span class="fc" id="L119">			case &quot;UTENTE&quot;,&quot;U&quot;-&gt;r=Ruoli.UTENTE.toString().substring(0,1);</span>
 <span class="fc" id="L120">             default-&gt;r= Ruoli.NONVALIDO.toString().substring(0,1);</span>

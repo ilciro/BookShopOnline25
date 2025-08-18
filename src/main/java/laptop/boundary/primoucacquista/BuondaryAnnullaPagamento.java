@@ -117,12 +117,13 @@ public class BuondaryAnnullaPagamento implements Initializable {
     }
     @FXML
     private void cancellaFattura()  {
-        try {
+       // try {
             String persistency = "";
             if (databaseB.isSelected()) persistency = DATABASE;
             if (fileB.isSelected()) persistency = FILE;
             if (memoriaB.isSelected()) persistency = MEMORIA;
-            if (!persistency.isEmpty()) {
+            //  if (!persistency.isEmpty()) {
+                /*
                 if (cAP.cancellaFattura(Integer.parseInt(fatturaTF.getText()), persistency)) {
 
                     Stage stage;
@@ -150,22 +151,25 @@ public class BuondaryAnnullaPagamento implements Initializable {
 
 
 
+
     }
+                 */
+        }
     @FXML
     private void generaPagamento()  {
-        if(databaseB.isSelected()) pagamentoCC.setItems(cAP.getPagamentoCartaCredito(DATABASE));
-        if(fileB.isSelected()) pagamentoCC.setItems(cAP.getPagamentoCartaCredito(FILE));
-        if(memoriaB.isSelected())pagamentoCC.setItems(cAP.getPagamentoCartaCredito(MEMORIA));
+       // if(databaseB.isSelected()) pagamentoCC.setItems(cAP.getPagamentoCartaCredito(DATABASE));
+        //if(fileB.isSelected()) pagamentoCC.setItems(cAP.getPagamentoCartaCredito(FILE));
+        //if(memoriaB.isSelected())pagamentoCC.setItems(cAP.getPagamentoCartaCredito(MEMORIA));
     }
     @FXML
     private void cancellaPagCC()  {
-        try {
+     //   try {
             String persistency = "";
             if (databaseB.isSelected()) persistency = DATABASE;
             if (fileB.isSelected()) persistency = FILE;
             if (memoriaB.isSelected()) persistency = MEMORIA;
 
-
+/*
             if (cAP.cancellaPagamentoCC(Integer.parseInt(ccTF.getText()), persistency)) {
 
                 Stage stage;
@@ -189,6 +193,8 @@ public class BuondaryAnnullaPagamento implements Initializable {
         {
             Logger.getLogger("cancella cc").log(Level.SEVERE,"delete cc  not avalaible {0}",e);
         }
+
+ */
     }
 
     @FXML

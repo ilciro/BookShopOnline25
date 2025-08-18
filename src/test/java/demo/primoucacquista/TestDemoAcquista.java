@@ -70,6 +70,7 @@ class TestDemoAcquista {
         assertTrue(status);
 
     }
+
     @Test
     void testAnnullaRivistaCashDownload()  {
         vis.setTipologiaApplicazione("demo");
@@ -116,6 +117,8 @@ class TestDemoAcquista {
         PagamentoCartaCredito pCC=cAP.getPagamentoCartaCredito(MEMORIA).get(0);
         assertTrue(cAP.cancellaPagamentoCC(pCC.getIdPagCC(),MEMORIA));
     }
+
+
 
 
 

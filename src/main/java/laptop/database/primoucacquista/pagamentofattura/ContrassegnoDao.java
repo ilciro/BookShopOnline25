@@ -115,6 +115,8 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
     public void inizializza()  {
         super.inizializza();
         DaoInitialize daoI=new DaoInitialize();
+        daoI.inizializza("pagamentoTotale");
+
         daoI.inizializza("pagamentoFattura");
 
 
