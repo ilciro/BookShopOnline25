@@ -42,11 +42,8 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
 
             list = (ArrayList<PagamentoCartaCredito>) ois.readObject();
 
-        }catch (IOException e){
+        }catch (IOException |ClassNotFoundException e){
             Logger.getLogger("inserisciPagamento").log(Level.SEVERE,"insPag io exception :",e);
-        }catch (ClassNotFoundException e1){
-            Logger.getLogger("inserisciPagaemnto csv").log(Level.SEVERE,"insPag csv exception :",e1);
-
         }
         p.setIdPagCC(list.size()+1);
         list.add(p);
@@ -85,7 +82,7 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
         }
         for (int i = 0; i < list.size(); i++) {
             if (i == p.getIdPagCC()-1) {
-                Logger.getLogger("cancella fattura").log(Level.INFO,"id payment :.",p.getIdPagCC());
+                Logger.getLogger("cancella pagamento").log(Level.INFO,"id payment : {0}",p.getIdPagCC());
 
                 status = list.remove(list.get(i));
 
@@ -110,7 +107,8 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
                 Logger.getLogger("scrittura su nuovo file").log(Level.SEVERE,"writing error :",e4);
             }
         }
-        return status&&pT.cancellaPagCCMem(p);
+        pT=new PagamentoTotalePersistenza("memoria");
+        return status && pT.cancellaPagCCMem(p);
     }
 
     @Override

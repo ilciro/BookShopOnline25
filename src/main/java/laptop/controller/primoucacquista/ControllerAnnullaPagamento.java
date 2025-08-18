@@ -52,17 +52,11 @@ public class ControllerAnnullaPagamento  {
     public boolean cancellaFattura(int idFattura,String persistency)  {
         boolean status;
         switch (persistency) {
-            case DATABASE ->
+            case DATABASE -> pPF=new ContrassegnoDao();
 
-                        pPF=new ContrassegnoDao();
+            case FILE -> pPF=new CsvFattura();
 
-            case FILE ->
-
-                        pPF=new CsvFattura();
-
-            case MEMORIA ->
-
-                        pPF=new MemoriaFattura();
+            case MEMORIA -> pPF=new MemoriaFattura();
 
             default -> Logger.getLogger("persistenza errata").log(Level.SEVERE, " persistency is wrong or null!!");
         }
@@ -102,7 +96,7 @@ public class ControllerAnnullaPagamento  {
         PagamentoCartaCredito pCC = new PagamentoCartaCredito();
         pCC.setIdPagCC(idPagamentoCC);
 
-            status=pPCC.cancellaPagamentoCartaCredito(pCC);
+        status=pPCC.cancellaPagamentoCartaCredito(pCC);
         return status;
     }
 

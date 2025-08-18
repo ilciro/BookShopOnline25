@@ -47,6 +47,7 @@ public class PagamentoTotalePersistenza {
     private static final String IDERROR = "id error !!..";
     private static final String FILE = "file";
     private static final String MEMORIA = "memoria";
+    private static final String CCREDITO="cCredito";
 
     public PagamentoTotalePersistenza(String persistenza) {
 
@@ -105,7 +106,7 @@ public class PagamentoTotalePersistenza {
 
             try(CSVReader reader = new CSVReader(new FileReader(PAGAMENTOTOTALECSV))) {
                 while ((gVector = reader.readNext()) != null) {
-                    if(gVector[GETINDEXMETODOP].equals("cCredito"))
+                    if(gVector[GETINDEXMETODOP].equals(CCREDITO))
                         id = Integer.parseInt(gVector[GETINDEXIDPAGAMENTOCC]);
                 }
             }
@@ -170,7 +171,7 @@ public class PagamentoTotalePersistenza {
 
                         String[] gVectore = new String[9];
 
-                        gVectore[GETINDEXMETODOP] = "cCredito";
+                        gVectore[GETINDEXMETODOP] = CCREDITO;
                         gVectore[GETINDEXNOME] = pcc.getNomeUtente();
                         gVectore[GETINDEXCOGNOME] = pcc.getCognomeUtente();
                         gVectore[GETINDEXAMMONTAREF] = String.valueOf(pcc.getSpesaTotale());
@@ -188,7 +189,7 @@ public class PagamentoTotalePersistenza {
                 }
 
 
-                case MEMORIA -> lista("cCredito");
+                case MEMORIA -> lista(CCREDITO);
 
                 default -> Logger.getLogger("inserisci pagamento totale").log(Level.SEVERE, "inserting payment total error");
 
@@ -250,7 +251,7 @@ public class PagamentoTotalePersistenza {
                 Logger.getLogger("inserisciPagamentofattura").log(Level.SEVERE, "error with write exception :", e1);
             }
 
-        } else if (metodo.equals("cCredito")) {
+        } else if (metodo.equals(CCREDITO)) {
             ArrayList<PagamentoCartaCredito> listaCC;
             try (FileInputStream fis = new FileInputStream("memory/serializzazionePagamentoCartaCredito.ser");
                  ObjectInputStream ois = new ObjectInputStream(fis)) {
@@ -258,7 +259,7 @@ public class PagamentoTotalePersistenza {
                 //carico lista
                 for (PagamentoCartaCredito pagamentoCartaCredito : listaCC) {
                     pT = new PagamentoTotale();
-                    pT.setMetodo("cCredito");
+                    pT.setMetodo(CCREDITO);
                     pT.setNome(pagamentoCartaCredito.getNomeUtente());
                     pT.setCognome(pagamentoCartaCredito.getCognomeUtente());
                     pT.setAmmontare(pagamentoCartaCredito.getSpesaTotale());

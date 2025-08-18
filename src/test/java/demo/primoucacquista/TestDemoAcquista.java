@@ -115,7 +115,8 @@ class TestDemoAcquista {
         cPCC.pagamentoCC("prova",MEMORIA,"prova");
         //annullo pagamento
         PagamentoCartaCredito pCC=cAP.getPagamentoCartaCredito(MEMORIA).get(0);
-        assertTrue(cAP.cancellaPagamentoCC(pCC.getIdPagCC(),MEMORIA));
+        System.out.println("dio :"+pCC + pCC.getIdPagCC());
+       assertTrue(cAP.cancellaPagamentoCC(pCC.getIdPagCC(),MEMORIA));
     }
 
 

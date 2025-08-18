@@ -19,7 +19,6 @@ import java.nio.file.Path;
 import java.nio.file.attribute.FileAttribute;
 import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
-import java.util.HashMap;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,7 +35,6 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
     private static final int GETINDEXACQUISTOP=6;
     private static final int GETINDEXIDPRODOTTOP=7;
     private final File filePagamento;
-    private final HashMap<String, PagamentoCartaCredito> cachePagamento;
     private static final String APPOGGIO="report/appoggio.csv";
     private static final String PERMESSI="rwx------";
     private static final String PREFIX="prefix";
@@ -45,7 +43,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
     private static final String IDWRONG="id wrong ..!!";
     private static final String IDERROR="id error !!..";
 
-    private  PagamentoTotalePersistenza pT;
+    private static PagamentoTotalePersistenza pT;
 
     private static final ControllerSystemState vis=ControllerSystemState.getInstance();
 
@@ -58,7 +56,6 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
                 Logger.getLogger("costruttore").log(Level.SEVERE,"File not created :",e);
             }
         }
-        this.cachePagamento=new HashMap<>();
 
     }
     private static void cleanUp(Path path) throws IOException {

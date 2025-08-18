@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: terzoucgestione.gestioneoggetto.TestGestioneOggettoRivista
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.073 s - in terzoucgestione.gestioneoggetto.TestGestioneOggettoRivista
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.94 s - in terzoucgestione.gestioneoggetto.TestGestioneOggettoRivista

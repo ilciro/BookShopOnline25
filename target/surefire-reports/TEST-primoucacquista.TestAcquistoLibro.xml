@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="primoucacquista.TestAcquistoLibro" time="5.636" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="primoucacquista.TestAcquistoLibro" time="2.148" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IT"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter13999234962025834199.jar /home/daniele/IdeaProjects/BookShopOnline25/target/surefire 2025-08-18T19-15-20_549-jvmRun1 surefire2989811256095739632tmp surefire_06443080406612371220tmp"/>
+    <property name="sun.java.command" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter6819129126649759612.jar /home/daniele/IdeaProjects/BookShopOnline25/target/surefire 2025-08-18T20-24-27_041-jvmRun1 surefire15096981529612692657tmp surefire_012298994173584005967tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/daniele/IdeaProjects/BookShopOnline25/target/test-classes:/home/daniele/IdeaProjects/BookShopOnline25/target/classes:/home/daniele/.m2/repository/com/opencsv/opencsv/5.7.1/opencsv-5.7.1.jar:/home/daniele/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:/home/daniele/.m2/repository/org/apache/commons/commons-text/1.10.0/commons-text-1.10.0.jar:/home/daniele/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/home/daniele/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/home/daniele/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/daniele/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/home/daniele/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/daniele/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/home/daniele/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/home/daniele/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:/home/daniele/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17-linux.jar:/home/daniele/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17-linux.jar:/home/daniele/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17-linux.jar:/home/daniele/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17-linux.jar:/home/daniele/.m2/repository/com/mysql/mysql-connector-j/8.2.0/mysql-connector-j-8.2.0.jar:/home/daniele/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar:/home/daniele/.m2/repository/com/itextpdf/itextpdf/5.5.13.3/itextpdf-5.5.13.3.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v131/4.27.0/selenium-devtools-v131-4.27.0.jar:/home/daniele/.m2/repository/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-api/4.27.0/selenium-api-4.27.0.jar:/home/daniele/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-json/4.27.0/selenium-json-4.27.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.27.0/selenium-remote-driver-4.27.0.jar:/home/daniele/.m2/repository/com/google/guava/guava/33.3.1-jre/guava-33.3.1-jre.jar:/home/daniele/.m2/repository/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.jar:/home/daniele/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/home/daniele/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/daniele/.m2/repository/org/checkerframework/checker-qual/3.43.0/checker-qual-3.43.0.jar:/home/daniele/.m2/repository/com/google/errorprone/error_prone_annotations/2.28.0/error_prone_annotations-2.28.0.jar:/home/daniele/.m2/repository/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.jar:/home/daniele/.m2/repository/io/opentelemetry/semconv/opentelemetry-semconv/1.25.0-alpha/opentelemetry-semconv-1.25.0-alpha.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-api/1.44.1/opentelemetry-api-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-context/1.44.1/opentelemetry-context-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-exporter-logging/1.44.1/opentelemetry-exporter-logging-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-common/1.44.1/opentelemetry-sdk-common-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.44.1/opentelemetry-sdk-extension-autoconfigure-spi-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.44.1/opentelemetry-sdk-extension-autoconfigure-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-api-incubator/1.44.1-alpha/opentelemetry-api-incubator-1.44.1-alpha.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-trace/1.44.1/opentelemetry-sdk-trace-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk/1.44.1/opentelemetry-sdk-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-metrics/1.44.1/opentelemetry-sdk-metrics-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-logs/1.44.1/opentelemetry-sdk-logs-1.44.1.jar:/home/daniele/.m2/repository/net/bytebuddy/byte-buddy/1.15.10/byte-buddy-1.15.10.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-http/4.27.0/selenium-http-4.27.0.jar:/home/daniele/.m2/repository/dev/failsafe/failsafe/3.3.2/failsafe-3.3.2.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-os/4.27.0/selenium-os-4.27.0.jar:/home/daniele/.m2/repository/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.jar:/home/daniele/.m2/repository/org/glassfish/web/jakarta.servlet.jsp.jstl/3.0.1/jakarta.servlet.jsp.jstl-3.0.1.jar:/home/daniele/.m2/repository/jakarta/servlet/jsp/jstl/jakarta.servlet.jsp.jstl-api/3.0.0/jakarta.servlet.jsp.jstl-api-3.0.0.jar:/home/daniele/.m2/repository/jakarta/servlet/jakarta.servlet-api/6.0.0/jakarta.servlet-api-6.0.0.jar:/home/daniele/.m2/repository/jakarta/el/jakarta.el-api/5.0.0/jakarta.el-api-5.0.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/4.27.0/selenium-chrome-driver-4.27.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-chromium-driver/4.27.0/selenium-chromium-driver-4.27.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-manager/4.27.0/selenium-manager-4.27.0.jar:/home/daniele/.m2/repository/org/sonarsource/scanner/maven/sonar-maven-plugin/4.0.0.4121/sonar-maven-plugin-4.0.0.4121.jar:/home/daniele/.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.jar:/home/daniele/.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar:/home/daniele/.m2/repository/org/sonarsource/scanner/api/sonar-scanner-api/2.16.3.1081/sonar-scanner-api-2.16.3.1081.jar:/home/daniele/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar:/home/daniele/.m2/repository/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.jar:/home/daniele/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/daniele/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar:/home/daniele/.m2/repository/org/codehaus/mojo/build-helper-maven-plugin/3.4.0/build-helper-maven-plugin-3.4.0.jar:/home/daniele/.m2/repository/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar:/home/daniele/.m2/repository/org/apache-extras/beanshell/bsh/2.0b6/bsh-2.0b6.jar:/home/daniele/.m2/repository/org/apache/maven/shared/file-management/3.1.0/file-management-3.1.0.jar:/home/daniele/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/home/daniele/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/home/daniele/.m2/repository/org/jetbrains/annotations/15.0/annotations-15.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter13999234962025834199.jar"/>
+    <property name="surefire.real.class.path" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter6819129126649759612.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.15+6-Ubuntu-0ubuntu124.04"/>
     <property name="user.name" value="daniele"/>
@@ -55,20 +55,20 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testAnnullaLibroCCredito(String)[1]" classname="primoucacquista.TestAcquistoLibro" time="1.223">
-    <system-err><![CDATA[ago 18, 2025 7:15:34 PM laptop.controller.primoucacquista.ControllerPagamentoCash <init>
+  <testcase name="testAnnullaLibroCCredito(String)[1]" classname="primoucacquista.TestAcquistoLibro" time="0.286">
+    <system-err><![CDATA[ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCash <init>
 INFORMAZIONI: costructor
-ago 18, 2025 7:15:34 PM laptop.controller.primoucacquista.ControllerPagamentoCC <init>
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC <init>
 INFORMAZIONI: costructor
-ago 18, 2025 7:15:34 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
 INFORMAZIONI: type of persistency of book laptop.database.primoucacquista.libro.LibroDao@14b9e0f
-ago 18, 2025 7:15:34 PM laptop.database.primoucacquista.libro.PersistenzaLibro initializza
+ago 18, 2025 8:24:31 PM laptop.database.primoucacquista.libro.PersistenzaLibro initializza
 INFORMAZIONI:  persistenza libro inizializza
-ago 18, 2025 7:15:34 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : libro
-ago 18, 2025 7:15:34 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-ago 18, 2025 7:15:34 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION libro
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:121)
@@ -200,33 +200,33 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION libro
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:34 PM laptop.database.primoucacquista.libro.LibroDao initializza
+ago 18, 2025 8:24:31 PM laptop.database.primoucacquista.libro.LibroDao initializza
 INFORMAZIONI: inizializza libro dao
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Connesso standard a sys........
 
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize inizializza
 GRAVE: error with create schema ispw->reuse
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize inizializza
 INFORMAZIONI:  databse ispw has been created!!
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  exists stored error  or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -362,12 +362,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  create stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -503,12 +503,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  polpulated stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE popolaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -644,79 +644,79 @@ java.sql.SQLSyntaxErrorException: PROCEDURE popolaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.database.DaoInitialize esiste
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize esiste
 INFORMAZIONI:  type is present : 0
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaAnno
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaAnno
 INFORMAZIONI:  year is correct
-ago 18, 2025 7:15:34 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaMese
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaMese
 INFORMAZIONI:  month is correct . 9
-ago 18, 2025 7:15:34 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaGiorno
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaGiorno
 INFORMAZIONI:  giorno is correct . 9
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Connesso standard a sys........
 
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize inizializza
 GRAVE: error with create schema ispw->reuse
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize inizializza
 INFORMAZIONI:  databse ispw has been created!!
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  exists stored error  or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -851,12 +851,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:34 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  create stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -991,40 +991,40 @@ java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:34 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize esiste
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize esiste
 INFORMAZIONI:  type is present : 1
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize eseguiProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize eseguiProcedura
 AVVERTENZA: table already created : pagamentoTotale
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Connesso standard a sys........
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize inizializza
 GRAVE: error with create schema ispw->reuse
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize inizializza
 INFORMAZIONI:  databse ispw has been created!!
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  exists stored error  or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -1159,12 +1159,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  create stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -1299,26 +1299,26 @@ java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize esiste
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize esiste
 INFORMAZIONI:  type is present : 1
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize eseguiProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize eseguiProcedura
 AVVERTENZA: table already created : pagamentoCartaCredito
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCreditoDao creaTrigger
+ago 18, 2025 8:24:31 PM laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCreditoDao creaTrigger
 GRAVE:  error with fattura trigger
 java.sql.SQLException: Trigger already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
@@ -1455,12 +1455,12 @@ java.sql.SQLException: Trigger already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCreditoDao creaTrigger
+ago 18, 2025 8:24:31 PM laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCreditoDao creaTrigger
 GRAVE:  error with fattura trigger delete
 java.sql.SQLException: Trigger already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
@@ -1597,56 +1597,56 @@ java.sql.SQLException: Trigger already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
 INFORMAZIONI:  payment success with id . 0
-ago 18, 2025 7:15:35 PM laptop.database.terzoucgestioneprofiloggetto.report.ReportDao inizializza
+ago 18, 2025 8:24:31 PM laptop.database.terzoucgestioneprofiloggetto.report.ReportDao inizializza
 INFORMAZIONI: initialize report dao
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
 INFORMAZIONI: repo cc correct inserted
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
 ]]></system-err>
   </testcase>
-  <testcase name="testAnnullaLibroCCredito(String)[2]" classname="primoucacquista.TestAcquistoLibro" time="0.021">
-    <system-err><![CDATA[ago 18, 2025 7:15:35 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
+  <testcase name="testAnnullaLibroCCredito(String)[2]" classname="primoucacquista.TestAcquistoLibro" time="0.006">
+    <system-err><![CDATA[ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
 INFORMAZIONI: type of persistency of book laptop.database.primoucacquista.libro.CsvLibro@2f15cb2e
-ago 18, 2025 7:15:35 PM laptop.database.primoucacquista.libro.CsvLibro initializza
+ago 18, 2025 8:24:31 PM laptop.database.primoucacquista.libro.CsvLibro initializza
 INFORMAZIONI: 
  creating files ..
-ago 18, 2025 7:15:35 PM laptop.database.primoucacquista.libro.CsvLibro initializza
+ago 18, 2025 8:24:31 PM laptop.database.primoucacquista.libro.CsvLibro initializza
 GRAVE: 
  eccezione ottenuta nella modalità file.
 java.io.IOException: cartella vuota
@@ -1777,16 +1777,16 @@ java.io.IOException: cartella vuota
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:35 PM laptop.database.primoucacquista.libro.CsvLibro initializza
+ago 18, 2025 8:24:31 PM laptop.database.primoucacquista.libro.CsvLibro initializza
 INFORMAZIONI: 
  files successfully created
-ago 18, 2025 7:15:35 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaAnno
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaAnno
 INFORMAZIONI:  year is correct
-ago 18, 2025 7:15:35 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaMese
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaMese
 INFORMAZIONI:  month is correct . 9
-ago 18, 2025 7:15:35 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaGiorno
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaGiorno
 INFORMAZIONI:  giorno is correct . 9
-ago 18, 2025 7:15:35 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 18, 2025 8:24:31 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: report/reportPagamentoTotale.csv
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -1795,8 +1795,8 @@ java.nio.file.FileAlreadyExistsException: report/reportPagamentoTotale.csv
 	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
 	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
 	at java.base/java.nio.file.Files.createFile(Files.java:658)
-	at laptop.database.PagamentoTotalePersistenza.<init>(PagamentoTotalePersistenza.java:59)
-	at laptop.database.primoucacquista.pagamentocartacredito.CsvPagamentoCartaCredito.inizializza(CsvPagamentoCartaCredito.java:211)
+	at laptop.database.PagamentoTotalePersistenza.<init>(PagamentoTotalePersistenza.java:60)
+	at laptop.database.primoucacquista.pagamentocartacredito.CsvPagamentoCartaCredito.inizializza(CsvPagamentoCartaCredito.java:208)
 	at laptop.controller.primoucacquista.ControllerPagamentoCC.pagamentoCC(ControllerPagamentoCC.java:190)
 	at primoucacquista.TestAcquistoLibro.testAnnullaLibroCCredito(TestAcquistoLibro.java:120)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -1922,20 +1922,20 @@ java.nio.file.FileAlreadyExistsException: report/reportPagamentoTotale.csv
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:35 PM laptop.database.PagamentoTotalePersistenza isFoundP
+ago 18, 2025 8:24:31 PM laptop.database.PagamentoTotalePersistenza isFoundP
 INFORMAZIONI: deleting cc with id :2
 ]]></system-err>
   </testcase>
-  <testcase name="testAcquistaLibroCCNegozio(String)[1]" classname="primoucacquista.TestAcquistoLibro" time="0.855">
-    <system-err><![CDATA[ago 18, 2025 7:15:35 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
+  <testcase name="testAcquistaLibroCCNegozio(String)[1]" classname="primoucacquista.TestAcquistoLibro" time="0.366">
+    <system-err><![CDATA[ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
 INFORMAZIONI: type of persistency of book laptop.database.primoucacquista.libro.LibroDao@357d3bd8
-ago 18, 2025 7:15:35 PM laptop.database.primoucacquista.libro.PersistenzaLibro initializza
+ago 18, 2025 8:24:31 PM laptop.database.primoucacquista.libro.PersistenzaLibro initializza
 INFORMAZIONI:  persistenza libro inizializza
-ago 18, 2025 7:15:35 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : libro
-ago 18, 2025 7:15:35 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-ago 18, 2025 7:15:35 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION libro
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:121)
@@ -2067,33 +2067,33 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION libro
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:35 PM laptop.database.primoucacquista.libro.LibroDao initializza
+ago 18, 2025 8:24:31 PM laptop.database.primoucacquista.libro.LibroDao initializza
 INFORMAZIONI: inizializza libro dao
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Connesso standard a sys........
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize inizializza
 GRAVE: error with create schema ispw->reuse
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize inizializza
 INFORMAZIONI:  databse ispw has been created!!
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  exists stored error  or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -2229,12 +2229,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  create stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -2370,12 +2370,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  polpulated stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE popolaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -2511,71 +2511,71 @@ java.sql.SQLSyntaxErrorException: PROCEDURE popolaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize esiste
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize esiste
 INFORMAZIONI:  type is present : 1
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize eseguiProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize eseguiProcedura
 AVVERTENZA: table already created : libro
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaAnno
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaAnno
 INFORMAZIONI:  year is correct
-ago 18, 2025 7:15:35 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaMese
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaMese
 INFORMAZIONI:  month is correct . 9
-ago 18, 2025 7:15:35 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaGiorno
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaGiorno
 INFORMAZIONI:  giorno is correct . 9
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Connesso standard a sys........
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize inizializza
 GRAVE: error with create schema ispw->reuse
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize inizializza
 INFORMAZIONI:  databse ispw has been created!!
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:35 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  exists stored error  or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -2710,12 +2710,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:35 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  create stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -2850,40 +2850,40 @@ java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize esiste
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize esiste
 INFORMAZIONI:  type is present : 1
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize eseguiProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize eseguiProcedura
 AVVERTENZA: table already created : pagamentoTotale
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Connesso standard a sys........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize inizializza
 GRAVE: error with create schema ispw->reuse
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize inizializza
 INFORMAZIONI:  databse ispw has been created!!
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  exists stored error  or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -3018,12 +3018,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  create stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -3158,26 +3158,26 @@ java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize esiste
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize esiste
 INFORMAZIONI:  type is present : 1
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize eseguiProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize eseguiProcedura
 AVVERTENZA: table already created : pagamentoCartaCredito
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCreditoDao creaTrigger
+ago 18, 2025 8:24:31 PM laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCreditoDao creaTrigger
 GRAVE:  error with fattura trigger
 java.sql.SQLException: Trigger already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
@@ -3314,12 +3314,12 @@ java.sql.SQLException: Trigger already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCreditoDao creaTrigger
+ago 18, 2025 8:24:31 PM laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCreditoDao creaTrigger
 GRAVE:  error with fattura trigger delete
 java.sql.SQLException: Trigger already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
@@ -3456,44 +3456,44 @@ java.sql.SQLException: Trigger already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
 INFORMAZIONI:  payment success with id . 0
-ago 18, 2025 7:15:36 PM laptop.database.terzoucgestioneprofiloggetto.report.ReportDao inizializza
+ago 18, 2025 8:24:31 PM laptop.database.terzoucgestioneprofiloggetto.report.ReportDao inizializza
 INFORMAZIONI: initialize report dao
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
 INFORMAZIONI: repo cc correct inserted
-ago 18, 2025 7:15:36 PM laptop.database.primoucacquista.negozio.PersistenzaNegozio initializza
+ago 18, 2025 8:24:31 PM laptop.database.primoucacquista.negozio.PersistenzaNegozio initializza
 INFORMAZIONI:  persistenza negozio inizializza
-ago 18, 2025 7:15:36 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : negozio
-ago 18, 2025 7:15:36 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-ago 18, 2025 7:15:36 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION negozio
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:121)
@@ -3624,31 +3624,31 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION negozio
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Connesso standard a sys........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize inizializza
 GRAVE: error with create schema ispw->reuse
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize inizializza
 INFORMAZIONI:  databse ispw has been created!!
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  exists stored error  or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -3783,12 +3783,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  create stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -3923,12 +3923,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  polpulated stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE popolaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -4063,55 +4063,55 @@ java.sql.SQLSyntaxErrorException: PROCEDURE popolaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize esiste
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize esiste
 INFORMAZIONI:  type is present : 1
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize eseguiProcedura
+ago 18, 2025 8:24:31 PM laptop.database.DaoInitialize eseguiProcedura
 AVVERTENZA: table already created : negozio
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
 ]]></system-err>
   </testcase>
-  <testcase name="testAcquistaLibroCCNegozio(String)[2]" classname="primoucacquista.TestAcquistoLibro" time="0.008">
-    <system-err><![CDATA[ago 18, 2025 7:15:36 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
+  <testcase name="testAcquistaLibroCCNegozio(String)[2]" classname="primoucacquista.TestAcquistoLibro" time="0.009">
+    <system-err><![CDATA[ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
 INFORMAZIONI: type of persistency of book laptop.database.primoucacquista.libro.CsvLibro@7bedec9c
-ago 18, 2025 7:15:36 PM laptop.database.primoucacquista.libro.CsvLibro initializza
+ago 18, 2025 8:24:31 PM laptop.database.primoucacquista.libro.CsvLibro initializza
 INFORMAZIONI: 
  files successfully created
-ago 18, 2025 7:15:36 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaAnno
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaAnno
 INFORMAZIONI:  year is correct
-ago 18, 2025 7:15:36 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaMese
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaMese
 INFORMAZIONI:  month is correct . 9
-ago 18, 2025 7:15:36 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaGiorno
+ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaGiorno
 INFORMAZIONI:  giorno is correct . 9
-ago 18, 2025 7:15:36 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 18, 2025 8:24:31 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: report/reportPagamentoTotale.csv
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -4120,8 +4120,8 @@ java.nio.file.FileAlreadyExistsException: report/reportPagamentoTotale.csv
 	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
 	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
 	at java.base/java.nio.file.Files.createFile(Files.java:658)
-	at laptop.database.PagamentoTotalePersistenza.<init>(PagamentoTotalePersistenza.java:59)
-	at laptop.database.primoucacquista.pagamentocartacredito.CsvPagamentoCartaCredito.inizializza(CsvPagamentoCartaCredito.java:211)
+	at laptop.database.PagamentoTotalePersistenza.<init>(PagamentoTotalePersistenza.java:60)
+	at laptop.database.primoucacquista.pagamentocartacredito.CsvPagamentoCartaCredito.inizializza(CsvPagamentoCartaCredito.java:208)
 	at laptop.controller.primoucacquista.ControllerPagamentoCC.pagamentoCC(ControllerPagamentoCC.java:190)
 	at primoucacquista.TestAcquistoLibro.testAcquistaLibroCCNegozio(TestAcquistoLibro.java:70)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -4249,16 +4249,16 @@ java.nio.file.FileAlreadyExistsException: report/reportPagamentoTotale.csv
 
 ]]></system-err>
   </testcase>
-  <testcase name="testAcquistaLibroCashDownload(String)[1]" classname="primoucacquista.TestAcquistoLibro" time="1.739">
-    <system-err><![CDATA[ago 18, 2025 7:15:36 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
+  <testcase name="testAcquistaLibroCashDownload(String)[1]" classname="primoucacquista.TestAcquistoLibro" time="0.728">
+    <system-err><![CDATA[ago 18, 2025 8:24:31 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
 INFORMAZIONI: type of persistency of book laptop.database.primoucacquista.libro.LibroDao@5df20df5
-ago 18, 2025 7:15:36 PM laptop.database.primoucacquista.libro.PersistenzaLibro initializza
+ago 18, 2025 8:24:31 PM laptop.database.primoucacquista.libro.PersistenzaLibro initializza
 INFORMAZIONI:  persistenza libro inizializza
-ago 18, 2025 7:15:36 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : libro
-ago 18, 2025 7:15:36 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-ago 18, 2025 7:15:36 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION libro
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:121)
@@ -4390,33 +4390,33 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION libro
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.database.primoucacquista.libro.LibroDao initializza
+ago 18, 2025 8:24:31 PM laptop.database.primoucacquista.libro.LibroDao initializza
 INFORMAZIONI: inizializza libro dao
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Connesso standard a sys........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:31 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize inizializza
 GRAVE: error with create schema ispw->reuse
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize inizializza
 INFORMAZIONI:  databse ispw has been created!!
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  exists stored error  or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -4552,12 +4552,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  create stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -4693,12 +4693,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  polpulated stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE popolaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -4834,42 +4834,42 @@ java.sql.SQLSyntaxErrorException: PROCEDURE popolaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize esiste
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize esiste
 INFORMAZIONI:  type is present : 1
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize eseguiProcedura
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize eseguiProcedura
 AVVERTENZA: table already created : libro
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
+ago 18, 2025 8:24:32 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
 INFORMAZIONI: persistenza pagamento fattura inizializza
-ago 18, 2025 7:15:36 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : pagamentoFattura
-ago 18, 2025 7:15:36 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-ago 18, 2025 7:15:36 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:121)
@@ -5000,31 +5000,31 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Connesso standard a sys........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize inizializza
 GRAVE: error with create schema ispw->reuse
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize inizializza
 INFORMAZIONI:  databse ispw has been created!!
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  exists stored error  or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -5159,12 +5159,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  create stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -5299,40 +5299,40 @@ java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize esiste
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize esiste
 INFORMAZIONI:  type is present : 1
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize eseguiProcedura
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize eseguiProcedura
 AVVERTENZA: table already created : pagamentoTotale
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Connesso standard a sys........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize inizializza
 GRAVE: error with create schema ispw->reuse
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize inizializza
 INFORMAZIONI:  databse ispw has been created!!
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  exists stored error  or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -5467,12 +5467,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  create stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -5607,26 +5607,26 @@ java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize esiste
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize esiste
 INFORMAZIONI:  type is present : 1
-ago 18, 2025 7:15:36 PM laptop.database.DaoInitialize eseguiProcedura
+ago 18, 2025 8:24:32 PM laptop.database.DaoInitialize eseguiProcedura
 AVVERTENZA: table already created : pagamentoFattura
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao creaTrigger
+ago 18, 2025 8:24:32 PM laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao creaTrigger
 GRAVE:  error with fattura trigger
 java.sql.SQLException: Trigger already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
@@ -5763,12 +5763,12 @@ java.sql.SQLException: Trigger already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao creaTrigger
+ago 18, 2025 8:24:32 PM laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao creaTrigger
 GRAVE:  error with fattura trigger delete
 java.sql.SQLException: Trigger already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
@@ -5905,160 +5905,160 @@ java.sql.SQLException: Trigger already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
+ago 18, 2025 8:24:32 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
 INFORMAZIONI: payment success with id object : 10
-ago 18, 2025 7:15:36 PM laptop.database.terzoucgestioneprofiloggetto.report.ReportDao inizializza
+ago 18, 2025 8:24:32 PM laptop.database.terzoucgestioneprofiloggetto.report.ReportDao inizializza
 INFORMAZIONI: initialize report dao
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:36 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:36 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
+ago 18, 2025 8:24:32 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
 INFORMAZIONI: repo cash correct inserted
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:37 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
+ago 18, 2025 8:24:32 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
 INFORMAZIONI:  id eliminated book 9
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:37 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:38 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:32 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:38 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
+ago 18, 2025 8:24:32 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
 INFORMAZIONI: update book succesfully!!
 ]]></system-err>
   </testcase>
-  <testcase name="testAcquistaLibroCashDownload(String)[2]" classname="primoucacquista.TestAcquistoLibro" time="0.97">
-    <system-err><![CDATA[ago 18, 2025 7:15:38 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
+  <testcase name="testAcquistaLibroCashDownload(String)[2]" classname="primoucacquista.TestAcquistoLibro" time="0.356">
+    <system-err><![CDATA[ago 18, 2025 8:24:32 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
 INFORMAZIONI: type of persistency of book laptop.database.primoucacquista.libro.CsvLibro@6149f04d
-ago 18, 2025 7:15:38 PM laptop.database.primoucacquista.libro.CsvLibro initializza
+ago 18, 2025 8:24:32 PM laptop.database.primoucacquista.libro.CsvLibro initializza
 INFORMAZIONI: 
  files successfully created
-ago 18, 2025 7:15:38 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 18, 2025 8:24:32 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: report/reportPagamentoTotale.csv
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -6067,7 +6067,7 @@ java.nio.file.FileAlreadyExistsException: report/reportPagamentoTotale.csv
 	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
 	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
 	at java.base/java.nio.file.Files.createFile(Files.java:658)
-	at laptop.database.PagamentoTotalePersistenza.<init>(PagamentoTotalePersistenza.java:59)
+	at laptop.database.PagamentoTotalePersistenza.<init>(PagamentoTotalePersistenza.java:60)
 	at laptop.database.primoucacquista.pagamentofattura.CsvFattura.inizializza(CsvFattura.java:86)
 	at laptop.controller.primoucacquista.ControllerPagamentoCash.controlla(ControllerPagamentoCash.java:73)
 	at primoucacquista.TestAcquistoLibro.testAcquistaLibroCashDownload(TestAcquistoLibro.java:45)
@@ -6194,28 +6194,28 @@ java.nio.file.FileAlreadyExistsException: report/reportPagamentoTotale.csv
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:38 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
+ago 18, 2025 8:24:32 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
 INFORMAZIONI: payment success with id object : 10
-ago 18, 2025 7:15:39 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
+ago 18, 2025 8:24:33 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
 INFORMAZIONI:  id eliminated book 9
-ago 18, 2025 7:15:39 PM laptop.database.primoucacquista.libro.CsvLibro inserisciLibro
+ago 18, 2025 8:24:33 PM laptop.database.primoucacquista.libro.CsvLibro inserisciLibro
 INFORMAZIONI: id sbagliato !!
-ago 18, 2025 7:15:39 PM laptop.database.primoucacquista.libro.CsvLibro inserisciLibro
+ago 18, 2025 8:24:33 PM laptop.database.primoucacquista.libro.CsvLibro inserisciLibro
 GRAVE: remove libro...
-ago 18, 2025 7:15:39 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
+ago 18, 2025 8:24:33 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
 INFORMAZIONI: update book succesfully!!
 ]]></system-err>
   </testcase>
-  <testcase name="testAnnullaLibroCashDownload(String)[1]" classname="primoucacquista.TestAcquistoLibro" time="0.782">
-    <system-err><![CDATA[ago 18, 2025 7:15:39 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
+  <testcase name="testAnnullaLibroCashDownload(String)[1]" classname="primoucacquista.TestAcquistoLibro" time="0.381">
+    <system-err><![CDATA[ago 18, 2025 8:24:33 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
 INFORMAZIONI: type of persistency of book laptop.database.primoucacquista.libro.LibroDao@7bf43102
-ago 18, 2025 7:15:39 PM laptop.database.primoucacquista.libro.PersistenzaLibro initializza
+ago 18, 2025 8:24:33 PM laptop.database.primoucacquista.libro.PersistenzaLibro initializza
 INFORMAZIONI:  persistenza libro inizializza
-ago 18, 2025 7:15:39 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:33 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : libro
-ago 18, 2025 7:15:39 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:33 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-ago 18, 2025 7:15:39 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:33 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION libro
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:121)
@@ -6347,33 +6347,33 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION libro
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:39 PM laptop.database.primoucacquista.libro.LibroDao initializza
+ago 18, 2025 8:24:33 PM laptop.database.primoucacquista.libro.LibroDao initializza
 INFORMAZIONI: inizializza libro dao
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Connesso standard a sys........
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize inizializza
 GRAVE: error with create schema ispw->reuse
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize inizializza
 INFORMAZIONI:  databse ispw has been created!!
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  exists stored error  or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -6509,12 +6509,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  create stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -6650,12 +6650,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  polpulated stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE popolaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -6791,42 +6791,42 @@ java.sql.SQLSyntaxErrorException: PROCEDURE popolaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize esiste
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize esiste
 INFORMAZIONI:  type is present : 1
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize eseguiProcedura
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize eseguiProcedura
 AVVERTENZA: table already created : libro
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
+ago 18, 2025 8:24:33 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
 INFORMAZIONI: persistenza pagamento fattura inizializza
-ago 18, 2025 7:15:39 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:33 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : pagamentoFattura
-ago 18, 2025 7:15:39 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:33 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-ago 18, 2025 7:15:39 PM laptop.database.PersistenzaGenerale getExcepptionInit
+ago 18, 2025 8:24:33 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:121)
@@ -6957,31 +6957,31 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Connesso standard a sys........
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize inizializza
 GRAVE: error with create schema ispw->reuse
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize inizializza
 INFORMAZIONI:  databse ispw has been created!!
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  exists stored error  or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -7116,12 +7116,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  create stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -7256,40 +7256,40 @@ java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize esiste
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize esiste
 INFORMAZIONI:  type is present : 1
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize eseguiProcedura
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize eseguiProcedura
 AVVERTENZA: table already created : pagamentoTotale
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb generalConnection
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb generalConnection
 INFORMAZIONI: Connesso standard a sys........
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize inizializza
 GRAVE: error with create schema ispw->reuse
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize inizializza
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize inizializza
 INFORMAZIONI:  databse ispw has been created!!
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  exists stored error  or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -7424,12 +7424,12 @@ java.sql.SQLSyntaxErrorException: PROCEDURE tabellaEsiste already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize creaProcedura
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize creaProcedura
 GRAVE:  create stored error or yet created :
 java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
@@ -7564,26 +7564,26 @@ java.sql.SQLSyntaxErrorException: PROCEDURE creaTabella already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize esiste
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize esiste
 INFORMAZIONI:  type is present : 1
-ago 18, 2025 7:15:39 PM laptop.database.DaoInitialize eseguiProcedura
+ago 18, 2025 8:24:33 PM laptop.database.DaoInitialize eseguiProcedura
 AVVERTENZA: table already created : pagamentoFattura
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao creaTrigger
+ago 18, 2025 8:24:33 PM laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao creaTrigger
 GRAVE:  error with fattura trigger
 java.sql.SQLException: Trigger already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
@@ -7720,12 +7720,12 @@ java.sql.SQLException: Trigger already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao creaTrigger
+ago 18, 2025 8:24:33 PM laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao creaTrigger
 GRAVE:  error with fattura trigger delete
 java.sql.SQLException: Trigger already exists
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
@@ -7862,56 +7862,56 @@ java.sql.SQLException: Trigger already exists
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
+ago 18, 2025 8:24:33 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
 INFORMAZIONI: payment success with id object : 1
-ago 18, 2025 7:15:39 PM laptop.database.terzoucgestioneprofiloggetto.report.ReportDao inizializza
+ago 18, 2025 8:24:33 PM laptop.database.terzoucgestioneprofiloggetto.report.ReportDao inizializza
 INFORMAZIONI: initialize report dao
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
+ago 18, 2025 8:24:33 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
 INFORMAZIONI: repo cash correct inserted
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Tentativo di conessione al server..........\\n
-ago 18, 2025 7:15:39 PM laptop.utilities.ConnToDb connectionToDB
+ago 18, 2025 8:24:33 PM laptop.utilities.ConnToDb connectionToDB
 INFORMAZIONI: Connesso standard a ISPW........
 
 ]]></system-err>
   </testcase>
-  <testcase name="testAnnullaLibroCashDownload(String)[2]" classname="primoucacquista.TestAcquistoLibro" time="0.013">
-    <system-err><![CDATA[ago 18, 2025 7:15:39 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
+  <testcase name="testAnnullaLibroCashDownload(String)[2]" classname="primoucacquista.TestAcquistoLibro" time="0.004">
+    <system-err><![CDATA[ago 18, 2025 8:24:33 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
 INFORMAZIONI: type of persistency of book laptop.database.primoucacquista.libro.CsvLibro@3467b62a
-ago 18, 2025 7:15:39 PM laptop.database.primoucacquista.libro.CsvLibro initializza
+ago 18, 2025 8:24:33 PM laptop.database.primoucacquista.libro.CsvLibro initializza
 INFORMAZIONI: 
  files successfully created
-ago 18, 2025 7:15:39 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 18, 2025 8:24:33 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: report/reportPagamentoTotale.csv
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -7920,7 +7920,7 @@ java.nio.file.FileAlreadyExistsException: report/reportPagamentoTotale.csv
 	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
 	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
 	at java.base/java.nio.file.Files.createFile(Files.java:658)
-	at laptop.database.PagamentoTotalePersistenza.<init>(PagamentoTotalePersistenza.java:59)
+	at laptop.database.PagamentoTotalePersistenza.<init>(PagamentoTotalePersistenza.java:60)
 	at laptop.database.primoucacquista.pagamentofattura.CsvFattura.inizializza(CsvFattura.java:86)
 	at laptop.controller.primoucacquista.ControllerPagamentoCash.controlla(ControllerPagamentoCash.java:73)
 	at primoucacquista.TestAcquistoLibro.testAnnullaLibroCashDownload(TestAcquistoLibro.java:93)
@@ -8047,9 +8047,9 @@ java.nio.file.FileAlreadyExistsException: report/reportPagamentoTotale.csv
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 18, 2025 7:15:39 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
+ago 18, 2025 8:24:33 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
 INFORMAZIONI: payment success with id object : 1
-ago 18, 2025 7:15:39 PM laptop.database.PagamentoTotalePersistenza isFoundF
+ago 18, 2025 8:24:33 PM laptop.database.PagamentoTotalePersistenza isFoundF
 INFORMAZIONI: deleting fattura with id :3
 ]]></system-err>
   </testcase>

@@ -174,7 +174,7 @@ public class ControllerPagamentoCC {
   		String mail;
 		  if(vis.getIsLogged())
 			  mail=User.getInstance().getEmail();
-		  else  mail=null;
+		  else  mail="";
 		//effettuo pagamento
 
 		vis.setTipoModifica("insert");

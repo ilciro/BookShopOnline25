@@ -19,7 +19,6 @@ import java.nio.file.Path;
 import java.nio.file.attribute.FileAttribute;
 import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
-import java.util.HashMap;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,7 +35,6 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
     private static final int GETINDEXACQUISTOP=6;
     private static final int GETINDEXIDPRODOTTOP=7;
     private final File filePagamento;
-    private final HashMap&lt;String, PagamentoCartaCredito&gt; cachePagamento;
     private static final String APPOGGIO=&quot;report/appoggio.csv&quot;;
     private static final String PERMESSI=&quot;rwx------&quot;;
     private static final String PREFIX=&quot;prefix&quot;;
@@ -47,272 +45,232 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 
     private static PagamentoTotalePersistenza pT;
 
-<span class="fc" id="L50">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+<span class="fc" id="L48">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
 
-<span class="fc" id="L52">    public CsvPagamentoCartaCredito() {</span>
-<span class="fc" id="L53">        this.filePagamento=new File(PAGAMENTO);</span>
-<span class="fc bfc" id="L54" title="All 2 branches covered.">        if(!this.filePagamento.exists()) {</span>
+<span class="fc" id="L50">    public CsvPagamentoCartaCredito() {</span>
+<span class="fc" id="L51">        this.filePagamento=new File(PAGAMENTO);</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        if(!this.filePagamento.exists()) {</span>
             try {
-<span class="fc" id="L56">                Files.createFile(Path.of(this.filePagamento.toURI()));</span>
-<span class="nc" id="L57">            } catch (IOException e) {</span>
-<span class="nc" id="L58">                Logger.getLogger(&quot;costruttore&quot;).log(Level.SEVERE,&quot;File not created :&quot;,e);</span>
-<span class="fc" id="L59">            }</span>
+<span class="fc" id="L54">                Files.createFile(Path.of(this.filePagamento.toURI()));</span>
+<span class="nc" id="L55">            } catch (IOException e) {</span>
+<span class="nc" id="L56">                Logger.getLogger(&quot;costruttore&quot;).log(Level.SEVERE,&quot;File not created :&quot;,e);</span>
+<span class="fc" id="L57">            }</span>
         }
-<span class="fc" id="L61">        this.cachePagamento=new HashMap&lt;&gt;();</span>
 
-<span class="fc" id="L63">    }</span>
+<span class="fc" id="L60">    }</span>
     private static void cleanUp(Path path) throws IOException {
-<span class="nc" id="L65">        Files.delete(path);</span>
-<span class="nc" id="L66">    }</span>
+<span class="nc" id="L62">        Files.delete(path);</span>
+<span class="nc" id="L63">    }</span>
     @Override
     public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito p)  {
-<span class="fc" id="L69">        return creaPagamento(p);</span>
+<span class="fc" id="L66">        return creaPagamento(p);</span>
 
     }
 
     @Override
     public PagamentoCartaCredito ultimoPagamentoCartaCredito()  {
-<span class="fc" id="L75">        ObservableList&lt;PagamentoCartaCredito&gt; list=FXCollections.observableArrayList();</span>
-<span class="fc" id="L76">        try(CSVReader reader=new CSVReader(new BufferedReader(new FileReader(this.filePagamento))))</span>
+<span class="fc" id="L72">        ObservableList&lt;PagamentoCartaCredito&gt; list=FXCollections.observableArrayList();</span>
+<span class="fc" id="L73">        try(CSVReader reader=new CSVReader(new BufferedReader(new FileReader(this.filePagamento))))</span>
         {
-<span class="fc" id="L78">            list=FXCollections.observableArrayList();</span>
+<span class="fc" id="L75">            list=FXCollections.observableArrayList();</span>
             String[] gVector;
-<span class="fc bfc" id="L80" title="All 2 branches covered.">            while ((gVector=reader.readNext())!=null)</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">            while ((gVector=reader.readNext())!=null)</span>
             {
-<span class="fc" id="L82">                PagamentoCartaCredito pCC = getPagamentoCartaCredito(gVector);</span>
-<span class="fc" id="L83">                list.add(pCC);</span>
-<span class="fc" id="L84">            }</span>
-<span class="nc" id="L85">        }catch (IOException e){</span>
-<span class="nc" id="L86">            Logger.getLogger(&quot;ultimoPagamentoCC io&quot;).log(Level.SEVERE,&quot;ultimoPagamento io exception :&quot;,e);</span>
-<span class="nc" id="L87">        }catch (CsvValidationException e1){</span>
-<span class="nc" id="L88">            Logger.getLogger(&quot;ultimoPagamento csv&quot;).log(Level.SEVERE,&quot;ultimoPagamento csv exception :&quot;,e1);</span>
+<span class="fc" id="L79">                PagamentoCartaCredito pCC = getPagamentoCartaCredito(gVector);</span>
+<span class="fc" id="L80">                list.add(pCC);</span>
+<span class="fc" id="L81">            }</span>
+<span class="nc" id="L82">        }catch (IOException e){</span>
+<span class="nc" id="L83">            Logger.getLogger(&quot;ultimoPagamentoCC io&quot;).log(Level.SEVERE,&quot;ultimoPagamento io exception :&quot;,e);</span>
+<span class="nc" id="L84">        }catch (CsvValidationException e1){</span>
+<span class="nc" id="L85">            Logger.getLogger(&quot;ultimoPagamento csv&quot;).log(Level.SEVERE,&quot;ultimoPagamento csv exception :&quot;,e1);</span>
 
-<span class="pc" id="L90">        }</span>
+<span class="pc" id="L87">        }</span>
 
-<span class="fc" id="L92">        return list.get(list.size()-1);</span>
+<span class="fc" id="L89">        return list.get(list.size()-1);</span>
     }
 
     private static @NotNull PagamentoCartaCredito getPagamentoCartaCredito(String[] gVector) {
-<span class="fc" id="L96">        PagamentoCartaCredito pCC=new PagamentoCartaCredito();</span>
-<span class="fc" id="L97">        pCC.setIdPagCC(Integer.parseInt(gVector[GETINDEXIDP]));</span>
-<span class="fc" id="L98">        pCC.setMetodo(gVector[GETINDEXMETODOP]);</span>
-<span class="fc" id="L99">        pCC.setNomeUtente(gVector[GETINDEXNOMEP]);</span>
-<span class="fc" id="L100">        pCC.setCognomeUtente(gVector[GETINDEXCOGNOMEP]);</span>
-<span class="fc" id="L101">        pCC.setSpesaTotale(Float.parseFloat(gVector[GETINDEXSPESAP]));</span>
-<span class="fc" id="L102">        pCC.setEmail(gVector[GETINDEXEIAMILP]);</span>
-<span class="fc" id="L103">        pCC.setTipoAcquisto(gVector[GETINDEXACQUISTOP]);</span>
-<span class="fc" id="L104">        pCC.setIdProdotto(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));</span>
-<span class="fc" id="L105">        return pCC;</span>
+<span class="fc" id="L93">        PagamentoCartaCredito pCC=new PagamentoCartaCredito();</span>
+<span class="fc" id="L94">        pCC.setIdPagCC(Integer.parseInt(gVector[GETINDEXIDP]));</span>
+<span class="fc" id="L95">        pCC.setMetodo(gVector[GETINDEXMETODOP]);</span>
+<span class="fc" id="L96">        pCC.setNomeUtente(gVector[GETINDEXNOMEP]);</span>
+<span class="fc" id="L97">        pCC.setCognomeUtente(gVector[GETINDEXCOGNOMEP]);</span>
+<span class="fc" id="L98">        pCC.setSpesaTotale(Float.parseFloat(gVector[GETINDEXSPESAP]));</span>
+<span class="fc" id="L99">        pCC.setEmail(gVector[GETINDEXEIAMILP]);</span>
+<span class="fc" id="L100">        pCC.setTipoAcquisto(gVector[GETINDEXACQUISTOP]);</span>
+<span class="fc" id="L101">        pCC.setIdProdotto(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));</span>
+<span class="fc" id="L102">        return pCC;</span>
     }
 
     private boolean creaPagamento(PagamentoCartaCredito p) {
-<span class="fc" id="L109">        try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.filePagamento, true)))) {</span>
-<span class="fc" id="L110">            String[] gVectore = new String[8];</span>
+<span class="fc" id="L106">        try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.filePagamento, true)))) {</span>
+<span class="fc" id="L107">            String[] gVectore = new String[8];</span>
             //fare if su tipo pagamento
 
-<span class="fc" id="L113">            gVectore[GETINDEXIDP] = String.valueOf(getIdMaxPagamento() + 1);</span>
-<span class="fc" id="L114">            gVectore[GETINDEXMETODOP] = p.getMetodo();</span>
-<span class="fc" id="L115">            gVectore[GETINDEXNOMEP] = p.getNomeUtente();</span>
-<span class="fc" id="L116">            gVectore[GETINDEXCOGNOMEP]=p.getCognomeUtente();</span>
-<span class="fc" id="L117">            gVectore[GETINDEXSPESAP] = String.valueOf(vis.getSpesaT());</span>
-<span class="fc" id="L118">            gVectore[GETINDEXEIAMILP] = User.getInstance().getEmail();</span>
-<span class="fc" id="L119">            gVectore[GETINDEXACQUISTOP] = p.getTipoAcquisto();</span>
-<span class="fc" id="L120">            gVectore[GETINDEXIDPRODOTTOP] = String.valueOf(p.getIdProdotto());</span>
+<span class="fc" id="L110">            gVectore[GETINDEXIDP] = String.valueOf(getIdMaxPagamento() + 1);</span>
+<span class="fc" id="L111">            gVectore[GETINDEXMETODOP] = p.getMetodo();</span>
+<span class="fc" id="L112">            gVectore[GETINDEXNOMEP] = p.getNomeUtente();</span>
+<span class="fc" id="L113">            gVectore[GETINDEXCOGNOMEP]=p.getCognomeUtente();</span>
+<span class="fc" id="L114">            gVectore[GETINDEXSPESAP] = String.valueOf(vis.getSpesaT());</span>
+<span class="fc" id="L115">            gVectore[GETINDEXEIAMILP] = User.getInstance().getEmail();</span>
+<span class="fc" id="L116">            gVectore[GETINDEXACQUISTOP] = p.getTipoAcquisto();</span>
+<span class="fc" id="L117">            gVectore[GETINDEXIDPRODOTTOP] = String.valueOf(p.getIdProdotto());</span>
 
-<span class="fc" id="L122">            csvWriter.writeNext(gVectore);</span>
-<span class="fc" id="L123">            csvWriter.flush();</span>
-<span class="nc" id="L124">        }catch (IOException e)</span>
+<span class="fc" id="L119">            csvWriter.writeNext(gVectore);</span>
+<span class="fc" id="L120">            csvWriter.flush();</span>
+<span class="nc" id="L121">        }catch (IOException e)</span>
         {
-<span class="nc" id="L126">            Logger.getLogger(&quot;creaPagamento&quot;).log(Level.SEVERE,&quot;makePayment exception :&quot;,e);</span>
-<span class="fc" id="L127">        }</span>
-<span class="fc" id="L128">       return pT.inserisciPagamentoTotaleCC(p,&quot;file&quot;);</span>
+<span class="nc" id="L123">            Logger.getLogger(&quot;creaPagamento&quot;).log(Level.SEVERE,&quot;makePayment exception :&quot;,e);</span>
+<span class="fc" id="L124">        }</span>
+<span class="fc" id="L125">       return pT.inserisciPagamentoTotaleCC(p,&quot;file&quot;);</span>
 
     }
     private static int getIdMaxPagamento()  {
         String[] gVector;
-<span class="fc" id="L133">        int id = 0;</span>
+<span class="fc" id="L130">        int id = 0;</span>
 
 
         try {
 
 
 
-<span class="fc" id="L140">            try(CSVReader reader = new CSVReader(new FileReader(PAGAMENTO))) {</span>
-<span class="fc bfc" id="L141" title="All 2 branches covered.">                while ((gVector = reader.readNext()) != null) {</span>
-<span class="fc" id="L142">                    id = Integer.parseInt(gVector[GETINDEXIDP]);</span>
+<span class="fc" id="L137">            try(CSVReader reader = new CSVReader(new FileReader(PAGAMENTO))) {</span>
+<span class="fc bfc" id="L138" title="All 2 branches covered.">                while ((gVector = reader.readNext()) != null) {</span>
+<span class="fc" id="L139">                    id = Integer.parseInt(gVector[GETINDEXIDP]);</span>
                 }
             }
 
-<span class="fc bfc" id="L146" title="All 2 branches covered.">            if (id == 0)</span>
-<span class="fc" id="L147">                throw new IdException(&quot;id == 0 &quot;);</span>
+<span class="fc bfc" id="L143" title="All 2 branches covered.">            if (id == 0)</span>
+<span class="fc" id="L144">                throw new IdException(&quot;id == 0 &quot;);</span>
 
-<span class="fc" id="L149">        }catch (IdException | IOException |CsvValidationException e1)</span>
+<span class="fc" id="L146">        }catch (IdException | IOException |CsvValidationException e1)</span>
         {
 
-<span class="fc" id="L152">            Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR+&quot;:&quot;,e1);</span>
+<span class="fc" id="L149">            Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR+&quot;:&quot;,e1);</span>
 
-<span class="fc" id="L154">        }</span>
+<span class="fc" id="L151">        }</span>
 
-<span class="fc" id="L156">        return id;</span>
+<span class="fc" id="L153">        return id;</span>
     }
 
 
 
 
     private static @NotNull PagamentoCartaCredito getCartaCredito(String[] gVector) {
-<span class="nc" id="L163">        PagamentoCartaCredito p = new PagamentoCartaCredito();</span>
-<span class="nc" id="L164">        p.setIdPagCC(Integer.parseInt(gVector[GETINDEXIDP]));</span>
-<span class="nc" id="L165">        p.setMetodo(gVector[GETINDEXMETODOP]);</span>
-<span class="nc" id="L166">        p.setNomeUtente(gVector[GETINDEXNOMEP]);</span>
-<span class="nc" id="L167">        p.setSpesaTotale(Float.parseFloat(gVector[GETINDEXSPESAP]));</span>
-<span class="nc" id="L168">        p.setEmail(gVector[GETINDEXEIAMILP]);</span>
-<span class="nc" id="L169">        p.setTipoAcquisto(gVector[GETINDEXACQUISTOP]);</span>
-<span class="nc" id="L170">        p.setIdProdotto(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));</span>
-<span class="nc" id="L171">        return p;</span>
+<span class="nc" id="L160">        PagamentoCartaCredito p = new PagamentoCartaCredito();</span>
+<span class="nc" id="L161">        p.setIdPagCC(Integer.parseInt(gVector[GETINDEXIDP]));</span>
+<span class="nc" id="L162">        p.setMetodo(gVector[GETINDEXMETODOP]);</span>
+<span class="nc" id="L163">        p.setNomeUtente(gVector[GETINDEXNOMEP]);</span>
+<span class="nc" id="L164">        p.setSpesaTotale(Float.parseFloat(gVector[GETINDEXSPESAP]));</span>
+<span class="nc" id="L165">        p.setEmail(gVector[GETINDEXEIAMILP]);</span>
+<span class="nc" id="L166">        p.setTipoAcquisto(gVector[GETINDEXACQUISTOP]);</span>
+<span class="nc" id="L167">        p.setIdProdotto(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));</span>
+<span class="nc" id="L168">        return p;</span>
     }
 
 
     @Override
     public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p)  {
-<span class="fc" id="L177">        boolean status = false;</span>
+<span class="fc" id="L174">        boolean status = false;</span>
         try {
-<span class="pc bpc" id="L179" title="1 of 2 branches missed.">        if (SystemUtils.IS_OS_UNIX) {</span>
-<span class="fc" id="L180">            FileAttribute&lt;Set&lt;PosixFilePermission&gt;&gt; attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));</span>
-<span class="fc" id="L181">            Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant</span>
+<span class="pc bpc" id="L176" title="1 of 2 branches missed.">        if (SystemUtils.IS_OS_UNIX) {</span>
+<span class="fc" id="L177">            FileAttribute&lt;Set&lt;PosixFilePermission&gt;&gt; attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));</span>
+<span class="fc" id="L178">            Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant</span>
         }
-<span class="fc" id="L183">        File tmpFile = new File(APPOGGIO);</span>
-<span class="fc" id="L184">        boolean found = isFound(p, tmpFile);</span>
-<span class="pc bpc" id="L185" title="1 of 2 branches missed.">        if (found) {</span>
-<span class="fc" id="L186">            Files.move(tmpFile.toPath(), Path.of(PAGAMENTO), REPLACE_EXISTING);</span>
-<span class="fc" id="L187">            status=true;</span>
+<span class="fc" id="L180">        File tmpFile = new File(APPOGGIO);</span>
+<span class="fc" id="L181">        boolean found = isFound(p, tmpFile);</span>
+<span class="pc bpc" id="L182" title="1 of 2 branches missed.">        if (found) {</span>
+<span class="fc" id="L183">            Files.move(tmpFile.toPath(), Path.of(PAGAMENTO), REPLACE_EXISTING);</span>
+<span class="fc" id="L184">            status=true;</span>
         } else {
-<span class="nc" id="L189">            cleanUp(Path.of(tmpFile.toURI()));</span>
+<span class="nc" id="L186">            cleanUp(Path.of(tmpFile.toURI()));</span>
         }
-<span class="nc" id="L191">        }catch (IOException e){</span>
-<span class="nc" id="L192">            Logger.getLogger(&quot;cancellaPagCC&quot;).log(Level.SEVERE,&quot;delPaymentCC io exception :&quot;,e);</span>
-<span class="nc" id="L193">        }catch (CsvValidationException e1){</span>
-<span class="nc" id="L194">            Logger.getLogger(&quot;cancellaPagCC csv&quot;).log(Level.SEVERE,&quot;delPaymentCC csv exception :&quot;,e1);</span>
+<span class="nc" id="L188">        }catch (IOException e){</span>
+<span class="nc" id="L189">            Logger.getLogger(&quot;cancellaPagCC&quot;).log(Level.SEVERE,&quot;delPaymentCC io exception :&quot;,e);</span>
+<span class="nc" id="L190">        }catch (CsvValidationException e1){</span>
+<span class="nc" id="L191">            Logger.getLogger(&quot;cancellaPagCC csv&quot;).log(Level.SEVERE,&quot;delPaymentCC csv exception :&quot;,e1);</span>
 
-<span class="pc" id="L196">        }</span>
-<span class="pc bpc" id="L197" title="2 of 4 branches missed.">        return status &amp;&amp; pT.cancellaPagamentoFile(p);</span>
+<span class="pc" id="L193">        }</span>
+<span class="pc bpc" id="L194" title="2 of 4 branches missed.">        return status &amp;&amp; pT.cancellaPagamentoFile(p);</span>
 
     }
 
     @Override
     public void inizializza()  {
-<span class="fc" id="L203">        Path path = Path.of(PAGAMENTO);</span>
-<span class="pc bpc" id="L204" title="1 of 2 branches missed.">        if(!Files.exists(path)) {</span>
+<span class="fc" id="L200">        Path path = Path.of(PAGAMENTO);</span>
+<span class="pc bpc" id="L201" title="1 of 2 branches missed.">        if(!Files.exists(path)) {</span>
             try {
-<span class="nc" id="L206">                Files.createFile(path);</span>
-<span class="nc" id="L207">            } catch (IOException e) {</span>
-<span class="nc" id="L208">                Logger.getLogger(&quot;inizializza pagamentoCC csv&quot;).log(Level.SEVERE,&quot;exception in initialize :&quot;,e);</span>
-<span class="nc" id="L209">            }</span>
+<span class="nc" id="L203">                Files.createFile(path);</span>
+<span class="nc" id="L204">            } catch (IOException e) {</span>
+<span class="nc" id="L205">                Logger.getLogger(&quot;inizializza pagamentoCC csv&quot;).log(Level.SEVERE,&quot;exception in initialize :&quot;,e);</span>
+<span class="nc" id="L206">            }</span>
         }
-<span class="fc" id="L211">        pT=new PagamentoTotalePersistenza(&quot;file&quot;);</span>
+<span class="fc" id="L208">        pT=new PagamentoTotalePersistenza(&quot;file&quot;);</span>
 
-<span class="fc" id="L213">    }</span>
+<span class="fc" id="L210">    }</span>
 
     private static boolean isFound(PagamentoCartaCredito p, File tmpFile) throws IOException, CsvValidationException {
-<span class="fc" id="L216">        boolean found = false;</span>
+<span class="fc" id="L213">        boolean found = false;</span>
 
-<span class="fc" id="L218">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(PAGAMENTO)))) {</span>
+<span class="fc" id="L215">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(PAGAMENTO)))) {</span>
             String[] gVector;
-<span class="fc" id="L220">            try (CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true)))</span>
+<span class="fc" id="L217">            try (CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true)))</span>
             ) {
                 boolean recordFound;
-<span class="fc bfc" id="L223" title="All 2 branches covered.">                while ((gVector = reader.readNext()) != null) {</span>
+<span class="fc bfc" id="L220" title="All 2 branches covered.">                while ((gVector = reader.readNext()) != null) {</span>
 
-<span class="fc bfc" id="L225" title="All 2 branches covered.">                    recordFound = gVector[GETINDEXIDP].equals(String.valueOf(p.getIdPagCC()))</span>
-<span class="pc bpc" id="L226" title="1 of 2 branches missed.">                            || gVector[GETINDEXEIAMILP].equals(p.getEmail());</span>
+<span class="fc bfc" id="L222" title="All 2 branches covered.">                    recordFound = gVector[GETINDEXIDP].equals(String.valueOf(p.getIdPagCC()))</span>
+<span class="pc bpc" id="L223" title="1 of 2 branches missed.">                            || gVector[GETINDEXEIAMILP].equals(p.getEmail());</span>
 
 
-<span class="fc bfc" id="L229" title="All 2 branches covered.">                    if (!recordFound)</span>
-<span class="fc" id="L230">                        writer.writeNext(gVector);</span>
+<span class="fc bfc" id="L226" title="All 2 branches covered.">                    if (!recordFound)</span>
+<span class="fc" id="L227">                        writer.writeNext(gVector);</span>
                     else
-<span class="fc" id="L232">                        found = true;</span>
+<span class="fc" id="L229">                        found = true;</span>
                 }
-<span class="fc" id="L234">                writer.flush();</span>
+<span class="fc" id="L231">                writer.flush();</span>
             }
         }
-<span class="fc" id="L237">        return found;</span>
+<span class="fc" id="L234">        return found;</span>
     }
 
-    private static  int getIdMax(){
-        //used for insert correct idOgg
-<span class="nc" id="L242">       return id();</span>
-
-    }
-
-
-    private static synchronized int id()  {
-        String[] gVector;
-<span class="nc" id="L249">        int id = 0;</span>
-
-
-        try {
-
-
-
-<span class="nc" id="L256">            try(CSVReader reader = new CSVReader(new FileReader(PAGAMENTO))) {</span>
-<span class="nc bnc" id="L257" title="All 2 branches missed.">                while ((gVector = reader.readNext()) != null) {</span>
-<span class="nc" id="L258">                    id = Integer.parseInt(gVector[GETINDEXIDP]);</span>
-                }
-            }
-
-
-
-
-
-
-<span class="nc bnc" id="L267" title="All 2 branches missed.">            if (id == 0)</span>
-<span class="nc" id="L268">                throw new IdException(&quot;id == 0 &quot;);</span>
-
-<span class="nc" id="L270">        }catch (IdException | IOException |CsvValidationException e)</span>
-        {
-
-<span class="nc" id="L273">            Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR);</span>
-
-<span class="nc" id="L275">        }</span>
-
-<span class="nc" id="L277">        return id;</span>
-    }
 
 
 
     @Override
     public ObservableList&lt;PagamentoCartaCredito&gt; listaPagamentiUserByCC(PagamentoCartaCredito pcc)  {
-<span class="nc" id="L284">        ObservableList&lt;PagamentoCartaCredito&gt; list=FXCollections.observableArrayList();</span>
-<span class="nc" id="L285">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(filePagamento)))) {</span>
+<span class="nc" id="L242">        ObservableList&lt;PagamentoCartaCredito&gt; list=FXCollections.observableArrayList();</span>
+<span class="nc" id="L243">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(filePagamento)))) {</span>
             String[] gVector;
-<span class="nc" id="L287">            list = FXCollections.observableArrayList();</span>
+<span class="nc" id="L245">            list = FXCollections.observableArrayList();</span>
 
 
-<span class="nc bnc" id="L290" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="nc bnc" id="L248" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
 
 
-<span class="nc" id="L293">                boolean recordFound = gVector[GETINDEXEIAMILP].equals(String.valueOf(pcc.getEmail()));</span>
-<span class="nc bnc" id="L294" title="All 2 branches missed.">                if (recordFound) {</span>
+<span class="nc" id="L251">                boolean recordFound = gVector[GETINDEXEIAMILP].equals(String.valueOf(pcc.getEmail()));</span>
+<span class="nc bnc" id="L252" title="All 2 branches missed.">                if (recordFound) {</span>
 
 
-<span class="nc" id="L297">                    list.add(getCartaCredito(gVector));</span>
+<span class="nc" id="L255">                    list.add(getCartaCredito(gVector));</span>
 
                 }
 
-<span class="nc" id="L301">            }</span>
-<span class="nc" id="L302">        }catch (IOException  |CsvValidationException e){</span>
-<span class="nc" id="L303">            Logger.getLogger(&quot;listPagamento csv ioexc&quot;).log(Level.SEVERE,&quot;listPayment io exception csv :&quot;,e);</span>
-<span class="nc" id="L304">        }</span>
+<span class="nc" id="L259">            }</span>
+<span class="nc" id="L260">        }catch (IOException  |CsvValidationException e){</span>
+<span class="nc" id="L261">            Logger.getLogger(&quot;listPagamento csv ioexc&quot;).log(Level.SEVERE,&quot;listPayment io exception csv :&quot;,e);</span>
+<span class="nc" id="L262">        }</span>
         try {
-<span class="nc bnc" id="L306" title="All 2 branches missed.">            if (list.isEmpty()) {</span>
-<span class="nc" id="L307">                throw new IdException(&quot;list pagamenti csv cc vuota!!&quot;);</span>
+<span class="nc bnc" id="L264" title="All 2 branches missed.">            if (list.isEmpty()) {</span>
+<span class="nc" id="L265">                throw new IdException(&quot;list pagamenti csv cc vuota!!&quot;);</span>
             }
-<span class="nc" id="L309">        }catch (IdException e)</span>
+<span class="nc" id="L267">        }catch (IdException e)</span>
         {
-<span class="nc" id="L311">            Logger.getLogger(&quot;lista pagamentu by user cc&quot;).log(Level.SEVERE,&quot; list payment cc is empty!! &quot;,e);</span>
-<span class="nc" id="L312">        }</span>
+<span class="nc" id="L269">            Logger.getLogger(&quot;lista pagamentu by user cc&quot;).log(Level.SEVERE,&quot; list payment cc is empty!! &quot;,e);</span>
+<span class="nc" id="L270">        }</span>
 
 
-<span class="nc" id="L315">        return list;</span>
+<span class="nc" id="L273">        return list;</span>
 
     }
 }
