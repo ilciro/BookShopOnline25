@@ -64,10 +64,10 @@ public class ControllerPagamentoCash {
 
 
 		//1
-<span class="pc bpc" id="L67" title="3 of 4 branches missed.">		switch (type)</span>
+<span class="pc bpc" id="L67" title="1 of 4 branches missed.">		switch (type)</span>
 		{
-<span class="nc" id="L69">			case DATABASE -&gt; pT=new PagamentoTotaleDao();</span>
-<span class="nc" id="L70">			case FILE -&gt; pT=new PagamentoTotaleCsv();</span>
+<span class="fc" id="L69">			case DATABASE -&gt; pT=new PagamentoTotaleDao();</span>
+<span class="fc" id="L70">			case FILE -&gt; pT=new PagamentoTotaleCsv();</span>
 <span class="fc" id="L71">			case MEMORIA -&gt; pT=new PagamentoTotaleMemoria();</span>
 <span class="nc" id="L72">			default -&gt; Logger.getLogger(&quot;controlla pagamento totale&quot;).log(Level.SEVERE,&quot; persistency total payment is wrong!!&quot;);</span>
 
@@ -75,10 +75,10 @@ public class ControllerPagamentoCash {
 <span class="fc" id="L75">		pT.inizializza();</span>
 
 		//2
-<span class="pc bpc" id="L78" title="3 of 4 branches missed.">		switch (type)</span>
+<span class="pc bpc" id="L78" title="1 of 4 branches missed.">		switch (type)</span>
 		{
-<span class="nc" id="L80">			case DATABASE -&gt; pF=new ContrassegnoDao();</span>
-<span class="nc" id="L81">			case FILE -&gt; pF=new CsvFattura();</span>
+<span class="fc" id="L80">			case DATABASE -&gt; pF=new ContrassegnoDao();</span>
+<span class="fc" id="L81">			case FILE -&gt; pF=new CsvFattura();</span>
 <span class="fc" id="L82">			case MEMORIA -&gt; pF=new MemoriaFattura();</span>
 <span class="nc" id="L83">			default -&gt; Logger.getLogger(&quot;controlla tipologia fattura&quot;).log(Level.SEVERE,&quot; persistency fattura is wrong!!&quot;);</span>
 
@@ -87,9 +87,9 @@ public class ControllerPagamentoCash {
 <span class="fc" id="L87">		pF.inizializza();</span>
 
 		//3
-<span class="pc bpc" id="L90" title="2 of 4 branches missed.">		int id = switch (vis.getType()) {</span>
+<span class="pc bpc" id="L90" title="1 of 4 branches missed.">		int id = switch (vis.getType()) {</span>
 <span class="fc" id="L91">            case LIBRO -&gt; vis.getIdLibro();</span>
-<span class="nc" id="L92">            case GIORNALE -&gt; vis.getIdGiornale();</span>
+<span class="fc" id="L92">            case GIORNALE -&gt; vis.getIdGiornale();</span>
 <span class="fc" id="L93">            case RIVISTA -&gt; vis.getIdRivista();</span>
 <span class="pc" id="L94">            default -&gt; 0;</span>
         };
@@ -112,17 +112,17 @@ public class ControllerPagamentoCash {
 		{
 <span class="fc" id="L113">			Logger.getLogger(&quot;pagamento effettuato &quot;).log(Level.INFO,&quot;payment success with id . {0}&quot;, p.getIdFattura());</span>
 			//database with triggers
-<span class="pc bpc" id="L115" title="1 of 2 branches missed.">			if(type.equals(FILE)) pT=new PagamentoTotaleCsv();</span>
-<span class="pc bpc" id="L116" title="1 of 2 branches missed.">			else if(type.equals(MEMORIA)) pT=new PagamentoTotaleMemoria();</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">			if(type.equals(FILE)) pT=new PagamentoTotaleCsv();</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">			else if(type.equals(MEMORIA)) pT=new PagamentoTotaleMemoria();</span>
 <span class="fc" id="L117">			pT.inserisciPagamentoFattura(p);</span>
 
 		}
 		//inserisco in report finale
 
-<span class="pc bpc" id="L122" title="3 of 4 branches missed.">        switch (type) {</span>
-<span class="nc" id="L123">            case FILE -&gt; pRepo = new CsvReport();</span>
+<span class="pc bpc" id="L122" title="1 of 4 branches missed.">        switch (type) {</span>
+<span class="fc" id="L123">            case FILE -&gt; pRepo = new CsvReport();</span>
 <span class="fc" id="L124">            case MEMORIA -&gt; pRepo = new MemoriaReport();</span>
-<span class="nc" id="L125">            case DATABASE -&gt; pRepo = new ReportDao();</span>
+<span class="fc" id="L125">            case DATABASE -&gt; pRepo = new ReportDao();</span>
 <span class="nc" id="L126">			default -&gt; Logger.getLogger(&quot;inizializza report&quot;).log(Level.SEVERE,&quot; error with repo cash&quot;);</span>
         }
 <span class="fc" id="L128">		pRepo.inizializza();</span>
@@ -130,7 +130,7 @@ public class ControllerPagamentoCash {
 <span class="fc" id="L130">		r.setTipologiaOggetto(ritornaTipoOggetto(type,vis.getType()));</span>
 <span class="fc" id="L131">		String titolo = &quot;&quot;;</span>
 <span class="fc" id="L132">		float prezzo=0;</span>
-<span class="pc bpc" id="L133" title="2 of 4 branches missed.">		switch (vis.getType())</span>
+<span class="pc bpc" id="L133" title="1 of 4 branches missed.">		switch (vis.getType())</span>
 		{
 			case LIBRO -&gt;
 					{
@@ -140,11 +140,11 @@ public class ControllerPagamentoCash {
 <span class="fc" id="L140">						prezzo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getPrezzo();</span>
 <span class="fc" id="L141">					}</span>
 			case GIORNALE -&gt; {
-<span class="nc" id="L143">				Giornale g=new Giornale();</span>
-<span class="nc" id="L144">				g.setId(vis.getIdGiornale());</span>
-<span class="nc" id="L145">				titolo=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getTitolo();</span>
-<span class="nc" id="L146">				prezzo=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getPrezzo();</span>
-<span class="nc" id="L147">			}</span>
+<span class="fc" id="L143">				Giornale g=new Giornale();</span>
+<span class="fc" id="L144">				g.setId(vis.getIdGiornale());</span>
+<span class="fc" id="L145">				titolo=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getTitolo();</span>
+<span class="fc" id="L146">				prezzo=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getPrezzo();</span>
+<span class="fc" id="L147">			}</span>
 			case RIVISTA -&gt; {
 <span class="fc" id="L149">				Rivista riv=new Rivista();</span>
 <span class="fc" id="L150">				riv.setId(vis.getIdRivista());</span>
@@ -157,7 +157,7 @@ public class ControllerPagamentoCash {
 <span class="fc" id="L157">		r.setPrezzo(prezzo);</span>
 <span class="fc" id="L158">		r.setTotale(r.getPrezzo()*vis.getQuantita());</span>
 
-<span class="pc bpc" id="L160" title="1 of 2 branches missed.">		if(pRepo.insertReport(r))</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">		if(pRepo.insertReport(r))</span>
 <span class="fc" id="L161">			Logger.getLogger(&quot;insert repo cash&quot;).log(Level.INFO, &quot;repo cash correct inserted&quot;);</span>
 
 
@@ -179,15 +179,15 @@ public class ControllerPagamentoCash {
 
 
 
-<span class="pc bpc" id="L182" title="2 of 4 branches missed.">		switch (type)</span>
+<span class="pc bpc" id="L182" title="1 of 4 branches missed.">		switch (type)</span>
 		{
 			case LIBRO -&gt;
 			{
 <span class="fc" id="L186">				Libro l=new Libro();</span>
-<span class="pc bpc" id="L187" title="3 of 4 branches missed.">				switch (persistenza)</span>
+<span class="pc bpc" id="L187" title="1 of 4 branches missed.">				switch (persistenza)</span>
 				{
-<span class="nc" id="L189">					case DATABASE -&gt; pL=new LibroDao();</span>
-<span class="nc" id="L190">					case FILE -&gt; pL=new CsvLibro();</span>
+<span class="fc" id="L189">					case DATABASE -&gt; pL=new LibroDao();</span>
+<span class="fc" id="L190">					case FILE -&gt; pL=new CsvLibro();</span>
 <span class="fc" id="L191">					case MEMORIA -&gt; pL=new MemoriaLibro();</span>
 <span class="nc" id="L192">					default -&gt; Logger.getLogger(&quot;ritorna libro&quot;).log(Level.SEVERE,&quot;persistency return book is wrong!!&quot;);</span>
 
@@ -196,24 +196,24 @@ public class ControllerPagamentoCash {
 <span class="fc" id="L196">				tipologia=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();</span>
 <span class="fc" id="L197">			}</span>
 			case GIORNALE -&gt; {
-<span class="nc" id="L199">				Giornale g=new Giornale();</span>
-<span class="nc bnc" id="L200" title="All 4 branches missed.">				switch (persistenza)</span>
+<span class="fc" id="L199">				Giornale g=new Giornale();</span>
+<span class="pc bpc" id="L200" title="2 of 4 branches missed.">				switch (persistenza)</span>
 				{
-<span class="nc" id="L202">					case DATABASE -&gt; pG=new GiornaleDao();</span>
-<span class="nc" id="L203">					case FILE -&gt; pG=new CsvGiornale();</span>
+<span class="fc" id="L202">					case DATABASE -&gt; pG=new GiornaleDao();</span>
+<span class="fc" id="L203">					case FILE -&gt; pG=new CsvGiornale();</span>
 <span class="nc" id="L204">					case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
 <span class="nc" id="L205">					default -&gt; Logger.getLogger(&quot;ritorna giornale&quot;).log(Level.SEVERE,&quot;persistency return daily is wrong!!&quot;);</span>
 
 				}
-<span class="nc" id="L208">				g.setId(vis.getIdGiornale());</span>
-<span class="nc" id="L209">				tipologia=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria();</span>
-<span class="nc" id="L210">			}</span>
+<span class="fc" id="L208">				g.setId(vis.getIdGiornale());</span>
+<span class="fc" id="L209">				tipologia=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria();</span>
+<span class="fc" id="L210">			}</span>
 			case RIVISTA -&gt; {
 <span class="fc" id="L212">				Rivista r=new Rivista();</span>
-<span class="pc bpc" id="L213" title="3 of 4 branches missed.">				switch (persistenza)</span>
+<span class="pc bpc" id="L213" title="1 of 4 branches missed.">				switch (persistenza)</span>
 				{
-<span class="nc" id="L215">					case DATABASE -&gt; pR=new RivistaDao();</span>
-<span class="nc" id="L216">					case FILE -&gt; pR=new CsvRivista();</span>
+<span class="fc" id="L215">					case DATABASE -&gt; pR=new RivistaDao();</span>
+<span class="fc" id="L216">					case FILE -&gt; pR=new CsvRivista();</span>
 <span class="fc" id="L217">					case MEMORIA -&gt; pR=new MemoriaRivista();</span>
 <span class="nc" id="L218">					default -&gt; Logger.getLogger(&quot;ritorna rivista&quot;).log(Level.SEVERE,&quot;persistency return magazine is wrong!!&quot;);</span>
 

@@ -10,7 +10,7 @@ import laptop.model.user.TempUser;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="nc" id="L13">public class ControllerUtenti {</span>
+<span class="fc" id="L13">public class ControllerUtenti {</span>
 
 
     private PersistenzaUtente pU;
@@ -18,21 +18,21 @@ import java.util.logging.Logger;
     private static final String FILE=&quot;file&quot;;
     private static final String MEMORIA=&quot;memoria&quot;;
 
-<span class="nc" id="L21">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+<span class="fc" id="L21">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
 
 
 
     public ObservableList&lt;TempUser&gt; getList(String persistenza)  {
         ObservableList&lt;TempUser&gt; list;
 
-<span class="nc bnc" id="L28" title="All 4 branches missed.">        switch (persistenza){</span>
-<span class="nc" id="L29">            case DATABASE -&gt; pU=new UsersDao();</span>
-<span class="nc" id="L30">            case FILE -&gt; pU=new CsvUtente();</span>
+<span class="pc bpc" id="L28" title="2 of 4 branches missed.">        switch (persistenza){</span>
+<span class="fc" id="L29">            case DATABASE -&gt; pU=new UsersDao();</span>
+<span class="fc" id="L30">            case FILE -&gt; pU=new CsvUtente();</span>
 <span class="nc" id="L31">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
 <span class="nc" id="L32">            default -&gt; Logger.getLogger(&quot;get list&quot;).log(Level.SEVERE,&quot;persistency not correct&quot;);</span>
         }
-<span class="nc" id="L34">        list=pU.getUserData();</span>
-<span class="nc" id="L35">        return list;</span>
+<span class="fc" id="L34">        list=pU.getUserData();</span>
+<span class="fc" id="L35">        return list;</span>
     }
 
 
@@ -41,19 +41,19 @@ import java.util.logging.Logger;
         boolean status ;
 
 
-<span class="nc bnc" id="L44" title="All 4 branches missed.">        switch (persistenza){</span>
-<span class="nc" id="L45">            case DATABASE -&gt; pU=new UsersDao();</span>
-<span class="nc" id="L46">            case FILE -&gt; pU=new CsvUtente();</span>
+<span class="pc bpc" id="L44" title="2 of 4 branches missed.">        switch (persistenza){</span>
+<span class="fc" id="L45">            case DATABASE -&gt; pU=new UsersDao();</span>
+<span class="fc" id="L46">            case FILE -&gt; pU=new CsvUtente();</span>
 <span class="nc" id="L47">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
 <span class="nc" id="L48">            default -&gt; Logger.getLogger(&quot;elimina&quot;).log(Level.SEVERE,&quot;persistency not correct&quot;);</span>
         }
-<span class="nc" id="L50">        TempUser tu=new TempUser();</span>
-<span class="nc" id="L51">        tu.setId(vis.getIdUtente());</span>
-<span class="nc" id="L52">        tu.setEmailT(emailT);</span>
-<span class="nc" id="L53">        status=pU.removeUserByIdEmailPwd(tu);</span>
-<span class="nc bnc" id="L54" title="All 2 branches missed.">        if(status) Logger.getLogger(&quot;elimina&quot;).log(Level.INFO,&quot;user deleted with email :.{0}&quot;,tu.getEmailT());</span>
+<span class="fc" id="L50">        TempUser tu=new TempUser();</span>
+<span class="fc" id="L51">        tu.setId(vis.getIdUtente());</span>
+<span class="fc" id="L52">        tu.setEmailT(emailT);</span>
+<span class="fc" id="L53">        status=pU.removeUserByIdEmailPwd(tu);</span>
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">        if(status) Logger.getLogger(&quot;elimina&quot;).log(Level.INFO,&quot;user deleted with email :.{0}&quot;,tu.getEmailT());</span>
 
-<span class="nc" id="L56">        return status;</span>
+<span class="fc" id="L56">        return status;</span>
     }
 
 

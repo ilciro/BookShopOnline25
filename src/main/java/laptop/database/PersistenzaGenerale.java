@@ -22,6 +22,9 @@ public class PersistenzaGenerale {
     private static final String NEGOZIO="negozio";
     private static final String PAGAMENTOTOTALE="pagamentoTotale";
     private static final String REPORTS="report";
+    private static String CSVEXC="CSVALIDATIONEXCEPTION";
+    private static String SQLEXC="SQLEXCEPTION";
+    private static String MEMEXC="CLASSNOTFOUNDEXCEPTION";
 
 
     public void getExcepptionInit(String type)
@@ -30,9 +33,7 @@ public class PersistenzaGenerale {
         String pathReport="";
         String pathMemory="";
         //messaggi exception
-        String CSVEXC="CSVALIDATIONEXCEPTION";
-        String SQLEXC="SQLEXCEPTION";
-        String MEMEXC="CLASSNOTFOUNDEXCEPTION";
+
 
         switch (type)
         {
@@ -68,8 +69,8 @@ public class PersistenzaGenerale {
                 MEMEXC+=" "+UTENTE;
             }
             case "pagamentoFattura"->{
-                pathReport=REPORT+"Pagamento"+FATTURA.substring(0,1).toUpperCase()+".csv";
-                pathMemory=SERIALIZZAZIONE+"Pagamento"+FATTURA.substring(0,1).toUpperCase()+".ser";
+                pathReport=REPORT+PAGAMENTO+FATTURA.substring(0,1).toUpperCase()+".csv";
+                pathMemory=SERIALIZZAZIONE+PAGAMENTO+FATTURA.substring(0,1).toUpperCase()+".ser";
                 CSVEXC+=" "+FATTURA;
                 SQLEXC+="  "+FATTURA;
                 MEMEXC+=" "+FATTURA;
@@ -88,7 +89,7 @@ public class PersistenzaGenerale {
                 SQLEXC+="  "+CARTACREDITO;
                 MEMEXC+=" "+CARTACREDITO;
             }
-            case "negozio"->
+            case NEGOZIO->
             {
                 pathReport=REPORT+NEGOZIO.substring(0,1).toUpperCase()+".csv";
                 pathMemory=SERIALIZZAZIONE+NEGOZIO.substring(0,1).toUpperCase()+".ser";
@@ -96,7 +97,7 @@ public class PersistenzaGenerale {
                 SQLEXC+="  "+NEGOZIO;
                 MEMEXC+=" "+NEGOZIO;
             }
-            case "pagamentoTotale"->
+            case PAGAMENTOTOTALE->
             {
                 pathReport=REPORT+PAGAMENTOTOTALE.substring(0,1).toUpperCase()+".csv";
                 pathMemory=SERIALIZZAZIONE+PAGAMENTOTOTALE.substring(0,1).toUpperCase()+".ser";

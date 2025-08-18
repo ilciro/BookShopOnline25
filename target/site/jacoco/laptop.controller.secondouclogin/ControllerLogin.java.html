@@ -25,9 +25,9 @@ import java.util.logging.Logger;
 <span class="fc" id="L25">        u.setPassword(pwd);</span>
 
 
-<span class="pc bpc" id="L28" title="3 of 4 branches missed.">        switch (type) {</span>
-<span class="nc" id="L29">            case DATABASE-&gt;pU=new UsersDao();</span>
-<span class="nc" id="L30">            case FILE-&gt; pU = new CsvUtente();</span>
+<span class="pc bpc" id="L28" title="1 of 4 branches missed.">        switch (type) {</span>
+<span class="fc" id="L29">            case DATABASE-&gt;pU=new UsersDao();</span>
+<span class="fc" id="L30">            case FILE-&gt; pU = new CsvUtente();</span>
 <span class="fc" id="L31">            case MEMORIA -&gt; pU = new MemoriaUtente();</span>
 <span class="nc" id="L32">            default -&gt; Logger.getLogger(&quot;login&quot;).log(Level.SEVERE,&quot;persistency error!!&quot;);</span>
         }
@@ -59,7 +59,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L59">        u.setCognome(cognome);</span>
 
 
-<span class="pc bpc" id="L62" title="2 of 5 branches missed.">        switch (ruolo)</span>
+<span class="pc bpc" id="L62" title="1 of 5 branches missed.">        switch (ruolo)</span>
         {
             case &quot;U&quot;,&quot;u&quot;,&quot;utente&quot;,&quot;UTENTE&quot;-&gt;
             {
@@ -69,11 +69,11 @@ import java.util.logging.Logger;
 <span class="fc" id="L69">                u.setId(id);</span>
 <span class="fc" id="L70">            }</span>
             case &quot;A&quot;,&quot;a&quot;,&quot;admin&quot;,&quot;ADMIN&quot;-&gt; {
-<span class="nc" id="L72">                ruolo = &quot;ADMIN&quot;;</span>
-<span class="nc" id="L73">                vis.setIsLogged(true);</span>
-<span class="nc" id="L74">                u.setIdRuolo(ruolo);</span>
-<span class="nc" id="L75">                u.setId(id);</span>
-<span class="nc" id="L76">            }</span>
+<span class="fc" id="L72">                ruolo = &quot;ADMIN&quot;;</span>
+<span class="fc" id="L73">                vis.setIsLogged(true);</span>
+<span class="fc" id="L74">                u.setIdRuolo(ruolo);</span>
+<span class="fc" id="L75">                u.setId(id);</span>
+<span class="fc" id="L76">            }</span>
             case &quot;S&quot;,&quot;s&quot;,&quot;W&quot;,&quot;w&quot;,&quot;SCRITTORE&quot;-&gt; {
 <span class="fc" id="L78">                ruolo = &quot;SCRITTORE&quot;;</span>
 <span class="fc" id="L79">                vis.setIsLogged(true);</span>

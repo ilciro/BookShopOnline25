@@ -51,9 +51,9 @@ public class ControllerDownload {
 <span class="fc" id="L51">		l.leggi(vis.getIdLibro());</span>
 
 
-<span class="pc bpc" id="L54" title="3 of 4 branches missed.">        switch (persistenza) {</span>
-<span class="nc" id="L55">            case DATABASE -&gt; pL = new LibroDao();</span>
-<span class="nc" id="L56">            case FILE -&gt; pL = new CsvLibro();</span>
+<span class="pc bpc" id="L54" title="1 of 4 branches missed.">        switch (persistenza) {</span>
+<span class="fc" id="L55">            case DATABASE -&gt; pL = new LibroDao();</span>
+<span class="fc" id="L56">            case FILE -&gt; pL = new CsvLibro();</span>
 <span class="fc" id="L57">            case MEMORIA -&gt; pL = new MemoriaLibro();</span>
 <span class="nc" id="L58">			default -&gt; Logger.getLogger(&quot;acquista libro&quot;).log(Level.SEVERE,&quot; error with book persistency &quot;);</span>
         }
@@ -83,48 +83,48 @@ public class ControllerDownload {
 <span class="fc" id="L83">	}</span>
 
 	private void acquistaGiornale(String persistenza) {
-<span class="nc" id="L86">		g.setId(vis.getIdGiornale());</span>
-<span class="nc" id="L87">		g.scarica(vis.getIdGiornale());</span>
-<span class="nc" id="L88">		g.leggi(vis.getIdGiornale());</span>
+<span class="fc" id="L86">		g.setId(vis.getIdGiornale());</span>
+<span class="fc" id="L87">		g.scarica(vis.getIdGiornale());</span>
+<span class="fc" id="L88">		g.leggi(vis.getIdGiornale());</span>
 
-<span class="nc bnc" id="L90" title="All 4 branches missed.">		switch (persistenza)</span>
+<span class="pc bpc" id="L90" title="2 of 4 branches missed.">		switch (persistenza)</span>
 		{
-<span class="nc" id="L92">			case DATABASE -&gt; pG=new GiornaleDao();</span>
-<span class="nc" id="L93">			case FILE -&gt; pG=new CsvGiornale();</span>
+<span class="fc" id="L92">			case DATABASE -&gt; pG=new GiornaleDao();</span>
+<span class="fc" id="L93">			case FILE -&gt; pG=new CsvGiornale();</span>
 <span class="nc" id="L94">			case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
 <span class="nc" id="L95">			default -&gt; Logger.getLogger(&quot;acquista giornale&quot;).log(Level.SEVERE,&quot; error with daily persistency &quot;);</span>
 
 		}
 
-<span class="nc" id="L99">		Giornale tempG=new Giornale();</span>
-<span class="nc bnc" id="L100" title="All 2 branches missed.">		for (int i = 0; i&lt; Objects.requireNonNull(pG).getGiornali().size(); i++)</span>
+<span class="fc" id="L99">		Giornale tempG=new Giornale();</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">		for (int i = 0; i&lt; Objects.requireNonNull(pG).getGiornali().size(); i++)</span>
 		{
 
-<span class="nc bnc" id="L103" title="All 2 branches missed.">			if(i==g.getId()-1)</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">			if(i==g.getId()-1)</span>
 			{
 
 
-<span class="nc" id="L107">				tempG=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0);</span>
-<span class="nc" id="L108">				pG.removeGiornaleById(g);</span>
-<span class="nc" id="L109">				Logger.getLogger(&quot;giornale eliminato&quot;).log(Level.INFO,&quot; id eliminated daily{0}&quot;,i);</span>
+<span class="fc" id="L107">				tempG=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0);</span>
+<span class="fc" id="L108">				pG.removeGiornaleById(g);</span>
+<span class="fc" id="L109">				Logger.getLogger(&quot;giornale eliminato&quot;).log(Level.INFO,&quot; id eliminated daily{0}&quot;,i);</span>
 
 			}
 
 
 		}
-<span class="nc" id="L115">		tempG.setId(vis.getIdGiornale());</span>
-<span class="nc" id="L116">		tempG.setCopieRimanenti(tempG.getCopieRimanenti()-vis.getQuantita());</span>
-<span class="nc bnc" id="L117" title="All 2 branches missed.">		if(pG.inserisciGiornale(tempG)) Logger.getLogger(&quot;aggiorno giornale&quot;).log(Level.INFO,&quot;update daily succesfully!!&quot;);</span>
+<span class="fc" id="L115">		tempG.setId(vis.getIdGiornale());</span>
+<span class="fc" id="L116">		tempG.setCopieRimanenti(tempG.getCopieRimanenti()-vis.getQuantita());</span>
+<span class="pc bpc" id="L117" title="1 of 2 branches missed.">		if(pG.inserisciGiornale(tempG)) Logger.getLogger(&quot;aggiorno giornale&quot;).log(Level.INFO,&quot;update daily succesfully!!&quot;);</span>
 
-<span class="nc" id="L119">	}</span>
+<span class="fc" id="L119">	}</span>
 	private void acquistaRivista(String persistenza)  {
 <span class="fc" id="L121">		r.setId(vis.getIdRivista());</span>
 <span class="fc" id="L122">		r.scarica(vis.getIdRivista());</span>
 <span class="fc" id="L123">		r.leggi(vis.getIdRivista());</span>
 
-<span class="pc bpc" id="L125" title="3 of 4 branches missed.">        switch (persistenza) {</span>
-<span class="nc" id="L126">            case DATABASE -&gt; pR = new RivistaDao();</span>
-<span class="nc" id="L127">            case FILE -&gt; pR = new CsvRivista();</span>
+<span class="pc bpc" id="L125" title="1 of 4 branches missed.">        switch (persistenza) {</span>
+<span class="fc" id="L126">            case DATABASE -&gt; pR = new RivistaDao();</span>
+<span class="fc" id="L127">            case FILE -&gt; pR = new CsvRivista();</span>
 <span class="fc" id="L128">            case MEMORIA -&gt; pR = new MemoriaRivista();</span>
 <span class="nc" id="L129">			default -&gt; Logger.getLogger(&quot;acquista rivista&quot;).log(Level.SEVERE,&quot; error with magazine persistency &quot;);</span>
 
@@ -157,10 +157,10 @@ public class ControllerDownload {
 
 <span class="fc" id="L158">			vis.setTipoModifica(&quot;im&quot;);</span>
 
-<span class="pc bpc" id="L160" title="2 of 4 branches missed.">			switch (type)</span>
+<span class="pc bpc" id="L160" title="1 of 4 branches missed.">			switch (type)</span>
 		{
 <span class="fc" id="L162">			case LIBRO-&gt;acquistaLibro(persistenza);</span>
-<span class="nc" id="L163">			case GIORNALE -&gt; acquistaGiornale(persistenza);</span>
+<span class="fc" id="L163">			case GIORNALE -&gt; acquistaGiornale(persistenza);</span>
 <span class="fc" id="L164">			case RIVISTA -&gt; acquistaRivista(persistenza);</span>
 
 <span class="nc" id="L166">			default -&gt; 	Logger.getLogger(&quot;Test scarica&quot;).log(Level.SEVERE,&quot;download error&quot;);</span>

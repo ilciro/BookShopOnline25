@@ -10,48 +10,48 @@ import laptop.model.user.User;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="nc" id="L13">public class ControllerVisualizzaProfilo {</span>
+<span class="fc" id="L13">public class ControllerVisualizzaProfilo {</span>
 
     private static final String DATABASE = &quot;database&quot;;
     private static final String FILE = &quot;file&quot;;
     private static final String MEMORIA = &quot;memoria&quot;;
     private PersistenzaUtente pU;
-<span class="nc" id="L19">    private static final User u = User.getInstance();</span>
-<span class="nc" id="L20">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+<span class="fc" id="L19">    private static final User u = User.getInstance();</span>
+<span class="fc" id="L20">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
 
     public String infoUtente(String persistenza)  {
-<span class="nc" id="L23">        String utente = &quot;&quot;;</span>
-<span class="nc bnc" id="L24" title="All 4 branches missed.">        switch (persistenza) {</span>
-<span class="nc" id="L25">            case DATABASE -&gt; pU = new UsersDao();</span>
-<span class="nc" id="L26">            case FILE -&gt; pU = new CsvUtente();</span>
+<span class="fc" id="L23">        String utente = &quot;&quot;;</span>
+<span class="pc bpc" id="L24" title="2 of 4 branches missed.">        switch (persistenza) {</span>
+<span class="fc" id="L25">            case DATABASE -&gt; pU = new UsersDao();</span>
+<span class="fc" id="L26">            case FILE -&gt; pU = new CsvUtente();</span>
 <span class="nc" id="L27">            case MEMORIA -&gt; pU = new MemoriaUtente();</span>
 <span class="nc" id="L28">            default -&gt; Logger.getLogger(&quot;info utente&quot;).log(Level.SEVERE, &quot;persistency is wrong&quot;);</span>
         }
-<span class="nc bnc" id="L30" title="All 2 branches missed.">        for (int i = 0; i &lt; pU.getUserData().size(); i++) {</span>
-<span class="nc bnc" id="L31" title="All 2 branches missed.">            if (pU.getUserData().get(i).getEmailT().equals(u.getEmail())</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        for (int i = 0; i &lt; pU.getUserData().size(); i++) {</span>
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">            if (pU.getUserData().get(i).getEmailT().equals(u.getEmail())</span>
 <span class="nc bnc" id="L32" title="All 2 branches missed.">                    &amp;&amp; pU.getUserData().get(i).getPasswordT().equals(u.getPassword()))</span>
 <span class="nc" id="L33">                utente = pU.getUserData().get(i).toString();</span>
         }
-<span class="nc" id="L35">        return utente;</span>
+<span class="fc" id="L35">        return utente;</span>
     }
 
 
     public boolean modifica(String[] dataU, String persistenza)  {
-<span class="nc" id="L40">        boolean status = false;</span>
-<span class="nc" id="L41">        String vecchiaMail = u.getEmail();</span>
+<span class="fc" id="L40">        boolean status = false;</span>
+<span class="fc" id="L41">        String vecchiaMail = u.getEmail();</span>
 
-<span class="nc" id="L43">        vis.setTipoModifica(&quot;im&quot;);</span>
+<span class="fc" id="L43">        vis.setTipoModifica(&quot;im&quot;);</span>
 
-<span class="nc bnc" id="L45" title="All 4 branches missed.">        switch (persistenza) {</span>
-<span class="nc" id="L46">            case DATABASE -&gt; pU = new UsersDao();</span>
-<span class="nc" id="L47">            case FILE -&gt; pU = new CsvUtente();</span>
+<span class="pc bpc" id="L45" title="2 of 4 branches missed.">        switch (persistenza) {</span>
+<span class="fc" id="L46">            case DATABASE -&gt; pU = new UsersDao();</span>
+<span class="fc" id="L47">            case FILE -&gt; pU = new CsvUtente();</span>
 <span class="nc" id="L48">            case MEMORIA -&gt; pU = new MemoriaUtente();</span>
 <span class="nc" id="L49">            default -&gt; Logger.getLogger(&quot;modifica utente&quot;).log(Level.SEVERE, &quot;persistency is wrong&quot;);</span>
         }
-<span class="nc" id="L51">        TempUser tu = new TempUser();</span>
-<span class="nc" id="L52">        tu.setEmailT(vecchiaMail);</span>
-<span class="nc bnc" id="L53" title="All 2 branches missed.">        for (int i = 0; i &lt; pU.getUserData().size(); i++) {</span>
-<span class="nc bnc" id="L54" title="All 2 branches missed.">            if (pU.getUserData().get(i).getEmailT().equals(tu.getEmailT())) {</span>
+<span class="fc" id="L51">        TempUser tu = new TempUser();</span>
+<span class="fc" id="L52">        tu.setEmailT(vecchiaMail);</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        for (int i = 0; i &lt; pU.getUserData().size(); i++) {</span>
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">            if (pU.getUserData().get(i).getEmailT().equals(tu.getEmailT())) {</span>
 <span class="nc" id="L55">                tu = pU.getUserData().get(i);</span>
 <span class="nc" id="L56">                setTemptoUser(tu);</span>
 <span class="nc bnc" id="L57" title="All 2 branches missed.">                if (pU.removeUserByIdEmailPwd(tu)) {</span>
@@ -67,7 +67,7 @@ import java.util.logging.Logger;
 
 
         }
-<span class="nc" id="L70">        return status;</span>
+<span class="fc" id="L70">        return status;</span>
     }
 
     private void setTemptoUser(TempUser tu) {

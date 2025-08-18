@@ -14,7 +14,7 @@ import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="nc" id="L17">public class CsvCartaCredito extends PersistenzaCC{</span>
+<span class="fc" id="L17">public class CsvCartaCredito extends PersistenzaCC{</span>
     private static final String LOCATIONCC=&quot;report/reportCartaCredito.csv&quot;;
 
     private static final int GETINDEXNOME=0;
@@ -27,37 +27,37 @@ import java.util.logging.Logger;
 
     @Override
     public boolean insCC(CartaDiCredito cc)  {
-<span class="nc" id="L30">        try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(LOCATIONCC, true)))) {</span>
-<span class="nc" id="L31">            String[] gVector = new String[7];</span>
-<span class="nc" id="L32">            gVector[GETINDEXNOME] = cc.getNomeUser();</span>
-<span class="nc" id="L33">            gVector[GETINDEXCOGNOME] = cc.getCognomeUser();</span>
-<span class="nc" id="L34">            gVector[GETINDEXCODICE] = cc.getNumeroCC();</span>
-<span class="nc" id="L35">            gVector[GETINDEXSCADENZA] = String.valueOf(cc.getScadenza());</span>
-<span class="nc" id="L36">            gVector[GETINDEXPIN] = cc.getCiv();</span>
-<span class="nc" id="L37">            gVector[GETINDEXAMMONTARE] = String.valueOf(cc.getAmmontare());</span>
-<span class="nc" id="L38">            gVector[GETINDEXID] = String.valueOf(getIdMax() + 1);</span>
+<span class="fc" id="L30">        try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(LOCATIONCC, true)))) {</span>
+<span class="fc" id="L31">            String[] gVector = new String[7];</span>
+<span class="fc" id="L32">            gVector[GETINDEXNOME] = cc.getNomeUser();</span>
+<span class="fc" id="L33">            gVector[GETINDEXCOGNOME] = cc.getCognomeUser();</span>
+<span class="fc" id="L34">            gVector[GETINDEXCODICE] = cc.getNumeroCC();</span>
+<span class="fc" id="L35">            gVector[GETINDEXSCADENZA] = String.valueOf(cc.getScadenza());</span>
+<span class="fc" id="L36">            gVector[GETINDEXPIN] = cc.getCiv();</span>
+<span class="fc" id="L37">            gVector[GETINDEXAMMONTARE] = String.valueOf(cc.getAmmontare());</span>
+<span class="fc" id="L38">            gVector[GETINDEXID] = String.valueOf(getIdMax() + 1);</span>
 
-<span class="nc" id="L40">            csvWriter.writeNext(gVector);</span>
-<span class="nc" id="L41">            csvWriter.flush();</span>
+<span class="fc" id="L40">            csvWriter.writeNext(gVector);</span>
+<span class="fc" id="L41">            csvWriter.flush();</span>
 <span class="nc" id="L42">        }catch (IOException e1)</span>
         {
 <span class="nc" id="L44">            Logger.getLogger(&quot;ins cc io&quot;).log(Level.SEVERE,&quot;ins cc io exception&quot;,e1);</span>
 
-<span class="nc" id="L46">        }</span>
-<span class="nc bnc" id="L47" title="All 2 branches missed.">        return getIdMax() != 0;</span>
+<span class="fc" id="L46">        }</span>
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        return getIdMax() != 0;</span>
 
     }
     private static synchronized int getIdMax()  {
         //used for insert correct idOgg
 
         String []gVector;
-<span class="nc" id="L54">        int max=0;</span>
+<span class="fc" id="L54">        int max=0;</span>
 
 
-<span class="nc" id="L57">        try (CSVReader reader = new CSVReader(new FileReader(LOCATIONCC))) {</span>
-<span class="nc bnc" id="L58" title="All 2 branches missed.">            while ((gVector = reader.readNext()) != null) {</span>
-<span class="nc bnc" id="L59" title="All 2 branches missed.">                if(Integer.parseInt(gVector[GETINDEXID])&gt;max)</span>
-<span class="nc" id="L60">                    max= Integer.parseInt(gVector[GETINDEXID]);</span>
+<span class="fc" id="L57">        try (CSVReader reader = new CSVReader(new FileReader(LOCATIONCC))) {</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">                if(Integer.parseInt(gVector[GETINDEXID])&gt;max)</span>
+<span class="fc" id="L60">                    max= Integer.parseInt(gVector[GETINDEXID]);</span>
             }
 <span class="nc" id="L62">        } catch (CsvValidationException e)</span>
     {
@@ -67,12 +67,12 @@ import java.util.logging.Logger;
     {
 <span class="nc" id="L68">        Logger.getLogger(&quot;get id max cc io &quot;).log(Level.SEVERE,&quot;id max cc io exception&quot;,e1);</span>
 
-<span class="nc" id="L70">    }</span>
+<span class="pc" id="L70">    }</span>
 
 
 
 
-<span class="nc" id="L75">        return max;</span>
+<span class="fc" id="L75">        return max;</span>
 
 
     }
@@ -82,21 +82,21 @@ import java.util.logging.Logger;
     public ObservableList&lt;CartaDiCredito&gt; getCarteDiCredito(CartaDiCredito cc)  {
 
         String[] gVector;
-<span class="nc" id="L85">        ObservableList&lt;CartaDiCredito&gt;list=FXCollections.observableArrayList();</span>
+<span class="fc" id="L85">        ObservableList&lt;CartaDiCredito&gt;list=FXCollections.observableArrayList();</span>
         boolean recordFound;
-<span class="nc" id="L87">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(LOCATIONCC)))) {</span>
+<span class="fc" id="L87">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(LOCATIONCC)))) {</span>
 
-<span class="nc bnc" id="L89" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
-<span class="nc bnc" id="L90" title="All 4 branches missed.">                recordFound = gVector[GETINDEXNOME].equals(cc.getNomeUser()) || gVector[GETINDEXCODICE].equals(cc.getNumeroCC());</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="pc bpc" id="L90" title="3 of 4 branches missed.">                recordFound = gVector[GETINDEXNOME].equals(cc.getNomeUser()) || gVector[GETINDEXCODICE].equals(cc.getNumeroCC());</span>
 
-<span class="nc bnc" id="L92" title="All 2 branches missed.">                if (recordFound) {</span>
-<span class="nc" id="L93">                    CartaDiCredito cc1 = new CartaDiCredito();</span>
-<span class="nc" id="L94">                    cc1.setNomeUser(gVector[GETINDEXNOME]);</span>
-<span class="nc" id="L95">                    cc1.setNumeroCC(gVector[GETINDEXCODICE]);</span>
-<span class="nc" id="L96">                    cc1.setScadenza(Date.valueOf(gVector[GETINDEXSCADENZA]));</span>
-<span class="nc" id="L97">                    cc1.setCiv(gVector[GETINDEXPIN]);</span>
-<span class="nc" id="L98">                    list.add(cc1);</span>
-<span class="nc" id="L99">                }</span>
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">                if (recordFound) {</span>
+<span class="fc" id="L93">                    CartaDiCredito cc1 = new CartaDiCredito();</span>
+<span class="fc" id="L94">                    cc1.setNomeUser(gVector[GETINDEXNOME]);</span>
+<span class="fc" id="L95">                    cc1.setNumeroCC(gVector[GETINDEXCODICE]);</span>
+<span class="fc" id="L96">                    cc1.setScadenza(Date.valueOf(gVector[GETINDEXSCADENZA]));</span>
+<span class="fc" id="L97">                    cc1.setCiv(gVector[GETINDEXPIN]);</span>
+<span class="fc" id="L98">                    list.add(cc1);</span>
+<span class="fc" id="L99">                }</span>
             }
 <span class="nc" id="L101">        }catch (IOException e){</span>
 <span class="nc" id="L102">            Logger.getLogger(&quot;lista cc&quot;).log(Level.SEVERE,&quot;lista cc ioexception&quot;,e);</span>
@@ -104,28 +104,28 @@ import java.util.logging.Logger;
 <span class="nc" id="L104">        catch (CsvValidationException e1){</span>
 <span class="nc" id="L105">            Logger.getLogger(&quot;lista csv&quot;).log(Level.SEVERE,&quot;lista csv exception&quot;,e1);</span>
 
-<span class="nc" id="L107">        }</span>
+<span class="pc" id="L107">        }</span>
 
-<span class="nc" id="L109">            return list;</span>
+<span class="fc" id="L109">            return list;</span>
     }
 
     @Override
     public void inizializza()  {
-<span class="nc" id="L114">        Path path = Path.of(LOCATIONCC);</span>
+<span class="fc" id="L114">        Path path = Path.of(LOCATIONCC);</span>
         try{
-<span class="nc bnc" id="L116" title="All 2 branches missed.">           if(!Files.exists(path)) throw new IOException(&quot;file not exists&quot;);</span>
-<span class="nc" id="L117">       }catch (IOException e)</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">           if(!Files.exists(path)) throw new IOException(&quot;file not exists&quot;);</span>
+<span class="fc" id="L117">       }catch (IOException e)</span>
        {
-<span class="nc" id="L119">           Logger.getLogger(&quot;inizializza&quot;).log(Level.SEVERE,&quot; file  not exists : {0}&quot;,LOCATIONCC);</span>
+<span class="fc" id="L119">           Logger.getLogger(&quot;inizializza&quot;).log(Level.SEVERE,&quot; file  not exists : {0}&quot;,LOCATIONCC);</span>
            try {
-<span class="nc" id="L121">               Files.createFile(path);</span>
+<span class="fc" id="L121">               Files.createFile(path);</span>
 <span class="nc" id="L122">           } catch (IOException ex) {</span>
 <span class="nc" id="L123">               Logger.getLogger(&quot;inizializza cc csv &quot;).log(Level.SEVERE,&quot;inizializza csv with ioexception&quot;,e);</span>
 
-<span class="nc" id="L125">           }</span>
-<span class="nc" id="L126">           Logger.getLogger(&quot;inizializza&quot;).log(Level.INFO,&quot; file  created : {0}&quot;,LOCATIONCC);</span>
+<span class="fc" id="L125">           }</span>
+<span class="fc" id="L126">           Logger.getLogger(&quot;inizializza&quot;).log(Level.INFO,&quot; file  created : {0}&quot;,LOCATIONCC);</span>
 
-<span class="nc" id="L128">       }</span>
-<span class="nc" id="L129">    }</span>
+<span class="fc" id="L128">       }</span>
+<span class="fc" id="L129">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

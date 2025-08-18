@@ -5,6 +5,7 @@ import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.*;
 import laptop.controller.secondouclogin.ControllerLogin;
 import laptop.controller.terzoucgestioneprofiloggetto.ControllerVisualizzaOrdini;
+import laptop.exception.IdException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ResourceBundle;
@@ -19,17 +20,11 @@ public class TestGestioneOrdini {
     private static final ControllerPagamentoCash cPCash=new ControllerPagamentoCash();
     private static final ControllerDownload cD=new ControllerDownload();
     private static final ControllerPagamentoCC cPCC=new ControllerPagamentoCC();
-    private static final ControllerVisualizza cV=new ControllerVisualizza();
-    private static final ControllerScegliNegozio cSN=new ControllerScegliNegozio();
     private static final ControllerLogin cL=new ControllerLogin();
     private static final ControllerVisualizzaOrdini cVO=new ControllerVisualizzaOrdini();
     private static final ResourceBundle RBUTENTE =ResourceBundle.getBundle("configurations/users");
     private static final ResourceBundle RBCC =ResourceBundle.getBundle("configurations/cartaCredito");
     private static final String MEMORIA="memoria";
-
-
-    //todo si rompe qui
-
 
 
     @Test
@@ -58,13 +53,37 @@ public class TestGestioneOrdini {
         //cancello ordine
          cVO.cancellaPagamento(id,MEMORIA);
         assertTrue(cHP.logout());
-
-
-
-
     }
 
-    //fare quello annulla cc
+   @Test
+    void testAnnullaOrdineCCByUSerLogged() throws IdException {
+       vis.setTipologiaApplicazione("demo");
+       //homepage con login
+       cL.login(RBUTENTE.getString("emailU"),RBUTENTE.getString("passU"),MEMORIA);
+       // login fatto-> home page
+       //scelgo libro
+       vis.setTypeAsMagazine();
+       cCV.getLista(vis.getType(),MEMORIA);
+       //scelgo rivista 2
+       vis.setIdRivista(2);
+       //acquista
+       cA.getNomeCostoDisp(MEMORIA);
+       cA.getPrezzo("5",MEMORIA);
+       //cash
+       vis.setMetodoP("cCredito");
+       //pagamento cc
+       cPCC.correttezza(RBCC.getString("codice1"),RBCC.getString("data1").replace("-","/"),RBCC.getString("civ1"));
+       //effettuo pagamento
+       cPCC.pagamentoCC("prova",MEMORIA,"prova");
+       //download
+       cD.scarica(vis.getType(),MEMORIA);
+       //torno ad home page da loggato
+       //prendo fattura
+       int id=cVO.getListaFattura(MEMORIA).get(cVO.getListaFattura(MEMORIA).size()-1).getIdFattura();
+       //cancello ordine
+       cVO.cancellaPagamento(id,MEMORIA);
+       assertTrue(cHP.logout());
+   }
 
 
 

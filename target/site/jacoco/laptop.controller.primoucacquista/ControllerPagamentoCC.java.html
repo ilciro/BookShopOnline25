@@ -82,18 +82,18 @@ import laptop.model.raccolta.Libro;
 
 
 	public boolean aggiungiCartaDB(String n, String c, String cod, Date data, String civ, float prezzo,String persistenza) {
-<span class="nc" id="L85">   			cc= new CartaDiCredito(n, c, cod,  data, civ, prezzo);</span>
+<span class="fc" id="L85">   			cc= new CartaDiCredito(n, c, cod,  data, civ, prezzo);</span>
 
 
 
-<span class="nc bnc" id="L89" title="All 3 branches missed.">			switch (persistenza)</span>
+<span class="pc bpc" id="L89" title="1 of 3 branches missed.">			switch (persistenza)</span>
 			{
-<span class="nc" id="L91">				case DATABASE-&gt;persistenzaCC=new CartaCreditoDao();</span>
-<span class="nc" id="L92">				case FILE-&gt;persistenzaCC=new CsvCartaCredito();</span>
+<span class="fc" id="L91">				case DATABASE-&gt;persistenzaCC=new CartaCreditoDao();</span>
+<span class="fc" id="L92">				case FILE-&gt;persistenzaCC=new CsvCartaCredito();</span>
 <span class="nc" id="L93">				default -&gt; Logger.getLogger(&quot;aggiungi carta db&quot;).log(Level.SEVERE,&quot; error in persistency&quot;);</span>
 			}
-<span class="nc" id="L95">				persistenzaCC.inizializza();</span>
-<span class="nc" id="L96">			return persistenzaCC.insCC(cc);</span>
+<span class="fc" id="L95">				persistenzaCC.inizializza();</span>
+<span class="fc" id="L96">			return persistenzaCC.insCC(cc);</span>
 
 	}
 
@@ -102,50 +102,50 @@ import laptop.model.raccolta.Libro;
 
 	public ObservableList&lt;CartaDiCredito&gt; ritornaElencoCC(String nomeU, String persistenza,String numero) {
 
-<span class="nc" id="L105">		cc=new CartaDiCredito();</span>
-<span class="nc" id="L106">		cc.setNomeUser(nomeU);</span>
-<span class="nc" id="L107">		cc.setNumeroCC(numero);</span>
+<span class="fc" id="L105">		cc=new CartaDiCredito();</span>
+<span class="fc" id="L106">		cc.setNomeUser(nomeU);</span>
+<span class="fc" id="L107">		cc.setNumeroCC(numero);</span>
 
-<span class="nc bnc" id="L109" title="All 3 branches missed.">		switch (persistenza)</span>
+<span class="pc bpc" id="L109" title="1 of 3 branches missed.">		switch (persistenza)</span>
 		{
-<span class="nc" id="L111">			case DATABASE-&gt;persistenzaCC=new CartaCreditoDao();</span>
-<span class="nc" id="L112">			case FILE-&gt;persistenzaCC=new CsvCartaCredito();</span>
+<span class="fc" id="L111">			case DATABASE-&gt;persistenzaCC=new CartaCreditoDao();</span>
+<span class="fc" id="L112">			case FILE-&gt;persistenzaCC=new CsvCartaCredito();</span>
 <span class="nc" id="L113">			default -&gt; Logger.getLogger(&quot;elenco cc dal db&quot;).log(Level.SEVERE,&quot; list is empty&quot;);</span>
 		}
-<span class="nc" id="L115">			persistenzaCC.inizializza();</span>
+<span class="fc" id="L115">			persistenzaCC.inizializza();</span>
 
 
-<span class="nc" id="L118">        return persistenzaCC.getCarteDiCredito(cc);</span>
+<span class="fc" id="L118">        return persistenzaCC.getCarteDiCredito(cc);</span>
 
 	}
 	
 
 
 	private PagamentoCartaCredito pagamentoLibroCC(String nome, String database, String cognome, String mail)  {
-<span class="nc" id="L125">		Libro l=new Libro();</span>
-<span class="nc" id="L126">		l.setId(vis.getIdLibro());</span>
-<span class="nc" id="L127">		int id=l.getId();</span>
-<span class="nc bnc" id="L128" title="All 4 branches missed.">		switch (database)</span>
+<span class="fc" id="L125">		Libro l=new Libro();</span>
+<span class="fc" id="L126">		l.setId(vis.getIdLibro());</span>
+<span class="fc" id="L127">		int id=l.getId();</span>
+<span class="pc bpc" id="L128" title="2 of 4 branches missed.">		switch (database)</span>
 		{
-<span class="nc" id="L130">			case DATABASE -&gt; pL=new LibroDao();</span>
-<span class="nc" id="L131">			case FILE -&gt; pL=new CsvLibro();</span>
+<span class="fc" id="L130">			case DATABASE -&gt; pL=new LibroDao();</span>
+<span class="fc" id="L131">			case FILE -&gt; pL=new CsvLibro();</span>
 <span class="nc" id="L132">			case MEMORIA -&gt; pL=new MemoriaLibro();</span>
 <span class="nc" id="L133">			default -&gt; Logger.getLogger(&quot; errore cpn la persistenza nel libro&quot;).log(Level.SEVERE,&quot;persisentcy book error !!&quot;);</span>
 		}
-<span class="nc" id="L135">		String tipo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();</span>
-<span class="nc" id="L136">		PagamentoCartaCredito p =new PagamentoCartaCredito(0,CCREDITO,nome, vis.getSpesaT(),mail,tipo,id );</span>
-<span class="nc" id="L137">		p.setCognomeUtente(cognome);</span>
-<span class="nc" id="L138">		return p;</span>
+<span class="fc" id="L135">		String tipo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();</span>
+<span class="fc" id="L136">		PagamentoCartaCredito p =new PagamentoCartaCredito(0,CCREDITO,nome, vis.getSpesaT(),mail,tipo,id );</span>
+<span class="fc" id="L137">		p.setCognomeUtente(cognome);</span>
+<span class="fc" id="L138">		return p;</span>
 	}
 
 	private PagamentoCartaCredito pagamentoGiornaleCC(String nome, String database, String cognome, String mail)  {
 <span class="fc" id="L142">		Giornale g=new Giornale();</span>
 <span class="fc" id="L143">		g.setId(vis.getIdGiornale());</span>
 <span class="fc" id="L144">		int id=g.getId();</span>
-<span class="pc bpc" id="L145" title="3 of 4 branches missed.">		switch (database)</span>
+<span class="pc bpc" id="L145" title="1 of 4 branches missed.">		switch (database)</span>
 		{
-<span class="nc" id="L147">			case DATABASE -&gt; pG=new GiornaleDao();</span>
-<span class="nc" id="L148">			case FILE -&gt; pG=new CsvGiornale();</span>
+<span class="fc" id="L147">			case DATABASE -&gt; pG=new GiornaleDao();</span>
+<span class="fc" id="L148">			case FILE -&gt; pG=new CsvGiornale();</span>
 <span class="fc" id="L149">			case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
 <span class="nc" id="L150">			default -&gt; Logger.getLogger(&quot; errore cpn la persistenza nel giornale&quot;).log(Level.SEVERE,&quot;persisentcy daily error !!&quot;);</span>
 		}
@@ -156,28 +156,28 @@ import laptop.model.raccolta.Libro;
 	}
 
 	private PagamentoCartaCredito pagamentoRivistaCC(String nome, String database, String cognome, String mail) {
-<span class="nc" id="L159">		Rivista r=new Rivista();</span>
-<span class="nc" id="L160">		r.setId(vis.getIdRivista());</span>
-<span class="nc" id="L161">		int id=r.getId();</span>
-<span class="nc bnc" id="L162" title="All 4 branches missed.">		switch (database)</span>
+<span class="fc" id="L159">		Rivista r=new Rivista();</span>
+<span class="fc" id="L160">		r.setId(vis.getIdRivista());</span>
+<span class="fc" id="L161">		int id=r.getId();</span>
+<span class="pc bpc" id="L162" title="1 of 4 branches missed.">		switch (database)</span>
 		{
-<span class="nc" id="L164">			case DATABASE -&gt; pR=new RivistaDao();</span>
-<span class="nc" id="L165">			case FILE -&gt; pR=new CsvRivista();</span>
-<span class="nc" id="L166">			case MEMORIA -&gt; pR=new MemoriaRivista();</span>
+<span class="fc" id="L164">			case DATABASE -&gt; pR=new RivistaDao();</span>
+<span class="fc" id="L165">			case FILE -&gt; pR=new CsvRivista();</span>
+<span class="fc" id="L166">			case MEMORIA -&gt; pR=new MemoriaRivista();</span>
 <span class="nc" id="L167">			default -&gt; Logger.getLogger(&quot; errore cpn la persistenza nella rivista&quot;).log(Level.SEVERE,&quot;persisentcy magazine error !!&quot;);</span>
 		}
-<span class="nc" id="L169">		String tipo= pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();</span>
-<span class="nc" id="L170">		PagamentoCartaCredito p =new PagamentoCartaCredito(0,CCREDITO,nome, vis.getSpesaT(),mail,tipo,id );</span>
-<span class="nc" id="L171">		p.setCognomeUtente(cognome);</span>
-<span class="nc" id="L172">		return p;</span>
+<span class="fc" id="L169">		String tipo= pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();</span>
+<span class="fc" id="L170">		PagamentoCartaCredito p =new PagamentoCartaCredito(0,CCREDITO,nome, vis.getSpesaT(),mail,tipo,id );</span>
+<span class="fc" id="L171">		p.setCognomeUtente(cognome);</span>
+<span class="fc" id="L172">		return p;</span>
 
 	}
 
 
 	public void pagamentoCC(String nome,String database,String cognome)  {
   		String mail;
-<span class="pc bpc" id="L179" title="1 of 2 branches missed.">		  if(vis.getIsLogged())</span>
-<span class="nc" id="L180">			  mail=User.getInstance().getEmail();</span>
+<span class="fc bfc" id="L179" title="All 2 branches covered.">		  if(vis.getIsLogged())</span>
+<span class="fc" id="L180">			  mail=User.getInstance().getEmail();</span>
 <span class="fc" id="L181">		  else  mail=null;</span>
 		//effettuo pagamento
 
@@ -186,20 +186,20 @@ import laptop.model.raccolta.Libro;
 
 <span class="fc" id="L187">        PagamentoCartaCredito p = null;</span>
 
-<span class="pc bpc" id="L189" title="3 of 4 branches missed.">        switch (vis.getType()) {</span>
-<span class="nc" id="L190">			case LIBRO-&gt; p=pagamentoLibroCC(nome,database,cognome,mail);</span>
+<span class="pc bpc" id="L189" title="1 of 4 branches missed.">        switch (vis.getType()) {</span>
+<span class="fc" id="L190">			case LIBRO-&gt; p=pagamentoLibroCC(nome,database,cognome,mail);</span>
 <span class="fc" id="L191">			case GIORNALE -&gt;p= pagamentoGiornaleCC(nome,database,cognome,mail);</span>
-<span class="nc" id="L192">			case RIVISTA -&gt; p=pagamentoRivistaCC(nome,database,cognome,mail);</span>
+<span class="fc" id="L192">			case RIVISTA -&gt; p=pagamentoRivistaCC(nome,database,cognome,mail);</span>
 <span class="nc" id="L193">			default -&gt;Logger.getLogger(&quot;pagamentoCC&quot;).log(Level.SEVERE,&quot;persistency incorrect&quot;);</span>
 
 		}
 
 		//effettua pagamento
 
-<span class="pc bpc" id="L199" title="3 of 4 branches missed.">		switch (database)</span>
+<span class="pc bpc" id="L199" title="1 of 4 branches missed.">		switch (database)</span>
 		{
-<span class="nc" id="L201">			case DATABASE -&gt; pT=new PagamentoTotaleDao();</span>
-<span class="nc" id="L202">			case FILE -&gt; pT=new PagamentoTotaleCsv();</span>
+<span class="fc" id="L201">			case DATABASE -&gt; pT=new PagamentoTotaleDao();</span>
+<span class="fc" id="L202">			case FILE -&gt; pT=new PagamentoTotaleCsv();</span>
 <span class="fc" id="L203">			case MEMORIA -&gt; pT=new PagamentoTotaleMemoria();</span>
 <span class="nc" id="L204">			default -&gt; Logger.getLogger(&quot;pagamento totale &quot;).log(Level.SEVERE,&quot; error total payment  persistency&quot;);</span>
 
@@ -208,10 +208,10 @@ import laptop.model.raccolta.Libro;
 
 
 
-<span class="pc bpc" id="L211" title="3 of 4 branches missed.">		switch (database)</span>
+<span class="pc bpc" id="L211" title="1 of 4 branches missed.">		switch (database)</span>
 		{
-<span class="nc" id="L213">			case DATABASE -&gt;pCC=new PagamentoCartaCreditoDao();</span>
-<span class="nc" id="L214">			case FILE -&gt; pCC=new CsvPagamentoCartaCredito();</span>
+<span class="fc" id="L213">			case DATABASE -&gt;pCC=new PagamentoCartaCreditoDao();</span>
+<span class="fc" id="L214">			case FILE -&gt; pCC=new CsvPagamentoCartaCredito();</span>
 <span class="fc" id="L215">			case MEMORIA -&gt; pCC=new MemoriaPagamentoCartaCredito();</span>
 <span class="nc" id="L216">			default -&gt; Logger.getLogger(&quot;controlla tipologia fattura&quot;).log(Level.SEVERE,&quot; persistency fattura is wrong!!&quot;);</span>
 
@@ -223,14 +223,14 @@ import laptop.model.raccolta.Libro;
 <span class="pc bpc" id="L223" title="1 of 2 branches missed.">        assert p != null;</span>
 <span class="pc bpc" id="L224" title="1 of 2 branches missed.">        if(pCC.inserisciPagamentoCartaCredito(p)) {</span>
 <span class="fc" id="L225">			Logger.getLogger(&quot;pagamento effettuato &quot;).log(Level.INFO,&quot; payment success with id . {0}&quot;, p.getIdPagCC());</span>
-<span class="pc bpc" id="L226" title="1 of 2 branches missed.">			if(database.equals(FILE))</span>
+<span class="fc bfc" id="L226" title="All 2 branches covered.">			if(database.equals(FILE))</span>
 			{
 
-<span class="nc" id="L229">				pT=new PagamentoTotaleCsv();</span>
-<span class="nc" id="L230">				pT.inizializza();</span>
-<span class="nc" id="L231">				pT.inserisciPagamentoCartaCredito(new PagamentoCartaCredito());</span>
+<span class="fc" id="L229">				pT=new PagamentoTotaleCsv();</span>
+<span class="fc" id="L230">				pT.inizializza();</span>
+<span class="fc" id="L231">				pT.inserisciPagamentoCartaCredito(new PagamentoCartaCredito());</span>
 			}
-<span class="pc bpc" id="L233" title="1 of 2 branches missed.">			if(database.equals(MEMORIA))</span>
+<span class="fc bfc" id="L233" title="All 2 branches covered.">			if(database.equals(MEMORIA))</span>
 			{
 <span class="fc" id="L235">				pT=new PagamentoTotaleMemoria();</span>
 <span class="fc" id="L236">				pT.inizializza();</span>
@@ -238,10 +238,10 @@ import laptop.model.raccolta.Libro;
 			}
 		}
 		//creo report cc
-<span class="pc bpc" id="L241" title="3 of 4 branches missed.">		switch (database) {</span>
-<span class="nc" id="L242">			case FILE -&gt; pRepo = new CsvReport();</span>
+<span class="pc bpc" id="L241" title="1 of 4 branches missed.">		switch (database) {</span>
+<span class="fc" id="L242">			case FILE -&gt; pRepo = new CsvReport();</span>
 <span class="fc" id="L243">			case MEMORIA -&gt; pRepo = new MemoriaReport();</span>
-<span class="nc" id="L244">			case DATABASE -&gt; pRepo = new ReportDao();</span>
+<span class="fc" id="L244">			case DATABASE -&gt; pRepo = new ReportDao();</span>
 <span class="nc" id="L245">			default -&gt; Logger.getLogger(&quot;inizializza report&quot;).log(Level.SEVERE,&quot; error with repo cc&quot;);</span>
 		}
 <span class="fc" id="L247">		pRepo.inizializza();</span>
@@ -249,16 +249,16 @@ import laptop.model.raccolta.Libro;
 <span class="fc" id="L249">		String titolo = &quot;&quot;;</span>
 <span class="fc" id="L250">		float prezzo=0;</span>
 <span class="fc" id="L251">		String tipologia = &quot;&quot;;</span>
-<span class="pc bpc" id="L252" title="3 of 4 branches missed.">		switch (vis.getType())</span>
+<span class="pc bpc" id="L252" title="1 of 4 branches missed.">		switch (vis.getType())</span>
 		{
 			case LIBRO -&gt;
 			{
-<span class="nc" id="L256">				Libro l=new Libro();</span>
-<span class="nc" id="L257">				l.setId(vis.getIdLibro());</span>
-<span class="nc" id="L258">				titolo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getTitolo();</span>
-<span class="nc" id="L259">				prezzo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getPrezzo();</span>
-<span class="nc" id="L260">				tipologia=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();</span>
-<span class="nc" id="L261">			}</span>
+<span class="fc" id="L256">				Libro l=new Libro();</span>
+<span class="fc" id="L257">				l.setId(vis.getIdLibro());</span>
+<span class="fc" id="L258">				titolo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getTitolo();</span>
+<span class="fc" id="L259">				prezzo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getPrezzo();</span>
+<span class="fc" id="L260">				tipologia=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();</span>
+<span class="fc" id="L261">			}</span>
 			case GIORNALE -&gt; {
 <span class="fc" id="L263">				Giornale g=new Giornale();</span>
 <span class="fc" id="L264">				g.setId(vis.getIdGiornale());</span>
@@ -267,11 +267,11 @@ import laptop.model.raccolta.Libro;
 <span class="fc" id="L267">				tipologia=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria();</span>
 <span class="fc" id="L268">			}</span>
 			case RIVISTA -&gt; {
-<span class="nc" id="L270">				Rivista riv=new Rivista();</span>
-<span class="nc" id="L271">				riv.setId(vis.getIdRivista());</span>
-<span class="nc" id="L272">				titolo=pR.getRivistaByIdTitoloAutoreRivista(riv).get(0).getTitolo();</span>
-<span class="nc" id="L273">				prezzo=pR.getRivistaByIdTitoloAutoreRivista(riv).get(0).getPrezzo();</span>
-<span class="nc" id="L274">				tipologia=pR.getRivistaByIdTitoloAutoreRivista(riv).get(0).getCategoria();</span>
+<span class="fc" id="L270">				Rivista riv=new Rivista();</span>
+<span class="fc" id="L271">				riv.setId(vis.getIdRivista());</span>
+<span class="fc" id="L272">				titolo=pR.getRivistaByIdTitoloAutoreRivista(riv).get(0).getTitolo();</span>
+<span class="fc" id="L273">				prezzo=pR.getRivistaByIdTitoloAutoreRivista(riv).get(0).getPrezzo();</span>
+<span class="fc" id="L274">				tipologia=pR.getRivistaByIdTitoloAutoreRivista(riv).get(0).getCategoria();</span>
 			}
 		}
 <span class="fc" id="L277">		r.setTipologiaOggetto(tipologia);</span>
@@ -280,7 +280,7 @@ import laptop.model.raccolta.Libro;
 <span class="fc" id="L280">		r.setPrezzo(prezzo);</span>
 <span class="fc" id="L281">		r.setTotale(r.getPrezzo()*vis.getQuantita());</span>
 
-<span class="pc bpc" id="L283" title="1 of 2 branches missed.">		if(pRepo.insertReport(r))</span>
+<span class="fc bfc" id="L283" title="All 2 branches covered.">		if(pRepo.insertReport(r))</span>
 <span class="fc" id="L284">			Logger.getLogger(&quot;insert repo cc&quot;).log(Level.INFO, &quot;repo cc correct inserted&quot;);</span>
 
 
@@ -362,7 +362,7 @@ import laptop.model.raccolta.Libro;
 <span class="pc bpc" id="L362" title="4 of 8 branches missed.">		if(correttezzaSplit&amp;&amp;correttezzaAnno&amp;&amp;correttezzaMese&amp;&amp;correttezzaGiorno) correttezzaData=true;</span>
 
 
-<span class="pc bpc" id="L365" title="1 of 2 branches missed.">		if(civ.length()==3)</span>
+<span class="fc bfc" id="L365" title="All 2 branches covered.">		if(civ.length()==3)</span>
 		{
 <span class="fc" id="L367">			correttezzaCiv=checkInteger(civ);</span>
 <span class="pc bpc" id="L368" title="1 of 2 branches missed.">			if(!correttezzaCiv) throw new IdException(&quot; civ format is worng&quot;);</span>
@@ -375,7 +375,7 @@ import laptop.model.raccolta.Libro;
 
 
 
-<span class="pc bpc" id="L378" title="2 of 4 branches missed.">		return  correttezzaData&amp;&amp;correttezzaCiv;</span>
+<span class="pc bpc" id="L378" title="1 of 4 branches missed.">		return  correttezzaData&amp;&amp;correttezzaCiv;</span>
 	}
 
 

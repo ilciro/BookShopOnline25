@@ -38,12 +38,12 @@ public class CsvGiornale extends PersistenzaGiornale{
     private static final int GETINDEXPREZZOG = 7;
     private static final int GETINDEXIDG = 8;
 
-<span class="nc" id="L41">    private static final ControllerSystemState vis = ControllerSystemState.getInstance();</span>
+<span class="fc" id="L41">    private static final ControllerSystemState vis = ControllerSystemState.getInstance();</span>
 
 
     private  final HashMap&lt;Integer, Giornale&gt; cacheGiornale;
 
-<span class="nc" id="L46">    private final File fdG=new File(LOCATIONG);</span>
+<span class="fc" id="L46">    private final File fdG=new File(LOCATIONG);</span>
     private static final String APPOGGIO=&quot;report/appoggio.csv&quot;;
     private static final String PERMESSI=&quot;rwx------&quot;;
     private static final String PREFIX=&quot;prefix&quot;;
@@ -52,33 +52,33 @@ public class CsvGiornale extends PersistenzaGiornale{
 
 
     public CsvGiornale()
-<span class="nc" id="L55">    {</span>
-<span class="nc" id="L56">        this.cacheGiornale=new HashMap&lt;&gt;();</span>
-<span class="nc" id="L57">    }</span>
+<span class="fc" id="L55">    {</span>
+<span class="fc" id="L56">        this.cacheGiornale=new HashMap&lt;&gt;();</span>
+<span class="fc" id="L57">    }</span>
 
     private static void cleanUp(Path path) throws IOException {
-<span class="nc" id="L60">        Files.delete(path);</span>
-<span class="nc" id="L61">    }</span>
+<span class="fc" id="L60">        Files.delete(path);</span>
+<span class="fc" id="L61">    }</span>
 
     private static synchronized int getIdMax()  {
         //used for insert correct idOgg
 
         String []gVector;
-<span class="nc" id="L67">        int max=0;</span>
+<span class="fc" id="L67">        int max=0;</span>
 
 
-<span class="nc" id="L70">        try (CSVReader reader = new CSVReader(new FileReader(LOCATIONG))) {</span>
-<span class="nc bnc" id="L71" title="All 2 branches missed.">            while ((gVector = reader.readNext()) != null) {</span>
-<span class="nc bnc" id="L72" title="All 2 branches missed.">                if(Integer.parseInt(gVector[GETINDEXIDG])&gt;max)</span>
-<span class="nc" id="L73">                    max= Integer.parseInt(gVector[GETINDEXIDG]);</span>
+<span class="fc" id="L70">        try (CSVReader reader = new CSVReader(new FileReader(LOCATIONG))) {</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">                if(Integer.parseInt(gVector[GETINDEXIDG])&gt;max)</span>
+<span class="fc" id="L73">                    max= Integer.parseInt(gVector[GETINDEXIDG]);</span>
             }
 <span class="nc" id="L75">        }catch (IOException e){</span>
 <span class="nc" id="L76">            Logger.getLogger(&quot;id max io csv&quot;).log(Level.SEVERE,&quot;id exception in io :&quot;,e);</span>
 <span class="nc" id="L77">        }catch (CsvValidationException e1)</span>
         {
 <span class="nc" id="L79">            Logger.getLogger(&quot;id max  csv&quot;).log(Level.SEVERE,&quot;id exception csv :&quot;,e1);</span>
-<span class="nc" id="L80">        }</span>
-<span class="nc" id="L81">        return max;</span>
+<span class="pc" id="L80">        }</span>
+<span class="fc" id="L81">        return max;</span>
 
 
 
@@ -88,30 +88,30 @@ public class CsvGiornale extends PersistenzaGiornale{
 
     @Override
     public boolean inserisciGiornale(Giornale g) {
-<span class="nc" id="L91">        boolean status=false;</span>
+<span class="fc" id="L91">        boolean status=false;</span>
         try {
-<span class="nc" id="L93">            boolean duplicatedG = false;</span>
-<span class="nc" id="L94">            boolean duplicatedT = false;</span>
-<span class="nc" id="L95">            boolean duplicatedE = false;</span>
-<span class="nc" id="L96">            synchronized (this.cacheGiornale) {</span>
-<span class="nc bnc" id="L97" title="All 2 branches missed.">                for (Map.Entry&lt;Integer, Giornale&gt; mapG : this.cacheGiornale.entrySet()) {</span>
-<span class="nc bnc" id="L98" title="All 2 branches missed.">                    if (mapG.getValue().getTitolo() != null)</span>
-<span class="nc bnc" id="L99" title="All 2 branches missed.">                        duplicatedT = mapG.getValue().getTitolo() != null;</span>
-<span class="nc bnc" id="L100" title="All 2 branches missed.">                    if (mapG.getValue().getEditore() != null)</span>
-<span class="nc bnc" id="L101" title="All 2 branches missed.">                        duplicatedE = mapG.getValue().getEditore() != null;</span>
-<span class="nc bnc" id="L102" title="All 4 branches missed.">                    duplicatedG = duplicatedT &amp;&amp; duplicatedE;</span>
+<span class="fc" id="L93">            boolean duplicatedG = false;</span>
+<span class="fc" id="L94">            boolean duplicatedT = false;</span>
+<span class="fc" id="L95">            boolean duplicatedE = false;</span>
+<span class="fc" id="L96">            synchronized (this.cacheGiornale) {</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">                for (Map.Entry&lt;Integer, Giornale&gt; mapG : this.cacheGiornale.entrySet()) {</span>
+<span class="pc bpc" id="L98" title="1 of 2 branches missed.">                    if (mapG.getValue().getTitolo() != null)</span>
+<span class="pc bpc" id="L99" title="1 of 2 branches missed.">                        duplicatedT = mapG.getValue().getTitolo() != null;</span>
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">                    if (mapG.getValue().getEditore() != null)</span>
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">                        duplicatedE = mapG.getValue().getEditore() != null;</span>
+<span class="pc bpc" id="L102" title="2 of 4 branches missed.">                    duplicatedG = duplicatedT &amp;&amp; duplicatedE;</span>
 
-<span class="nc" id="L104">                }</span>
+<span class="fc" id="L104">                }</span>
 
-<span class="nc" id="L106">            }</span>
-<span class="nc bnc" id="L107" title="All 2 branches missed.">            if (!duplicatedG) {</span>
-<span class="nc" id="L108">                List&lt;Giornale&gt; list = returnGiornaleByTE(this.fdG, g.getTitolo(), g.getEditore(), g.getId());</span>
-<span class="nc bnc" id="L109" title="All 2 branches missed.">                duplicatedG = (!list.isEmpty());</span>
+<span class="fc" id="L106">            }</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">            if (!duplicatedG) {</span>
+<span class="fc" id="L108">                List&lt;Giornale&gt; list = returnGiornaleByTE(this.fdG, g.getTitolo(), g.getEditore(), g.getId());</span>
+<span class="fc bfc" id="L109" title="All 2 branches covered.">                duplicatedG = (!list.isEmpty());</span>
             }
-<span class="nc bnc" id="L111" title="All 2 branches missed.">            if (duplicatedG)</span>
-<span class="nc" id="L112">                cancellaGiornale(g);</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">            if (duplicatedG)</span>
+<span class="fc" id="L112">                cancellaGiornale(g);</span>
 
-<span class="nc" id="L114">         status= inserimentoGiornale(this.fdG,g);</span>
+<span class="fc" id="L114">         status= inserimentoGiornale(this.fdG,g);</span>
 
 <span class="nc" id="L116">        }catch (IOException e){</span>
 <span class="nc" id="L117">            Logger.getLogger(&quot;inserisci giornale io csv&quot;).log(Level.SEVERE,&quot;csv insert giornale io exception :&quot;,e);</span>
@@ -120,40 +120,40 @@ public class CsvGiornale extends PersistenzaGiornale{
         {
 <span class="nc" id="L121">            Logger.getLogger(&quot;inserisci giornale  csv&quot;).log(Level.SEVERE,&quot;csv insert giornale csv exception :&quot;,e1);</span>
 
-<span class="nc" id="L123">        }</span>
-<span class="nc" id="L124">        return status;</span>
+<span class="pc" id="L123">        }</span>
+<span class="fc" id="L124">        return status;</span>
     }
 
     private  synchronized void cancellaGiornale(Giornale g)
     {
         try {
-<span class="nc" id="L130">            Logger.getLogger(&quot;try giornale&quot;).log(Level.INFO, &quot;id giornale sbagliato !!&quot;);</span>
-<span class="nc" id="L131">            throw new IdException(&quot; id giornale sbagliato or duplicated&quot;);</span>
-<span class="nc" id="L132">        } catch (IdException e) {</span>
-<span class="nc" id="L133">            Logger.getLogger(&quot;catch giornale&quot;).log(Level.SEVERE, &quot;remove giornale...&quot;);</span>
+<span class="fc" id="L130">            Logger.getLogger(&quot;try giornale&quot;).log(Level.INFO, &quot;id giornale sbagliato !!&quot;);</span>
+<span class="fc" id="L131">            throw new IdException(&quot; id giornale sbagliato or duplicated&quot;);</span>
+<span class="fc" id="L132">        } catch (IdException e) {</span>
+<span class="fc" id="L133">            Logger.getLogger(&quot;catch giornale&quot;).log(Level.SEVERE, &quot;remove giornale...&quot;);</span>
             //rimuovo e se lista vuota
-<span class="nc" id="L135">            removeGiornaleById(g);</span>
+<span class="fc" id="L135">            removeGiornaleById(g);</span>
         }
-<span class="nc" id="L137">    }</span>
+<span class="fc" id="L137">    }</span>
 
     private static synchronized boolean inserimentoGiornale(File fd, Giornale g)  {
-<span class="nc" id="L140">        try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(fd, true)))) {</span>
-<span class="nc" id="L141">            String[] gVector = new String[9];</span>
+<span class="fc" id="L140">        try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(fd, true)))) {</span>
+<span class="fc" id="L141">            String[] gVector = new String[9];</span>
 
 
-<span class="nc" id="L144">            gVector[GETINDEXTITOLOG] = g.getTitolo();</span>
-<span class="nc" id="L145">            gVector[GETINDEXTIPOLOGIAG] = g.getCategoria();</span>
-<span class="nc" id="L146">            gVector[GETINDEXLINGUAG] = g.getLingua();</span>
-<span class="nc" id="L147">            gVector[GETINDEXEDITOREG] = g.getEditore();</span>
-<span class="nc" id="L148">            gVector[GETINDEXDATAG] = String.valueOf(g.getDataPubb());</span>
-<span class="nc" id="L149">            gVector[GETINDEXCOPIERG] = String.valueOf(g.getCopieRimanenti());</span>
-<span class="nc" id="L150">            gVector[GETINDEXDISPG] = String.valueOf(g.getDisponibilita());</span>
-<span class="nc" id="L151">            gVector[GETINDEXPREZZOG] = String.valueOf(g.getPrezzo());</span>
-<span class="nc bnc" id="L152" title="All 2 branches missed.">            if(vis.getTipoModifica().equals(&quot;im&quot;)) gVector[GETINDEXIDG] = String.valueOf(vis.getIdGiornale());</span>
-<span class="nc bnc" id="L153" title="All 2 branches missed.">            else if(vis.getTipoModifica().equals(&quot;insert&quot;))gVector[GETINDEXIDG] = String.valueOf(getIdMax() + 1);</span>
+<span class="fc" id="L144">            gVector[GETINDEXTITOLOG] = g.getTitolo();</span>
+<span class="fc" id="L145">            gVector[GETINDEXTIPOLOGIAG] = g.getCategoria();</span>
+<span class="fc" id="L146">            gVector[GETINDEXLINGUAG] = g.getLingua();</span>
+<span class="fc" id="L147">            gVector[GETINDEXEDITOREG] = g.getEditore();</span>
+<span class="fc" id="L148">            gVector[GETINDEXDATAG] = String.valueOf(g.getDataPubb());</span>
+<span class="fc" id="L149">            gVector[GETINDEXCOPIERG] = String.valueOf(g.getCopieRimanenti());</span>
+<span class="fc" id="L150">            gVector[GETINDEXDISPG] = String.valueOf(g.getDisponibilita());</span>
+<span class="fc" id="L151">            gVector[GETINDEXPREZZOG] = String.valueOf(g.getPrezzo());</span>
+<span class="fc bfc" id="L152" title="All 2 branches covered.">            if(vis.getTipoModifica().equals(&quot;im&quot;)) gVector[GETINDEXIDG] = String.valueOf(vis.getIdGiornale());</span>
+<span class="pc bpc" id="L153" title="1 of 2 branches missed.">            else if(vis.getTipoModifica().equals(&quot;insert&quot;))gVector[GETINDEXIDG] = String.valueOf(getIdMax() + 1);</span>
 <span class="nc" id="L154">            else throw new CsvValidationException(&quot;type of modif in daily files is wrong !!&quot;);</span>
-<span class="nc" id="L155">            csvWriter.writeNext(gVector);</span>
-<span class="nc" id="L156">            csvWriter.flush();</span>
+<span class="fc" id="L155">            csvWriter.writeNext(gVector);</span>
+<span class="fc" id="L156">            csvWriter.flush();</span>
 <span class="nc" id="L157">        }catch (IOException e)</span>
         {
 <span class="nc" id="L159">            Logger.getLogger(&quot;inserimento giornale csv&quot;).log(Level.SEVERE,&quot;csv inserimento giornale io exception :&quot;,e);</span>
@@ -162,119 +162,119 @@ public class CsvGiornale extends PersistenzaGiornale{
         {
 <span class="nc" id="L163">            Logger.getLogger(&quot;inserimento giornale io csv&quot;).log(Level.SEVERE,&quot;inserimento giornale csv exception :&quot;,e1);</span>
 
-<span class="nc" id="L165">        }</span>
-<span class="nc bnc" id="L166" title="All 2 branches missed.">        return getIdMax()!=0;</span>
+<span class="pc" id="L165">        }</span>
+<span class="pc bpc" id="L166" title="1 of 2 branches missed.">        return getIdMax()!=0;</span>
     }
 
 
     private static synchronized List&lt;Giornale&gt; returnGiornaleByTE(File fd,String tit,String edit,int id) throws IOException, CsvValidationException {
         List&lt;Giornale&gt; list;
-<span class="nc" id="L172">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
+<span class="fc" id="L172">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
             String[] gVector;
             boolean recordFound;
 
-<span class="nc" id="L176">            list = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L176">            list = new ArrayList&lt;&gt;();</span>
 
-<span class="nc bnc" id="L178" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="fc bfc" id="L178" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
 
-<span class="nc bnc" id="L180" title="All 6 branches missed.">                recordFound = gVector[GETINDEXTITOLOG].equals(tit) || gVector[GETINDEXEDITOREG].equals(edit) || gVector[GETINDEXIDG].equals(String.valueOf(id))</span>
-<span class="nc bnc" id="L181" title="All 2 branches missed.">                        || gVector[GETINDEXIDG].equals(String.valueOf(vis.getIdGiornale()));</span>
+<span class="pc bpc" id="L180" title="2 of 6 branches missed.">                recordFound = gVector[GETINDEXTITOLOG].equals(tit) || gVector[GETINDEXEDITOREG].equals(edit) || gVector[GETINDEXIDG].equals(String.valueOf(id))</span>
+<span class="pc bpc" id="L181" title="1 of 2 branches missed.">                        || gVector[GETINDEXIDG].equals(String.valueOf(vis.getIdGiornale()));</span>
 
-<span class="nc bnc" id="L183" title="All 2 branches missed.">                if (recordFound) {</span>
+<span class="fc bfc" id="L183" title="All 2 branches covered.">                if (recordFound) {</span>
 
-<span class="nc" id="L185">                    Giornale g = getGiornale(gVector);</span>
+<span class="fc" id="L185">                    Giornale g = getGiornale(gVector);</span>
 
-<span class="nc" id="L187">                    list.add(g);</span>
-<span class="nc" id="L188">                }</span>
+<span class="fc" id="L187">                    list.add(g);</span>
+<span class="fc" id="L188">                }</span>
             }
         }
 
-<span class="nc" id="L192">        return list;</span>
+<span class="fc" id="L192">        return list;</span>
 
     }
     private static @NotNull Giornale getGiornale(String[] gVector) {
-<span class="nc" id="L196">        String titolo = gVector[GETINDEXTITOLOG];</span>
-<span class="nc" id="L197">        String tipologia = gVector[GETINDEXTIPOLOGIAG];</span>
-<span class="nc" id="L198">        String lingua = gVector[GETINDEXLINGUAG];</span>
-<span class="nc" id="L199">        String ed = gVector[GETINDEXEDITOREG];</span>
-<span class="nc" id="L200">        String data = gVector[GETINDEXDATAG];</span>
-<span class="nc" id="L201">        String copie = gVector[GETINDEXCOPIERG];</span>
-<span class="nc" id="L202">        String disp = gVector[GETINDEXDISPG];</span>
-<span class="nc" id="L203">        String prezzo = gVector[GETINDEXPREZZOG];</span>
-<span class="nc" id="L204">        String id=gVector[GETINDEXIDG];</span>
+<span class="fc" id="L196">        String titolo = gVector[GETINDEXTITOLOG];</span>
+<span class="fc" id="L197">        String tipologia = gVector[GETINDEXTIPOLOGIAG];</span>
+<span class="fc" id="L198">        String lingua = gVector[GETINDEXLINGUAG];</span>
+<span class="fc" id="L199">        String ed = gVector[GETINDEXEDITOREG];</span>
+<span class="fc" id="L200">        String data = gVector[GETINDEXDATAG];</span>
+<span class="fc" id="L201">        String copie = gVector[GETINDEXCOPIERG];</span>
+<span class="fc" id="L202">        String disp = gVector[GETINDEXDISPG];</span>
+<span class="fc" id="L203">        String prezzo = gVector[GETINDEXPREZZOG];</span>
+<span class="fc" id="L204">        String id=gVector[GETINDEXIDG];</span>
 
-<span class="nc" id="L206">        Giornale g = new Giornale();</span>
+<span class="fc" id="L206">        Giornale g = new Giornale();</span>
 
-<span class="nc" id="L208">        g.setTitolo(titolo);</span>
-<span class="nc" id="L209">        g.setCategoria(tipologia);</span>
-<span class="nc" id="L210">        g.setLingua(lingua);</span>
-<span class="nc" id="L211">        g.setEditore(ed);</span>
-<span class="nc" id="L212">        g.setDataPubb(LocalDate.parse(data));</span>
-<span class="nc" id="L213">        g.setCopieRimanenti(Integer.parseInt(copie));</span>
-<span class="nc" id="L214">        g.setDisponibilita(Integer.parseInt(disp));</span>
-<span class="nc" id="L215">        g.setPrezzo(Float.parseFloat(prezzo));</span>
-<span class="nc" id="L216">        g.setId(Integer.parseInt(id));</span>
-<span class="nc" id="L217">        return g;</span>
+<span class="fc" id="L208">        g.setTitolo(titolo);</span>
+<span class="fc" id="L209">        g.setCategoria(tipologia);</span>
+<span class="fc" id="L210">        g.setLingua(lingua);</span>
+<span class="fc" id="L211">        g.setEditore(ed);</span>
+<span class="fc" id="L212">        g.setDataPubb(LocalDate.parse(data));</span>
+<span class="fc" id="L213">        g.setCopieRimanenti(Integer.parseInt(copie));</span>
+<span class="fc" id="L214">        g.setDisponibilita(Integer.parseInt(disp));</span>
+<span class="fc" id="L215">        g.setPrezzo(Float.parseFloat(prezzo));</span>
+<span class="fc" id="L216">        g.setId(Integer.parseInt(id));</span>
+<span class="fc" id="L217">        return g;</span>
     }
 
     @Override
     public boolean removeGiornaleById(Giornale g)  {
-<span class="nc" id="L222">        synchronized (this.cacheGiornale) {</span>
-<span class="nc" id="L223">            this.cacheGiornale.remove(g.getId(),g);</span>
-<span class="nc" id="L224">        }</span>
-<span class="nc" id="L225">        return removeGiornaleId(this.fdG, g);</span>
+<span class="fc" id="L222">        synchronized (this.cacheGiornale) {</span>
+<span class="fc" id="L223">            this.cacheGiornale.remove(g.getId(),g);</span>
+<span class="fc" id="L224">        }</span>
+<span class="fc" id="L225">        return removeGiornaleId(this.fdG, g);</span>
     }
     private static synchronized boolean removeGiornaleId(File fd,Giornale g)  {
-<span class="nc" id="L228">        return deleteByType(g,fd);</span>
+<span class="fc" id="L228">        return deleteByType(g,fd);</span>
 
     }
     private static synchronized  boolean deleteByType(Giornale g,File fd)  {
-<span class="nc" id="L232">        boolean status = false;</span>
+<span class="fc" id="L232">        boolean status = false;</span>
         try {
 
-<span class="nc bnc" id="L235" title="All 2 branches missed.">            if (SystemUtils.IS_OS_UNIX) {</span>
-<span class="nc" id="L236">                FileAttribute&lt;Set&lt;PosixFilePermission&gt;&gt; attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));</span>
-<span class="nc" id="L237">                Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant</span>
+<span class="pc bpc" id="L235" title="1 of 2 branches missed.">            if (SystemUtils.IS_OS_UNIX) {</span>
+<span class="fc" id="L236">                FileAttribute&lt;Set&lt;PosixFilePermission&gt;&gt; attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));</span>
+<span class="fc" id="L237">                Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant</span>
             }
-<span class="nc" id="L239">            File tmpFile = new File(APPOGGIO);</span>
-<span class="nc" id="L240">            boolean found = isFound(g, fd, tmpFile);</span>
-<span class="nc bnc" id="L241" title="All 2 branches missed.">            if (found) {</span>
-<span class="nc" id="L242">                Files.move(tmpFile.toPath(), fd.toPath(), REPLACE_EXISTING);</span>
-<span class="nc" id="L243">                status = true;</span>
+<span class="fc" id="L239">            File tmpFile = new File(APPOGGIO);</span>
+<span class="fc" id="L240">            boolean found = isFound(g, fd, tmpFile);</span>
+<span class="fc bfc" id="L241" title="All 2 branches covered.">            if (found) {</span>
+<span class="fc" id="L242">                Files.move(tmpFile.toPath(), fd.toPath(), REPLACE_EXISTING);</span>
+<span class="fc" id="L243">                status = true;</span>
 
             } else {
-<span class="nc" id="L246">                cleanUp(Path.of(tmpFile.toURI()));</span>
+<span class="fc" id="L246">                cleanUp(Path.of(tmpFile.toURI()));</span>
             }
 <span class="nc" id="L248">        }catch (IOException e){</span>
 <span class="nc" id="L249">            Logger.getLogger(&quot;delete by type io&quot;).log(Level.SEVERE,&quot;id delete io exception :&quot;,e);</span>
 
-<span class="nc" id="L251">        }</span>
+<span class="fc" id="L251">        }</span>
 
-<span class="nc" id="L253">        return status;</span>
+<span class="fc" id="L253">        return status;</span>
 
     }
 
     private static boolean isFound(Giornale g, File fd, File tmpFile) {
-<span class="nc" id="L258">        boolean found = false;</span>
-<span class="nc" id="L259">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fd)));</span>
-<span class="nc" id="L260">             CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true))))</span>
+<span class="fc" id="L258">        boolean found = false;</span>
+<span class="fc" id="L259">        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fd)));</span>
+<span class="fc" id="L260">             CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true))))</span>
         {
             String[] gVector;
             boolean recordFound;
-<span class="nc bnc" id="L264" title="All 2 branches missed.">            while ((gVector = reader.readNext()) != null) {</span>
+<span class="fc bfc" id="L264" title="All 2 branches covered.">            while ((gVector = reader.readNext()) != null) {</span>
 
 
-<span class="nc bnc" id="L267" title="All 2 branches missed.">                    recordFound = gVector[GETINDEXIDG].equals(String.valueOf(g.getId()))</span>
-<span class="nc bnc" id="L268" title="All 2 branches missed.">                            || gVector[GETINDEXIDG].equals(String.valueOf(vis.getIdGiornale()))</span>
-<span class="nc bnc" id="L269" title="All 2 branches missed.">                            || gVector[GETINDEXTITOLOG].equals(g.getTitolo());</span>
+<span class="fc bfc" id="L267" title="All 2 branches covered.">                    recordFound = gVector[GETINDEXIDG].equals(String.valueOf(g.getId()))</span>
+<span class="pc bpc" id="L268" title="1 of 2 branches missed.">                            || gVector[GETINDEXIDG].equals(String.valueOf(vis.getIdGiornale()))</span>
+<span class="pc bpc" id="L269" title="1 of 2 branches missed.">                            || gVector[GETINDEXTITOLOG].equals(g.getTitolo());</span>
 
 
-<span class="nc bnc" id="L272" title="All 2 branches missed.">                if (!recordFound)</span>
-<span class="nc" id="L273">                    writer.writeNext(gVector);</span>
+<span class="fc bfc" id="L272" title="All 2 branches covered.">                if (!recordFound)</span>
+<span class="fc" id="L273">                    writer.writeNext(gVector);</span>
                 else
-<span class="nc" id="L275">                    found = true;</span>
+<span class="fc" id="L275">                    found = true;</span>
             }
-<span class="nc" id="L277">            writer.flush();</span>
+<span class="fc" id="L277">            writer.flush();</span>
 <span class="nc" id="L278">        }catch (IOException e)</span>
         {
 <span class="nc" id="L280">            Logger.getLogger(&quot;isFound io&quot;).log(Level.SEVERE,&quot;idFound io excpetion :&quot;,e);</span>
@@ -282,49 +282,49 @@ public class CsvGiornale extends PersistenzaGiornale{
         {
 <span class="nc" id="L283">            Logger.getLogger(&quot;isFound csv&quot;).log(Level.SEVERE,&quot;idFound csv excpetion :&quot;,e1);</span>
 
-<span class="nc" id="L285">        }</span>
-<span class="nc" id="L286">        return found;</span>
+<span class="pc" id="L285">        }</span>
+<span class="fc" id="L286">        return found;</span>
     }
 
     @Override
     public ObservableList&lt;Giornale&gt; getGiornali()  {
-<span class="nc" id="L291">        ObservableList&lt;Giornale&gt; list=FXCollections.observableArrayList();</span>
-<span class="nc" id="L292">        synchronized (this.cacheGiornale) {</span>
+<span class="fc" id="L291">        ObservableList&lt;Giornale&gt; list=FXCollections.observableArrayList();</span>
+<span class="fc" id="L292">        synchronized (this.cacheGiornale) {</span>
 
-<span class="nc bnc" id="L294" title="All 2 branches missed.">            for (Map.Entry&lt;Integer, Giornale&gt; id : this.cacheGiornale.entrySet()) {</span>
-
-
-<span class="nc bnc" id="L297" title="All 2 branches missed.">                boolean recordT = !id.getValue().getTitolo().isEmpty();</span>
-
-<span class="nc bnc" id="L299" title="All 2 branches missed.">                if (recordT)</span>
-<span class="nc" id="L300">                    list.add(id.getValue());</span>
-<span class="nc" id="L301">            }</span>
+<span class="fc bfc" id="L294" title="All 2 branches covered.">            for (Map.Entry&lt;Integer, Giornale&gt; id : this.cacheGiornale.entrySet()) {</span>
 
 
+<span class="pc bpc" id="L297" title="1 of 2 branches missed.">                boolean recordT = !id.getValue().getTitolo().isEmpty();</span>
 
-<span class="nc" id="L305">        }</span>
-<span class="nc bnc" id="L306" title="All 2 branches missed.">        if(list.isEmpty())</span>
+<span class="pc bpc" id="L299" title="1 of 2 branches missed.">                if (recordT)</span>
+<span class="fc" id="L300">                    list.add(id.getValue());</span>
+<span class="fc" id="L301">            }</span>
+
+
+
+<span class="fc" id="L305">        }</span>
+<span class="fc bfc" id="L306" title="All 2 branches covered.">        if(list.isEmpty())</span>
         {
-<span class="nc" id="L308">            list=retrieveGiornali(this.fdG);</span>
-<span class="nc" id="L309">            synchronized (this.cacheGiornale)</span>
+<span class="fc" id="L308">            list=retrieveGiornali(this.fdG);</span>
+<span class="fc" id="L309">            synchronized (this.cacheGiornale)</span>
             {
-<span class="nc bnc" id="L311" title="All 2 branches missed.">                for(Giornale giornale : list)</span>
-<span class="nc" id="L312">                    this.cacheGiornale.put(giornale.getId(),giornale);</span>
-<span class="nc" id="L313">            }</span>
+<span class="fc bfc" id="L311" title="All 2 branches covered.">                for(Giornale giornale : list)</span>
+<span class="fc" id="L312">                    this.cacheGiornale.put(giornale.getId(),giornale);</span>
+<span class="fc" id="L313">            }</span>
 
         }
-<span class="nc" id="L316">        return list;</span>
+<span class="fc" id="L316">        return list;</span>
     }
 
     private static synchronized ObservableList&lt;Giornale&gt; retrieveGiornali(File fdG)  {
-<span class="nc" id="L320">        ObservableList&lt;Giornale&gt; list = FXCollections.observableArrayList();</span>
-<span class="nc" id="L321">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fdG)))) {</span>
+<span class="fc" id="L320">        ObservableList&lt;Giornale&gt; list = FXCollections.observableArrayList();</span>
+<span class="fc" id="L321">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fdG)))) {</span>
             String[] gVector;
-<span class="nc" id="L323">            list = FXCollections.observableArrayList();</span>
+<span class="fc" id="L323">            list = FXCollections.observableArrayList();</span>
 
 
-<span class="nc bnc" id="L326" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
-<span class="nc" id="L327">                list.add(getGiornale(gVector));</span>
+<span class="fc bfc" id="L326" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="fc" id="L327">                list.add(getGiornale(gVector));</span>
             }
 <span class="nc" id="L329">        }catch (IOException e)</span>
         {
@@ -333,34 +333,34 @@ public class CsvGiornale extends PersistenzaGiornale{
         {
 <span class="nc" id="L334">            Logger.getLogger(&quot;retrieve giornali csv&quot;).log(Level.SEVERE,&quot;retrieve giornali csv excpetion :&quot;,e1);</span>
 
-<span class="nc" id="L336">        }</span>
+<span class="pc" id="L336">        }</span>
         try{
-<span class="nc bnc" id="L338" title="All 2 branches missed.">            if (list.isEmpty()) {</span>
+<span class="pc bpc" id="L338" title="1 of 2 branches missed.">            if (list.isEmpty()) {</span>
 <span class="nc" id="L339">                throw new IdException(&quot;daily not found!!&quot;);</span>
             }
 <span class="nc" id="L341">        }catch (IdException e2){</span>
 <span class="nc" id="L342">            Logger.getLogger(&quot;retrieve giornali&quot;).log(Level.SEVERE,&quot;list is empty !!  :&quot;,e2);</span>
 
-<span class="nc" id="L344">        }</span>
+<span class="fc" id="L344">        }</span>
 
-<span class="nc" id="L346">        return list;</span>
+<span class="fc" id="L346">        return list;</span>
     }
 
     @Override
     public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() {
-<span class="nc" id="L351">        return retrieveData(this.fdG);</span>
+<span class="fc" id="L351">        return retrieveData(this.fdG);</span>
     }
     private static synchronized ObservableList&lt;Raccolta&gt; retrieveData(File fd) {
-<span class="nc" id="L354">        ObservableList&lt;Raccolta&gt; gList = FXCollections.observableArrayList();</span>
-<span class="nc" id="L355">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
+<span class="fc" id="L354">        ObservableList&lt;Raccolta&gt; gList = FXCollections.observableArrayList();</span>
+<span class="fc" id="L355">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
             String[] gVector;
 
 
-<span class="nc bnc" id="L359" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
-<span class="nc" id="L360">                gList.add(getGiornale(gVector));</span>
+<span class="fc bfc" id="L359" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="fc" id="L360">                gList.add(getGiornale(gVector));</span>
 
             }
-<span class="nc bnc" id="L363" title="All 2 branches missed.">            if (gList.isEmpty()) {</span>
+<span class="pc bpc" id="L363" title="1 of 2 branches missed.">            if (gList.isEmpty()) {</span>
 <span class="nc" id="L364">                throw new IdException(&quot;lista giornale is empty&quot;);</span>
             }
 <span class="nc" id="L366">        }catch (IOException e){</span>
@@ -372,9 +372,9 @@ public class CsvGiornale extends PersistenzaGiornale{
         {
 <span class="nc" id="L373">            Logger.getLogger(&quot;retrieve data csv&quot;).log(Level.SEVERE,&quot;retrieve data csv excpetion :&quot;,e2);</span>
 
-<span class="nc" id="L375">        }</span>
+<span class="pc" id="L375">        }</span>
 
-<span class="nc" id="L377">        return gList;</span>
+<span class="fc" id="L377">        return gList;</span>
 
     }
 
@@ -382,54 +382,54 @@ public class CsvGiornale extends PersistenzaGiornale{
 
     @Override
     public ObservableList&lt;Giornale&gt; getGiornaleByIdTitoloAutoreLibro(Giornale g) {
-<span class="nc" id="L385">        ObservableList&lt;Giornale&gt; list=FXCollections.observableArrayList();</span>
-<span class="nc" id="L386">        synchronized (this.cacheGiornale) {</span>
+<span class="fc" id="L385">        ObservableList&lt;Giornale&gt; list=FXCollections.observableArrayList();</span>
+<span class="fc" id="L386">        synchronized (this.cacheGiornale) {</span>
 
-<span class="nc bnc" id="L388" title="All 2 branches missed.">            for (Map.Entry&lt;Integer, Giornale&gt; id : this.cacheGiornale.entrySet()) {</span>
+<span class="fc bfc" id="L388" title="All 2 branches covered.">            for (Map.Entry&lt;Integer, Giornale&gt; id : this.cacheGiornale.entrySet()) {</span>
 
 
-<span class="nc" id="L391">                boolean recordT = id.getValue().getTitolo().equals(g.getTitolo());</span>
-<span class="nc" id="L392">                boolean recordA = id.getValue().getTitolo().equals(g.getEditore());</span>
-<span class="nc bnc" id="L393" title="All 4 branches missed.">                boolean recordFound = recordT &amp;&amp; recordA;</span>
+<span class="fc" id="L391">                boolean recordT = id.getValue().getTitolo().equals(g.getTitolo());</span>
+<span class="fc" id="L392">                boolean recordA = id.getValue().getTitolo().equals(g.getEditore());</span>
+<span class="pc bpc" id="L393" title="3 of 4 branches missed.">                boolean recordFound = recordT &amp;&amp; recordA;</span>
 
-<span class="nc bnc" id="L395" title="All 2 branches missed.">                if (recordFound)</span>
+<span class="pc bpc" id="L395" title="1 of 2 branches missed.">                if (recordFound)</span>
 <span class="nc" id="L396">                    list.add(id.getValue());</span>
-<span class="nc" id="L397">            }</span>
+<span class="fc" id="L397">            }</span>
 
 
 
-<span class="nc" id="L401">        }</span>
-<span class="nc bnc" id="L402" title="All 2 branches missed.">        if(list.isEmpty())</span>
+<span class="fc" id="L401">        }</span>
+<span class="pc bpc" id="L402" title="1 of 2 branches missed.">        if(list.isEmpty())</span>
         {
-<span class="nc" id="L404">            list=retrieveGiornaleByIdTitoloEditore(this.fdG,g);</span>
-<span class="nc" id="L405">            synchronized (this.cacheGiornale)</span>
+<span class="fc" id="L404">            list=retrieveGiornaleByIdTitoloEditore(this.fdG,g);</span>
+<span class="fc" id="L405">            synchronized (this.cacheGiornale)</span>
             {
-<span class="nc bnc" id="L407" title="All 2 branches missed.">                for(Giornale giornale : list)</span>
-<span class="nc" id="L408">                    this.cacheGiornale.put(g.getId(),giornale);</span>
-<span class="nc" id="L409">            }</span>
+<span class="fc bfc" id="L407" title="All 2 branches covered.">                for(Giornale giornale : list)</span>
+<span class="fc" id="L408">                    this.cacheGiornale.put(g.getId(),giornale);</span>
+<span class="fc" id="L409">            }</span>
 
         }
-<span class="nc" id="L412">        return list;</span>
+<span class="fc" id="L412">        return list;</span>
 
     }
 
     private static synchronized ObservableList&lt;Giornale&gt; retrieveGiornaleByIdTitoloEditore(File fd,Giornale giornale)  {
-<span class="nc" id="L417">        ObservableList&lt;Giornale&gt; list=FXCollections.observableArrayList();</span>
-<span class="nc" id="L418">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
+<span class="fc" id="L417">        ObservableList&lt;Giornale&gt; list=FXCollections.observableArrayList();</span>
+<span class="fc" id="L418">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
             String[] gVector;
 
-<span class="nc" id="L421">            list = FXCollections.observableArrayList();</span>
+<span class="fc" id="L421">            list = FXCollections.observableArrayList();</span>
 
-<span class="nc bnc" id="L423" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="fc bfc" id="L423" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
 
-<span class="nc bnc" id="L425" title="All 4 branches missed.">                boolean recordFound = gVector[GETINDEXIDG].equals(String.valueOf(giornale.getId())) || gVector[GETINDEXIDG].equals(String.valueOf(vis.getIdGiornale()))</span>
-<span class="nc bnc" id="L426" title="All 4 branches missed.">                        || gVector[GETINDEXTITOLOG].equals(giornale.getTitolo()) || gVector[GETINDEXEDITOREG].equals(giornale.getEditore());</span>
-<span class="nc bnc" id="L427" title="All 2 branches missed.">                if (recordFound) {</span>
+<span class="pc bpc" id="L425" title="1 of 4 branches missed.">                boolean recordFound = gVector[GETINDEXIDG].equals(String.valueOf(giornale.getId())) || gVector[GETINDEXIDG].equals(String.valueOf(vis.getIdGiornale()))</span>
+<span class="pc bpc" id="L426" title="2 of 4 branches missed.">                        || gVector[GETINDEXTITOLOG].equals(giornale.getTitolo()) || gVector[GETINDEXEDITOREG].equals(giornale.getEditore());</span>
+<span class="fc bfc" id="L427" title="All 2 branches covered.">                if (recordFound) {</span>
 
 
-<span class="nc" id="L430">                    list.add(getGiornale(gVector));</span>
+<span class="fc" id="L430">                    list.add(getGiornale(gVector));</span>
                 }
-<span class="nc" id="L432">            }</span>
+<span class="fc" id="L432">            }</span>
 <span class="nc" id="L433">        }catch (IOException e)</span>
         {
 <span class="nc" id="L435">            Logger.getLogger(&quot;giornale by id titolo autore io&quot;).log(Level.SEVERE,&quot;giornale not found  :&quot;,e);</span>
@@ -438,54 +438,54 @@ public class CsvGiornale extends PersistenzaGiornale{
         {
 <span class="nc" id="L439">            Logger.getLogger(&quot;giornale by id titolo autore csv&quot;).log(Level.SEVERE,&quot;giornale not found csv  :&quot;,e1);</span>
 
-<span class="nc" id="L441">        }</span>
+<span class="pc" id="L441">        }</span>
         try {
-<span class="nc bnc" id="L443" title="All 2 branches missed.">            if (list.isEmpty()) {</span>
+<span class="pc bpc" id="L443" title="1 of 2 branches missed.">            if (list.isEmpty()) {</span>
 <span class="nc" id="L444">                throw new IdException(&quot;giornale not found!!&quot;);</span>
             }
 <span class="nc" id="L446">        }catch (IdException e2)</span>
         {
 <span class="nc" id="L448">            Logger.getLogger(&quot;lista&quot;).log(Level.SEVERE,&quot;lista is empty :&quot;,e2);</span>
 
-<span class="nc" id="L450">        }</span>
+<span class="fc" id="L450">        }</span>
 
 
-<span class="nc" id="L453">        return list;</span>
+<span class="fc" id="L453">        return list;</span>
 
     }
     @Override
     public void initializza()  {
         try {
-<span class="nc" id="L459">            File directory=new File(&quot;report&quot;);</span>
+<span class="fc" id="L459">            File directory=new File(&quot;report&quot;);</span>
 
 
-<span class="nc bnc" id="L462" title="All 2 branches missed.">            if(directory.isDirectory())</span>
+<span class="pc bpc" id="L462" title="1 of 2 branches missed.">            if(directory.isDirectory())</span>
             {
-<span class="nc" id="L464">                String[] files = directory.list();</span>
+<span class="fc" id="L464">                String[] files = directory.list();</span>
 
 
-<span class="nc bnc" id="L467" title="All 2 branches missed.">                assert files != null;</span>
-<span class="nc bnc" id="L468" title="All 4 branches missed.">                if ( files.length == 0 || !this.fdG.exists()) {</span>
-<span class="nc" id="L469">                    throw new IOException(&quot;cartella vuota&quot;);</span>
+<span class="pc bpc" id="L467" title="1 of 2 branches missed.">                assert files != null;</span>
+<span class="pc bpc" id="L468" title="1 of 4 branches missed.">                if ( files.length == 0 || !this.fdG.exists()) {</span>
+<span class="fc" id="L469">                    throw new IOException(&quot;cartella vuota&quot;);</span>
                 }
 
             }
 
 
-<span class="nc" id="L475">        } catch (IOException eFile) {</span>
+<span class="fc" id="L475">        } catch (IOException eFile) {</span>
 
-<span class="nc" id="L477">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
+<span class="fc" id="L477">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
 
             try {
-<span class="nc" id="L480">                Files.copy(Path.of(GIORNALEP), Path.of(LOCATIONG), REPLACE_EXISTING);</span>
+<span class="fc" id="L480">                Files.copy(Path.of(GIORNALEP), Path.of(LOCATIONG), REPLACE_EXISTING);</span>
 <span class="nc" id="L481">            } catch (IOException e) {</span>
 <span class="nc" id="L482">                Logger.getLogger(&quot;inizializza csv giornale io&quot;).log(Level.SEVERE,&quot;inizializza io in csv  :&quot;,e);</span>
-<span class="nc" id="L483">            }</span>
+<span class="fc" id="L483">            }</span>
 
-<span class="nc" id="L485">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
-<span class="nc" id="L486">        }</span>
+<span class="fc" id="L485">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
+<span class="fc" id="L486">        }</span>
 
-<span class="nc" id="L488">    }</span>
+<span class="fc" id="L488">    }</span>
 
 
 }

@@ -10,9 +10,9 @@ import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="nc" id="L13">public class ControllerGestioneUtente {</span>
+<span class="fc" id="L13">public class ControllerGestioneUtente {</span>
 
-<span class="nc" id="L15">    private final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+<span class="fc" id="L15">    private final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
     private PersistenzaUtente pU;
 
     private static final String DATABASE=&quot;database&quot;;
@@ -44,76 +44,76 @@ import java.util.logging.Logger;
     public boolean inserisciUtente(String []data ,String type)  {
 
 
-<span class="nc" id="L47">        vis.setTipoModifica(&quot;insert&quot;);</span>
+<span class="fc" id="L47">        vis.setTipoModifica(&quot;insert&quot;);</span>
 
-<span class="nc" id="L49">        TempUser tu=new TempUser();</span>
+<span class="fc" id="L49">        TempUser tu=new TempUser();</span>
 
 
-<span class="nc" id="L52">        tu.setIdRuoloT(data[0].substring(0,1));</span>
-<span class="nc" id="L53">        tu.setNomeT(data[1]);</span>
-<span class="nc" id="L54">        tu.setCognomeT(data[2]);</span>
-<span class="nc" id="L55">        tu.setEmailT(data[3]);</span>
-<span class="nc" id="L56">        tu.setPasswordT(data[4]);</span>
-<span class="nc" id="L57">        tu.setDescrizioneT(data[5]);</span>
-<span class="nc" id="L58">        tu.setDataDiNascitaT(LocalDate.parse(data[6]));</span>
+<span class="fc" id="L52">        tu.setIdRuoloT(data[0].substring(0,1));</span>
+<span class="fc" id="L53">        tu.setNomeT(data[1]);</span>
+<span class="fc" id="L54">        tu.setCognomeT(data[2]);</span>
+<span class="fc" id="L55">        tu.setEmailT(data[3]);</span>
+<span class="fc" id="L56">        tu.setPasswordT(data[4]);</span>
+<span class="fc" id="L57">        tu.setDescrizioneT(data[5]);</span>
+<span class="fc" id="L58">        tu.setDataDiNascitaT(LocalDate.parse(data[6]));</span>
 
-<span class="nc bnc" id="L60" title="All 4 branches missed.">        switch (type)</span>
+<span class="pc bpc" id="L60" title="2 of 4 branches missed.">        switch (type)</span>
         {
-<span class="nc" id="L62">            case DATABASE -&gt; pU=new UsersDao();</span>
-<span class="nc" id="L63">            case FILE -&gt; pU=new CsvUtente();</span>
+<span class="fc" id="L62">            case DATABASE -&gt; pU=new UsersDao();</span>
+<span class="fc" id="L63">            case FILE -&gt; pU=new CsvUtente();</span>
 <span class="nc" id="L64">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
 <span class="nc" id="L65">            default -&gt; Logger.getLogger(&quot;inserisci utente&quot;).log(Level.SEVERE,&quot;error in persistency&quot;);</span>
         }
 
-<span class="nc" id="L68">        return pU.inserisciUtente(tu);</span>
+<span class="fc" id="L68">        return pU.inserisciUtente(tu);</span>
     }
 
 
     private TempUser dati(String [] data)
     {
-<span class="nc" id="L74">        TempUser tu=new TempUser();</span>
-<span class="nc" id="L75">        tu.setIdRuoloT(data[0].substring(0,1));</span>
-<span class="nc" id="L76">        tu.setNomeT(data[1]);</span>
-<span class="nc" id="L77">        tu.setCognomeT(data[2]);</span>
-<span class="nc" id="L78">        tu.setEmailT(data[3]);</span>
-<span class="nc" id="L79">        tu.setPasswordT(data[4]);</span>
-<span class="nc" id="L80">        tu.setDescrizioneT(data[5]);</span>
-<span class="nc" id="L81">        tu.setDataDiNascitaT(LocalDate.parse(data[6]));</span>
-<span class="nc" id="L82">        tu.setId(vis.getIdUtente());</span>
-<span class="nc" id="L83">        return tu;</span>
+<span class="fc" id="L74">        TempUser tu=new TempUser();</span>
+<span class="fc" id="L75">        tu.setIdRuoloT(data[0].substring(0,1));</span>
+<span class="fc" id="L76">        tu.setNomeT(data[1]);</span>
+<span class="fc" id="L77">        tu.setCognomeT(data[2]);</span>
+<span class="fc" id="L78">        tu.setEmailT(data[3]);</span>
+<span class="fc" id="L79">        tu.setPasswordT(data[4]);</span>
+<span class="fc" id="L80">        tu.setDescrizioneT(data[5]);</span>
+<span class="fc" id="L81">        tu.setDataDiNascitaT(LocalDate.parse(data[6]));</span>
+<span class="fc" id="L82">        tu.setId(vis.getIdUtente());</span>
+<span class="fc" id="L83">        return tu;</span>
     }
 
 
 
     public boolean modifica(String[] data,String persistenza,String vecchiaMail)  {
-<span class="nc" id="L89">        TempUser tu=new TempUser();</span>
-<span class="nc" id="L90">        vis.setTipoModifica(&quot;im&quot;);</span>
+<span class="fc" id="L89">        TempUser tu=new TempUser();</span>
+<span class="fc" id="L90">        vis.setTipoModifica(&quot;im&quot;);</span>
 
-<span class="nc" id="L92">        tu.setEmailT(vecchiaMail);</span>
+<span class="fc" id="L92">        tu.setEmailT(vecchiaMail);</span>
 
 
 
-<span class="nc bnc" id="L96" title="All 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L96" title="2 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="nc" id="L98">            case DATABASE -&gt; pU=new UsersDao();</span>
-<span class="nc" id="L99">            case FILE -&gt; pU=new CsvUtente();</span>
+<span class="fc" id="L98">            case DATABASE -&gt; pU=new UsersDao();</span>
+<span class="fc" id="L99">            case FILE -&gt; pU=new CsvUtente();</span>
 <span class="nc" id="L100">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
 <span class="nc" id="L101">            default -&gt; Logger.getLogger(&quot;modifica utente&quot;).log(Level.SEVERE,&quot;error in persistency&quot;);</span>
         }
 
-<span class="nc bnc" id="L104" title="All 2 branches missed.">        for (int i=0;i&lt;pU.getUserData().size();i++)</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">        for (int i=0;i&lt;pU.getUserData().size();i++)</span>
         {
-<span class="nc bnc" id="L106" title="All 2 branches missed.">            if(pU.getUserData().get(i).getId()==vis.getIdUtente()-1</span>
-<span class="nc bnc" id="L107" title="All 2 branches missed.">            || pU.getUserData().get(i).getEmailT().equals(vecchiaMail))</span>
+<span class="pc bpc" id="L106" title="1 of 2 branches missed.">            if(pU.getUserData().get(i).getId()==vis.getIdUtente()-1</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">            || pU.getUserData().get(i).getEmailT().equals(vecchiaMail))</span>
             {
 
-<span class="nc" id="L110">                vis.setIdUtente(pU.getUserData().get(i).getId()+1);</span>
-<span class="nc" id="L111">                pU.removeUserByIdEmailPwd(tu);</span>
+<span class="fc" id="L110">                vis.setIdUtente(pU.getUserData().get(i).getId()+1);</span>
+<span class="fc" id="L111">                pU.removeUserByIdEmailPwd(tu);</span>
 
             }
         }
-<span class="nc" id="L115">       tu=dati(data);</span>
-<span class="nc" id="L116">        return pU.inserisciUtente(tu);</span>
+<span class="fc" id="L115">       tu=dati(data);</span>
+<span class="fc" id="L116">        return pU.inserisciUtente(tu);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -100,7 +100,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L100">        pPF.inizializza();</span>
 <span class="fc" id="L101">        pCC.inizializza();</span>
 
-<span class="pc bpc" id="L103" title="1 of 2 branches missed.">        if(vis.getMetodoP().equals(&quot;cash&quot;))</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">        if(vis.getMetodoP().equals(&quot;cash&quot;))</span>
         {
 <span class="fc" id="L105">            PagamentoFattura pF=new PagamentoFattura();</span>
 <span class="fc" id="L106">            pF.setIdFattura(id);</span>
@@ -109,10 +109,10 @@ import java.util.logging.Logger;
 <span class="nc" id="L109">            else status=pT.cancellaFattura(pF);</span>
 <span class="fc" id="L110">        }</span>
         else{
-<span class="nc" id="L112">            PagamentoCartaCredito pagCC=new PagamentoCartaCredito();</span>
-<span class="nc" id="L113">            pagCC.setIdPagCC(id);</span>
-<span class="nc bnc" id="L114" title="All 4 branches missed.">            if(persistenza.equals(MEMORIA)|| persistenza.equals(FILE))</span>
-<span class="nc bnc" id="L115" title="All 4 branches missed.">                status=pT.cancellaPagamentoCC(pagCC)&amp;&amp;pCC.cancellaPagamentoCartaCredito(pagCC);</span>
+<span class="fc" id="L112">            PagamentoCartaCredito pagCC=new PagamentoCartaCredito();</span>
+<span class="fc" id="L113">            pagCC.setIdPagCC(id);</span>
+<span class="pc bpc" id="L114" title="3 of 4 branches missed.">            if(persistenza.equals(MEMORIA)|| persistenza.equals(FILE))</span>
+<span class="pc bpc" id="L115" title="2 of 4 branches missed.">                status=pT.cancellaPagamentoCC(pagCC)&amp;&amp;pCC.cancellaPagamentoCartaCredito(pagCC);</span>
 <span class="nc" id="L116">            else status=pT.cancellaPagamentoCC(pagCC);</span>
         }
 <span class="fc" id="L118">        return status;</span>

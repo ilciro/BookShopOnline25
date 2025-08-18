@@ -61,7 +61,7 @@ import java.time.LocalDate;
 <span class="fc" id="L61">	}</span>
 
 	public String getDescrizioneT() {
-<span class="nc" id="L64">		return descrizioneT;</span>
+<span class="fc" id="L64">		return descrizioneT;</span>
 	}
 
 	public void setDescrizioneT(String descrizioneT) {
@@ -69,7 +69,7 @@ import java.time.LocalDate;
 <span class="fc" id="L69">	}</span>
 
 	public LocalDate getDataDiNascitaT() {
-<span class="nc" id="L72">		return dataDiNascitaT;</span>
+<span class="fc" id="L72">		return dataDiNascitaT;</span>
 	}
 
 	public void setDataDiNascitaT(LocalDate dataDiNascitaT) {
@@ -103,7 +103,7 @@ public String getIdRuoloT()  {
 
 	public void setIdRuoloT(String ruolo) {
 
-<span class="pc bpc" id="L106" title="1 of 5 branches missed.">		 switch (ruolo){</span>
+<span class="fc bfc" id="L106" title="All 5 branches covered.">		 switch (ruolo){</span>
 			case &quot;ADMIN&quot;,&quot;A&quot;-&gt;
 <span class="fc" id="L108">				ruoloT = RuoliT.ADMIN.toString().substring(0,1);</span>
 			case &quot;EDITORE&quot;,&quot;E&quot;-&gt;
@@ -113,7 +113,7 @@ public String getIdRuoloT()  {
 			case &quot;UTENTE&quot;,&quot;U&quot;-&gt;
 <span class="fc" id="L114">					ruoloT = RuoliT.UTENTE.toString().substring(0,1);</span>
              default-&gt;
-<span class="nc" id="L116">				ruoloT= RuoliT.NONVALIDO.toString().substring(0,1);</span>
+<span class="fc" id="L116">				ruoloT= RuoliT.NONVALIDO.toString().substring(0,1);</span>
 
 			}
 
