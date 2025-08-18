@@ -206,7 +206,7 @@ public class Rivista implements Raccolta, Serializable {
 
 		}catch (DocumentException | IOException e)
 		{
-			Logger.getLogger("create pdf").log(Level.SEVERE,"pdf not created");
+			Logger.getLogger("create pdf magazine ").log(Level.SEVERE,"pdf magazine not created");
 		}
 	}
 	@Override

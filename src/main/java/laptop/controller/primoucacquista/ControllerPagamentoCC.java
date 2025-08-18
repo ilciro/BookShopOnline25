@@ -274,11 +274,12 @@ public class ControllerPagamentoCC {
 				tipologia=pR.getRivistaByIdTitoloAutoreRivista(riv).get(0).getCategoria();
 			}
 		}
-		r.setTipologiaOggetto(tipologia);
 		r.setTitoloOggetto(titolo);
 		r.setNrPezzi(vis.getQuantita());
 		r.setPrezzo(prezzo);
 		r.setTotale(r.getPrezzo()*vis.getQuantita());
+		r.setTipologiaOggetto(tipologia);
+
 
 		if(pRepo.insertReport(r))
 			Logger.getLogger("insert repo cc").log(Level.INFO, "repo cc correct inserted");

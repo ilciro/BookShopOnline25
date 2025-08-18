@@ -277,10 +277,10 @@ public class CsvGiornale extends PersistenzaGiornale{
             writer.flush();
         }catch (IOException e)
         {
-            Logger.getLogger("isFound io").log(Level.SEVERE,"idFound io excpetion :",e);
+            Logger.getLogger("isFound daily io").log(Level.SEVERE,"idFound daily io excpetion :",e);
         }catch (CsvValidationException e1)
         {
-            Logger.getLogger("isFound csv").log(Level.SEVERE,"idFound csv excpetion :",e1);
+            Logger.getLogger("isFound daily csv").log(Level.SEVERE,"idFound daily csv excpetion :",e1);
 
         }
         return found;

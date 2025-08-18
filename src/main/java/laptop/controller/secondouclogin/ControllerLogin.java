@@ -31,7 +31,7 @@ public class ControllerLogin {
             case MEMORIA -> pU = new MemoriaUtente();
             default -> Logger.getLogger("login").log(Level.SEVERE,"persistency error!!");
         }
-            pU.initializza();
+        pU.initializza();
 
 
         String ruolo="";

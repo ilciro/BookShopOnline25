@@ -22,108 +22,110 @@ import java.util.logging.Logger;
     private static final String NEGOZIO=&quot;negozio&quot;;
     private static final String PAGAMENTOTOTALE=&quot;pagamentoTotale&quot;;
     private static final String REPORTS=&quot;report&quot;;
-<span class="fc" id="L25">    private static String CSVEXC=&quot;CSVALIDATIONEXCEPTION&quot;;</span>
-<span class="fc" id="L26">    private static String SQLEXC=&quot;SQLEXCEPTION&quot;;</span>
-<span class="fc" id="L27">    private static String MEMEXC=&quot;CLASSNOTFOUNDEXCEPTION&quot;;</span>
 
 
     public void getExcepptionInit(String type)
     {
+<span class="fc" id="L29">        String csvexc=&quot;CSVALIDATIONEXCEPTION&quot;;</span>
+<span class="fc" id="L30">        String sqlexc=&quot;sqlexcEPTION&quot;;</span>
+<span class="fc" id="L31">        String memexc=&quot;CLASSNOTFOUNDEXCEPTION&quot;;</span>
+
         //usati per settare i vari path
-<span class="fc" id="L33">        String pathReport=&quot;&quot;;</span>
-<span class="fc" id="L34">        String pathMemory=&quot;&quot;;</span>
+<span class="fc" id="L34">        String pathReport=&quot;&quot;;</span>
+<span class="fc" id="L35">        String pathMemory=&quot;&quot;;</span>
         //messaggi exception
 
 
-<span class="pc bpc" id="L38" title="6 of 11 branches missed.">        switch (type)</span>
+<span class="pc bpc" id="L39" title="6 of 11 branches missed.">        switch (type)</span>
         {
             case LIBRO-&gt;
             {
-<span class="fc" id="L42">                pathReport=REPORT+LIBRO.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
-<span class="fc" id="L43">                pathMemory=SERIALIZZAZIONE+LIBRO.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
-<span class="fc" id="L44">                CSVEXC+=&quot; &quot;+LIBRO;</span>
-<span class="fc" id="L45">                SQLEXC+=&quot;  &quot;+LIBRO;</span>
-<span class="fc" id="L46">                MEMEXC+=&quot; &quot;+LIBRO;</span>
-<span class="fc" id="L47">            }</span>
+<span class="fc" id="L43">                pathReport=REPORT+LIBRO.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
+<span class="fc" id="L44">                pathMemory=SERIALIZZAZIONE+LIBRO.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
+<span class="fc" id="L45">                csvexc+=&quot; &quot;+LIBRO;</span>
+<span class="fc" id="L46">                sqlexc+=&quot;  &quot;+LIBRO;</span>
+<span class="fc" id="L47">                memexc+=&quot; &quot;+LIBRO;</span>
+<span class="fc" id="L48">            }</span>
             case GIORNALE-&gt;
             {
-<span class="fc" id="L50">                pathReport=REPORT+GIORNALE.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
-<span class="fc" id="L51">                pathMemory=SERIALIZZAZIONE+GIORNALE.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
-<span class="fc" id="L52">                CSVEXC+=&quot; &quot;+GIORNALE;</span>
-<span class="fc" id="L53">                SQLEXC+=&quot;  &quot;+GIORNALE;</span>
-<span class="fc" id="L54">                MEMEXC+=&quot; &quot;+GIORNALE;</span>
-<span class="fc" id="L55">            }</span>
+<span class="fc" id="L51">                pathReport=REPORT+GIORNALE.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
+<span class="fc" id="L52">                pathMemory=SERIALIZZAZIONE+GIORNALE.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
+<span class="fc" id="L53">                csvexc+=&quot; &quot;+GIORNALE;</span>
+<span class="fc" id="L54">                sqlexc+=&quot;  &quot;+GIORNALE;</span>
+<span class="fc" id="L55">                memexc+=&quot; &quot;+GIORNALE;</span>
+<span class="fc" id="L56">            }</span>
             case RIVISTA-&gt;
             {
-<span class="fc" id="L58">                pathReport=REPORT+RIVISTA.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
-<span class="fc" id="L59">                pathMemory=SERIALIZZAZIONE+RIVISTA.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
-<span class="fc" id="L60">                CSVEXC+=&quot; &quot;+RIVISTA;</span>
-<span class="fc" id="L61">                SQLEXC+=&quot;  &quot;+RIVISTA;</span>
-<span class="fc" id="L62">                MEMEXC+=&quot; &quot;+RIVISTA;</span>
-<span class="fc" id="L63">            }</span>
+<span class="fc" id="L59">                pathReport=REPORT+RIVISTA.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
+<span class="fc" id="L60">                pathMemory=SERIALIZZAZIONE+RIVISTA.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
+<span class="fc" id="L61">                csvexc+=&quot; &quot;+RIVISTA;</span>
+<span class="fc" id="L62">                sqlexc+=&quot;  &quot;+RIVISTA;</span>
+<span class="fc" id="L63">                memexc+=&quot; &quot;+RIVISTA;</span>
+<span class="fc" id="L64">            }</span>
             case UTENTE-&gt;{
-<span class="nc" id="L65">                pathReport=REPORT+UTENTE.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
-<span class="nc" id="L66">                pathMemory=SERIALIZZAZIONE+UTENTE.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
-<span class="nc" id="L67">                CSVEXC+=&quot; &quot;+UTENTE;</span>
-<span class="nc" id="L68">                SQLEXC+=&quot;  &quot;+UTENTE;</span>
-<span class="nc" id="L69">                MEMEXC+=&quot; &quot;+UTENTE;</span>
-<span class="nc" id="L70">            }</span>
+<span class="nc" id="L66">                pathReport=REPORT+UTENTE.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
+<span class="nc" id="L67">                pathMemory=SERIALIZZAZIONE+UTENTE.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
+<span class="nc" id="L68">                csvexc+=&quot; &quot;+UTENTE;</span>
+<span class="nc" id="L69">                sqlexc+=&quot;  &quot;+UTENTE;</span>
+<span class="nc" id="L70">                memexc+=&quot; &quot;+UTENTE;</span>
+<span class="nc" id="L71">            }</span>
             case &quot;pagamentoFattura&quot;-&gt;{
-<span class="fc" id="L72">                pathReport=REPORT+PAGAMENTO+FATTURA.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
-<span class="fc" id="L73">                pathMemory=SERIALIZZAZIONE+PAGAMENTO+FATTURA.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
-<span class="fc" id="L74">                CSVEXC+=&quot; &quot;+FATTURA;</span>
-<span class="fc" id="L75">                SQLEXC+=&quot;  &quot;+FATTURA;</span>
-<span class="fc" id="L76">                MEMEXC+=&quot; &quot;+FATTURA;</span>
-<span class="fc" id="L77">            }</span>
+<span class="fc" id="L73">                pathReport=REPORT+PAGAMENTO+FATTURA.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
+<span class="fc" id="L74">                pathMemory=SERIALIZZAZIONE+PAGAMENTO+FATTURA.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
+<span class="fc" id="L75">                csvexc+=&quot; &quot;+FATTURA;</span>
+<span class="fc" id="L76">                sqlexc+=&quot;  &quot;+FATTURA;</span>
+<span class="fc" id="L77">                memexc+=&quot; &quot;+FATTURA;</span>
+<span class="fc" id="L78">            }</span>
             case &quot;pagamentoCC&quot;-&gt;{
-<span class="nc" id="L79">                pathReport=REPORT+PAGAMENTO+CARTACREDITO.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
-<span class="nc" id="L80">                pathMemory=SERIALIZZAZIONE+PAGAMENTO+CARTACREDITO.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
-<span class="nc" id="L81">                CSVEXC+=&quot; &quot;+PAGAMENTO+CARTACREDITO;</span>
-<span class="nc" id="L82">                SQLEXC+=&quot;  &quot;+PAGAMENTO+CARTACREDITO;</span>
-<span class="nc" id="L83">                MEMEXC+=&quot; &quot;+PAGAMENTO+CARTACREDITO;</span>
-<span class="nc" id="L84">            }</span>
+<span class="nc" id="L80">                pathReport=REPORT+PAGAMENTO+CARTACREDITO.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
+<span class="nc" id="L81">                pathMemory=SERIALIZZAZIONE+PAGAMENTO+CARTACREDITO.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
+<span class="nc" id="L82">                csvexc+=&quot; &quot;+PAGAMENTO+CARTACREDITO;</span>
+<span class="nc" id="L83">                sqlexc+=&quot;  &quot;+PAGAMENTO+CARTACREDITO;</span>
+<span class="nc" id="L84">                memexc+=&quot; &quot;+PAGAMENTO+CARTACREDITO;</span>
+<span class="nc" id="L85">            }</span>
             case &quot;cartacredito&quot;-&gt;
             {
-<span class="nc" id="L87">                pathReport=REPORT+CARTACREDITO.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
-<span class="nc" id="L88">                CSVEXC+=&quot; &quot;+CARTACREDITO;</span>
-<span class="nc" id="L89">                SQLEXC+=&quot;  &quot;+CARTACREDITO;</span>
-<span class="nc" id="L90">                MEMEXC+=&quot; &quot;+CARTACREDITO;</span>
-<span class="nc" id="L91">            }</span>
+<span class="nc" id="L88">                pathReport=REPORT+CARTACREDITO.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
+<span class="nc" id="L89">                csvexc+=&quot; &quot;+CARTACREDITO;</span>
+<span class="nc" id="L90">                sqlexc+=&quot;  &quot;+CARTACREDITO;</span>
+<span class="nc" id="L91">                memexc+=&quot; &quot;+CARTACREDITO;</span>
+<span class="nc" id="L92">            }</span>
             case NEGOZIO-&gt;
             {
-<span class="fc" id="L94">                pathReport=REPORT+NEGOZIO.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
-<span class="fc" id="L95">                pathMemory=SERIALIZZAZIONE+NEGOZIO.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
-<span class="fc" id="L96">                CSVEXC+=&quot; &quot;+NEGOZIO;</span>
-<span class="fc" id="L97">                SQLEXC+=&quot;  &quot;+NEGOZIO;</span>
-<span class="fc" id="L98">                MEMEXC+=&quot; &quot;+NEGOZIO;</span>
-<span class="fc" id="L99">            }</span>
+<span class="fc" id="L95">                pathReport=REPORT+NEGOZIO.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
+<span class="fc" id="L96">                pathMemory=SERIALIZZAZIONE+NEGOZIO.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
+<span class="fc" id="L97">                csvexc+=&quot; &quot;+NEGOZIO;</span>
+<span class="fc" id="L98">                sqlexc+=&quot;  &quot;+NEGOZIO;</span>
+<span class="fc" id="L99">                memexc+=&quot; &quot;+NEGOZIO;</span>
+<span class="fc" id="L100">            }</span>
             case PAGAMENTOTOTALE-&gt;
             {
-<span class="nc" id="L102">                pathReport=REPORT+PAGAMENTOTOTALE.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
-<span class="nc" id="L103">                pathMemory=SERIALIZZAZIONE+PAGAMENTOTOTALE.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
-<span class="nc" id="L104">                CSVEXC+=&quot; &quot;+PAGAMENTOTOTALE;</span>
-<span class="nc" id="L105">                SQLEXC+=&quot;  &quot;+PAGAMENTOTOTALE;</span>
-<span class="nc" id="L106">                MEMEXC+=&quot; &quot;+PAGAMENTOTOTALE;</span>
-<span class="nc" id="L107">            }</span>
+<span class="nc" id="L103">                pathReport=REPORT+PAGAMENTOTOTALE.substring(0,1).toUpperCase()+&quot;.csv&quot;;</span>
+<span class="nc" id="L104">                pathMemory=SERIALIZZAZIONE+PAGAMENTOTOTALE.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
+<span class="nc" id="L105">                csvexc+=&quot; &quot;+PAGAMENTOTOTALE;</span>
+<span class="nc" id="L106">                sqlexc+=&quot;  &quot;+PAGAMENTOTOTALE;</span>
+<span class="nc" id="L107">                memexc+=&quot; &quot;+PAGAMENTOTOTALE;</span>
+<span class="nc" id="L108">            }</span>
             case REPORTS -&gt; {
-<span class="nc" id="L109">                pathReport=REPORT+&quot;Finale.csv&quot;;</span>
-<span class="nc" id="L110">                pathMemory=SERIALIZZAZIONE+REPORTS.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
-<span class="nc" id="L111">                CSVEXC+=&quot; &quot;+REPORTS;</span>
-<span class="nc" id="L112">                SQLEXC+=&quot;  &quot;+REPORTS;</span>
-<span class="nc" id="L113">                MEMEXC+=&quot; &quot;+REPORTS;</span>
-            }
+<span class="nc" id="L110">                pathReport=REPORT+&quot;Finale.csv&quot;;</span>
+<span class="nc" id="L111">                pathMemory=SERIALIZZAZIONE+REPORTS.substring(0,1).toUpperCase()+&quot;.ser&quot;;</span>
+<span class="nc" id="L112">                csvexc+=&quot; &quot;+REPORTS;</span>
+<span class="nc" id="L113">                sqlexc+=&quot;  &quot;+REPORTS;</span>
+<span class="nc" id="L114">                memexc+=&quot; &quot;+REPORTS;</span>
+<span class="nc" id="L115">            }</span>
+<span class="nc" id="L116">            default -&gt; Logger.getLogger(&quot;Persistennza generale&quot;).log(Level.SEVERE,&quot;type is incorrect !! :{0}&quot;,type);</span>
         }
-<span class="fc" id="L116">        Logger.getLogger(&quot;persistenza&quot;).log(Level.INFO,&quot;checking files of type : {0}&quot;,type);</span>
+<span class="fc" id="L118">        Logger.getLogger(&quot;persistenza&quot;).log(Level.INFO,&quot;checking files of type : {0}&quot;,type);</span>
 
         try {
-<span class="pc bpc" id="L119" title="1 of 2 branches missed.">            if (!Files.exists(Path.of(pathReport)))throw  new CsvValidationException(CSVEXC);</span>
-<span class="nc bnc" id="L120" title="All 2 branches missed.">            if (!Files.exists(Path.of(SQL))) throw  new SQLException(SQLEXC);</span>
-<span class="nc bnc" id="L121" title="All 2 branches missed.">            if(!Files.exists(Path.of(pathMemory))) throw new ClassNotFoundException(MEMEXC);</span>
-<span class="fc" id="L122">        }catch (Exception e)</span>
+<span class="pc bpc" id="L121" title="1 of 2 branches missed.">            if (!Files.exists(Path.of(pathReport)))throw  new CsvValidationException(csvexc);</span>
+<span class="nc bnc" id="L122" title="All 2 branches missed.">            if (!Files.exists(Path.of(SQL))) throw  new SQLException(sqlexc);</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">            if(!Files.exists(Path.of(pathMemory))) throw new ClassNotFoundException(memexc);</span>
+<span class="fc" id="L124">        }catch (Exception e)</span>
         {
-<span class="fc" id="L124">            Logger.getLogger(&quot;exception type&quot;).log(Level.SEVERE,&quot;exception type has occurred :{0}&quot;,e.getClass());</span>
-<span class="fc" id="L125">            Logger.getLogger(&quot;excpetion&quot;).log(Level.SEVERE,&quot;exception :&quot;,e);</span>
-<span class="nc" id="L126">        }</span>
-<span class="fc" id="L127">    }</span>
+<span class="fc" id="L126">            Logger.getLogger(&quot;exception type&quot;).log(Level.SEVERE,&quot;exception type has occurred :{0}&quot;,e.getClass());</span>
+<span class="fc" id="L127">            Logger.getLogger(&quot;excpetion&quot;).log(Level.SEVERE,&quot;exception :&quot;,e);</span>
+<span class="nc" id="L128">        }</span>
+<span class="fc" id="L129">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

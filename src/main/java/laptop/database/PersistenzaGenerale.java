@@ -22,13 +22,14 @@ public class PersistenzaGenerale {
     private static final String NEGOZIO="negozio";
     private static final String PAGAMENTOTOTALE="pagamentoTotale";
     private static final String REPORTS="report";
-    private static String CSVEXC="CSVALIDATIONEXCEPTION";
-    private static String SQLEXC="SQLEXCEPTION";
-    private static String MEMEXC="CLASSNOTFOUNDEXCEPTION";
 
 
     public void getExcepptionInit(String type)
     {
+        String csvexc="CSVALIDATIONEXCEPTION";
+        String sqlexc="sqlexcEPTION";
+        String memexc="CLASSNOTFOUNDEXCEPTION";
+
         //usati per settare i vari path
         String pathReport="";
         String pathMemory="";
@@ -41,84 +42,85 @@ public class PersistenzaGenerale {
             {
                 pathReport=REPORT+LIBRO.substring(0,1).toUpperCase()+".csv";
                 pathMemory=SERIALIZZAZIONE+LIBRO.substring(0,1).toUpperCase()+".ser";
-                CSVEXC+=" "+LIBRO;
-                SQLEXC+="  "+LIBRO;
-                MEMEXC+=" "+LIBRO;
+                csvexc+=" "+LIBRO;
+                sqlexc+="  "+LIBRO;
+                memexc+=" "+LIBRO;
             }
             case GIORNALE->
             {
                 pathReport=REPORT+GIORNALE.substring(0,1).toUpperCase()+".csv";
                 pathMemory=SERIALIZZAZIONE+GIORNALE.substring(0,1).toUpperCase()+".ser";
-                CSVEXC+=" "+GIORNALE;
-                SQLEXC+="  "+GIORNALE;
-                MEMEXC+=" "+GIORNALE;
+                csvexc+=" "+GIORNALE;
+                sqlexc+="  "+GIORNALE;
+                memexc+=" "+GIORNALE;
             }
             case RIVISTA->
             {
                 pathReport=REPORT+RIVISTA.substring(0,1).toUpperCase()+".csv";
                 pathMemory=SERIALIZZAZIONE+RIVISTA.substring(0,1).toUpperCase()+".ser";
-                CSVEXC+=" "+RIVISTA;
-                SQLEXC+="  "+RIVISTA;
-                MEMEXC+=" "+RIVISTA;
+                csvexc+=" "+RIVISTA;
+                sqlexc+="  "+RIVISTA;
+                memexc+=" "+RIVISTA;
             }
             case UTENTE->{
                 pathReport=REPORT+UTENTE.substring(0,1).toUpperCase()+".csv";
                 pathMemory=SERIALIZZAZIONE+UTENTE.substring(0,1).toUpperCase()+".ser";
-                CSVEXC+=" "+UTENTE;
-                SQLEXC+="  "+UTENTE;
-                MEMEXC+=" "+UTENTE;
+                csvexc+=" "+UTENTE;
+                sqlexc+="  "+UTENTE;
+                memexc+=" "+UTENTE;
             }
             case "pagamentoFattura"->{
                 pathReport=REPORT+PAGAMENTO+FATTURA.substring(0,1).toUpperCase()+".csv";
                 pathMemory=SERIALIZZAZIONE+PAGAMENTO+FATTURA.substring(0,1).toUpperCase()+".ser";
-                CSVEXC+=" "+FATTURA;
-                SQLEXC+="  "+FATTURA;
-                MEMEXC+=" "+FATTURA;
+                csvexc+=" "+FATTURA;
+                sqlexc+="  "+FATTURA;
+                memexc+=" "+FATTURA;
             }
             case "pagamentoCC"->{
                 pathReport=REPORT+PAGAMENTO+CARTACREDITO.substring(0,1).toUpperCase()+".csv";
                 pathMemory=SERIALIZZAZIONE+PAGAMENTO+CARTACREDITO.substring(0,1).toUpperCase()+".ser";
-                CSVEXC+=" "+PAGAMENTO+CARTACREDITO;
-                SQLEXC+="  "+PAGAMENTO+CARTACREDITO;
-                MEMEXC+=" "+PAGAMENTO+CARTACREDITO;
+                csvexc+=" "+PAGAMENTO+CARTACREDITO;
+                sqlexc+="  "+PAGAMENTO+CARTACREDITO;
+                memexc+=" "+PAGAMENTO+CARTACREDITO;
             }
             case "cartacredito"->
             {
                 pathReport=REPORT+CARTACREDITO.substring(0,1).toUpperCase()+".csv";
-                CSVEXC+=" "+CARTACREDITO;
-                SQLEXC+="  "+CARTACREDITO;
-                MEMEXC+=" "+CARTACREDITO;
+                csvexc+=" "+CARTACREDITO;
+                sqlexc+="  "+CARTACREDITO;
+                memexc+=" "+CARTACREDITO;
             }
             case NEGOZIO->
             {
                 pathReport=REPORT+NEGOZIO.substring(0,1).toUpperCase()+".csv";
                 pathMemory=SERIALIZZAZIONE+NEGOZIO.substring(0,1).toUpperCase()+".ser";
-                CSVEXC+=" "+NEGOZIO;
-                SQLEXC+="  "+NEGOZIO;
-                MEMEXC+=" "+NEGOZIO;
+                csvexc+=" "+NEGOZIO;
+                sqlexc+="  "+NEGOZIO;
+                memexc+=" "+NEGOZIO;
             }
             case PAGAMENTOTOTALE->
             {
                 pathReport=REPORT+PAGAMENTOTOTALE.substring(0,1).toUpperCase()+".csv";
                 pathMemory=SERIALIZZAZIONE+PAGAMENTOTOTALE.substring(0,1).toUpperCase()+".ser";
-                CSVEXC+=" "+PAGAMENTOTOTALE;
-                SQLEXC+="  "+PAGAMENTOTOTALE;
-                MEMEXC+=" "+PAGAMENTOTOTALE;
+                csvexc+=" "+PAGAMENTOTOTALE;
+                sqlexc+="  "+PAGAMENTOTOTALE;
+                memexc+=" "+PAGAMENTOTOTALE;
             }
             case REPORTS -> {
                 pathReport=REPORT+"Finale.csv";
                 pathMemory=SERIALIZZAZIONE+REPORTS.substring(0,1).toUpperCase()+".ser";
-                CSVEXC+=" "+REPORTS;
-                SQLEXC+="  "+REPORTS;
-                MEMEXC+=" "+REPORTS;
+                csvexc+=" "+REPORTS;
+                sqlexc+="  "+REPORTS;
+                memexc+=" "+REPORTS;
             }
+            default -> Logger.getLogger("Persistennza generale").log(Level.SEVERE,"type is incorrect !! :{0}",type);
         }
         Logger.getLogger("persistenza").log(Level.INFO,"checking files of type : {0}",type);
 
         try {
-            if (!Files.exists(Path.of(pathReport)))throw  new CsvValidationException(CSVEXC);
-            if (!Files.exists(Path.of(SQL))) throw  new SQLException(SQLEXC);
-            if(!Files.exists(Path.of(pathMemory))) throw new ClassNotFoundException(MEMEXC);
+            if (!Files.exists(Path.of(pathReport)))throw  new CsvValidationException(csvexc);
+            if (!Files.exists(Path.of(SQL))) throw  new SQLException(sqlexc);
+            if(!Files.exists(Path.of(pathMemory))) throw new ClassNotFoundException(memexc);
         }catch (Exception e)
         {
             Logger.getLogger("exception type").log(Level.SEVERE,"exception type has occurred :{0}",e.getClass());

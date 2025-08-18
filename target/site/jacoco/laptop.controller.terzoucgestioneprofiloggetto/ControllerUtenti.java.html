@@ -51,7 +51,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L51">        tu.setId(vis.getIdUtente());</span>
 <span class="fc" id="L52">        tu.setEmailT(emailT);</span>
 <span class="fc" id="L53">        status=pU.removeUserByIdEmailPwd(tu);</span>
-<span class="pc bpc" id="L54" title="1 of 2 branches missed.">        if(status) Logger.getLogger(&quot;elimina&quot;).log(Level.INFO,&quot;user deleted with email :.{0}&quot;,tu.getEmailT());</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if(status) Logger.getLogger(&quot;elimina&quot;).log(Level.INFO,&quot;user deleted with email :.{0}&quot;,tu.getEmailT());</span>
 
 <span class="fc" id="L56">        return status;</span>
     }

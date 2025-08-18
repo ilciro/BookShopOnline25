@@ -130,14 +130,14 @@ import java.util.logging.Logger;
             try {
 <span class="fc" id="L131">                Files.createFile(path);</span>
 <span class="nc" id="L132">            } catch (IOException ex) {</span>
-<span class="nc" id="L133">                Logger.getLogger(&quot;cancelloCreo file&quot;).log(Level.SEVERE,&quot;error with creation :&quot;,ex);</span>
+<span class="nc" id="L133">                Logger.getLogger(&quot;cancelloCreo file pagamentoTotale&quot;).log(Level.SEVERE,&quot;error with creation pagamentoTotale :&quot;,ex);</span>
 <span class="fc" id="L134">            }</span>
 <span class="fc" id="L135">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
 <span class="fc" id="L136">                ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
 <span class="fc" id="L137">                oos.writeObject(list);</span>
 <span class="nc" id="L138">            }catch (IOException e2)</span>
             {
-<span class="nc" id="L140">             Logger.getLogger(&quot;scrittura doppo canc&quot;).log(Level.SEVERE,&quot;error with list after del :&quot;,e2);</span>
+<span class="nc" id="L140">             Logger.getLogger(&quot;scrittura doppo canc pagamentoTotale&quot;).log(Level.SEVERE,&quot;error with list after del pagamentoTotale :&quot;,e2);</span>
 <span class="fc" id="L141">            }</span>
 <span class="nc" id="L142">        }</span>
 <span class="fc" id="L143">    }</span>

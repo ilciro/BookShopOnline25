@@ -130,14 +130,14 @@ public class PagamentoTotaleMemoria extends PersistenzaPagamentoTotale {
             try {
                 Files.createFile(path);
             } catch (IOException ex) {
-                Logger.getLogger("cancelloCreo file").log(Level.SEVERE,"error with creation :",ex);
+                Logger.getLogger("cancelloCreo file pagamentoTotale").log(Level.SEVERE,"error with creation pagamentoTotale :",ex);
             }
             try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);
                 ObjectOutputStream oos=new ObjectOutputStream(fos)){
                 oos.writeObject(list);
             }catch (IOException e2)
             {
-             Logger.getLogger("scrittura doppo canc").log(Level.SEVERE,"error with list after del :",e2);
+             Logger.getLogger("scrittura doppo canc pagamentoTotale").log(Level.SEVERE,"error with list after del pagamentoTotale :",e2);
             }
         }
     }

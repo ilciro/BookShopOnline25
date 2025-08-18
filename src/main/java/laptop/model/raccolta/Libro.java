@@ -278,7 +278,7 @@ public class Libro implements Raccolta , Serializable  {
 
 		}catch (DocumentException | IOException e)
 		{
-			Logger.getLogger("create pdf").log(Level.SEVERE,"pdf not created:{0} ", name);
+			Logger.getLogger("create pdf book").log(Level.SEVERE,"pdf not created book :{0} ", name);
 		}
     }
 

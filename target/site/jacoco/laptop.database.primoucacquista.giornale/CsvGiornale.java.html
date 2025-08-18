@@ -277,10 +277,10 @@ public class CsvGiornale extends PersistenzaGiornale{
 <span class="fc" id="L277">            writer.flush();</span>
 <span class="nc" id="L278">        }catch (IOException e)</span>
         {
-<span class="nc" id="L280">            Logger.getLogger(&quot;isFound io&quot;).log(Level.SEVERE,&quot;idFound io excpetion :&quot;,e);</span>
+<span class="nc" id="L280">            Logger.getLogger(&quot;isFound daily io&quot;).log(Level.SEVERE,&quot;idFound daily io excpetion :&quot;,e);</span>
 <span class="nc" id="L281">        }catch (CsvValidationException e1)</span>
         {
-<span class="nc" id="L283">            Logger.getLogger(&quot;isFound csv&quot;).log(Level.SEVERE,&quot;idFound csv excpetion :&quot;,e1);</span>
+<span class="nc" id="L283">            Logger.getLogger(&quot;isFound daily csv&quot;).log(Level.SEVERE,&quot;idFound daily csv excpetion :&quot;,e1);</span>
 
 <span class="pc" id="L285">        }</span>
 <span class="fc" id="L286">        return found;</span>

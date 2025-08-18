@@ -189,7 +189,7 @@ import laptop.exception.IdException;
 
 		}catch (DocumentException | IOException e)
 		{
-			Logger.getLogger("create pdf").log(Level.SEVERE,"pdf not created");
+			Logger.getLogger("create pdf daily").log(Level.SEVERE,"pdf daily not created");
 		}
 
 	}
