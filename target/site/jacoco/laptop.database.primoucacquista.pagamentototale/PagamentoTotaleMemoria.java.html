@@ -47,12 +47,12 @@ import java.util.logging.Logger;
 
 <span class="fc" id="L48">        }catch (IOException |ClassNotFoundException e)</span>
         {
-<span class="fc" id="L50">           Logger.getLogger(&quot;lista è vuota&quot;).log(Level.SEVERE,&quot; list is empty&quot;,list.size());</span>
+<span class="fc" id="L50">           Logger.getLogger(&quot;lista è vuota&quot;).log(Level.SEVERE,&quot; list is empty :{0}&quot;,list.size());</span>
 <span class="fc" id="L51">        }</span>
 
 
 <span class="fc" id="L54">        list.add(p1);</span>
-<span class="fc" id="L55">        Logger.getLogger(&quot;lista dopo insert&quot;).log(Level.INFO,&quot; list  after insert : .:&quot;,list);</span>
+<span class="fc" id="L55">        Logger.getLogger(&quot;lista dopo insert&quot;).log(Level.INFO,&quot; list  after insert : {0} :&quot;,list);</span>
 
 
 

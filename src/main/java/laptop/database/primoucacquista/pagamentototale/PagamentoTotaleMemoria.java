@@ -47,12 +47,12 @@ public class PagamentoTotaleMemoria extends PersistenzaPagamentoTotale {
 
         }catch (IOException |ClassNotFoundException e)
         {
-           Logger.getLogger("lista è vuota").log(Level.SEVERE," list is empty",list.size());
+           Logger.getLogger("lista è vuota").log(Level.SEVERE," list is empty :{0}",list.size());
         }
 
 
         list.add(p1);
-        Logger.getLogger("lista dopo insert").log(Level.INFO," list  after insert : .:",list);
+        Logger.getLogger("lista dopo insert").log(Level.INFO," list  after insert : {0} :",list);
 
 
 

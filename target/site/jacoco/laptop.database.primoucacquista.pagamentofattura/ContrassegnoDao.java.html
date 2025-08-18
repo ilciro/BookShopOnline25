@@ -142,18 +142,18 @@ import java.util.logging.Logger;
 
 <span class="fc" id="L143">        try (Connection conn=ConnToDb.connectionToDB();</span>
 <span class="fc" id="L144">        PreparedStatement prepQ= conn.prepareStatement(TRIGGERFATTURA.getString(&quot;queryT&quot;))){</span>
-<span class="fc" id="L145">            prepQ.executeUpdate();</span>
+<span class="nc" id="L145">            prepQ.executeUpdate();</span>
 <span class="fc" id="L146">        }catch (SQLException e)</span>
         {
 <span class="fc" id="L148">            Logger.getLogger(&quot;crea trigger inserisci in pagaemnto toale&quot;).log(Level.SEVERE,&quot; error with fattura trigger&quot;,e);</span>
-<span class="fc" id="L149">        }</span>
+<span class="nc" id="L149">        }</span>
 <span class="fc" id="L150">        try (Connection conn=ConnToDb.connectionToDB();</span>
 <span class="fc" id="L151">             PreparedStatement prepQ= conn.prepareStatement(CANCELLAPAGAMENTOFATTURA.getString(&quot;queryCF&quot;))){</span>
-<span class="fc" id="L152">            prepQ.executeUpdate();</span>
+<span class="nc" id="L152">            prepQ.executeUpdate();</span>
 <span class="fc" id="L153">        }catch (SQLException e)</span>
         {
 <span class="fc" id="L155">            Logger.getLogger(&quot;crea trigger cancella in pagaemnto toale&quot;).log(Level.SEVERE,&quot; error with fattura trigger delete&quot;,e);</span>
-<span class="fc" id="L156">        }</span>
+<span class="nc" id="L156">        }</span>
 <span class="fc" id="L157">    }</span>
 
     @Override

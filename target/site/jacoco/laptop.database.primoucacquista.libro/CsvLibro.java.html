@@ -317,19 +317,19 @@ public class CsvLibro extends PersistenzaLibro{
 <span class="fc" id="L317">                        gList.add(getLibro(gVector));</span>
 
                     }
-<span class="pc bpc" id="L320" title="1 of 2 branches missed.">                    if (gList.isEmpty()) {</span>
-<span class="nc" id="L321">                        throw new IdException(&quot;list libro is empty&quot;);</span>
-                    }
 
-
-
-<span class="nc" id="L326">        }catch (IOException e){</span>
-<span class="nc" id="L327">            Logger.getLogger(&quot;retrieveRaccoltaData libro&quot;).log(Level.SEVERE,&quot;error with file :&quot;,e);</span>
-<span class="nc" id="L328">        }catch (CsvValidationException e1){</span>
-<span class="nc" id="L329">            Logger.getLogger(&quot;retrieveRaccoltaData libro csv&quot;).log(Level.SEVERE,&quot;error with csv :&quot;,e1);</span>
+<span class="nc" id="L321">        }catch (IOException e){</span>
+<span class="nc" id="L322">            Logger.getLogger(&quot;retrieveRaccoltaData libro&quot;).log(Level.SEVERE,&quot;error with file :&quot;,e);</span>
+<span class="nc" id="L323">        }catch (CsvValidationException e1) {</span>
+<span class="nc" id="L324">            Logger.getLogger(&quot;retrieveRaccoltaData libro csv&quot;).log(Level.SEVERE, &quot;error with csv :&quot;, e1);</span>
+<span class="pc" id="L325">        }</span>
+        try{
+<span class="pc bpc" id="L327" title="1 of 2 branches missed.">        if (gList.isEmpty()) {</span>
+<span class="nc" id="L328">            throw new IdException(&quot;list libro is empty&quot;);</span>
+        }
 <span class="nc" id="L330">        }catch (IdException e2){</span>
 <span class="nc" id="L331">            Logger.getLogger(&quot;retrieveRaccoltaData idLibro&quot;).log(Level.SEVERE,&quot;error with idLibro :&quot;,e2);</span>
-<span class="pc" id="L332">        }</span>
+<span class="fc" id="L332">        }</span>
 
 <span class="fc" id="L334">        return gList;</span>
 

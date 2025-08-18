@@ -127,7 +127,7 @@ public class ControllerRaccolta {
 <span class="nc" id="L127">                        default -&gt; Logger.getLogger(&quot;elimina libro&quot;).log(Level.SEVERE,&quot;error deleting a book&quot;);</span>
                     }
 <span class="fc" id="L129">                    status=pL.removeLibroById(l);</span>
-<span class="pc bpc" id="L130" title="1 of 2 branches missed.">                    if(status) Logger.getLogger(&quot;elimina book&quot;).log(Level.INFO,&quot;eliminated book with id .{0}&quot;,vis.getIdLibro());</span>
+<span class="fc bfc" id="L130" title="All 2 branches covered.">                    if(status) Logger.getLogger(&quot;elimina book&quot;).log(Level.INFO,&quot;eliminated book with id .{0}&quot;,vis.getIdLibro());</span>
 
                 }
                 case GIORNALE -&gt; {
@@ -140,7 +140,7 @@ public class ControllerRaccolta {
 <span class="nc" id="L140">                        default -&gt; Logger.getLogger(&quot;elimina daily&quot;).log(Level.SEVERE,&quot;error deleting a daily&quot;);</span>
                     }
 <span class="fc" id="L142">                    status=pG.removeGiornaleById(g);</span>
-<span class="pc bpc" id="L143" title="1 of 2 branches missed.">                    if(status) Logger.getLogger(&quot;elimina giornale&quot;).log(Level.INFO,&quot;eliminated daily with id .{0}&quot;,vis.getIdGiornale());</span>
+<span class="fc bfc" id="L143" title="All 2 branches covered.">                    if(status) Logger.getLogger(&quot;elimina giornale&quot;).log(Level.INFO,&quot;eliminated daily with id .{0}&quot;,vis.getIdGiornale());</span>
 
 
                 }
@@ -154,7 +154,7 @@ public class ControllerRaccolta {
 <span class="nc" id="L154">                        default -&gt; Logger.getLogger(&quot;elimina rivista&quot;).log(Level.SEVERE,&quot;error deleting a magazine&quot;);</span>
                     }
 <span class="fc" id="L156">                    status=pR.removeRivistaById(r);</span>
-<span class="pc bpc" id="L157" title="1 of 2 branches missed.">                    if(status) Logger.getLogger(&quot;elimina rivista&quot;).log(Level.INFO,&quot; eliminated magazine with id .{0}&quot;,vis.getIdRivista());</span>
+<span class="fc bfc" id="L157" title="All 2 branches covered.">                    if(status) Logger.getLogger(&quot;elimina rivista&quot;).log(Level.INFO,&quot; eliminated magazine with id .{0}&quot;,vis.getIdRivista());</span>
 
                 }
 <span class="nc" id="L160">                default -&gt; Logger.getLogger(&quot;elimina con db&quot;).log(Level.SEVERE,&quot; error with delete in mysql&quot;);</span>

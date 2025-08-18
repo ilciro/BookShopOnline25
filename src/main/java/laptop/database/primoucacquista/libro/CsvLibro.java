@@ -317,16 +317,16 @@ public class CsvLibro extends PersistenzaLibro{
                         gList.add(getLibro(gVector));
 
                     }
-                    if (gList.isEmpty()) {
-                        throw new IdException("list libro is empty");
-                    }
-
-
 
         }catch (IOException e){
             Logger.getLogger("retrieveRaccoltaData libro").log(Level.SEVERE,"error with file :",e);
-        }catch (CsvValidationException e1){
-            Logger.getLogger("retrieveRaccoltaData libro csv").log(Level.SEVERE,"error with csv :",e1);
+        }catch (CsvValidationException e1) {
+            Logger.getLogger("retrieveRaccoltaData libro csv").log(Level.SEVERE, "error with csv :", e1);
+        }
+        try{
+        if (gList.isEmpty()) {
+            throw new IdException("list libro is empty");
+        }
         }catch (IdException e2){
             Logger.getLogger("retrieveRaccoltaData idLibro").log(Level.SEVERE,"error with idLibro :",e2);
         }

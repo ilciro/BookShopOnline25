@@ -51,12 +51,12 @@ public class ControllerRegistraUtente {
 
 <span class="fc bfc" id="L52" title="All 2 branches covered.">		for (int i=0;i&lt;pU.getUserData().size();i++)</span>
 		{
-<span class="pc bpc" id="L54" title="1 of 2 branches missed.">			if(nomePresente(pU.getUserData().get(i).getNomeT(),n)&amp;&amp;</span>
-<span class="nc bnc" id="L55" title="All 2 branches missed.">			cognomePresente(pU.getUserData().get(i).getCognomeT(),c)&amp;&amp;</span>
-<span class="nc bnc" id="L56" title="All 2 branches missed.">			emailPresente(pU.getUserData().get(i).getEmailT(),email)) try {</span>
-<span class="nc" id="L57">                throw new IdException(&quot; user already inserted!!&quot;);</span>
-<span class="nc" id="L58">            } catch (IdException e) {</span>
-<span class="nc" id="L59">               Logger.getLogger(&quot;registraUtente&quot;).log(Level.SEVERE,&quot;duplicated user {0}&quot;,e);</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">			if(nomePresente(pU.getUserData().get(i).getNomeT(),n)&amp;&amp;</span>
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">			cognomePresente(pU.getUserData().get(i).getCognomeT(),c)&amp;&amp;</span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">			emailPresente(pU.getUserData().get(i).getEmailT(),email)) try {</span>
+<span class="fc" id="L57">                throw new IdException(&quot; user already inserted!!&quot;);</span>
+<span class="fc" id="L58">            } catch (IdException e) {</span>
+<span class="fc" id="L59">               Logger.getLogger(&quot;registraUtente&quot;).log(Level.SEVERE,&quot;duplicated user {0}&quot;,e);</span>
             }
 
 
@@ -86,8 +86,8 @@ public class ControllerRegistraUtente {
 	}
 
 <span class="fc" id="L88">	private boolean nomePresente(String nomeL,String nome){return nomeL.equals(nome);}</span>
-<span class="nc" id="L89">	private boolean cognomePresente(String cognomeL,String cognome){return cognomeL.equals(cognome);}</span>
-<span class="nc" id="L90">	private boolean emailPresente(String emailL,String email){return emailL.equals(email);}</span>
+<span class="fc" id="L89">	private boolean cognomePresente(String cognomeL,String cognome){return cognomeL.equals(cognome);}</span>
+<span class="fc" id="L90">	private boolean emailPresente(String emailL,String email){return emailL.equals(email);}</span>
 	
 	//le chiamo protected perchele uso nel controller stesso e basta 
 	private boolean checkData (String n, String c, String email, String pwd)

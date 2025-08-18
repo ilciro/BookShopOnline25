@@ -136,18 +136,18 @@ import java.util.logging.Logger;
 
 <span class="fc" id="L137">        try (Connection conn=ConnToDb.connectionToDB();</span>
 <span class="fc" id="L138">             PreparedStatement prepQ= conn.prepareStatement(TRIGGERCC.getString(&quot;queryTCC&quot;))){</span>
-<span class="fc" id="L139">            prepQ.executeUpdate();</span>
+<span class="nc" id="L139">            prepQ.executeUpdate();</span>
 <span class="fc" id="L140">        }catch (SQLException e)</span>
         {
 <span class="fc" id="L142">            Logger.getLogger(&quot;crea trigger inserisci in pagaemnto toale&quot;).log(Level.SEVERE,&quot; error with fattura trigger&quot;,e);</span>
-<span class="fc" id="L143">        }</span>
+<span class="nc" id="L143">        }</span>
 <span class="fc" id="L144">        try (Connection conn=ConnToDb.connectionToDB();</span>
 <span class="fc" id="L145">             PreparedStatement prepQ= conn.prepareStatement(CANCELLAPAGAMENTOCARTACREDITO.getString(&quot;queryCancCC&quot;))){</span>
-<span class="fc" id="L146">            prepQ.executeUpdate();</span>
+<span class="nc" id="L146">            prepQ.executeUpdate();</span>
 <span class="fc" id="L147">        }catch (SQLException e)</span>
         {
 <span class="fc" id="L149">            Logger.getLogger(&quot;crea trigger cancella in pagaemnto toale&quot;).log(Level.SEVERE,&quot; error with fattura trigger delete&quot;,e);</span>
-<span class="fc" id="L150">        }</span>
+<span class="nc" id="L150">        }</span>
 <span class="fc" id="L151">    }</span>
 
 

@@ -2,7 +2,8 @@ package laptop.pagamento;
 
 
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PagamentoFattura  implements Serializable,Pagamento {
 
@@ -92,15 +93,7 @@ public class PagamentoFattura  implements Serializable,Pagamento {
 
 
 
-    @Override
-    public boolean controllaPagamentCartaCredito(PagamentoCartaCredito pCC) {
-        return false;
-    }
 
-    @Override
-    public boolean controllaPagamentoFattura(PagamentoFattura pF)  {
-        return !Objects.equals(pF.getVia(), "");
-    }
 
     public PagamentoFattura(String nome, String cognome, String via, String com, float ammontare, int idFattura, int idProdotto)
     {
@@ -127,4 +120,10 @@ public class PagamentoFattura  implements Serializable,Pagamento {
                 '}';
     }
 
+    @Override
+    public boolean controllaPagamento(String type) {
+        boolean status= type.equals("cash");
+        Logger.getLogger("controllaPagamentoCash").log(Level.INFO,"checking payment cash");
+        return status;
+    }
 }

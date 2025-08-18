@@ -2,7 +2,8 @@
 
 
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PagamentoFattura  implements Serializable,Pagamento {
 
@@ -15,109 +16,101 @@ public class PagamentoFattura  implements Serializable,Pagamento {
     private String email;
 
     public String getEmail() {
-<span class="fc" id="L18">        return email;</span>
+<span class="fc" id="L19">        return email;</span>
     }
 
     public void setEmail(String email) {
-<span class="fc" id="L22">        this.email = email;</span>
-<span class="fc" id="L23">    }</span>
+<span class="fc" id="L23">        this.email = email;</span>
+<span class="fc" id="L24">    }</span>
 
     public String getTipoAcquisto() {
-<span class="fc" id="L26">        return tipoAcquisto;</span>
+<span class="fc" id="L27">        return tipoAcquisto;</span>
     }
 
     public void setTipoAcquisto(String tipoAcquisto) {
-<span class="fc" id="L30">        this.tipoAcquisto = tipoAcquisto;</span>
-<span class="fc" id="L31">    }</span>
+<span class="fc" id="L31">        this.tipoAcquisto = tipoAcquisto;</span>
+<span class="fc" id="L32">    }</span>
 
     private String tipoAcquisto;
 
     public int getIdProdotto() {
-<span class="fc" id="L36">        return idProdotto;</span>
+<span class="fc" id="L37">        return idProdotto;</span>
     }
 
     public void setIdProdotto(int idProdotto) {
-<span class="fc" id="L40">        this.idProdotto = idProdotto;</span>
-<span class="fc" id="L41">    }</span>
+<span class="fc" id="L41">        this.idProdotto = idProdotto;</span>
+<span class="fc" id="L42">    }</span>
 
     private int idProdotto;
 
     public String getNome() {
-<span class="fc" id="L46">        return nome;</span>
+<span class="fc" id="L47">        return nome;</span>
     }
 
     public void setNome(String nome) {
-<span class="fc" id="L50">        this.nome = nome;</span>
-<span class="fc" id="L51">    }</span>
+<span class="fc" id="L51">        this.nome = nome;</span>
+<span class="fc" id="L52">    }</span>
 
     public String getCognome() {
-<span class="fc" id="L54">        return cognome;</span>
+<span class="fc" id="L55">        return cognome;</span>
     }
 
     public void setCognome(String cognome) {
-<span class="fc" id="L58">        this.cognome = cognome;</span>
-<span class="fc" id="L59">    }</span>
+<span class="fc" id="L59">        this.cognome = cognome;</span>
+<span class="fc" id="L60">    }</span>
 
     public String getVia() {
-<span class="fc" id="L62">        return via;</span>
+<span class="fc" id="L63">        return via;</span>
     }
 
     public void setVia(String via) {
-<span class="fc" id="L66">        this.via = via;</span>
-<span class="fc" id="L67">    }</span>
+<span class="fc" id="L67">        this.via = via;</span>
+<span class="fc" id="L68">    }</span>
 
     public String getCom() {
-<span class="fc" id="L70">        return com;</span>
+<span class="fc" id="L71">        return com;</span>
     }
 
     public void setCom(String com) {
-<span class="fc" id="L74">        this.com = com;</span>
-<span class="fc" id="L75">    }</span>
+<span class="fc" id="L75">        this.com = com;</span>
+<span class="fc" id="L76">    }</span>
 
     public float getAmmontare() {
-<span class="fc" id="L78">        return ammontare;</span>
+<span class="fc" id="L79">        return ammontare;</span>
     }
 
     public void setAmmontare(float ammontare) {
-<span class="fc" id="L82">        this.ammontare = ammontare;</span>
-<span class="fc" id="L83">    }</span>
+<span class="fc" id="L83">        this.ammontare = ammontare;</span>
+<span class="fc" id="L84">    }</span>
 
     public int getIdFattura() {
-<span class="fc" id="L86">        return idFattura;</span>
+<span class="fc" id="L87">        return idFattura;</span>
     }
 
     public void setIdFattura(int idFattura) {
-<span class="fc" id="L90">        this.idFattura = idFattura;</span>
-<span class="fc" id="L91">    }</span>
+<span class="fc" id="L91">        this.idFattura = idFattura;</span>
+<span class="fc" id="L92">    }</span>
 
 
 
-    @Override
-    public boolean controllaPagamentCartaCredito(PagamentoCartaCredito pCC) {
-<span class="nc" id="L97">        return false;</span>
-    }
 
-    @Override
-    public boolean controllaPagamentoFattura(PagamentoFattura pF)  {
-<span class="nc bnc" id="L102" title="All 2 branches missed.">        return !Objects.equals(pF.getVia(), &quot;&quot;);</span>
-    }
 
     public PagamentoFattura(String nome, String cognome, String via, String com, float ammontare, int idFattura, int idProdotto)
-<span class="fc" id="L106">    {</span>
-<span class="fc" id="L107">        this.nome=nome;</span>
-<span class="fc" id="L108">        this.cognome=cognome;</span>
-<span class="fc" id="L109">        this.via=via;</span>
-<span class="fc" id="L110">        this.com=com;</span>
-<span class="fc" id="L111">        this.ammontare=ammontare;</span>
-<span class="fc" id="L112">        this.idFattura=idFattura;</span>
-<span class="fc" id="L113">        this.idProdotto=idProdotto;</span>
+<span class="fc" id="L99">    {</span>
+<span class="fc" id="L100">        this.nome=nome;</span>
+<span class="fc" id="L101">        this.cognome=cognome;</span>
+<span class="fc" id="L102">        this.via=via;</span>
+<span class="fc" id="L103">        this.com=com;</span>
+<span class="fc" id="L104">        this.ammontare=ammontare;</span>
+<span class="fc" id="L105">        this.idFattura=idFattura;</span>
+<span class="fc" id="L106">        this.idProdotto=idProdotto;</span>
 
-<span class="fc" id="L115">    }</span>
-<span class="fc" id="L116">    public PagamentoFattura(){}</span>
+<span class="fc" id="L108">    }</span>
+<span class="fc" id="L109">    public PagamentoFattura(){}</span>
 
     @Override
     public String toString() {
-<span class="fc" id="L120">        return &quot;PagamentoFattura{&quot; +</span>
+<span class="fc" id="L113">        return &quot;PagamentoFattura{&quot; +</span>
                 &quot;nome='&quot; + nome + '\'' +
                 &quot;, cognome='&quot; + cognome + '\'' +
                 &quot;, ammontare=&quot; + ammontare +
@@ -127,5 +120,11 @@ public class PagamentoFattura  implements Serializable,Pagamento {
                 '}';
     }
 
+    @Override
+    public boolean controllaPagamento(String type) {
+<span class="nc" id="L125">        boolean status= type.equals(&quot;cash&quot;);</span>
+<span class="nc" id="L126">        Logger.getLogger(&quot;controllaPagamentoCash&quot;).log(Level.INFO,&quot;checking payment cash&quot;);</span>
+<span class="nc" id="L127">        return status;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

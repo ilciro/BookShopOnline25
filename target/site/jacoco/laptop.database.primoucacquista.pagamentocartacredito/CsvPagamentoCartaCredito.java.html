@@ -297,23 +297,20 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
                 }
 
 <span class="nc" id="L299">            }</span>
-<span class="nc" id="L300">        }catch (IOException e){</span>
+<span class="nc" id="L300">        }catch (IOException  |CsvValidationException e){</span>
 <span class="nc" id="L301">            Logger.getLogger(&quot;listPagamento csv ioexc&quot;).log(Level.SEVERE,&quot;listPayment io exception csv :&quot;,e);</span>
-<span class="nc" id="L302">        }catch (CsvValidationException e1){</span>
-<span class="nc" id="L303">            Logger.getLogger(&quot;listPagamento csv&quot;).log(Level.SEVERE,&quot;listPayment csv exception :&quot;,e1);</span>
-
-<span class="nc" id="L305">        }</span>
+<span class="nc" id="L302">        }</span>
         try {
-<span class="nc bnc" id="L307" title="All 2 branches missed.">            if (list.isEmpty()) {</span>
-<span class="nc" id="L308">                throw new IdException(&quot;list pagamenti csv cc vuota!!&quot;);</span>
+<span class="nc bnc" id="L304" title="All 2 branches missed.">            if (list.isEmpty()) {</span>
+<span class="nc" id="L305">                throw new IdException(&quot;list pagamenti csv cc vuota!!&quot;);</span>
             }
-<span class="nc" id="L310">        }catch (IdException e)</span>
+<span class="nc" id="L307">        }catch (IdException e)</span>
         {
-<span class="nc" id="L312">            Logger.getLogger(&quot;lista pagamentu by user cc&quot;).log(Level.SEVERE,&quot; list payment cc is empty!! {0}&quot;,e);</span>
-<span class="nc" id="L313">        }</span>
+<span class="nc" id="L309">            Logger.getLogger(&quot;lista pagamentu by user cc&quot;).log(Level.SEVERE,&quot; list payment cc is empty!! &quot;,e);</span>
+<span class="nc" id="L310">        }</span>
 
 
-<span class="nc" id="L316">        return list;</span>
+<span class="nc" id="L313">        return list;</span>
 
     }
 }

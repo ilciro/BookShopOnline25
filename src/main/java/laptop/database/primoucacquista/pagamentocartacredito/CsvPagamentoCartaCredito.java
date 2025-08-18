@@ -297,11 +297,8 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
                 }
 
             }
-        }catch (IOException e){
+        }catch (IOException  |CsvValidationException e){
             Logger.getLogger("listPagamento csv ioexc").log(Level.SEVERE,"listPayment io exception csv :",e);
-        }catch (CsvValidationException e1){
-            Logger.getLogger("listPagamento csv").log(Level.SEVERE,"listPayment csv exception :",e1);
-
         }
         try {
             if (list.isEmpty()) {
@@ -309,7 +306,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
             }
         }catch (IdException e)
         {
-            Logger.getLogger("lista pagamentu by user cc").log(Level.SEVERE," list payment cc is empty!! {0}",e);
+            Logger.getLogger("lista pagamentu by user cc").log(Level.SEVERE," list payment cc is empty!! ",e);
         }
 
 

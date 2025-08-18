@@ -12,18 +12,7 @@ public class PagamentoCartaCredito implements Serializable,Pagamento {
 
     }
 
-    @Override
-    public boolean controllaPagamentoFattura(PagamentoFattura pF) {
 
-        Logger.getLogger("pagamentoCC checkFattura ").log(Level.INFO,"check payment cc with fattura");
-        return false;
-    }
-
-    @Override
-    public boolean controllaPagamentCartaCredito(PagamentoCartaCredito pCC) {
-        Logger.getLogger("pagamentoCC").log(Level.INFO,"check payment cc");
-        return pCC.idPagCC!=-1;
-    }
 
     private String nomeUtente;
      private float spesaTotale;
@@ -124,5 +113,12 @@ public class PagamentoCartaCredito implements Serializable,Pagamento {
                 ", spesaTotale=" + spesaTotale +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean controllaPagamento(String type) {
+        boolean status= type.equals("cCredito");
+        Logger.getLogger("controllaPagamentoCC").log(Level.INFO,"checking payment cc");
+        return status;
     }
 }
