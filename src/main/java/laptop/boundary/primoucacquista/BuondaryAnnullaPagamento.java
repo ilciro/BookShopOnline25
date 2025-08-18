@@ -16,8 +16,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.ControllerAnnullaPagamento;
-import laptop.model.pagamento.PagamentoCartaCredito;
-import laptop.model.pagamento.PagamentoFattura;
+import laptop.pagamento.PagamentoCartaCredito;
+import laptop.pagamento.PagamentoFattura;
 
 import java.io.IOException;
 import java.net.URL;

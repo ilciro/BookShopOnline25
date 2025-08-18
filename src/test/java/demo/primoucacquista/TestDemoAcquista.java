@@ -3,8 +3,9 @@ package demo.primoucacquista;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.*;
 import laptop.exception.IdException;
-import laptop.model.pagamento.PagamentoCartaCredito;
-import laptop.model.pagamento.PagamentoFattura;
+
+import laptop.pagamento.PagamentoCartaCredito;
+import laptop.pagamento.PagamentoFattura;
 import org.junit.jupiter.api.Test;
 import java.util.ResourceBundle;
 

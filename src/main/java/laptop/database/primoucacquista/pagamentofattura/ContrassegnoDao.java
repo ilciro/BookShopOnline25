@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
 import laptop.database.DaoInitialize;
-import laptop.model.pagamento.PagamentoFattura;
+import laptop.pagamento.PagamentoFattura;
 import laptop.utilities.ConnToDb;
 
 import java.sql.Connection;

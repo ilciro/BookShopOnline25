@@ -31,13 +31,13 @@ import laptop.database.terzoucgestioneprofiloggetto.report.MemoriaReport;
 import laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport;
 import laptop.database.terzoucgestioneprofiloggetto.report.ReportDao;
 import laptop.model.Report;
-import laptop.model.pagamento.PagamentoFattura;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Rivista;
 import laptop.model.user.User;
 
 import laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao;
+import laptop.pagamento.PagamentoFattura;
 
 
 public class ControllerPagamentoCash {

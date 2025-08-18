@@ -3,7 +3,8 @@ package laptop.database.primoucacquista.pagamentocartacredito;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.database.DaoInitialize;
-import laptop.model.pagamento.PagamentoCartaCredito;
+
+import laptop.pagamento.PagamentoCartaCredito;
 import laptop.utilities.ConnToDb;
 
 import java.sql.Connection;

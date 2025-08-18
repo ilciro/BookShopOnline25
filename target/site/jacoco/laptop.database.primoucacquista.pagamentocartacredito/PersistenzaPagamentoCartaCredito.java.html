@@ -3,33 +3,34 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.database.PersistenzaGenerale;
-import laptop.model.pagamento.PagamentoCartaCredito;
+import laptop.pagamento.PagamentoCartaCredito;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L10">public class PersistenzaPagamentoCartaCredito {</span>
+<span class="fc" id="L11">public class PersistenzaPagamentoCartaCredito {</span>
     public void inizializza()  {
-<span class="nc" id="L12">        Logger.getLogger(&quot;inizializza pagamento cc&quot;).log(Level.INFO, &quot;inizializza persistency cc payment&quot;);</span>
-<span class="nc" id="L13">        PersistenzaGenerale pG=new PersistenzaGenerale();</span>
-<span class="nc" id="L14">        pG.getExcepptionInit(&quot;pagamentoCC&quot;);</span>
+<span class="nc" id="L13">        Logger.getLogger(&quot;inizializza pagamento cc&quot;).log(Level.INFO, &quot;inizializza persistency cc payment&quot;);</span>
+<span class="nc" id="L14">        PersistenzaGenerale pG=new PersistenzaGenerale();</span>
+<span class="nc" id="L15">        pG.getExcepptionInit(&quot;pagamentoCC&quot;);</span>
 
-<span class="nc" id="L16">    }</span>
+<span class="nc" id="L17">    }</span>
 
     public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito p)  {
 
-<span class="nc bnc" id="L20" title="All 2 branches missed.">        return p.getIdPagCC()!=-1;</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">        return p.getIdPagCC()!=-1;</span>
     }
 
     public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p)  {
-<span class="nc bnc" id="L24" title="All 2 branches missed.">        return p.getIdProdotto()!=0;}</span>
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        return p.getIdProdotto()!=0;}</span>
 
     public PagamentoCartaCredito ultimoPagamentoCartaCredito()  {
-<span class="nc" id="L27">        return new PagamentoCartaCredito();}</span>
+<span class="nc" id="L28">        return new PagamentoCartaCredito();}</span>
 
     public ObservableList&lt;PagamentoCartaCredito&gt; listaPagamentiUserByCC(PagamentoCartaCredito pcc)  {
-<span class="nc" id="L30">        Logger.getLogger(&quot;list pagamenti cc&quot;).log(Level.SEVERE, &quot;list pf paymeny of : .&quot;, pcc.getNomeUtente());</span>
+<span class="nc" id="L31">        Logger.getLogger(&quot;list pagamenti cc&quot;).log(Level.SEVERE, &quot;list pf paymeny of : .&quot;, pcc.getNomeUtente());</span>
 
-<span class="nc" id="L32">        return FXCollections.observableArrayList();}</span>
+<span class="nc" id="L33">        return FXCollections.observableArrayList();}</span>
 
 
 

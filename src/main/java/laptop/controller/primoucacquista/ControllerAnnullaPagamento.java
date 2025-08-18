@@ -15,8 +15,9 @@ import laptop.database.primoucacquista.pagamentototale.PersistenzaPagamentoTotal
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleCsv;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria;
-import laptop.model.pagamento.PagamentoCartaCredito;
-import laptop.model.pagamento.PagamentoFattura;
+import laptop.pagamento.PagamentoCartaCredito;
+import laptop.pagamento.PagamentoFattura;
+
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

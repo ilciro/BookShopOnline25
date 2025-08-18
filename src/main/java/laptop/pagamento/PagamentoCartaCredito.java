@@ -1,11 +1,11 @@
-package laptop.model.pagamento;
+package laptop.pagamento;
 
 
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PagamentoCartaCredito extends Pagamento implements Serializable {
+public class PagamentoCartaCredito implements Serializable,Pagamento {
 
 
     public PagamentoCartaCredito()  {
@@ -14,13 +14,15 @@ public class PagamentoCartaCredito extends Pagamento implements Serializable {
 
     @Override
     public boolean controllaPagamentoFattura(PagamentoFattura pF) {
+
+        Logger.getLogger("pagamentoCC checkFattura ").log(Level.INFO,"check payment cc with fattura");
         return false;
     }
 
     @Override
     public boolean controllaPagamentCartaCredito(PagamentoCartaCredito pCC) {
         Logger.getLogger("pagamentoCC").log(Level.INFO,"check payment cc");
-        return super.controllaPagamentCartaCredito(pCC);
+        return pCC.idPagCC!=-1;
     }
 
     private String nomeUtente;

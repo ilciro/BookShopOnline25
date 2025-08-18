@@ -1,8 +1,9 @@
 package laptop.database.primoucacquista.pagamentototale;
 
 import laptop.database.DaoInitialize;
-import laptop.model.pagamento.PagamentoCartaCredito;
-import laptop.model.pagamento.PagamentoFattura;
+
+import laptop.pagamento.PagamentoCartaCredito;
+import laptop.pagamento.PagamentoFattura;
 import laptop.utilities.ConnToDb;
 
 import java.sql.Connection;

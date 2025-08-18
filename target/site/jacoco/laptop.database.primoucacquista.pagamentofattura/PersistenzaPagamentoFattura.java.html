@@ -3,36 +3,37 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.database.PersistenzaGenerale;
-import laptop.model.pagamento.PagamentoFattura;
+import laptop.pagamento.PagamentoFattura;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L10">public class PersistenzaPagamentoFattura {</span>
+<span class="fc" id="L11">public class PersistenzaPagamentoFattura {</span>
 
     public boolean inserisciPagamentoFattura(PagamentoFattura f) {
-<span class="nc bnc" id="L13" title="All 2 branches missed.">        return f.getIdFattura()!=-1;</span>
+<span class="nc bnc" id="L14" title="All 2 branches missed.">        return f.getIdFattura()!=-1;</span>
     }
     public boolean cancellaPagamentoFattura(PagamentoFattura f) {
 
-<span class="nc bnc" id="L17" title="All 2 branches missed.">        return f.getIdFattura()!=-1;</span>
+<span class="nc bnc" id="L18" title="All 2 branches missed.">        return f.getIdFattura()!=-1;</span>
     }
     public void inizializza()   {
 
-<span class="fc" id="L21">        Logger.getLogger(&quot;persistenza fattura inizializza&quot;).log(Level.INFO,&quot;persistenza pagamento fattura inizializza&quot;);</span>
-<span class="fc" id="L22">        PersistenzaGenerale pG=new PersistenzaGenerale();</span>
-<span class="fc" id="L23">        pG.getExcepptionInit(&quot;pagamentoFattura&quot;);</span>
-<span class="fc" id="L24">          }</span>
+<span class="fc" id="L22">        Logger.getLogger(&quot;persistenza fattura inizializza&quot;).log(Level.INFO,&quot;persistenza pagamento fattura inizializza&quot;);</span>
+<span class="fc" id="L23">        PersistenzaGenerale pG=new PersistenzaGenerale();</span>
+<span class="fc" id="L24">        pG.getExcepptionInit(&quot;pagamentoFattura&quot;);</span>
+<span class="fc" id="L25">          }</span>
 
     public PagamentoFattura ultimaFattura()  {
 
-<span class="nc" id="L28">        Logger.getLogger(&quot;Persistenza pagamento fattura&quot;).log(Level.INFO,&quot;ultima fattura&quot;);</span>
-<span class="nc" id="L29">        return null;</span>
+<span class="nc" id="L29">        Logger.getLogger(&quot;Persistenza pagamento fattura&quot;).log(Level.INFO,&quot;ultima fattura&quot;);</span>
+<span class="nc" id="L30">        return null;</span>
     }
     public ObservableList&lt;PagamentoFattura&gt; listPagamentiByUserF(PagamentoFattura pF)  {
-<span class="nc" id="L32">        Logger.getLogger(&quot;Persistenza pagamento fattura by user&quot;).log(Level.INFO,&quot;lisa payment by user:.&quot;,pF.getNome());</span>
+<span class="nc" id="L33">        Logger.getLogger(&quot;Persistenza pagamento fattura by user&quot;).log(Level.INFO,&quot;lisa payment by user:.&quot;,pF.getNome());</span>
 
 
-<span class="nc" id="L35">        return FXCollections.observableArrayList();}</span>
+<span class="nc" id="L36">        return FXCollections.observableArrayList();}</span>
 
 
 }

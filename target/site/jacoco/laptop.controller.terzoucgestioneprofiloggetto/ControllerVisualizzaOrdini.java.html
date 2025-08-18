@@ -16,106 +16,108 @@ import laptop.database.primoucacquista.pagamentototale.PersistenzaPagamentoTotal
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleCsv;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleDao;
 import laptop.database.primoucacquista.pagamentototale.PagamentoTotaleMemoria;
-import laptop.model.pagamento.PagamentoCartaCredito;
-import laptop.model.pagamento.PagamentoFattura;
+
 import laptop.model.user.User;
+import laptop.pagamento.PagamentoCartaCredito;
+import laptop.pagamento.PagamentoFattura;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L25">public class ControllerVisualizzaOrdini {</span>
+<span class="fc" id="L27">public class ControllerVisualizzaOrdini {</span>
     private PersistenzaPagamentoFattura pPF;
     private PersistenzaPagamentoCartaCredito pCC;
     private static final String DATABASE=&quot;database&quot;;
     private static final String FILE=&quot;file&quot;;
     private static final String MEMORIA=&quot;memoria&quot;;
-<span class="fc" id="L31">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+<span class="fc" id="L33">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
     private PersistenzaPagamentoTotale pT;
 
 
 
     public String getEmail()
     {
-<span class="fc" id="L38">        return User.getInstance().getEmail();</span>
+<span class="fc" id="L40">        return User.getInstance().getEmail();</span>
     }
 
     public ObservableList&lt;PagamentoFattura&gt; getListaFattura(String persistenza)  {
 
-<span class="fc" id="L43">        PagamentoFattura pf=new PagamentoFattura();</span>
-<span class="fc" id="L44">        pf.setEmail(getEmail());</span>
+<span class="fc" id="L45">        PagamentoFattura pf=new PagamentoFattura();</span>
+<span class="fc" id="L46">        pf.setEmail(getEmail());</span>
 
-<span class="pc bpc" id="L46" title="3 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L48" title="3 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="nc" id="L48">            case DATABASE-&gt;pPF=new ContrassegnoDao();</span>
-<span class="nc" id="L49">            case FILE-&gt;pPF=new CsvFattura();</span>
-<span class="fc" id="L50">            case MEMORIA-&gt;pPF=new MemoriaFattura();</span>
-<span class="nc" id="L51">            default -&gt; Logger.getLogger(&quot;getLista pagamenti&quot;).log(Level.SEVERE,&quot;list pf payment cash is empty!!&quot;);</span>
+<span class="nc" id="L50">            case DATABASE-&gt;pPF=new ContrassegnoDao();</span>
+<span class="nc" id="L51">            case FILE-&gt;pPF=new CsvFattura();</span>
+<span class="fc" id="L52">            case MEMORIA-&gt;pPF=new MemoriaFattura();</span>
+<span class="nc" id="L53">            default -&gt; Logger.getLogger(&quot;getLista pagamenti&quot;).log(Level.SEVERE,&quot;list pf payment cash is empty!!&quot;);</span>
         }
 
-<span class="fc" id="L54">        pPF.inizializza();</span>
+<span class="fc" id="L56">        pPF.inizializza();</span>
 
 
-<span class="fc" id="L57">        return pPF.listPagamentiByUserF(pf);</span>
+<span class="fc" id="L59">        return pPF.listPagamentiByUserF(pf);</span>
     }
 
     public ObservableList&lt;PagamentoCartaCredito&gt; getListaCC(String persistenza)  {
-<span class="nc bnc" id="L61" title="All 4 branches missed.">        switch (persistenza)</span>
+<span class="nc bnc" id="L63" title="All 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="nc" id="L63">            case DATABASE-&gt;pCC=new PagamentoCartaCreditoDao();</span>
-<span class="nc" id="L64">            case FILE-&gt;pCC=new CsvPagamentoCartaCredito();</span>
-<span class="nc" id="L65">            case MEMORIA-&gt;pCC=new MemoriaPagamentoCartaCredito();</span>
+<span class="nc" id="L65">            case DATABASE-&gt;pCC=new PagamentoCartaCreditoDao();</span>
+<span class="nc" id="L66">            case FILE-&gt;pCC=new CsvPagamentoCartaCredito();</span>
+<span class="nc" id="L67">            case MEMORIA-&gt;pCC=new MemoriaPagamentoCartaCredito();</span>
 
-<span class="nc" id="L67">            default -&gt; Logger.getLogger(&quot;getLista pagamenti cc&quot;).log(Level.SEVERE,&quot;list pf payment with cc is empty!!&quot;);</span>
+<span class="nc" id="L69">            default -&gt; Logger.getLogger(&quot;getLista pagamenti cc&quot;).log(Level.SEVERE,&quot;list pf payment with cc is empty!!&quot;);</span>
         }
-<span class="nc" id="L69">        PagamentoCartaCredito pCC1=new PagamentoCartaCredito();</span>
-<span class="nc" id="L70">        pCC1.setEmail(getEmail());</span>
-<span class="nc" id="L71">        return pCC.listaPagamentiUserByCC(pCC1);</span>
+<span class="nc" id="L71">        PagamentoCartaCredito pCC1=new PagamentoCartaCredito();</span>
+<span class="nc" id="L72">        pCC1.setEmail(getEmail());</span>
+<span class="nc" id="L73">        return pCC.listaPagamentiUserByCC(pCC1);</span>
     }
 
     public boolean cancellaPagamento(int id,String persistenza)  {
 
         boolean status;
-<span class="pc bpc" id="L77" title="3 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L79" title="3 of 4 branches missed.">        switch (persistenza)</span>
         {
             case DATABASE-&gt;
                     {
-<span class="nc" id="L81">                        pT=new PagamentoTotaleDao();</span>
-<span class="nc" id="L82">                        pPF=new ContrassegnoDao();</span>
-<span class="nc" id="L83">                        pCC=new PagamentoCartaCreditoDao();</span>
-<span class="nc" id="L84">                    }</span>
+<span class="nc" id="L83">                        pT=new PagamentoTotaleDao();</span>
+<span class="nc" id="L84">                        pPF=new ContrassegnoDao();</span>
+<span class="nc" id="L85">                        pCC=new PagamentoCartaCreditoDao();</span>
+<span class="nc" id="L86">                    }</span>
             case FILE-&gt;
                     {
-<span class="nc" id="L87">                        pT=new PagamentoTotaleCsv();</span>
-<span class="nc" id="L88">                        pPF=new CsvFattura();</span>
-<span class="nc" id="L89">                        pCC=new CsvPagamentoCartaCredito();</span>
-<span class="nc" id="L90">                    }</span>
+<span class="nc" id="L89">                        pT=new PagamentoTotaleCsv();</span>
+<span class="nc" id="L90">                        pPF=new CsvFattura();</span>
+<span class="nc" id="L91">                        pCC=new CsvPagamentoCartaCredito();</span>
+<span class="nc" id="L92">                    }</span>
             case MEMORIA-&gt;
                     {
-<span class="fc" id="L93">                        pT=new PagamentoTotaleMemoria();</span>
-<span class="fc" id="L94">                        pPF=new MemoriaFattura();</span>
-<span class="fc" id="L95">                        pCC=new MemoriaPagamentoCartaCredito();</span>
-<span class="fc" id="L96">                    }</span>
-<span class="nc" id="L97">            default -&gt; Logger.getLogger(&quot;cancella pagamento&quot;).log(Level.SEVERE,&quot;delete payment has not occurred&quot;);</span>
+<span class="fc" id="L95">                        pT=new PagamentoTotaleMemoria();</span>
+<span class="fc" id="L96">                        pPF=new MemoriaFattura();</span>
+<span class="fc" id="L97">                        pCC=new MemoriaPagamentoCartaCredito();</span>
+<span class="fc" id="L98">                    }</span>
+<span class="nc" id="L99">            default -&gt; Logger.getLogger(&quot;cancella pagamento&quot;).log(Level.SEVERE,&quot;delete payment has not occurred&quot;);</span>
         }
-<span class="fc" id="L99">        pT.inizializza();</span>
-<span class="fc" id="L100">        pPF.inizializza();</span>
-<span class="fc" id="L101">        pCC.inizializza();</span>
+<span class="fc" id="L101">        pT.inizializza();</span>
+<span class="fc" id="L102">        pPF.inizializza();</span>
+<span class="fc" id="L103">        pCC.inizializza();</span>
 
-<span class="fc bfc" id="L103" title="All 2 branches covered.">        if(vis.getMetodoP().equals(&quot;cash&quot;))</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">        if(vis.getMetodoP().equals(&quot;cash&quot;))</span>
         {
-<span class="fc" id="L105">            PagamentoFattura pF=new PagamentoFattura();</span>
-<span class="fc" id="L106">            pF.setIdFattura(id);</span>
-<span class="pc bpc" id="L107" title="3 of 4 branches missed.">            if(persistenza.equals(MEMORIA) || persistenza.equals(FILE))</span>
-<span class="pc bpc" id="L108" title="2 of 4 branches missed.">                status=pT.cancellaFattura(pF)&amp;&amp; pPF.cancellaPagamentoFattura(pF);</span>
-<span class="nc" id="L109">            else status=pT.cancellaFattura(pF);</span>
-<span class="fc" id="L110">        }</span>
+<span class="fc" id="L107">            PagamentoFattura pF=new PagamentoFattura();</span>
+<span class="fc" id="L108">            pF.setIdFattura(id);</span>
+<span class="pc bpc" id="L109" title="3 of 4 branches missed.">            if(persistenza.equals(MEMORIA) || persistenza.equals(FILE))</span>
+<span class="pc bpc" id="L110" title="2 of 4 branches missed.">                status=pT.cancellaFattura(pF)&amp;&amp; pPF.cancellaPagamentoFattura(pF);</span>
+<span class="nc" id="L111">            else status=pT.cancellaFattura(pF);</span>
+<span class="fc" id="L112">        }</span>
         else{
-<span class="fc" id="L112">            PagamentoCartaCredito pagCC=new PagamentoCartaCredito();</span>
-<span class="fc" id="L113">            pagCC.setIdPagCC(id);</span>
-<span class="pc bpc" id="L114" title="3 of 4 branches missed.">            if(persistenza.equals(MEMORIA)|| persistenza.equals(FILE))</span>
-<span class="pc bpc" id="L115" title="2 of 4 branches missed.">                status=pT.cancellaPagamentoCC(pagCC)&amp;&amp;pCC.cancellaPagamentoCartaCredito(pagCC);</span>
-<span class="nc" id="L116">            else status=pT.cancellaPagamentoCC(pagCC);</span>
+<span class="fc" id="L114">            PagamentoCartaCredito pagCC=new PagamentoCartaCredito();</span>
+<span class="fc" id="L115">            pagCC.setIdPagCC(id);</span>
+<span class="pc bpc" id="L116" title="3 of 4 branches missed.">            if(persistenza.equals(MEMORIA)|| persistenza.equals(FILE))</span>
+<span class="pc bpc" id="L117" title="2 of 4 branches missed.">                status=pT.cancellaPagamentoCC(pagCC)&amp;&amp;pCC.cancellaPagamentoCartaCredito(pagCC);</span>
+<span class="nc" id="L118">            else status=pT.cancellaPagamentoCC(pagCC);</span>
         }
-<span class="fc" id="L118">        return status;</span>
+<span class="fc" id="L120">        return status;</span>
     }
 
 

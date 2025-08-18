@@ -3,7 +3,8 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.database.DaoInitialize;
-import laptop.model.pagamento.PagamentoCartaCredito;
+
+import laptop.pagamento.PagamentoCartaCredito;
 import laptop.utilities.ConnToDb;
 
 import java.sql.Connection;
@@ -15,139 +16,139 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-<span class="fc" id="L18">public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{</span>
+<span class="fc" id="L19">public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{</span>
 
-<span class="fc" id="L20">    private static final ResourceBundle TRIGGERCC=ResourceBundle.getBundle(&quot;sql/triggerCartaCredito&quot;);</span>
-<span class="fc" id="L21">    private static final ResourceBundle CANCELLAPAGAMENTOCARTACREDITO=ResourceBundle.getBundle(&quot;sql/triggerCancellaPagamentoCCredito&quot;);</span>
-<span class="fc" id="L22">    private static final ResourceBundle PERMESSI=ResourceBundle.getBundle(&quot;sql/cancella&quot;);</span>
+<span class="fc" id="L21">    private static final ResourceBundle TRIGGERCC=ResourceBundle.getBundle(&quot;sql/triggerCartaCredito&quot;);</span>
+<span class="fc" id="L22">    private static final ResourceBundle CANCELLAPAGAMENTOCARTACREDITO=ResourceBundle.getBundle(&quot;sql/triggerCancellaPagamentoCCredito&quot;);</span>
+<span class="fc" id="L23">    private static final ResourceBundle PERMESSI=ResourceBundle.getBundle(&quot;sql/cancella&quot;);</span>
 
 
     private String query;
 
     @Override
     public ObservableList&lt;PagamentoCartaCredito&gt; listaPagamentiUserByCC(PagamentoCartaCredito pcc) {
-<span class="nc" id="L29">        query=&quot;select idProdotto,spesaTotale,tipoAcquisto,idPagamento from pagamentoCartaCredito where email=?&quot;;</span>
-<span class="nc" id="L30">        ObservableList&lt;PagamentoCartaCredito&gt;list = FXCollections.observableArrayList();</span>
-<span class="nc" id="L31">        try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="nc" id="L32">        PreparedStatement prepQ=conn.prepareStatement(query))</span>
+<span class="nc" id="L30">        query=&quot;select idProdotto,spesaTotale,tipoAcquisto,idPagamento from pagamentoCartaCredito where email=?&quot;;</span>
+<span class="nc" id="L31">        ObservableList&lt;PagamentoCartaCredito&gt;list = FXCollections.observableArrayList();</span>
+<span class="nc" id="L32">        try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="nc" id="L33">        PreparedStatement prepQ=conn.prepareStatement(query))</span>
         {
-<span class="nc" id="L34">            prepQ.setString(1, pcc.getEmail());</span>
-<span class="nc" id="L35">            ResultSet rs= prepQ.executeQuery();</span>
-<span class="nc bnc" id="L36" title="All 2 branches missed.">            while(rs.next())</span>
+<span class="nc" id="L35">            prepQ.setString(1, pcc.getEmail());</span>
+<span class="nc" id="L36">            ResultSet rs= prepQ.executeQuery();</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">            while(rs.next())</span>
             {
-<span class="nc" id="L38">                PagamentoCartaCredito pCC=new PagamentoCartaCredito();</span>
-<span class="nc" id="L39">                pCC.setIdProdotto(rs.getInt(1));</span>
-<span class="nc" id="L40">                pCC.setSpesaTotale(rs.getFloat(2));</span>
-<span class="nc" id="L41">                pCC.setTipoAcquisto(rs.getString(3));</span>
-<span class="nc" id="L42">                pCC.setIdPagCC(rs.getInt(4));</span>
-<span class="nc" id="L43">                list.add(pCC);</span>
-<span class="nc" id="L44">            }</span>
-<span class="nc" id="L45">        }catch (SQLException e)</span>
+<span class="nc" id="L39">                PagamentoCartaCredito pCC=new PagamentoCartaCredito();</span>
+<span class="nc" id="L40">                pCC.setIdProdotto(rs.getInt(1));</span>
+<span class="nc" id="L41">                pCC.setSpesaTotale(rs.getFloat(2));</span>
+<span class="nc" id="L42">                pCC.setTipoAcquisto(rs.getString(3));</span>
+<span class="nc" id="L43">                pCC.setIdPagCC(rs.getInt(4));</span>
+<span class="nc" id="L44">                list.add(pCC);</span>
+<span class="nc" id="L45">            }</span>
+<span class="nc" id="L46">        }catch (SQLException e)</span>
         {
-<span class="nc" id="L47">            Logger.getLogger(&quot;get libro id autore obes&quot;).log(Level.SEVERE, &quot;eccezione :&quot;, e);</span>
-<span class="nc" id="L48">        }</span>
-<span class="nc" id="L49">        return list;</span>
+<span class="nc" id="L48">            Logger.getLogger(&quot;get libro id autore obes&quot;).log(Level.SEVERE, &quot;eccezione :&quot;, e);</span>
+<span class="nc" id="L49">        }</span>
+<span class="nc" id="L50">        return list;</span>
 
     }
 
     @Override
     public void inizializza() {
-<span class="fc" id="L55">        DaoInitialize dI=new DaoInitialize();</span>
-<span class="fc" id="L56">        dI.inizializza(&quot;pagamentoCartaCredito&quot;);</span>
+<span class="fc" id="L56">        DaoInitialize dI=new DaoInitialize();</span>
+<span class="fc" id="L57">        dI.inizializza(&quot;pagamentoCartaCredito&quot;);</span>
 
-<span class="fc" id="L58">        creaTrigger();</span>
-<span class="fc" id="L59">    }</span>
+<span class="fc" id="L59">        creaTrigger();</span>
+<span class="fc" id="L60">    }</span>
 
     @Override
     public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p)  {
-<span class="nc" id="L63">        int row=0;</span>
-<span class="nc" id="L64">       query=&quot;delete from pagamentoCartaCredito where idPagamento=?&quot;;</span>
-<span class="nc" id="L65">       try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="nc" id="L66">       PreparedStatement prep= conn.prepareStatement(query))</span>
+<span class="nc" id="L64">        int row=0;</span>
+<span class="nc" id="L65">       query=&quot;delete from pagamentoCartaCredito where idPagamento=?&quot;;</span>
+<span class="nc" id="L66">       try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="nc" id="L67">       PreparedStatement prep= conn.prepareStatement(query))</span>
        {
-<span class="nc" id="L68">           prep.setInt(1,p.getIdPagCC());</span>
-<span class="nc" id="L69">           row=prep.executeUpdate();</span>
-<span class="nc" id="L70">       }catch (SQLException e)</span>
+<span class="nc" id="L69">           prep.setInt(1,p.getIdPagCC());</span>
+<span class="nc" id="L70">           row=prep.executeUpdate();</span>
+<span class="nc" id="L71">       }catch (SQLException e)</span>
        {
-<span class="nc" id="L72">           Logger.getLogger(&quot;cancello pagamentoCC&quot;).log(Level.SEVERE,&quot;exception with delete paymentCC&quot;,e);</span>
-<span class="nc" id="L73">       }</span>
-<span class="nc bnc" id="L74" title="All 2 branches missed.">       return row==1;</span>
+<span class="nc" id="L73">           Logger.getLogger(&quot;cancello pagamentoCC&quot;).log(Level.SEVERE,&quot;exception with delete paymentCC&quot;,e);</span>
+<span class="nc" id="L74">       }</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">       return row==1;</span>
     }
 
     @Override
     public PagamentoCartaCredito ultimoPagamentoCartaCredito()  {
-<span class="fc" id="L79">        PagamentoCartaCredito pCC = null;</span>
-<span class="fc" id="L80">        query = &quot;select * from pagamentoCartaCredito order by idPagamento desc limit 1&quot;;</span>
-<span class="fc" id="L81">        try (Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L82">             PreparedStatement prepQ= conn.prepareStatement(query)) {</span>
+<span class="fc" id="L80">        PagamentoCartaCredito pCC = null;</span>
+<span class="fc" id="L81">        query = &quot;select * from pagamentoCartaCredito order by idPagamento desc limit 1&quot;;</span>
+<span class="fc" id="L82">        try (Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L83">             PreparedStatement prepQ= conn.prepareStatement(query)) {</span>
 
-<span class="fc" id="L84">            ResultSet rs=prepQ.executeQuery();</span>
-<span class="fc bfc" id="L85" title="All 2 branches covered.">            while(rs.next()) {</span>
-<span class="fc" id="L86">                pCC = new PagamentoCartaCredito(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getFloat(5), rs.getString(6), rs.getString(7), rs.getInt(8));</span>
-<span class="fc" id="L87">                pCC.setCognomeUtente(rs.getString(4));</span>
+<span class="fc" id="L85">            ResultSet rs=prepQ.executeQuery();</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">            while(rs.next()) {</span>
+<span class="fc" id="L87">                pCC = new PagamentoCartaCredito(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getFloat(5), rs.getString(6), rs.getString(7), rs.getInt(8));</span>
+<span class="fc" id="L88">                pCC.setCognomeUtente(rs.getString(4));</span>
             }
 
 
-<span class="nc" id="L91">        } catch (SQLException e)</span>
+<span class="nc" id="L92">        } catch (SQLException e)</span>
         {
-<span class="nc" id="L93">            Logger.getLogger(&quot; ultimo pagamentoCC&quot;).log(Level.SEVERE,&quot;exception with last paymentCC&quot;,e);</span>
-<span class="fc" id="L94">        }</span>
-<span class="fc" id="L95">        return pCC;</span>
+<span class="nc" id="L94">            Logger.getLogger(&quot; ultimo pagamentoCC&quot;).log(Level.SEVERE,&quot;exception with last paymentCC&quot;,e);</span>
+<span class="fc" id="L95">        }</span>
+<span class="fc" id="L96">        return pCC;</span>
     }
 
     @Override
     public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito p)  {
-<span class="fc" id="L100">        int row=0;</span>
+<span class="fc" id="L101">        int row=0;</span>
 
-<span class="fc" id="L102">        query=&quot;insert into pagamentoCartaCredito values(?,?,?,?,?,?,?,?)&quot;;</span>
+<span class="fc" id="L103">        query=&quot;insert into pagamentoCartaCredito values(?,?,?,?,?,?,?,?)&quot;;</span>
 
-<span class="fc" id="L104">        try (Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L105">        PreparedStatement prepQ=conn.prepareStatement(query)){</span>
+<span class="fc" id="L105">        try (Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L106">        PreparedStatement prepQ=conn.prepareStatement(query)){</span>
 
-<span class="fc" id="L107">            prepQ.setInt(1,0);</span>
-<span class="fc" id="L108">            prepQ.setString(2,&quot;cCredito&quot;);</span>
-<span class="fc" id="L109">            prepQ.setString(3,p.getNomeUtente());</span>
-<span class="fc" id="L110">            prepQ.setString(4,p.getCognomeUtente());</span>
-<span class="fc" id="L111">            prepQ.setFloat(5,p.getSpesaTotale());</span>
-<span class="fc" id="L112">            prepQ.setString(6,p.getEmail());</span>
-<span class="fc" id="L113">            prepQ.setString(7,p.getTipoAcquisto());</span>
-<span class="fc" id="L114">            prepQ.setInt(8,p.getIdProdotto());</span>
+<span class="fc" id="L108">            prepQ.setInt(1,0);</span>
+<span class="fc" id="L109">            prepQ.setString(2,&quot;cCredito&quot;);</span>
+<span class="fc" id="L110">            prepQ.setString(3,p.getNomeUtente());</span>
+<span class="fc" id="L111">            prepQ.setString(4,p.getCognomeUtente());</span>
+<span class="fc" id="L112">            prepQ.setFloat(5,p.getSpesaTotale());</span>
+<span class="fc" id="L113">            prepQ.setString(6,p.getEmail());</span>
+<span class="fc" id="L114">            prepQ.setString(7,p.getTipoAcquisto());</span>
+<span class="fc" id="L115">            prepQ.setInt(8,p.getIdProdotto());</span>
 
-<span class="fc" id="L116">            row=prepQ.executeUpdate();</span>
-<span class="nc" id="L117">        }catch (SQLException e)</span>
+<span class="fc" id="L117">            row=prepQ.executeUpdate();</span>
+<span class="nc" id="L118">        }catch (SQLException e)</span>
         {
-<span class="nc" id="L119">           Logger.getLogger(&quot;inserimento pagamento cc&quot;).log(Level.SEVERE,&quot; error with cc payment&quot;);</span>
-<span class="fc" id="L120">        }</span>
-<span class="pc bpc" id="L121" title="1 of 2 branches missed.">        return row==1;</span>
+<span class="nc" id="L120">           Logger.getLogger(&quot;inserimento pagamento cc&quot;).log(Level.SEVERE,&quot; error with cc payment&quot;);</span>
+<span class="fc" id="L121">        }</span>
+<span class="pc bpc" id="L122" title="1 of 2 branches missed.">        return row==1;</span>
 
     }
 
     private void creaTrigger() {
-<span class="fc" id="L126">        try(Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L127">            PreparedStatement prepQ=conn.prepareStatement(PERMESSI.getString(&quot;queryP&quot;)))</span>
+<span class="fc" id="L127">        try(Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L128">            PreparedStatement prepQ=conn.prepareStatement(PERMESSI.getString(&quot;queryP&quot;)))</span>
         {
-<span class="fc" id="L129">            prepQ.execute();</span>
-<span class="nc" id="L130">        }catch (SQLException e)</span>
+<span class="fc" id="L130">            prepQ.execute();</span>
+<span class="nc" id="L131">        }catch (SQLException e)</span>
         {
-<span class="nc" id="L132">            Logger.getLogger(&quot;setto permessi&quot;).log(Level.SEVERE,&quot; error with grants permissions&quot;);</span>
-<span class="fc" id="L133">        }</span>
+<span class="nc" id="L133">            Logger.getLogger(&quot;setto permessi&quot;).log(Level.SEVERE,&quot; error with grants permissions&quot;);</span>
+<span class="fc" id="L134">        }</span>
 
 
-<span class="fc" id="L136">        try (Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L137">             PreparedStatement prepQ= conn.prepareStatement(TRIGGERCC.getString(&quot;queryTCC&quot;))){</span>
-<span class="fc" id="L138">            prepQ.executeUpdate();</span>
-<span class="fc" id="L139">        }catch (SQLException e)</span>
+<span class="fc" id="L137">        try (Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L138">             PreparedStatement prepQ= conn.prepareStatement(TRIGGERCC.getString(&quot;queryTCC&quot;))){</span>
+<span class="fc" id="L139">            prepQ.executeUpdate();</span>
+<span class="fc" id="L140">        }catch (SQLException e)</span>
         {
-<span class="fc" id="L141">            Logger.getLogger(&quot;crea trigger inserisci in pagaemnto toale&quot;).log(Level.SEVERE,&quot; error with fattura trigger&quot;,e);</span>
-<span class="fc" id="L142">        }</span>
-<span class="fc" id="L143">        try (Connection conn=ConnToDb.connectionToDB();</span>
-<span class="fc" id="L144">             PreparedStatement prepQ= conn.prepareStatement(CANCELLAPAGAMENTOCARTACREDITO.getString(&quot;queryCancCC&quot;))){</span>
-<span class="fc" id="L145">            prepQ.executeUpdate();</span>
-<span class="fc" id="L146">        }catch (SQLException e)</span>
+<span class="fc" id="L142">            Logger.getLogger(&quot;crea trigger inserisci in pagaemnto toale&quot;).log(Level.SEVERE,&quot; error with fattura trigger&quot;,e);</span>
+<span class="fc" id="L143">        }</span>
+<span class="fc" id="L144">        try (Connection conn=ConnToDb.connectionToDB();</span>
+<span class="fc" id="L145">             PreparedStatement prepQ= conn.prepareStatement(CANCELLAPAGAMENTOCARTACREDITO.getString(&quot;queryCancCC&quot;))){</span>
+<span class="fc" id="L146">            prepQ.executeUpdate();</span>
+<span class="fc" id="L147">        }catch (SQLException e)</span>
         {
-<span class="fc" id="L148">            Logger.getLogger(&quot;crea trigger cancella in pagaemnto toale&quot;).log(Level.SEVERE,&quot; error with fattura trigger delete&quot;,e);</span>
-<span class="fc" id="L149">        }</span>
-<span class="fc" id="L150">    }</span>
+<span class="fc" id="L149">            Logger.getLogger(&quot;crea trigger cancella in pagaemnto toale&quot;).log(Level.SEVERE,&quot; error with fattura trigger delete&quot;,e);</span>
+<span class="fc" id="L150">        }</span>
+<span class="fc" id="L151">    }</span>
 
 
 }

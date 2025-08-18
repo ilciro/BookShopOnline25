@@ -6,7 +6,7 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.exception.IdException;
-import laptop.model.pagamento.PagamentoFattura;
+import laptop.pagamento.PagamentoFattura;
 import org.apache.commons.lang.SystemUtils;
 import org.jetbrains.annotations.NotNull;
 

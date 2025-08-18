@@ -2,7 +2,7 @@ package laptop.database.primoucacquista.pagamentocartacredito;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import laptop.model.pagamento.PagamentoCartaCredito;
+import laptop.pagamento.PagamentoCartaCredito;
 
 import java.io.*;
 import java.nio.file.Files;

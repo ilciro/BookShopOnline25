@@ -4,7 +4,6 @@ laptop/boundary/primoucacquista/BuondaryAnnullaPagamento.class
 laptop/database/primoucacquista/pagamentototale/PagamentoTotaleCsv.class
 laptop/database/primoucacquista/giornale/GiornaleDao.class
 laptop/model/user/User$Ruoli.class
-laptop/model/pagamento/PagamentoCartaCredito.class
 laptop/database/MemoryInitialize.class
 laptop/database/primoucacquista/negozio/CsvNegozio.class
 laptop/exception/IdException.class
@@ -65,7 +64,6 @@ laptop/boundary/primoucacquista/BoundaryPagamentoCash.class
 laptop/boundary/primoucacquista/BoundaryDownload.class
 laptop/database/primoucacquista/negozio/PersistenzaNegozio.class
 laptop/database/terzoucgestioneprofiloggetto/report/PersistenzaReport.class
-laptop/model/pagamento/PagamentoFattura.class
 laptop/controller/terzoucgestioneprofiloggetto/ControllerVisualizzaOrdini.class
 laptop/boundary/primoucacquista/BoundaryPagamentoCC.class
 laptop/boundary/terzoucgestioneprofilooggetto/BoundaryGestioneOggetto.class
@@ -74,11 +72,11 @@ laptop/database/primoucacquista/cartacredito/CartaCreditoDao.class
 laptop/database/primoucacquista/giornale/MemoriaGiornale.class
 laptop/database/DaoInitialize.class
 laptop/database/secondouclogin/users/UsersDao.class
+laptop/pagamento/Pagamento.class
 laptop/model/raccolta/CategorieRivista.class
 laptop/database/primoucacquista/cartacredito/CsvCartaCredito.class
 laptop/database/primoucacquista/rivista/PersistenzaRivista.class
 laptop/model/Negozio.class
-laptop/model/pagamento/Pagamento.class
 laptop/database/primoucacquista/rivista/RivistaDao.class
 laptop/database/terzoucgestioneprofiloggetto/report/MemoriaReport.class
 laptop/model/Report.class
@@ -87,10 +85,12 @@ laptop/model/raccolta/CategorieLibro.class
 laptop/database/primoucacquista/rivista/MemoriaRivista.class
 laptop/database/primoucacquista/negozio/MemoriaNegozio.class
 laptop/database/terzoucgestioneprofiloggetto/report/ReportDao.class
+laptop/pagamento/PagamentoFattura.class
 laptop/database/primoucacquista/libro/MemoriaLibro.class
 laptop/boundary/terzoucgestioneprofilooggetto/BoundaryReport.class
 laptop/controller/secondouclogin/ControllerLogin.class
 laptop/boundary/terzoucgestioneprofilooggetto/BoundaryVisualizzaProfilo.class
+laptop/pagamento/PagamentoCartaCredito.class
 laptop/controller/secondouclogin/ControllerRegistraUtente.class
 laptop/database/primoucacquista/libro/CsvLibro.class
 laptop/boundary/secondouclogin/BoundaryAggiornaPassword.class

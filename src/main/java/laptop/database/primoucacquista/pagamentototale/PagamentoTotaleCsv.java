@@ -7,9 +7,10 @@ import laptop.controller.ControllerSystemState;
 import laptop.database.primoucacquista.pagamentocartacredito.CsvPagamentoCartaCredito;
 import laptop.database.primoucacquista.pagamentofattura.CsvFattura;
 import laptop.exception.IdException;
-import laptop.model.pagamento.Pagamento;
-import laptop.model.pagamento.PagamentoCartaCredito;
-import laptop.model.pagamento.PagamentoFattura;
+
+import laptop.pagamento.Pagamento;
+import laptop.pagamento.PagamentoCartaCredito;
+import laptop.pagamento.PagamentoFattura;
 import org.apache.commons.lang.SystemUtils;
 
 import java.io.*;
@@ -214,7 +215,6 @@ public class PagamentoTotaleCsv extends PersistenzaPagamentoTotale {
 
     @Override
     public boolean inserisciPagamentoFattura(PagamentoFattura p)  {
-        super.inserisciPagamentoFattura(p);
          p=csvFattura.ultimaFattura();
 
 

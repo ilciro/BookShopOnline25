@@ -1,10 +1,10 @@
-package laptop.model.pagamento;
+package laptop.pagamento;
 
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class PagamentoFattura extends Pagamento implements Serializable {
+public class PagamentoFattura  implements Serializable,Pagamento {
 
     private String nome;
     private String cognome;
@@ -126,4 +126,5 @@ public class PagamentoFattura extends Pagamento implements Serializable {
                 ", idProdotto=" + idProdotto +
                 '}';
     }
+
 }

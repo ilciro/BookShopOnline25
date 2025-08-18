@@ -2,7 +2,7 @@ package laptop.database.primoucacquista.pagamentofattura;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import laptop.model.pagamento.PagamentoFattura;
+import laptop.pagamento.PagamentoFattura;
 
 import java.io.*;
 import java.nio.file.Files;
