@@ -436,66 +436,68 @@ public class CsvLibro extends PersistenzaLibro{
 
     private static synchronized ObservableList&lt;Libro&gt; retrieveLibro(File fdL) {
 <span class="fc" id="L438">        ObservableList&lt;Libro&gt; list=FXCollections.observableArrayList();</span>
-<span class="fc" id="L439">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fdL)))) {</span>
-            String[] gVector;
-<span class="fc" id="L441">            list = FXCollections.observableArrayList();</span>
-
-
-<span class="fc bfc" id="L444" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
-<span class="fc" id="L445">                    list.add(getLibro(gVector));</span>
-            }
-<span class="nc" id="L447">        }catch (IOException |CsvValidationException e){</span>
-<span class="nc" id="L448">            Logger.getLogger(&quot;retrieveLibro io&quot;).log(Level.SEVERE,&quot;io exception :&quot;,e);</span>
-<span class="fc" id="L449">        }</span>
         try{
-<span class="pc bpc" id="L451" title="1 of 2 branches missed.">            if (list.isEmpty()) {</span>
-<span class="nc" id="L452">                throw new IdException(&quot;book not found!!&quot;);</span>
+<span class="fc" id="L440">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fdL)))) {</span>
+            String[] gVector;
+<span class="fc" id="L442">            list = FXCollections.observableArrayList();</span>
+
+
+<span class="fc bfc" id="L445" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="fc" id="L446">                    list.add(getLibro(gVector));</span>
             }
-<span class="nc" id="L454">        }catch (IdException e2){</span>
-<span class="nc" id="L455">            Logger.getLogger(&quot;retrieveLibro id&quot;).log(Level.SEVERE,&quot;id exception :&quot;,e2);</span>
+        }
+<span class="pc bpc" id="L449" title="1 of 2 branches missed.">            if (list.isEmpty()) {</span>
+<span class="nc" id="L450">                throw new IdException(&quot;book not found!!&quot;);</span>
+            }
+<span class="nc" id="L452">        }catch (IdException e2){</span>
+<span class="nc" id="L453">            Logger.getLogger(&quot;retrieveLibro id&quot;).log(Level.SEVERE,&quot;id exception :&quot;,e2);</span>
 
-<span class="fc" id="L457">        }</span>
+<span class="nc" id="L455">        }catch (IOException | CsvValidationException e)</span>
+        {
+<span class="nc" id="L457">            Logger.getLogger(&quot;libro by id titolo autore io&quot;).log(Level.SEVERE,&quot;libro not found  :&quot;,e);</span>
 
-<span class="fc" id="L459">        return list;</span>
+<span class="pc" id="L459">        }</span>
+
+<span class="fc" id="L461">        return list;</span>
     }
 
     @Override
     public void initializza() {
         try {
-<span class="fc" id="L465">            File directory=new File(&quot;report&quot;);</span>
+<span class="fc" id="L467">            File directory=new File(&quot;report&quot;);</span>
 
 
-<span class="pc bpc" id="L468" title="1 of 2 branches missed.">            if(directory.isDirectory())</span>
+<span class="pc bpc" id="L470" title="1 of 2 branches missed.">            if(directory.isDirectory())</span>
             {
-<span class="fc" id="L470">                String[] files = directory.list();</span>
+<span class="fc" id="L472">                String[] files = directory.list();</span>
 
 
-<span class="pc bpc" id="L473" title="1 of 4 branches missed.">                if ( Objects.requireNonNull(files).length == 0 || !this.fdL.exists())</span>
-<span class="fc" id="L474">                    throw new IOException(&quot;cartella vuota&quot;);</span>
+<span class="pc bpc" id="L475" title="1 of 4 branches missed.">                if ( Objects.requireNonNull(files).length == 0 || !this.fdL.exists())</span>
+<span class="fc" id="L476">                    throw new IOException(&quot;cartella vuota&quot;);</span>
 
             }
 
 
-<span class="fc" id="L479">        } catch (IOException eFile) {</span>
+<span class="fc" id="L481">        } catch (IOException eFile) {</span>
 
-<span class="fc" id="L481">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
+<span class="fc" id="L483">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
 
             try {
-<span class="fc" id="L484">                Files.copy(Path.of(LIBROP), Path.of(LOCATIONL), REPLACE_EXISTING);</span>
-<span class="nc" id="L485">            } catch (IOException e) {</span>
-<span class="nc" id="L486">                Logger.getLogger(&quot;inizializza libro csv&quot;).log(Level.SEVERE,&quot;io exception initialize :&quot;,e);</span>
-<span class="fc" id="L487">            }</span>
+<span class="fc" id="L486">                Files.copy(Path.of(LIBROP), Path.of(LOCATIONL), REPLACE_EXISTING);</span>
+<span class="nc" id="L487">            } catch (IOException e) {</span>
+<span class="nc" id="L488">                Logger.getLogger(&quot;inizializza libro csv&quot;).log(Level.SEVERE,&quot;io exception initialize :&quot;,e);</span>
+<span class="fc" id="L489">            }</span>
 
-<span class="fc" id="L489">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
-<span class="fc" id="L490">        }</span>
-<span class="fc" id="L491">        Logger.getLogger(&quot;files creati con successo&quot;).log(Level.INFO, &quot;\n files successfully created&quot;);</span>
+<span class="fc" id="L491">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
+<span class="fc" id="L492">        }</span>
+<span class="fc" id="L493">        Logger.getLogger(&quot;files creati con successo&quot;).log(Level.INFO, &quot;\n files successfully created&quot;);</span>
 
 
 
-<span class="fc" id="L495">    }</span>
+<span class="fc" id="L497">    }</span>
 
     private static void cleanUp(Path path) throws IOException {
-<span class="fc" id="L498">        Files.delete(path);</span>
-<span class="fc" id="L499">    }</span>
+<span class="fc" id="L500">        Files.delete(path);</span>
+<span class="fc" id="L501">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

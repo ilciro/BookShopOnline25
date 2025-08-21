@@ -250,10 +250,10 @@ public class CsvRivista extends PersistenzaRivista {
                         || gVector[GETINDEXIDR].equals(String.valueOf(vis.getIdRivista()))
                         || gVector[GETINDEXTITOLOR].equals(r.getTitolo());
 
-                if (!recordFound)
-                    writer.writeNext(gVector);
+                if (recordFound)
+                   found=true;
                 else
-                    found = true;
+                    writer.writeNext(gVector);
             }
             writer.flush();
         }catch (IOException | CsvValidationException e){

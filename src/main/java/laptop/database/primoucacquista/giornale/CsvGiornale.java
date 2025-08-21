@@ -411,6 +411,8 @@ public class CsvGiornale extends PersistenzaGiornale{
 
     private static synchronized ObservableList<Giornale> retrieveGiornaleByIdTitoloEditore(File fd,Giornale giornale)  {
         ObservableList<Giornale> list=FXCollections.observableArrayList();
+
+        try{
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {
             String[] gVector;
 
@@ -426,18 +428,18 @@ public class CsvGiornale extends PersistenzaGiornale{
                     list.add(getGiornale(gVector));
                 }
             }
-        }catch (IOException | CsvValidationException e)
-        {
-            Logger.getLogger("giornale by id titolo autore io").log(Level.SEVERE,"giornale not found  :",e);
-
         }
-        try {
+
             if (list.isEmpty()) {
                 throw new IdException("giornale not found!!");
             }
         }catch (IdException e2)
         {
             Logger.getLogger("lista").log(Level.SEVERE,"lista is empty :",e2);
+
+        }catch (IOException | CsvValidationException e)
+        {
+            Logger.getLogger("giornale by id titolo autore io").log(Level.SEVERE,"giornale not found  :",e);
 
         }
 

@@ -436,6 +436,7 @@ public class CsvLibro extends PersistenzaLibro{
 
     private static synchronized ObservableList<Libro> retrieveLibro(File fdL) {
         ObservableList<Libro> list=FXCollections.observableArrayList();
+        try{
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fdL)))) {
             String[] gVector;
             list = FXCollections.observableArrayList();
@@ -444,15 +445,16 @@ public class CsvLibro extends PersistenzaLibro{
             while ((gVector = csvReader.readNext()) != null) {
                     list.add(getLibro(gVector));
             }
-        }catch (IOException |CsvValidationException e){
-            Logger.getLogger("retrieveLibro io").log(Level.SEVERE,"io exception :",e);
         }
-        try{
             if (list.isEmpty()) {
                 throw new IdException("book not found!!");
             }
         }catch (IdException e2){
             Logger.getLogger("retrieveLibro id").log(Level.SEVERE,"id exception :",e2);
+
+        }catch (IOException | CsvValidationException e)
+        {
+            Logger.getLogger("libro by id titolo autore io").log(Level.SEVERE,"libro not found  :",e);
 
         }
 

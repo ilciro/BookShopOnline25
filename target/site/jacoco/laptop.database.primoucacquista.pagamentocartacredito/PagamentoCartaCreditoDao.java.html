@@ -86,7 +86,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L86">            ResultSet rs=prepQ.executeQuery();</span>
 <span class="fc bfc" id="L87" title="All 2 branches covered.">            while(rs.next()) {</span>
 <span class="fc" id="L88">                pCC = new PagamentoCartaCredito(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getFloat(5), rs.getString(6), rs.getString(7), rs.getInt(8));</span>
-<span class="fc" id="L89">                pCC.setCognomeUtente(rs.getString(4));</span>
+<span class="fc" id="L89">                pCC.setCognomeUtenteCC(rs.getString(4));</span>
             }
 
 

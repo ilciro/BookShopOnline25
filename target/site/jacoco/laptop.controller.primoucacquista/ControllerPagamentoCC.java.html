@@ -130,7 +130,7 @@ public class ControllerPagamentoCC {
 		}
 <span class="fc" id="L131">		String tipo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();</span>
 <span class="fc" id="L132">		PagamentoCartaCredito p =new PagamentoCartaCredito(0,CCREDITO,nome, vis.getSpesaT(),mail,tipo,id );</span>
-<span class="fc" id="L133">		p.setCognomeUtente(cognome);</span>
+<span class="fc" id="L133">		p.setCognomeUtenteCC(cognome);</span>
 <span class="fc" id="L134">		return p;</span>
 	}
 
@@ -147,7 +147,7 @@ public class ControllerPagamentoCC {
 		}
 <span class="fc" id="L148">		String tipo=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria();</span>
 <span class="fc" id="L149">		PagamentoCartaCredito p =new PagamentoCartaCredito(0,CCREDITO,nome, vis.getSpesaT(),mail,tipo,id );</span>
-<span class="fc" id="L150">		p.setCognomeUtente(cognome);</span>
+<span class="fc" id="L150">		p.setCognomeUtenteCC(cognome);</span>
 <span class="fc" id="L151">		return p;</span>
 	}
 
@@ -164,7 +164,7 @@ public class ControllerPagamentoCC {
 		}
 <span class="fc" id="L165">		String tipo= pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();</span>
 <span class="fc" id="L166">		PagamentoCartaCredito p =new PagamentoCartaCredito(0,CCREDITO,nome, vis.getSpesaT(),mail,tipo,id );</span>
-<span class="fc" id="L167">		p.setCognomeUtente(cognome);</span>
+<span class="fc" id="L167">		p.setCognomeUtenteCC(cognome);</span>
 <span class="fc" id="L168">		return p;</span>
 
 	}

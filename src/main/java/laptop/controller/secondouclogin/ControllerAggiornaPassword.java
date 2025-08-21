@@ -39,6 +39,8 @@ public class ControllerAggiornaPassword {
             default -> Logger.getLogger("aggiorna").log(Level.SEVERE,"error in update persistency");
         }
 
+
+
         for(int i=0;i<pU.getUserData().size();i++)
         {
 
@@ -59,6 +61,7 @@ public class ControllerAggiornaPassword {
 
        tu2.setPasswordT(nuovaP);
 
+        Logger.getLogger("insert modif user ").log(Level.INFO,"user inserted : {0},{1}",new Object[] {tu2.getEmailT(), tu2.getPasswordT()});
 
 
         return pU.inserisciUtente(tu2);

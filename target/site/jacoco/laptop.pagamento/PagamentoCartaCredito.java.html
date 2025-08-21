@@ -102,25 +102,10 @@ public class PagamentoCartaCredito implements Serializable,Pagamento {
 <span class="fc" id="L102">    }</span>
 
 
-    public String getMetodo() {
-<span class="nc" id="L106">        return metodoCC;</span>
-    }
-
-    public void setMetodo(String metodo) {
-<span class="nc" id="L110">        this.metodoCC = metodo;</span>
-<span class="nc" id="L111">    }</span>
-
-    public String getCognomeUtente() {
-<span class="nc" id="L114">        return cognomeUtenteCC;</span>
-    }
-
-    public void setCognomeUtente(String cognomeUtente) {
-<span class="fc" id="L118">        this.cognomeUtenteCC = cognomeUtente;</span>
-<span class="fc" id="L119">    }</span>
 
     @Override
     public String toString() {
-<span class="fc" id="L123">        return &quot;PagamentoCartaCredito{&quot; +</span>
+<span class="fc" id="L108">        return &quot;PagamentoCartaCredito{&quot; +</span>
                 &quot;idProdotto=&quot; + idProdottoCC +
                 &quot;, cognomeUtente='&quot; + cognomeUtenteCC + '\'' +
                 &quot;, idPagCC=&quot; + idPagCC +
@@ -132,9 +117,9 @@ public class PagamentoCartaCredito implements Serializable,Pagamento {
 
     @Override
     public boolean controllaPagamento(String type) {
-<span class="nc" id="L135">        boolean status= type.equals(&quot;cCredito&quot;);</span>
-<span class="nc" id="L136">        Logger.getLogger(&quot;controllaPagamentoCC&quot;).log(Level.INFO,&quot;checking payment cc&quot;);</span>
-<span class="nc" id="L137">        return status;</span>
+<span class="nc" id="L120">        boolean status= type.equals(&quot;cCredito&quot;);</span>
+<span class="nc" id="L121">        Logger.getLogger(&quot;controllaPagamentoCC&quot;).log(Level.INFO,&quot;checking payment cc&quot;);</span>
+<span class="nc" id="L122">        return status;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

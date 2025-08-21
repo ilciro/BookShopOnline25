@@ -74,7 +74,7 @@ public class ControllerRegistraUtente {
 
 
 		}
-		Logger.getLogger("registra").log(Level.INFO,"user registered with email {0}",tu.getEmailT());
+		Logger.getLogger("registra").log(Level.INFO,"user registered with email {0} and id {1}",new Object[]{tu.getEmailT(),tu.getId()});
 
 
 

@@ -130,7 +130,7 @@ public class ControllerPagamentoCC {
 		}
 		String tipo=pL.getLibroByIdTitoloAutoreLibro(l).get(0).getCategoria();
 		PagamentoCartaCredito p =new PagamentoCartaCredito(0,CCREDITO,nome, vis.getSpesaT(),mail,tipo,id );
-		p.setCognomeUtente(cognome);
+		p.setCognomeUtenteCC(cognome);
 		return p;
 	}
 
@@ -147,7 +147,7 @@ public class ControllerPagamentoCC {
 		}
 		String tipo=pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCategoria();
 		PagamentoCartaCredito p =new PagamentoCartaCredito(0,CCREDITO,nome, vis.getSpesaT(),mail,tipo,id );
-		p.setCognomeUtente(cognome);
+		p.setCognomeUtenteCC(cognome);
 		return p;
 	}
 
@@ -164,7 +164,7 @@ public class ControllerPagamentoCC {
 		}
 		String tipo= pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getCategoria();
 		PagamentoCartaCredito p =new PagamentoCartaCredito(0,CCREDITO,nome, vis.getSpesaT(),mail,tipo,id );
-		p.setCognomeUtente(cognome);
+		p.setCognomeUtenteCC(cognome);
 		return p;
 
 	}

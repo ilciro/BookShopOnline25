@@ -38,11 +38,11 @@ public class ControllerRegistraUtente {
 
 <span class="fc" id="L39">		vis.setTipoModifica(&quot;insert&quot;);</span>
 
-<span class="pc bpc" id="L41" title="2 of 4 branches missed.">		switch (getType())</span>
+<span class="pc bpc" id="L41" title="1 of 4 branches missed.">		switch (getType())</span>
 		{
 <span class="fc" id="L43">			case &quot;database&quot;-&gt;pU=new UsersDao();</span>
 <span class="fc" id="L44">			case &quot;file&quot;-&gt;pU=new CsvUtente();</span>
-<span class="nc" id="L45">			case &quot;memoria&quot;-&gt;pU=new MemoriaUtente();</span>
+<span class="fc" id="L45">			case &quot;memoria&quot;-&gt;pU=new MemoriaUtente();</span>
 <span class="nc" id="L46">			default -&gt; Logger.getLogger(&quot;registra&quot;).log(Level.SEVERE,&quot;error in persistency&quot;);</span>
 		}
 <span class="fc" id="L48">			pU.initializza();</span>
@@ -74,7 +74,7 @@ public class ControllerRegistraUtente {
 
 
 		}
-<span class="fc" id="L77">		Logger.getLogger(&quot;registra&quot;).log(Level.INFO,&quot;user registered with email {0}&quot;,tu.getEmailT());</span>
+<span class="fc" id="L77">		Logger.getLogger(&quot;registra&quot;).log(Level.INFO,&quot;user registered with email {0} and id {1}&quot;,new Object[]{tu.getEmailT(),tu.getId()});</span>
 
 
 

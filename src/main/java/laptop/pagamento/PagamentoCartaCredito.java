@@ -102,21 +102,6 @@ public class PagamentoCartaCredito implements Serializable,Pagamento {
     }
 
 
-    public String getMetodo() {
-        return metodoCC;
-    }
-
-    public void setMetodo(String metodo) {
-        this.metodoCC = metodo;
-    }
-
-    public String getCognomeUtente() {
-        return cognomeUtenteCC;
-    }
-
-    public void setCognomeUtente(String cognomeUtente) {
-        this.cognomeUtenteCC = cognomeUtente;
-    }
 
     @Override
     public String toString() {

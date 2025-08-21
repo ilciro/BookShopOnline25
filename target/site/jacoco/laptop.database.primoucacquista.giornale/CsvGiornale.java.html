@@ -411,72 +411,74 @@ public class CsvGiornale extends PersistenzaGiornale{
 
     private static synchronized ObservableList&lt;Giornale&gt; retrieveGiornaleByIdTitoloEditore(File fd,Giornale giornale)  {
 <span class="fc" id="L413">        ObservableList&lt;Giornale&gt; list=FXCollections.observableArrayList();</span>
-<span class="fc" id="L414">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
+
+        try{
+<span class="fc" id="L416">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
             String[] gVector;
 
-<span class="fc" id="L417">            list = FXCollections.observableArrayList();</span>
+<span class="fc" id="L419">            list = FXCollections.observableArrayList();</span>
 
-<span class="fc bfc" id="L419" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="fc bfc" id="L421" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
 
-<span class="pc bpc" id="L421" title="1 of 4 branches missed.">                boolean recordFound = gVector[GETINDEXIDG].equals(String.valueOf(giornale.getId())) || gVector[GETINDEXIDG].equals(String.valueOf(vis.getIdGiornale()))</span>
-<span class="pc bpc" id="L422" title="2 of 4 branches missed.">                        || gVector[GETINDEXTITOLOG].equals(giornale.getTitolo()) || gVector[GETINDEXEDITOREG].equals(giornale.getEditore());</span>
-<span class="fc bfc" id="L423" title="All 2 branches covered.">                if (recordFound) {</span>
+<span class="pc bpc" id="L423" title="1 of 4 branches missed.">                boolean recordFound = gVector[GETINDEXIDG].equals(String.valueOf(giornale.getId())) || gVector[GETINDEXIDG].equals(String.valueOf(vis.getIdGiornale()))</span>
+<span class="pc bpc" id="L424" title="2 of 4 branches missed.">                        || gVector[GETINDEXTITOLOG].equals(giornale.getTitolo()) || gVector[GETINDEXEDITOREG].equals(giornale.getEditore());</span>
+<span class="fc bfc" id="L425" title="All 2 branches covered.">                if (recordFound) {</span>
 
 
-<span class="fc" id="L426">                    list.add(getGiornale(gVector));</span>
+<span class="fc" id="L428">                    list.add(getGiornale(gVector));</span>
                 }
-<span class="fc" id="L428">            }</span>
-<span class="nc" id="L429">        }catch (IOException | CsvValidationException e)</span>
-        {
-<span class="nc" id="L431">            Logger.getLogger(&quot;giornale by id titolo autore io&quot;).log(Level.SEVERE,&quot;giornale not found  :&quot;,e);</span>
+<span class="fc" id="L430">            }</span>
+        }
 
-<span class="fc" id="L433">        }</span>
-        try {
-<span class="pc bpc" id="L435" title="1 of 2 branches missed.">            if (list.isEmpty()) {</span>
-<span class="nc" id="L436">                throw new IdException(&quot;giornale not found!!&quot;);</span>
+<span class="pc bpc" id="L433" title="1 of 2 branches missed.">            if (list.isEmpty()) {</span>
+<span class="nc" id="L434">                throw new IdException(&quot;giornale not found!!&quot;);</span>
             }
-<span class="nc" id="L438">        }catch (IdException e2)</span>
+<span class="nc" id="L436">        }catch (IdException e2)</span>
         {
-<span class="nc" id="L440">            Logger.getLogger(&quot;lista&quot;).log(Level.SEVERE,&quot;lista is empty :&quot;,e2);</span>
+<span class="nc" id="L438">            Logger.getLogger(&quot;lista&quot;).log(Level.SEVERE,&quot;lista is empty :&quot;,e2);</span>
 
-<span class="fc" id="L442">        }</span>
+<span class="nc" id="L440">        }catch (IOException | CsvValidationException e)</span>
+        {
+<span class="nc" id="L442">            Logger.getLogger(&quot;giornale by id titolo autore io&quot;).log(Level.SEVERE,&quot;giornale not found  :&quot;,e);</span>
+
+<span class="pc" id="L444">        }</span>
 
 
-<span class="fc" id="L445">        return list;</span>
+<span class="fc" id="L447">        return list;</span>
 
     }
     @Override
     public void initializza()  {
         try {
-<span class="fc" id="L451">            File directory=new File(&quot;report&quot;);</span>
+<span class="fc" id="L453">            File directory=new File(&quot;report&quot;);</span>
 
 
-<span class="pc bpc" id="L454" title="1 of 2 branches missed.">            if(directory.isDirectory())</span>
+<span class="pc bpc" id="L456" title="1 of 2 branches missed.">            if(directory.isDirectory())</span>
             {
-<span class="fc" id="L456">                String[] files = directory.list();</span>
+<span class="fc" id="L458">                String[] files = directory.list();</span>
 
 
-<span class="pc bpc" id="L459" title="1 of 4 branches missed.">                if ( Objects.requireNonNull(files).length == 0 || !this.fdG.exists()) {</span>
-<span class="fc" id="L460">                    throw new IOException(&quot;cartella vuota&quot;);</span>
+<span class="pc bpc" id="L461" title="1 of 4 branches missed.">                if ( Objects.requireNonNull(files).length == 0 || !this.fdG.exists()) {</span>
+<span class="fc" id="L462">                    throw new IOException(&quot;cartella vuota&quot;);</span>
                 }
 
             }
 
 
-<span class="fc" id="L466">        } catch (IOException eFile) {</span>
+<span class="fc" id="L468">        } catch (IOException eFile) {</span>
 
-<span class="fc" id="L468">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
+<span class="fc" id="L470">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
 
             try {
-<span class="fc" id="L471">                Files.copy(Path.of(GIORNALEP), Path.of(LOCATIONG), REPLACE_EXISTING);</span>
-<span class="nc" id="L472">            } catch (IOException e) {</span>
-<span class="nc" id="L473">                Logger.getLogger(&quot;inizializza csv giornale io&quot;).log(Level.SEVERE,&quot;inizializza io in csv  :&quot;,e);</span>
-<span class="fc" id="L474">            }</span>
+<span class="fc" id="L473">                Files.copy(Path.of(GIORNALEP), Path.of(LOCATIONG), REPLACE_EXISTING);</span>
+<span class="nc" id="L474">            } catch (IOException e) {</span>
+<span class="nc" id="L475">                Logger.getLogger(&quot;inizializza csv giornale io&quot;).log(Level.SEVERE,&quot;inizializza io in csv  :&quot;,e);</span>
+<span class="fc" id="L476">            }</span>
 
-<span class="fc" id="L476">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
-<span class="fc" id="L477">        }</span>
+<span class="fc" id="L478">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
+<span class="fc" id="L479">        }</span>
 
-<span class="fc" id="L479">    }</span>
+<span class="fc" id="L481">    }</span>
 
 
 }

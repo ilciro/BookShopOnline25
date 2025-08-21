@@ -250,10 +250,10 @@ public class CsvRivista extends PersistenzaRivista {
 <span class="pc bpc" id="L250" title="1 of 2 branches missed.">                        || gVector[GETINDEXIDR].equals(String.valueOf(vis.getIdRivista()))</span>
 <span class="pc bpc" id="L251" title="1 of 2 branches missed.">                        || gVector[GETINDEXTITOLOR].equals(r.getTitolo());</span>
 
-<span class="fc bfc" id="L253" title="All 2 branches covered.">                if (!recordFound)</span>
-<span class="fc" id="L254">                    writer.writeNext(gVector);</span>
+<span class="fc bfc" id="L253" title="All 2 branches covered.">                if (recordFound)</span>
+<span class="fc" id="L254">                   found=true;</span>
                 else
-<span class="fc" id="L256">                    found = true;</span>
+<span class="fc" id="L256">                    writer.writeNext(gVector);</span>
             }
 <span class="fc" id="L258">            writer.flush();</span>
 <span class="nc" id="L259">        }catch (IOException | CsvValidationException e){</span>
