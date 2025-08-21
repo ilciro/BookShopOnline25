@@ -65,7 +65,7 @@ public class ControllerVisualizzaOrdini {
             default -> Logger.getLogger("getLista pagamenti cc").log(Level.SEVERE,"list pf payment with cc is empty!!");
         }
         PagamentoCartaCredito pCC1=new PagamentoCartaCredito();
-        pCC1.setEmail(getEmail());
+        pCC1.setEmailCC(getEmail());
         return pCC.listaPagamentiUserByCC(pCC1);
     }
 

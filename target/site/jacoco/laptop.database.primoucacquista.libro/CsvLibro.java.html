@@ -293,45 +293,42 @@ public class CsvLibro extends PersistenzaLibro{
 <span class="fc" id="L293">                    found = true;</span>
             }
 <span class="fc" id="L295">            writer.flush();</span>
-<span class="nc" id="L296">        }catch (IOException e)</span>
+<span class="nc" id="L296">        }catch (IOException | CsvValidationException e)</span>
         {
 <span class="nc" id="L298">            Logger.getLogger(&quot;isFound book&quot;).log(Level.SEVERE,&quot;id book file exception :&quot;,e);</span>
-<span class="nc" id="L299">        }catch (CsvValidationException e1)</span>
-        {
-<span class="nc" id="L301">            Logger.getLogger(&quot;idFound csv libro&quot;).log(Level.SEVERE,&quot; id book csv error :&quot;,e1);</span>
-<span class="pc" id="L302">        }</span>
-<span class="fc" id="L303">        return found;</span>
+<span class="fc" id="L299">        }</span>
+<span class="fc" id="L300">        return found;</span>
     }
 
 
     @Override
     public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData() {
-<span class="fc" id="L309">        return retrieveData(this.fdL);</span>
+<span class="fc" id="L306">        return retrieveData(this.fdL);</span>
     }
     private static synchronized ObservableList&lt;Raccolta&gt; retrieveData(File fd) {
-<span class="fc" id="L312">        ObservableList&lt;Raccolta&gt; gList = FXCollections.observableArrayList();</span>
-<span class="fc" id="L313">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
+<span class="fc" id="L309">        ObservableList&lt;Raccolta&gt; gList = FXCollections.observableArrayList();</span>
+<span class="fc" id="L310">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
             String[] gVector;
-<span class="fc bfc" id="L315" title="All 2 branches covered.">                    while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="fc bfc" id="L312" title="All 2 branches covered.">                    while ((gVector = csvReader.readNext()) != null) {</span>
 
-<span class="fc" id="L317">                        gList.add(getLibro(gVector));</span>
+<span class="fc" id="L314">                        gList.add(getLibro(gVector));</span>
 
                     }
 
-<span class="nc" id="L321">        }catch (IOException e){</span>
-<span class="nc" id="L322">            Logger.getLogger(&quot;retrieveRaccoltaData libro&quot;).log(Level.SEVERE,&quot;error with file :&quot;,e);</span>
-<span class="nc" id="L323">        }catch (CsvValidationException e1) {</span>
-<span class="nc" id="L324">            Logger.getLogger(&quot;retrieveRaccoltaData libro csv&quot;).log(Level.SEVERE, &quot;error with csv :&quot;, e1);</span>
-<span class="pc" id="L325">        }</span>
+<span class="nc" id="L318">        }catch (IOException e){</span>
+<span class="nc" id="L319">            Logger.getLogger(&quot;retrieveRaccoltaData libro&quot;).log(Level.SEVERE,&quot;error with file :&quot;,e);</span>
+<span class="nc" id="L320">        }catch (CsvValidationException e1) {</span>
+<span class="nc" id="L321">            Logger.getLogger(&quot;retrieveRaccoltaData libro csv&quot;).log(Level.SEVERE, &quot;error with csv :&quot;, e1);</span>
+<span class="pc" id="L322">        }</span>
         try{
-<span class="pc bpc" id="L327" title="1 of 2 branches missed.">        if (gList.isEmpty()) {</span>
-<span class="nc" id="L328">            throw new IdException(&quot;list libro is empty&quot;);</span>
+<span class="pc bpc" id="L324" title="1 of 2 branches missed.">        if (gList.isEmpty()) {</span>
+<span class="nc" id="L325">            throw new IdException(&quot;list libro is empty&quot;);</span>
         }
-<span class="nc" id="L330">        }catch (IdException e2){</span>
-<span class="nc" id="L331">            Logger.getLogger(&quot;retrieveRaccoltaData idLibro&quot;).log(Level.SEVERE,&quot;error with idLibro :&quot;,e2);</span>
-<span class="fc" id="L332">        }</span>
+<span class="nc" id="L327">        }catch (IdException e2){</span>
+<span class="nc" id="L328">            Logger.getLogger(&quot;retrieveRaccoltaData idLibro&quot;).log(Level.SEVERE,&quot;error with idLibro :&quot;,e2);</span>
+<span class="fc" id="L329">        }</span>
 
-<span class="fc" id="L334">        return gList;</span>
+<span class="fc" id="L331">        return gList;</span>
 
     }
 
@@ -339,166 +336,166 @@ public class CsvLibro extends PersistenzaLibro{
 
     @Override
     public ObservableList&lt;Libro&gt; getLibroByIdTitoloAutoreLibro(Libro l)  {
-<span class="fc" id="L342">        ObservableList&lt;Libro&gt; list=FXCollections.observableArrayList();</span>
-<span class="fc" id="L343">        synchronized (this.cacheLibro)</span>
+<span class="fc" id="L339">        ObservableList&lt;Libro&gt; list=FXCollections.observableArrayList();</span>
+<span class="fc" id="L340">        synchronized (this.cacheLibro)</span>
         {
-<span class="fc bfc" id="L345" title="All 2 branches covered.">            for(Map.Entry&lt;Integer, Libro&gt; id:this.cacheLibro.entrySet())</span>
+<span class="fc bfc" id="L342" title="All 2 branches covered.">            for(Map.Entry&lt;Integer, Libro&gt; id:this.cacheLibro.entrySet())</span>
             {
 
-<span class="fc" id="L348">                boolean recordT =id.getValue().getTitolo().equals(l.getTitolo());</span>
-<span class="fc" id="L349">                boolean recordA = id.getValue().getTitolo().equals(l.getAutore());</span>
-<span class="pc bpc" id="L350" title="3 of 4 branches missed.">                boolean recordFound = recordT &amp;&amp; recordA;</span>
+<span class="fc" id="L345">                boolean recordT =id.getValue().getTitolo().equals(l.getTitolo());</span>
+<span class="fc" id="L346">                boolean recordA = id.getValue().getTitolo().equals(l.getAutore());</span>
+<span class="pc bpc" id="L347" title="3 of 4 branches missed.">                boolean recordFound = recordT &amp;&amp; recordA;</span>
 
 
-<span class="pc bpc" id="L353" title="1 of 2 branches missed.">                if (recordFound)</span>
-<span class="nc" id="L354">                    list.add(id.getValue());</span>
+<span class="pc bpc" id="L350" title="1 of 2 branches missed.">                if (recordFound)</span>
+<span class="nc" id="L351">                    list.add(id.getValue());</span>
 
-<span class="fc" id="L356">            }</span>
-<span class="fc" id="L357">        }</span>
-<span class="pc bpc" id="L358" title="1 of 2 branches missed.">        if(list.isEmpty())</span>
+<span class="fc" id="L353">            }</span>
+<span class="fc" id="L354">        }</span>
+<span class="pc bpc" id="L355" title="1 of 2 branches missed.">        if(list.isEmpty())</span>
         {
-<span class="fc" id="L360">            list=retrieveLibroByIdAutoreTitolo(this.fdL,l);</span>
-<span class="fc" id="L361">            synchronized (this.cacheLibro)</span>
+<span class="fc" id="L357">            list=retrieveLibroByIdAutoreTitolo(this.fdL,l);</span>
+<span class="fc" id="L358">            synchronized (this.cacheLibro)</span>
             {
-<span class="fc bfc" id="L363" title="All 2 branches covered.">                for(Libro libro : list)</span>
-<span class="fc" id="L364">                    this.cacheLibro.put(l.getId(),libro);</span>
-<span class="fc" id="L365">            }</span>
+<span class="fc bfc" id="L360" title="All 2 branches covered.">                for(Libro libro : list)</span>
+<span class="fc" id="L361">                    this.cacheLibro.put(l.getId(),libro);</span>
+<span class="fc" id="L362">            }</span>
 
         }
-<span class="fc" id="L368">        return list;</span>
+<span class="fc" id="L365">        return list;</span>
     }
     private static synchronized ObservableList&lt;Libro&gt; retrieveLibroByIdAutoreTitolo(File fd,Libro libro)  {
-<span class="fc" id="L371">        ObservableList&lt;Libro&gt; list=FXCollections.observableArrayList();</span>
-<span class="fc" id="L372">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
+<span class="fc" id="L368">        ObservableList&lt;Libro&gt; list=FXCollections.observableArrayList();</span>
+<span class="fc" id="L369">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {</span>
             String[] gVector;
-<span class="fc" id="L374">            list = FXCollections.observableArrayList();</span>
+<span class="fc" id="L371">            list = FXCollections.observableArrayList();</span>
 
 
-<span class="fc bfc" id="L377" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="fc bfc" id="L374" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
 
 
-<span class="pc bpc" id="L380" title="1 of 4 branches missed.">                boolean recordFound = gVector[GETINDEXIDL].equals(String.valueOf(libro.getId())) || gVector[GETINDEXIDL].equals(String.valueOf(vis.getIdLibro()))</span>
-<span class="pc bpc" id="L381" title="2 of 4 branches missed.">                        || gVector[GETINDEXTITOLOL].equals(libro.getTitolo()) || gVector[GETINDEXAUTOREL].equals(libro.getAutore())</span>
-<span class="pc bpc" id="L382" title="1 of 2 branches missed.">                        || gVector[GETINDEXEDITOREL].equals(libro.getEditore());</span>
-<span class="fc bfc" id="L383" title="All 2 branches covered.">                if (recordFound) {</span>
+<span class="pc bpc" id="L377" title="1 of 4 branches missed.">                boolean recordFound = gVector[GETINDEXIDL].equals(String.valueOf(libro.getId())) || gVector[GETINDEXIDL].equals(String.valueOf(vis.getIdLibro()))</span>
+<span class="pc bpc" id="L378" title="2 of 4 branches missed.">                        || gVector[GETINDEXTITOLOL].equals(libro.getTitolo()) || gVector[GETINDEXAUTOREL].equals(libro.getAutore())</span>
+<span class="pc bpc" id="L379" title="1 of 2 branches missed.">                        || gVector[GETINDEXEDITOREL].equals(libro.getEditore());</span>
+<span class="fc bfc" id="L380" title="All 2 branches covered.">                if (recordFound) {</span>
 
 
-<span class="fc" id="L386">                    list.add(getLibro(gVector));</span>
+<span class="fc" id="L383">                    list.add(getLibro(gVector));</span>
 
                 }
 
-<span class="fc" id="L390">            }</span>
-<span class="nc" id="L391">        }catch (IOException e)</span>
+<span class="fc" id="L387">            }</span>
+<span class="nc" id="L388">        }catch (IOException e)</span>
         {
-<span class="nc" id="L393">            Logger.getLogger(&quot;retrieveLibro&quot;).log(Level.SEVERE,&quot;file book error :&quot;,e);</span>
-<span class="nc" id="L394">        }catch (CsvValidationException e1)</span>
+<span class="nc" id="L390">            Logger.getLogger(&quot;retrieveLibro&quot;).log(Level.SEVERE,&quot;file book error :&quot;,e);</span>
+<span class="nc" id="L391">        }catch (CsvValidationException e1)</span>
         {
-<span class="nc" id="L396">            Logger.getLogger(&quot;retriveLibro csv&quot;).log(Level.SEVERE,&quot;error with csvLibroFile :&quot;,e1);</span>
-<span class="pc" id="L397">        }</span>
+<span class="nc" id="L393">            Logger.getLogger(&quot;retriveLibro csv&quot;).log(Level.SEVERE,&quot;error with csvLibroFile :&quot;,e1);</span>
+<span class="pc" id="L394">        }</span>
         try {
-<span class="pc bpc" id="L399" title="1 of 2 branches missed.">        if (list.isEmpty()) {</span>
-<span class="nc" id="L400">            throw new IdException(&quot;book not found!!&quot;);</span>
+<span class="pc bpc" id="L396" title="1 of 2 branches missed.">        if (list.isEmpty()) {</span>
+<span class="nc" id="L397">            throw new IdException(&quot;book not found!!&quot;);</span>
             }
-<span class="nc" id="L402">        } catch (IdException e) {</span>
-<span class="nc" id="L403">            Logger.getLogger(&quot;libro non ha id&quot;).log(Level.SEVERE,&quot;id book is null :&quot;,e);</span>
-<span class="fc" id="L404">        }</span>
+<span class="nc" id="L399">        } catch (IdException e) {</span>
+<span class="nc" id="L400">            Logger.getLogger(&quot;libro non ha id&quot;).log(Level.SEVERE,&quot;id book is null :&quot;,e);</span>
+<span class="fc" id="L401">        }</span>
 
-<span class="fc" id="L406">        return list;</span>
+<span class="fc" id="L403">        return list;</span>
 
     }
 
     @Override
     public ObservableList&lt;Libro&gt; getLibri()  {
-<span class="fc" id="L412">        ObservableList&lt;Libro&gt; list=FXCollections.observableArrayList();</span>
-<span class="fc" id="L413">        synchronized (this.cacheLibro)</span>
+<span class="fc" id="L409">        ObservableList&lt;Libro&gt; list=FXCollections.observableArrayList();</span>
+<span class="fc" id="L410">        synchronized (this.cacheLibro)</span>
         {
-<span class="fc bfc" id="L415" title="All 2 branches covered.">            for(Map.Entry&lt;Integer, Libro&gt; id:this.cacheLibro.entrySet())</span>
+<span class="fc bfc" id="L412" title="All 2 branches covered.">            for(Map.Entry&lt;Integer, Libro&gt; id:this.cacheLibro.entrySet())</span>
             {
 
-<span class="pc bpc" id="L418" title="1 of 2 branches missed.">                boolean recordT = !id.getValue().getTitolo().isEmpty();</span>
+<span class="pc bpc" id="L415" title="1 of 2 branches missed.">                boolean recordT = !id.getValue().getTitolo().isEmpty();</span>
 
 
 
-<span class="pc bpc" id="L422" title="1 of 2 branches missed.">                if (recordT)</span>
-<span class="fc" id="L423">                    list.add(id.getValue());</span>
+<span class="pc bpc" id="L419" title="1 of 2 branches missed.">                if (recordT)</span>
+<span class="fc" id="L420">                    list.add(id.getValue());</span>
 
-<span class="fc" id="L425">            }</span>
-<span class="fc" id="L426">        }</span>
-<span class="fc bfc" id="L427" title="All 2 branches covered.">        if(list.isEmpty())</span>
+<span class="fc" id="L422">            }</span>
+<span class="fc" id="L423">        }</span>
+<span class="fc bfc" id="L424" title="All 2 branches covered.">        if(list.isEmpty())</span>
         {
-<span class="fc" id="L429">            list=retrieveLibro(this.fdL);</span>
-<span class="fc" id="L430">            synchronized (this.cacheLibro)</span>
+<span class="fc" id="L426">            list=retrieveLibro(this.fdL);</span>
+<span class="fc" id="L427">            synchronized (this.cacheLibro)</span>
             {
-<span class="fc bfc" id="L432" title="All 2 branches covered.">                for(Libro libro : list)</span>
-<span class="fc" id="L433">                    this.cacheLibro.put(libro.getId(),libro);</span>
-<span class="fc" id="L434">            }</span>
+<span class="fc bfc" id="L429" title="All 2 branches covered.">                for(Libro libro : list)</span>
+<span class="fc" id="L430">                    this.cacheLibro.put(libro.getId(),libro);</span>
+<span class="fc" id="L431">            }</span>
 
         }
-<span class="fc" id="L437">        return list;</span>
+<span class="fc" id="L434">        return list;</span>
     }
 
     private static synchronized ObservableList&lt;Libro&gt; retrieveLibro(File fdL) {
-<span class="fc" id="L441">        ObservableList&lt;Libro&gt; list=FXCollections.observableArrayList();</span>
-<span class="fc" id="L442">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fdL)))) {</span>
+<span class="fc" id="L438">        ObservableList&lt;Libro&gt; list=FXCollections.observableArrayList();</span>
+<span class="fc" id="L439">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fdL)))) {</span>
             String[] gVector;
-<span class="fc" id="L444">            list = FXCollections.observableArrayList();</span>
+<span class="fc" id="L441">            list = FXCollections.observableArrayList();</span>
 
 
-<span class="fc bfc" id="L447" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
-<span class="fc" id="L448">                    list.add(getLibro(gVector));</span>
+<span class="fc bfc" id="L444" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
+<span class="fc" id="L445">                    list.add(getLibro(gVector));</span>
             }
-<span class="nc" id="L450">        }catch (IOException |CsvValidationException e){</span>
-<span class="nc" id="L451">            Logger.getLogger(&quot;retrieveLibro io&quot;).log(Level.SEVERE,&quot;io exception :&quot;,e);</span>
-<span class="fc" id="L452">        }</span>
+<span class="nc" id="L447">        }catch (IOException |CsvValidationException e){</span>
+<span class="nc" id="L448">            Logger.getLogger(&quot;retrieveLibro io&quot;).log(Level.SEVERE,&quot;io exception :&quot;,e);</span>
+<span class="fc" id="L449">        }</span>
         try{
-<span class="pc bpc" id="L454" title="1 of 2 branches missed.">            if (list.isEmpty()) {</span>
-<span class="nc" id="L455">                throw new IdException(&quot;book not found!!&quot;);</span>
+<span class="pc bpc" id="L451" title="1 of 2 branches missed.">            if (list.isEmpty()) {</span>
+<span class="nc" id="L452">                throw new IdException(&quot;book not found!!&quot;);</span>
             }
-<span class="nc" id="L457">        }catch (IdException e2){</span>
-<span class="nc" id="L458">            Logger.getLogger(&quot;retrieveLibro id&quot;).log(Level.SEVERE,&quot;id exception :&quot;,e2);</span>
+<span class="nc" id="L454">        }catch (IdException e2){</span>
+<span class="nc" id="L455">            Logger.getLogger(&quot;retrieveLibro id&quot;).log(Level.SEVERE,&quot;id exception :&quot;,e2);</span>
 
-<span class="fc" id="L460">        }</span>
+<span class="fc" id="L457">        }</span>
 
-<span class="fc" id="L462">        return list;</span>
+<span class="fc" id="L459">        return list;</span>
     }
 
     @Override
     public void initializza() {
         try {
-<span class="fc" id="L468">            File directory=new File(&quot;report&quot;);</span>
+<span class="fc" id="L465">            File directory=new File(&quot;report&quot;);</span>
 
 
-<span class="pc bpc" id="L471" title="1 of 2 branches missed.">            if(directory.isDirectory())</span>
+<span class="pc bpc" id="L468" title="1 of 2 branches missed.">            if(directory.isDirectory())</span>
             {
-<span class="fc" id="L473">                String[] files = directory.list();</span>
+<span class="fc" id="L470">                String[] files = directory.list();</span>
 
 
-<span class="pc bpc" id="L476" title="1 of 4 branches missed.">                if ( Objects.requireNonNull(files).length == 0 || !this.fdL.exists())</span>
-<span class="fc" id="L477">                    throw new IOException(&quot;cartella vuota&quot;);</span>
+<span class="pc bpc" id="L473" title="1 of 4 branches missed.">                if ( Objects.requireNonNull(files).length == 0 || !this.fdL.exists())</span>
+<span class="fc" id="L474">                    throw new IOException(&quot;cartella vuota&quot;);</span>
 
             }
 
 
-<span class="fc" id="L482">        } catch (IOException eFile) {</span>
+<span class="fc" id="L479">        } catch (IOException eFile) {</span>
 
-<span class="fc" id="L484">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
+<span class="fc" id="L481">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
 
             try {
-<span class="fc" id="L487">                Files.copy(Path.of(LIBROP), Path.of(LOCATIONL), REPLACE_EXISTING);</span>
-<span class="nc" id="L488">            } catch (IOException e) {</span>
-<span class="nc" id="L489">                Logger.getLogger(&quot;inizializza libro csv&quot;).log(Level.SEVERE,&quot;io exception initialize :&quot;,e);</span>
-<span class="fc" id="L490">            }</span>
+<span class="fc" id="L484">                Files.copy(Path.of(LIBROP), Path.of(LOCATIONL), REPLACE_EXISTING);</span>
+<span class="nc" id="L485">            } catch (IOException e) {</span>
+<span class="nc" id="L486">                Logger.getLogger(&quot;inizializza libro csv&quot;).log(Level.SEVERE,&quot;io exception initialize :&quot;,e);</span>
+<span class="fc" id="L487">            }</span>
 
-<span class="fc" id="L492">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
-<span class="fc" id="L493">        }</span>
-<span class="fc" id="L494">        Logger.getLogger(&quot;files creati con successo&quot;).log(Level.INFO, &quot;\n files successfully created&quot;);</span>
+<span class="fc" id="L489">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
+<span class="fc" id="L490">        }</span>
+<span class="fc" id="L491">        Logger.getLogger(&quot;files creati con successo&quot;).log(Level.INFO, &quot;\n files successfully created&quot;);</span>
 
 
 
-<span class="fc" id="L498">    }</span>
+<span class="fc" id="L495">    }</span>
 
     private static void cleanUp(Path path) throws IOException {
-<span class="fc" id="L501">        Files.delete(path);</span>
-<span class="fc" id="L502">    }</span>
+<span class="fc" id="L498">        Files.delete(path);</span>
+<span class="fc" id="L499">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

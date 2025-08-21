@@ -293,12 +293,9 @@ public class CsvLibro extends PersistenzaLibro{
                     found = true;
             }
             writer.flush();
-        }catch (IOException e)
+        }catch (IOException | CsvValidationException e)
         {
             Logger.getLogger("isFound book").log(Level.SEVERE,"id book file exception :",e);
-        }catch (CsvValidationException e1)
-        {
-            Logger.getLogger("idFound csv libro").log(Level.SEVERE," id book csv error :",e1);
         }
         return found;
     }

@@ -60,6 +60,8 @@ public class ControllerAnnullaPagamento  {
 
             default -> Logger.getLogger("persistenza errata").log(Level.SEVERE, " persistency is wrong or null!!");
         }
+
+        pPF.inizializza();
         PagamentoFattura pF = new PagamentoFattura();
         pF.setIdFattura(idFattura);
 
@@ -93,6 +95,8 @@ public class ControllerAnnullaPagamento  {
 
             default -> Logger.getLogger("cancella pagamento cc").log(Level.SEVERE, ERROR);
         }
+
+        pPCC.inizializza();
         PagamentoCartaCredito pCC = new PagamentoCartaCredito();
         pCC.setIdPagCC(idPagamentoCC);
 

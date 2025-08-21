@@ -65,7 +65,7 @@ import java.util.logging.Logger;
 <span class="nc" id="L65">            default -&gt; Logger.getLogger(&quot;getLista pagamenti cc&quot;).log(Level.SEVERE,&quot;list pf payment with cc is empty!!&quot;);</span>
         }
 <span class="nc" id="L67">        PagamentoCartaCredito pCC1=new PagamentoCartaCredito();</span>
-<span class="nc" id="L68">        pCC1.setEmail(getEmail());</span>
+<span class="nc" id="L68">        pCC1.setEmailCC(getEmail());</span>
 <span class="nc" id="L69">        return pCC.listaPagamentiUserByCC(pCC1);</span>
     }
 

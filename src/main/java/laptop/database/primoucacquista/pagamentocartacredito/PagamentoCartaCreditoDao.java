@@ -32,14 +32,14 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
         try(Connection conn=ConnToDb.connectionToDB();
         PreparedStatement prepQ=conn.prepareStatement(query))
         {
-            prepQ.setString(1, pcc.getEmail());
+            prepQ.setString(1, pcc.getEmailCC());
             ResultSet rs= prepQ.executeQuery();
             while(rs.next())
             {
                 PagamentoCartaCredito pCC=new PagamentoCartaCredito();
-                pCC.setIdProdotto(rs.getInt(1));
-                pCC.setSpesaTotale(rs.getFloat(2));
-                pCC.setTipoAcquisto(rs.getString(3));
+                pCC.setIdProdottoCC(rs.getInt(1));
+                pCC.setSpesaTotaleCC(rs.getFloat(2));
+                pCC.setTipoAcquistoCC(rs.getString(3));
                 pCC.setIdPagCC(rs.getInt(4));
                 list.add(pCC);
             }
@@ -108,12 +108,12 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
 
             prepQ.setInt(1,0);
             prepQ.setString(2,"cCredito");
-            prepQ.setString(3,p.getNomeUtente());
-            prepQ.setString(4,p.getCognomeUtente());
-            prepQ.setFloat(5,p.getSpesaTotale());
-            prepQ.setString(6,p.getEmail());
-            prepQ.setString(7,p.getTipoAcquisto());
-            prepQ.setInt(8,p.getIdProdotto());
+            prepQ.setString(3,p.getNomeUtenteCC());
+            prepQ.setString(4,p.getCognomeUtenteCC());
+            prepQ.setFloat(5,p.getSpesaTotaleCC());
+            prepQ.setString(6,p.getEmailCC());
+            prepQ.setString(7,p.getTipoAcquistoCC());
+            prepQ.setInt(8,p.getIdProdottoCC());
 
             row=prepQ.executeUpdate();
         }catch (SQLException e)

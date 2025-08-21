@@ -16,6 +16,7 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
     private  ArrayList<PagamentoCartaCredito> list= new ArrayList<>();
     private static final String SERIALIZZAZIONE="memory/serializzazionePagamentoCartaCredito.ser";
     private  PagamentoTotalePersistenza pT;
+    private static final String MEMORIA="memoria";
     @Override
     public void inizializza() {
         Path path = Path.of(SERIALIZZAZIONE);
@@ -31,7 +32,7 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
             }
             Logger.getLogger("inizializza memoria pagamentoCC").log(Level.INFO," file has been created");
         }
-        pT=new PagamentoTotalePersistenza("memoria");
+        pT=new PagamentoTotalePersistenza(MEMORIA);
     }
 
     @Override
@@ -63,7 +64,7 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
 
 
 
-        return pT.inserisciPagamentoTotaleCC(p,"memoria");
+        return pT.inserisciPagamentoTotaleCC(p,MEMORIA);
     }
 
     @Override
@@ -107,7 +108,6 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
                 Logger.getLogger("scrittura su nuovo file").log(Level.SEVERE,"writing error :",e4);
             }
         }
-        pT=new PagamentoTotalePersistenza("memoria");
         return status && pT.cancellaPagCCMem(p);
     }
 
@@ -138,7 +138,7 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
             Logger.getLogger("listPagamentoCCUser").log(Level.SEVERE,"file is empty");
         }
         for (int i = 1; i <= list.size(); i++) {
-            if (list.get(i-1).getEmail().equals(pcc.getEmail())) {
+            if (list.get(i-1).getEmailCC().equals(pcc.getEmailCC())) {
                 PagamentoCartaCredito pCC=list.get(i-1);
                 listCC.add(pCC);
 

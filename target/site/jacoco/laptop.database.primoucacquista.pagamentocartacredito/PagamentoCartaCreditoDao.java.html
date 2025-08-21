@@ -32,14 +32,14 @@ import java.util.logging.Logger;
 <span class="nc" id="L32">        try(Connection conn=ConnToDb.connectionToDB();</span>
 <span class="nc" id="L33">        PreparedStatement prepQ=conn.prepareStatement(query))</span>
         {
-<span class="nc" id="L35">            prepQ.setString(1, pcc.getEmail());</span>
+<span class="nc" id="L35">            prepQ.setString(1, pcc.getEmailCC());</span>
 <span class="nc" id="L36">            ResultSet rs= prepQ.executeQuery();</span>
 <span class="nc bnc" id="L37" title="All 2 branches missed.">            while(rs.next())</span>
             {
 <span class="nc" id="L39">                PagamentoCartaCredito pCC=new PagamentoCartaCredito();</span>
-<span class="nc" id="L40">                pCC.setIdProdotto(rs.getInt(1));</span>
-<span class="nc" id="L41">                pCC.setSpesaTotale(rs.getFloat(2));</span>
-<span class="nc" id="L42">                pCC.setTipoAcquisto(rs.getString(3));</span>
+<span class="nc" id="L40">                pCC.setIdProdottoCC(rs.getInt(1));</span>
+<span class="nc" id="L41">                pCC.setSpesaTotaleCC(rs.getFloat(2));</span>
+<span class="nc" id="L42">                pCC.setTipoAcquistoCC(rs.getString(3));</span>
 <span class="nc" id="L43">                pCC.setIdPagCC(rs.getInt(4));</span>
 <span class="nc" id="L44">                list.add(pCC);</span>
 <span class="nc" id="L45">            }</span>
@@ -108,12 +108,12 @@ import java.util.logging.Logger;
 
 <span class="fc" id="L109">            prepQ.setInt(1,0);</span>
 <span class="fc" id="L110">            prepQ.setString(2,&quot;cCredito&quot;);</span>
-<span class="fc" id="L111">            prepQ.setString(3,p.getNomeUtente());</span>
-<span class="fc" id="L112">            prepQ.setString(4,p.getCognomeUtente());</span>
-<span class="fc" id="L113">            prepQ.setFloat(5,p.getSpesaTotale());</span>
-<span class="fc" id="L114">            prepQ.setString(6,p.getEmail());</span>
-<span class="fc" id="L115">            prepQ.setString(7,p.getTipoAcquisto());</span>
-<span class="fc" id="L116">            prepQ.setInt(8,p.getIdProdotto());</span>
+<span class="fc" id="L111">            prepQ.setString(3,p.getNomeUtenteCC());</span>
+<span class="fc" id="L112">            prepQ.setString(4,p.getCognomeUtenteCC());</span>
+<span class="fc" id="L113">            prepQ.setFloat(5,p.getSpesaTotaleCC());</span>
+<span class="fc" id="L114">            prepQ.setString(6,p.getEmailCC());</span>
+<span class="fc" id="L115">            prepQ.setString(7,p.getTipoAcquistoCC());</span>
+<span class="fc" id="L116">            prepQ.setInt(8,p.getIdProdottoCC());</span>
 
 <span class="fc" id="L118">            row=prepQ.executeUpdate();</span>
 <span class="nc" id="L119">        }catch (SQLException e)</span>

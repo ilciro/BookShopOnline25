@@ -172,12 +172,12 @@ public class PagamentoTotalePersistenza {
                         String[] gVectore = new String[9];
 
                         gVectore[GETINDEXMETODOP] = CCREDITO;
-                        gVectore[GETINDEXNOME] = pcc.getNomeUtente();
-                        gVectore[GETINDEXCOGNOME] = pcc.getCognomeUtente();
-                        gVectore[GETINDEXAMMONTAREF] = String.valueOf(pcc.getSpesaTotale());
-                        gVectore[GETINDEXEMAIL] = pcc.getEmail();
-                        gVectore[GETINDEXTIPOACQUISTO] = pcc.getTipoAcquisto();
-                        gVectore[GETINDEXIDPRODOTTO] = String.valueOf(pcc.getIdProdotto());
+                        gVectore[GETINDEXNOME] = pcc.getNomeUtenteCC();
+                        gVectore[GETINDEXCOGNOME] = pcc.getCognomeUtenteCC();
+                        gVectore[GETINDEXAMMONTAREF] = String.valueOf(pcc.getSpesaTotaleCC());
+                        gVectore[GETINDEXEMAIL] = pcc.getEmailCC();
+                        gVectore[GETINDEXTIPOACQUISTO] = pcc.getTipoAcquistoCC();
+                        gVectore[GETINDEXIDPRODOTTO] = String.valueOf(pcc.getIdProdottoCC());
                         gVectore[GETINDEXIDFATTURA] = String.valueOf(0);
                         gVectore[GETINDEXIDPAGAMENTOCC] = String.valueOf(getIdMaxCC()+1);
 
@@ -228,15 +228,15 @@ public class PagamentoTotalePersistenza {
                 //carico lista
                 for (PagamentoFattura pagamentoFattura : listaTF) {
                     pT = new PagamentoTotale();
-                    pT.setMetodo("cash");
-                    pT.setNome(pagamentoFattura.getNome());
-                    pT.setCognome(pagamentoFattura.getCognome());
-                    pT.setAmmontare(pagamentoFattura.getAmmontare());
-                    pT.setEmail(pagamentoFattura.getEmail());
-                    pT.setTipoAcquisto(pagamentoFattura.getTipoAcquisto());
-                    pT.setIdProdotto(pagamentoFattura.getIdProdotto());
-                    pT.setIdFattura(pagamentoFattura.getIdFattura());
-                    pT.setIdPagCC(0);
+                    pT.setMetodoT("cash");
+                    pT.setNomeT(pagamentoFattura.getNome());
+                    pT.setCognomeT(pagamentoFattura.getCognome());
+                    pT.setAmmontareT(pagamentoFattura.getAmmontare());
+                    pT.setEmailT(pagamentoFattura.getEmail());
+                    pT.setTipoAcquistoT(pagamentoFattura.getTipoAcquisto());
+                    pT.setIdProdottoT(pagamentoFattura.getIdProdotto());
+                    pT.setIdFatturaT(pagamentoFattura.getIdFattura());
+                    pT.setIdPagCCT(0);
                     listaR.add(pT);
                 }
 
@@ -259,15 +259,15 @@ public class PagamentoTotalePersistenza {
                 //carico lista
                 for (PagamentoCartaCredito pagamentoCartaCredito : listaCC) {
                     pT = new PagamentoTotale();
-                    pT.setMetodo(CCREDITO);
-                    pT.setNome(pagamentoCartaCredito.getNomeUtente());
-                    pT.setCognome(pagamentoCartaCredito.getCognomeUtente());
-                    pT.setAmmontare(pagamentoCartaCredito.getSpesaTotale());
-                    pT.setEmail(pagamentoCartaCredito.getEmail());
-                    pT.setTipoAcquisto(pagamentoCartaCredito.getTipoAcquisto());
-                    pT.setIdProdotto(pagamentoCartaCredito.getIdProdotto());
-                    pT.setIdFattura(0);
-                    pT.setIdPagCC(pagamentoCartaCredito.getIdPagCC());
+                    pT.setMetodoT(CCREDITO);
+                    pT.setNomeT(pagamentoCartaCredito.getNomeUtenteCC());
+                    pT.setCognomeT(pagamentoCartaCredito.getCognomeUtenteCC());
+                    pT.setAmmontareT(pagamentoCartaCredito.getSpesaTotaleCC());
+                    pT.setEmailT(pagamentoCartaCredito.getEmailCC());
+                    pT.setTipoAcquistoT(pagamentoCartaCredito.getTipoAcquistoCC());
+                    pT.setIdProdottoT(pagamentoCartaCredito.getIdProdottoCC());
+                    pT.setIdFatturaT(0);
+                    pT.setIdPagCCT(pagamentoCartaCredito.getIdPagCC());
                     listaR.add(pT);
                 }
             } catch (IOException | ClassNotFoundException e) {
@@ -420,25 +420,7 @@ public class PagamentoTotalePersistenza {
 
             }
         }
-        Path path=Path.of(PAGAMENTOTOTALEMEMORIA);
-        try{
-            Files.delete(path);
-            if(!Files.exists(path)) throw new IOException("file "+PAGAMENTOTOTALEMEMORIA+" cancellato");
-        }catch (IOException e2)
-        {
-            try {
-                Files.createFile(path);
-            } catch (IOException e3) {
-                Logger.getLogger("create file").log(Level.SEVERE,"error with creation :",e3);
-            }
-            try(FileOutputStream fos=new FileOutputStream(PAGAMENTOTOTALEMEMORIA);
-                ObjectOutputStream oos=new ObjectOutputStream(fos)){
-                oos.writeObject(list);
-            }catch (IOException e4)
-            {
-                Logger.getLogger("scrittura su nuovo file").log(Level.SEVERE,"writing error :",e4);
-            }
-        }
+        scriviSuFileNuovo(list);
         return status;
     }
 
@@ -465,6 +447,13 @@ public class PagamentoTotalePersistenza {
 
             }
         }
+       scriviSuFileNuovo(list);
+        return status;
+    }
+
+
+    private void scriviSuFileNuovo(ArrayList<PagamentoTotale> list)
+    {
         Path path=Path.of(PAGAMENTOTOTALEMEMORIA);
         try{
             Files.delete(path);
@@ -484,6 +473,5 @@ public class PagamentoTotalePersistenza {
                 Logger.getLogger("scrittura su nuovo file").log(Level.SEVERE,"writing error :",e4);
             }
         }
-        return status;
     }
 }

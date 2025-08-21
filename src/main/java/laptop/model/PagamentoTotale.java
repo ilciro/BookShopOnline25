@@ -3,100 +3,100 @@ package laptop.model;
 import java.io.Serializable;
 
 public class PagamentoTotale implements Serializable {
-    private String metodo;
-    private String nome;
-    private String cognome;
-    private float ammontare;
-    private String email;
-    private String tipoAcquisto;
-    private int idProdotto;
-    private int idFattura;
-    private int idPagCC;
+    private String metodoT;
+    private String nomeT;
+    private String cognomeT;
+    private float ammontareT;
+    private String emailT;
+    private String tipoAcquistoT;
+    private int idProdottoT;
+    private int idFatturaT;
+    private int idPagCCT;
 
-    public String getMetodo() {
-        return metodo;
+    public String getMetodoT() {
+        return metodoT;
     }
 
-    public void setMetodo(String metodo) {
-        this.metodo = metodo;
+    public void setMetodoT(String metodoT) {
+        this.metodoT = metodoT;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeT() {
+        return nomeT;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeT(String nomeT) {
+        this.nomeT = nomeT;
     }
 
-    public String getCognome() {
-        return cognome;
+    public String getCognomeT() {
+        return cognomeT;
     }
 
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
+    public void setCognomeT(String cognomeT) {
+        this.cognomeT = cognomeT;
     }
 
-    public float getAmmontare() {
-        return ammontare;
+    public float getAmmontareT() {
+        return ammontareT;
     }
 
-    public void setAmmontare(float ammontare) {
-        this.ammontare = ammontare;
+    public void setAmmontareT(float ammontareT) {
+        this.ammontareT = ammontareT;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailT() {
+        return emailT;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailT(String emailT) {
+        this.emailT = emailT;
     }
 
-    public String getTipoAcquisto() {
-        return tipoAcquisto;
+    public String getTipoAcquistoT() {
+        return tipoAcquistoT;
     }
 
-    public void setTipoAcquisto(String tipoAcquisto) {
-        this.tipoAcquisto = tipoAcquisto;
+    public void setTipoAcquistoT(String tipoAcquistoT) {
+        this.tipoAcquistoT = tipoAcquistoT;
     }
 
-    public int getIdProdotto() {
-        return idProdotto;
+    public int getIdProdottoT() {
+        return idProdottoT;
     }
 
-    public void setIdProdotto(int idProdotto) {
-        this.idProdotto = idProdotto;
+    public void setIdProdottoT(int idProdottoT) {
+        this.idProdottoT = idProdottoT;
     }
 
-    public int getIdFattura() {
-        return idFattura;
+    public int getIdFatturaT() {
+        return idFatturaT;
     }
 
-    public void setIdFattura(int idFattura) {
-        this.idFattura = idFattura;
+    public void setIdFatturaT(int idFatturaT) {
+        this.idFatturaT = idFatturaT;
     }
 
-    public int getIdPagCC() {
-        return idPagCC;
+    public int getIdPagCCT() {
+        return idPagCCT;
     }
 
-    public void setIdPagCC(int idPagCC) {
-        this.idPagCC = idPagCC;
+    public void setIdPagCCT(int idPagCCT) {
+        this.idPagCCT = idPagCCT;
     }
 
     @Override
     public String toString() {
         return "PagamentoTotale{" +
-                "metodo='" + metodo + '\'' +
-                ", nome='" + nome + '\'' +
-                ", cognome='" + cognome + '\'' +
-                ", ammontare=" + ammontare +
-                ", email='" + email + '\'' +
-                ", tipoAcquisto='" + tipoAcquisto + '\'' +
-                ", idProdotto=" + idProdotto +
-                ", idFattura=" + idFattura +
-                ", idPagCC=" + idPagCC +
+                "metodoT='" + metodoT + '\'' +
+                ", nomeT='" + nomeT + '\'' +
+                ", cognomeT='" + cognomeT + '\'' +
+                ", ammontareT=" + ammontareT +
+                ", emailT='" + emailT + '\'' +
+                ", tipoAcquistoT='" + tipoAcquistoT + '\'' +
+                ", idProdottoT=" + idProdottoT +
+                ", idFatturaT=" + idFatturaT +
+                ", idPagCCT=" + idPagCCT +
                 '}';
     }
 }

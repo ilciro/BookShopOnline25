@@ -46,7 +46,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
     private static final String IDWRONG=&quot;id wrong ..!!&quot;;
     private static final String IDERROR=&quot;id error !!..&quot;;
 
-    private static PagamentoTotalePersistenza pT;
+    private PagamentoTotalePersistenza pT;
 
 <span class="fc" id="L51">    public CsvFattura() {</span>
 <span class="fc" id="L52">        this.fileFattura=new File(FATTURA);</span>
@@ -159,7 +159,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
 <span class="fc" id="L159">        synchronized (this.cacheFattura) {</span>
 <span class="fc" id="L160">            this.cacheFattura.remove(String.valueOf(f.getNome()));</span>
 <span class="fc" id="L161">        }</span>
-<span class="fc" id="L162">        return removeFattura(f);</span>
+<span class="pc bpc" id="L162" title="2 of 4 branches missed.">        return removeFattura(f) &amp;&amp; pT.cancellaFatturaFile(f);</span>
     }
     private static synchronized boolean removeFattura(PagamentoFattura f) {
 <span class="fc" id="L165">        boolean status=false;</span>
@@ -180,7 +180,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
         {
 <span class="nc" id="L181">            Logger.getLogger(&quot;removeFattura&quot;).log(Level.SEVERE,&quot;error with remove fattura :&quot;,e);</span>
 <span class="fc" id="L182">        }</span>
-<span class="pc bpc" id="L183" title="2 of 4 branches missed.">        return status&amp;&amp;pT.cancellaFatturaFile(f);</span>
+<span class="fc" id="L183">        return status;</span>
 
 
     }

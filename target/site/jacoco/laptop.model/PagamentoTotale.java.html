@@ -3,100 +3,100 @@
 import java.io.Serializable;
 
 <span class="fc" id="L5">public class PagamentoTotale implements Serializable {</span>
-    private String metodo;
-    private String nome;
-    private String cognome;
-    private float ammontare;
-    private String email;
-    private String tipoAcquisto;
-    private int idProdotto;
-    private int idFattura;
-    private int idPagCC;
+    private String metodoT;
+    private String nomeT;
+    private String cognomeT;
+    private float ammontareT;
+    private String emailT;
+    private String tipoAcquistoT;
+    private int idProdottoT;
+    private int idFatturaT;
+    private int idPagCCT;
 
-    public String getMetodo() {
-<span class="nc" id="L17">        return metodo;</span>
+    public String getMetodoT() {
+<span class="nc" id="L17">        return metodoT;</span>
     }
 
-    public void setMetodo(String metodo) {
-<span class="fc" id="L21">        this.metodo = metodo;</span>
+    public void setMetodoT(String metodoT) {
+<span class="fc" id="L21">        this.metodoT = metodoT;</span>
 <span class="fc" id="L22">    }</span>
 
-    public String getNome() {
-<span class="nc" id="L25">        return nome;</span>
+    public String getNomeT() {
+<span class="nc" id="L25">        return nomeT;</span>
     }
 
-    public void setNome(String nome) {
-<span class="fc" id="L29">        this.nome = nome;</span>
+    public void setNomeT(String nomeT) {
+<span class="fc" id="L29">        this.nomeT = nomeT;</span>
 <span class="fc" id="L30">    }</span>
 
-    public String getCognome() {
-<span class="nc" id="L33">        return cognome;</span>
+    public String getCognomeT() {
+<span class="nc" id="L33">        return cognomeT;</span>
     }
 
-    public void setCognome(String cognome) {
-<span class="fc" id="L37">        this.cognome = cognome;</span>
+    public void setCognomeT(String cognomeT) {
+<span class="fc" id="L37">        this.cognomeT = cognomeT;</span>
 <span class="fc" id="L38">    }</span>
 
-    public float getAmmontare() {
-<span class="nc" id="L41">        return ammontare;</span>
+    public float getAmmontareT() {
+<span class="nc" id="L41">        return ammontareT;</span>
     }
 
-    public void setAmmontare(float ammontare) {
-<span class="fc" id="L45">        this.ammontare = ammontare;</span>
+    public void setAmmontareT(float ammontareT) {
+<span class="fc" id="L45">        this.ammontareT = ammontareT;</span>
 <span class="fc" id="L46">    }</span>
 
-    public String getEmail() {
-<span class="nc" id="L49">        return email;</span>
+    public String getEmailT() {
+<span class="nc" id="L49">        return emailT;</span>
     }
 
-    public void setEmail(String email) {
-<span class="fc" id="L53">        this.email = email;</span>
+    public void setEmailT(String emailT) {
+<span class="fc" id="L53">        this.emailT = emailT;</span>
 <span class="fc" id="L54">    }</span>
 
-    public String getTipoAcquisto() {
-<span class="nc" id="L57">        return tipoAcquisto;</span>
+    public String getTipoAcquistoT() {
+<span class="nc" id="L57">        return tipoAcquistoT;</span>
     }
 
-    public void setTipoAcquisto(String tipoAcquisto) {
-<span class="fc" id="L61">        this.tipoAcquisto = tipoAcquisto;</span>
+    public void setTipoAcquistoT(String tipoAcquistoT) {
+<span class="fc" id="L61">        this.tipoAcquistoT = tipoAcquistoT;</span>
 <span class="fc" id="L62">    }</span>
 
-    public int getIdProdotto() {
-<span class="nc" id="L65">        return idProdotto;</span>
+    public int getIdProdottoT() {
+<span class="nc" id="L65">        return idProdottoT;</span>
     }
 
-    public void setIdProdotto(int idProdotto) {
-<span class="fc" id="L69">        this.idProdotto = idProdotto;</span>
+    public void setIdProdottoT(int idProdottoT) {
+<span class="fc" id="L69">        this.idProdottoT = idProdottoT;</span>
 <span class="fc" id="L70">    }</span>
 
-    public int getIdFattura() {
-<span class="nc" id="L73">        return idFattura;</span>
+    public int getIdFatturaT() {
+<span class="nc" id="L73">        return idFatturaT;</span>
     }
 
-    public void setIdFattura(int idFattura) {
-<span class="fc" id="L77">        this.idFattura = idFattura;</span>
+    public void setIdFatturaT(int idFatturaT) {
+<span class="fc" id="L77">        this.idFatturaT = idFatturaT;</span>
 <span class="fc" id="L78">    }</span>
 
-    public int getIdPagCC() {
-<span class="nc" id="L81">        return idPagCC;</span>
+    public int getIdPagCCT() {
+<span class="nc" id="L81">        return idPagCCT;</span>
     }
 
-    public void setIdPagCC(int idPagCC) {
-<span class="fc" id="L85">        this.idPagCC = idPagCC;</span>
+    public void setIdPagCCT(int idPagCCT) {
+<span class="fc" id="L85">        this.idPagCCT = idPagCCT;</span>
 <span class="fc" id="L86">    }</span>
 
     @Override
     public String toString() {
 <span class="fc" id="L90">        return &quot;PagamentoTotale{&quot; +</span>
-                &quot;metodo='&quot; + metodo + '\'' +
-                &quot;, nome='&quot; + nome + '\'' +
-                &quot;, cognome='&quot; + cognome + '\'' +
-                &quot;, ammontare=&quot; + ammontare +
-                &quot;, email='&quot; + email + '\'' +
-                &quot;, tipoAcquisto='&quot; + tipoAcquisto + '\'' +
-                &quot;, idProdotto=&quot; + idProdotto +
-                &quot;, idFattura=&quot; + idFattura +
-                &quot;, idPagCC=&quot; + idPagCC +
+                &quot;metodoT='&quot; + metodoT + '\'' +
+                &quot;, nomeT='&quot; + nomeT + '\'' +
+                &quot;, cognomeT='&quot; + cognomeT + '\'' +
+                &quot;, ammontareT=&quot; + ammontareT +
+                &quot;, emailT='&quot; + emailT + '\'' +
+                &quot;, tipoAcquistoT='&quot; + tipoAcquistoT + '\'' +
+                &quot;, idProdottoT=&quot; + idProdottoT +
+                &quot;, idFatturaT=&quot; + idFatturaT +
+                &quot;, idPagCCT=&quot; + idPagCCT +
                 '}';
     }
 }

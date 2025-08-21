@@ -14,52 +14,70 @@ public class PagamentoCartaCredito implements Serializable,Pagamento {
 
 
 
-    private String nomeUtente;
-     private float spesaTotale;
-     private String email;
-     private String tipoAcquisto;
-     private int idProdotto;
-     private String metodo;
-     private String cognomeUtente;
+    private String nomeUtenteCC;
+     private float spesaTotaleCC;
+     private String emailCC;
+     private String tipoAcquistoCC;
+     private int idProdottoCC;
+     private String metodoCC;
+     private String cognomeUtenteCC;
+    private int idPagCC;
 
-    public String getNomeUtente() {
-        return nomeUtente;
+
+    public String getNomeUtenteCC() {
+        return nomeUtenteCC;
     }
 
-    public void setNomeUtente(String nomeUtente) {
-        this.nomeUtente = nomeUtente;
+    public void setNomeUtenteCC(String nomeUtenteCC) {
+        this.nomeUtenteCC = nomeUtenteCC;
     }
 
-    public float getSpesaTotale() {
-        return spesaTotale;
+    public float getSpesaTotaleCC() {
+        return spesaTotaleCC;
     }
 
-    public void setSpesaTotale(float spesaTotale) {
-        this.spesaTotale = spesaTotale;
+    public void setSpesaTotaleCC(float spesaTotaleCC) {
+        this.spesaTotaleCC = spesaTotaleCC;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailCC() {
+        return emailCC;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailCC(String emailCC) {
+        this.emailCC = emailCC;
     }
 
-    public String getTipoAcquisto() {
-        return tipoAcquisto;
+    public String getTipoAcquistoCC() {
+        return tipoAcquistoCC;
     }
 
-    public void setTipoAcquisto(String tipoAcquisto) {
-        this.tipoAcquisto = tipoAcquisto;
+    public void setTipoAcquistoCC(String tipoAcquistoCC) {
+        this.tipoAcquistoCC = tipoAcquistoCC;
     }
 
-    public int getIdProdotto() {
-        return idProdotto;
+    public int getIdProdottoCC() {
+        return idProdottoCC;
     }
 
-    public void setIdProdotto(int idProdotto) {
-        this.idProdotto = idProdotto;
+    public void setIdProdottoCC(int idProdottoCC) {
+        this.idProdottoCC = idProdottoCC;
+    }
+
+    public String getMetodoCC() {
+        return metodoCC;
+    }
+
+    public void setMetodoCC(String metodoCC) {
+        this.metodoCC = metodoCC;
+    }
+
+    public String getCognomeUtenteCC() {
+        return cognomeUtenteCC;
+    }
+
+    public void setCognomeUtenteCC(String cognomeUtenteCC) {
+        this.cognomeUtenteCC = cognomeUtenteCC;
     }
 
     public int getIdPagCC() {
@@ -70,48 +88,45 @@ public class PagamentoCartaCredito implements Serializable,Pagamento {
         this.idPagCC = idPagCC;
     }
 
-    private int idPagCC;
-
-
     public PagamentoCartaCredito(int idPagCC, String metodo, String nomeUtente, float spesaTotale, String email, String tipoAcquisto, int idProdotto){
 
        this.idPagCC=idPagCC;
-       this.metodo=metodo;
-       this.nomeUtente=nomeUtente;
-       this.spesaTotale=spesaTotale;
-       this.email=email;
-       this.tipoAcquisto=tipoAcquisto;
-       this.idProdotto=idProdotto;
+       this.metodoCC=metodo;
+       this.nomeUtenteCC=nomeUtente;
+       this.spesaTotaleCC=spesaTotale;
+       this.emailCC=email;
+       this.tipoAcquistoCC=tipoAcquisto;
+       this.idProdottoCC=idProdotto;
 
 
     }
 
 
     public String getMetodo() {
-        return metodo;
+        return metodoCC;
     }
 
     public void setMetodo(String metodo) {
-        this.metodo = metodo;
+        this.metodoCC = metodo;
     }
 
     public String getCognomeUtente() {
-        return cognomeUtente;
+        return cognomeUtenteCC;
     }
 
     public void setCognomeUtente(String cognomeUtente) {
-        this.cognomeUtente = cognomeUtente;
+        this.cognomeUtenteCC = cognomeUtente;
     }
 
     @Override
     public String toString() {
         return "PagamentoCartaCredito{" +
-                "idProdotto=" + idProdotto +
-                ", cognomeUtente='" + cognomeUtente + '\'' +
+                "idProdotto=" + idProdottoCC +
+                ", cognomeUtente='" + cognomeUtenteCC + '\'' +
                 ", idPagCC=" + idPagCC +
-                ", nomeUtente='" + nomeUtente + '\'' +
-                ", spesaTotale=" + spesaTotale +
-                ", email='" + email + '\'' +
+                ", nomeUtente='" + nomeUtenteCC + '\'' +
+                ", spesaTotale=" + spesaTotaleCC +
+                ", email='" + emailCC + '\'' +
                 '}';
     }
 

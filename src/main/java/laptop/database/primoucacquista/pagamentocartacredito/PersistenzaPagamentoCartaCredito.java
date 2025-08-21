@@ -23,13 +23,13 @@ public class PersistenzaPagamentoCartaCredito {
     }
 
     public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p)  {
-        return p.getIdProdotto()!=0;}
+        return p.getIdProdottoCC()!=0;}
 
     public PagamentoCartaCredito ultimoPagamentoCartaCredito()  {
         return new PagamentoCartaCredito();}
 
     public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(PagamentoCartaCredito pcc)  {
-        Logger.getLogger("list pagamenti cc").log(Level.SEVERE, "list pf paymeny of : {0}", pcc.getNomeUtente());
+        Logger.getLogger("list pagamenti cc").log(Level.SEVERE, "list pf paymeny of : {0}", pcc.getNomeUtenteCC());
 
         return FXCollections.observableArrayList();}
 

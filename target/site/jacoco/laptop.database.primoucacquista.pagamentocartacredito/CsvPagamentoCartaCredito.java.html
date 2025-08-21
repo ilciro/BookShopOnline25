@@ -43,7 +43,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
     private static final String IDWRONG=&quot;id wrong ..!!&quot;;
     private static final String IDERROR=&quot;id error !!..&quot;;
 
-    private static PagamentoTotalePersistenza pT;
+    private  PagamentoTotalePersistenza pT;
 
 <span class="fc" id="L48">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
 
@@ -92,13 +92,13 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
     private static @NotNull PagamentoCartaCredito getPagamentoCartaCredito(String[] gVector) {
 <span class="fc" id="L93">        PagamentoCartaCredito pCC=new PagamentoCartaCredito();</span>
 <span class="fc" id="L94">        pCC.setIdPagCC(Integer.parseInt(gVector[GETINDEXIDP]));</span>
-<span class="fc" id="L95">        pCC.setMetodo(gVector[GETINDEXMETODOP]);</span>
-<span class="fc" id="L96">        pCC.setNomeUtente(gVector[GETINDEXNOMEP]);</span>
-<span class="fc" id="L97">        pCC.setCognomeUtente(gVector[GETINDEXCOGNOMEP]);</span>
-<span class="fc" id="L98">        pCC.setSpesaTotale(Float.parseFloat(gVector[GETINDEXSPESAP]));</span>
-<span class="fc" id="L99">        pCC.setEmail(gVector[GETINDEXEIAMILP]);</span>
-<span class="fc" id="L100">        pCC.setTipoAcquisto(gVector[GETINDEXACQUISTOP]);</span>
-<span class="fc" id="L101">        pCC.setIdProdotto(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));</span>
+<span class="fc" id="L95">        pCC.setMetodoCC(gVector[GETINDEXMETODOP]);</span>
+<span class="fc" id="L96">        pCC.setNomeUtenteCC(gVector[GETINDEXNOMEP]);</span>
+<span class="fc" id="L97">        pCC.setCognomeUtenteCC(gVector[GETINDEXCOGNOMEP]);</span>
+<span class="fc" id="L98">        pCC.setSpesaTotaleCC(Float.parseFloat(gVector[GETINDEXSPESAP]));</span>
+<span class="fc" id="L99">        pCC.setEmailCC(gVector[GETINDEXEIAMILP]);</span>
+<span class="fc" id="L100">        pCC.setTipoAcquistoCC(gVector[GETINDEXACQUISTOP]);</span>
+<span class="fc" id="L101">        pCC.setIdProdottoCC(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));</span>
 <span class="fc" id="L102">        return pCC;</span>
     }
 
@@ -108,13 +108,13 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
             //fare if su tipo pagamento
 
 <span class="fc" id="L110">            gVectore[GETINDEXIDP] = String.valueOf(getIdMaxPagamento() + 1);</span>
-<span class="fc" id="L111">            gVectore[GETINDEXMETODOP] = p.getMetodo();</span>
-<span class="fc" id="L112">            gVectore[GETINDEXNOMEP] = p.getNomeUtente();</span>
-<span class="fc" id="L113">            gVectore[GETINDEXCOGNOMEP]=p.getCognomeUtente();</span>
+<span class="fc" id="L111">            gVectore[GETINDEXMETODOP] = p.getMetodoCC();</span>
+<span class="fc" id="L112">            gVectore[GETINDEXNOMEP] = p.getNomeUtenteCC();</span>
+<span class="fc" id="L113">            gVectore[GETINDEXCOGNOMEP]=p.getCognomeUtenteCC();</span>
 <span class="fc" id="L114">            gVectore[GETINDEXSPESAP] = String.valueOf(vis.getSpesaT());</span>
 <span class="fc" id="L115">            gVectore[GETINDEXEIAMILP] = User.getInstance().getEmail();</span>
-<span class="fc" id="L116">            gVectore[GETINDEXACQUISTOP] = p.getTipoAcquisto();</span>
-<span class="fc" id="L117">            gVectore[GETINDEXIDPRODOTTOP] = String.valueOf(p.getIdProdotto());</span>
+<span class="fc" id="L116">            gVectore[GETINDEXACQUISTOP] = p.getTipoAcquistoCC();</span>
+<span class="fc" id="L117">            gVectore[GETINDEXIDPRODOTTOP] = String.valueOf(p.getIdProdottoCC());</span>
 
 <span class="fc" id="L119">            csvWriter.writeNext(gVectore);</span>
 <span class="fc" id="L120">            csvWriter.flush();</span>
@@ -159,12 +159,12 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
     private static @NotNull PagamentoCartaCredito getCartaCredito(String[] gVector) {
 <span class="nc" id="L160">        PagamentoCartaCredito p = new PagamentoCartaCredito();</span>
 <span class="nc" id="L161">        p.setIdPagCC(Integer.parseInt(gVector[GETINDEXIDP]));</span>
-<span class="nc" id="L162">        p.setMetodo(gVector[GETINDEXMETODOP]);</span>
-<span class="nc" id="L163">        p.setNomeUtente(gVector[GETINDEXNOMEP]);</span>
-<span class="nc" id="L164">        p.setSpesaTotale(Float.parseFloat(gVector[GETINDEXSPESAP]));</span>
-<span class="nc" id="L165">        p.setEmail(gVector[GETINDEXEIAMILP]);</span>
-<span class="nc" id="L166">        p.setTipoAcquisto(gVector[GETINDEXACQUISTOP]);</span>
-<span class="nc" id="L167">        p.setIdProdotto(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));</span>
+<span class="nc" id="L162">        p.setMetodoCC(gVector[GETINDEXMETODOP]);</span>
+<span class="nc" id="L163">        p.setNomeUtenteCC(gVector[GETINDEXNOMEP]);</span>
+<span class="nc" id="L164">        p.setSpesaTotaleCC(Float.parseFloat(gVector[GETINDEXSPESAP]));</span>
+<span class="nc" id="L165">        p.setEmailCC(gVector[GETINDEXEIAMILP]);</span>
+<span class="nc" id="L166">        p.setTipoAcquistoCC(gVector[GETINDEXACQUISTOP]);</span>
+<span class="nc" id="L167">        p.setIdProdottoCC(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));</span>
 <span class="nc" id="L168">        return p;</span>
     }
 
@@ -220,7 +220,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 <span class="fc bfc" id="L220" title="All 2 branches covered.">                while ((gVector = reader.readNext()) != null) {</span>
 
 <span class="fc bfc" id="L222" title="All 2 branches covered.">                    recordFound = gVector[GETINDEXIDP].equals(String.valueOf(p.getIdPagCC()))</span>
-<span class="pc bpc" id="L223" title="1 of 2 branches missed.">                            || gVector[GETINDEXEIAMILP].equals(p.getEmail());</span>
+<span class="pc bpc" id="L223" title="1 of 2 branches missed.">                            || gVector[GETINDEXEIAMILP].equals(p.getEmailCC());</span>
 
 
 <span class="fc bfc" id="L226" title="All 2 branches covered.">                    if (!recordFound)</span>
@@ -248,7 +248,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 <span class="nc bnc" id="L248" title="All 2 branches missed.">            while ((gVector = csvReader.readNext()) != null) {</span>
 
 
-<span class="nc" id="L251">                boolean recordFound = gVector[GETINDEXEIAMILP].equals(String.valueOf(pcc.getEmail()));</span>
+<span class="nc" id="L251">                boolean recordFound = gVector[GETINDEXEIAMILP].equals(String.valueOf(pcc.getEmailCC()));</span>
 <span class="nc bnc" id="L252" title="All 2 branches missed.">                if (recordFound) {</span>
 
 

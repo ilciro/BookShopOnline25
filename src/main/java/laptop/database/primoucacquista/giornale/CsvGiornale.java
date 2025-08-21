@@ -275,13 +275,9 @@ public class CsvGiornale extends PersistenzaGiornale{
                     found = true;
             }
             writer.flush();
-        }catch (IOException e)
+        }catch (IOException | CsvValidationException e)
         {
             Logger.getLogger("isFound daily io").log(Level.SEVERE,"idFound daily io excpetion :",e);
-        }catch (CsvValidationException e1)
-        {
-            Logger.getLogger("isFound daily csv").log(Level.SEVERE,"idFound daily csv excpetion :",e1);
-
         }
         return found;
     }
@@ -430,13 +426,9 @@ public class CsvGiornale extends PersistenzaGiornale{
                     list.add(getGiornale(gVector));
                 }
             }
-        }catch (IOException e)
+        }catch (IOException | CsvValidationException e)
         {
             Logger.getLogger("giornale by id titolo autore io").log(Level.SEVERE,"giornale not found  :",e);
-
-        }catch (CsvValidationException e1)
-        {
-            Logger.getLogger("giornale by id titolo autore csv").log(Level.SEVERE,"giornale not found csv  :",e1);
 
         }
         try {
@@ -464,8 +456,7 @@ public class CsvGiornale extends PersistenzaGiornale{
                 String[] files = directory.list();
 
 
-                assert files != null;
-                if ( files.length == 0 || !this.fdG.exists()) {
+                if ( Objects.requireNonNull(files).length == 0 || !this.fdG.exists()) {
                     throw new IOException("cartella vuota");
                 }
 
