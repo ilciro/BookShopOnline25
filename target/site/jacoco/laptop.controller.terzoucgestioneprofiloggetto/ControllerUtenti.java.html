@@ -25,10 +25,10 @@ import java.util.logging.Logger;
     public ObservableList&lt;TempUser&gt; getList(String persistenza)  {
         ObservableList&lt;TempUser&gt; list;
 
-<span class="pc bpc" id="L28" title="2 of 4 branches missed.">        switch (persistenza){</span>
+<span class="pc bpc" id="L28" title="1 of 4 branches missed.">        switch (persistenza){</span>
 <span class="fc" id="L29">            case DATABASE -&gt; pU=new UsersDao();</span>
 <span class="fc" id="L30">            case FILE -&gt; pU=new CsvUtente();</span>
-<span class="nc" id="L31">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
+<span class="fc" id="L31">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
 <span class="nc" id="L32">            default -&gt; Logger.getLogger(&quot;get list&quot;).log(Level.SEVERE,&quot;persistency not correct&quot;);</span>
         }
 <span class="fc" id="L34">        list=pU.getUserData();</span>
@@ -41,10 +41,10 @@ import java.util.logging.Logger;
         boolean status ;
 
 
-<span class="pc bpc" id="L44" title="2 of 4 branches missed.">        switch (persistenza){</span>
+<span class="pc bpc" id="L44" title="1 of 4 branches missed.">        switch (persistenza){</span>
 <span class="fc" id="L45">            case DATABASE -&gt; pU=new UsersDao();</span>
 <span class="fc" id="L46">            case FILE -&gt; pU=new CsvUtente();</span>
-<span class="nc" id="L47">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
+<span class="fc" id="L47">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
 <span class="nc" id="L48">            default -&gt; Logger.getLogger(&quot;elimina&quot;).log(Level.SEVERE,&quot;persistency not correct&quot;);</span>
         }
 <span class="fc" id="L50">        TempUser tu=new TempUser();</span>

@@ -433,11 +433,7 @@ public class CsvGiornale extends PersistenzaGiornale{
             if (list.isEmpty()) {
                 throw new IdException("giornale not found!!");
             }
-        }catch (IdException e2)
-        {
-            Logger.getLogger("lista").log(Level.SEVERE,"lista is empty :",e2);
-
-        }catch (IOException | CsvValidationException e)
+        }catch (IOException | CsvValidationException | IdException e)
         {
             Logger.getLogger("giornale by id titolo autore io").log(Level.SEVERE,"giornale not found  :",e);
 

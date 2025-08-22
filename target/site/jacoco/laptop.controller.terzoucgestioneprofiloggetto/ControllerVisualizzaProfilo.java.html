@@ -21,10 +21,10 @@ import java.util.logging.Logger;
 
     public String infoUtente(String persistenza)  {
 <span class="fc" id="L23">        String utente = &quot;&quot;;</span>
-<span class="pc bpc" id="L24" title="2 of 4 branches missed.">        switch (persistenza) {</span>
+<span class="pc bpc" id="L24" title="1 of 4 branches missed.">        switch (persistenza) {</span>
 <span class="fc" id="L25">            case DATABASE -&gt; pU = new UsersDao();</span>
 <span class="fc" id="L26">            case FILE -&gt; pU = new CsvUtente();</span>
-<span class="nc" id="L27">            case MEMORIA -&gt; pU = new MemoriaUtente();</span>
+<span class="fc" id="L27">            case MEMORIA -&gt; pU = new MemoriaUtente();</span>
 <span class="nc" id="L28">            default -&gt; Logger.getLogger(&quot;info utente&quot;).log(Level.SEVERE, &quot;persistency is wrong&quot;);</span>
         }
 <span class="fc bfc" id="L30" title="All 2 branches covered.">        for (int i = 0; i &lt; pU.getUserData().size(); i++) {</span>
@@ -42,10 +42,10 @@ import java.util.logging.Logger;
 
 <span class="fc" id="L43">        vis.setTipoModifica(&quot;im&quot;);</span>
 
-<span class="pc bpc" id="L45" title="2 of 4 branches missed.">        switch (persistenza) {</span>
+<span class="pc bpc" id="L45" title="1 of 4 branches missed.">        switch (persistenza) {</span>
 <span class="fc" id="L46">            case DATABASE -&gt; pU = new UsersDao();</span>
 <span class="fc" id="L47">            case FILE -&gt; pU = new CsvUtente();</span>
-<span class="nc" id="L48">            case MEMORIA -&gt; pU = new MemoriaUtente();</span>
+<span class="fc" id="L48">            case MEMORIA -&gt; pU = new MemoriaUtente();</span>
 <span class="nc" id="L49">            default -&gt; Logger.getLogger(&quot;modifica utente&quot;).log(Level.SEVERE, &quot;persistency is wrong&quot;);</span>
         }
 <span class="fc" id="L51">        TempUser tu = new TempUser();</span>

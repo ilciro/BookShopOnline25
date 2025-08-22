@@ -36,20 +36,20 @@ import java.util.logging.Logger;
     public boolean cancellaGiornale(Giornale g)  {
 
 
-<span class="nc" id="L39">        boolean status=false;</span>
+<span class="fc" id="L39">        boolean status=false;</span>
 
-<span class="nc" id="L41">            listG = leggiDaFileGiornale(SERIALIZZAZIONEGIORNALE);</span>
+<span class="fc" id="L41">            listG = leggiDaFileGiornale(SERIALIZZAZIONEGIORNALE);</span>
 
 
-<span class="nc bnc" id="L44" title="All 2 branches missed.">            for (int i = 0; i &lt; listG.size(); i++) {</span>
-<span class="nc bnc" id="L45" title="All 2 branches missed.">                if (i == (g.getId() - 1)) {</span>
-<span class="nc" id="L46">                    status = listG.remove(listG.get(i));</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">            for (int i = 0; i &lt; listG.size(); i++) {</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">                if (i == (g.getId() - 1)) {</span>
+<span class="fc" id="L46">                    status = listG.remove(listG.get(i));</span>
                 }
             }
-<span class="nc" id="L49">            removeFile(SERIALIZZAZIONEGIORNALE, listG, new ArrayList&lt;&gt;(), new ArrayList&lt;&gt;());</span>
+<span class="fc" id="L49">            removeFile(SERIALIZZAZIONEGIORNALE, listG, new ArrayList&lt;&gt;(), new ArrayList&lt;&gt;());</span>
 
 
-<span class="nc" id="L52">        return status;</span>
+<span class="fc" id="L52">        return status;</span>
     }
 
     public boolean cancellaLibro(Libro l) {
@@ -97,11 +97,11 @@ import java.util.logging.Logger;
 <span class="fc" id="L97">        }catch (IOException e)</span>
         {
             try {
-<span class="pc bpc" id="L100" title="1 of 2 branches missed.">                if (!listG.isEmpty()) {</span>
-<span class="nc" id="L101">                    Files.createFile(path);</span>
-<span class="nc" id="L102">                    try (FileOutputStream fos = new FileOutputStream(stringPath);</span>
-<span class="nc" id="L103">                         ObjectOutputStream oos = new ObjectOutputStream(fos)) {</span>
-<span class="nc" id="L104">                        oos.writeObject(listG);</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">                if (!listG.isEmpty()) {</span>
+<span class="fc" id="L101">                    Files.createFile(path);</span>
+<span class="fc" id="L102">                    try (FileOutputStream fos = new FileOutputStream(stringPath);</span>
+<span class="fc" id="L103">                         ObjectOutputStream oos = new ObjectOutputStream(fos)) {</span>
+<span class="fc" id="L104">                        oos.writeObject(listG);</span>
                     }
                 }
 <span class="fc bfc" id="L107" title="All 2 branches covered.">                if (!listL.isEmpty()) {</span>
@@ -179,8 +179,8 @@ import java.util.logging.Logger;
 <span class="fc" id="L179">        Path path1=Path.of(file);</span>
         try {
 <span class="fc bfc" id="L181" title="All 2 branches covered.">            if (l != null) {</span>
-<span class="pc bpc" id="L182" title="1 of 2 branches missed.">                if (vis.getTipoModifica().equals(&quot;im&quot;)) l.setId(vis.getIdLibro());</span>
-<span class="nc bnc" id="L183" title="All 2 branches missed.">                else if (vis.getTipoModifica().equals(INSERT)) l.setId(listL.size() + 1);</span>
+<span class="fc bfc" id="L182" title="All 2 branches covered.">                if (vis.getTipoModifica().equals(&quot;im&quot;)) l.setId(vis.getIdLibro());</span>
+<span class="pc bpc" id="L183" title="1 of 2 branches missed.">                else if (vis.getTipoModifica().equals(INSERT)) l.setId(listL.size() + 1);</span>
 <span class="fc" id="L184">                listL.add(l);</span>
 
 <span class="fc" id="L186">                Logger.getLogger(&quot;inserisci libro&quot;).log(Level.INFO, &quot;inserted libro in list :&quot;, listL.get(0).getTitolo());</span>
@@ -194,25 +194,25 @@ import java.util.logging.Logger;
 
 <span class="fc" id="L195">                Files.delete(path2);</span>
             }
-<span class="pc bpc" id="L197" title="1 of 2 branches missed.">            if (g != null) {</span>
-<span class="nc bnc" id="L198" title="All 2 branches missed.">                if (vis.getTipoModifica().equals(&quot;im&quot;)) g.setId(vis.getIdGiornale());</span>
-<span class="nc bnc" id="L199" title="All 2 branches missed.">                else if (vis.getTipoModifica().equals(INSERT)) g.setId(listG.size() + 1);</span>
-<span class="nc" id="L200">                listG.add(g);</span>
+<span class="fc bfc" id="L197" title="All 2 branches covered.">            if (g != null) {</span>
+<span class="fc bfc" id="L198" title="All 2 branches covered.">                if (vis.getTipoModifica().equals(&quot;im&quot;)) g.setId(vis.getIdGiornale());</span>
+<span class="pc bpc" id="L199" title="1 of 2 branches missed.">                else if (vis.getTipoModifica().equals(INSERT)) g.setId(listG.size() + 1);</span>
+<span class="fc" id="L200">                listG.add(g);</span>
                 //scrivo lista in appoggio
-<span class="nc" id="L202">                Logger.getLogger(&quot;inserisci giiornale&quot;).log(Level.INFO, &quot;inserted giornale in list : {0}&quot;, listG.get(0).getTitolo());</span>
+<span class="fc" id="L202">                Logger.getLogger(&quot;inserisci giiornale&quot;).log(Level.INFO, &quot;inserted giornale in list : {0}&quot;, listG.get(0).getTitolo());</span>
 
 
-<span class="nc" id="L205">                scriviInFile(appoggio, listG, null, null);</span>
-<span class="nc" id="L206">                listG = leggiDaFileGiornale(appoggio);</span>
-<span class="nc" id="L207">                Files.delete(path1);</span>
-<span class="nc" id="L208">                Files.createFile(path1);</span>
-<span class="nc" id="L209">                scriviInFile(file, listG, null, null);</span>
+<span class="fc" id="L205">                scriviInFile(appoggio, listG, null, null);</span>
+<span class="fc" id="L206">                listG = leggiDaFileGiornale(appoggio);</span>
+<span class="fc" id="L207">                Files.delete(path1);</span>
+<span class="fc" id="L208">                Files.createFile(path1);</span>
+<span class="fc" id="L209">                scriviInFile(file, listG, null, null);</span>
 
-<span class="nc" id="L211">                Files.delete(path2);</span>
+<span class="fc" id="L211">                Files.delete(path2);</span>
             }
 <span class="fc bfc" id="L213" title="All 2 branches covered.">            if (r != null) {</span>
-<span class="pc bpc" id="L214" title="1 of 2 branches missed.">                if (vis.getTipoModifica().equals(&quot;im&quot;)) r.setId(vis.getIdRivista());</span>
-<span class="nc bnc" id="L215" title="All 2 branches missed.">                else if (vis.getTipoModifica().equals(INSERT)) r.setId(listR.size() + 1);</span>
+<span class="fc bfc" id="L214" title="All 2 branches covered.">                if (vis.getTipoModifica().equals(&quot;im&quot;)) r.setId(vis.getIdRivista());</span>
+<span class="pc bpc" id="L215" title="1 of 2 branches missed.">                else if (vis.getTipoModifica().equals(INSERT)) r.setId(listR.size() + 1);</span>
 <span class="fc" id="L216">                listR.add(r);</span>
                 //scrivo lista in appoggio
 <span class="fc" id="L218">                Logger.getLogger(&quot;inserisci rivista&quot;).log(Level.INFO, &quot;inserted rivista in list : &quot;, listR.get(0).getTitolo());</span>

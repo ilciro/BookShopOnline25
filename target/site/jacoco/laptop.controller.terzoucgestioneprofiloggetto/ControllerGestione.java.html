@@ -46,20 +46,20 @@ public class ControllerGestione {
         {
             case LIBRO -&gt; {
 <span class="fc" id="L48">                Libro appoggio=setLibro(param);</span>
-<span class="pc bpc" id="L49" title="2 of 4 branches missed.">                switch (persistenza)</span>
+<span class="pc bpc" id="L49" title="1 of 4 branches missed.">                switch (persistenza)</span>
                 {
 <span class="fc" id="L51">                    case DATABASE -&gt; pL=new LibroDao();</span>
 <span class="fc" id="L52">                    case FILE -&gt; pL=new CsvLibro();</span>
-<span class="nc" id="L53">                    case MEMORIA -&gt; pL=new MemoriaLibro();</span>
+<span class="fc" id="L53">                    case MEMORIA -&gt; pL=new MemoriaLibro();</span>
 <span class="nc" id="L54">                    default -&gt; Logger.getLogger(&quot;inserisci libro&quot;).log(Level.SEVERE,&quot;persistency insert book error!!&quot;);</span>
                 }
 <span class="fc" id="L56">               status=pL.inserisciLibro(appoggio);</span>
 <span class="fc" id="L57">            }</span>
             case GIORNALE -&gt; {
-<span class="pc bpc" id="L59" title="2 of 4 branches missed.">                switch (persistenza){</span>
+<span class="pc bpc" id="L59" title="1 of 4 branches missed.">                switch (persistenza){</span>
 <span class="fc" id="L60">                    case DATABASE -&gt; pG=new GiornaleDao();</span>
 <span class="fc" id="L61">                    case FILE -&gt; pG=new CsvGiornale();</span>
-<span class="nc" id="L62">                    case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
+<span class="fc" id="L62">                    case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
 <span class="nc" id="L63">                    default -&gt; Logger.getLogger(&quot;inserisci giornale&quot;).log(Level.SEVERE,&quot;persistency insert daily error!!&quot;);</span>
 
                 }
@@ -69,11 +69,11 @@ public class ControllerGestione {
             case RIVISTA -&gt; {
 <span class="fc" id="L70">                Rivista appoggio=setRivista(param);</span>
 
-<span class="pc bpc" id="L72" title="2 of 4 branches missed.">                switch (persistenza)</span>
+<span class="pc bpc" id="L72" title="1 of 4 branches missed.">                switch (persistenza)</span>
                 {
 <span class="fc" id="L74">                    case DATABASE -&gt; pR=new RivistaDao();</span>
 <span class="fc" id="L75">                    case FILE -&gt; pR=new CsvRivista();</span>
-<span class="nc" id="L76">                    case MEMORIA -&gt; pR=new MemoriaRivista();</span>
+<span class="fc" id="L76">                    case MEMORIA -&gt; pR=new MemoriaRivista();</span>
 <span class="nc" id="L77">                    default -&gt; Logger.getLogger(&quot;inserisci rivista&quot;).log(Level.SEVERE,&quot;persistency insert magazine error!!&quot;);</span>
 
                 }
@@ -97,22 +97,22 @@ public class ControllerGestione {
     public ObservableList&lt;Libro&gt;libroById(String persistenza)  {
 
 
-<span class="pc bpc" id="L100" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L100" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
 <span class="fc" id="L102">            case DATABASE -&gt; pL=new LibroDao();</span>
 <span class="fc" id="L103">            case FILE -&gt; pL=new CsvLibro();</span>
-<span class="nc" id="L104">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
+<span class="fc" id="L104">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
 <span class="nc" id="L105">            default -&gt; Logger.getLogger(&quot;libro by id&quot;).log(Level.SEVERE,&quot;persistency of book is wrong!!&quot;);</span>
         }
 <span class="fc" id="L107">        l.setId(vis.getIdLibro());</span>
 <span class="fc" id="L108">        return pL.getLibroByIdTitoloAutoreLibro(l);</span>
     }
     public ObservableList&lt;Giornale&gt; giornaleById(String persistenza) {
-<span class="pc bpc" id="L111" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L111" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
 <span class="fc" id="L113">            case DATABASE -&gt; pG=new GiornaleDao();</span>
 <span class="fc" id="L114">            case FILE -&gt; pG=new CsvGiornale();</span>
-<span class="nc" id="L115">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
+<span class="fc" id="L115">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
 <span class="nc" id="L116">            default -&gt; Logger.getLogger(&quot;giornali by id&quot;).log(Level.SEVERE,PERSISTENCYDAILY);</span>
         }
 <span class="fc" id="L118">        g.setId(vis.getIdGiornale());</span>
@@ -120,11 +120,11 @@ public class ControllerGestione {
 
     }
     public ObservableList&lt;Rivista&gt; rivistaById(String persistenza)  {
-<span class="pc bpc" id="L123" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L123" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
 <span class="fc" id="L125">            case DATABASE -&gt; pR=new RivistaDao();</span>
 <span class="fc" id="L126">            case FILE -&gt; pR=new CsvRivista();</span>
-<span class="nc" id="L127">            case MEMORIA -&gt; pR=new MemoriaRivista();</span>
+<span class="fc" id="L127">            case MEMORIA -&gt; pR=new MemoriaRivista();</span>
 <span class="nc" id="L128">            default -&gt; Logger.getLogger(&quot;rivista by id&quot;).log(Level.SEVERE,&quot;persistency of magazine is wrong!!&quot;);</span>
         }
 <span class="fc" id="L130">        r.setId(vis.getIdRivista());</span>
@@ -163,11 +163,11 @@ public class ControllerGestione {
 
 <span class="fc" id="L164">        vis.setIdLibro(appoggio.getId());</span>
 
-<span class="pc bpc" id="L166" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L166" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
 <span class="fc" id="L168">            case DATABASE -&gt; pL=new LibroDao();</span>
 <span class="fc" id="L169">            case FILE -&gt; pL=new CsvLibro();</span>
-<span class="nc" id="L170">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
+<span class="fc" id="L170">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
 <span class="nc" id="L171">            default -&gt; Logger.getLogger(&quot;libro by id&quot;).log(Level.SEVERE,PERSISTENCYDAILY);</span>
         }
 
@@ -195,11 +195,11 @@ public class ControllerGestione {
 
 <span class="fc" id="L196">        vis.setIdGiornale(appoggio.getId());</span>
 
-<span class="pc bpc" id="L198" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L198" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
 <span class="fc" id="L200">            case DATABASE -&gt; pG=new GiornaleDao();</span>
 <span class="fc" id="L201">            case FILE -&gt; pG=new CsvGiornale();</span>
-<span class="nc" id="L202">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
+<span class="fc" id="L202">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
 <span class="nc" id="L203">            default -&gt; Logger.getLogger(&quot;giornale by id&quot;).log(Level.SEVERE,PERSISTENCYDAILY);</span>
         }
 
@@ -279,11 +279,11 @@ public class ControllerGestione {
 
 <span class="fc" id="L280">        vis.setIdRivista(appoggio.getId());</span>
 
-<span class="pc bpc" id="L282" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L282" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
 <span class="fc" id="L284">            case DATABASE -&gt; pR=new RivistaDao();</span>
 <span class="fc" id="L285">            case FILE -&gt; pR=new CsvRivista();</span>
-<span class="nc" id="L286">            case MEMORIA -&gt; pR=new MemoriaRivista();</span>
+<span class="fc" id="L286">            case MEMORIA -&gt; pR=new MemoriaRivista();</span>
 <span class="nc" id="L287">            default -&gt; Logger.getLogger(&quot;rivista by id&quot;).log(Level.SEVERE,PERSISTENCYDAILY);</span>
         }
 

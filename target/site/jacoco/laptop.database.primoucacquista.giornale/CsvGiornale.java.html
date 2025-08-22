@@ -433,52 +433,48 @@ public class CsvGiornale extends PersistenzaGiornale{
 <span class="pc bpc" id="L433" title="1 of 2 branches missed.">            if (list.isEmpty()) {</span>
 <span class="nc" id="L434">                throw new IdException(&quot;giornale not found!!&quot;);</span>
             }
-<span class="nc" id="L436">        }catch (IdException e2)</span>
+<span class="nc" id="L436">        }catch (IOException | CsvValidationException | IdException e)</span>
         {
-<span class="nc" id="L438">            Logger.getLogger(&quot;lista&quot;).log(Level.SEVERE,&quot;lista is empty :&quot;,e2);</span>
+<span class="nc" id="L438">            Logger.getLogger(&quot;giornale by id titolo autore io&quot;).log(Level.SEVERE,&quot;giornale not found  :&quot;,e);</span>
 
-<span class="nc" id="L440">        }catch (IOException | CsvValidationException e)</span>
-        {
-<span class="nc" id="L442">            Logger.getLogger(&quot;giornale by id titolo autore io&quot;).log(Level.SEVERE,&quot;giornale not found  :&quot;,e);</span>
-
-<span class="pc" id="L444">        }</span>
+<span class="fc" id="L440">        }</span>
 
 
-<span class="fc" id="L447">        return list;</span>
+<span class="fc" id="L443">        return list;</span>
 
     }
     @Override
     public void initializza()  {
         try {
-<span class="fc" id="L453">            File directory=new File(&quot;report&quot;);</span>
+<span class="fc" id="L449">            File directory=new File(&quot;report&quot;);</span>
 
 
-<span class="pc bpc" id="L456" title="1 of 2 branches missed.">            if(directory.isDirectory())</span>
+<span class="pc bpc" id="L452" title="1 of 2 branches missed.">            if(directory.isDirectory())</span>
             {
-<span class="fc" id="L458">                String[] files = directory.list();</span>
+<span class="fc" id="L454">                String[] files = directory.list();</span>
 
 
-<span class="pc bpc" id="L461" title="1 of 4 branches missed.">                if ( Objects.requireNonNull(files).length == 0 || !this.fdG.exists()) {</span>
-<span class="fc" id="L462">                    throw new IOException(&quot;cartella vuota&quot;);</span>
+<span class="pc bpc" id="L457" title="1 of 4 branches missed.">                if ( Objects.requireNonNull(files).length == 0 || !this.fdG.exists()) {</span>
+<span class="fc" id="L458">                    throw new IOException(&quot;cartella vuota&quot;);</span>
                 }
 
             }
 
 
-<span class="fc" id="L468">        } catch (IOException eFile) {</span>
+<span class="fc" id="L464">        } catch (IOException eFile) {</span>
 
-<span class="fc" id="L470">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
+<span class="fc" id="L466">            Logger.getLogger(&quot;creazione db file&quot;).log(Level.INFO, &quot;\n creating files ..&quot;);</span>
 
             try {
-<span class="fc" id="L473">                Files.copy(Path.of(GIORNALEP), Path.of(LOCATIONG), REPLACE_EXISTING);</span>
-<span class="nc" id="L474">            } catch (IOException e) {</span>
-<span class="nc" id="L475">                Logger.getLogger(&quot;inizializza csv giornale io&quot;).log(Level.SEVERE,&quot;inizializza io in csv  :&quot;,e);</span>
-<span class="fc" id="L476">            }</span>
+<span class="fc" id="L469">                Files.copy(Path.of(GIORNALEP), Path.of(LOCATIONG), REPLACE_EXISTING);</span>
+<span class="nc" id="L470">            } catch (IOException e) {</span>
+<span class="nc" id="L471">                Logger.getLogger(&quot;inizializza csv giornale io&quot;).log(Level.SEVERE,&quot;inizializza io in csv  :&quot;,e);</span>
+<span class="fc" id="L472">            }</span>
 
-<span class="fc" id="L478">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
-<span class="fc" id="L479">        }</span>
+<span class="fc" id="L474">            Logger.getLogger(&quot;crea db file&quot;).log(Level.SEVERE, &quot;\n eccezione ottenuta nella modalità file.&quot;, eFile);</span>
+<span class="fc" id="L475">        }</span>
 
-<span class="fc" id="L481">    }</span>
+<span class="fc" id="L477">    }</span>
 
 
 }

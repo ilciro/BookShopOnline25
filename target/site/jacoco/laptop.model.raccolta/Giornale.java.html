@@ -161,12 +161,18 @@ import laptop.exception.IdException;
 	@Override
 	public void scarica(int i)  {
 
-<span class="fc" id="L164">		Document document=new Document();</span>
+<span class="fc" id="L164">		scaricaGiornale();</span>
+
+<span class="fc" id="L166">	}</span>
+
+	private void scaricaGiornale()
+	{
+<span class="fc" id="L170">		Document document=new Document();</span>
 		try{
-<span class="fc" id="L166">			PdfWriter writer=PdfWriter.getInstance(document,new FileOutputStream(rbTitoli.getString(DSTPATH)+rbTitoli.getString(TITOLOG)));</span>
-<span class="fc" id="L167">			document.open();</span>
-<span class="fc" id="L168">			document.addTitle(&quot;Giornale &quot;);</span>
-<span class="fc" id="L169">			document.add(new Paragraph(&quot;&quot;&quot;</span>
+<span class="fc" id="L172">			PdfWriter writer=PdfWriter.getInstance(document,new FileOutputStream(rbTitoli.getString(DSTPATH)+rbTitoli.getString(TITOLOG)));</span>
+<span class="fc" id="L173">			document.open();</span>
+<span class="fc" id="L174">			document.addTitle(&quot;Giornale &quot;);</span>
+<span class="fc" id="L175">			document.add(new Paragraph(&quot;&quot;&quot;</span>
                     Giornale/Daily not avalaible.
                     Integer et semper purus,non finibus augue
                     Interpellates habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
@@ -180,53 +186,52 @@ import laptop.exception.IdException;
                     Maecenas consequat elit diam, eu semper erat porta nec.Etiam ullamcorper neque vitae mollis
                     cursus.&quot;&quot;&quot;
 			));
-<span class="fc" id="L183">			readPdf();</span>
-<span class="fc" id="L184">			document.close();</span>
-<span class="fc" id="L185">			writer.close();</span>
+<span class="fc" id="L189">			readPdf();</span>
+<span class="fc" id="L190">			document.close();</span>
+<span class="fc" id="L191">			writer.close();</span>
 
 
 
 
-<span class="nc" id="L190">		}catch (DocumentException | IOException e)</span>
+<span class="nc" id="L196">		}catch (DocumentException | IOException e)</span>
 		{
-<span class="nc" id="L192">			Logger.getLogger(&quot;create pdf daily&quot;).log(Level.SEVERE,&quot;pdf daily not created&quot;);</span>
-<span class="fc" id="L193">		}</span>
-
-<span class="fc" id="L195">	}</span>
+<span class="nc" id="L198">			Logger.getLogger(&quot;create pdf daily&quot;).log(Level.SEVERE,&quot;pdf daily not created&quot;);</span>
+<span class="fc" id="L199">		}</span>
+<span class="fc" id="L200">	}</span>
 
 	@Override
 	public void leggi(int i)  {
-<span class="pc bpc" id="L199" title="1 of 2 branches missed.">		if (Desktop.isDesktopSupported()) {</span>
-<span class="fc" id="L200">			new Thread(() -&gt; {</span>
+<span class="pc bpc" id="L204" title="1 of 2 branches missed.">		if (Desktop.isDesktopSupported()) {</span>
+<span class="fc" id="L205">			new Thread(() -&gt; {</span>
 				try {
-<span class="fc" id="L202">					Desktop.getDesktop().open(new File(rbTitoli.getString(DSTPATH)+rbTitoli.getString(TITOLOG)));</span>
-<span class="nc" id="L203">				} catch (IOException e) {</span>
-<span class="pc" id="L204">					Logger.getLogger(&quot;open file&quot;).log(Level.SEVERE, &quot;open error&quot;);				}</span>
-<span class="fc" id="L205">			}).start();</span>
+<span class="fc" id="L207">					Desktop.getDesktop().open(new File(rbTitoli.getString(DSTPATH)+rbTitoli.getString(TITOLOG)));</span>
+<span class="nc" id="L208">				} catch (IOException e) {</span>
+<span class="pc" id="L209">					Logger.getLogger(&quot;open file&quot;).log(Level.SEVERE, &quot;open error&quot;);				}</span>
+<span class="fc" id="L210">			}).start();</span>
 		}
 
-<span class="fc" id="L208">	}</span>
+<span class="fc" id="L213">	}</span>
 
 	public String[] getInfoGenerali() {
-<span class="fc" id="L211">		return infoGenerali;</span>
+<span class="fc" id="L216">		return infoGenerali;</span>
 	}
 
 	public void setInfoGenerali(String[] infoGenerali) {
-<span class="fc" id="L215">		this.infoGenerali = infoGenerali;</span>
-<span class="fc" id="L216">	}</span>
+<span class="fc" id="L220">		this.infoGenerali = infoGenerali;</span>
+<span class="fc" id="L221">	}</span>
 
 
         public String getCategoria() {
-<span class="fc" id="L220">            return categoria;</span>
+<span class="fc" id="L225">            return categoria;</span>
         }
 
         public void setCategoria(String categoria) {
-<span class="fc" id="L224">            this.categoria = categoria;</span>
-<span class="fc" id="L225">        }</span>
+<span class="fc" id="L229">            this.categoria = categoria;</span>
+<span class="fc" id="L230">        }</span>
 
 		@Override
 		public String toString() {
-<span class="nc" id="L229">			return &quot;Giornale{&quot; +</span>
+<span class="nc" id="L234">			return &quot;Giornale{&quot; +</span>
 					&quot;titolo='&quot; + titolo + '\'' +
 					&quot;, editore='&quot; + editore + '\'' +
 					&quot;, id=&quot; + id +

@@ -34,7 +34,6 @@ public class TestRegModUser {
         //cambio password
         User.getInstance().setEmail(RBUTENE.getString("email"));
         User.getInstance().setPassword(RBUTENE.getString("pwd"));
-
         assertTrue(cAP.aggiorna(RBUTENE.getString("pwdM"),"memoria" ));
     }
 }

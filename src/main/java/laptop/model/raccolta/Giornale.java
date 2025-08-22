@@ -161,6 +161,12 @@ import laptop.exception.IdException;
 	@Override
 	public void scarica(int i)  {
 
+		scaricaGiornale();
+
+	}
+
+	private void scaricaGiornale()
+	{
 		Document document=new Document();
 		try{
 			PdfWriter writer=PdfWriter.getInstance(document,new FileOutputStream(rbTitoli.getString(DSTPATH)+rbTitoli.getString(TITOLOG)));
@@ -191,7 +197,6 @@ import laptop.exception.IdException;
 		{
 			Logger.getLogger("create pdf daily").log(Level.SEVERE,"pdf daily not created");
 		}
-
 	}
 
 	@Override

@@ -44,16 +44,16 @@ import java.util.logging.Logger;
 
     public boolean inserisciGiornale(Giornale g)  {
 
-<span class="nc" id="L47">        Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);</span>
-<span class="nc bnc" id="L48" title="All 2 branches missed.">        if (!Files.exists(path2))</span>
+<span class="fc" id="L47">        Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">        if (!Files.exists(path2))</span>
         {
             try {
-<span class="nc" id="L51">                Files.createFile(path2);</span>
+<span class="fc" id="L51">                Files.createFile(path2);</span>
 <span class="nc" id="L52">            } catch (IOException e) {</span>
 <span class="nc" id="L53">                Logger.getLogger(&quot;inserisci giornale&quot;).log(Level.SEVERE,&quot;insert giornale exception &quot;,e);</span>
-<span class="nc" id="L54">            }</span>
+<span class="fc" id="L54">            }</span>
         }
-<span class="nc" id="L56">        return mI.inserisci(null,g,null,SERIALIZZAZIONE,SERIALIZZAZIONEAPPOGGIO);</span>
+<span class="fc" id="L56">        return mI.inserisci(null,g,null,SERIALIZZAZIONE,SERIALIZZAZIONEAPPOGGIO);</span>
 
     }
 
@@ -97,7 +97,7 @@ import java.util.logging.Logger;
 
     @Override
     public boolean removeGiornaleById(Giornale g)  {
-<span class="nc" id="L100">        return mI.cancellaGiornale(g);</span>
+<span class="fc" id="L100">        return mI.cancellaGiornale(g);</span>
     }
 
 

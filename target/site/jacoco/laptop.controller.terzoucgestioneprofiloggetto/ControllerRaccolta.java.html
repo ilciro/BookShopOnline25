@@ -59,10 +59,10 @@ public class ControllerRaccolta {
     }
 
     private ObservableList&lt;Raccolta&gt; prendiRiviste(String persistenza) {
-<span class="pc bpc" id="L62" title="2 of 4 branches missed.">            switch (persistenza){</span>
+<span class="pc bpc" id="L62" title="1 of 4 branches missed.">            switch (persistenza){</span>
 <span class="fc" id="L63">                case DATABASE -&gt; pR=new RivistaDao();</span>
 <span class="fc" id="L64">                case FILE -&gt; pR=new CsvRivista();</span>
-<span class="nc" id="L65">                case MEMORIA -&gt; pR=new MemoriaRivista();</span>
+<span class="fc" id="L65">                case MEMORIA -&gt; pR=new MemoriaRivista();</span>
 <span class="nc" id="L66">                default -&gt; Logger.getLogger(&quot;prendi riviste&quot;).log(Level.SEVERE,&quot; list magazine is empty&quot;);</span>
 
             }
@@ -77,10 +77,10 @@ public class ControllerRaccolta {
 
 
     private ObservableList&lt;Raccolta&gt; prendiLibri(String persistenza)  {
-<span class="pc bpc" id="L80" title="2 of 4 branches missed.">        switch (persistenza){</span>
+<span class="pc bpc" id="L80" title="1 of 4 branches missed.">        switch (persistenza){</span>
 <span class="fc" id="L81">            case DATABASE -&gt; pL=new LibroDao();</span>
 <span class="fc" id="L82">            case FILE -&gt; pL=new CsvLibro();</span>
-<span class="nc" id="L83">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
+<span class="fc" id="L83">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
 <span class="nc" id="L84">            default -&gt; Logger.getLogger(&quot;prendi libri&quot;).log(Level.SEVERE,&quot; list book is empty&quot;);</span>
 
         }
@@ -91,10 +91,10 @@ public class ControllerRaccolta {
 <span class="fc" id="L91">        return pL.retrieveRaccoltaData();</span>
     }
     private ObservableList&lt;Raccolta&gt; prendiGiornali(String persistenza)  {
-<span class="pc bpc" id="L94" title="2 of 4 branches missed.">        switch (persistenza){</span>
+<span class="pc bpc" id="L94" title="1 of 4 branches missed.">        switch (persistenza){</span>
 <span class="fc" id="L95">            case DATABASE -&gt; pG=new GiornaleDao();</span>
 <span class="fc" id="L96">            case FILE -&gt; pG=new CsvGiornale();</span>
-<span class="nc" id="L97">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
+<span class="fc" id="L97">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
 <span class="nc" id="L98">            default -&gt; Logger.getLogger(&quot;prendi giornali&quot;).log(Level.SEVERE,&quot; list daily is empty&quot;);</span>
 
         }
@@ -119,11 +119,11 @@ public class ControllerRaccolta {
             {
                 case LIBRO -&gt; {
 <span class="fc" id="L121">                    l.setId(vis.getIdLibro());</span>
-<span class="pc bpc" id="L122" title="2 of 4 branches missed.">                    switch (type)</span>
+<span class="pc bpc" id="L122" title="1 of 4 branches missed.">                    switch (type)</span>
                     {
 <span class="fc" id="L124">                        case DATABASE -&gt; pL=new LibroDao();</span>
 <span class="fc" id="L125">                        case FILE -&gt; pL=new CsvLibro();</span>
-<span class="nc" id="L126">                        case MEMORIA -&gt; pL=new MemoriaLibro();</span>
+<span class="fc" id="L126">                        case MEMORIA -&gt; pL=new MemoriaLibro();</span>
 <span class="nc" id="L127">                        default -&gt; Logger.getLogger(&quot;elimina libro&quot;).log(Level.SEVERE,&quot;error deleting a book&quot;);</span>
                     }
 <span class="fc" id="L129">                    status=pL.removeLibroById(l);</span>
@@ -132,11 +132,11 @@ public class ControllerRaccolta {
                 }
                 case GIORNALE -&gt; {
 <span class="fc" id="L134">                    g.setId(vis.getIdGiornale());</span>
-<span class="pc bpc" id="L135" title="2 of 4 branches missed.">                    switch (type)</span>
+<span class="pc bpc" id="L135" title="1 of 4 branches missed.">                    switch (type)</span>
                     {
 <span class="fc" id="L137">                        case DATABASE -&gt; pG=new GiornaleDao();</span>
 <span class="fc" id="L138">                        case FILE -&gt; pG=new CsvGiornale();</span>
-<span class="nc" id="L139">                        case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
+<span class="fc" id="L139">                        case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
 <span class="nc" id="L140">                        default -&gt; Logger.getLogger(&quot;elimina daily&quot;).log(Level.SEVERE,&quot;error deleting a daily&quot;);</span>
                     }
 <span class="fc" id="L142">                    status=pG.removeGiornaleById(g);</span>
@@ -146,11 +146,11 @@ public class ControllerRaccolta {
                 }
                 case RIVISTA -&gt;{
 <span class="fc" id="L148">                    r.setId(vis.getIdRivista());</span>
-<span class="pc bpc" id="L149" title="2 of 4 branches missed.">                    switch (type)</span>
+<span class="pc bpc" id="L149" title="1 of 4 branches missed.">                    switch (type)</span>
                     {
 <span class="fc" id="L151">                        case DATABASE -&gt; pR=new RivistaDao();</span>
 <span class="fc" id="L152">                        case FILE -&gt; pR=new CsvRivista();</span>
-<span class="nc" id="L153">                        case MEMORIA -&gt; pR=new MemoriaRivista();</span>
+<span class="fc" id="L153">                        case MEMORIA -&gt; pR=new MemoriaRivista();</span>
 <span class="nc" id="L154">                        default -&gt; Logger.getLogger(&quot;elimina rivista&quot;).log(Level.SEVERE,&quot;error deleting a magazine&quot;);</span>
                     }
 <span class="fc" id="L156">                    status=pR.removeRivistaById(r);</span>

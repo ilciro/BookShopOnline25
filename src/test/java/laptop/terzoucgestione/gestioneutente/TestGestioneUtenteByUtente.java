@@ -1,16 +1,11 @@
 package laptop.terzoucgestione.gestioneutente;
 
-import com.opencsv.exceptions.CsvValidationException;
 import laptop.controller.ControllerSystemState;
 import laptop.controller.primoucacquista.ControllerHomePage;
 import laptop.controller.secondouclogin.ControllerLogin;
 import laptop.controller.terzoucgestioneprofiloggetto.ControllerVisualizzaProfilo;
-import laptop.exception.IdException;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;

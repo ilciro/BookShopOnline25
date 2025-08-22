@@ -1,11 +1,13 @@
 laptop/primoucacquista/TestAcquistoGiornale.class
 demo/terzoucgestione/TestGestioneOrdini.class
 laptop/secondouclogin/TestRegistraUItente.class
+testfinalidemo/terzouc/TestGestioneUtenteByUtenteMem.class
 demo/primoucacquista/TestDemoAcquista.class
 demo/secondouclogin/TestDemoLogin.class
 laptop/terzoucgestione/gestioneutente/TestGestioneUtenteByAdmin.class
 laptop/terzoucgestione/acquista/TestAcquistoLogged.class
 laptop/terzoucgestione/gestioneoggetto/TestGestioneOggettoGiornale.class
+testfinalidemo/terzouc/TestGestioneLibroMem.class
 laptop/primoucacquista/TestAcquistoRivista.class
 laptop/terzoucgestione/gestioneoggetto/TestGestioneOggettoRivista.class
 laptop/primoucacquista/TestRicerca.class
@@ -13,4 +15,7 @@ laptop/terzoucgestione/gestioneoggetto/TestGestioneOggettoLibro.class
 laptop/terzoucgestione/gestioneutente/TestGestioneUtenteByUtente.class
 laptop/primoucacquista/TestAcquistoLibro.class
 laptop/terzoucgestione/TestReport.class
+testfinalidemo/terzouc/TestGestioneUtenteAdminMem.class
 testfinalidemo/secondouc/TestRegModUser.class
+testfinalidemo/terzouc/TestGestioneGiornaleMem.class
+testfinalidemo/terzouc/TestGestioneRivistaMem.class

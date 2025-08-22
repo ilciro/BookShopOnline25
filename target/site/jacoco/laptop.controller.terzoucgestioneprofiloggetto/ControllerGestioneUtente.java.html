@@ -57,11 +57,11 @@ import java.util.logging.Logger;
 <span class="fc" id="L57">        tu.setDescrizioneT(data[5]);</span>
 <span class="fc" id="L58">        tu.setDataDiNascitaT(LocalDate.parse(data[6]));</span>
 
-<span class="pc bpc" id="L60" title="2 of 4 branches missed.">        switch (type)</span>
+<span class="pc bpc" id="L60" title="1 of 4 branches missed.">        switch (type)</span>
         {
 <span class="fc" id="L62">            case DATABASE -&gt; pU=new UsersDao();</span>
 <span class="fc" id="L63">            case FILE -&gt; pU=new CsvUtente();</span>
-<span class="nc" id="L64">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
+<span class="fc" id="L64">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
 <span class="nc" id="L65">            default -&gt; Logger.getLogger(&quot;inserisci utente&quot;).log(Level.SEVERE,&quot;error in persistency&quot;);</span>
         }
 
@@ -93,17 +93,17 @@ import java.util.logging.Logger;
 
 
 
-<span class="pc bpc" id="L96" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L96" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
 <span class="fc" id="L98">            case DATABASE -&gt; pU=new UsersDao();</span>
 <span class="fc" id="L99">            case FILE -&gt; pU=new CsvUtente();</span>
-<span class="nc" id="L100">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
+<span class="fc" id="L100">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
 <span class="nc" id="L101">            default -&gt; Logger.getLogger(&quot;modifica utente&quot;).log(Level.SEVERE,&quot;error in persistency&quot;);</span>
         }
 
 <span class="fc bfc" id="L104" title="All 2 branches covered.">        for (int i=0;i&lt;pU.getUserData().size();i++)</span>
         {
-<span class="pc bpc" id="L106" title="1 of 2 branches missed.">            if(pU.getUserData().get(i).getId()==vis.getIdUtente()-1</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">            if(pU.getUserData().get(i).getId()==vis.getIdUtente()-1</span>
 <span class="fc bfc" id="L107" title="All 2 branches covered.">            || pU.getUserData().get(i).getEmailT().equals(vecchiaMail))</span>
             {
 
