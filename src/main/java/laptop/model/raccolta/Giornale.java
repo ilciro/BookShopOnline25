@@ -13,7 +13,6 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfCopy;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
-import laptop.exception.IdException;
 
 
 	public class Giornale implements Raccolta, Serializable {
@@ -167,12 +166,13 @@ import laptop.exception.IdException;
 
 	private void scaricaGiornale()
 	{
-		Document document=new Document();
+		Document documentG=new Document();
 		try{
-			PdfWriter writer=PdfWriter.getInstance(document,new FileOutputStream(rbTitoli.getString(DSTPATH)+rbTitoli.getString(TITOLOG)));
-			document.open();
-			document.addTitle("Giornale ");
-			document.add(new Paragraph("""
+			PdfWriter writer=PdfWriter.getInstance(documentG,new FileOutputStream(rbTitoli.getString(DSTPATH)+rbTitoli.getString(TITOLOG)));
+			documentG.open();
+			documentG.addTitle("Giornale ");
+			documentG.addCreationDate();
+			documentG.add(new Paragraph("""
                     Giornale/Daily not avalaible.
                     Integer et semper purus,non finibus augue
                     Interpellates habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
@@ -187,7 +187,7 @@ import laptop.exception.IdException;
                     cursus."""
 			));
 			readPdf();
-			document.close();
+			documentG.close();
 			writer.close();
 
 

@@ -184,7 +184,8 @@ public class Rivista implements Raccolta, Serializable {
 <span class="fc" id="L184">			PdfWriter writer=PdfWriter.getInstance(document,new FileOutputStream(rbTitoli.getString(DSTPATH)+ rbTitoli.getString(TITOLOR)));</span>
 <span class="fc" id="L185">			document.open();</span>
 <span class="fc" id="L186">			document.addTitle(&quot;Rivista &quot;);</span>
-<span class="fc" id="L187">			document.add(new Paragraph(&quot;&quot;&quot;</span>
+<span class="fc" id="L187">			document.addLanguage(&quot;latin&quot;);</span>
+<span class="fc" id="L188">			document.add(new Paragraph(&quot;&quot;&quot;</span>
                     Rivista/Magazine not avalaible
                     Nam ultricies efficitur magna, sit amet luctus magna luctus volutpat
                     Pellentesque facilisis lacinia mi, nec posuere justo pharetra non:
@@ -197,75 +198,75 @@ public class Rivista implements Raccolta, Serializable {
                     Vestibulum auctor est ac laoreet egestas.
                     Nam malesuada in massa eu venenatis.&quot;&quot;&quot;));
 
-<span class="fc" id="L200">			readPdf();</span>
-<span class="fc" id="L201">			document.close();</span>
-<span class="fc" id="L202">			writer.close();</span>
+<span class="fc" id="L201">			readPdf();</span>
+<span class="fc" id="L202">			document.close();</span>
+<span class="fc" id="L203">			writer.close();</span>
 
 
 
 
-<span class="nc" id="L207">		}catch (DocumentException | IOException e)</span>
+<span class="nc" id="L208">		}catch (DocumentException | IOException e)</span>
 		{
-<span class="nc" id="L209">			Logger.getLogger(&quot;create pdf magazine &quot;).log(Level.SEVERE,&quot;pdf magazine not created&quot;);</span>
-<span class="fc" id="L210">		}</span>
-<span class="fc" id="L211">	}</span>
+<span class="nc" id="L210">			Logger.getLogger(&quot;create pdf magazine &quot;).log(Level.SEVERE,&quot;pdf magazine not created&quot;);</span>
+<span class="fc" id="L211">		}</span>
+<span class="fc" id="L212">	}</span>
 	@Override
 	public void leggi(int i)  {
-<span class="pc bpc" id="L214" title="1 of 2 branches missed.">		if (Desktop.isDesktopSupported()) {</span>
-<span class="fc" id="L215">			new Thread(() -&gt; {</span>
+<span class="pc bpc" id="L215" title="1 of 2 branches missed.">		if (Desktop.isDesktopSupported()) {</span>
+<span class="fc" id="L216">			new Thread(() -&gt; {</span>
 				try {
-<span class="fc" id="L217">					Desktop.getDesktop().open(new File(rbTitoli.getString(DSTPATH)+rbTitoli.getString(TITOLOR)));</span>
-<span class="nc" id="L218">				} catch (IOException e) {</span>
-<span class="pc" id="L219">					Logger.getLogger(&quot;open file&quot;).log(Level.SEVERE, &quot;open error&quot;);				}</span>
-<span class="fc" id="L220">			}).start();</span>
+<span class="fc" id="L218">					Desktop.getDesktop().open(new File(rbTitoli.getString(DSTPATH)+rbTitoli.getString(TITOLOR)));</span>
+<span class="nc" id="L219">				} catch (IOException e) {</span>
+<span class="pc" id="L220">					Logger.getLogger(&quot;open file&quot;).log(Level.SEVERE, &quot;open error&quot;);				}</span>
+<span class="fc" id="L221">			}).start();</span>
 		}
 
 
 		
-<span class="fc" id="L225">	}</span>
+<span class="fc" id="L226">	}</span>
 	public String [] getInfoGenerali() {
-<span class="fc" id="L227">		return infoGenerali;</span>
+<span class="fc" id="L228">		return infoGenerali;</span>
 	}
 	public void setInfoGenerali(String [] infoGenerali) {
-<span class="fc" id="L230">		this.infoGenerali = infoGenerali;</span>
-<span class="fc" id="L231">	}</span>
+<span class="fc" id="L231">		this.infoGenerali = infoGenerali;</span>
+<span class="fc" id="L232">	}</span>
 
 	private void readPdf() {
 		try {
 
-<span class="fc" id="L236">			Document document = new Document();</span>
+<span class="fc" id="L237">			Document document = new Document();</span>
 
-<span class="fc" id="L238">			PdfReader reader = new PdfReader(rbTitoli.getString(&quot;srcPath&quot;) + rbTitoli.getString(TITOLOR));</span>
-<span class="fc" id="L239">			PdfCopy copy = new PdfCopy(document, new FileOutputStream(rbTitoli.getString(DSTPATH) + rbTitoli.getString(TITOLOR)));</span>
-<span class="fc" id="L240">			document.open();</span>
+<span class="fc" id="L239">			PdfReader reader = new PdfReader(rbTitoli.getString(&quot;srcPath&quot;) + rbTitoli.getString(TITOLOR));</span>
+<span class="fc" id="L240">			PdfCopy copy = new PdfCopy(document, new FileOutputStream(rbTitoli.getString(DSTPATH) + rbTitoli.getString(TITOLOR)));</span>
+<span class="fc" id="L241">			document.open();</span>
 
-<span class="fc" id="L242">			int pages = reader.getNumberOfPages();</span>
-<span class="fc bfc" id="L243" title="All 2 branches covered.">			for (int i = 1; i &lt;= pages; i++) {</span>
-<span class="fc" id="L244">				copy.addPage(copy.getImportedPage(reader, i));</span>
+<span class="fc" id="L243">			int pages = reader.getNumberOfPages();</span>
+<span class="fc bfc" id="L244" title="All 2 branches covered.">			for (int i = 1; i &lt;= pages; i++) {</span>
+<span class="fc" id="L245">				copy.addPage(copy.getImportedPage(reader, i));</span>
 
 			}
 
 
-<span class="fc" id="L249">			reader.close();</span>
-<span class="fc" id="L250">			document.close();</span>
-<span class="nc" id="L251">		}catch (IOException |DocumentException e)</span>
+<span class="fc" id="L250">			reader.close();</span>
+<span class="fc" id="L251">			document.close();</span>
+<span class="nc" id="L252">		}catch (IOException |DocumentException e)</span>
 		{
-<span class="nc" id="L253">			Logger.getLogger(&quot;read pdf magazine&quot;).log(Level.SEVERE,&quot;magazine not exists &quot;,e);</span>
-<span class="fc" id="L254">		}</span>
+<span class="nc" id="L254">			Logger.getLogger(&quot;read pdf magazine&quot;).log(Level.SEVERE,&quot;magazine not exists &quot;,e);</span>
+<span class="fc" id="L255">		}</span>
 
-<span class="fc" id="L256">	}</span>
+<span class="fc" id="L257">	}</span>
 
     public int getNrCopie() {
-<span class="fc" id="L259">        return nrCopie;</span>
+<span class="fc" id="L260">        return nrCopie;</span>
     }
 
     public void setNrCopie(int nrCopie) {
-<span class="fc" id="L263">        this.nrCopie = nrCopie;</span>
-<span class="fc" id="L264">    }</span>
+<span class="fc" id="L264">        this.nrCopie = nrCopie;</span>
+<span class="fc" id="L265">    }</span>
 
 	@Override
 	public String toString() {
-<span class="nc" id="L268">		return &quot;Rivista{&quot; +</span>
+<span class="nc" id="L269">		return &quot;Rivista{&quot; +</span>
 				&quot;titolo='&quot; + titolo + '\'' +
 				&quot;, editore='&quot; + editore + '\'' +
 				&quot;, id=&quot; + id +

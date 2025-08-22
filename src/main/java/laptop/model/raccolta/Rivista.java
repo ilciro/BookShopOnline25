@@ -184,6 +184,7 @@ public class Rivista implements Raccolta, Serializable {
 			PdfWriter writer=PdfWriter.getInstance(document,new FileOutputStream(rbTitoli.getString(DSTPATH)+ rbTitoli.getString(TITOLOR)));
 			document.open();
 			document.addTitle("Rivista ");
+			document.addLanguage("latin");
 			document.add(new Paragraph("""
                     Rivista/Magazine not avalaible
                     Nam ultricies efficitur magna, sit amet luctus magna luctus volutpat
