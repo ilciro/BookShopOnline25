@@ -36,7 +36,7 @@ class TestReportGen {
         //login
         cL.login(RBUTENTE.getString("emailA"),RBUTENTE.getString("passA"),strings) ;
         //report
-        cR.reportL(strings);
+        cR.reportG(strings);
         assertTrue(cA.logout(strings));
 
     }
@@ -47,7 +47,7 @@ class TestReportGen {
         //login
         cL.login(RBUTENTE.getString("emailA"),RBUTENTE.getString("passA"),strings) ;
         //report
-        cR.reportL(strings);
+        cR.reportR(strings);
         assertTrue(cA.logout(strings));
 
     }
