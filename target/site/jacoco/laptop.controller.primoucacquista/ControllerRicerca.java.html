@@ -104,10 +104,10 @@ import java.util.logging.Logger;
     public ObservableList&lt;Raccolta&gt; listaRiviste(String nome, String persistenza)  {
 
 <span class="fc" id="L106">        ObservableList&lt;Raccolta&gt; listaR=FXCollections.observableArrayList();</span>
-<span class="pc bpc" id="L107" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L107" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
 <span class="fc" id="L109">            case DATABASE -&gt; pR=new RivistaDao();</span>
-<span class="nc" id="L110">            case FILE -&gt; pR=new CsvRivista();</span>
+<span class="fc" id="L110">            case FILE -&gt; pR=new CsvRivista();</span>
 <span class="fc" id="L111">            case MEMORIA -&gt; pR=new MemoriaRivista();</span>
 <span class="nc" id="L112">            default -&gt; Logger.getLogger(&quot;id oggetto rivista&quot;).log(Level.SEVERE,&quot; id magazine in null or zero&quot;);</span>
         }
@@ -132,10 +132,10 @@ import java.util.logging.Logger;
 
     public boolean logout(String persistenza)  {
 <span class="fc" id="L134">        boolean status=false;</span>
-<span class="pc bpc" id="L135" title="3 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L135" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
-<span class="nc" id="L137">            case DATABASE -&gt; pU=new UsersDao();</span>
-<span class="nc" id="L138">            case FILE -&gt; pU=new CsvUtente();</span>
+<span class="fc" id="L137">            case DATABASE -&gt; pU=new UsersDao();</span>
+<span class="fc" id="L138">            case FILE -&gt; pU=new CsvUtente();</span>
 <span class="fc" id="L139">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
 <span class="nc" id="L140">            default -&gt; Logger.getLogger(&quot;logout&quot;).log(Level.SEVERE,&quot; persistency logout is wrong!!&quot;);</span>
         }

@@ -357,7 +357,7 @@ public class ControllerPagamentoCC {
 	private String getMeseGiorno(String stringa)
 	{
 <span class="fc" id="L359">		String finale=&quot;&quot;;</span>
-<span class="pc bpc" id="L360" title="27 of 32 branches missed.">		switch (stringa)</span>
+<span class="pc bpc" id="L360" title="25 of 30 branches missed.">		switch (stringa)</span>
 		{
 <span class="nc" id="L362">			case &quot;01&quot;-&gt; finale=&quot;1&quot;;</span>
 <span class="nc" id="L363">			case &quot;02&quot;-&gt; finale=&quot;2&quot;;</span>
@@ -388,18 +388,19 @@ public class ControllerPagamentoCC {
 <span class="nc" id="L388">			case &quot;27&quot;-&gt;finale=&quot;27&quot;;</span>
 <span class="nc" id="L389">			case &quot;28&quot;-&gt;finale=&quot;28&quot;;</span>
 <span class="nc" id="L390">			case &quot;29&quot;-&gt;finale=&quot;29&quot;;</span>
-<span class="nc" id="L391">			case &quot;30&quot;-&gt;finale=&quot;30&quot;;</span>
-<span class="nc" id="L392">			case &quot;31&quot;-&gt;finale=&quot;31&quot;;</span>
 
-<span class="nc" id="L394">			default -&gt; Logger.getLogger(&quot;getMeseGiorno&quot;).log(Level.SEVERE,&quot;month/day is incorrect {0}&quot;,stringa);</span>
+
+<span class="nc" id="L393">			default -&gt; Logger.getLogger(&quot;getMeseGiorno&quot;).log(Level.SEVERE,&quot;month/day is incorrect {0}&quot;,stringa);</span>
 
 		}
-<span class="fc" id="L397">		return finale;</span>
+<span class="pc bpc" id="L396" title="1 of 2 branches missed.">		if(stringa.equals(&quot;30&quot;)) finale=&quot;30&quot;;</span>
+<span class="pc bpc" id="L397" title="1 of 2 branches missed.">		else if (stringa.equals(&quot;31&quot;)) finale=&quot;31&quot;;</span>
+<span class="fc" id="L398">		return finale;</span>
 	}
 
 	private boolean checkInteger(String civ)
 	{
-<span class="fc" id="L402">		return civ.matches(&quot;\\d+&quot;);</span>
+<span class="fc" id="L403">		return civ.matches(&quot;\\d+&quot;);</span>
 	}
 }
 

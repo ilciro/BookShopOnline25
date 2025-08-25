@@ -24,9 +24,10 @@ public class PersistenzaCC {
 
          }
     public void inizializza()  {
-        Logger.getLogger("inizializza persistenza cc").log(Level.INFO,"persistenza cc inizializza");
         PersistenzaGenerale pG=new PersistenzaGenerale();
         pG.getExcepptionInit("cartacredito");
+        Logger.getLogger("inizializza persistenza cc").log(Level.INFO,"persistenza cc inizializza");
+
     }
 
 

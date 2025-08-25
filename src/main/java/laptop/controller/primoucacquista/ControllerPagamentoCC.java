@@ -388,12 +388,13 @@ public class ControllerPagamentoCC {
 			case "27"->finale="27";
 			case "28"->finale="28";
 			case "29"->finale="29";
-			case "30"->finale="30";
-			case "31"->finale="31";
+
 
 			default -> Logger.getLogger("getMeseGiorno").log(Level.SEVERE,"month/day is incorrect {0}",stringa);
 
 		}
+		if(stringa.equals("30")) finale="30";
+		else if (stringa.equals("31")) finale="31";
 		return finale;
 	}
 
