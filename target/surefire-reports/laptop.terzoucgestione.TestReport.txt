@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: laptop.terzoucgestione.TestReport
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.625 s - in laptop.terzoucgestione.TestReport
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.068 s - in laptop.terzoucgestione.TestReport

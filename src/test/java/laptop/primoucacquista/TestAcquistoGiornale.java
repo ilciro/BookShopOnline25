@@ -12,9 +12,7 @@ import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/*
-todo sistemare test anche db
- */
+
 
 class TestAcquistoGiornale {
 
@@ -80,7 +78,7 @@ class TestAcquistoGiornale {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"database"})
+    @ValueSource(strings = {"database","file"})
     void testAnnullaGiornaleCashDownload(String strings)  {
         vis.setTipologiaApplicazione("full");
         vis.setTypeAsDaily();
@@ -105,7 +103,7 @@ class TestAcquistoGiornale {
 
 
     @ParameterizedTest
-    @ValueSource(strings = {"database"})
+    @ValueSource(strings = {"database","file"})
     void testAnnullaGiornaleCCredito(String strings) throws  IdException{
         vis.setTipologiaApplicazione("full");
         vis.setTypeAsDaily();

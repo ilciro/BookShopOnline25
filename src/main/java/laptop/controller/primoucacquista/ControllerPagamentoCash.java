@@ -97,7 +97,7 @@ public class ControllerPagamentoCash {
 		//inserisco in pagamentoTotale
 		if(pF.inserisciPagamentoFattura(p))
 		{
-			Logger.getLogger("pagamento effettuato ").log(Level.INFO,"payment success with id object : {0}", p.toString());
+			Logger.getLogger("pagamento effettuato ").log(Level.INFO,"payment success with id object : {0}", p);
 			//database with triggers
 
 

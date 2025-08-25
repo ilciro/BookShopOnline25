@@ -14,8 +14,10 @@ public class CartaCreditoDao extends PersistenzaCC{
 
     @Override
     public void inizializza()  {
+
         DaoInitialize daoI=new DaoInitialize();
         daoI.inizializza("cartacredito");
+
 
 
     }

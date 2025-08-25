@@ -24,7 +24,7 @@ public class PersistenzaReport {
     public void inizializza()  {
         Logger.getLogger("inizializza gestione report").log(Level.INFO,"inizializza");
         PersistenzaGenerale pG=new PersistenzaGenerale();
-        pG.getExcepptionInit("report");
+        pG.getExcepptionInit("reportS");
 
 
     }
