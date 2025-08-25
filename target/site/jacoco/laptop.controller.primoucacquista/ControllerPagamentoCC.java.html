@@ -281,7 +281,7 @@ public class ControllerPagamentoCC {
 	}
 	private boolean checkCorrettezzaAnno(String[] tokensData, int i) throws IdException {
 <span class="pc bpc" id="L283" title="2 of 4 branches missed.">		if ((tokensData[0].length() == 4) &amp;&amp; (Integer.parseInt(tokensData[0]) &gt;= 2025)) {</span>
-<span class="fc" id="L284">			Logger.getLogger(&quot;anno controllato&quot;).log(Level.INFO, &quot; year is correct&quot;);</span>
+<span class="fc" id="L284">			Logger.getLogger(&quot;anno controllato&quot;).log(Level.INFO, &quot; year is correct : {0}&quot;,tokensData[0]);</span>
 <span class="fc" id="L285">			i++;</span>
 <span class="nc" id="L286">		} else throw new IdException(&quot;anno è sbagliato&quot;);</span>
 <span class="pc bpc" id="L287" title="1 of 2 branches missed.">		return i==1;</span>
@@ -290,7 +290,7 @@ public class ControllerPagamentoCC {
 <span class="pc bpc" id="L290" title="1 of 2 branches missed.">		if (tokensData[1].length() == 2)</span>
 <span class="fc" id="L291">		{	tokensData[1]=getMeseGiorno(tokensData[1]);</span>
 <span class="pc bpc" id="L292" title="2 of 4 branches missed.">			if ((Integer.parseInt(tokensData[1]) &gt;= 1 &amp;&amp; Integer.parseInt(tokensData[1]) &lt;= 12)) {</span>
-<span class="fc" id="L293">				Logger.getLogger(&quot; mese controllato&quot;).log(Level.INFO, &quot; month is correct . {0}&quot;,tokensData[1]);</span>
+<span class="fc" id="L293">				Logger.getLogger(&quot; mese controllato&quot;).log(Level.INFO, &quot; month is correct : {0}&quot;,tokensData[1]);</span>
 <span class="fc" id="L294">				i++;</span>
 <span class="nc" id="L295">			}else throw new IdException(&quot; mese è sbagliato&quot;);</span>
 		}
@@ -299,8 +299,8 @@ public class ControllerPagamentoCC {
 	private boolean checkCorrettezzaGiorno(String[] tokensData,int i) throws IdException {
 <span class="pc bpc" id="L300" title="1 of 2 branches missed.">		if (tokensData[2].length() == 2)</span>
 <span class="fc" id="L301">		{	tokensData[2]=getMeseGiorno(tokensData[2]);</span>
-<span class="pc bpc" id="L302" title="2 of 4 branches missed.">			if ((Integer.parseInt(tokensData[2]) &gt;= 1 &amp;&amp; Integer.parseInt(tokensData[2]) &lt;= 12)) {</span>
-<span class="fc" id="L303">				Logger.getLogger(&quot;giorno controllato&quot;).log(Level.INFO, &quot; giorno is correct . {0}&quot;,tokensData[1]);</span>
+<span class="pc bpc" id="L302" title="2 of 4 branches missed.">			if ((Integer.parseInt(tokensData[2]) &gt;= 1 &amp;&amp; Integer.parseInt(tokensData[2]) &lt;= 31)) {</span>
+<span class="fc" id="L303">				Logger.getLogger(&quot;giorno controllato&quot;).log(Level.INFO, &quot; giorno is correct : {0}&quot;,tokensData[2]);</span>
 <span class="fc" id="L304">				i++;</span>
 <span class="nc" id="L305">			}else throw new IdException(&quot;giorno è sbagliato&quot;);</span>
 		}
@@ -357,13 +357,13 @@ public class ControllerPagamentoCC {
 	private String getMeseGiorno(String stringa)
 	{
 <span class="fc" id="L359">		String finale=&quot;&quot;;</span>
-<span class="pc bpc" id="L360" title="10 of 13 branches missed.">		switch (stringa)</span>
+<span class="pc bpc" id="L360" title="27 of 32 branches missed.">		switch (stringa)</span>
 		{
 <span class="nc" id="L362">			case &quot;01&quot;-&gt; finale=&quot;1&quot;;</span>
 <span class="nc" id="L363">			case &quot;02&quot;-&gt; finale=&quot;2&quot;;</span>
 <span class="nc" id="L364">			case &quot;03&quot;-&gt; finale=&quot;3&quot;;</span>
 <span class="nc" id="L365">			case &quot;04&quot;-&gt; finale=&quot;4&quot;;</span>
-<span class="nc" id="L366">			case &quot;05&quot;-&gt; finale=&quot;5&quot;;</span>
+<span class="fc" id="L366">			case &quot;05&quot;-&gt; finale=&quot;5&quot;;</span>
 <span class="nc" id="L367">			case &quot;06&quot;-&gt; finale=&quot;6&quot;;</span>
 <span class="nc" id="L368">			case &quot;07&quot;-&gt; finale=&quot;7&quot;;</span>
 <span class="fc" id="L369">			case &quot;08&quot;-&gt; finale=&quot;8&quot;;</span>
@@ -371,15 +371,35 @@ public class ControllerPagamentoCC {
 <span class="nc" id="L371">			case &quot;10&quot;-&gt;finale=&quot;10&quot;;</span>
 <span class="fc" id="L372">			case &quot;11&quot;-&gt;finale=&quot;11&quot;;</span>
 <span class="nc" id="L373">			case &quot;12&quot;-&gt;finale=&quot;12&quot;;</span>
-<span class="nc" id="L374">			default -&gt; Logger.getLogger(&quot;getMeseGiorno&quot;).log(Level.SEVERE,&quot;month/day is incorrect&quot;);</span>
+<span class="nc" id="L374">			case &quot;13&quot;-&gt;finale=&quot;13&quot;;</span>
+<span class="nc" id="L375">			case &quot;14&quot;-&gt;finale=&quot;14&quot;;</span>
+<span class="nc" id="L376">			case &quot;15&quot;-&gt;finale=&quot;15&quot;;</span>
+<span class="nc" id="L377">			case &quot;16&quot;-&gt;finale=&quot;16&quot;;</span>
+<span class="nc" id="L378">			case &quot;17&quot;-&gt;finale=&quot;17&quot;;</span>
+<span class="nc" id="L379">			case &quot;18&quot;-&gt;finale=&quot;18&quot;;</span>
+<span class="nc" id="L380">			case &quot;19&quot;-&gt;finale=&quot;19&quot;;</span>
+<span class="nc" id="L381">			case &quot;20&quot;-&gt;finale=&quot;20&quot;;</span>
+<span class="nc" id="L382">			case &quot;21&quot;-&gt;finale=&quot;21&quot;;</span>
+<span class="nc" id="L383">			case &quot;22&quot;-&gt;finale=&quot;22&quot;;</span>
+<span class="nc" id="L384">			case &quot;23&quot;-&gt;finale=&quot;23&quot;;</span>
+<span class="nc" id="L385">			case &quot;24&quot;-&gt;finale=&quot;24&quot;;</span>
+<span class="fc" id="L386">			case &quot;25&quot;-&gt;finale=&quot;25&quot;;</span>
+<span class="nc" id="L387">			case &quot;26&quot;-&gt;finale=&quot;26&quot;;</span>
+<span class="nc" id="L388">			case &quot;27&quot;-&gt;finale=&quot;27&quot;;</span>
+<span class="nc" id="L389">			case &quot;28&quot;-&gt;finale=&quot;28&quot;;</span>
+<span class="nc" id="L390">			case &quot;29&quot;-&gt;finale=&quot;29&quot;;</span>
+<span class="nc" id="L391">			case &quot;30&quot;-&gt;finale=&quot;30&quot;;</span>
+<span class="nc" id="L392">			case &quot;31&quot;-&gt;finale=&quot;31&quot;;</span>
+
+<span class="nc" id="L394">			default -&gt; Logger.getLogger(&quot;getMeseGiorno&quot;).log(Level.SEVERE,&quot;month/day is incorrect {0}&quot;,stringa);</span>
 
 		}
-<span class="fc" id="L377">		return finale;</span>
+<span class="fc" id="L397">		return finale;</span>
 	}
 
 	private boolean checkInteger(String civ)
 	{
-<span class="fc" id="L382">		return civ.matches(&quot;\\d+&quot;);</span>
+<span class="fc" id="L402">		return civ.matches(&quot;\\d+&quot;);</span>
 	}
 }
 

@@ -87,9 +87,9 @@ import java.util.logging.Logger;
 <span class="fc" id="L87">        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(LOCATIONCC)))) {</span>
 
 <span class="fc bfc" id="L89" title="All 2 branches covered.">            while ((gVector = csvReader.readNext()) != null) {</span>
-<span class="pc bpc" id="L90" title="3 of 4 branches missed.">                recordFound = gVector[GETINDEXNOME].equals(cc.getNomeUser()) || gVector[GETINDEXCODICE].equals(cc.getNumeroCC());</span>
+<span class="fc bfc" id="L90" title="All 4 branches covered.">                recordFound = gVector[GETINDEXNOME].equals(cc.getNomeUser()) || gVector[GETINDEXCODICE].equals(cc.getNumeroCC());</span>
 
-<span class="pc bpc" id="L92" title="1 of 2 branches missed.">                if (recordFound) {</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">                if (recordFound) {</span>
 <span class="fc" id="L93">                    CartaDiCredito cc1 = new CartaDiCredito();</span>
 <span class="fc" id="L94">                    cc1.setNomeUser(gVector[GETINDEXNOME]);</span>
 <span class="fc" id="L95">                    cc1.setNumeroCC(gVector[GETINDEXCODICE]);</span>

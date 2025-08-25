@@ -281,7 +281,7 @@ public class ControllerPagamentoCC {
 	}
 	private boolean checkCorrettezzaAnno(String[] tokensData, int i) throws IdException {
 		if ((tokensData[0].length() == 4) && (Integer.parseInt(tokensData[0]) >= 2025)) {
-			Logger.getLogger("anno controllato").log(Level.INFO, " year is correct");
+			Logger.getLogger("anno controllato").log(Level.INFO, " year is correct : {0}",tokensData[0]);
 			i++;
 		} else throw new IdException("anno è sbagliato");
 		return i==1;
@@ -290,7 +290,7 @@ public class ControllerPagamentoCC {
 		if (tokensData[1].length() == 2)
 		{	tokensData[1]=getMeseGiorno(tokensData[1]);
 			if ((Integer.parseInt(tokensData[1]) >= 1 && Integer.parseInt(tokensData[1]) <= 12)) {
-				Logger.getLogger(" mese controllato").log(Level.INFO, " month is correct . {0}",tokensData[1]);
+				Logger.getLogger(" mese controllato").log(Level.INFO, " month is correct : {0}",tokensData[1]);
 				i++;
 			}else throw new IdException(" mese è sbagliato");
 		}
@@ -299,8 +299,8 @@ public class ControllerPagamentoCC {
 	private boolean checkCorrettezzaGiorno(String[] tokensData,int i) throws IdException {
 		if (tokensData[2].length() == 2)
 		{	tokensData[2]=getMeseGiorno(tokensData[2]);
-			if ((Integer.parseInt(tokensData[2]) >= 1 && Integer.parseInt(tokensData[2]) <= 12)) {
-				Logger.getLogger("giorno controllato").log(Level.INFO, " giorno is correct . {0}",tokensData[1]);
+			if ((Integer.parseInt(tokensData[2]) >= 1 && Integer.parseInt(tokensData[2]) <= 31)) {
+				Logger.getLogger("giorno controllato").log(Level.INFO, " giorno is correct : {0}",tokensData[2]);
 				i++;
 			}else throw new IdException("giorno è sbagliato");
 		}
@@ -371,7 +371,27 @@ public class ControllerPagamentoCC {
 			case "10"->finale="10";
 			case "11"->finale="11";
 			case "12"->finale="12";
-			default -> Logger.getLogger("getMeseGiorno").log(Level.SEVERE,"month/day is incorrect");
+			case "13"->finale="13";
+			case "14"->finale="14";
+			case "15"->finale="15";
+			case "16"->finale="16";
+			case "17"->finale="17";
+			case "18"->finale="18";
+			case "19"->finale="19";
+			case "20"->finale="20";
+			case "21"->finale="21";
+			case "22"->finale="22";
+			case "23"->finale="23";
+			case "24"->finale="24";
+			case "25"->finale="25";
+			case "26"->finale="26";
+			case "27"->finale="27";
+			case "28"->finale="28";
+			case "29"->finale="29";
+			case "30"->finale="30";
+			case "31"->finale="31";
+
+			default -> Logger.getLogger("getMeseGiorno").log(Level.SEVERE,"month/day is incorrect {0}",stringa);
 
 		}
 		return finale;

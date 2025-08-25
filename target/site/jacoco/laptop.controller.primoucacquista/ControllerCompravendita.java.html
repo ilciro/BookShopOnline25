@@ -93,12 +93,12 @@ import laptop.database.primoucacquista.libro.PersistenzaLibro;
 	public boolean checkId(int id,String type,String typeObj)  {
 <span class="fc" id="L94">		 boolean status=true;</span>
 		 try {
-<span class="pc bpc" id="L96" title="2 of 4 branches missed.">			if (id &lt;= 0 || id &gt; getLista(typeObj, type).size())</span>
-<span class="nc" id="L97">				throw new IdException(&quot;id is wrong!! grater than size&quot;);</span>
-<span class="nc" id="L98">		}catch (IdException  e)</span>
+<span class="pc bpc" id="L96" title="1 of 4 branches missed.">			if (id &lt;= 0 || id &gt; getLista(typeObj, type).size())</span>
+<span class="fc" id="L97">				throw new IdException(&quot;id is wrong!! grater than size&quot;);</span>
+<span class="fc" id="L98">		}catch (IdException  e)</span>
 		{
-<span class="nc" id="L100">			Logger.getLogger(&quot;checkId&quot;).log(Level.SEVERE,e.getMessage());</span>
-<span class="nc" id="L101">			status=false;</span>
+<span class="fc" id="L100">			Logger.getLogger(&quot;checkId&quot;).log(Level.SEVERE,e.getMessage());</span>
+<span class="fc" id="L101">			status=false;</span>
 <span class="fc" id="L102">		}</span>
 <span class="fc" id="L103">		 return status;</span>
 	}
