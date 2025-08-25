@@ -79,6 +79,8 @@ public class ControllerAcquista {
 				dati[1]= String.valueOf(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getPrezzo());
 				dati[2]= String.valueOf(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getNrCopie());
 
+				Logger.getLogger("getNomeCostoDispL").log(Level.INFO,"buying book :{0}",l.toString());
+
 			}
 
 
@@ -96,6 +98,8 @@ public class ControllerAcquista {
 				dati[0] = pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getTitolo();
 				dati[1]= String.valueOf(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getPrezzo());
 				dati[2]= String.valueOf(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCopieRimanenti());
+				Logger.getLogger("getNomeCostoDispG").log(Level.INFO,"buying daily :{0}",g.toString());
+
 
 
 			}
@@ -112,6 +116,8 @@ public class ControllerAcquista {
 				dati[0] = pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getTitolo();
 				dati[1]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getPrezzo());
 				dati[2]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getNrCopie());
+				Logger.getLogger("getNomeCostoDispR").log(Level.INFO,"buying magazine :{0}",r.toString());
+
 
 
 			}

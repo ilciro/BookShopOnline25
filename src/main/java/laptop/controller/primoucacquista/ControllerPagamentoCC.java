@@ -74,6 +74,7 @@ public class ControllerPagamentoCC {
 	public ControllerPagamentoCC() {
 		Logger.getLogger("controlla pagamento cc").log(Level.INFO,"costructor");
 
+
 	}
 
 
@@ -202,8 +203,9 @@ public class ControllerPagamentoCC {
 		
 		
         if(pCC.inserisciPagamentoCartaCredito(p)) {
-			Logger.getLogger("pagamento effettuato ").log(Level.INFO," payment success with id . {0}", p.getIdPagCC());
-			
+			Logger.getLogger("pagamento effettuato ").log(Level.INFO," payment success with id . {0}", p.toString());
+
+
 		}
 		//creo report cc
 		switch (database) {

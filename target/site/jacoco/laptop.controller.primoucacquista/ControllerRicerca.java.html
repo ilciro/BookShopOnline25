@@ -48,11 +48,11 @@ import java.util.logging.Logger;
     public ObservableList&lt;Raccolta&gt; listaLibri(String nome, String persistenza)  {
 
 <span class="fc" id="L50">        ObservableList&lt;Raccolta&gt; listaR=FXCollections.observableArrayList();</span>
-<span class="pc bpc" id="L51" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L51" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
 <span class="fc" id="L53">            case DATABASE -&gt; pL=new LibroDao();</span>
 <span class="fc" id="L54">            case FILE -&gt; pL=new CsvLibro();</span>
-<span class="nc" id="L55">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
+<span class="fc" id="L55">            case MEMORIA -&gt; pL=new MemoriaLibro();</span>
 <span class="nc" id="L56">            default -&gt; Logger.getLogger(&quot;id oggetto libro&quot;).log(Level.SEVERE,&quot; id book in null or zero&quot;);</span>
         }
 <span class="fc" id="L58">        Libro l=new Libro();</span>
@@ -77,11 +77,11 @@ import java.util.logging.Logger;
     public ObservableList&lt;Raccolta&gt; listaGiornali(String nome, String persistenza)  {
 
 <span class="fc" id="L79">        ObservableList&lt;Raccolta&gt; listaR=FXCollections.observableArrayList();</span>
-<span class="pc bpc" id="L80" title="2 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L80" title="1 of 4 branches missed.">        switch (persistenza)</span>
         {
 <span class="fc" id="L82">            case DATABASE -&gt; pG=new GiornaleDao();</span>
 <span class="fc" id="L83">            case FILE -&gt; pG=new CsvGiornale();</span>
-<span class="nc" id="L84">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
+<span class="fc" id="L84">            case MEMORIA -&gt; pG=new MemoriaGiornale();</span>
 <span class="nc" id="L85">            default -&gt; Logger.getLogger(&quot;id oggetto giornale&quot;).log(Level.SEVERE,&quot; id daily in null or zero&quot;);</span>
         }
 <span class="fc" id="L87">        Giornale g=new Giornale();</span>
@@ -104,11 +104,11 @@ import java.util.logging.Logger;
     public ObservableList&lt;Raccolta&gt; listaRiviste(String nome, String persistenza)  {
 
 <span class="fc" id="L106">        ObservableList&lt;Raccolta&gt; listaR=FXCollections.observableArrayList();</span>
-<span class="pc bpc" id="L107" title="3 of 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L107" title="2 of 4 branches missed.">        switch (persistenza)</span>
         {
 <span class="fc" id="L109">            case DATABASE -&gt; pR=new RivistaDao();</span>
 <span class="nc" id="L110">            case FILE -&gt; pR=new CsvRivista();</span>
-<span class="nc" id="L111">            case MEMORIA -&gt; pR=new MemoriaRivista();</span>
+<span class="fc" id="L111">            case MEMORIA -&gt; pR=new MemoriaRivista();</span>
 <span class="nc" id="L112">            default -&gt; Logger.getLogger(&quot;id oggetto rivista&quot;).log(Level.SEVERE,&quot; id magazine in null or zero&quot;);</span>
         }
 <span class="fc" id="L114">        Rivista r=new Rivista();</span>
@@ -131,22 +131,22 @@ import java.util.logging.Logger;
     }
 
     public boolean logout(String persistenza)  {
-<span class="nc" id="L134">        boolean status=false;</span>
-<span class="nc bnc" id="L135" title="All 4 branches missed.">        switch (persistenza)</span>
+<span class="fc" id="L134">        boolean status=false;</span>
+<span class="pc bpc" id="L135" title="3 of 4 branches missed.">        switch (persistenza)</span>
         {
 <span class="nc" id="L137">            case DATABASE -&gt; pU=new UsersDao();</span>
 <span class="nc" id="L138">            case FILE -&gt; pU=new CsvUtente();</span>
-<span class="nc" id="L139">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
+<span class="fc" id="L139">            case MEMORIA -&gt; pU=new MemoriaUtente();</span>
 <span class="nc" id="L140">            default -&gt; Logger.getLogger(&quot;logout&quot;).log(Level.SEVERE,&quot; persistency logout is wrong!!&quot;);</span>
         }
-<span class="nc" id="L142">        pU.initializza();</span>
-<span class="nc bnc" id="L143" title="All 4 branches missed.">        if(u.getEmail()!=null &amp;&amp; u.getPassword()!=null) status=true;</span>
+<span class="fc" id="L142">        pU.initializza();</span>
+<span class="pc bpc" id="L143" title="2 of 4 branches missed.">        if(u.getEmail()!=null &amp;&amp; u.getPassword()!=null) status=true;</span>
         else {
 <span class="nc" id="L145">            TempUser tu = getTempUser();</span>
 <span class="nc bnc" id="L146" title="All 2 branches missed.">            if(tu.getEmailT()==null) status=true;</span>
 
         }
-<span class="nc" id="L149">        return status;</span>
+<span class="fc" id="L149">        return status;</span>
 
     }
 

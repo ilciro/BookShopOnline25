@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="demo.terzoucgestione.TestGestioneOrdini" time="1.018" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="demo.terzoucgestione.TestGestioneOrdini" time="0.825" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IT"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter2046934243512204170.jar /home/daniele/IdeaProjects/BookShopOnline25/target/surefire 2025-08-22T13-17-25_926-jvmRun1 surefire4044926276368518918tmp surefire_04848575103041822136tmp"/>
+    <property name="sun.java.command" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter17446422103724949762.jar /home/daniele/IdeaProjects/BookShopOnline25/target/surefire 2025-08-25T10-30-06_833-jvmRun1 surefire17523237147722811173tmp surefire_02757571546578970288tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/daniele/IdeaProjects/BookShopOnline25/target/test-classes:/home/daniele/IdeaProjects/BookShopOnline25/target/classes:/home/daniele/.m2/repository/com/opencsv/opencsv/5.7.1/opencsv-5.7.1.jar:/home/daniele/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:/home/daniele/.m2/repository/org/apache/commons/commons-text/1.10.0/commons-text-1.10.0.jar:/home/daniele/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/home/daniele/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/home/daniele/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/daniele/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/home/daniele/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/daniele/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/home/daniele/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/home/daniele/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:/home/daniele/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17-linux.jar:/home/daniele/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17-linux.jar:/home/daniele/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17-linux.jar:/home/daniele/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17-linux.jar:/home/daniele/.m2/repository/com/mysql/mysql-connector-j/8.2.0/mysql-connector-j-8.2.0.jar:/home/daniele/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar:/home/daniele/.m2/repository/com/itextpdf/itextpdf/5.5.13.3/itextpdf-5.5.13.3.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v131/4.27.0/selenium-devtools-v131-4.27.0.jar:/home/daniele/.m2/repository/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-api/4.27.0/selenium-api-4.27.0.jar:/home/daniele/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-json/4.27.0/selenium-json-4.27.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.27.0/selenium-remote-driver-4.27.0.jar:/home/daniele/.m2/repository/com/google/guava/guava/33.3.1-jre/guava-33.3.1-jre.jar:/home/daniele/.m2/repository/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.jar:/home/daniele/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/home/daniele/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/daniele/.m2/repository/org/checkerframework/checker-qual/3.43.0/checker-qual-3.43.0.jar:/home/daniele/.m2/repository/com/google/errorprone/error_prone_annotations/2.28.0/error_prone_annotations-2.28.0.jar:/home/daniele/.m2/repository/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.jar:/home/daniele/.m2/repository/io/opentelemetry/semconv/opentelemetry-semconv/1.25.0-alpha/opentelemetry-semconv-1.25.0-alpha.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-api/1.44.1/opentelemetry-api-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-context/1.44.1/opentelemetry-context-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-exporter-logging/1.44.1/opentelemetry-exporter-logging-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-common/1.44.1/opentelemetry-sdk-common-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.44.1/opentelemetry-sdk-extension-autoconfigure-spi-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.44.1/opentelemetry-sdk-extension-autoconfigure-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-api-incubator/1.44.1-alpha/opentelemetry-api-incubator-1.44.1-alpha.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-trace/1.44.1/opentelemetry-sdk-trace-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk/1.44.1/opentelemetry-sdk-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-metrics/1.44.1/opentelemetry-sdk-metrics-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-logs/1.44.1/opentelemetry-sdk-logs-1.44.1.jar:/home/daniele/.m2/repository/net/bytebuddy/byte-buddy/1.15.10/byte-buddy-1.15.10.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-http/4.27.0/selenium-http-4.27.0.jar:/home/daniele/.m2/repository/dev/failsafe/failsafe/3.3.2/failsafe-3.3.2.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-os/4.27.0/selenium-os-4.27.0.jar:/home/daniele/.m2/repository/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.jar:/home/daniele/.m2/repository/org/glassfish/web/jakarta.servlet.jsp.jstl/3.0.1/jakarta.servlet.jsp.jstl-3.0.1.jar:/home/daniele/.m2/repository/jakarta/servlet/jsp/jstl/jakarta.servlet.jsp.jstl-api/3.0.0/jakarta.servlet.jsp.jstl-api-3.0.0.jar:/home/daniele/.m2/repository/jakarta/servlet/jakarta.servlet-api/6.0.0/jakarta.servlet-api-6.0.0.jar:/home/daniele/.m2/repository/jakarta/el/jakarta.el-api/5.0.0/jakarta.el-api-5.0.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/4.27.0/selenium-chrome-driver-4.27.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-chromium-driver/4.27.0/selenium-chromium-driver-4.27.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-manager/4.27.0/selenium-manager-4.27.0.jar:/home/daniele/.m2/repository/org/sonarsource/scanner/maven/sonar-maven-plugin/4.0.0.4121/sonar-maven-plugin-4.0.0.4121.jar:/home/daniele/.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.jar:/home/daniele/.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar:/home/daniele/.m2/repository/org/sonarsource/scanner/api/sonar-scanner-api/2.16.3.1081/sonar-scanner-api-2.16.3.1081.jar:/home/daniele/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar:/home/daniele/.m2/repository/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.jar:/home/daniele/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/daniele/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar:/home/daniele/.m2/repository/org/codehaus/mojo/build-helper-maven-plugin/3.4.0/build-helper-maven-plugin-3.4.0.jar:/home/daniele/.m2/repository/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar:/home/daniele/.m2/repository/org/apache-extras/beanshell/bsh/2.0b6/bsh-2.0b6.jar:/home/daniele/.m2/repository/org/apache/maven/shared/file-management/3.1.0/file-management-3.1.0.jar:/home/daniele/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/home/daniele/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/home/daniele/.m2/repository/org/jetbrains/annotations/15.0/annotations-15.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter2046934243512204170.jar"/>
+    <property name="surefire.real.class.path" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter17446422103724949762.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.16+8-Ubuntu-0ubuntu124.04.1"/>
     <property name="user.name" value="daniele"/>
@@ -55,12 +55,16 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testAnnullaOrdineCashByUserLogged" classname="demo.terzoucgestione.TestGestioneOrdini" time="0.96">
-    <system-err><![CDATA[ago 22, 2025 1:17:28 PM laptop.controller.primoucacquista.ControllerPagamentoCash <init>
+  <testcase name="testAnnullaOrdineCashByUserLogged" classname="demo.terzoucgestione.TestGestioneOrdini" time="0.791">
+    <system-err><![CDATA[ago 25, 2025 10:30:08 AM laptop.controller.primoucacquista.ControllerPagamentoCash <init>
 INFORMAZIONI: costructor
-ago 22, 2025 1:17:28 PM laptop.controller.primoucacquista.ControllerPagamentoCC <init>
+ago 25, 2025 10:30:08 AM laptop.controller.primoucacquista.ControllerPagamentoCC <init>
 INFORMAZIONI: costructor
-ago 22, 2025 1:17:28 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+ago 25, 2025 10:30:08 AM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
+INFORMAZIONI: buying book :Libro{titolo='null', editore='null', autore='null', id=10}
+ago 25, 2025 10:30:08 AM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
+INFORMAZIONI: buying book :Libro{titolo='null', editore='null', autore='null', id=10}
+ago 25, 2025 10:30:08 AM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 GRAVE: error with file :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -70,7 +74,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
 	at java.base/java.nio.file.Files.createFile(Files.java:658)
 	at laptop.database.primoucacquista.pagamentofattura.MemoriaFattura.inizializza(MemoriaFattura.java:109)
-	at laptop.controller.primoucacquista.ControllerPagamentoCash.controlla(ControllerPagamentoCash.java:73)
+	at laptop.controller.primoucacquista.ControllerPagamentoCash.controlla(ControllerPagamentoCash.java:71)
 	at demo.terzoucgestione.TestGestioneOrdini.testAnnullaOrdineCashByUserLogged(TestGestioneOrdini.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
@@ -144,7 +148,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:28 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 25, 2025 10:30:08 AM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -155,7 +159,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at java.base/java.nio.file.Files.createFile(Files.java:658)
 	at laptop.database.PagamentoTotalePersistenza.<init>(PagamentoTotalePersistenza.java:66)
 	at laptop.database.primoucacquista.pagamentofattura.MemoriaFattura.inizializza(MemoriaFattura.java:115)
-	at laptop.controller.primoucacquista.ControllerPagamentoCash.controlla(ControllerPagamentoCash.java:73)
+	at laptop.controller.primoucacquista.ControllerPagamentoCash.controlla(ControllerPagamentoCash.java:71)
 	at demo.terzoucgestione.TestGestioneOrdini.testAnnullaOrdineCashByUserLogged(TestGestioneOrdini.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
@@ -229,25 +233,25 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:28 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inserisciPagamentoFattura
+ago 25, 2025 10:30:08 AM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inserisciPagamentoFattura
 INFORMAZIONI: fattura is wrote [PagamentoFattura{nome='prova', cognome='prova', ammontare=12.0, idFattura=1, email='', idProdotto=6}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=9.99, idFattura=3, email='giuliaConforto@gmail.eu', idProdotto=8}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=22.0, idFattura=4, email='giuliaConforto@gmail.eu', idProdotto=10}]
-ago 22, 2025 1:17:28 PM laptop.database.PagamentoTotalePersistenza lista
+ago 25, 2025 10:30:08 AM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI:  list read [PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=5.0, emailT='', tipoAcquistoT='MENSILE', idProdottoT=1, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=1, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='Editore Prova', cognomeT='Editore Prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=2}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=9.99, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='INFORMATICA', idProdottoT=8, idFatturaT=3, idPagCCT=0}]
-ago 22, 2025 1:17:28 PM laptop.database.PagamentoTotalePersistenza lista
+ago 25, 2025 10:30:08 AM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI: list :[PagamentoFattura{nome='prova', cognome='prova', ammontare=12.0, idFattura=1, email='', idProdotto=6}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=9.99, idFattura=3, email='giuliaConforto@gmail.eu', idProdotto=8}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=22.0, idFattura=4, email='giuliaConforto@gmail.eu', idProdotto=10}]
-ago 22, 2025 1:17:28 PM laptop.database.PagamentoTotalePersistenza lista
+ago 25, 2025 10:30:08 AM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI: list tota payments [PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=5.0, emailT='', tipoAcquistoT='MENSILE', idProdottoT=1, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=1, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='Editore Prova', cognomeT='Editore Prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=2}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=9.99, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='INFORMATICA', idProdottoT=8, idFatturaT=3, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=9.99, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='INFORMATICA', idProdottoT=8, idFatturaT=3, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=22.0, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='FUMETTI_MANGA', idProdottoT=10, idFatturaT=4, idPagCCT=0}]
-ago 22, 2025 1:17:28 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
-INFORMAZIONI: payment success with id object : 10
-ago 22, 2025 1:17:28 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
+ago 25, 2025 10:30:08 AM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
+INFORMAZIONI: payment success with id object : PagamentoFattura{nome='giulia', cognome='conforto', ammontare=22.0, idFattura=4, email='giuliaConforto@gmail.eu', idProdotto=10}
+ago 25, 2025 10:30:08 AM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
 INFORMAZIONI: repo cash correct inserted
-ago 22, 2025 1:17:29 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
+ago 25, 2025 10:30:09 AM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
 INFORMAZIONI:  id eliminated book 9
-ago 22, 2025 1:17:29 PM laptop.database.MemoryInitialize inserisci
+ago 25, 2025 10:30:09 AM laptop.database.MemoryInitialize inserisci
 INFORMAZIONI: inserted libro in list :
-ago 22, 2025 1:17:29 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
+ago 25, 2025 10:30:09 AM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
 INFORMAZIONI: update book succesfully!!
-ago 22, 2025 1:17:29 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+ago 25, 2025 10:30:09 AM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 GRAVE: error with file :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -331,7 +335,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:29 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 25, 2025 10:30:09 AM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -416,9 +420,9 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:29 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura listPagamentiByUserF
+ago 25, 2025 10:30:09 AM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura listPagamentiByUserF
 INFORMAZIONI: list payment by user : [PagamentoFattura{nome='prova', cognome='prova', ammontare=12.0, idFattura=1, email='', idProdotto=6}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=9.99, idFattura=3, email='giuliaConforto@gmail.eu', idProdotto=8}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=22.0, idFattura=4, email='giuliaConforto@gmail.eu', idProdotto=10}]
-ago 22, 2025 1:17:29 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+ago 25, 2025 10:30:09 AM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 GRAVE: error with file :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -502,7 +506,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:29 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 25, 2025 10:30:09 AM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -587,9 +591,9 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:29 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura listPagamentiByUserF
+ago 25, 2025 10:30:09 AM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura listPagamentiByUserF
 INFORMAZIONI: list payment by user : [PagamentoFattura{nome='prova', cognome='prova', ammontare=12.0, idFattura=1, email='', idProdotto=6}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=9.99, idFattura=3, email='giuliaConforto@gmail.eu', idProdotto=8}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=22.0, idFattura=4, email='giuliaConforto@gmail.eu', idProdotto=10}]
-ago 22, 2025 1:17:29 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+ago 25, 2025 10:30:09 AM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 GRAVE: error with file :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -673,7 +677,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:29 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 25, 2025 10:30:09 AM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -758,7 +762,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:29 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 25, 2025 10:30:09 AM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -843,24 +847,28 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:29 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura cancellaPagamentoFattura
+ago 25, 2025 10:30:09 AM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura cancellaPagamentoFattura
 INFORMAZIONI: id fattura :.
-ago 22, 2025 1:17:29 PM laptop.database.PagamentoTotalePersistenza cancellaFatturaMem
+ago 25, 2025 10:30:09 AM laptop.database.PagamentoTotalePersistenza cancellaFatturaMem
 INFORMAZIONI: id payment :.
-ago 22, 2025 1:17:29 PM demo.terzoucgestione.TestGestioneOrdini testAnnullaOrdineCashByUserLogged
+ago 25, 2025 10:30:09 AM demo.terzoucgestione.TestGestioneOrdini testAnnullaOrdineCashByUserLogged
 INFORMAZIONI:  status : true
-ago 22, 2025 1:17:29 PM laptop.model.user.User annullaUtente
+ago 25, 2025 10:30:09 AM laptop.model.user.User annullaUtente
 INFORMAZIONI:  user data is cleaned
 ]]></system-err>
   </testcase>
-  <testcase name="testAnnullaOrdineCCByUSerLogged" classname="demo.terzoucgestione.TestGestioneOrdini" time="0.053">
-    <system-err><![CDATA[ago 22, 2025 1:17:29 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaAnno
+  <testcase name="testAnnullaOrdineCCByUSerLogged" classname="demo.terzoucgestione.TestGestioneOrdini" time="0.03">
+    <system-err><![CDATA[ago 25, 2025 10:30:09 AM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
+INFORMAZIONI: buying magazine :Rivista{titolo='null', editore='null', id=2, autore='null'}
+ago 25, 2025 10:30:09 AM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
+INFORMAZIONI: buying magazine :Rivista{titolo='null', editore='null', id=2, autore='null'}
+ago 25, 2025 10:30:09 AM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaAnno
 INFORMAZIONI:  year is correct
-ago 22, 2025 1:17:29 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaMese
+ago 25, 2025 10:30:09 AM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaMese
 INFORMAZIONI:  month is correct . 9
-ago 22, 2025 1:17:29 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaGiorno
+ago 25, 2025 10:30:09 AM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaGiorno
 INFORMAZIONI:  giorno is correct . 9
-ago 22, 2025 1:17:29 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 25, 2025 10:30:09 AM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -871,7 +879,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at java.base/java.nio.file.Files.createFile(Files.java:658)
 	at laptop.database.PagamentoTotalePersistenza.<init>(PagamentoTotalePersistenza.java:66)
 	at laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito.inizializza(MemoriaPagamentoCartaCredito.java:35)
-	at laptop.controller.primoucacquista.ControllerPagamentoCC.pagamentoCC(ControllerPagamentoCC.java:190)
+	at laptop.controller.primoucacquista.ControllerPagamentoCC.pagamentoCC(ControllerPagamentoCC.java:191)
 	at demo.terzoucgestione.TestGestioneOrdini.testAnnullaOrdineCCByUSerLogged(TestGestioneOrdini.java:78)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
@@ -945,21 +953,21 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:29 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito inserisciPagamentoCartaCredito
+ago 25, 2025 10:30:09 AM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito inserisciPagamentoCartaCredito
 INFORMAZIONI: payment is wrote [PagamentoCartaCredito{idProdotto=3, cognomeUtente='prova', idPagCC=1, nomeUtente='prova', spesaTotale=2.0, email=''}, PagamentoCartaCredito{idProdotto=3, cognomeUtente='Editore Prova', idPagCC=2, nomeUtente='Editore Prova', spesaTotale=2.0, email=''}, PagamentoCartaCredito{idProdotto=2, cognomeUtente='prova', idPagCC=3, nomeUtente='prova', spesaTotale=2.0, email='giuliaConforto@gmail.eu'}]
-ago 22, 2025 1:17:29 PM laptop.database.PagamentoTotalePersistenza lista
+ago 25, 2025 10:30:09 AM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI:  list read [PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=5.0, emailT='', tipoAcquistoT='MENSILE', idProdottoT=1, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=1, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='Editore Prova', cognomeT='Editore Prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=2}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=9.99, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='INFORMATICA', idProdottoT=8, idFatturaT=3, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=9.99, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='INFORMATICA', idProdottoT=8, idFatturaT=3, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=22.0, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='FUMETTI_MANGA', idProdottoT=10, idFatturaT=4, idPagCCT=0}]
-ago 22, 2025 1:17:29 PM laptop.database.PagamentoTotalePersistenza lista
+ago 25, 2025 10:30:09 AM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI: list tota payments [PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=5.0, emailT='', tipoAcquistoT='MENSILE', idProdottoT=1, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=1, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='Editore Prova', cognomeT='Editore Prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=2}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=9.99, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='INFORMATICA', idProdottoT=8, idFatturaT=3, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=9.99, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='INFORMATICA', idProdottoT=8, idFatturaT=3, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=22.0, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='FUMETTI_MANGA', idProdottoT=10, idFatturaT=4, idPagCCT=0}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='Editore Prova', cognomeT='Editore Prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=2}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='MENSILE', idProdottoT=2, idFatturaT=0, idPagCCT=3}]
-ago 22, 2025 1:17:29 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
+ago 25, 2025 10:30:09 AM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
 INFORMAZIONI: repo cc correct inserted
-ago 22, 2025 1:17:29 PM laptop.controller.primoucacquista.ControllerDownload acquistaRivista
+ago 25, 2025 10:30:09 AM laptop.controller.primoucacquista.ControllerDownload acquistaRivista
 INFORMAZIONI:  id eliminated magazine1
-ago 22, 2025 1:17:29 PM laptop.database.MemoryInitialize inserisci
+ago 25, 2025 10:30:09 AM laptop.database.MemoryInitialize inserisci
 INFORMAZIONI: inserted rivista in list : 
-ago 22, 2025 1:17:29 PM laptop.controller.primoucacquista.ControllerDownload acquistaRivista
+ago 25, 2025 10:30:09 AM laptop.controller.primoucacquista.ControllerDownload acquistaRivista
 INFORMAZIONI: update magazine succesfully!!
-ago 22, 2025 1:17:29 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+ago 25, 2025 10:30:09 AM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 GRAVE: error with file :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -1043,7 +1051,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:29 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 25, 2025 10:30:09 AM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -1128,9 +1136,9 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:29 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura listPagamentiByUserF
+ago 25, 2025 10:30:09 AM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura listPagamentiByUserF
 INFORMAZIONI: list payment by user : [PagamentoFattura{nome='prova', cognome='prova', ammontare=12.0, idFattura=1, email='', idProdotto=6}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=9.99, idFattura=3, email='giuliaConforto@gmail.eu', idProdotto=8}]
-ago 22, 2025 1:17:29 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+ago 25, 2025 10:30:09 AM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 GRAVE: error with file :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -1214,7 +1222,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:29 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 25, 2025 10:30:09 AM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -1299,9 +1307,9 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:29 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura listPagamentiByUserF
+ago 25, 2025 10:30:09 AM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura listPagamentiByUserF
 INFORMAZIONI: list payment by user : [PagamentoFattura{nome='prova', cognome='prova', ammontare=12.0, idFattura=1, email='', idProdotto=6}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=9.99, idFattura=3, email='giuliaConforto@gmail.eu', idProdotto=8}]
-ago 22, 2025 1:17:29 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+ago 25, 2025 10:30:09 AM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 GRAVE: error with file :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -1385,7 +1393,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:29 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 25, 2025 10:30:09 AM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -1470,7 +1478,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:29 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 25, 2025 10:30:09 AM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -1555,13 +1563,13 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 22, 2025 1:17:29 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito cancellaPagamentoCartaCredito
+ago 25, 2025 10:30:09 AM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito cancellaPagamentoCartaCredito
 INFORMAZIONI: id payment : 3
-ago 22, 2025 1:17:29 PM laptop.database.PagamentoTotalePersistenza cancellaPagCCMem
+ago 25, 2025 10:30:09 AM laptop.database.PagamentoTotalePersistenza cancellaPagCCMem
 INFORMAZIONI: id payment :.
-ago 22, 2025 1:17:29 PM demo.terzoucgestione.TestGestioneOrdini testAnnullaOrdineCCByUSerLogged
+ago 25, 2025 10:30:09 AM demo.terzoucgestione.TestGestioneOrdini testAnnullaOrdineCCByUSerLogged
 INFORMAZIONI:  status : true
-ago 22, 2025 1:17:29 PM laptop.model.user.User annullaUtente
+ago 25, 2025 10:30:09 AM laptop.model.user.User annullaUtente
 INFORMAZIONI:  user data is cleaned
 ]]></system-err>
   </testcase>

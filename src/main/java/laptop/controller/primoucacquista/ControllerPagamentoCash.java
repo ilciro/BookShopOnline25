@@ -58,8 +58,6 @@ public class ControllerPagamentoCash {
 	public void controlla(String nome, String cognome, String via, String com,String type)  {
 
 
-
-
 		//2
 		switch (type)
 		{
@@ -99,11 +97,12 @@ public class ControllerPagamentoCash {
 		//inserisco in pagamentoTotale
 		if(pF.inserisciPagamentoFattura(p))
 		{
-			Logger.getLogger("pagamento effettuato ").log(Level.INFO,"payment success with id object : {0}", id);
+			Logger.getLogger("pagamento effettuato ").log(Level.INFO,"payment success with id object : {0}", p.toString());
 			//database with triggers
 
 
 		}
+
 		//inserisco in report finale
 
         switch (type) {

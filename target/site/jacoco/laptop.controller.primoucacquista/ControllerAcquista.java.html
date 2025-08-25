@@ -79,63 +79,69 @@ public class ControllerAcquista {
 <span class="fc" id="L79">				dati[1]= String.valueOf(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getPrezzo());</span>
 <span class="fc" id="L80">				dati[2]= String.valueOf(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getNrCopie());</span>
 
-<span class="fc" id="L82">			}</span>
+<span class="fc" id="L82">				Logger.getLogger(&quot;getNomeCostoDispL&quot;).log(Level.INFO,&quot;buying book :{0}&quot;,l.toString());</span>
+
+<span class="fc" id="L84">			}</span>
 
 
 			case GIORNALE-&gt;
 			{
-<span class="fc" id="L87">				g.setId(vis.getIdGiornale());</span>
+<span class="fc" id="L89">				g.setId(vis.getIdGiornale());</span>
 
-<span class="pc bpc" id="L89" title="1 of 4 branches missed.">                switch (string) {</span>
-<span class="fc" id="L90">                    case DATABASE -&gt; pG = new GiornaleDao();</span>
-<span class="fc" id="L91">                    case FILE -&gt; pG = new CsvGiornale();</span>
-<span class="fc" id="L92">                   case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
-<span class="nc" id="L93">					default -&gt; Logger.getLogger(&quot;cAGiornale&quot;).log(Level.SEVERE,&quot;cost/name daily is empty is null&quot;);</span>
+<span class="pc bpc" id="L91" title="1 of 4 branches missed.">                switch (string) {</span>
+<span class="fc" id="L92">                    case DATABASE -&gt; pG = new GiornaleDao();</span>
+<span class="fc" id="L93">                    case FILE -&gt; pG = new CsvGiornale();</span>
+<span class="fc" id="L94">                   case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
+<span class="nc" id="L95">					default -&gt; Logger.getLogger(&quot;cAGiornale&quot;).log(Level.SEVERE,&quot;cost/name daily is empty is null&quot;);</span>
 
 				}
-<span class="fc" id="L96">				dati[0] = pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getTitolo();</span>
-<span class="fc" id="L97">				dati[1]= String.valueOf(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getPrezzo());</span>
-<span class="fc" id="L98">				dati[2]= String.valueOf(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCopieRimanenti());</span>
+<span class="fc" id="L98">				dati[0] = pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getTitolo();</span>
+<span class="fc" id="L99">				dati[1]= String.valueOf(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getPrezzo());</span>
+<span class="fc" id="L100">				dati[2]= String.valueOf(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCopieRimanenti());</span>
+<span class="fc" id="L101">				Logger.getLogger(&quot;getNomeCostoDispG&quot;).log(Level.INFO,&quot;buying daily :{0}&quot;,g.toString());</span>
 
 
-<span class="fc" id="L101">			}</span>
+
+<span class="fc" id="L105">			}</span>
 
 			case RIVISTA-&gt;{
-<span class="fc" id="L104">				r.setId(vis.getIdRivista());</span>
-<span class="pc bpc" id="L105" title="1 of 4 branches missed.">                switch (string) {</span>
-<span class="fc" id="L106">                    case DATABASE -&gt; pR = new RivistaDao();</span>
-<span class="fc" id="L107">                    case FILE -&gt; pR = new CsvRivista();</span>
-<span class="fc" id="L108">                    case MEMORIA -&gt; pR = new MemoriaRivista();</span>
-<span class="nc" id="L109">					default -&gt; Logger.getLogger(&quot;cARivista&quot;).log(Level.SEVERE,&quot;cost/name magazine is empty is null&quot;);</span>
+<span class="fc" id="L108">				r.setId(vis.getIdRivista());</span>
+<span class="pc bpc" id="L109" title="1 of 4 branches missed.">                switch (string) {</span>
+<span class="fc" id="L110">                    case DATABASE -&gt; pR = new RivistaDao();</span>
+<span class="fc" id="L111">                    case FILE -&gt; pR = new CsvRivista();</span>
+<span class="fc" id="L112">                    case MEMORIA -&gt; pR = new MemoriaRivista();</span>
+<span class="nc" id="L113">					default -&gt; Logger.getLogger(&quot;cARivista&quot;).log(Level.SEVERE,&quot;cost/name magazine is empty is null&quot;);</span>
 
 				}
-<span class="fc" id="L112">				dati[0] = pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getTitolo();</span>
-<span class="fc" id="L113">				dati[1]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getPrezzo());</span>
-<span class="fc" id="L114">				dati[2]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getNrCopie());</span>
-
-
-<span class="fc" id="L117">			}</span>
-
+<span class="fc" id="L116">				dati[0] = pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getTitolo();</span>
+<span class="fc" id="L117">				dati[1]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getPrezzo());</span>
+<span class="fc" id="L118">				dati[2]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getNrCopie());</span>
+<span class="fc" id="L119">				Logger.getLogger(&quot;getNomeCostoDispR&quot;).log(Level.INFO,&quot;buying magazine :{0}&quot;,r.toString());</span>
 
 
 
+<span class="fc" id="L123">			}</span>
 
 
-<span class="nc" id="L124">			default -&gt; Logger.getLogger(&quot;get nome&quot;).log(Level.SEVERE,&quot; name is wrong!!&quot;);</span>
+
+
+
+
+<span class="nc" id="L130">			default -&gt; Logger.getLogger(&quot;get nome&quot;).log(Level.SEVERE,&quot; name is wrong!!&quot;);</span>
 		}
 
 
 
-<span class="fc" id="L129">		return dati;</span>
+<span class="fc" id="L135">		return dati;</span>
 	}
 
 
 	public float getPrezzo(String q,String string)  {
-<span class="fc" id="L134">		int quantita=Integer.parseInt(q);</span>
-<span class="fc" id="L135">		float prezzo=Float.parseFloat(getNomeCostoDisp(string)[1]);</span>
-<span class="fc" id="L136">		vis.setQuantita(quantita);</span>
-<span class="fc" id="L137">		vis.setSpesaT(prezzo);</span>
-<span class="fc" id="L138">        return quantita*prezzo;</span>
+<span class="fc" id="L140">		int quantita=Integer.parseInt(q);</span>
+<span class="fc" id="L141">		float prezzo=Float.parseFloat(getNomeCostoDisp(string)[1]);</span>
+<span class="fc" id="L142">		vis.setQuantita(quantita);</span>
+<span class="fc" id="L143">		vis.setSpesaT(prezzo);</span>
+<span class="fc" id="L144">        return quantita*prezzo;</span>
 
 	}
 }

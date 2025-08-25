@@ -15,6 +15,7 @@ laptop/primoucacquista/TestRicerca.class
 laptop/terzoucgestione/gestioneoggetto/TestGestioneOggettoLibro.class
 laptop/terzoucgestione/gestioneutente/TestGestioneUtenteByUtente.class
 laptop/primoucacquista/TestAcquistoLibro.class
+testfinalidemo/testricerca/TestRicercaMem.class
 laptop/terzoucgestione/TestReport.class
 testfinalidemo/terzouc/TestGestioneUtenteAdminMem.class
 testfinalidemo/secondouc/TestRegModUser.class
