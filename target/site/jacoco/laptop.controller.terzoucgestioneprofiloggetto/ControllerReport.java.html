@@ -49,20 +49,20 @@ import java.util.logging.Logger;
     public ObservableList&lt;Report&gt; reportL(String persistenza)  {
 
 
-<span class="nc" id="L52">        ObservableList&lt;Report&gt; list= FXCollections.observableArrayList();</span>
+<span class="fc" id="L52">        ObservableList&lt;Report&gt; list= FXCollections.observableArrayList();</span>
 
-<span class="nc bnc" id="L54" title="All 4 branches missed.">        switch (persistenza)</span>
+<span class="pc bpc" id="L54" title="1 of 4 branches missed.">        switch (persistenza)</span>
        {
-<span class="nc" id="L56">           case DATABASE-&gt;pRepo=new ReportDao();</span>
-<span class="nc" id="L57">           case FILE -&gt; pRepo=new CsvReport();</span>
-<span class="nc" id="L58">           case MEMEORIA -&gt; pRepo=new MemoriaReport();</span>
+<span class="fc" id="L56">           case DATABASE-&gt;pRepo=new ReportDao();</span>
+<span class="fc" id="L57">           case FILE -&gt; pRepo=new CsvReport();</span>
+<span class="fc" id="L58">           case MEMEORIA -&gt; pRepo=new MemoriaReport();</span>
 <span class="nc" id="L59">           default -&gt; Logger.getLogger(&quot;reportL&quot;).log(Level.SEVERE,&quot;report book not created!!&quot;);</span>
        }
-<span class="nc" id="L61">       pRepo.inizializza();</span>
+<span class="fc" id="L61">       pRepo.inizializza();</span>
 
 
-<span class="nc" id="L64">        list.addAll(pRepo.report(vis.getType()));</span>
-<span class="nc" id="L65">        return list;</span>
+<span class="fc" id="L64">        list.addAll(pRepo.report(vis.getType()));</span>
+<span class="fc" id="L65">        return list;</span>
 
 
     }

@@ -5,6 +5,9 @@ import laptop.controller.terzoucgestioneprofiloggetto.ControllerAdmin;
 import laptop.controller.terzoucgestioneprofiloggetto.ControllerReport;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.ResourceBundle;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TestReport {
@@ -12,12 +15,14 @@ class TestReport {
      private final ControllerLogin cL=new ControllerLogin();
      private final ControllerReport cR=new ControllerReport();
      private final ControllerAdmin cA=new ControllerAdmin();
+    private static final ResourceBundle RBUTENTE=ResourceBundle.getBundle("configurations/users");
 
-     @ParameterizedTest
+
+    @ParameterizedTest
      @ValueSource(strings = {"database","file"})
      void testReportLGR(String strings)  {
         //login
-        cL.login("admin@admin.com","Admin871",strings) ;
+        cL.login(RBUTENTE.getString("emailA"),RBUTENTE.getString("passA"),strings) ;
         //report
          cR.reportTotale(strings);
          assertTrue(cA.logout(strings));
@@ -27,7 +32,7 @@ class TestReport {
     @ValueSource(strings = {"database","file"})
     void testReportUsers(String strings)  {
         //login
-        cL.login("admin@admin.com","Admin871",strings) ;
+        cL.login(RBUTENTE.getString("emailA"),RBUTENTE.getString("passA"),strings) ;
         //report
         cR.reportUser(strings);
         assertTrue(cA.logout(strings));
