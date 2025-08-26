@@ -8,7 +8,6 @@ import laptop.model.raccolta.Factory;
 import laptop.model.raccolta.Raccolta;
 import laptop.model.raccolta.Rivista;
 import laptop.utilities.ConnToDb;
-
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,14 +31,12 @@ public class RivistaDao extends PersistenzaRivista{
 
     @Override
     public boolean inserisciRivista(Rivista r)  {
+        super.inserisciRivista(r);
         int row=0;
-
-
         query= "INSERT INTO `rivista` VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         try(Connection conn= ConnToDb.connectionToDB();
             PreparedStatement prepQ=conn.prepareStatement(query))
         {
-
             prepQ.setString(1,r.getTitolo());
             prepQ.setString(2,r.getCategoria());
             prepQ.setString(3,r.getAutore());
@@ -52,61 +49,43 @@ public class RivistaDao extends PersistenzaRivista{
             prepQ.setFloat(10, r.getPrezzo());
             if(vis.getTipoModifica().equals("im")) prepQ.setInt(11,vis.getIdRivista());
             else if(vis.getTipoModifica().equals("insert")) prepQ.setInt(11,0);
-
-
             row=prepQ.executeUpdate();
-
-
         }catch(SQLException e)
         {
             Logger.getLogger("creazione Rivista").log(Level.INFO, ECCEZIONE, e);
         }
-
-
         return row==1;
 
     }
 
     @Override
     public boolean removeRivistaById(Rivista r)  {
+        super.removeRivistaById(r);
         int row = 0;
-
         query="delete from rivista where idRivista=? or idRivista=?";
         try (Connection conn=ConnToDb.connectionToDB();
              PreparedStatement prepQ= conn.prepareStatement(query)){
-
             prepQ.setInt(1,r.getId());
             prepQ.setInt(2,vis.getIdRivista());
-
             row= prepQ.executeUpdate();
-
         } catch (SQLException e) {
             Logger.getLogger("elimina").log(Level.SEVERE," error in mysql delete", e);
         }
         return  row==1;
-
     }
 
     @Override
     public ObservableList<Raccolta> retrieveRaccoltaData() {
+        super.retrieveRaccoltaData();
         ObservableList<Raccolta> catalogo = FXCollections.observableArrayList();
-
         query = "select * from rivista";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ = conn.prepareStatement(query);
              ResultSet rs = prepQ.executeQuery()) {
             while (rs.next()) {
                 f.createRaccoltaFinale1(RIVISTA,rs.getString(1),null,rs.getString(5),rs.getString(3),rs.getString(4),rs.getString(2));
-
-
-
                 f.createRaccoltaFinale2(RIVISTA, 0, rs.getInt(10), rs.getInt(8),rs.getFloat(9),rs.getInt(11));
-
                 catalogo.add(f.createRaccoltaFinaleCompleta(RIVISTA, rs.getDate(7).toLocalDate(),null, null));
-
-
-
-
             }
         } catch (SQLException e) {
             Logger.getLogger("get libri").log(Level.INFO, ECCEZIONE, e);
@@ -116,26 +95,17 @@ public class RivistaDao extends PersistenzaRivista{
 
     @Override
     public ObservableList<Rivista> getRiviste()  {
+        super.getRiviste();
         ObservableList<Rivista> catalogo = FXCollections.observableArrayList();
-
         query = "select * from rivista";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ= conn.prepareStatement(query))  {
-
-
             ResultSet rs=prepQ.executeQuery();
             while (rs.next())
             {
-
                 f.createRaccoltaFinale1(RIVISTA, rs.getString(1), null, rs.getString(5), rs.getString(3), rs.getString(4), rs.getString(2));
-
-
                 f.createRaccoltaFinale2(RIVISTA,0, rs.getInt(10), rs.getInt(8), rs.getFloat(9), rs.getInt(11));
-
-
                 catalogo.add((Rivista) f.createRaccoltaFinaleCompleta(RIVISTA, rs.getDate(7).toLocalDate(), null, rs.getString(6)));
-
-
             }
         } catch (SQLException e) {
             Logger.getLogger("get data rivista obs").log(Level.INFO, ECCEZIONE, e);
@@ -145,18 +115,16 @@ public class RivistaDao extends PersistenzaRivista{
 
     @Override
     public ObservableList<Rivista> getRivistaByIdTitoloAutoreRivista(Rivista r) {
+        super.getRivistaByIdTitoloAutoreRivista(r);
         ObservableList<Rivista> catalogo = FXCollections.observableArrayList();
         String[] info=new String[7];
-
         query = "select * from rivista where idRivista=? or idRivista=? or titolo=? or autore=?";
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prepQ= conn.prepareStatement(query))  {
-
             prepQ.setInt(1,r.getId());
             prepQ.setInt(2,vis.getIdRivista());
             prepQ.setString(3,r.getTitolo());
             prepQ.setString(4,r.getAutore());
-
             ResultSet rs=prepQ.executeQuery();
             while (rs.next())
             {
@@ -176,10 +144,10 @@ public class RivistaDao extends PersistenzaRivista{
 
     @Override
     public void initializza()  {
-        super.initializza();
         DaoInitialize dI=new DaoInitialize();
         dI.inizializza(RIVISTA);
-        }
+        super.initializza();
+    }
 
 
 

@@ -5,7 +5,6 @@ import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Rivista;
 import org.jetbrains.annotations.NotNull;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,7 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L18">public class MemoryInitialize {</span>
+<span class="fc" id="L17">public class MemoryInitialize {</span>
     //class used for reduce duplication
 
     private static final String SERIALIZZAZIONEGIORNALE=&quot;memory/serializzazioneGiornale.ser&quot;;
@@ -25,213 +24,213 @@ import java.util.logging.Logger;
     private static final String LIBRO=&quot;libro&quot;;
     private static final String RIVISTA=&quot;rivista&quot;;
     private static final String INSERT=&quot;insert&quot;;
-<span class="fc" id="L28">    private  ArrayList&lt;Giornale&gt; listG=new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L29">    private  ArrayList&lt;Libro&gt; listL=new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L30">    private  ArrayList&lt;Rivista&gt; listR=new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L27">    private  ArrayList&lt;Giornale&gt; listG=new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L28">    private  ArrayList&lt;Libro&gt; listL=new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L29">    private  ArrayList&lt;Rivista&gt; listR=new ArrayList&lt;&gt;();</span>
 
 
-<span class="fc" id="L33">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+<span class="fc" id="L32">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
 
 
     public boolean cancellaGiornale(Giornale g)  {
 
 
-<span class="fc" id="L39">        boolean status=false;</span>
+<span class="fc" id="L38">        boolean status=false;</span>
 
-<span class="fc" id="L41">            listG = leggiDaFileGiornale(SERIALIZZAZIONEGIORNALE);</span>
+<span class="fc" id="L40">            listG = leggiDaFileGiornale(SERIALIZZAZIONEGIORNALE);</span>
 
 
-<span class="fc bfc" id="L44" title="All 2 branches covered.">            for (int i = 0; i &lt; listG.size(); i++) {</span>
-<span class="fc bfc" id="L45" title="All 2 branches covered.">                if (i == (g.getId() - 1)) {</span>
-<span class="fc" id="L46">                    status = listG.remove(listG.get(i));</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">            for (int i = 0; i &lt; listG.size(); i++) {</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">                if (i == (g.getId() - 1)) {</span>
+<span class="fc" id="L45">                    status = listG.remove(listG.get(i));</span>
                 }
             }
-<span class="fc" id="L49">            removeFile(SERIALIZZAZIONEGIORNALE, listG, new ArrayList&lt;&gt;(), new ArrayList&lt;&gt;());</span>
+<span class="fc" id="L48">            removeFile(SERIALIZZAZIONEGIORNALE, listG, new ArrayList&lt;&gt;(), new ArrayList&lt;&gt;());</span>
 
 
-<span class="fc" id="L52">        return status;</span>
+<span class="fc" id="L51">        return status;</span>
     }
 
     public boolean cancellaLibro(Libro l) {
 
-<span class="fc" id="L57">        boolean status=false;</span>
-<span class="fc" id="L58">       listL=leggiDaFileLibro(SERIALIZZAZIONELIBRO);</span>
+<span class="fc" id="L56">        boolean status=false;</span>
+<span class="fc" id="L57">       listL=leggiDaFileLibro(SERIALIZZAZIONELIBRO);</span>
 
 
-<span class="fc bfc" id="L61" title="All 2 branches covered.">        for(int i=0;i&lt;listL.size();i++)</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        for(int i=0;i&lt;listL.size();i++)</span>
         {
-<span class="fc bfc" id="L63" title="All 2 branches covered.">            if(i== (l.getId()-1)) {</span>
-<span class="fc" id="L64">                status = listL.remove(listL.get(i));</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">            if(i== (l.getId()-1)) {</span>
+<span class="fc" id="L63">                status = listL.remove(listL.get(i));</span>
             }
         }
-<span class="fc" id="L67">        removeFile(SERIALIZZAZIONELIBRO,new ArrayList&lt;&gt;(),listL,new ArrayList&lt;&gt;());</span>
+<span class="fc" id="L66">        removeFile(SERIALIZZAZIONELIBRO,new ArrayList&lt;&gt;(),listL,new ArrayList&lt;&gt;());</span>
 
-<span class="fc" id="L69">        return status;</span>
+<span class="fc" id="L68">        return status;</span>
     }
 
     public boolean cancellaRivista(Rivista r) {
 
-<span class="fc" id="L74">        boolean status=false;</span>
-<span class="fc" id="L75">        listR=leggiDaFileRivista(SERIALIZZAZIONERIVISTA);</span>
+<span class="fc" id="L73">        boolean status=false;</span>
+<span class="fc" id="L74">        listR=leggiDaFileRivista(SERIALIZZAZIONERIVISTA);</span>
 
-<span class="fc bfc" id="L77" title="All 2 branches covered.">        for(int i=0;i&lt;listR.size();i++)</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">        for(int i=0;i&lt;listR.size();i++)</span>
         {
-<span class="fc bfc" id="L79" title="All 2 branches covered.">            if(i== (r.getId()-1)) {</span>
-<span class="fc" id="L80">                status = listR.remove(listR.get(i));</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">            if(i== (r.getId()-1)) {</span>
+<span class="fc" id="L79">                status = listR.remove(listR.get(i));</span>
             }
         }
-<span class="fc" id="L83">        removeFile(SERIALIZZAZIONERIVISTA,new ArrayList&lt;&gt;(),new ArrayList&lt;&gt;(),listR);</span>
+<span class="fc" id="L82">        removeFile(SERIALIZZAZIONERIVISTA,new ArrayList&lt;&gt;(),new ArrayList&lt;&gt;(),listR);</span>
 
-<span class="fc" id="L85">        return status;</span>
+<span class="fc" id="L84">        return status;</span>
     }
 
     private void removeFile(String stringPath,ArrayList&lt;Giornale&gt; listG,ArrayList&lt;Libro&gt; listL,ArrayList&lt;Rivista&gt; listR) {
 
-<span class="fc" id="L90">        Path path = Path.of(stringPath);</span>
+<span class="fc" id="L89">        Path path = Path.of(stringPath);</span>
         try {
-<span class="fc" id="L92">            Files.delete(path);</span>
-<span class="pc bpc" id="L93" title="1 of 2 branches missed.">            if(!Files.exists(path))</span>
+<span class="fc" id="L91">            Files.delete(path);</span>
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">            if(!Files.exists(path))</span>
             {
-<span class="fc" id="L95">                throw new IOException(&quot;file daily is deleted!!&quot;);</span>
+<span class="fc" id="L94">                throw new IOException(&quot;file daily is deleted!!&quot;);</span>
             }
-<span class="fc" id="L97">        }catch (IOException e)</span>
+<span class="fc" id="L96">        }catch (IOException e)</span>
         {
             try {
-<span class="fc bfc" id="L100" title="All 2 branches covered.">                if (!listG.isEmpty()) {</span>
-<span class="fc" id="L101">                    Files.createFile(path);</span>
-<span class="fc" id="L102">                    try (FileOutputStream fos = new FileOutputStream(stringPath);</span>
-<span class="fc" id="L103">                         ObjectOutputStream oos = new ObjectOutputStream(fos)) {</span>
-<span class="fc" id="L104">                        oos.writeObject(listG);</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">                if (!listG.isEmpty()) {</span>
+<span class="fc" id="L100">                    Files.createFile(path);</span>
+<span class="fc" id="L101">                    try (FileOutputStream fos = new FileOutputStream(stringPath);</span>
+<span class="fc" id="L102">                         ObjectOutputStream oos = new ObjectOutputStream(fos)) {</span>
+<span class="fc" id="L103">                        oos.writeObject(listG);</span>
                     }
                 }
-<span class="fc bfc" id="L107" title="All 2 branches covered.">                if (!listL.isEmpty()) {</span>
-<span class="fc" id="L108">                    Files.createFile(path);</span>
-<span class="fc" id="L109">                    try (FileOutputStream fos = new FileOutputStream(stringPath);</span>
-<span class="fc" id="L110">                         ObjectOutputStream oos = new ObjectOutputStream(fos)) {</span>
-<span class="fc" id="L111">                        oos.writeObject(listL);</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">                if (!listL.isEmpty()) {</span>
+<span class="fc" id="L107">                    Files.createFile(path);</span>
+<span class="fc" id="L108">                    try (FileOutputStream fos = new FileOutputStream(stringPath);</span>
+<span class="fc" id="L109">                         ObjectOutputStream oos = new ObjectOutputStream(fos)) {</span>
+<span class="fc" id="L110">                        oos.writeObject(listL);</span>
                     }
                 }
-<span class="fc bfc" id="L114" title="All 2 branches covered.">                if (!listR.isEmpty()) {</span>
-<span class="fc" id="L115">                    Files.createFile(path);</span>
-<span class="fc" id="L116">                    try (FileOutputStream fos = new FileOutputStream(stringPath);</span>
-<span class="fc" id="L117">                         ObjectOutputStream oos = new ObjectOutputStream(fos)) {</span>
-<span class="fc" id="L118">                        oos.writeObject(listR);</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">                if (!listR.isEmpty()) {</span>
+<span class="fc" id="L114">                    Files.createFile(path);</span>
+<span class="fc" id="L115">                    try (FileOutputStream fos = new FileOutputStream(stringPath);</span>
+<span class="fc" id="L116">                         ObjectOutputStream oos = new ObjectOutputStream(fos)) {</span>
+<span class="fc" id="L117">                        oos.writeObject(listR);</span>
                     }
                 }
-<span class="nc" id="L121">            }catch (IOException e1){</span>
-<span class="nc" id="L122">                Logger.getLogger(&quot;remove file&quot;).log(Level.SEVERE,&quot;remove file mi exception : &quot;,e1);</span>
+<span class="nc" id="L120">            }catch (IOException e1){</span>
+<span class="nc" id="L121">                Logger.getLogger(&quot;remove file&quot;).log(Level.SEVERE,&quot;remove file mi exception : &quot;,e1);</span>
 
-<span class="fc" id="L124">            }</span>
+<span class="fc" id="L123">            }</span>
 
-<span class="nc" id="L126">        }</span>
-<span class="fc" id="L127">    }</span>
+<span class="nc" id="L125">        }</span>
+<span class="fc" id="L126">    }</span>
 
     public void inizializza(String file)  {
 
-<span class="pc bpc" id="L131" title="1 of 4 branches missed.">        switch (vis.getType())</span>
+<span class="pc bpc" id="L130" title="1 of 4 branches missed.">        switch (vis.getType())</span>
         {
             case GIORNALE-&gt;
             {
-<span class="fc bfc" id="L135" title="All 2 branches covered.">                for(int i=1;i&lt;=12;i++) {</span>
-<span class="fc" id="L136">                    Giornale g = getGiornale(i);</span>
-<span class="fc" id="L137">                    listG.add(g);</span>
+<span class="fc bfc" id="L134" title="All 2 branches covered.">                for(int i=1;i&lt;=12;i++) {</span>
+<span class="fc" id="L135">                    Giornale g = getGiornale(i);</span>
+<span class="fc" id="L136">                    listG.add(g);</span>
                 }
-<span class="fc" id="L139">                scriviInFile(file,listG,null,null);</span>
-<span class="fc" id="L140">                leggiDaFileGiornale(file);</span>
+<span class="fc" id="L138">                scriviInFile(file,listG,null,null);</span>
+<span class="fc" id="L139">                leggiDaFileGiornale(file);</span>
 
 
-<span class="fc" id="L143">            }</span>
+<span class="fc" id="L142">            }</span>
             case LIBRO -&gt; {
 
 
-<span class="fc bfc" id="L147" title="All 2 branches covered.">                for(int i=1;i&lt;=19;i++) {</span>
+<span class="fc bfc" id="L146" title="All 2 branches covered.">                for(int i=1;i&lt;=19;i++) {</span>
 
 
-<span class="fc" id="L150">                    Libro l = getLibro(i);</span>
+<span class="fc" id="L149">                    Libro l = getLibro(i);</span>
 
-<span class="fc" id="L152">                    listL.add(l);</span>
+<span class="fc" id="L151">                    listL.add(l);</span>
 
 
                 }
-<span class="fc" id="L156">                scriviInFile(file,null,listL,null);</span>
-<span class="fc" id="L157">                leggiDaFileLibro(file);</span>
+<span class="fc" id="L155">                scriviInFile(file,null,listL,null);</span>
+<span class="fc" id="L156">                leggiDaFileLibro(file);</span>
 
 
-<span class="fc" id="L160">            }</span>
+<span class="fc" id="L159">            }</span>
             case RIVISTA -&gt;
             {
-<span class="fc bfc" id="L163" title="All 2 branches covered.">                for(int i=1;i&lt;=5;i++)</span>
+<span class="fc bfc" id="L162" title="All 2 branches covered.">                for(int i=1;i&lt;=5;i++)</span>
                 {
-<span class="fc" id="L165">                    Rivista r=getRivista(i);</span>
-<span class="fc" id="L166">                    listR.add(r);</span>
+<span class="fc" id="L164">                    Rivista r=getRivista(i);</span>
+<span class="fc" id="L165">                    listR.add(r);</span>
                 }
-<span class="fc" id="L168">                scriviInFile(file,null,null,listR);</span>
-<span class="fc" id="L169">                leggiDaFileRivista(file);</span>
+<span class="fc" id="L167">                scriviInFile(file,null,null,listR);</span>
+<span class="fc" id="L168">                leggiDaFileRivista(file);</span>
 
             }
 
         }
 
-<span class="fc" id="L175">    }</span>
+<span class="fc" id="L174">    }</span>
 
     public boolean inserisci(Libro l,Giornale g,Rivista r,String file,String appoggio) {
-<span class="fc" id="L178">        Path path2 = Path.of(appoggio);</span>
-<span class="fc" id="L179">        Path path1=Path.of(file);</span>
+<span class="fc" id="L177">        Path path2 = Path.of(appoggio);</span>
+<span class="fc" id="L178">        Path path1=Path.of(file);</span>
         try {
-<span class="fc bfc" id="L181" title="All 2 branches covered.">            if (l != null) {</span>
-<span class="fc bfc" id="L182" title="All 2 branches covered.">                if (vis.getTipoModifica().equals(&quot;im&quot;)) l.setId(vis.getIdLibro());</span>
-<span class="pc bpc" id="L183" title="1 of 2 branches missed.">                else if (vis.getTipoModifica().equals(INSERT)) l.setId(listL.size() + 1);</span>
-<span class="fc" id="L184">                listL.add(l);</span>
+<span class="fc bfc" id="L180" title="All 2 branches covered.">            if (l != null) {</span>
+<span class="fc bfc" id="L181" title="All 2 branches covered.">                if (vis.getTipoModifica().equals(&quot;im&quot;)) l.setId(vis.getIdLibro());</span>
+<span class="pc bpc" id="L182" title="1 of 2 branches missed.">                else if (vis.getTipoModifica().equals(INSERT)) l.setId(listL.size() + 1);</span>
+<span class="fc" id="L183">                listL.add(l);</span>
 
-<span class="fc" id="L186">                Logger.getLogger(&quot;inserisci libro&quot;).log(Level.INFO, &quot;inserted libro in list :&quot;, listL.get(0).getTitolo());</span>
+<span class="fc" id="L185">                Logger.getLogger(&quot;inserisci libro&quot;).log(Level.INFO, &quot;inserted libro in list :&quot;, listL.get(0).getTitolo());</span>
                 //scrivo lista in appoggio
 
-<span class="fc" id="L189">                scriviInFile(appoggio, null, listL, null);</span>
-<span class="fc" id="L190">                listL = leggiDaFileLibro(appoggio);</span>
-<span class="fc" id="L191">                Files.delete(path1);</span>
-<span class="fc" id="L192">                Files.createFile(path1);</span>
-<span class="fc" id="L193">                scriviInFile(file, null, listL, null);</span>
+<span class="fc" id="L188">                scriviInFile(appoggio, null, listL, null);</span>
+<span class="fc" id="L189">                listL = leggiDaFileLibro(appoggio);</span>
+<span class="fc" id="L190">                Files.delete(path1);</span>
+<span class="fc" id="L191">                Files.createFile(path1);</span>
+<span class="fc" id="L192">                scriviInFile(file, null, listL, null);</span>
 
-<span class="fc" id="L195">                Files.delete(path2);</span>
+<span class="fc" id="L194">                Files.delete(path2);</span>
             }
-<span class="fc bfc" id="L197" title="All 2 branches covered.">            if (g != null) {</span>
-<span class="fc bfc" id="L198" title="All 2 branches covered.">                if (vis.getTipoModifica().equals(&quot;im&quot;)) g.setId(vis.getIdGiornale());</span>
-<span class="pc bpc" id="L199" title="1 of 2 branches missed.">                else if (vis.getTipoModifica().equals(INSERT)) g.setId(listG.size() + 1);</span>
-<span class="fc" id="L200">                listG.add(g);</span>
+<span class="fc bfc" id="L196" title="All 2 branches covered.">            if (g != null) {</span>
+<span class="fc bfc" id="L197" title="All 2 branches covered.">                if (vis.getTipoModifica().equals(&quot;im&quot;)) g.setId(vis.getIdGiornale());</span>
+<span class="pc bpc" id="L198" title="1 of 2 branches missed.">                else if (vis.getTipoModifica().equals(INSERT)) g.setId(listG.size() + 1);</span>
+<span class="fc" id="L199">                listG.add(g);</span>
                 //scrivo lista in appoggio
-<span class="fc" id="L202">                Logger.getLogger(&quot;inserisci giiornale&quot;).log(Level.INFO, &quot;inserted giornale in list : {0}&quot;, listG.get(0).getTitolo());</span>
+<span class="fc" id="L201">                Logger.getLogger(&quot;inserisci giiornale&quot;).log(Level.INFO, &quot;inserted giornale in list : {0}&quot;, listG.get(0).getTitolo());</span>
 
 
-<span class="fc" id="L205">                scriviInFile(appoggio, listG, null, null);</span>
-<span class="fc" id="L206">                listG = leggiDaFileGiornale(appoggio);</span>
-<span class="fc" id="L207">                Files.delete(path1);</span>
-<span class="fc" id="L208">                Files.createFile(path1);</span>
-<span class="fc" id="L209">                scriviInFile(file, listG, null, null);</span>
+<span class="fc" id="L204">                scriviInFile(appoggio, listG, null, null);</span>
+<span class="fc" id="L205">                listG = leggiDaFileGiornale(appoggio);</span>
+<span class="fc" id="L206">                Files.delete(path1);</span>
+<span class="fc" id="L207">                Files.createFile(path1);</span>
+<span class="fc" id="L208">                scriviInFile(file, listG, null, null);</span>
 
-<span class="fc" id="L211">                Files.delete(path2);</span>
+<span class="fc" id="L210">                Files.delete(path2);</span>
             }
-<span class="fc bfc" id="L213" title="All 2 branches covered.">            if (r != null) {</span>
-<span class="fc bfc" id="L214" title="All 2 branches covered.">                if (vis.getTipoModifica().equals(&quot;im&quot;)) r.setId(vis.getIdRivista());</span>
-<span class="pc bpc" id="L215" title="1 of 2 branches missed.">                else if (vis.getTipoModifica().equals(INSERT)) r.setId(listR.size() + 1);</span>
-<span class="fc" id="L216">                listR.add(r);</span>
+<span class="fc bfc" id="L212" title="All 2 branches covered.">            if (r != null) {</span>
+<span class="fc bfc" id="L213" title="All 2 branches covered.">                if (vis.getTipoModifica().equals(&quot;im&quot;)) r.setId(vis.getIdRivista());</span>
+<span class="pc bpc" id="L214" title="1 of 2 branches missed.">                else if (vis.getTipoModifica().equals(INSERT)) r.setId(listR.size() + 1);</span>
+<span class="fc" id="L215">                listR.add(r);</span>
                 //scrivo lista in appoggio
-<span class="fc" id="L218">                Logger.getLogger(&quot;inserisci rivista&quot;).log(Level.INFO, &quot;inserted rivista in list : &quot;, listR.get(0).getTitolo());</span>
+<span class="fc" id="L217">                Logger.getLogger(&quot;inserisci rivista&quot;).log(Level.INFO, &quot;inserted rivista in list : &quot;, listR.get(0).getTitolo());</span>
 
 
-<span class="fc" id="L221">                scriviInFile(appoggio, null, null, listR);</span>
-<span class="fc" id="L222">                listR = leggiDaFileRivista(appoggio);</span>
-<span class="fc" id="L223">                Files.delete(path1);</span>
-<span class="fc" id="L224">                Files.createFile(path1);</span>
-<span class="fc" id="L225">                scriviInFile(file, null, null, listR);</span>
+<span class="fc" id="L220">                scriviInFile(appoggio, null, null, listR);</span>
+<span class="fc" id="L221">                listR = leggiDaFileRivista(appoggio);</span>
+<span class="fc" id="L222">                Files.delete(path1);</span>
+<span class="fc" id="L223">                Files.createFile(path1);</span>
+<span class="fc" id="L224">                scriviInFile(file, null, null, listR);</span>
 
-<span class="fc" id="L227">                Files.delete(path2);</span>
+<span class="fc" id="L226">                Files.delete(path2);</span>
             }
-<span class="nc" id="L229">        }catch (IOException e)</span>
+<span class="nc" id="L228">        }catch (IOException e)</span>
         {
-<span class="nc" id="L231">            Logger.getLogger(&quot;inserisci&quot;).log(Level.SEVERE,&quot;inserisci io exception : &quot;,e);</span>
+<span class="nc" id="L230">            Logger.getLogger(&quot;inserisci&quot;).log(Level.SEVERE,&quot;inserisci io exception : &quot;,e);</span>
 
-<span class="fc" id="L233">        }</span>
-<span class="fc" id="L234">        return true;</span>
+<span class="fc" id="L232">        }</span>
+<span class="fc" id="L233">        return true;</span>
     }
 
 
@@ -239,85 +238,85 @@ import java.util.logging.Logger;
 
     private void scriviInFile(String nome,ArrayList&lt;Giornale&gt; listaG,ArrayList&lt;Libro&gt; listaL,ArrayList&lt;Rivista&gt; listaR)
     {
-<span class="fc" id="L242">        try(FileOutputStream fos=new FileOutputStream(nome,true);</span>
-<span class="fc" id="L243">            ObjectOutputStream oos=new ObjectOutputStream(fos)) {</span>
-<span class="pc bpc" id="L244" title="1 of 4 branches missed.">            switch (vis.getType()) {</span>
-<span class="fc" id="L245">                case GIORNALE -&gt; oos.writeObject(listaG);</span>
-<span class="fc" id="L246">                case LIBRO -&gt; oos.writeObject(listaL);</span>
-<span class="fc" id="L247">                case RIVISTA -&gt; oos.writeObject(listaR);</span>
-<span class="nc" id="L248">                default -&gt; Logger.getLogger(&quot;scrivo in file&quot;).log(Level.SEVERE,&quot;type od object is wrong !!&quot;);</span>
+<span class="fc" id="L241">        try(FileOutputStream fos=new FileOutputStream(nome,true);</span>
+<span class="fc" id="L242">            ObjectOutputStream oos=new ObjectOutputStream(fos)) {</span>
+<span class="pc bpc" id="L243" title="1 of 4 branches missed.">            switch (vis.getType()) {</span>
+<span class="fc" id="L244">                case GIORNALE -&gt; oos.writeObject(listaG);</span>
+<span class="fc" id="L245">                case LIBRO -&gt; oos.writeObject(listaL);</span>
+<span class="fc" id="L246">                case RIVISTA -&gt; oos.writeObject(listaR);</span>
+<span class="nc" id="L247">                default -&gt; Logger.getLogger(&quot;scrivo in file&quot;).log(Level.SEVERE,&quot;type od object is wrong !!&quot;);</span>
             }
-<span class="fc" id="L250">            oos.flush();</span>
+<span class="fc" id="L249">            oos.flush();</span>
 
-<span class="nc" id="L252">        }catch (IOException e)</span>
+<span class="nc" id="L251">        }catch (IOException e)</span>
         {
-<span class="nc" id="L254">            Logger.getLogger(&quot;scrivi in file&quot;).log(Level.SEVERE,&quot;scrivi in file mi exception : &quot;,e);</span>
+<span class="nc" id="L253">            Logger.getLogger(&quot;scrivi in file&quot;).log(Level.SEVERE,&quot;scrivi in file mi exception : &quot;,e);</span>
 
-<span class="fc" id="L256">        }</span>
+<span class="fc" id="L255">        }</span>
 
 
 
-<span class="fc" id="L260">    }</span>
+<span class="fc" id="L259">    }</span>
     @SuppressWarnings(&quot;unchecked&quot;)
     private ArrayList&lt;Giornale&gt; leggiDaFileGiornale(String nome) {
-<span class="fc" id="L263">        try(FileInputStream fis=new FileInputStream(nome);</span>
-<span class="fc" id="L264">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
-<span class="fc" id="L265">            listG=(ArrayList&lt;Giornale&gt;) ois.readObject();</span>
-<span class="nc" id="L266">        }catch (IOException e)</span>
+<span class="fc" id="L262">        try(FileInputStream fis=new FileInputStream(nome);</span>
+<span class="fc" id="L263">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="fc" id="L264">            listG=(ArrayList&lt;Giornale&gt;) ois.readObject();</span>
+<span class="nc" id="L265">        }catch (IOException e)</span>
         {
-<span class="nc" id="L268">            Logger.getLogger(&quot;leggi da file giornale io&quot;).log(Level.SEVERE,&quot;leggi da file io giornale exception :&quot;,e);</span>
+<span class="nc" id="L267">            Logger.getLogger(&quot;leggi da file giornale io&quot;).log(Level.SEVERE,&quot;leggi da file io giornale exception :&quot;,e);</span>
 
-<span class="nc" id="L270">        }catch (ClassNotFoundException e1)</span>
+<span class="nc" id="L269">        }catch (ClassNotFoundException e1)</span>
         {
-<span class="nc" id="L272">            Logger.getLogger(&quot;leggi da file giornale class&quot;).log(Level.SEVERE,&quot;leggi da file class giornale exception :&quot;,e1);</span>
+<span class="nc" id="L271">            Logger.getLogger(&quot;leggi da file giornale class&quot;).log(Level.SEVERE,&quot;leggi da file class giornale exception :&quot;,e1);</span>
 
-<span class="pc" id="L274">        }</span>
-<span class="fc" id="L275">        return listG;</span>
+<span class="pc" id="L273">        }</span>
+<span class="fc" id="L274">        return listG;</span>
     }
     @SuppressWarnings(&quot;unchecked&quot;)
     private ArrayList&lt;Libro&gt; leggiDaFileLibro(String nome)  {
-<span class="fc" id="L279">        try(FileInputStream fis=new FileInputStream(nome);</span>
-<span class="fc" id="L280">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
-<span class="fc" id="L281">            listL=(ArrayList&lt;Libro&gt;) ois.readObject();</span>
-<span class="nc" id="L282">        }catch (IOException e)</span>
+<span class="fc" id="L278">        try(FileInputStream fis=new FileInputStream(nome);</span>
+<span class="fc" id="L279">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="fc" id="L280">            listL=(ArrayList&lt;Libro&gt;) ois.readObject();</span>
+<span class="nc" id="L281">        }catch (IOException e)</span>
         {
-<span class="nc" id="L284">            Logger.getLogger(&quot;leggi da file libro io&quot;).log(Level.SEVERE,&quot;leggi da file io libro exception: &quot;,e);</span>
+<span class="nc" id="L283">            Logger.getLogger(&quot;leggi da file libro io&quot;).log(Level.SEVERE,&quot;leggi da file io libro exception: &quot;,e);</span>
 
-<span class="nc" id="L286">        }catch (ClassNotFoundException e1)</span>
+<span class="nc" id="L285">        }catch (ClassNotFoundException e1)</span>
         {
-<span class="nc" id="L288">            Logger.getLogger(&quot;leggi da file libro class&quot;).log(Level.SEVERE,&quot;leggi da file class libro exception: &quot;,e1);</span>
+<span class="nc" id="L287">            Logger.getLogger(&quot;leggi da file libro class&quot;).log(Level.SEVERE,&quot;leggi da file class libro exception: &quot;,e1);</span>
 
-<span class="pc" id="L290">        }</span>
+<span class="pc" id="L289">        }</span>
 
-<span class="fc" id="L292">        return listL;</span>
+<span class="fc" id="L291">        return listL;</span>
     }
     @SuppressWarnings(&quot;unchecked&quot;)
     private ArrayList&lt;Rivista&gt; leggiDaFileRivista(String nome) {
-<span class="fc" id="L296">        try(FileInputStream fis=new FileInputStream(nome);</span>
-<span class="fc" id="L297">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
-<span class="fc" id="L298">            listR=(ArrayList&lt;Rivista&gt;) ois.readObject();</span>
-<span class="nc" id="L299">        }catch (IOException e)</span>
+<span class="fc" id="L295">        try(FileInputStream fis=new FileInputStream(nome);</span>
+<span class="fc" id="L296">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="fc" id="L297">            listR=(ArrayList&lt;Rivista&gt;) ois.readObject();</span>
+<span class="nc" id="L298">        }catch (IOException e)</span>
         {
-<span class="nc" id="L301">            Logger.getLogger(&quot;leggi da file rivista io&quot;).log(Level.SEVERE,&quot;leggi da file io rivista exception :&quot;,e);</span>
+<span class="nc" id="L300">            Logger.getLogger(&quot;leggi da file rivista io&quot;).log(Level.SEVERE,&quot;leggi da file io rivista exception :&quot;,e);</span>
 
-<span class="nc" id="L303">        }catch (ClassNotFoundException e1)</span>
+<span class="nc" id="L302">        }catch (ClassNotFoundException e1)</span>
         {
-<span class="nc" id="L305">            Logger.getLogger(&quot;leggi da file rivista class&quot;).log(Level.SEVERE,&quot;leggi da file class rivista exception :&quot;,e1);</span>
+<span class="nc" id="L304">            Logger.getLogger(&quot;leggi da file rivista class&quot;).log(Level.SEVERE,&quot;leggi da file class rivista exception :&quot;,e1);</span>
 
-<span class="pc" id="L307">        }</span>
-<span class="fc" id="L308">        return listR;</span>
+<span class="pc" id="L306">        }</span>
+<span class="fc" id="L307">        return listR;</span>
     }
 
 
     public List&lt;Giornale&gt; listaGiornali(String file)  {
-<span class="fc" id="L313">        return  leggiDaFileGiornale(file);</span>
+<span class="fc" id="L312">        return  leggiDaFileGiornale(file);</span>
     }
 
     public List&lt;Libro&gt; listaLibri(String file)  {
-<span class="fc" id="L317">        return  leggiDaFileLibro(file);</span>
+<span class="fc" id="L316">        return  leggiDaFileLibro(file);</span>
     }
     public List&lt;Rivista&gt; listaRiviste(String file)  {
-<span class="fc" id="L320">        return  leggiDaFileRivista(file);</span>
+<span class="fc" id="L319">        return  leggiDaFileRivista(file);</span>
     }
 
 
@@ -326,101 +325,101 @@ import java.util.logging.Logger;
         String line;
 
 
-<span class="fc" id="L329">        ArrayList&lt;String&gt; listaG = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L328">        ArrayList&lt;String&gt; listaG = new ArrayList&lt;&gt;();</span>
 
 
-<span class="fc" id="L332">        try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/giornale&quot; + i + &quot;.txt&quot;);</span>
-<span class="fc" id="L333">             BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
-<span class="fc bfc" id="L334" title="All 2 branches covered.">            while ((line = bufferedReader.readLine()) != null) {</span>
-<span class="fc" id="L335">                listaG.add(line);</span>
+<span class="fc" id="L331">        try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/giornale&quot; + i + &quot;.txt&quot;);</span>
+<span class="fc" id="L332">             BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
+<span class="fc bfc" id="L333" title="All 2 branches covered.">            while ((line = bufferedReader.readLine()) != null) {</span>
+<span class="fc" id="L334">                listaG.add(line);</span>
 
             }
-<span class="nc" id="L338">        }catch (IOException e)</span>
+<span class="nc" id="L337">        }catch (IOException e)</span>
         {
-<span class="nc" id="L340">            Logger.getLogger(&quot;getGiornale&quot;).log(Level.SEVERE,&quot; get giornale exception : &quot;,e);</span>
-<span class="fc" id="L341">        }</span>
-<span class="fc" id="L342">        Giornale g = new Giornale();</span>
-<span class="fc" id="L343">        g.setTitolo(listaG.get(0));</span>
-<span class="fc" id="L344">        g.setEditore(listaG.get(3));</span>
-<span class="fc" id="L345">        g.setLingua(listaG.get(2));</span>
-<span class="fc" id="L346">        g.setCategoria(listaG.get(1));</span>
-<span class="fc" id="L347">        g.setDataPubb(LocalDate.parse(listaG.get(4)));</span>
-<span class="fc" id="L348">        g.setCopieRimanenti(Integer.parseInt(listaG.get(5)));</span>
-<span class="fc" id="L349">        g.setDisponibilita(Integer.parseInt(listaG.get(6)));</span>
-<span class="fc" id="L350">        g.setPrezzo(Float.parseFloat(listaG.get(7)));</span>
-<span class="fc" id="L351">        g.setId(Integer.parseInt(listaG.get(8)));</span>
-<span class="fc" id="L352">        return g;</span>
+<span class="nc" id="L339">            Logger.getLogger(&quot;getGiornale&quot;).log(Level.SEVERE,&quot; get giornale exception : &quot;,e);</span>
+<span class="fc" id="L340">        }</span>
+<span class="fc" id="L341">        Giornale g = new Giornale();</span>
+<span class="fc" id="L342">        g.setTitolo(listaG.get(0));</span>
+<span class="fc" id="L343">        g.setEditore(listaG.get(3));</span>
+<span class="fc" id="L344">        g.setLingua(listaG.get(2));</span>
+<span class="fc" id="L345">        g.setCategoria(listaG.get(1));</span>
+<span class="fc" id="L346">        g.setDataPubb(LocalDate.parse(listaG.get(4)));</span>
+<span class="fc" id="L347">        g.setCopieRimanenti(Integer.parseInt(listaG.get(5)));</span>
+<span class="fc" id="L348">        g.setDisponibilita(Integer.parseInt(listaG.get(6)));</span>
+<span class="fc" id="L349">        g.setPrezzo(Float.parseFloat(listaG.get(7)));</span>
+<span class="fc" id="L350">        g.setId(Integer.parseInt(listaG.get(8)));</span>
+<span class="fc" id="L351">        return g;</span>
     }
 
     private static @NotNull Libro getLibro(int i)  {
         String line;
-<span class="fc" id="L357">        ArrayList&lt;String&gt; listaL = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L358">        try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/libro&quot; + i + &quot;.txt&quot;);</span>
-<span class="fc" id="L359">             BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
-<span class="fc bfc" id="L360" title="All 2 branches covered.">            while ((line = bufferedReader.readLine()) != null) {</span>
-<span class="fc" id="L361">                listaL.add(line);</span>
+<span class="fc" id="L356">        ArrayList&lt;String&gt; listaL = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L357">        try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/libro&quot; + i + &quot;.txt&quot;);</span>
+<span class="fc" id="L358">             BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
+<span class="fc bfc" id="L359" title="All 2 branches covered.">            while ((line = bufferedReader.readLine()) != null) {</span>
+<span class="fc" id="L360">                listaL.add(line);</span>
             }
-<span class="nc" id="L363">        }catch (IOException e)</span>
+<span class="nc" id="L362">        }catch (IOException e)</span>
         {
-<span class="nc" id="L365">            Logger.getLogger(&quot;getLibro&quot;).log(Level.SEVERE,&quot;get libro exception : &quot;,e);</span>
-<span class="fc" id="L366">        }</span>
-<span class="fc" id="L367">        return getLibro(listaL);</span>
+<span class="nc" id="L364">            Logger.getLogger(&quot;getLibro&quot;).log(Level.SEVERE,&quot;get libro exception : &quot;,e);</span>
+<span class="fc" id="L365">        }</span>
+<span class="fc" id="L366">        return getLibro(listaL);</span>
 
     }
 
     private static @NotNull Libro getLibro(ArrayList&lt;String&gt; listaL) {
-<span class="fc" id="L372">        Libro l = new Libro();</span>
-<span class="fc" id="L373">        l.setTitolo(listaL.get(0));</span>
-<span class="fc" id="L374">        l.setNrPagine(Integer.parseInt(listaL.get(1)));</span>
-<span class="fc" id="L375">        l.setCodIsbn(listaL.get(2));</span>
-<span class="fc" id="L376">        l.setEditore(listaL.get(3));</span>
-<span class="fc" id="L377">        l.setAutore(listaL.get(4));</span>
-<span class="fc" id="L378">        l.setLingua(listaL.get(5));</span>
-<span class="fc" id="L379">        l.setCategoria(listaL.get(6));</span>
-<span class="fc" id="L380">        l.setDataPubb(LocalDate.parse(listaL.get(7)));</span>
-<span class="fc" id="L381">        l.setRecensione(listaL.get(8));</span>
-<span class="fc" id="L382">        l.setNrCopie(Integer.parseInt(listaL.get(9)));</span>
-<span class="fc" id="L383">        l.setDesc(listaL.get(10));</span>
-<span class="fc" id="L384">        l.setDisponibilita(Integer.parseInt(listaL.get(11)));</span>
-<span class="fc" id="L385">        l.setPrezzo(Float.parseFloat(listaL.get(12)));</span>
-<span class="fc" id="L386">        l.setId(Integer.parseInt(listaL.get(13)));</span>
-<span class="fc" id="L387">        return l;</span>
+<span class="fc" id="L371">        Libro l = new Libro();</span>
+<span class="fc" id="L372">        l.setTitolo(listaL.get(0));</span>
+<span class="fc" id="L373">        l.setNrPagine(Integer.parseInt(listaL.get(1)));</span>
+<span class="fc" id="L374">        l.setCodIsbn(listaL.get(2));</span>
+<span class="fc" id="L375">        l.setEditore(listaL.get(3));</span>
+<span class="fc" id="L376">        l.setAutore(listaL.get(4));</span>
+<span class="fc" id="L377">        l.setLingua(listaL.get(5));</span>
+<span class="fc" id="L378">        l.setCategoria(listaL.get(6));</span>
+<span class="fc" id="L379">        l.setDataPubb(LocalDate.parse(listaL.get(7)));</span>
+<span class="fc" id="L380">        l.setRecensione(listaL.get(8));</span>
+<span class="fc" id="L381">        l.setNrCopie(Integer.parseInt(listaL.get(9)));</span>
+<span class="fc" id="L382">        l.setDesc(listaL.get(10));</span>
+<span class="fc" id="L383">        l.setDisponibilita(Integer.parseInt(listaL.get(11)));</span>
+<span class="fc" id="L384">        l.setPrezzo(Float.parseFloat(listaL.get(12)));</span>
+<span class="fc" id="L385">        l.setId(Integer.parseInt(listaL.get(13)));</span>
+<span class="fc" id="L386">        return l;</span>
     }
 
     private static @NotNull Rivista getRivista(int i) {
             String line;
-<span class="fc" id="L392">            ArrayList&lt;String&gt; listaR = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L393">            try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/rivista&quot; + i + &quot;.txt&quot;);</span>
-<span class="fc" id="L394">                 BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
-<span class="fc bfc" id="L395" title="All 2 branches covered.">                while ((line = bufferedReader.readLine()) != null) {</span>
-<span class="fc" id="L396">                    listaR.add(line);</span>
+<span class="fc" id="L391">            ArrayList&lt;String&gt; listaR = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L392">            try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/rivista&quot; + i + &quot;.txt&quot;);</span>
+<span class="fc" id="L393">                 BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
+<span class="fc bfc" id="L394" title="All 2 branches covered.">                while ((line = bufferedReader.readLine()) != null) {</span>
+<span class="fc" id="L395">                    listaR.add(line);</span>
                 }
-<span class="nc" id="L398">            }catch (IOException e)</span>
+<span class="nc" id="L397">            }catch (IOException e)</span>
             {
-<span class="nc" id="L400">                Logger.getLogger(&quot;getRivista&quot;).log(Level.SEVERE,&quot;getRivista mi exception : &quot;,e);</span>
-<span class="fc" id="L401">            }</span>
+<span class="nc" id="L399">                Logger.getLogger(&quot;getRivista&quot;).log(Level.SEVERE,&quot;getRivista mi exception : &quot;,e);</span>
+<span class="fc" id="L400">            }</span>
 
 
-<span class="fc" id="L404">        return getRivista(listaR);</span>
+<span class="fc" id="L403">        return getRivista(listaR);</span>
 
 
 
             }
 
     private static @NotNull Rivista getRivista(ArrayList&lt;String&gt; listaR) {
-<span class="fc" id="L411">        Rivista r=new Rivista();</span>
-<span class="fc" id="L412">        r.setTitolo(listaR.get(0));</span>
-<span class="fc" id="L413">        r.setCategoria(listaR.get(1));</span>
-<span class="fc" id="L414">        r.setAutore(listaR.get(2));</span>
-<span class="fc" id="L415">        r.setLingua(listaR.get(3));</span>
-<span class="fc" id="L416">        r.setEditore(listaR.get(4));</span>
-<span class="fc" id="L417">        r.setDescrizione(listaR.get(5));</span>
-<span class="fc" id="L418">        r.setDataPubb(LocalDate.parse(listaR.get(6)));</span>
-<span class="fc" id="L419">        r.setDisp(Integer.parseInt(listaR.get(7)));</span>
-<span class="fc" id="L420">        r.setPrezzo(Float.parseFloat(listaR.get(8)));</span>
-<span class="fc" id="L421">        r.setNrCopie(Integer.parseInt(listaR.get(9)));</span>
-<span class="fc" id="L422">        r.setId(Integer.parseInt(listaR.get(10)));</span>
-<span class="fc" id="L423">        return r;</span>
+<span class="fc" id="L410">        Rivista r=new Rivista();</span>
+<span class="fc" id="L411">        r.setTitolo(listaR.get(0));</span>
+<span class="fc" id="L412">        r.setCategoria(listaR.get(1));</span>
+<span class="fc" id="L413">        r.setAutore(listaR.get(2));</span>
+<span class="fc" id="L414">        r.setLingua(listaR.get(3));</span>
+<span class="fc" id="L415">        r.setEditore(listaR.get(4));</span>
+<span class="fc" id="L416">        r.setDescrizione(listaR.get(5));</span>
+<span class="fc" id="L417">        r.setDataPubb(LocalDate.parse(listaR.get(6)));</span>
+<span class="fc" id="L418">        r.setDisp(Integer.parseInt(listaR.get(7)));</span>
+<span class="fc" id="L419">        r.setPrezzo(Float.parseFloat(listaR.get(8)));</span>
+<span class="fc" id="L420">        r.setNrCopie(Integer.parseInt(listaR.get(9)));</span>
+<span class="fc" id="L421">        r.setId(Integer.parseInt(listaR.get(10)));</span>
+<span class="fc" id="L422">        return r;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

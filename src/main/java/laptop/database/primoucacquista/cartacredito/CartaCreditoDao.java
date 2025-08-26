@@ -17,6 +17,7 @@ public class CartaCreditoDao extends PersistenzaCC{
 
         DaoInitialize daoI=new DaoInitialize();
         daoI.inizializza("cartacredito");
+        super.inizializza();
 
 
 
@@ -28,6 +29,7 @@ public class CartaCreditoDao extends PersistenzaCC{
 
     @Override
     public boolean insCC(CartaDiCredito cc) {
+        super.insCC(cc);
         long row=0;
         query = "insert into cartacredito (nomeP,cognomeP,codiceCarta,scadenza,pin,ammontare)  values(?,?,?,?,?,?)";
 
@@ -52,6 +54,7 @@ public class CartaCreditoDao extends PersistenzaCC{
 
     @Override
     public ObservableList<CartaDiCredito> getCarteDiCredito(CartaDiCredito cc) {
+        super.getCarteDiCredito(cc);
         String cod;
         query="select nomeP,cognomeP,codiceCarta from cartacredito where nomeP=? or codiceCarta=?";
 

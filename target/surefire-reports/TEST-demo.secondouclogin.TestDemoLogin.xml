@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="demo.secondouclogin.TestDemoLogin" time="0.197" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="demo.secondouclogin.TestDemoLogin" time="0.653" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IT"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter1479775541646640067.jar /home/daniele/IdeaProjects/BookShopOnline25/target/surefire 2025-08-25T20-26-58_170-jvmRun1 surefire12212788267235823418tmp surefire_010631855592002763802tmp"/>
+    <property name="sun.java.command" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter2672331501805944745.jar /home/daniele/IdeaProjects/BookShopOnline25/target/surefire 2025-08-26T20-47-43_358-jvmRun1 surefire10842813467168444620tmp surefire_012708008554271621595tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/daniele/IdeaProjects/BookShopOnline25/target/test-classes:/home/daniele/IdeaProjects/BookShopOnline25/target/classes:/home/daniele/.m2/repository/com/opencsv/opencsv/5.7.1/opencsv-5.7.1.jar:/home/daniele/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:/home/daniele/.m2/repository/org/apache/commons/commons-text/1.10.0/commons-text-1.10.0.jar:/home/daniele/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/home/daniele/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/home/daniele/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/daniele/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/home/daniele/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/daniele/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/home/daniele/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/home/daniele/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:/home/daniele/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17-linux.jar:/home/daniele/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17-linux.jar:/home/daniele/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17-linux.jar:/home/daniele/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17-linux.jar:/home/daniele/.m2/repository/com/mysql/mysql-connector-j/8.2.0/mysql-connector-j-8.2.0.jar:/home/daniele/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar:/home/daniele/.m2/repository/com/itextpdf/itextpdf/5.5.13.3/itextpdf-5.5.13.3.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v131/4.27.0/selenium-devtools-v131-4.27.0.jar:/home/daniele/.m2/repository/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-api/4.27.0/selenium-api-4.27.0.jar:/home/daniele/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-json/4.27.0/selenium-json-4.27.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.27.0/selenium-remote-driver-4.27.0.jar:/home/daniele/.m2/repository/com/google/guava/guava/33.3.1-jre/guava-33.3.1-jre.jar:/home/daniele/.m2/repository/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.jar:/home/daniele/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/home/daniele/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/daniele/.m2/repository/org/checkerframework/checker-qual/3.43.0/checker-qual-3.43.0.jar:/home/daniele/.m2/repository/com/google/errorprone/error_prone_annotations/2.28.0/error_prone_annotations-2.28.0.jar:/home/daniele/.m2/repository/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.jar:/home/daniele/.m2/repository/io/opentelemetry/semconv/opentelemetry-semconv/1.25.0-alpha/opentelemetry-semconv-1.25.0-alpha.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-api/1.44.1/opentelemetry-api-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-context/1.44.1/opentelemetry-context-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-exporter-logging/1.44.1/opentelemetry-exporter-logging-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-common/1.44.1/opentelemetry-sdk-common-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.44.1/opentelemetry-sdk-extension-autoconfigure-spi-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.44.1/opentelemetry-sdk-extension-autoconfigure-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-api-incubator/1.44.1-alpha/opentelemetry-api-incubator-1.44.1-alpha.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-trace/1.44.1/opentelemetry-sdk-trace-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk/1.44.1/opentelemetry-sdk-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-metrics/1.44.1/opentelemetry-sdk-metrics-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-logs/1.44.1/opentelemetry-sdk-logs-1.44.1.jar:/home/daniele/.m2/repository/net/bytebuddy/byte-buddy/1.15.10/byte-buddy-1.15.10.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-http/4.27.0/selenium-http-4.27.0.jar:/home/daniele/.m2/repository/dev/failsafe/failsafe/3.3.2/failsafe-3.3.2.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-os/4.27.0/selenium-os-4.27.0.jar:/home/daniele/.m2/repository/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.jar:/home/daniele/.m2/repository/org/glassfish/web/jakarta.servlet.jsp.jstl/3.0.1/jakarta.servlet.jsp.jstl-3.0.1.jar:/home/daniele/.m2/repository/jakarta/servlet/jsp/jstl/jakarta.servlet.jsp.jstl-api/3.0.0/jakarta.servlet.jsp.jstl-api-3.0.0.jar:/home/daniele/.m2/repository/jakarta/servlet/jakarta.servlet-api/6.0.0/jakarta.servlet-api-6.0.0.jar:/home/daniele/.m2/repository/jakarta/el/jakarta.el-api/5.0.0/jakarta.el-api-5.0.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/4.27.0/selenium-chrome-driver-4.27.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-chromium-driver/4.27.0/selenium-chromium-driver-4.27.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-manager/4.27.0/selenium-manager-4.27.0.jar:/home/daniele/.m2/repository/org/sonarsource/scanner/maven/sonar-maven-plugin/4.0.0.4121/sonar-maven-plugin-4.0.0.4121.jar:/home/daniele/.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.jar:/home/daniele/.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar:/home/daniele/.m2/repository/org/sonarsource/scanner/api/sonar-scanner-api/2.16.3.1081/sonar-scanner-api-2.16.3.1081.jar:/home/daniele/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar:/home/daniele/.m2/repository/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.jar:/home/daniele/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/daniele/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar:/home/daniele/.m2/repository/org/codehaus/mojo/build-helper-maven-plugin/3.4.0/build-helper-maven-plugin-3.4.0.jar:/home/daniele/.m2/repository/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar:/home/daniele/.m2/repository/org/apache-extras/beanshell/bsh/2.0b6/bsh-2.0b6.jar:/home/daniele/.m2/repository/org/apache/maven/shared/file-management/3.1.0/file-management-3.1.0.jar:/home/daniele/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/home/daniele/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/home/daniele/.m2/repository/org/jetbrains/annotations/15.0/annotations-15.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter1479775541646640067.jar"/>
+    <property name="surefire.real.class.path" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter2672331501805944745.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.16+8-Ubuntu-0ubuntu124.04.1"/>
     <property name="user.name" value="daniele"/>
@@ -55,22 +55,237 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testLoginAsEditore" classname="demo.secondouclogin.TestDemoLogin" time="0.031">
-    <system-err><![CDATA[ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerPagamentoCash <init>
+  <testcase name="testLoginAsEditore" classname="demo.secondouclogin.TestDemoLogin" time="0.136">
+    <system-err><![CDATA[ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerPagamentoCash <init>
 INFORMAZIONI: costructor
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerPagamentoCC <init>
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerPagamentoCC <init>
 INFORMAZIONI: costructor
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaGiornale
-INFORMAZIONI: type of persistency of daily laptop.database.primoucacquista.giornale.MemoriaGiornale@754de353
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente initializza
+INFORMAZIONI: peristenza utente initialize
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+INFORMAZIONI: checking files of type : utente
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception :
+com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION utente
+	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:116)
+	at laptop.database.secondouclogin.users.PersistenzaUtente.initializza(PersistenzaUtente.java:25)
+	at laptop.database.secondouclogin.users.MemoriaUtente.initializza(MemoriaUtente.java:167)
+	at laptop.controller.secondouclogin.ControllerLogin.login(ControllerLogin.java:34)
+	at demo.secondouclogin.TestDemoLogin.testLoginAsEditore(TestDemoLogin.java:81)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:188)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:154)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:128)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaGiornale
+INFORMAZIONI: type of persistency of daily laptop.database.primoucacquista.giornale.MemoriaGiornale@1584c019
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.giornale.PersistenzaGiornale initializza
+INFORMAZIONI:  persistenza giornale inizializza
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+INFORMAZIONI: checking files of type : giornale
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception :
+com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION giornale
+	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:116)
+	at laptop.database.primoucacquista.giornale.PersistenzaGiornale.initializza(PersistenzaGiornale.java:34)
+	at laptop.database.primoucacquista.giornale.MemoriaGiornale.initializza(MemoriaGiornale.java:29)
+	at laptop.controller.primoucacquista.ControllerCompravendita.getLista(ControllerCompravendita.java:65)
+	at laptop.controller.primoucacquista.ControllerCompravendita.checkId(ControllerCompravendita.java:96)
+	at demo.secondouclogin.TestDemoLogin.testLoginAsEditore(TestDemoLogin.java:86)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:188)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:154)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:128)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.giornale.PersistenzaGiornale retrieveRaccoltaData
+INFORMAZIONI: persitenza giornale retrieve daily data
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
 INFORMAZIONI: buying daily :Giornale{titolo='null', editore='null', id=3}
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaAnno
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaAnno
 INFORMAZIONI:  year is correct : 2032
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaMese
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaMese
 INFORMAZIONI:  month is correct : 9
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaGiorno
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaGiorno
 INFORMAZIONI:  giorno is correct : 11
-ago 25, 2025 8:26:59 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 26, 2025 8:47:47 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -79,7 +294,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
 	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
 	at java.base/java.nio.file.Files.createFile(Files.java:658)
-	at laptop.database.PagamentoTotalePersistenza.<init>(PagamentoTotalePersistenza.java:66)
+	at laptop.database.PagamentoTotalePersistenza.<init>(PagamentoTotalePersistenza.java:65)
 	at laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito.inizializza(MemoriaPagamentoCartaCredito.java:35)
 	at laptop.controller.primoucacquista.ControllerPagamentoCC.pagamentoCC(ControllerPagamentoCC.java:191)
 	at demo.secondouclogin.TestDemoLogin.testLoginAsEditore(TestDemoLogin.java:97)
@@ -155,24 +370,422 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 25, 2025 8:26:59 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito inserisciPagamentoCartaCredito
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito inizializza
+INFORMAZIONI: inizializza persistency cc payment
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+INFORMAZIONI: checking files of type : pagamentoCC
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception :
+com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION PagamentoCartaCredito
+	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:116)
+	at laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito.inizializza(PersistenzaPagamentoCartaCredito.java:15)
+	at laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito.inizializza(MemoriaPagamentoCartaCredito.java:36)
+	at laptop.controller.primoucacquista.ControllerPagamentoCC.pagamentoCC(ControllerPagamentoCC.java:191)
+	at demo.secondouclogin.TestDemoLogin.testLoginAsEditore(TestDemoLogin.java:97)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:188)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:154)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:128)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito inserisciPagamentoCartaCredito
+INFORMAZIONI: inizializza persistency insert cc payment
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito inserisciPagamentoCartaCredito
 INFORMAZIONI: payment is wrote [PagamentoCartaCredito{idProdotto=3, cognomeUtente='prova', idPagCC=1, nomeUtente='prova', spesaTotale=2.0, email=''}, PagamentoCartaCredito{idProdotto=3, cognomeUtente='Editore Prova', idPagCC=2, nomeUtente='Editore Prova', spesaTotale=2.0, email='editore185@gmail.com'}]
-ago 25, 2025 8:26:59 PM laptop.database.PagamentoTotalePersistenza lista
+ago 26, 2025 8:47:47 PM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI:  list read [PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=5.0, emailT='', tipoAcquistoT='MENSILE', idProdottoT=1, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=1, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}]
-ago 25, 2025 8:26:59 PM laptop.database.PagamentoTotalePersistenza lista
+ago 26, 2025 8:47:47 PM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI: list tota payments [PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=5.0, emailT='', tipoAcquistoT='MENSILE', idProdottoT=1, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=1, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='Editore Prova', cognomeT='Editore Prova', ammontareT=2.0, emailT='editore185@gmail.com', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=2}]
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
+ago 26, 2025 8:47:47 PM laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport inizializza
+INFORMAZIONI: inizializza
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+INFORMAZIONI: checking files of type : report
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception :
+com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION report
+	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:116)
+	at laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport.inizializza(PersistenzaReport.java:28)
+	at laptop.database.terzoucgestioneprofiloggetto.report.MemoriaReport.inizializza(MemoriaReport.java:96)
+	at laptop.controller.primoucacquista.ControllerPagamentoCC.pagamentoCC(ControllerPagamentoCC.java:217)
+	at demo.secondouclogin.TestDemoLogin.testLoginAsEditore(TestDemoLogin.java:97)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:188)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:154)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:128)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+
+ago 26, 2025 8:47:47 PM laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport insertReport
+INFORMAZIONI: insert report
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
 INFORMAZIONI: repo cc correct inserted
-ago 25, 2025 8:26:59 PM laptop.model.user.User annullaUtente
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.negozio.PersistenzaNegozio initializza
+INFORMAZIONI:  persistenza negozio inizializza
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+INFORMAZIONI: checking files of type : negozio
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception :
+com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION negozio
+	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:116)
+	at laptop.database.primoucacquista.negozio.PersistenzaNegozio.initializza(PersistenzaNegozio.java:32)
+	at laptop.database.primoucacquista.negozio.MemoriaNegozio.initializza(MemoriaNegozio.java:92)
+	at laptop.controller.primoucacquista.ControllerScegliNegozio.getNegozi(ControllerScegliNegozio.java:28)
+	at demo.secondouclogin.TestDemoLogin.testLoginAsEditore(TestDemoLogin.java:99)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:188)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:154)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:128)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.negozio.PersistenzaNegozio getNegozi
+INFORMAZIONI: persitenza negozio getNegozi
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.negozio.PersistenzaNegozio getNegozi
+INFORMAZIONI: persitenza negozio getNegozi
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.negozio.PersistenzaNegozio checkRitiro
+INFORMAZIONI: persitenza negozio checkRitiro
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.negozio.PersistenzaNegozio getNegozi
+INFORMAZIONI: persitenza negozio getNegozi
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.negozio.PersistenzaNegozio checkOpen
+INFORMAZIONI: persitenza negozio checkOpen
+ago 26, 2025 8:47:47 PM laptop.model.user.User annullaUtente
 INFORMAZIONI:  user data is cleaned
 ]]></system-err>
   </testcase>
-  <testcase name="testLoginAsScrittore" classname="demo.secondouclogin.TestDemoLogin" time="0.049">
-    <system-err><![CDATA[ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaRivista
-INFORMAZIONI: type of persistency of magazine laptop.database.primoucacquista.rivista.MemoriaRivista@30c7be6f
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
+  <testcase name="testLoginAsScrittore" classname="demo.secondouclogin.TestDemoLogin" time="0.118">
+    <system-err><![CDATA[ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente initializza
+INFORMAZIONI: peristenza utente initialize
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+INFORMAZIONI: checking files of type : utente
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception :
+com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION utente
+	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:116)
+	at laptop.database.secondouclogin.users.PersistenzaUtente.initializza(PersistenzaUtente.java:25)
+	at laptop.database.secondouclogin.users.MemoriaUtente.initializza(MemoriaUtente.java:167)
+	at laptop.controller.secondouclogin.ControllerLogin.login(ControllerLogin.java:34)
+	at demo.secondouclogin.TestDemoLogin.testLoginAsScrittore(TestDemoLogin.java:58)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:188)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:154)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:128)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaRivista
+INFORMAZIONI: type of persistency of magazine laptop.database.primoucacquista.rivista.MemoriaRivista@642c72cf
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
 INFORMAZIONI: buying magazine :Rivista{titolo='null', editore='null', id=3, autore='null'}
-ago 25, 2025 8:26:59 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 GRAVE: error with file :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -181,7 +794,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
 	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
 	at java.base/java.nio.file.Files.createFile(Files.java:658)
-	at laptop.database.primoucacquista.pagamentofattura.MemoriaFattura.inizializza(MemoriaFattura.java:109)
+	at laptop.database.primoucacquista.pagamentofattura.MemoriaFattura.inizializza(MemoriaFattura.java:106)
 	at laptop.controller.primoucacquista.ControllerPagamentoCash.controlla(ControllerPagamentoCash.java:71)
 	at demo.secondouclogin.TestDemoLogin.testLoginAsScrittore(TestDemoLogin.java:70)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -256,7 +869,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 25, 2025 8:26:59 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 26, 2025 8:47:47 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -265,8 +878,8 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
 	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
 	at java.base/java.nio.file.Files.createFile(Files.java:658)
-	at laptop.database.PagamentoTotalePersistenza.<init>(PagamentoTotalePersistenza.java:66)
-	at laptop.database.primoucacquista.pagamentofattura.MemoriaFattura.inizializza(MemoriaFattura.java:115)
+	at laptop.database.PagamentoTotalePersistenza.<init>(PagamentoTotalePersistenza.java:65)
+	at laptop.database.primoucacquista.pagamentofattura.MemoriaFattura.inizializza(MemoriaFattura.java:112)
 	at laptop.controller.primoucacquista.ControllerPagamentoCash.controlla(ControllerPagamentoCash.java:71)
 	at demo.secondouclogin.TestDemoLogin.testLoginAsScrittore(TestDemoLogin.java:70)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -341,34 +954,431 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 25, 2025 8:26:59 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inserisciPagamentoFattura
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
+INFORMAZIONI: persistenza pagamento fattura inizializza
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+INFORMAZIONI: checking files of type : pagamentoFattura
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception :
+com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
+	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:116)
+	at laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura.inizializza(PersistenzaPagamentoFattura.java:25)
+	at laptop.database.primoucacquista.pagamentofattura.MemoriaFattura.inizializza(MemoriaFattura.java:113)
+	at laptop.controller.primoucacquista.ControllerPagamentoCash.controlla(ControllerPagamentoCash.java:71)
+	at demo.secondouclogin.TestDemoLogin.testLoginAsScrittore(TestDemoLogin.java:70)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:188)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:154)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:128)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inserisciPagamentoFattura
+INFORMAZIONI: persistenza pagamento insert fattura
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inserisciPagamentoFattura
 INFORMAZIONI: fattura is wrote [PagamentoFattura{nome='prova', cognome='prova', ammontare=12.0, idFattura=1, email='', idProdotto=6}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}]
-ago 25, 2025 8:26:59 PM laptop.database.PagamentoTotalePersistenza lista
+ago 26, 2025 8:47:47 PM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI:  list read [PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=5.0, emailT='', tipoAcquistoT='MENSILE', idProdottoT=1, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=1, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='Editore Prova', cognomeT='Editore Prova', ammontareT=2.0, emailT='editore185@gmail.com', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=2}]
-ago 25, 2025 8:26:59 PM laptop.database.PagamentoTotalePersistenza lista
+ago 26, 2025 8:47:47 PM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI: list :[PagamentoFattura{nome='prova', cognome='prova', ammontare=12.0, idFattura=1, email='', idProdotto=6}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}]
-ago 25, 2025 8:26:59 PM laptop.database.PagamentoTotalePersistenza lista
+ago 26, 2025 8:47:47 PM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI: list tota payments [PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=5.0, emailT='', tipoAcquistoT='MENSILE', idProdottoT=1, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=1, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='Editore Prova', cognomeT='Editore Prova', ammontareT=2.0, emailT='editore185@gmail.com', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=2}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}]
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
 INFORMAZIONI: payment success with id object : PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
+ago 26, 2025 8:47:47 PM laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport inizializza
+INFORMAZIONI: inizializza
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+INFORMAZIONI: checking files of type : report
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception :
+com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION report
+	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:116)
+	at laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport.inizializza(PersistenzaReport.java:28)
+	at laptop.database.terzoucgestioneprofiloggetto.report.MemoriaReport.inizializza(MemoriaReport.java:96)
+	at laptop.controller.primoucacquista.ControllerPagamentoCash.controlla(ControllerPagamentoCash.java:114)
+	at demo.secondouclogin.TestDemoLogin.testLoginAsScrittore(TestDemoLogin.java:70)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:188)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:154)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:128)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+
+ago 26, 2025 8:47:47 PM laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport insertReport
+INFORMAZIONI: insert report
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
 INFORMAZIONI: repo cash correct inserted
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerDownload acquistaRivista
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerDownload acquistaRivista
 INFORMAZIONI:  id eliminated magazine2
-ago 25, 2025 8:26:59 PM laptop.database.MemoryInitialize inserisci
+ago 26, 2025 8:47:47 PM laptop.database.MemoryInitialize inserisci
 INFORMAZIONI: inserted rivista in list : 
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerDownload acquistaRivista
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerDownload acquistaRivista
 INFORMAZIONI: update magazine succesfully!!
-ago 25, 2025 8:26:59 PM laptop.model.user.User annullaUtente
+ago 26, 2025 8:47:47 PM laptop.model.user.User annullaUtente
 INFORMAZIONI:  user data is cleaned
 ]]></system-err>
   </testcase>
-  <testcase name="testLoginAsUser" classname="demo.secondouclogin.TestDemoLogin" time="0.105">
-    <system-err><![CDATA[ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
-INFORMAZIONI: type of persistency of book laptop.database.primoucacquista.libro.MemoriaLibro@2d4f67e
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
+  <testcase name="testLoginAsUser" classname="demo.secondouclogin.TestDemoLogin" time="0.365">
+    <system-err><![CDATA[ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente initializza
+INFORMAZIONI: peristenza utente initialize
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+INFORMAZIONI: checking files of type : utente
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception :
+com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION utente
+	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:116)
+	at laptop.database.secondouclogin.users.PersistenzaUtente.initializza(PersistenzaUtente.java:25)
+	at laptop.database.secondouclogin.users.MemoriaUtente.initializza(MemoriaUtente.java:167)
+	at laptop.controller.secondouclogin.ControllerLogin.login(ControllerLogin.java:34)
+	at demo.secondouclogin.TestDemoLogin.testLoginAsUser(TestDemoLogin.java:35)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:188)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:154)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:128)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+INFORMAZIONI: peristenza utente getUSerData
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerHomePage inizializzaLibro
+INFORMAZIONI: type of persistency of book laptop.database.primoucacquista.libro.MemoriaLibro@54defd69
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro initializza
+INFORMAZIONI:  persistenza libro inizializza
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+INFORMAZIONI: checking files of type : libro
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception :
+com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION libro
+	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:116)
+	at laptop.database.primoucacquista.libro.PersistenzaLibro.initializza(PersistenzaLibro.java:36)
+	at laptop.database.primoucacquista.libro.MemoriaLibro.initializza(MemoriaLibro.java:27)
+	at laptop.controller.primoucacquista.ControllerCompravendita.getLista(ControllerCompravendita.java:50)
+	at laptop.controller.primoucacquista.ControllerCompravendita.checkId(ControllerCompravendita.java:96)
+	at demo.secondouclogin.TestDemoLogin.testLoginAsUser(TestDemoLogin.java:41)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:188)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:154)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:128)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro retrieveRaccoltaData
+INFORMAZIONI: raccolta data book
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+INFORMAZIONI: lista libro by id .
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+INFORMAZIONI: lista libro by id .
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+INFORMAZIONI: lista libro by id .
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
 INFORMAZIONI: buying book :Libro{titolo='null', editore='null', autore='null', id=8}
-ago 25, 2025 8:26:59 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 GRAVE: error with file :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -377,7 +1387,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
 	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
 	at java.base/java.nio.file.Files.createFile(Files.java:658)
-	at laptop.database.primoucacquista.pagamentofattura.MemoriaFattura.inizializza(MemoriaFattura.java:109)
+	at laptop.database.primoucacquista.pagamentofattura.MemoriaFattura.inizializza(MemoriaFattura.java:106)
 	at laptop.controller.primoucacquista.ControllerPagamentoCash.controlla(ControllerPagamentoCash.java:71)
 	at demo.secondouclogin.TestDemoLogin.testLoginAsUser(TestDemoLogin.java:47)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -452,7 +1462,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 25, 2025 8:26:59 PM laptop.database.PagamentoTotalePersistenza <init>
+ago 26, 2025 8:47:47 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -461,8 +1471,8 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
 	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
 	at java.base/java.nio.file.Files.createFile(Files.java:658)
-	at laptop.database.PagamentoTotalePersistenza.<init>(PagamentoTotalePersistenza.java:66)
-	at laptop.database.primoucacquista.pagamentofattura.MemoriaFattura.inizializza(MemoriaFattura.java:115)
+	at laptop.database.PagamentoTotalePersistenza.<init>(PagamentoTotalePersistenza.java:65)
+	at laptop.database.primoucacquista.pagamentofattura.MemoriaFattura.inizializza(MemoriaFattura.java:112)
 	at laptop.controller.primoucacquista.ControllerPagamentoCash.controlla(ControllerPagamentoCash.java:71)
 	at demo.secondouclogin.TestDemoLogin.testLoginAsUser(TestDemoLogin.java:47)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -537,25 +1547,249 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-ago 25, 2025 8:26:59 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inserisciPagamentoFattura
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
+INFORMAZIONI: persistenza pagamento fattura inizializza
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+INFORMAZIONI: checking files of type : pagamentoFattura
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception :
+com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
+	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:116)
+	at laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura.inizializza(PersistenzaPagamentoFattura.java:25)
+	at laptop.database.primoucacquista.pagamentofattura.MemoriaFattura.inizializza(MemoriaFattura.java:113)
+	at laptop.controller.primoucacquista.ControllerPagamentoCash.controlla(ControllerPagamentoCash.java:71)
+	at demo.secondouclogin.TestDemoLogin.testLoginAsUser(TestDemoLogin.java:47)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:188)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:154)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:128)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+INFORMAZIONI: lista libro by id .
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inserisciPagamentoFattura
+INFORMAZIONI: persistenza pagamento insert fattura
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inserisciPagamentoFattura
 INFORMAZIONI: fattura is wrote [PagamentoFattura{nome='prova', cognome='prova', ammontare=12.0, idFattura=1, email='', idProdotto=6}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=9.99, idFattura=3, email='giuliaConforto@gmail.eu', idProdotto=8}]
-ago 25, 2025 8:26:59 PM laptop.database.PagamentoTotalePersistenza lista
+ago 26, 2025 8:47:47 PM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI:  list read [PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=5.0, emailT='', tipoAcquistoT='MENSILE', idProdottoT=1, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=1, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='Editore Prova', cognomeT='Editore Prova', ammontareT=2.0, emailT='editore185@gmail.com', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=2}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}]
-ago 25, 2025 8:26:59 PM laptop.database.PagamentoTotalePersistenza lista
+ago 26, 2025 8:47:47 PM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI: list :[PagamentoFattura{nome='prova', cognome='prova', ammontare=12.0, idFattura=1, email='', idProdotto=6}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=9.99, idFattura=3, email='giuliaConforto@gmail.eu', idProdotto=8}]
-ago 25, 2025 8:26:59 PM laptop.database.PagamentoTotalePersistenza lista
+ago 26, 2025 8:47:47 PM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI: list tota payments [PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=5.0, emailT='', tipoAcquistoT='MENSILE', idProdottoT=1, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=1, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='Editore Prova', cognomeT='Editore Prova', ammontareT=2.0, emailT='editore185@gmail.com', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=2}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=9.99, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='INFORMATICA', idProdottoT=8, idFatturaT=3, idPagCCT=0}]
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
 INFORMAZIONI: payment success with id object : PagamentoFattura{nome='giulia', cognome='conforto', ammontare=9.99, idFattura=3, email='giuliaConforto@gmail.eu', idProdotto=8}
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
+ago 26, 2025 8:47:47 PM laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport inizializza
+INFORMAZIONI: inizializza
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+INFORMAZIONI: checking files of type : report
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
+ago 26, 2025 8:47:47 PM laptop.database.PersistenzaGenerale getExcepptionInit
+GRAVE: exception :
+com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION report
+	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:116)
+	at laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport.inizializza(PersistenzaReport.java:28)
+	at laptop.database.terzoucgestioneprofiloggetto.report.MemoriaReport.inizializza(MemoriaReport.java:96)
+	at laptop.controller.primoucacquista.ControllerPagamentoCash.controlla(ControllerPagamentoCash.java:114)
+	at demo.secondouclogin.TestDemoLogin.testLoginAsUser(TestDemoLogin.java:47)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:188)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:154)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:128)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+INFORMAZIONI: lista libro by id .
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+INFORMAZIONI: lista libro by id .
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+INFORMAZIONI: lista libro by id .
+ago 26, 2025 8:47:47 PM laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport insertReport
+INFORMAZIONI: insert report
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
 INFORMAZIONI: repo cash correct inserted
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+INFORMAZIONI: lista libro by id .
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
 INFORMAZIONI:  id eliminated book 7
-ago 25, 2025 8:26:59 PM laptop.database.MemoryInitialize inserisci
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+INFORMAZIONI: peristenza libro getLibri
+ago 26, 2025 8:47:47 PM laptop.database.MemoryInitialize inserisci
 INFORMAZIONI: inserted libro in list :
-ago 25, 2025 8:26:59 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
+ago 26, 2025 8:47:47 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
 INFORMAZIONI: update book succesfully!!
-ago 25, 2025 8:27:00 PM laptop.model.user.User annullaUtente
+ago 26, 2025 8:47:47 PM laptop.model.user.User annullaUtente
 INFORMAZIONI:  user data is cleaned
 ]]></system-err>
   </testcase>

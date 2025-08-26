@@ -88,6 +88,7 @@ public class CsvGiornale extends PersistenzaGiornale{
 
     @Override
     public boolean inserisciGiornale(Giornale g) {
+        super.inserisciGiornale(g);
         boolean status=false;
         try {
             boolean duplicatedG = false;
@@ -219,6 +220,7 @@ public class CsvGiornale extends PersistenzaGiornale{
 
     @Override
     public boolean removeGiornaleById(Giornale g)  {
+        super.removeGiornaleById(g);
         synchronized (this.cacheGiornale) {
             this.cacheGiornale.remove(g.getId(),g);
         }
@@ -284,6 +286,7 @@ public class CsvGiornale extends PersistenzaGiornale{
 
     @Override
     public ObservableList<Giornale> getGiornali()  {
+        super.getGiornali();
         ObservableList<Giornale> list=FXCollections.observableArrayList();
         synchronized (this.cacheGiornale) {
 
@@ -344,6 +347,7 @@ public class CsvGiornale extends PersistenzaGiornale{
 
     @Override
     public ObservableList<Raccolta> retrieveRaccoltaData() {
+        super.retrieveRaccoltaData();
         return retrieveData(this.fdG);
     }
     private static synchronized ObservableList<Raccolta> retrieveData(File fd) {
@@ -378,6 +382,7 @@ public class CsvGiornale extends PersistenzaGiornale{
 
     @Override
     public ObservableList<Giornale> getGiornaleByIdTitoloAutoreLibro(Giornale g) {
+        super.getGiornaleByIdTitoloAutoreLibro(g);
         ObservableList<Giornale> list=FXCollections.observableArrayList();
         synchronized (this.cacheGiornale) {
 
@@ -473,6 +478,7 @@ public class CsvGiornale extends PersistenzaGiornale{
 
             Logger.getLogger("crea db file").log(Level.SEVERE, "\n eccezione ottenuta nella modalità file.", eFile);
         }
+        super.initializza();
 
     }
 

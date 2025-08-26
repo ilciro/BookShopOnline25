@@ -1,7 +1,6 @@
 package laptop.database;
 
 import com.opencsv.exceptions.CsvValidationException;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.SQLException;
@@ -29,13 +28,10 @@ public class PersistenzaGenerale {
         String csvexc="CSVALIDATIONEXCEPTION";
         String sqlexc="sqlexcEPTION";
         String memexc="CLASSNOTFOUNDEXCEPTION";
-
         //usati per settare i vari path
         String pathReport="";
         String pathMemory="";
         //messaggi exception
-
-
         switch (type)
         {
             case LIBRO->
@@ -116,7 +112,6 @@ public class PersistenzaGenerale {
             default -> Logger.getLogger("Persistennza generale").log(Level.SEVERE,"type is incorrect !! :{0}",type);
         }
         Logger.getLogger("persistenza").log(Level.INFO,"checking files of type : {0}",type);
-
         try {
             if (!Files.exists(Path.of(pathReport)))throw  new CsvValidationException(csvexc);
             if (!Files.exists(Path.of(SQL))) throw  new SQLException(sqlexc);

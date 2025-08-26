@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.database.PagamentoTotalePersistenza;
 import laptop.pagamento.PagamentoFattura;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,152 +11,145 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L15">public class MemoriaFattura extends PersistenzaPagamentoFattura{</span>
+<span class="fc" id="L14">public class MemoriaFattura extends PersistenzaPagamentoFattura{</span>
 
     private static final String SERIALIZZAZIONE=&quot;memory/serializzazionePagamentoFattura.ser&quot;;
-<span class="fc" id="L18">    private ArrayList&lt;PagamentoFattura&gt; list=new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L17">    private ArrayList&lt;PagamentoFattura&gt; list=new ArrayList&lt;&gt;();</span>
     private  PagamentoTotalePersistenza pT;
     private static final String MEMORIA=&quot;memoria&quot;;
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public boolean inserisciPagamentoFattura(PagamentoFattura f)  {
+<span class="fc" id="L24">        super.inserisciPagamentoFattura(f);</span>
+<span class="fc" id="L25">        try (FileInputStream fin = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L26">             ObjectInputStream ois = new ObjectInputStream(fin)) {</span>
 
+<span class="fc" id="L28">            list = (ArrayList&lt;PagamentoFattura&gt;) ois.readObject();</span>
 
-
-
-<span class="fc" id="L29">        try (FileInputStream fin = new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L30">             ObjectInputStream ois = new ObjectInputStream(fin)) {</span>
-
-<span class="fc" id="L32">            list = (ArrayList&lt;PagamentoFattura&gt;) ois.readObject();</span>
-
-<span class="fc" id="L34">        }catch (IOException |ClassNotFoundException e)</span>
+<span class="fc" id="L30">        }catch (IOException |ClassNotFoundException e)</span>
         {
-<span class="fc" id="L36">           Logger.getLogger(&quot;pagaemnto fattura&quot;).log(Level.SEVERE,&quot; error with file payment .&quot;,e);</span>
-<span class="fc" id="L37">        }</span>
-<span class="fc" id="L38">        f.setIdFattura(list.size()+1);</span>
-<span class="fc" id="L39">        list.add(f);</span>
+<span class="fc" id="L32">           Logger.getLogger(&quot;pagaemnto fattura&quot;).log(Level.SEVERE,&quot; error with file payment .&quot;,e);</span>
+<span class="fc" id="L33">        }</span>
+<span class="fc" id="L34">        f.setIdFattura(list.size()+1);</span>
+<span class="fc" id="L35">        list.add(f);</span>
 
 
-<span class="fc" id="L42">        try (FileOutputStream fout = new FileOutputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L43">             ObjectOutputStream oos = new ObjectOutputStream(fout)) {</span>
-<span class="fc" id="L44">            oos.writeObject(list);</span>
-<span class="nc" id="L45">        }catch (IOException e1){</span>
-<span class="nc" id="L46">            Logger.getLogger(&quot;inserisciPagamentofattura&quot;).log(Level.SEVERE,&quot;error with write exception :&quot;,e1);</span>
-<span class="fc" id="L47">        }</span>
+<span class="fc" id="L38">        try (FileOutputStream fout = new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L39">             ObjectOutputStream oos = new ObjectOutputStream(fout)) {</span>
+<span class="fc" id="L40">            oos.writeObject(list);</span>
+<span class="nc" id="L41">        }catch (IOException e1){</span>
+<span class="nc" id="L42">            Logger.getLogger(&quot;inserisciPagamentofattura&quot;).log(Level.SEVERE,&quot;error with write exception :&quot;,e1);</span>
+<span class="fc" id="L43">        }</span>
 
 
 
-<span class="fc" id="L51">        Logger.getLogger(&quot;insert fattura in memory&quot;).log(Level.INFO, &quot;fattura is wrote {0}&quot;,list);</span>
+<span class="fc" id="L47">        Logger.getLogger(&quot;insert fattura in memory&quot;).log(Level.INFO, &quot;fattura is wrote {0}&quot;,list);</span>
 
 
-<span class="fc" id="L54">        return pT.inserisciPagamentoTotaleFattura(f,MEMORIA);</span>
+<span class="fc" id="L50">        return pT.inserisciPagamentoTotaleFattura(f,MEMORIA);</span>
     }
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public boolean cancellaPagamentoFattura(PagamentoFattura f) {
-<span class="fc" id="L60">        boolean status = false;</span>
-<span class="fc" id="L61">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L62">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
-<span class="fc" id="L63">            list = (ArrayList&lt;PagamentoFattura&gt;) ois.readObject();</span>
-<span class="nc" id="L64">        }catch (IOException e){</span>
-<span class="nc" id="L65">            Logger.getLogger(&quot;cancellaPagamentoFattura&quot;).log(Level.SEVERE,&quot;delPaymentF io exception :&quot;,e);</span>
-<span class="nc" id="L66">        }catch (ClassNotFoundException e1){</span>
-<span class="nc" id="L67">            Logger.getLogger(&quot;cancellaPAgamentoFattura csv&quot;).log(Level.SEVERE,&quot;delPaymentF csv exception :&quot;,e1);</span>
+<span class="fc" id="L56">        super.cancellaPagamentoFattura(f);</span>
+<span class="fc" id="L57">        boolean status = false;</span>
+<span class="fc" id="L58">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L59">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
+<span class="fc" id="L60">            list = (ArrayList&lt;PagamentoFattura&gt;) ois.readObject();</span>
+<span class="nc" id="L61">        }catch (IOException e){</span>
+<span class="nc" id="L62">            Logger.getLogger(&quot;cancellaPagamentoFattura&quot;).log(Level.SEVERE,&quot;delPaymentF io exception :&quot;,e);</span>
+<span class="nc" id="L63">        }catch (ClassNotFoundException e1){</span>
+<span class="nc" id="L64">            Logger.getLogger(&quot;cancellaPAgamentoFattura csv&quot;).log(Level.SEVERE,&quot;delPaymentF csv exception :&quot;,e1);</span>
 
-<span class="pc" id="L69">        }</span>
+<span class="pc" id="L66">        }</span>
 
-<span class="fc bfc" id="L71" title="All 2 branches covered.">        for (int i = 0; i &lt;list.size(); i++) {</span>
-<span class="fc bfc" id="L72" title="All 2 branches covered.">            if (i == f.getIdFattura()-1) {</span>
-<span class="fc" id="L73">                Logger.getLogger(&quot;cancella fattura&quot;).log(Level.INFO,&quot;id fattura :.&quot;,f.getIdFattura());</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        for (int i = 0; i &lt;list.size(); i++) {</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">            if (i == f.getIdFattura()-1) {</span>
+<span class="fc" id="L70">                Logger.getLogger(&quot;cancella fattura&quot;).log(Level.INFO,&quot;id fattura :.&quot;,f.getIdFattura());</span>
 
-<span class="fc" id="L75">                status = list.remove(list.get(i));</span>
+<span class="fc" id="L72">                status = list.remove(list.get(i));</span>
 
             }
         }
         //cancello file e lo ricreo
-<span class="fc" id="L80">        Path path=Path.of(SERIALIZZAZIONE);</span>
+<span class="fc" id="L77">        Path path=Path.of(SERIALIZZAZIONE);</span>
         try{
-<span class="fc" id="L82">            Files.delete(path);</span>
-<span class="pc bpc" id="L83" title="1 of 2 branches missed.">            if(!Files.exists(path)) throw new IOException(&quot;file &quot;+SERIALIZZAZIONE+&quot; cancellato&quot;);</span>
-<span class="fc" id="L84">        }catch (IOException e)</span>
+<span class="fc" id="L79">            Files.delete(path);</span>
+<span class="pc bpc" id="L80" title="1 of 2 branches missed.">            if(!Files.exists(path)) throw new IOException(&quot;file &quot;+SERIALIZZAZIONE+&quot; cancellato&quot;);</span>
+<span class="fc" id="L81">        }catch (IOException e)</span>
         {
             try {
-<span class="fc" id="L87">                Files.createFile(path);</span>
-<span class="nc" id="L88">            } catch (IOException ex) {</span>
-<span class="nc" id="L89">                Logger.getLogger(&quot;creazione Fattura file&quot;).log(Level.SEVERE,&quot;file not created :&quot;,ex);</span>
-<span class="fc" id="L90">            }</span>
-<span class="fc" id="L91">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L92">                ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
-<span class="fc" id="L93">                oos.writeObject(list);</span>
-<span class="nc" id="L94">            }catch (IOException e1)</span>
+<span class="fc" id="L84">                Files.createFile(path);</span>
+<span class="nc" id="L85">            } catch (IOException ex) {</span>
+<span class="nc" id="L86">                Logger.getLogger(&quot;creazione Fattura file&quot;).log(Level.SEVERE,&quot;file not created :&quot;,ex);</span>
+<span class="fc" id="L87">            }</span>
+<span class="fc" id="L88">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L89">                ObjectOutputStream oos=new ObjectOutputStream(fos)){</span>
+<span class="fc" id="L90">                oos.writeObject(list);</span>
+<span class="nc" id="L91">            }catch (IOException e1)</span>
             {
-<span class="nc" id="L96">             Logger.getLogger(&quot;scrittura&quot;).log(Level.SEVERE,&quot;error with write :&quot;,e1);</span>
-<span class="fc" id="L97">            }</span>
-<span class="nc" id="L98">        }</span>
-<span class="pc bpc" id="L99" title="2 of 4 branches missed.">        return status&amp;&amp;pT.cancellaFatturaMem(f);</span>
+<span class="nc" id="L93">             Logger.getLogger(&quot;scrittura&quot;).log(Level.SEVERE,&quot;error with write :&quot;,e1);</span>
+<span class="fc" id="L94">            }</span>
+<span class="nc" id="L95">        }</span>
+<span class="pc bpc" id="L96" title="2 of 4 branches missed.">        return status&amp;&amp;pT.cancellaFatturaMem(f);</span>
     }
 
     @Override
     public void inizializza()  {
-<span class="fc" id="L104">        Path path = Path.of(SERIALIZZAZIONE);</span>
+<span class="fc" id="L101">        Path path = Path.of(SERIALIZZAZIONE);</span>
         try
        {
-<span class="pc bpc" id="L107" title="1 of 2 branches missed.">           if(!Files.exists(path)) throw new IOException(&quot; file serializzazionePagamentoFattura.ser not exists&quot;);</span>
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">           if(!Files.exists(path)) throw new IOException(&quot; file serializzazionePagamentoFattura.ser not exists&quot;);</span>
 
-<span class="nc" id="L109">           Files.createFile(path);</span>
+<span class="nc" id="L106">           Files.createFile(path);</span>
 
-<span class="nc" id="L111">           Logger.getLogger(&quot;inizializza memoria fattura&quot;).log(Level.INFO,&quot; file has been created {0}&quot;,SERIALIZZAZIONE);</span>
-<span class="fc" id="L112">       }catch (IOException ex) {</span>
-<span class="fc" id="L113">            Logger.getLogger(&quot;inizializza&quot;).log(Level.SEVERE,&quot;error with file :&quot;,ex);</span>
-<span class="nc" id="L114">        }</span>
-<span class="fc" id="L115">        pT=new PagamentoTotalePersistenza(MEMORIA);</span>
-<span class="fc" id="L116">    }</span>
+<span class="nc" id="L108">           Logger.getLogger(&quot;inizializza memoria fattura&quot;).log(Level.INFO,&quot; file has been created {0}&quot;,SERIALIZZAZIONE);</span>
+<span class="fc" id="L109">       }catch (IOException ex) {</span>
+<span class="fc" id="L110">            Logger.getLogger(&quot;inizializza&quot;).log(Level.SEVERE,&quot;error with file :&quot;,ex);</span>
+<span class="nc" id="L111">        }</span>
+<span class="fc" id="L112">        pT=new PagamentoTotalePersistenza(MEMORIA);</span>
+<span class="fc" id="L113">        super.inizializza();</span>
+<span class="fc" id="L114">    }</span>
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public PagamentoFattura ultimaFattura()  {
-<span class="fc" id="L121">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L122">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
-<span class="fc" id="L123">            list = (ArrayList&lt;PagamentoFattura&gt;) ois.readObject();</span>
-<span class="nc" id="L124">        }catch (IOException |ClassNotFoundException e)</span>
+<span class="fc" id="L119">        super.ultimaFattura();</span>
+<span class="fc" id="L120">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L121">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
+<span class="fc" id="L122">            list = (ArrayList&lt;PagamentoFattura&gt;) ois.readObject();</span>
+<span class="nc" id="L123">        }catch (IOException |ClassNotFoundException e)</span>
         {
-<span class="nc" id="L126">            Logger.getLogger(&quot;ultimaFattura&quot;).log(Level.SEVERE,&quot;error withh last fattura :&quot;,e);</span>
-<span class="fc" id="L127">        }</span>
-<span class="fc" id="L128">        return list.get(list.size() - 1);</span>
+<span class="nc" id="L125">            Logger.getLogger(&quot;ultimaFattura&quot;).log(Level.SEVERE,&quot;error withh last fattura :&quot;,e);</span>
+<span class="fc" id="L126">        }</span>
+<span class="fc" id="L127">        return list.get(list.size() - 1);</span>
     }
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public ObservableList&lt;PagamentoFattura&gt; listPagamentiByUserF(PagamentoFattura pF)  {
-
-
-<span class="fc" id="L136">        ObservableList&lt;PagamentoFattura&gt; listFatture= FXCollections.observableArrayList();</span>
-
-<span class="fc" id="L138">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L139">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
-<span class="fc" id="L140">            list = (ArrayList&lt;PagamentoFattura&gt;) ois.readObject();</span>
-<span class="nc" id="L141">        }catch (IOException |ClassNotFoundException  e)</span>
+<span class="fc" id="L133">        super.listPagamentiByUserF(pF);</span>
+<span class="fc" id="L134">        ObservableList&lt;PagamentoFattura&gt; listFatture= FXCollections.observableArrayList();</span>
+<span class="fc" id="L135">        try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L136">             ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
+<span class="fc" id="L137">            list = (ArrayList&lt;PagamentoFattura&gt;) ois.readObject();</span>
+<span class="nc" id="L138">        }catch (IOException |ClassNotFoundException  e)</span>
         {
-<span class="nc" id="L143">            Logger.getLogger(&quot;listPagemntoFatturaUser&quot;).log(Level.SEVERE,&quot;file is empty&quot;);</span>
-<span class="fc" id="L144">        }</span>
+<span class="nc" id="L140">            Logger.getLogger(&quot;listPagemntoFatturaUser&quot;).log(Level.SEVERE,&quot;file is empty&quot;);</span>
+<span class="fc" id="L141">        }</span>
 
-<span class="fc" id="L146">       Logger.getLogger(&quot;list pagamenti by user &quot;).log(Level.INFO,&quot;list payment by user : {0}&quot;,list);</span>
-
-
-<span class="fc bfc" id="L149" title="All 2 branches covered.">        for (int i = 1; i &lt;= list.size(); i++) {</span>
-<span class="fc bfc" id="L150" title="All 2 branches covered.">            if (list.get(i-1).getEmail().equals(pF.getEmail())) {</span>
-<span class="fc" id="L151">                PagamentoFattura pf=list.get(i-1);</span>
-<span class="fc" id="L152">                listFatture.add(pf);</span>
+<span class="fc" id="L143">       Logger.getLogger(&quot;list pagamenti by user &quot;).log(Level.INFO,&quot;list payment by user : {0}&quot;,list);</span>
+<span class="fc bfc" id="L144" title="All 2 branches covered.">        for (int i = 1; i &lt;= list.size(); i++) {</span>
+<span class="fc bfc" id="L145" title="All 2 branches covered.">            if (list.get(i-1).getEmail().equals(pF.getEmail())) {</span>
+<span class="fc" id="L146">                PagamentoFattura pf=list.get(i-1);</span>
+<span class="fc" id="L147">                listFatture.add(pf);</span>
 
             }
 
         }
-
-
-
-<span class="fc" id="L160">        return listFatture;</span>
+<span class="fc" id="L152">        return listFatture;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

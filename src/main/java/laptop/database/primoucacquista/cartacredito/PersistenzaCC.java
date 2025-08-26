@@ -11,13 +11,13 @@ import java.util.logging.Logger;
 public class PersistenzaCC {
 
     public boolean insCC(CartaDiCredito cc) {
+        Logger.getLogger("ins CC").log(Level.INFO,"persitenza cc insCC");
         return cc.getNumeroCC()!=null;
 
     }
     public ObservableList<CartaDiCredito> getCarteDiCredito(CartaDiCredito cc)  {
 
         Logger.getLogger("get cartecredito").log(Level.INFO,"lista cc con nome: ",cc.getNomeUser());
-
         return FXCollections.observableArrayList();
 
 

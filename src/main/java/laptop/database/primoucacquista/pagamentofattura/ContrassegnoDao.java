@@ -26,6 +26,7 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
 
     @Override
     public boolean inserisciPagamentoFattura(PagamentoFattura f) {
+        super.inserisciPagamentoFattura(f);
         int row=0;
 
 
@@ -62,6 +63,7 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
 
     @Override
     public boolean cancellaPagamentoFattura(PagamentoFattura f) {
+        super.cancellaPagamentoFattura(f);
         boolean state=false;
         int row;
         query="delete from pagamentoFattura where idFattura=?";
@@ -83,6 +85,7 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
 
     @Override
     public PagamentoFattura ultimaFattura() {
+        super.ultimaFattura();
         PagamentoFattura f=new PagamentoFattura();
         query="select * from pagamentoFattura order by idFattura desc limit 1";
         try(Connection conn=ConnToDb.connectionToDB();
@@ -113,7 +116,6 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
 
     @Override
     public void inizializza()  {
-        super.inizializza();
         DaoInitialize daoI=new DaoInitialize();
         daoI.inizializza("pagamentoTotale");
 
@@ -123,6 +125,7 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
         creaTrigger();
 
 
+        super.inizializza();
 
 
 
@@ -160,6 +163,7 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
 
     @Override
     public ObservableList<PagamentoFattura> listPagamentiByUserF(PagamentoFattura pf) {
+        super.listPagamentiByUserF(pf);
         ObservableList<PagamentoFattura> list= FXCollections.observableArrayList();
         query="select idProdotto,ammontare,tipoAcquisto,idFattura from pagamentoFattura where email=?";
         try(Connection conn=ConnToDb.connectionToDB();

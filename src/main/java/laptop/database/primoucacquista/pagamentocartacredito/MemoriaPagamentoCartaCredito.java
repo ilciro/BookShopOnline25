@@ -33,11 +33,13 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
             Logger.getLogger("inizializza memoria pagamentoCC").log(Level.INFO," file has been created");
         }
         pT=new PagamentoTotalePersistenza(MEMORIA);
+        super.inizializza();
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito p)  {
+        super.inserisciPagamentoCartaCredito(p);
         try (FileInputStream fin = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fin)) {
 
@@ -70,6 +72,7 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
     @Override
     @SuppressWarnings("unchecked")
     public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p)  {
+        super.cancellaPagamentoCartaCredito(p);
         boolean status = false;
         try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
@@ -114,6 +117,7 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
     @Override
     @SuppressWarnings("unchecked")
     public PagamentoCartaCredito ultimoPagamentoCartaCredito() {
+        super.ultimoPagamentoCartaCredito();
         try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             list = (ArrayList<PagamentoCartaCredito>) ois.readObject();
@@ -129,6 +133,7 @@ public class MemoriaPagamentoCartaCredito extends PersistenzaPagamentoCartaCredi
     @Override
     @SuppressWarnings("unchecked")
     public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(PagamentoCartaCredito pcc)  {
+        super.listaPagamentiUserByCC(pcc);
         ObservableList<PagamentoCartaCredito> listCC= FXCollections.observableArrayList();
         try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fis)) {

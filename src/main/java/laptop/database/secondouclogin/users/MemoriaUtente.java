@@ -1,13 +1,9 @@
 package laptop.database.secondouclogin.users;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
-import laptop.exception.IdException;
-
 import laptop.model.user.TempUser;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,8 +21,7 @@ public class MemoriaUtente extends PersistenzaUtente{
     @Override
     @SuppressWarnings("unchecked")
     public boolean inserisciUtente(TempUser u)  {
-
-
+        super.inserisciUtente(u);
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois=new ObjectInputStream(fis)){
             listaTU= (ArrayList<TempUser>) ois.readObject();
@@ -53,6 +48,7 @@ public class MemoriaUtente extends PersistenzaUtente{
     @Override
     @SuppressWarnings("unchecked")
     public ObservableList<TempUser> getUserData()  {
+        super.getUserData();
         List<TempUser> listaRecuperata = new ArrayList<>();
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois = new ObjectInputStream(fis)){
@@ -66,6 +62,7 @@ public class MemoriaUtente extends PersistenzaUtente{
     @Override
     @SuppressWarnings("unchecked")
     public boolean removeUserByIdEmailPwd(TempUser u) {
+        super.removeUserByIdEmailPwd(u);
         boolean status=false;
 
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
@@ -167,6 +164,7 @@ public class MemoriaUtente extends PersistenzaUtente{
             Logger.getLogger("lettura file iniziale").log(Level.SEVERE,"error with reading file :",e1);
 
         }
+        super.initializza();
 
 
     }

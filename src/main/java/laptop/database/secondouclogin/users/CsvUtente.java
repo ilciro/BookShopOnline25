@@ -10,7 +10,6 @@ import laptop.exception.IdException;
 import laptop.model.user.TempUser;
 import org.apache.commons.lang.SystemUtils;
 import org.jetbrains.annotations.NotNull;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -21,7 +20,6 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 public class CsvUtente extends PersistenzaUtente {
@@ -54,7 +52,7 @@ public class CsvUtente extends PersistenzaUtente {
 
      @Override
     public boolean inserisciUtente(TempUser tu) {
-
+        super.inserisciUtente(tu);
         boolean duplicated;
         synchronized (this.cacheU) {
             boolean duplicatedM = (this.cacheU.get(tu.getEmailT()) != null);
@@ -121,11 +119,13 @@ public class CsvUtente extends PersistenzaUtente {
 
             Logger.getLogger("crea db file").log(Level.SEVERE, "\n eccezione ottenuta nella modalità file.", eFile);
         }
+        super.initializza();
     }
 
 
     @Override
     public boolean removeUserByIdEmailPwd(TempUser tu)  {
+        super.removeUserByIdEmailPwd(tu);
         synchronized (this.cacheU) {
             this.cacheU.remove(tu.getEmailT());
         }
@@ -224,7 +224,7 @@ public class CsvUtente extends PersistenzaUtente {
         boolean found = false;
         // create csvReader object passing file reader as a parameter
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)));
-             CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(tmpFD, true)));
+             CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(tmpFD, true)))
             ) {
             String[] giornaleVector;
             //check on path
@@ -254,6 +254,7 @@ public class CsvUtente extends PersistenzaUtente {
 
 @Override
     public synchronized ObservableList<TempUser> getUserData() {
+        super.getUserData();
         ObservableList<TempUser> list=FXCollections.observableArrayList();
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(this.fdU)))) {
             String[] gVector;

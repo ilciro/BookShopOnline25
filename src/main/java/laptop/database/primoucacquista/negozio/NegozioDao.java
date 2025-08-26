@@ -19,6 +19,7 @@ public class NegozioDao extends PersistenzaNegozio{
 
 @Override
 	public ObservableList<Negozio> getNegozi() {
+	super.getNegozi();
 		Negozio shop;
 		 ObservableList<Negozio> listOfNegozi;
 		listOfNegozi=FXCollections.observableArrayList();
@@ -50,6 +51,7 @@ public class NegozioDao extends PersistenzaNegozio{
 	@Override
 	// controllo che il negozio sia aperto
 	public boolean checkOpen(Negozio  shop) {
+		super.checkOpen(shop);
 		int aperto;
 		boolean state=false;
 		query="select isOpen from negozio where nome=?";
@@ -79,6 +81,7 @@ public class NegozioDao extends PersistenzaNegozio{
 	@Override
 	public boolean checkRitiro(Negozio shop)
 	{
+		super.checkRitiro(shop);
 		query="select isValid from negozio where nome=?";
 		boolean state=false;
 		int disp;
@@ -107,8 +110,9 @@ public class NegozioDao extends PersistenzaNegozio{
 
 	@Override
 	public void initializza()  {
-		super.initializza();
+
 		DaoInitialize daoI=new DaoInitialize();
 		daoI.inizializza("negozio");
+		super.initializza();
 	}
 }

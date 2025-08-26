@@ -13,33 +13,30 @@ import java.util.logging.Logger;
 
 
     public  boolean inserisciRivista(Rivista r){
-<span class="nc bnc" id="L16" title="All 2 branches missed.">        return r.getId()!=0;</span>
+<span class="fc" id="L16">        Logger.getLogger(&quot;inserisci persistenza rivista&quot;).log(Level.INFO,&quot;persistenza rivista insert&quot;);</span>
+<span class="pc bpc" id="L17" title="1 of 2 branches missed.">        return r.getId()!=0;</span>
     }
     public  boolean removeRivistaById(Rivista r)  {
-<span class="nc bnc" id="L19" title="All 2 branches missed.">        return r.getId()!=-1;}</span>
+<span class="fc" id="L20">        Logger.getLogger(&quot;remove persistenza rivista&quot;).log(Level.INFO,&quot;persistenza rivista remove&quot;);</span>
+<span class="pc bpc" id="L21" title="1 of 2 branches missed.">        return r.getId()!=-1;}</span>
 
     public ObservableList&lt;Raccolta&gt; retrieveRaccoltaData()  {
-
-<span class="nc" id="L23">        return FXCollections.observableArrayList();</span>
+<span class="fc" id="L24">        Logger.getLogger(&quot;raccolta rivista persistenza&quot;).log(Level.INFO,&quot;persistenza rivista raccolta&quot;);</span>
+<span class="fc" id="L25">        return FXCollections.observableArrayList();</span>
 
     }
     public ObservableList&lt;Rivista&gt; getRivistaByIdTitoloAutoreRivista(Rivista r)  {
-<span class="nc" id="L27">        Logger.getLogger(&quot;list rivista&quot;).log(Level.INFO,&quot;id rivista : {0}&quot;,r.getId());</span>
-
-<span class="nc" id="L29">        return FXCollections.observableArrayList();</span>
+<span class="fc" id="L29">        Logger.getLogger(&quot;list rivista&quot;).log(Level.INFO,&quot;id rivista : {0}&quot;,r.getId());</span>
+<span class="fc" id="L30">        return FXCollections.observableArrayList();</span>
     }
     public void initializza() {
-
 <span class="fc" id="L33">        Logger.getLogger(&quot;inizializza persistenza rivista&quot;).log(Level.INFO,&quot;persistenza rivista inizializza&quot;);</span>
-
-<span class="fc" id="L35">        PersistenzaGenerale pG=new PersistenzaGenerale();</span>
-<span class="fc" id="L36">        pG.getExcepptionInit(&quot;rivista&quot;);</span>
-
-
-
-<span class="fc" id="L40">    }</span>
-    public ObservableList&lt;Rivista&gt; getRiviste()  {
-<span class="nc" id="L42">     return FXCollections.observableArrayList();</span>
+<span class="fc" id="L34">        PersistenzaGenerale pG=new PersistenzaGenerale();</span>
+<span class="fc" id="L35">        pG.getExcepptionInit(&quot;rivista&quot;);</span>
+<span class="fc" id="L36">    }</span>
+    public ObservableList&lt;Rivista&gt; getRiviste() {
+<span class="fc" id="L38">        Logger.getLogger(&quot;inserisci persistenza getRiviste&quot;).log(Level.INFO,&quot;persistenza rivista getMagazines&quot;);</span>
+<span class="fc" id="L39">        return FXCollections.observableArrayList();</span>
     }
 
 

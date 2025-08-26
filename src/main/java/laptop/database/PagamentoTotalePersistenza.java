@@ -9,7 +9,6 @@ import laptop.model.PagamentoTotale;
 import laptop.pagamento.PagamentoCartaCredito;
 import laptop.pagamento.PagamentoFattura;
 import org.apache.commons.lang.SystemUtils;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;

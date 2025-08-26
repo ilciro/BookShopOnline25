@@ -19,6 +19,8 @@ public  class PersistenzaLibro {
          return l.getId()!=-0; }
 
     public  ObservableList<Raccolta> retrieveRaccoltaData()  {
+        Logger.getLogger("retrieve raccolta data").log(Level.INFO,"raccolta data book");
+
         return FXCollections.observableArrayList();}
 
     public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l) {
@@ -36,7 +38,9 @@ public  class PersistenzaLibro {
 
 
     }
-    public ObservableList<Libro> getLibri()  { return FXCollections.observableArrayList();}
+    public ObservableList<Libro> getLibri()  {
+         Logger.getLogger("getLibri").log(Level.INFO,"peristenza libro getLibri");
+         return FXCollections.observableArrayList();}
 
 
 

@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.database.PagamentoTotalePersistenza;
 import laptop.pagamento.PagamentoFattura;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,10 +21,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
     @Override
     @SuppressWarnings("unchecked")
     public boolean inserisciPagamentoFattura(PagamentoFattura f)  {
-
-
-
-
+        super.inserisciPagamentoFattura(f);
         try (FileInputStream fin = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fin)) {
 
@@ -57,6 +53,7 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
     @Override
     @SuppressWarnings("unchecked")
     public boolean cancellaPagamentoFattura(PagamentoFattura f) {
+        super.cancellaPagamentoFattura(f);
         boolean status = false;
         try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
@@ -113,11 +110,13 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
             Logger.getLogger("inizializza").log(Level.SEVERE,"error with file :",ex);
         }
         pT=new PagamentoTotalePersistenza(MEMORIA);
+        super.inizializza();
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public PagamentoFattura ultimaFattura()  {
+        super.ultimaFattura();
         try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             list = (ArrayList<PagamentoFattura>) ois.readObject();
@@ -131,10 +130,8 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
     @Override
     @SuppressWarnings("unchecked")
     public ObservableList<PagamentoFattura> listPagamentiByUserF(PagamentoFattura pF)  {
-
-
+        super.listPagamentiByUserF(pF);
         ObservableList<PagamentoFattura> listFatture= FXCollections.observableArrayList();
-
         try (FileInputStream fis = new FileInputStream(SERIALIZZAZIONE);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             list = (ArrayList<PagamentoFattura>) ois.readObject();
@@ -144,8 +141,6 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
         }
 
        Logger.getLogger("list pagamenti by user ").log(Level.INFO,"list payment by user : {0}",list);
-
-
         for (int i = 1; i <= list.size(); i++) {
             if (list.get(i-1).getEmail().equals(pF.getEmail())) {
                 PagamentoFattura pf=list.get(i-1);
@@ -154,9 +149,6 @@ public class MemoriaFattura extends PersistenzaPagamentoFattura{
             }
 
         }
-
-
-
         return listFatture;
     }
 }

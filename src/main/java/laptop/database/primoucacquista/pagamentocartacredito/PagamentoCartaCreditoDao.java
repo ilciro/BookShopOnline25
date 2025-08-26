@@ -3,10 +3,8 @@ package laptop.database.primoucacquista.pagamentocartacredito;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.database.DaoInitialize;
-
 import laptop.pagamento.PagamentoCartaCredito;
 import laptop.utilities.ConnToDb;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,6 +25,7 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
 
     @Override
     public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(PagamentoCartaCredito pcc) {
+        super.listaPagamentiUserByCC(pcc);
         query="select idProdotto,spesaTotale,tipoAcquisto,idPagamento from pagamentoCartaCredito where email=?";
         ObservableList<PagamentoCartaCredito>list = FXCollections.observableArrayList();
         try(Connection conn=ConnToDb.connectionToDB();
@@ -58,10 +57,12 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
         dI.inizializza("pagamentoCartaCredito");
 
         creaTrigger();
+        super.inizializza();
     }
 
     @Override
     public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p)  {
+        super.cancellaPagamentoCartaCredito(p);
         int row=0;
        query="delete from pagamentoCartaCredito where idPagamento=?";
        try(Connection conn=ConnToDb.connectionToDB();
@@ -78,6 +79,7 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
 
     @Override
     public PagamentoCartaCredito ultimoPagamentoCartaCredito()  {
+        super.ultimoPagamentoCartaCredito();
         PagamentoCartaCredito pCC = null;
         query = "select * from pagamentoCartaCredito order by idPagamento desc limit 1";
         try (Connection conn=ConnToDb.connectionToDB();
@@ -99,6 +101,7 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
 
     @Override
     public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito p)  {
+        super.inserisciPagamentoCartaCredito(p);
         int row=0;
 
         query="insert into pagamentoCartaCredito values(?,?,?,?,?,?,?,?)";

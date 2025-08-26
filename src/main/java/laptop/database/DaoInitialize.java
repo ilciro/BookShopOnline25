@@ -1,7 +1,6 @@
 package laptop.database;
 
 import laptop.utilities.ConnToDb;
-
 import java.sql.*;
 import java.util.ResourceBundle;
 import java.util.logging.Level;

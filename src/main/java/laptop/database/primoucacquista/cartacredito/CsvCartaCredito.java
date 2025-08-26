@@ -27,6 +27,7 @@ public class CsvCartaCredito extends PersistenzaCC{
 
     @Override
     public boolean insCC(CartaDiCredito cc)  {
+        super.insCC(cc);
         try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(LOCATIONCC, true)))) {
             String[] gVector = new String[7];
             gVector[GETINDEXNOME] = cc.getNomeUser();
@@ -69,17 +70,13 @@ public class CsvCartaCredito extends PersistenzaCC{
 
     }
 
-
-
-
         return max;
-
-
     }
 
 
     @Override
     public ObservableList<CartaDiCredito> getCarteDiCredito(CartaDiCredito cc)  {
+        super.getCarteDiCredito(cc);
 
         String[] gVector;
         ObservableList<CartaDiCredito>list=FXCollections.observableArrayList();
@@ -126,5 +123,6 @@ public class CsvCartaCredito extends PersistenzaCC{
            Logger.getLogger("inizializza").log(Level.INFO," file  created : {0}",LOCATIONCC);
 
        }
+        super.inizializza();
     }
 }

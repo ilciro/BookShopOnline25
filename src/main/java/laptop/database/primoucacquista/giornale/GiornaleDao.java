@@ -29,6 +29,7 @@ public class GiornaleDao extends PersistenzaGiornale{
     public GiornaleDao(){this.f=new Factory();}
     @Override
     public boolean inserisciGiornale(Giornale g)  {
+        super.inserisciGiornale(g);
         int row = 0;
 
 
@@ -66,6 +67,7 @@ public class GiornaleDao extends PersistenzaGiornale{
 
     @Override
     public boolean removeGiornaleById(Giornale g) {
+        super.removeGiornaleById(g);
         int row = 0;
 
         query="delete from giornale where idGiornale=? or idGiornale=? or titolo=?";
@@ -88,6 +90,7 @@ public class GiornaleDao extends PersistenzaGiornale{
 
     @Override
     public ObservableList<Giornale> getGiornali()  {
+        super.getGiornali();
         ObservableList<Giornale> catalogo= FXCollections.observableArrayList();
         query = "select * from giornale";
         try (Connection conn = ConnToDb.connectionToDB();
@@ -113,6 +116,7 @@ public class GiornaleDao extends PersistenzaGiornale{
 
     @Override
     public ObservableList<Raccolta> retrieveRaccoltaData()  {
+        super.retrieveRaccoltaData();
         ObservableList<Raccolta> catalogo= FXCollections.observableArrayList();
         query = "select  * from giornale";
         try (Connection conn = ConnToDb.connectionToDB();
@@ -141,6 +145,7 @@ public class GiornaleDao extends PersistenzaGiornale{
 
     @Override
     public ObservableList<Giornale> getGiornaleByIdTitoloAutoreLibro(Giornale g)  {
+        super.getGiornaleByIdTitoloAutoreLibro(g);
         ObservableList<Giornale> catalogo = FXCollections.observableArrayList();
         String[] info = new String[7];
 
@@ -188,6 +193,7 @@ public class GiornaleDao extends PersistenzaGiornale{
     super.initializza();
         DaoInitialize daoI=new DaoInitialize();
         daoI.inizializza(GIORNALE);
+        super.initializza();
     }
 
 

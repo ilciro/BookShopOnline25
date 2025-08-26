@@ -30,21 +30,13 @@ public class UsersDao extends PersistenzaUtente {
 	// prende i dati dall'oggetto che gli abbiamo passato
 	@Override
 	public  boolean inserisciUtente(TempUser tu)  {
-
-
-
+        super.inserisciUtente(tu);
 		LocalDate d = tu.getDataDiNascitaT();
-
-
 		query = "INSERT INTO `utenti` VALUES (?,?,?,?,?,?,?,?)";
-
 		try (Connection conn = ConnToDb.connectionToDB();
 			 PreparedStatement prepQ = conn.prepareStatement(query)) {
-
 			if(vis.getTipoModifica().equals("im")) prepQ.setInt(1,tu.getId());
 			else if (vis.getTipoModifica().equals("insert"))prepQ.setInt(1,0);
-
-
 			prepQ.setString(2,tu.getIdRuoloT().substring(0,1));
 			prepQ.setString(3, tu.getNomeT());
 			prepQ.setString(4, tu.getCognomeT());
@@ -53,25 +45,20 @@ public class UsersDao extends PersistenzaUtente {
 			prepQ.setString(7, tu.getDescrizioneT());
 			prepQ.setDate(8,Date.valueOf(d));
 			row=prepQ.executeUpdate();
-
-
 		} catch (SQLException e) {
 			Logger.getLogger("createUser").log(Level.INFO, ECCEZIONE, e);
 
 		}
-
-
 		return row==1;
-
 	}
 
 	@Override
 	public ObservableList<TempUser> getUserData()  {
+        super.getUserData();
 		ObservableList<TempUser> lista=FXCollections.observableArrayList();
 		query="select * from utenti";
 		try(Connection conn=ConnToDb.connectionToDB();
 		PreparedStatement preQ=conn.prepareStatement(query)){
-
 			ResultSet rs= preQ.executeQuery();
 			while (rs.next())
 			{
@@ -94,12 +81,10 @@ public class UsersDao extends PersistenzaUtente {
 		return lista;
 	}
 
-
-
 	@Override
 	public boolean removeUserByIdEmailPwd(TempUser u)  {
+        super.removeUserByIdEmailPwd(u);
 		query="delete from utenti where idUser=? or email=? or pwd=?";
-
 		try(Connection conn=ConnToDb.connectionToDB();
 		PreparedStatement prepQ=conn.prepareStatement(query))
 		{
@@ -115,13 +100,12 @@ public class UsersDao extends PersistenzaUtente {
 		return row==1;
 	}
 
-
-
 	@Override
 	public void initializza() {
 	Logger.getLogger("inizializza users dao").log(Level.INFO,"initialize users dao");
 		DaoInitialize daoI=new DaoInitialize();
 		daoI.inizializza("utenti");
+		super.initializza();
     }
 
 

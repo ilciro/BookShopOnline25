@@ -37,6 +37,7 @@ public class LibroDao extends PersistenzaLibro{
 
     @Override
     public boolean inserisciLibro(Libro l){
+        super.inserisciLibro(l);
         int row=0;
         query="insert into libro values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -76,6 +77,7 @@ public class LibroDao extends PersistenzaLibro{
 
     @Override
    public boolean removeLibroById(Libro l) {
+        super.removeLibroById(l);
         int row=0;
         query = "delete from libro where idLibro=? or idLibro=?";
         try (Connection conn = ConnToDb.connectionToDB();
@@ -98,6 +100,8 @@ public class LibroDao extends PersistenzaLibro{
 
     @Override
     public ObservableList<Libro> getLibri()  {
+
+        super.getLibri();
         ObservableList<Libro> catalogo = FXCollections.observableArrayList();
 
         query = "select * from libro ";
@@ -125,6 +129,8 @@ public class LibroDao extends PersistenzaLibro{
 
     @Override
     public ObservableList<Raccolta> retrieveRaccoltaData()  {
+
+        super.retrieveRaccoltaData();
         ObservableList<Raccolta> catalogo = FXCollections.observableArrayList();
 
         query = "select * from libro";
@@ -152,6 +158,7 @@ public class LibroDao extends PersistenzaLibro{
 
     @Override
     public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l) {
+        super.getLibroByIdTitoloAutoreLibro(l);
         String[] info =new String[7];
         String[] prezzo =new String[6];
 
@@ -201,10 +208,11 @@ public class LibroDao extends PersistenzaLibro{
     @Override
     public void initializza()  {
 
-        super.initializza();
         Logger.getLogger("libro dao inizializza").log(Level.INFO, "inizializza libro dao");
         DaoInitialize dI=new DaoInitialize();
         dI.inizializza(LIBRO);
+        super.initializza();
+
 
     }
 

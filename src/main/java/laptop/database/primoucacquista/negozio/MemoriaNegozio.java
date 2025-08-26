@@ -17,6 +17,7 @@ public class MemoriaNegozio extends PersistenzaNegozio{
     @Override
     @SuppressWarnings("unchecked")
     public ObservableList<Negozio> getNegozi()  {
+        super.getNegozi();
 
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois = new ObjectInputStream(fis)){
@@ -33,6 +34,7 @@ public class MemoriaNegozio extends PersistenzaNegozio{
     @Override
     @SuppressWarnings("unchecked")
     public boolean checkOpen(Negozio shop){
+        super.checkOpen(shop);
 
         boolean status=false;
 
@@ -61,6 +63,7 @@ public class MemoriaNegozio extends PersistenzaNegozio{
     @Override
     @SuppressWarnings("unchecked")
     public boolean checkRitiro(Negozio shop)  {
+        super.checkRitiro(shop);
         boolean status=false;
         try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);
             ObjectInputStream ois = new ObjectInputStream(fis)){
@@ -86,6 +89,7 @@ public class MemoriaNegozio extends PersistenzaNegozio{
 
         }
         inserisciNegozio();
+        super.initializza();
     }
 
     private void inserisciNegozio() {

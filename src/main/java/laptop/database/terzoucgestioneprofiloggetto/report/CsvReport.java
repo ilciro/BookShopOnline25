@@ -19,14 +19,12 @@ import java.util.logging.Logger;
 public class CsvReport extends PersistenzaReport{
     private static final String LOCATIONR = "report/reportFinale.csv";
     private static final String LOCATIONUSER = "report/reportUtente.csv";
-
     private static final int GETINDEXIDR = 0;
     private static final int GETINDEXTIPOOGG = 1;
     private static final int GETINDEXTITOLOOGG = 2;
     private static final int GETINDEXNRPEZZI = 3;
     private static final int GETINDEXPREZZO = 4;
     private static final int GETINDEXTOTALE = 5;
-
     private static final int GETINDEXIDUTENTE=0;
     private static final int GETINDEXEMAIL=4;
     private static final int GETINDEXDATANASCITA=7;
@@ -37,10 +35,9 @@ public class CsvReport extends PersistenzaReport{
 
     @Override
     public boolean insertReport(Report r)  {
+        super.insertReport(r);
         try (CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(fileReport, true)))) {
-
             String[] gVectore = new String[6];
-
             gVectore[GETINDEXIDR] = String.valueOf(getIdMax() + 1);
             gVectore[GETINDEXTIPOOGG] = r.getTipologiaOggetto();
             gVectore[GETINDEXTITOLOOGG] = r.getTitoloOggetto();
@@ -48,7 +45,6 @@ public class CsvReport extends PersistenzaReport{
             gVectore[GETINDEXPREZZO] = String.valueOf(r.getPrezzo());
             gVectore[GETINDEXTOTALE] = String.valueOf(r.getTotale());
             writer.writeNext(gVectore);
-
             writer.flush();
 
         }catch (IOException e)
@@ -84,51 +80,34 @@ public class CsvReport extends PersistenzaReport{
         {
             Logger.getLogger("inizializza").log(Level.SEVERE," files not created :",e);
         }
+        super.inizializza();
     }
 
     @Override
     public ObservableList<Report> report(String type)  {
-
+        super.report(type);
         ObservableList<Report> list = FXCollections.observableArrayList();
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fileReport)))) {
             String[] gVector;
             boolean found = false;
-
             while ((gVector = reader.readNext()) != null) {
-
                 //vedere come prendere le categorie
                 switch (type) {
                     case "giornale" -> found = gVector[GETINDEXTIPOOGG].equals("QUOTIDIANO");
-
-
-                    case "libro" ->
-                        found= getStrings().contains(gVector[GETINDEXTIPOOGG]);
-
-
-                    case "rivista" ->
-
-                            found = getCatR().contains(gVector[GETINDEXTIPOOGG]);
-
-
+                    case "libro" ->found= getStrings().contains(gVector[GETINDEXTIPOOGG]);
+                    case "rivista" ->found = getCatR().contains(gVector[GETINDEXTIPOOGG]);
                     default -> Logger.getLogger("report csv").log(Level.SEVERE, "error in report csv");
-
                 }
                 if (found) {
                     Report r = getReport(gVector);
                     list.add(r);
                 }
-
-
             }
-
-
         } catch (CsvValidationException  |IOException e) {
             Logger.getLogger("csv report eccexione").log(Level.SEVERE,"csv file not exists!");
         }
         return list;
     }
-
-
 
     private static @NotNull ObservableList<String> getCatR() {
         ObservableList<String> catR=FXCollections.observableArrayList();
@@ -146,10 +125,8 @@ public class CsvReport extends PersistenzaReport{
         catR.add("TELEVISIVO");
         catR.add("MILITARE");
         catR.add("INFORMATICA");
-
         return catR;
     }
-
     private static @NotNull ObservableList<String> getStrings() {
         ObservableList<String> catL=FXCollections.observableArrayList();
         catL.add("ADOLESCENTI_RAGAZZI");
@@ -184,7 +161,6 @@ public class CsvReport extends PersistenzaReport{
         return catL;
     }
 
-
     private static @NotNull Report getReport(String[] gVector) {
         Report report=new Report();
         report.setIdReport(Integer.parseInt(gVector[GETINDEXIDR]));
@@ -198,10 +174,10 @@ public class CsvReport extends PersistenzaReport{
 
     @Override
     public ObservableList<TempUser> reportU()  {
+        super.reportU();
         ObservableList<TempUser> list = FXCollections.observableArrayList();
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(LOCATIONUSER)))) {
             String[] gVector;
-
             while ((gVector = reader.readNext()) != null) {
                 TempUser tu = new TempUser();
                 tu.setId(Integer.parseInt(gVector[GETINDEXIDUTENTE]));
@@ -209,13 +185,10 @@ public class CsvReport extends PersistenzaReport{
                 tu.setDataDiNascitaT(LocalDate.parse(gVector[GETINDEXDATANASCITA]));
                 list.add(tu);
             }
-
         }catch (IOException|CsvValidationException e)
         {
             Logger.getLogger("reportU").log(Level.SEVERE," reportU not generated :",e);
         }
         return list;
     }
-
-
 }

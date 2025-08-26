@@ -19,96 +19,82 @@ import java.util.logging.Logger;
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public boolean insertReport(Report r)  {
+<span class="fc" id="L22">        super.insertReport(r);</span>
+<span class="fc" id="L23">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L24">            ObjectInputStream ois=new ObjectInputStream(fis)) {</span>
+<span class="fc" id="L25">            list = (ArrayList&lt;Report&gt;) ois.readObject();</span>
 
-
-<span class="fc" id="L24">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L25">            ObjectInputStream ois=new ObjectInputStream(fis)) {</span>
-<span class="fc" id="L26">            list = (ArrayList&lt;Report&gt;) ois.readObject();</span>
-
-<span class="fc" id="L28">        }catch (IOException | ClassNotFoundException e)</span>
+<span class="fc" id="L27">        }catch (IOException | ClassNotFoundException e)</span>
         {
-<span class="fc" id="L30">            Logger.getLogger(&quot;insert report mem&quot;).log(Level.SEVERE,&quot; mem read report exception :&quot;,e);</span>
-<span class="fc" id="L31">        }</span>
-
-<span class="fc" id="L33">            r.setIdReport(list.size()+1);</span>
-<span class="fc" id="L34">            list.add(r);</span>
-
-
-<span class="fc" id="L37">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L38">                ObjectOutputStream oos=new ObjectOutputStream(fos))</span>
+<span class="fc" id="L29">            Logger.getLogger(&quot;insert report mem&quot;).log(Level.SEVERE,&quot; mem read report exception :&quot;,e);</span>
+<span class="fc" id="L30">        }</span>
+<span class="fc" id="L31">            r.setIdReport(list.size()+1);</span>
+<span class="fc" id="L32">            list.add(r);</span>
+<span class="fc" id="L33">            try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L34">                ObjectOutputStream oos=new ObjectOutputStream(fos))</span>
             {
-<span class="fc" id="L40">                oos.writeObject(list);</span>
-<span class="nc" id="L41">            }catch (IOException e)</span>
+<span class="fc" id="L36">                oos.writeObject(list);</span>
+<span class="nc" id="L37">            }catch (IOException e)</span>
             {
-<span class="nc" id="L43">                Logger.getLogger(&quot;scrivo report mem &quot;).log(Level.SEVERE,&quot; mem report exception :&quot;,e);</span>
-
-<span class="fc" id="L45">            }</span>
-<span class="fc" id="L46">        return true;</span>
+<span class="nc" id="L39">                Logger.getLogger(&quot;scrivo report mem &quot;).log(Level.SEVERE,&quot; mem report exception :&quot;,e);</span>
+<span class="fc" id="L40">            }</span>
+<span class="fc" id="L41">        return true;</span>
     }
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public ObservableList&lt;Report&gt; report(String type) {
-
-<span class="fc" id="L53">        ArrayList&lt;Report&gt; repoLibri=new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L54">        ArrayList&lt;Report&gt; repoGiornali=new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L55">        ArrayList&lt;Report&gt; repoRiviste=new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L56">        ObservableList&lt;Report&gt; reportFinale = null;</span>
-<span class="fc" id="L57">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L58">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
-<span class="fc" id="L59">            list= (ArrayList&lt;Report&gt;) ois.readObject();</span>
-<span class="nc" id="L60">        }catch (IOException |ClassNotFoundException e)</span>
+<span class="fc" id="L47">        super.report(type);</span>
+<span class="fc" id="L48">        ArrayList&lt;Report&gt; repoLibri=new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L49">        ArrayList&lt;Report&gt; repoGiornali=new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L50">        ArrayList&lt;Report&gt; repoRiviste=new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L51">        ObservableList&lt;Report&gt; reportFinale = null;</span>
+<span class="fc" id="L52">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L53">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="fc" id="L54">            list= (ArrayList&lt;Report&gt;) ois.readObject();</span>
+<span class="nc" id="L55">        }catch (IOException |ClassNotFoundException e)</span>
         {
-<span class="nc" id="L62">            Logger.getLogger(&quot;report oggetti &quot;).log(Level.SEVERE,&quot;objects report exception :&quot;,e);</span>
-
-<span class="fc" id="L64">        }</span>
-<span class="fc bfc" id="L65" title="All 2 branches covered.">        for (Report report : list) {</span>
-<span class="pc bpc" id="L66" title="1 of 4 branches missed.">            switch (type) {</span>
+<span class="nc" id="L57">            Logger.getLogger(&quot;report oggetti &quot;).log(Level.SEVERE,&quot;objects report exception :&quot;,e);</span>
+<span class="fc" id="L58">        }</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        for (Report report : list) {</span>
+<span class="pc bpc" id="L60" title="1 of 4 branches missed.">            switch (type) {</span>
                 case &quot;libro&quot; -&gt; {
-<span class="fc" id="L68">                    repoLibri.add(report);</span>
-<span class="fc" id="L69">                    reportFinale = FXCollections.observableArrayList(repoLibri);</span>
-<span class="fc" id="L70">                }</span>
+<span class="fc" id="L62">                    repoLibri.add(report);</span>
+<span class="fc" id="L63">                    reportFinale = FXCollections.observableArrayList(repoLibri);</span>
+<span class="fc" id="L64">                }</span>
                 case &quot;giornale&quot; -&gt; {
-<span class="fc" id="L72">                    repoGiornali.add(report);</span>
-<span class="fc" id="L73">                    reportFinale = FXCollections.observableArrayList(repoGiornali);</span>
-<span class="fc" id="L74">                }</span>
+<span class="fc" id="L66">                    repoGiornali.add(report);</span>
+<span class="fc" id="L67">                    reportFinale = FXCollections.observableArrayList(repoGiornali);</span>
+<span class="fc" id="L68">                }</span>
                 case &quot;rivista&quot; -&gt; {
-<span class="fc" id="L76">                    repoRiviste.add(report);</span>
-<span class="fc" id="L77">                    reportFinale = FXCollections.observableArrayList(repoRiviste);</span>
-<span class="fc" id="L78">                }</span>
-<span class="nc" id="L79">                default -&gt; Logger.getLogger(&quot;report&quot;).log(Level.SEVERE, &quot; report persistency is wrong!!&quot;);</span>
+<span class="fc" id="L70">                    repoRiviste.add(report);</span>
+<span class="fc" id="L71">                    reportFinale = FXCollections.observableArrayList(repoRiviste);</span>
+<span class="fc" id="L72">                }</span>
+<span class="nc" id="L73">                default -&gt; Logger.getLogger(&quot;report&quot;).log(Level.SEVERE, &quot; report persistency is wrong!!&quot;);</span>
             }
-<span class="fc" id="L81">        }</span>
-
-<span class="fc" id="L83">       return reportFinale;</span>
-
+<span class="fc" id="L75">        }</span>
+<span class="fc" id="L76">       return reportFinale;</span>
     }
 
-
-
     @Override
-
     public void inizializza()   {
-
-<span class="fc" id="L93">        Path path = Path.of(SERIALIZZAZIONE);</span>
+<span class="fc" id="L81">        Path path = Path.of(SERIALIZZAZIONE);</span>
         try
         {
-<span class="fc bfc" id="L96" title="All 2 branches covered.">           if(!Files.exists(path)) throw new IOException(&quot;report memoria non esiste!!&quot;);</span>
-<span class="fc" id="L97">        }catch (IOException e)</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">           if(!Files.exists(path)) throw new IOException(&quot;report memoria non esiste!!&quot;);</span>
+<span class="fc" id="L85">        }catch (IOException e)</span>
         {
-<span class="fc" id="L99">            Logger.getLogger(&quot;inizializza memoria report&quot;).log(Level.SEVERE,&quot;file not exists : {0}&quot;,SERIALIZZAZIONE);</span>
+<span class="fc" id="L87">            Logger.getLogger(&quot;inizializza memoria report&quot;).log(Level.SEVERE,&quot;file not exists : {0}&quot;,SERIALIZZAZIONE);</span>
             try {
-<span class="fc" id="L101">                Files.createFile(path);</span>
-<span class="nc" id="L102">            } catch (IOException ex) {</span>
-<span class="nc" id="L103">                Logger.getLogger(&quot;inizializza report mem report mem &quot;).log(Level.SEVERE,&quot;report file mem not created exception :&quot;,e);</span>
+<span class="fc" id="L89">                Files.createFile(path);</span>
+<span class="nc" id="L90">            } catch (IOException ex) {</span>
+<span class="nc" id="L91">                Logger.getLogger(&quot;inizializza report mem report mem &quot;).log(Level.SEVERE,&quot;report file mem not created exception :&quot;,e);</span>
 
-<span class="fc" id="L105">            }</span>
-<span class="fc" id="L106">            Logger.getLogger(&quot;inizializza memoria report&quot;).log(Level.INFO,&quot;file created&quot;);</span>
-
-
-<span class="fc" id="L109">        }</span>
-
-<span class="fc" id="L111">    }</span>
+<span class="fc" id="L93">            }</span>
+<span class="fc" id="L94">            Logger.getLogger(&quot;inizializza memoria report&quot;).log(Level.INFO,&quot;file created&quot;);</span>
+<span class="fc" id="L95">        }</span>
+<span class="fc" id="L96">            super.inizializza();</span>
+<span class="fc" id="L97">    }</span>
 
 
 }

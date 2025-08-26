@@ -13,14 +13,17 @@ public class PersistenzaNegozio {
 
 
      public ObservableList<Negozio> getNegozi() {
+         Logger.getLogger("get negozi").log(Level.INFO,"persitenza negozio getNegozi");
+
          return FXCollections.observableArrayList();
      }
      public boolean checkOpen(Negozio  shop)  {
+         Logger.getLogger("check open").log(Level.INFO,"persitenza negozio checkOpen");
 
          return shop.getIsOpen();
      }
      public boolean checkRitiro(Negozio shop)  {
-
+         Logger.getLogger("check ritiro").log(Level.INFO,"persitenza negozio checkRitiro");
          return shop.getIsValid();
      }
      public void initializza() {

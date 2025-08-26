@@ -36,14 +36,13 @@ public class ReportDao extends PersistenzaReport {
 
     @Override
     public ObservableList<Report> report(String type) {
+        super.report(type);
         ObservableList<Report> list = FXCollections.observableArrayList();
         switch (type) {
             case LIBRO ->
                     {
                         int row=-1;
                         query = RBVIEW.getString("queryL");
-
-
                         try (Connection conn = ConnToDb.connectionToDB();
                              PreparedStatement preQ = conn.prepareStatement(query)) {
                             row = preQ.executeUpdate();
@@ -54,14 +53,11 @@ public class ReportDao extends PersistenzaReport {
                         }
 
                         if(row==0) query="select distinct * from reportL";
-
                     }
             case GIORNALE ->
                     {
                         int row=-1;
                         query = RBVIEW.getString("queryG");
-
-
                         try (Connection conn = ConnToDb.connectionToDB();
                              PreparedStatement preQ = conn.prepareStatement(query)) {
                             row = preQ.executeUpdate();
@@ -70,14 +66,11 @@ public class ReportDao extends PersistenzaReport {
                         {
                             Logger.getLogger("report giornali view").log(Level.SEVERE,"error with daily .:",e);
                         }
-
                         if(row==0) query="select distinct * from reportG";
                     }
             case RIVISTA -> {
                 int row=-1;
                 query = RBVIEW.getString("queryR");
-
-
                 try (Connection conn = ConnToDb.connectionToDB();
                      PreparedStatement preQ = conn.prepareStatement(query)) {
                     row = preQ.executeUpdate();
@@ -86,29 +79,21 @@ public class ReportDao extends PersistenzaReport {
                 {
                     Logger.getLogger("report magazine view").log(Level.SEVERE,"error with magazine .:",e);
                 }
-
                 if(row==0) query="select distinct * from reportR";
             }
-
             default -> Logger.getLogger("report").log(Level.SEVERE, " type in cot correct !!");
         }
         try (Connection conn = ConnToDb.connectionToDB();
              PreparedStatement prep = conn.prepareStatement(query)) {
-
             ResultSet rs = prep.executeQuery(query);
             while (rs.next()) {
-
                 Report report = new Report();
-
                 report.setIdReport(rs.getInt(1));
                 report.setTitoloOggetto(rs.getString(2));
                 report.setTipologiaOggetto(rs.getString(3));
                 report.setTotale(rs.getFloat(4));
-
                 list.add(report);
-
             }
-
         } catch (SQLException e) {
             Logger.getLogger(" report ").log(Level.SEVERE, " REPORTL is empty : {0}",e.getMessage());
         }
@@ -117,6 +102,7 @@ public class ReportDao extends PersistenzaReport {
 
     @Override
     public ObservableList<TempUser> reportU()  {
+        super.reportU();
         ObservableList<TempUser> lista=FXCollections.observableArrayList();
         query="select * from utenti";
         try(Connection conn=ConnToDb.connectionToDB();
@@ -152,12 +138,9 @@ public class ReportDao extends PersistenzaReport {
         }
         return tu;
     }
-
-
-
-
     @Override
     public void inizializza()  {
         Logger.getLogger("inizializza reportDao").log(Level.INFO,"initialize report dao");
+        super.inizializza();
     }
 }

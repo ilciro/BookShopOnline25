@@ -15,18 +15,17 @@ public class PersistenzaGiornale {
 
 
     public  boolean inserisciGiornale(Giornale g) {
-
+        Logger.getLogger("inserisci giornale").log(Level.INFO,"persitenza giornale insert daily");
         return g.getId()!=0;}
     public  boolean removeGiornaleById(Giornale g) {
+        Logger.getLogger("remove giornale").log(Level.INFO,"persitenza giornale remove daily ");
         return g.getId()!=-1;}
     public ObservableList<Raccolta> retrieveRaccoltaData()  {
-
+        Logger.getLogger("inserisci giornale").log(Level.INFO,"persitenza giornale retrieve daily data");
         return FXCollections.observableArrayList();
     }
     public ObservableList<Giornale> getGiornaleByIdTitoloAutoreLibro(Giornale g) {
-
         Logger.getLogger("giornale by id").log(Level.INFO,"id giornale .",g.getId());
-
         return FXCollections.observableArrayList();}
     public void initializza(){
 

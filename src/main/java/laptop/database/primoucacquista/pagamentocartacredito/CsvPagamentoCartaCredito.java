@@ -12,7 +12,6 @@ import laptop.model.user.User;
 import laptop.pagamento.PagamentoCartaCredito;
 import org.apache.commons.lang.SystemUtils;
 import org.jetbrains.annotations.NotNull;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -63,12 +62,14 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
     }
     @Override
     public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito p)  {
+        super.inserisciPagamentoCartaCredito(p);
         return creaPagamento(p);
 
     }
 
     @Override
     public PagamentoCartaCredito ultimoPagamentoCartaCredito()  {
+        super.ultimoPagamentoCartaCredito();
         ObservableList<PagamentoCartaCredito> list=FXCollections.observableArrayList();
         try(CSVReader reader=new CSVReader(new BufferedReader(new FileReader(this.filePagamento))))
         {
@@ -171,6 +172,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 
     @Override
     public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p)  {
+        super.cancellaPagamentoCartaCredito(p);
         boolean status = false;
         try {
         if (SystemUtils.IS_OS_UNIX) {
@@ -206,6 +208,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
             }
         }
         pT=new PagamentoTotalePersistenza("file");
+        super.inizializza();
 
     }
 
@@ -239,6 +242,7 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 
     @Override
     public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(PagamentoCartaCredito pcc)  {
+        super.listaPagamentiUserByCC(pcc);
         ObservableList<PagamentoCartaCredito> list=FXCollections.observableArrayList();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(filePagamento)))) {
             String[] gVector;

@@ -5,7 +5,6 @@ import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Rivista;
 import org.jetbrains.annotations.NotNull;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;

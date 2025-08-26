@@ -24,11 +24,14 @@ public class MemoriaLibro extends PersistenzaLibro{
     @Override
     public void initializza(){
      mI.inizializza(SERIALIZZAZIONE);
+        super.initializza();
+
     }
 
 
     @Override
     public boolean inserisciLibro(Libro l)  {
+        super.inserisciLibro(l);
         Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);
         if (!Files.exists(path2))
         {
@@ -46,6 +49,7 @@ public class MemoriaLibro extends PersistenzaLibro{
 
     @Override
     public ObservableList<Raccolta> retrieveRaccoltaData()  {
+        super.retrieveRaccoltaData();
 
 
         return FXCollections.observableArrayList(mI.listaLibri(SERIALIZZAZIONE));
@@ -53,6 +57,7 @@ public class MemoriaLibro extends PersistenzaLibro{
 
     @Override
     public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l) {
+        super.getLibroByIdTitoloAutoreLibro(l);
         ObservableList<Libro> listaRecuperata = FXCollections.observableArrayList();
 
         List<Libro> list=mI.listaLibri(SERIALIZZAZIONE);
@@ -77,6 +82,7 @@ public class MemoriaLibro extends PersistenzaLibro{
 
     @Override
     public ObservableList<Libro> getLibri() {
+        super.getLibri();
         List<Libro> list=mI.listaLibri(SERIALIZZAZIONE);
         return FXCollections.observableList(list);
     }
@@ -84,6 +90,8 @@ public class MemoriaLibro extends PersistenzaLibro{
     @Override
 
     public boolean removeLibroById(Libro l)  {
+
+        super.removeLibroById(l);
         return mI.cancellaLibro(l);
     }
 

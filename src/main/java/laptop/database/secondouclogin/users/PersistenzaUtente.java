@@ -9,15 +9,17 @@ import java.util.logging.Logger;
 
 public class PersistenzaUtente {
 
-    public boolean inserisciUtente(TempUser tu)  { return tu.getId()!=-1;}
-    public ObservableList<TempUser> getUserData() { return FXCollections.observableArrayList();}
-    public boolean removeUserByIdEmailPwd(TempUser tu)  { return tu.getId()!=-0;
+    public boolean inserisciUtente(TempUser tu)  {
+        Logger.getLogger("inserisci persistenza utente").log(Level.INFO,"peristenza utente insert");
+        return tu.getId()!=-1;}
+    public ObservableList<TempUser> getUserData() {
+        Logger.getLogger("user data persistenza utente").log(Level.INFO,"peristenza utente getUSerData");
+        return FXCollections.observableArrayList();}
+    public boolean removeUserByIdEmailPwd(TempUser tu)  {
+        Logger.getLogger("remove persistenza utente").log(Level.INFO,"peristenza utente remove");
+        return tu.getId()!=-0;
     }
-
-
-
     public void initializza()  {
-
         Logger.getLogger("inizializza persistenza utente").log(Level.INFO,"peristenza utente initialize");
         PersistenzaGenerale pG=new PersistenzaGenerale();
         pG.getExcepptionInit("utente");

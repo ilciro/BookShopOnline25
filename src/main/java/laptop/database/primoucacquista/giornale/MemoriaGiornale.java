@@ -1,19 +1,13 @@
 package laptop.database.primoucacquista.giornale;
 
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.database.MemoryInitialize;
-import laptop.exception.IdException;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Raccolta;
-
 import java.io.*;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +26,7 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
     public void initializza()  {
 
         mI.inizializza(SERIALIZZAZIONE);
+        super.initializza();
 
 
 
@@ -43,6 +38,7 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
     @Override
 
     public boolean inserisciGiornale(Giornale g)  {
+        super.inserisciGiornale(g);
 
         Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);
         if (!Files.exists(path2))
@@ -62,6 +58,7 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
     @Override
 
     public ObservableList<Raccolta> retrieveRaccoltaData() {
+        super.retrieveRaccoltaData();
 
         return FXCollections.observableArrayList(mI.listaGiornali(SERIALIZZAZIONE));
     }
@@ -90,6 +87,7 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
 
     @Override
     public ObservableList<Giornale> getGiornali()  {
+        super.getGiornali();
 
         List<Giornale> list=mI.listaGiornali(SERIALIZZAZIONE);
         return FXCollections.observableList(list);
@@ -97,6 +95,7 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
 
     @Override
     public boolean removeGiornaleById(Giornale g)  {
+        super.removeGiornaleById(g);
         return mI.cancellaGiornale(g);
     }
 

@@ -30,6 +30,8 @@ public class CsvNegozio extends PersistenzaNegozio{
 
     @Override
     public ObservableList<Negozio> getNegozi()  {
+
+        super.getNegozi();
         return retrieveNegozi(this.fdn);
     }
     private static synchronized ObservableList<Negozio> retrieveNegozi(File fd)  {
@@ -66,12 +68,14 @@ public class CsvNegozio extends PersistenzaNegozio{
 
     @Override
     public boolean checkOpen(Negozio shop)  {
+        super.checkOpen(shop);
         return checkOpenIsValid(shop,"isOpen");
 
     }
 
     @Override
    public boolean checkRitiro(Negozio shop)  {
+        super.checkRitiro(shop);
         return checkOpenIsValid(shop,"isValid");
     }
 

@@ -10,7 +10,6 @@ import laptop.exception.IdException;
 import laptop.pagamento.PagamentoFattura;
 import org.apache.commons.lang.SystemUtils;
 import org.jetbrains.annotations.NotNull;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -84,11 +83,13 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
             }
         }
          pT=new PagamentoTotalePersistenza("file");
+        super.inizializza();
 
     }
 
     @Override
     public boolean inserisciPagamentoFattura(PagamentoFattura f)  {
+        super.inserisciPagamentoFattura(f);
 
 
         try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.fileFattura, true)))) {
@@ -156,6 +157,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
 
     @Override
     public boolean cancellaPagamentoFattura(PagamentoFattura f)  {
+        super.cancellaPagamentoFattura(f);
         synchronized (this.cacheFattura) {
             this.cacheFattura.remove(String.valueOf(f.getNome()));
         }
@@ -215,6 +217,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
 
     @Override
     public PagamentoFattura ultimaFattura()  {
+        super.ultimaFattura();
         ObservableList<PagamentoFattura> list=FXCollections.observableArrayList();
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(this.fileFattura)))) {
             list = FXCollections.observableArrayList();
@@ -248,6 +251,7 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
 
     @Override
     public ObservableList<PagamentoFattura> listPagamentiByUserF(PagamentoFattura pF)  {
+        super.listPagamentiByUserF(pF);
         ObservableList<PagamentoFattura> list=FXCollections.observableArrayList();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fileFattura)))) {
             String[] gVector;

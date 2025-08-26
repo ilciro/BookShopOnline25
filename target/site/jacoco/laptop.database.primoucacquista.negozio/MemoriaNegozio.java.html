@@ -17,42 +17,44 @@ import java.util.logging.Logger;
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public ObservableList&lt;Negozio&gt; getNegozi()  {
+<span class="fc" id="L20">        super.getNegozi();</span>
 
-<span class="fc" id="L21">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L22">            ObjectInputStream ois = new ObjectInputStream(fis)){</span>
-<span class="fc" id="L23">            lista= (ArrayList&lt;Negozio&gt;) ois.readObject();</span>
-<span class="nc" id="L24">           }catch (IOException e){</span>
-<span class="nc" id="L25">            Logger.getLogger(&quot;getNegozi&quot;).log(Level.SEVERE,&quot;getNegozi io exception :&quot;,e);</span>
-<span class="nc" id="L26">        }catch (ClassNotFoundException e1){</span>
-<span class="nc" id="L27">            Logger.getLogger(&quot;getNegozi csv&quot;).log(Level.SEVERE,&quot;getNegozi csv exception :&quot;,e1);</span>
+<span class="fc" id="L22">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L23">            ObjectInputStream ois = new ObjectInputStream(fis)){</span>
+<span class="fc" id="L24">            lista= (ArrayList&lt;Negozio&gt;) ois.readObject();</span>
+<span class="nc" id="L25">           }catch (IOException e){</span>
+<span class="nc" id="L26">            Logger.getLogger(&quot;getNegozi&quot;).log(Level.SEVERE,&quot;getNegozi io exception :&quot;,e);</span>
+<span class="nc" id="L27">        }catch (ClassNotFoundException e1){</span>
+<span class="nc" id="L28">            Logger.getLogger(&quot;getNegozi csv&quot;).log(Level.SEVERE,&quot;getNegozi csv exception :&quot;,e1);</span>
 
-<span class="pc" id="L29">        }</span>
-<span class="fc" id="L30">        return FXCollections.observableArrayList(lista);</span>
+<span class="pc" id="L30">        }</span>
+<span class="fc" id="L31">        return FXCollections.observableArrayList(lista);</span>
     }
 
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public boolean checkOpen(Negozio shop){
+<span class="fc" id="L37">        super.checkOpen(shop);</span>
 
-<span class="fc" id="L37">        boolean status=false;</span>
+<span class="fc" id="L39">        boolean status=false;</span>
 
-<span class="fc" id="L39">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L40">            ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
-<span class="fc" id="L41">            lista = (ArrayList&lt;Negozio&gt;) ois.readObject();</span>
-<span class="nc" id="L42">        }catch (IOException e){</span>
-<span class="nc" id="L43">            Logger.getLogger(&quot;checkOpen&quot;).log(Level.SEVERE,&quot;checkOpen io exception :&quot;,e);</span>
-<span class="nc" id="L44">        }catch (ClassNotFoundException e1){</span>
-<span class="nc" id="L45">            Logger.getLogger(&quot;checkOpen csv&quot;).log(Level.SEVERE,&quot;checkOpen csv exception :&quot;,e1);</span>
+<span class="fc" id="L41">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L42">            ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
+<span class="fc" id="L43">            lista = (ArrayList&lt;Negozio&gt;) ois.readObject();</span>
+<span class="nc" id="L44">        }catch (IOException e){</span>
+<span class="nc" id="L45">            Logger.getLogger(&quot;checkOpen&quot;).log(Level.SEVERE,&quot;checkOpen io exception :&quot;,e);</span>
+<span class="nc" id="L46">        }catch (ClassNotFoundException e1){</span>
+<span class="nc" id="L47">            Logger.getLogger(&quot;checkOpen csv&quot;).log(Level.SEVERE,&quot;checkOpen csv exception :&quot;,e1);</span>
 
-<span class="pc" id="L47">        }</span>
+<span class="pc" id="L49">        }</span>
 
-<span class="fc bfc" id="L49" title="All 2 branches covered.">        for (Negozio negozio : lista) {</span>
-<span class="fc bfc" id="L50" title="All 2 branches covered.">            if (negozio.getNome().equals(shop.getNome()))</span>
-<span class="fc" id="L51">                status = negozio.getIsOpen();</span>
-<span class="fc" id="L52">        }</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        for (Negozio negozio : lista) {</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">            if (negozio.getNome().equals(shop.getNome()))</span>
+<span class="fc" id="L53">                status = negozio.getIsOpen();</span>
+<span class="fc" id="L54">        }</span>
 
 
-<span class="fc" id="L55">        return status;</span>
+<span class="fc" id="L57">        return status;</span>
 
 
 
@@ -61,68 +63,70 @@ import java.util.logging.Logger;
     @Override
     @SuppressWarnings(&quot;unchecked&quot;)
     public boolean checkRitiro(Negozio shop)  {
-<span class="fc" id="L64">        boolean status=false;</span>
-<span class="fc" id="L65">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L66">            ObjectInputStream ois = new ObjectInputStream(fis)){</span>
-<span class="fc" id="L67">            lista=(ArrayList&lt;Negozio&gt;) ois.readObject();</span>
+<span class="fc" id="L66">        super.checkRitiro(shop);</span>
+<span class="fc" id="L67">        boolean status=false;</span>
+<span class="fc" id="L68">        try(FileInputStream fis=new FileInputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L69">            ObjectInputStream ois = new ObjectInputStream(fis)){</span>
+<span class="fc" id="L70">            lista=(ArrayList&lt;Negozio&gt;) ois.readObject();</span>
 
-<span class="nc" id="L69">        }catch (IOException e){</span>
-<span class="nc" id="L70">            Logger.getLogger(&quot;checkRitiro&quot;).log(Level.SEVERE,&quot;checkRitiro io exception :&quot;,e);</span>
-<span class="nc" id="L71">        }catch (ClassNotFoundException e1){</span>
-<span class="nc" id="L72">            Logger.getLogger(&quot;checkRitiro csv&quot;).log(Level.SEVERE,&quot;checkRitiro csv exception :&quot;,e1);</span>
+<span class="nc" id="L72">        }catch (IOException e){</span>
+<span class="nc" id="L73">            Logger.getLogger(&quot;checkRitiro&quot;).log(Level.SEVERE,&quot;checkRitiro io exception :&quot;,e);</span>
+<span class="nc" id="L74">        }catch (ClassNotFoundException e1){</span>
+<span class="nc" id="L75">            Logger.getLogger(&quot;checkRitiro csv&quot;).log(Level.SEVERE,&quot;checkRitiro csv exception :&quot;,e1);</span>
 
-<span class="pc" id="L74">        }</span>
-<span class="fc bfc" id="L75" title="All 2 branches covered.">        for (Negozio negozio : lista) {</span>
-<span class="fc bfc" id="L76" title="All 2 branches covered.">            if (negozio.getNome().equals(shop.getNome()))</span>
-<span class="fc" id="L77">                status = negozio.getIsValid();</span>
-<span class="fc" id="L78">        }</span>
-<span class="fc" id="L79">        return status;</span>
+<span class="pc" id="L77">        }</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        for (Negozio negozio : lista) {</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">            if (negozio.getNome().equals(shop.getNome()))</span>
+<span class="fc" id="L80">                status = negozio.getIsValid();</span>
+<span class="fc" id="L81">        }</span>
+<span class="fc" id="L82">        return status;</span>
     }
 
     @Override
     public void initializza() {
-<span class="fc bfc" id="L84" title="All 2 branches covered.">        for(int i=1;i&lt;=4;i++) {</span>
-<span class="fc" id="L85">            lista.add(leggiNegozio(i));</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">        for(int i=1;i&lt;=4;i++) {</span>
+<span class="fc" id="L88">            lista.add(leggiNegozio(i));</span>
 
         }
-<span class="fc" id="L88">        inserisciNegozio();</span>
-<span class="fc" id="L89">    }</span>
+<span class="fc" id="L91">        inserisciNegozio();</span>
+<span class="fc" id="L92">        super.initializza();</span>
+<span class="fc" id="L93">    }</span>
 
     private void inserisciNegozio() {
-<span class="fc" id="L92">        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
-<span class="fc" id="L93">            ObjectOutputStream oos=new ObjectOutputStream(fos))</span>
+<span class="fc" id="L96">        try(FileOutputStream fos=new FileOutputStream(SERIALIZZAZIONE);</span>
+<span class="fc" id="L97">            ObjectOutputStream oos=new ObjectOutputStream(fos))</span>
         {
-<span class="fc" id="L95">            oos.writeObject(new ArrayList&lt;&gt;(lista));</span>
-<span class="nc" id="L96">        }catch (IOException e)</span>
+<span class="fc" id="L99">            oos.writeObject(new ArrayList&lt;&gt;(lista));</span>
+<span class="nc" id="L100">        }catch (IOException e)</span>
         {
-<span class="nc" id="L98">            Logger.getLogger(&quot;inserisciNegozio&quot;).log(Level.SEVERE,&quot;insert negozio exception :&quot;,e);</span>
-<span class="fc" id="L99">        }</span>
+<span class="nc" id="L102">            Logger.getLogger(&quot;inserisciNegozio&quot;).log(Level.SEVERE,&quot;insert negozio exception :&quot;,e);</span>
+<span class="fc" id="L103">        }</span>
 
-<span class="fc" id="L101">    }</span>
+<span class="fc" id="L105">    }</span>
 
     private Negozio leggiNegozio(int i) {
         String line;
-<span class="fc" id="L105">        ArrayList&lt;String&gt; listaR = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L106">        try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/negozio&quot;+ i +&quot;.txt&quot;);</span>
-<span class="fc" id="L107">             BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
-<span class="fc bfc" id="L108" title="All 2 branches covered.">            while ((line = bufferedReader.readLine()) != null) {</span>
-<span class="fc" id="L109">                listaR.add(line);</span>
+<span class="fc" id="L109">        ArrayList&lt;String&gt; listaR = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L110">        try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/negozio&quot;+ i +&quot;.txt&quot;);</span>
+<span class="fc" id="L111">             BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">            while ((line = bufferedReader.readLine()) != null) {</span>
+<span class="fc" id="L113">                listaR.add(line);</span>
 
             }
-<span class="nc" id="L112">        }catch (IOException e)</span>
+<span class="nc" id="L116">        }catch (IOException e)</span>
         {
-<span class="nc" id="L114">            Logger.getLogger(&quot;leggiNegozio&quot;).log(Level.SEVERE,&quot;read shop exception :&quot;,e);</span>
-<span class="fc" id="L115">        }</span>
-<span class="fc" id="L116">            Negozio n=new Negozio();</span>
-<span class="fc" id="L117">            n.setId(Integer.parseInt(listaR.get(0)));</span>
-<span class="fc" id="L118">            n.setNome(listaR.get(1));</span>
-<span class="fc" id="L119">            n.setVia(listaR.get(2));</span>
-<span class="fc" id="L120">            n.setIsValid(listaR.get(3).equals(String.valueOf(1)));</span>
+<span class="nc" id="L118">            Logger.getLogger(&quot;leggiNegozio&quot;).log(Level.SEVERE,&quot;read shop exception :&quot;,e);</span>
+<span class="fc" id="L119">        }</span>
+<span class="fc" id="L120">            Negozio n=new Negozio();</span>
+<span class="fc" id="L121">            n.setId(Integer.parseInt(listaR.get(0)));</span>
+<span class="fc" id="L122">            n.setNome(listaR.get(1));</span>
+<span class="fc" id="L123">            n.setVia(listaR.get(2));</span>
+<span class="fc" id="L124">            n.setIsValid(listaR.get(3).equals(String.valueOf(1)));</span>
 
-<span class="fc" id="L122">             n.setIsOpen(listaR.get(4).equals(String.valueOf(1)));</span>
+<span class="fc" id="L126">             n.setIsOpen(listaR.get(4).equals(String.valueOf(1)));</span>
 
 
-<span class="fc" id="L125">            return n;</span>
+<span class="fc" id="L129">            return n;</span>
         }
 
 

@@ -12,31 +12,35 @@ import java.util.logging.Logger;
 <span class="fc" id="L12">public  class PersistenzaLibro {</span>
 
      public  boolean inserisciLibro(Libro l){
-<span class="nc bnc" id="L15" title="All 2 branches missed.">         return l.getId()!=-1 ;}</span>
+<span class="pc bpc" id="L15" title="1 of 2 branches missed.">         return l.getId()!=-1 ;}</span>
 
      public  boolean removeLibroById(Libro l)  {
 
-<span class="nc bnc" id="L19" title="All 2 branches missed.">         return l.getId()!=-0; }</span>
+<span class="pc bpc" id="L19" title="1 of 2 branches missed.">         return l.getId()!=-0; }</span>
 
     public  ObservableList&lt;Raccolta&gt; retrieveRaccoltaData()  {
-<span class="nc" id="L22">        return FXCollections.observableArrayList();}</span>
+<span class="fc" id="L22">        Logger.getLogger(&quot;retrieve raccolta data&quot;).log(Level.INFO,&quot;raccolta data book&quot;);</span>
+
+<span class="fc" id="L24">        return FXCollections.observableArrayList();}</span>
 
     public ObservableList&lt;Libro&gt; getLibroByIdTitoloAutoreLibro(Libro l) {
 
-<span class="nc" id="L26">        Logger.getLogger(&quot;lista  persistenza libro&quot;).log(Level.INFO,&quot;lista libro by id .&quot;,l.getId());</span>
+<span class="fc" id="L28">        Logger.getLogger(&quot;lista  persistenza libro&quot;).log(Level.INFO,&quot;lista libro by id .&quot;,l.getId());</span>
 
-<span class="nc" id="L28">        return FXCollections.observableArrayList();}</span>
+<span class="fc" id="L30">        return FXCollections.observableArrayList();}</span>
 
     public void initializza()  {
 
-<span class="fc" id="L32">        Logger.getLogger(&quot;inizializza persistenza libro&quot;).log(Level.INFO,&quot; persistenza libro inizializza&quot;);</span>
-<span class="fc" id="L33">        PersistenzaGenerale pG=new PersistenzaGenerale();</span>
-<span class="fc" id="L34">        pG.getExcepptionInit(&quot;libro&quot;);</span>
+<span class="fc" id="L34">        Logger.getLogger(&quot;inizializza persistenza libro&quot;).log(Level.INFO,&quot; persistenza libro inizializza&quot;);</span>
+<span class="fc" id="L35">        PersistenzaGenerale pG=new PersistenzaGenerale();</span>
+<span class="fc" id="L36">        pG.getExcepptionInit(&quot;libro&quot;);</span>
 
 
 
-<span class="fc" id="L38">    }</span>
-<span class="nc" id="L39">    public ObservableList&lt;Libro&gt; getLibri()  { return FXCollections.observableArrayList();}</span>
+<span class="fc" id="L40">    }</span>
+    public ObservableList&lt;Libro&gt; getLibri()  {
+<span class="fc" id="L42">         Logger.getLogger(&quot;getLibri&quot;).log(Level.INFO,&quot;peristenza libro getLibri&quot;);</span>
+<span class="fc" id="L43">         return FXCollections.observableArrayList();}</span>
 
 
 

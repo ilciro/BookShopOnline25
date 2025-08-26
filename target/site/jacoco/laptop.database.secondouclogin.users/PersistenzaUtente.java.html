@@ -9,21 +9,23 @@ import java.util.logging.Logger;
 
 <span class="fc" id="L10">public class PersistenzaUtente {</span>
 
-<span class="nc bnc" id="L12" title="All 2 branches missed.">    public boolean inserisciUtente(TempUser tu)  { return tu.getId()!=-1;}</span>
-<span class="nc" id="L13">    public ObservableList&lt;TempUser&gt; getUserData() { return FXCollections.observableArrayList();}</span>
-<span class="nc bnc" id="L14" title="All 2 branches missed.">    public boolean removeUserByIdEmailPwd(TempUser tu)  { return tu.getId()!=-0;</span>
+    public boolean inserisciUtente(TempUser tu)  {
+<span class="fc" id="L13">        Logger.getLogger(&quot;inserisci persistenza utente&quot;).log(Level.INFO,&quot;peristenza utente insert&quot;);</span>
+<span class="pc bpc" id="L14" title="1 of 2 branches missed.">        return tu.getId()!=-1;}</span>
+    public ObservableList&lt;TempUser&gt; getUserData() {
+<span class="fc" id="L16">        Logger.getLogger(&quot;user data persistenza utente&quot;).log(Level.INFO,&quot;peristenza utente getUSerData&quot;);</span>
+<span class="fc" id="L17">        return FXCollections.observableArrayList();}</span>
+    public boolean removeUserByIdEmailPwd(TempUser tu)  {
+<span class="fc" id="L19">        Logger.getLogger(&quot;remove persistenza utente&quot;).log(Level.INFO,&quot;peristenza utente remove&quot;);</span>
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        return tu.getId()!=-0;</span>
     }
-
-
-
     public void initializza()  {
+<span class="fc" id="L23">        Logger.getLogger(&quot;inizializza persistenza utente&quot;).log(Level.INFO,&quot;peristenza utente initialize&quot;);</span>
+<span class="fc" id="L24">        PersistenzaGenerale pG=new PersistenzaGenerale();</span>
+<span class="fc" id="L25">        pG.getExcepptionInit(&quot;utente&quot;);</span>
 
-<span class="nc" id="L21">        Logger.getLogger(&quot;inizializza persistenza utente&quot;).log(Level.INFO,&quot;peristenza utente initialize&quot;);</span>
-<span class="nc" id="L22">        PersistenzaGenerale pG=new PersistenzaGenerale();</span>
-<span class="nc" id="L23">        pG.getExcepptionInit(&quot;utente&quot;);</span>
 
-
-<span class="nc" id="L26">    }</span>
+<span class="fc" id="L28">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

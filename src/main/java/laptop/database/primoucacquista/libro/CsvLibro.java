@@ -70,6 +70,8 @@ public class CsvLibro extends PersistenzaLibro{
         //provo con titolo ed autore ed editore
         //visto che id non buono in quanto non gli e lo assegno
 
+        super.inserisciLibro(l);
+
         boolean duplicatedL = false;
         boolean duplicatedT = false;
         boolean duplicatedA = false;
@@ -238,6 +240,7 @@ public class CsvLibro extends PersistenzaLibro{
 
     @Override
     public boolean removeLibroById(Libro l)  {
+        super.removeLibroById(l);
         synchronized (this.cacheLibro) {
             this.cacheLibro.remove(l.getId());
         }
@@ -303,8 +306,11 @@ public class CsvLibro extends PersistenzaLibro{
 
     @Override
     public ObservableList<Raccolta> retrieveRaccoltaData() {
+
+        super.retrieveRaccoltaData();
         return retrieveData(this.fdL);
     }
+
     private static synchronized ObservableList<Raccolta> retrieveData(File fd) {
         ObservableList<Raccolta> gList = FXCollections.observableArrayList();
         try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {
@@ -336,6 +342,7 @@ public class CsvLibro extends PersistenzaLibro{
 
     @Override
     public ObservableList<Libro> getLibroByIdTitoloAutoreLibro(Libro l)  {
+        super.getLibroByIdTitoloAutoreLibro(l);
         ObservableList<Libro> list=FXCollections.observableArrayList();
         synchronized (this.cacheLibro)
         {
@@ -406,6 +413,7 @@ public class CsvLibro extends PersistenzaLibro{
 
     @Override
     public ObservableList<Libro> getLibri()  {
+        super.getLibri();
         ObservableList<Libro> list=FXCollections.observableArrayList();
         synchronized (this.cacheLibro)
         {
@@ -491,6 +499,8 @@ public class CsvLibro extends PersistenzaLibro{
             Logger.getLogger("crea db file").log(Level.SEVERE, "\n eccezione ottenuta nella modalità file.", eFile);
         }
         Logger.getLogger("files creati con successo").log(Level.INFO, "\n files successfully created");
+
+        super.initializza();
 
 
 
