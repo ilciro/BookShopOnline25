@@ -233,193 +233,185 @@ import java.util.logging.Logger;
 <span class="fc" id="L233">        return true;</span>
     }
 
-
-
-
     private void scriviInFile(String nome,ArrayList&lt;Giornale&gt; listaG,ArrayList&lt;Libro&gt; listaL,ArrayList&lt;Rivista&gt; listaR)
     {
-<span class="fc" id="L241">        try(FileOutputStream fos=new FileOutputStream(nome,true);</span>
-<span class="fc" id="L242">            ObjectOutputStream oos=new ObjectOutputStream(fos)) {</span>
-<span class="pc bpc" id="L243" title="1 of 4 branches missed.">            switch (vis.getType()) {</span>
-<span class="fc" id="L244">                case GIORNALE -&gt; oos.writeObject(listaG);</span>
-<span class="fc" id="L245">                case LIBRO -&gt; oos.writeObject(listaL);</span>
-<span class="fc" id="L246">                case RIVISTA -&gt; oos.writeObject(listaR);</span>
-<span class="nc" id="L247">                default -&gt; Logger.getLogger(&quot;scrivo in file&quot;).log(Level.SEVERE,&quot;type od object is wrong !!&quot;);</span>
+<span class="fc" id="L238">        try(FileOutputStream fos=new FileOutputStream(nome,true);</span>
+<span class="fc" id="L239">            ObjectOutputStream oos=new ObjectOutputStream(fos)) {</span>
+<span class="pc bpc" id="L240" title="1 of 4 branches missed.">            switch (vis.getType()) {</span>
+<span class="fc" id="L241">                case GIORNALE -&gt; oos.writeObject(listaG);</span>
+<span class="fc" id="L242">                case LIBRO -&gt; oos.writeObject(listaL);</span>
+<span class="fc" id="L243">                case RIVISTA -&gt; oos.writeObject(listaR);</span>
+<span class="nc" id="L244">                default -&gt; Logger.getLogger(&quot;scrivo in file&quot;).log(Level.SEVERE,&quot;type od object is wrong !!&quot;);</span>
             }
-<span class="fc" id="L249">            oos.flush();</span>
+<span class="fc" id="L246">            oos.flush();</span>
 
-<span class="nc" id="L251">        }catch (IOException e)</span>
+<span class="nc" id="L248">        }catch (IOException e)</span>
         {
-<span class="nc" id="L253">            Logger.getLogger(&quot;scrivi in file&quot;).log(Level.SEVERE,&quot;scrivi in file mi exception : &quot;,e);</span>
+<span class="nc" id="L250">            Logger.getLogger(&quot;scrivi in file&quot;).log(Level.SEVERE,&quot;scrivi in file mi exception : &quot;,e);</span>
 
-<span class="fc" id="L255">        }</span>
+<span class="fc" id="L252">        }</span>
 
 
 
-<span class="fc" id="L259">    }</span>
+<span class="fc" id="L256">    }</span>
     @SuppressWarnings(&quot;unchecked&quot;)
     private ArrayList&lt;Giornale&gt; leggiDaFileGiornale(String nome) {
-<span class="fc" id="L262">        try(FileInputStream fis=new FileInputStream(nome);</span>
-<span class="fc" id="L263">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
-<span class="fc" id="L264">            listG=(ArrayList&lt;Giornale&gt;) ois.readObject();</span>
-<span class="nc" id="L265">        }catch (IOException e)</span>
+<span class="fc" id="L259">        try(FileInputStream fis=new FileInputStream(nome);</span>
+<span class="fc" id="L260">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="fc" id="L261">            listG=(ArrayList&lt;Giornale&gt;) ois.readObject();</span>
+<span class="nc" id="L262">        }catch (IOException e)</span>
         {
-<span class="nc" id="L267">            Logger.getLogger(&quot;leggi da file giornale io&quot;).log(Level.SEVERE,&quot;leggi da file io giornale exception :&quot;,e);</span>
+<span class="nc" id="L264">            Logger.getLogger(&quot;leggi da file giornale io&quot;).log(Level.SEVERE,&quot;leggi da file io giornale exception :&quot;,e);</span>
 
-<span class="nc" id="L269">        }catch (ClassNotFoundException e1)</span>
+<span class="nc" id="L266">        }catch (ClassNotFoundException e1)</span>
         {
-<span class="nc" id="L271">            Logger.getLogger(&quot;leggi da file giornale class&quot;).log(Level.SEVERE,&quot;leggi da file class giornale exception :&quot;,e1);</span>
+<span class="nc" id="L268">            Logger.getLogger(&quot;leggi da file giornale class&quot;).log(Level.SEVERE,&quot;leggi da file class giornale exception :&quot;,e1);</span>
 
-<span class="pc" id="L273">        }</span>
-<span class="fc" id="L274">        return listG;</span>
+<span class="pc" id="L270">        }</span>
+<span class="fc" id="L271">        return listG;</span>
     }
     @SuppressWarnings(&quot;unchecked&quot;)
     private ArrayList&lt;Libro&gt; leggiDaFileLibro(String nome)  {
-<span class="fc" id="L278">        try(FileInputStream fis=new FileInputStream(nome);</span>
-<span class="fc" id="L279">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
-<span class="fc" id="L280">            listL=(ArrayList&lt;Libro&gt;) ois.readObject();</span>
-<span class="nc" id="L281">        }catch (IOException e)</span>
+<span class="fc" id="L275">        try(FileInputStream fis=new FileInputStream(nome);</span>
+<span class="fc" id="L276">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="fc" id="L277">            listL=(ArrayList&lt;Libro&gt;) ois.readObject();</span>
+<span class="nc" id="L278">        }catch (IOException e)</span>
         {
-<span class="nc" id="L283">            Logger.getLogger(&quot;leggi da file libro io&quot;).log(Level.SEVERE,&quot;leggi da file io libro exception: &quot;,e);</span>
+<span class="nc" id="L280">            Logger.getLogger(&quot;leggi da file libro io&quot;).log(Level.SEVERE,&quot;leggi da file io libro exception: &quot;,e);</span>
 
-<span class="nc" id="L285">        }catch (ClassNotFoundException e1)</span>
+<span class="nc" id="L282">        }catch (ClassNotFoundException e1)</span>
         {
-<span class="nc" id="L287">            Logger.getLogger(&quot;leggi da file libro class&quot;).log(Level.SEVERE,&quot;leggi da file class libro exception: &quot;,e1);</span>
+<span class="nc" id="L284">            Logger.getLogger(&quot;leggi da file libro class&quot;).log(Level.SEVERE,&quot;leggi da file class libro exception: &quot;,e1);</span>
 
-<span class="pc" id="L289">        }</span>
-
-<span class="fc" id="L291">        return listL;</span>
+<span class="pc" id="L286">        }</span>
+<span class="fc" id="L287">        return listL;</span>
     }
     @SuppressWarnings(&quot;unchecked&quot;)
     private ArrayList&lt;Rivista&gt; leggiDaFileRivista(String nome) {
-<span class="fc" id="L295">        try(FileInputStream fis=new FileInputStream(nome);</span>
-<span class="fc" id="L296">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
-<span class="fc" id="L297">            listR=(ArrayList&lt;Rivista&gt;) ois.readObject();</span>
-<span class="nc" id="L298">        }catch (IOException e)</span>
+<span class="fc" id="L291">        try(FileInputStream fis=new FileInputStream(nome);</span>
+<span class="fc" id="L292">            ObjectInputStream ois=new ObjectInputStream(fis)){</span>
+<span class="fc" id="L293">            listR=(ArrayList&lt;Rivista&gt;) ois.readObject();</span>
+<span class="nc" id="L294">        }catch (IOException e)</span>
         {
-<span class="nc" id="L300">            Logger.getLogger(&quot;leggi da file rivista io&quot;).log(Level.SEVERE,&quot;leggi da file io rivista exception :&quot;,e);</span>
+<span class="nc" id="L296">            Logger.getLogger(&quot;leggi da file rivista io&quot;).log(Level.SEVERE,&quot;leggi da file io rivista exception :&quot;,e);</span>
 
-<span class="nc" id="L302">        }catch (ClassNotFoundException e1)</span>
+<span class="nc" id="L298">        }catch (ClassNotFoundException e1)</span>
         {
-<span class="nc" id="L304">            Logger.getLogger(&quot;leggi da file rivista class&quot;).log(Level.SEVERE,&quot;leggi da file class rivista exception :&quot;,e1);</span>
+<span class="nc" id="L300">            Logger.getLogger(&quot;leggi da file rivista class&quot;).log(Level.SEVERE,&quot;leggi da file class rivista exception :&quot;,e1);</span>
 
-<span class="pc" id="L306">        }</span>
-<span class="fc" id="L307">        return listR;</span>
+<span class="pc" id="L302">        }</span>
+<span class="fc" id="L303">        return listR;</span>
     }
 
 
     public List&lt;Giornale&gt; listaGiornali(String file)  {
-<span class="fc" id="L312">        return  leggiDaFileGiornale(file);</span>
+<span class="fc" id="L308">        return  leggiDaFileGiornale(file);</span>
     }
-
     public List&lt;Libro&gt; listaLibri(String file)  {
-<span class="fc" id="L316">        return  leggiDaFileLibro(file);</span>
+<span class="fc" id="L311">        return  leggiDaFileLibro(file);</span>
     }
     public List&lt;Rivista&gt; listaRiviste(String file)  {
-<span class="fc" id="L319">        return  leggiDaFileRivista(file);</span>
+<span class="fc" id="L314">        return  leggiDaFileRivista(file);</span>
     }
 
 
 
     private static @NotNull Giornale getGiornale(int i) {
         String line;
+<span class="fc" id="L321">        ArrayList&lt;String&gt; listaG = new ArrayList&lt;&gt;();</span>
 
-
-<span class="fc" id="L328">        ArrayList&lt;String&gt; listaG = new ArrayList&lt;&gt;();</span>
-
-
-<span class="fc" id="L331">        try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/giornale&quot; + i + &quot;.txt&quot;);</span>
-<span class="fc" id="L332">             BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
-<span class="fc bfc" id="L333" title="All 2 branches covered.">            while ((line = bufferedReader.readLine()) != null) {</span>
-<span class="fc" id="L334">                listaG.add(line);</span>
+<span class="fc" id="L323">        try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/giornale&quot; + i + &quot;.txt&quot;);</span>
+<span class="fc" id="L324">             BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
+<span class="fc bfc" id="L325" title="All 2 branches covered.">            while ((line = bufferedReader.readLine()) != null) {</span>
+<span class="fc" id="L326">                listaG.add(line);</span>
 
             }
-<span class="nc" id="L337">        }catch (IOException e)</span>
+<span class="nc" id="L329">        }catch (IOException e)</span>
         {
-<span class="nc" id="L339">            Logger.getLogger(&quot;getGiornale&quot;).log(Level.SEVERE,&quot; get giornale exception : &quot;,e);</span>
-<span class="fc" id="L340">        }</span>
-<span class="fc" id="L341">        Giornale g = new Giornale();</span>
-<span class="fc" id="L342">        g.setTitolo(listaG.get(0));</span>
-<span class="fc" id="L343">        g.setEditore(listaG.get(3));</span>
-<span class="fc" id="L344">        g.setLingua(listaG.get(2));</span>
-<span class="fc" id="L345">        g.setCategoria(listaG.get(1));</span>
-<span class="fc" id="L346">        g.setDataPubb(LocalDate.parse(listaG.get(4)));</span>
-<span class="fc" id="L347">        g.setCopieRimanenti(Integer.parseInt(listaG.get(5)));</span>
-<span class="fc" id="L348">        g.setDisponibilita(Integer.parseInt(listaG.get(6)));</span>
-<span class="fc" id="L349">        g.setPrezzo(Float.parseFloat(listaG.get(7)));</span>
-<span class="fc" id="L350">        g.setId(Integer.parseInt(listaG.get(8)));</span>
-<span class="fc" id="L351">        return g;</span>
+<span class="nc" id="L331">            Logger.getLogger(&quot;getGiornale&quot;).log(Level.SEVERE,&quot; get giornale exception : &quot;,e);</span>
+<span class="fc" id="L332">        }</span>
+<span class="fc" id="L333">        Giornale g = new Giornale();</span>
+<span class="fc" id="L334">        g.setTitolo(listaG.get(0));</span>
+<span class="fc" id="L335">        g.setEditore(listaG.get(3));</span>
+<span class="fc" id="L336">        g.setLingua(listaG.get(2));</span>
+<span class="fc" id="L337">        g.setCategoria(listaG.get(1));</span>
+<span class="fc" id="L338">        g.setDataPubb(LocalDate.parse(listaG.get(4)));</span>
+<span class="fc" id="L339">        g.setCopieRimanenti(Integer.parseInt(listaG.get(5)));</span>
+<span class="fc" id="L340">        g.setDisponibilita(Integer.parseInt(listaG.get(6)));</span>
+<span class="fc" id="L341">        g.setPrezzo(Float.parseFloat(listaG.get(7)));</span>
+<span class="fc" id="L342">        g.setId(Integer.parseInt(listaG.get(8)));</span>
+<span class="fc" id="L343">        return g;</span>
     }
 
     private static @NotNull Libro getLibro(int i)  {
         String line;
-<span class="fc" id="L356">        ArrayList&lt;String&gt; listaL = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L357">        try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/libro&quot; + i + &quot;.txt&quot;);</span>
-<span class="fc" id="L358">             BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
-<span class="fc bfc" id="L359" title="All 2 branches covered.">            while ((line = bufferedReader.readLine()) != null) {</span>
-<span class="fc" id="L360">                listaL.add(line);</span>
+<span class="fc" id="L348">        ArrayList&lt;String&gt; listaL = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L349">        try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/libro&quot; + i + &quot;.txt&quot;);</span>
+<span class="fc" id="L350">             BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
+<span class="fc bfc" id="L351" title="All 2 branches covered.">            while ((line = bufferedReader.readLine()) != null) {</span>
+<span class="fc" id="L352">                listaL.add(line);</span>
             }
-<span class="nc" id="L362">        }catch (IOException e)</span>
+<span class="nc" id="L354">        }catch (IOException e)</span>
         {
-<span class="nc" id="L364">            Logger.getLogger(&quot;getLibro&quot;).log(Level.SEVERE,&quot;get libro exception : &quot;,e);</span>
-<span class="fc" id="L365">        }</span>
-<span class="fc" id="L366">        return getLibro(listaL);</span>
+<span class="nc" id="L356">            Logger.getLogger(&quot;getLibro&quot;).log(Level.SEVERE,&quot;get libro exception : &quot;,e);</span>
+<span class="fc" id="L357">        }</span>
+<span class="fc" id="L358">        return getLibro(listaL);</span>
 
     }
 
     private static @NotNull Libro getLibro(ArrayList&lt;String&gt; listaL) {
-<span class="fc" id="L371">        Libro l = new Libro();</span>
-<span class="fc" id="L372">        l.setTitolo(listaL.get(0));</span>
-<span class="fc" id="L373">        l.setNrPagine(Integer.parseInt(listaL.get(1)));</span>
-<span class="fc" id="L374">        l.setCodIsbn(listaL.get(2));</span>
-<span class="fc" id="L375">        l.setEditore(listaL.get(3));</span>
-<span class="fc" id="L376">        l.setAutore(listaL.get(4));</span>
-<span class="fc" id="L377">        l.setLingua(listaL.get(5));</span>
-<span class="fc" id="L378">        l.setCategoria(listaL.get(6));</span>
-<span class="fc" id="L379">        l.setDataPubb(LocalDate.parse(listaL.get(7)));</span>
-<span class="fc" id="L380">        l.setRecensione(listaL.get(8));</span>
-<span class="fc" id="L381">        l.setNrCopie(Integer.parseInt(listaL.get(9)));</span>
-<span class="fc" id="L382">        l.setDesc(listaL.get(10));</span>
-<span class="fc" id="L383">        l.setDisponibilita(Integer.parseInt(listaL.get(11)));</span>
-<span class="fc" id="L384">        l.setPrezzo(Float.parseFloat(listaL.get(12)));</span>
-<span class="fc" id="L385">        l.setId(Integer.parseInt(listaL.get(13)));</span>
-<span class="fc" id="L386">        return l;</span>
+<span class="fc" id="L363">        Libro l = new Libro();</span>
+<span class="fc" id="L364">        l.setTitolo(listaL.get(0));</span>
+<span class="fc" id="L365">        l.setNrPagine(Integer.parseInt(listaL.get(1)));</span>
+<span class="fc" id="L366">        l.setCodIsbn(listaL.get(2));</span>
+<span class="fc" id="L367">        l.setEditore(listaL.get(3));</span>
+<span class="fc" id="L368">        l.setAutore(listaL.get(4));</span>
+<span class="fc" id="L369">        l.setLingua(listaL.get(5));</span>
+<span class="fc" id="L370">        l.setCategoria(listaL.get(6));</span>
+<span class="fc" id="L371">        l.setDataPubb(LocalDate.parse(listaL.get(7)));</span>
+<span class="fc" id="L372">        l.setRecensione(listaL.get(8));</span>
+<span class="fc" id="L373">        l.setNrCopie(Integer.parseInt(listaL.get(9)));</span>
+<span class="fc" id="L374">        l.setDesc(listaL.get(10));</span>
+<span class="fc" id="L375">        l.setDisponibilita(Integer.parseInt(listaL.get(11)));</span>
+<span class="fc" id="L376">        l.setPrezzo(Float.parseFloat(listaL.get(12)));</span>
+<span class="fc" id="L377">        l.setId(Integer.parseInt(listaL.get(13)));</span>
+<span class="fc" id="L378">        return l;</span>
     }
 
     private static @NotNull Rivista getRivista(int i) {
             String line;
-<span class="fc" id="L391">            ArrayList&lt;String&gt; listaR = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L392">            try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/rivista&quot; + i + &quot;.txt&quot;);</span>
-<span class="fc" id="L393">                 BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
-<span class="fc bfc" id="L394" title="All 2 branches covered.">                while ((line = bufferedReader.readLine()) != null) {</span>
-<span class="fc" id="L395">                    listaR.add(line);</span>
+<span class="fc" id="L383">            ArrayList&lt;String&gt; listaR = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L384">            try (FileReader fileReader = new FileReader(&quot;src/main/resources/tmpFiles/rivista&quot; + i + &quot;.txt&quot;);</span>
+<span class="fc" id="L385">                 BufferedReader bufferedReader = new BufferedReader(fileReader)) {</span>
+<span class="fc bfc" id="L386" title="All 2 branches covered.">                while ((line = bufferedReader.readLine()) != null) {</span>
+<span class="fc" id="L387">                    listaR.add(line);</span>
                 }
-<span class="nc" id="L397">            }catch (IOException e)</span>
+<span class="nc" id="L389">            }catch (IOException e)</span>
             {
-<span class="nc" id="L399">                Logger.getLogger(&quot;getRivista&quot;).log(Level.SEVERE,&quot;getRivista mi exception : &quot;,e);</span>
-<span class="fc" id="L400">            }</span>
+<span class="nc" id="L391">                Logger.getLogger(&quot;getRivista&quot;).log(Level.SEVERE,&quot;getRivista mi exception : &quot;,e);</span>
+<span class="fc" id="L392">            }</span>
 
 
-<span class="fc" id="L403">        return getRivista(listaR);</span>
+<span class="fc" id="L395">        return getRivista(listaR);</span>
 
 
 
             }
 
     private static @NotNull Rivista getRivista(ArrayList&lt;String&gt; listaR) {
-<span class="fc" id="L410">        Rivista r=new Rivista();</span>
-<span class="fc" id="L411">        r.setTitolo(listaR.get(0));</span>
-<span class="fc" id="L412">        r.setCategoria(listaR.get(1));</span>
-<span class="fc" id="L413">        r.setAutore(listaR.get(2));</span>
-<span class="fc" id="L414">        r.setLingua(listaR.get(3));</span>
-<span class="fc" id="L415">        r.setEditore(listaR.get(4));</span>
-<span class="fc" id="L416">        r.setDescrizione(listaR.get(5));</span>
-<span class="fc" id="L417">        r.setDataPubb(LocalDate.parse(listaR.get(6)));</span>
-<span class="fc" id="L418">        r.setDisp(Integer.parseInt(listaR.get(7)));</span>
-<span class="fc" id="L419">        r.setPrezzo(Float.parseFloat(listaR.get(8)));</span>
-<span class="fc" id="L420">        r.setNrCopie(Integer.parseInt(listaR.get(9)));</span>
-<span class="fc" id="L421">        r.setId(Integer.parseInt(listaR.get(10)));</span>
-<span class="fc" id="L422">        return r;</span>
+<span class="fc" id="L402">        Rivista r=new Rivista();</span>
+<span class="fc" id="L403">        r.setTitolo(listaR.get(0));</span>
+<span class="fc" id="L404">        r.setCategoria(listaR.get(1));</span>
+<span class="fc" id="L405">        r.setAutore(listaR.get(2));</span>
+<span class="fc" id="L406">        r.setLingua(listaR.get(3));</span>
+<span class="fc" id="L407">        r.setEditore(listaR.get(4));</span>
+<span class="fc" id="L408">        r.setDescrizione(listaR.get(5));</span>
+<span class="fc" id="L409">        r.setDataPubb(LocalDate.parse(listaR.get(6)));</span>
+<span class="fc" id="L410">        r.setDisp(Integer.parseInt(listaR.get(7)));</span>
+<span class="fc" id="L411">        r.setPrezzo(Float.parseFloat(listaR.get(8)));</span>
+<span class="fc" id="L412">        r.setNrCopie(Integer.parseInt(listaR.get(9)));</span>
+<span class="fc" id="L413">        r.setId(Integer.parseInt(listaR.get(10)));</span>
+<span class="fc" id="L414">        return r;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

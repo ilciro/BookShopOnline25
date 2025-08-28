@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: testfinalidemo.testricerca.TestRicercaMem
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.528 s - in testfinalidemo.testricerca.TestRicercaMem
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.199 s - in testfinalidemo.testricerca.TestRicercaMem

@@ -2,16 +2,12 @@
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
-
 import laptop.controller.ControllerSystemState;
 import laptop.database.primoucacquista.giornale.CsvGiornale;
 import laptop.database.primoucacquista.giornale.GiornaleDao;
 import laptop.database.primoucacquista.giornale.MemoriaGiornale;
 import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
 import laptop.database.primoucacquista.libro.MemoriaLibro;
-
 import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
@@ -19,7 +15,6 @@ import laptop.database.primoucacquista.rivista.RivistaDao;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Rivista;
-
 import laptop.database.primoucacquista.libro.CsvLibro;
 import laptop.database.primoucacquista.libro.PersistenzaLibro;
 import laptop.database.primoucacquista.libro.LibroDao;
@@ -34,7 +29,7 @@ public class ControllerAcquista {
 	private final Libro l;
 	private final Giornale g;
 	private final Rivista r;
-<span class="fc" id="L37">	private static final ControllerSystemState vis = ControllerSystemState.getInstance() ;</span>
+<span class="fc" id="L32">	private static final ControllerSystemState vis = ControllerSystemState.getInstance() ;</span>
 
     private static final String LIBRO =&quot;libro&quot;;
 	private static final String RIVISTA=&quot;rivista&quot;;
@@ -48,100 +43,100 @@ public class ControllerAcquista {
 	private PersistenzaGiornale pG;
 
 
-<span class="fc" id="L51">	public ControllerAcquista()  {</span>
+<span class="fc" id="L46">	public ControllerAcquista()  {</span>
 
 
-<span class="fc" id="L54">		l=new Libro();</span>
-<span class="fc" id="L55">		g=new Giornale();</span>
-<span class="fc" id="L56">		r=new Rivista();</span>
+<span class="fc" id="L49">		l=new Libro();</span>
+<span class="fc" id="L50">		g=new Giornale();</span>
+<span class="fc" id="L51">		r=new Rivista();</span>
 
-<span class="fc" id="L58">	}</span>
+<span class="fc" id="L53">	}</span>
 
 	//uso una stringa di 3
 	public String[] getNomeCostoDisp(String string)  {
 
 
-<span class="fc" id="L64">	    String [] dati=new String[3];</span>
-<span class="pc bpc" id="L65" title="1 of 4 branches missed.">		switch (vis.getType())</span>
+<span class="fc" id="L59">	    String [] dati=new String[3];</span>
+<span class="pc bpc" id="L60" title="1 of 4 branches missed.">		switch (vis.getType())</span>
 		{
 			case LIBRO-&gt;
 			{
-<span class="fc" id="L69">				l.setId(vis.getIdLibro());</span>
-<span class="pc bpc" id="L70" title="1 of 4 branches missed.">                switch (string) {</span>
-<span class="fc" id="L71">                    case DATABASE -&gt; pL = new LibroDao();</span>
-<span class="fc" id="L72">                    case FILE -&gt; pL = new CsvLibro();</span>
-<span class="fc" id="L73">                    case MEMORIA -&gt; pL = new MemoriaLibro();</span>
-<span class="nc" id="L74">					default -&gt; Logger.getLogger(&quot;cALibro&quot;).log(Level.SEVERE,&quot;cost/name book is empty is null&quot;);</span>
+<span class="fc" id="L64">				l.setId(vis.getIdLibro());</span>
+<span class="pc bpc" id="L65" title="1 of 4 branches missed.">                switch (string) {</span>
+<span class="fc" id="L66">                    case DATABASE -&gt; pL = new LibroDao();</span>
+<span class="fc" id="L67">                    case FILE -&gt; pL = new CsvLibro();</span>
+<span class="fc" id="L68">                    case MEMORIA -&gt; pL = new MemoriaLibro();</span>
+<span class="nc" id="L69">					default -&gt; Logger.getLogger(&quot;cALibro&quot;).log(Level.SEVERE,&quot;cost/name book is empty is null&quot;);</span>
 
 				}
 
-<span class="fc" id="L78">				dati[0] = pL.getLibroByIdTitoloAutoreLibro(l).get(0).getTitolo();</span>
-<span class="fc" id="L79">				dati[1]= String.valueOf(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getPrezzo());</span>
-<span class="fc" id="L80">				dati[2]= String.valueOf(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getNrCopie());</span>
+<span class="fc" id="L73">				dati[0] = pL.getLibroByIdTitoloAutoreLibro(l).get(0).getTitolo();</span>
+<span class="fc" id="L74">				dati[1]= String.valueOf(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getPrezzo());</span>
+<span class="fc" id="L75">				dati[2]= String.valueOf(pL.getLibroByIdTitoloAutoreLibro(l).get(0).getNrCopie());</span>
 
-<span class="fc" id="L82">				Logger.getLogger(&quot;getNomeCostoDispL&quot;).log(Level.INFO,&quot;buying book :{0}&quot;,l.toString());</span>
+<span class="fc" id="L77">				Logger.getLogger(&quot;getNomeCostoDispL&quot;).log(Level.INFO,&quot;buying book :{0}&quot;,l.toString());</span>
 
-<span class="fc" id="L84">			}</span>
+<span class="fc" id="L79">			}</span>
 
 
 			case GIORNALE-&gt;
 			{
-<span class="fc" id="L89">				g.setId(vis.getIdGiornale());</span>
+<span class="fc" id="L84">				g.setId(vis.getIdGiornale());</span>
 
-<span class="pc bpc" id="L91" title="1 of 4 branches missed.">                switch (string) {</span>
-<span class="fc" id="L92">                    case DATABASE -&gt; pG = new GiornaleDao();</span>
-<span class="fc" id="L93">                    case FILE -&gt; pG = new CsvGiornale();</span>
-<span class="fc" id="L94">                   case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
-<span class="nc" id="L95">					default -&gt; Logger.getLogger(&quot;cAGiornale&quot;).log(Level.SEVERE,&quot;cost/name daily is empty is null&quot;);</span>
+<span class="pc bpc" id="L86" title="1 of 4 branches missed.">                switch (string) {</span>
+<span class="fc" id="L87">                    case DATABASE -&gt; pG = new GiornaleDao();</span>
+<span class="fc" id="L88">                    case FILE -&gt; pG = new CsvGiornale();</span>
+<span class="fc" id="L89">                   case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
+<span class="nc" id="L90">					default -&gt; Logger.getLogger(&quot;cAGiornale&quot;).log(Level.SEVERE,&quot;cost/name daily is empty is null&quot;);</span>
 
 				}
-<span class="fc" id="L98">				dati[0] = pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getTitolo();</span>
-<span class="fc" id="L99">				dati[1]= String.valueOf(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getPrezzo());</span>
-<span class="fc" id="L100">				dati[2]= String.valueOf(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCopieRimanenti());</span>
-<span class="fc" id="L101">				Logger.getLogger(&quot;getNomeCostoDispG&quot;).log(Level.INFO,&quot;buying daily :{0}&quot;,g.toString());</span>
+<span class="fc" id="L93">				dati[0] = pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getTitolo();</span>
+<span class="fc" id="L94">				dati[1]= String.valueOf(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getPrezzo());</span>
+<span class="fc" id="L95">				dati[2]= String.valueOf(pG.getGiornaleByIdTitoloAutoreLibro(g).get(0).getCopieRimanenti());</span>
+<span class="fc" id="L96">				Logger.getLogger(&quot;getNomeCostoDispG&quot;).log(Level.INFO,&quot;buying daily :{0}&quot;,g.toString());</span>
 
 
 
-<span class="fc" id="L105">			}</span>
+<span class="fc" id="L100">			}</span>
 
 			case RIVISTA-&gt;{
-<span class="fc" id="L108">				r.setId(vis.getIdRivista());</span>
-<span class="pc bpc" id="L109" title="1 of 4 branches missed.">                switch (string) {</span>
-<span class="fc" id="L110">                    case DATABASE -&gt; pR = new RivistaDao();</span>
-<span class="fc" id="L111">                    case FILE -&gt; pR = new CsvRivista();</span>
-<span class="fc" id="L112">                    case MEMORIA -&gt; pR = new MemoriaRivista();</span>
-<span class="nc" id="L113">					default -&gt; Logger.getLogger(&quot;cARivista&quot;).log(Level.SEVERE,&quot;cost/name magazine is empty is null&quot;);</span>
+<span class="fc" id="L103">				r.setId(vis.getIdRivista());</span>
+<span class="pc bpc" id="L104" title="1 of 4 branches missed.">                switch (string) {</span>
+<span class="fc" id="L105">                    case DATABASE -&gt; pR = new RivistaDao();</span>
+<span class="fc" id="L106">                    case FILE -&gt; pR = new CsvRivista();</span>
+<span class="fc" id="L107">                    case MEMORIA -&gt; pR = new MemoriaRivista();</span>
+<span class="nc" id="L108">					default -&gt; Logger.getLogger(&quot;cARivista&quot;).log(Level.SEVERE,&quot;cost/name magazine is empty is null&quot;);</span>
 
 				}
-<span class="fc" id="L116">				dati[0] = pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getTitolo();</span>
-<span class="fc" id="L117">				dati[1]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getPrezzo());</span>
-<span class="fc" id="L118">				dati[2]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getNrCopie());</span>
-<span class="fc" id="L119">				Logger.getLogger(&quot;getNomeCostoDispR&quot;).log(Level.INFO,&quot;buying magazine :{0}&quot;,r.toString());</span>
+<span class="fc" id="L111">				dati[0] = pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getTitolo();</span>
+<span class="fc" id="L112">				dati[1]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getPrezzo());</span>
+<span class="fc" id="L113">				dati[2]= String.valueOf(pR.getRivistaByIdTitoloAutoreRivista(r).get(0).getNrCopie());</span>
+<span class="fc" id="L114">				Logger.getLogger(&quot;getNomeCostoDispR&quot;).log(Level.INFO,&quot;buying magazine :{0}&quot;,r.toString());</span>
 
 
 
-<span class="fc" id="L123">			}</span>
+<span class="fc" id="L118">			}</span>
 
 
 
 
 
 
-<span class="nc" id="L130">			default -&gt; Logger.getLogger(&quot;get nome&quot;).log(Level.SEVERE,&quot; name is wrong!!&quot;);</span>
+<span class="nc" id="L125">			default -&gt; Logger.getLogger(&quot;get nome&quot;).log(Level.SEVERE,&quot; name is wrong!!&quot;);</span>
 		}
 
 
 
-<span class="fc" id="L135">		return dati;</span>
+<span class="fc" id="L130">		return dati;</span>
 	}
 
 
 	public float getPrezzo(String q,String string)  {
-<span class="fc" id="L140">		int quantita=Integer.parseInt(q);</span>
-<span class="fc" id="L141">		float prezzo=Float.parseFloat(getNomeCostoDisp(string)[1]);</span>
-<span class="fc" id="L142">		vis.setQuantita(quantita);</span>
-<span class="fc" id="L143">		vis.setSpesaT(prezzo);</span>
-<span class="fc" id="L144">        return quantita*prezzo;</span>
+<span class="fc" id="L135">		int quantita=Integer.parseInt(q);</span>
+<span class="fc" id="L136">		float prezzo=Float.parseFloat(getNomeCostoDisp(string)[1]);</span>
+<span class="fc" id="L137">		vis.setQuantita(quantita);</span>
+<span class="fc" id="L138">		vis.setSpesaT(prezzo);</span>
+<span class="fc" id="L139">        return quantita*prezzo;</span>
 
 	}
 }

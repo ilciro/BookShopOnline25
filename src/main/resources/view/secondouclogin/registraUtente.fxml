@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.boundary.secondouclogin.BoundaryRegistra">
+   <children>
+      <Label fx:id="header" layoutX="30.0" layoutY="27.0" text="Benvenuto nella schermata per registrare un nuovo utente" textFill="#010eff" />
+      <ImageView fx:id="imageView" fitHeight="70.0" fitWidth="100.0" layoutX="230.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@register-button-png-26.png" />
+         </image>
+      </ImageView>
+      <VBox fx:id="vbox" layoutX="30.0" layoutY="120.0" prefHeight="270.0" prefWidth="230.0">
+         <children>
+            <Label fx:id="nomeL" prefHeight="30.0" prefWidth="230.0" text="Inserire nome:">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="cognomeL" prefHeight="30.0" prefWidth="230.0" text="Inserire cognome :">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="emailL" prefHeight="30.0" prefWidth="230.0" text="Inserire email :">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="passL" prefHeight="30.0" prefWidth="230.0" text="Inserire password:">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="descL" prefHeight="30.0" prefWidth="230.0" text="Inserire descrizione :">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="dataL" prefHeight="30.0" prefWidth="230.0" text="Inserire data nascita : yyyy-mm-dd">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="ruoloL" prefHeight="30.0" prefWidth="230.0" text="Scegliere ruolo :">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox fx:id="vbox2" layoutX="350.0" layoutY="120.0" prefHeight="270.0" prefWidth="230.0">
+         <children>
+            <TextField fx:id="nomeTF">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="cognomeTF">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="emailTF">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <PasswordField fx:id="passTF">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </PasswordField>
+            <TextArea fx:id="descTF" prefHeight="50.0" prefWidth="230.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextArea>
+            <DatePicker fx:id="calendarL" prefWidth="300.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </DatePicker>
+            <ListView fx:id="listTF" prefHeight="200.0" prefWidth="200.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </ListView>
+         </children>
+      </VBox>
+      <Button fx:id="buttonReg" layoutX="195.0" layoutY="430.0" mnemonicParsing="false" onAction="#registra" text="Registra" textFill="#03bc4d" />
+      <Button fx:id="buttonI" layoutX="319.0" layoutY="430.0" mnemonicParsing="false" onAction="#indietro" text="Indietro" textFill="#fc0000" />
+      <VBox fx:id="vbox1" layoutX="465.0" layoutY="420.0" prefHeight="95.0" prefWidth="100.0">
+         <children>
+            <RadioButton fx:id="databaseButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="112.0" text="Database">
+               <toggleGroup>
+                  <ToggleGroup fx:id="toggleGroup" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="fileButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="141.0" text="File" toggleGroup="$toggleGroup">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="memoriaButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="108.0" text="Memoria" toggleGroup="$toggleGroup">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </RadioButton>
+         </children></VBox>
+   </children>
+</Pane>

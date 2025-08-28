@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CartaDiCredito.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BookShopOnline25 Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">laptop.model</a> &gt; <span class="el_source">CartaDiCredito.java</span></div><h1>CartaDiCredito.java</h1><pre class="source lang-java linenums">package laptop.model;
 
 
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.sql.Date;
@@ -20,94 +19,92 @@ public class 	CartaDiCredito implements Serializable {
 	private String cognomeUser; 
 	private String civ;
 
-<span class="fc" id="L23">	private static final String[] types = {&quot;DINER'S&quot;,&quot;JCB&quot;,&quot;MASTER&quot;,&quot;VISA&quot;,&quot;POSTEPAY&quot;};</span>
+<span class="fc" id="L22">	private static final String[] types = {&quot;DINER'S&quot;,&quot;JCB&quot;,&quot;MASTER&quot;,&quot;VISA&quot;,&quot;POSTEPAY&quot;};</span>
 
-<span class="fc" id="L25">	public CartaDiCredito() {</span>
-<span class="fc" id="L26">	}</span>
-	
+<span class="fc" id="L24">	public CartaDiCredito() {</span>
+<span class="fc" id="L25">	}</span>
 
 
 	public CartaDiCredito(String n,String c,String cod,java.util.Date date,String civ,float prezzo)
-<span class="fc" id="L31">	{</span>
-		
-<span class="fc" id="L33">		this.nomeUser=n;</span>
-<span class="fc" id="L34">		this.cognomeUser=c;</span>
-<span class="fc" id="L35">		this.numeroCC=cod;</span>
-<span class="fc" id="L36">		this.ammontare=1000.0;</span>
-<span class="fc" id="L37">		this.scadenza=date;</span>
-<span class="fc" id="L38">		this.civ=civ;</span>
-<span class="fc" id="L39">		this.prezzoTransazine=prezzo;</span>
-<span class="fc" id="L40">	}</span>
+<span class="fc" id="L29">	{</span>
+<span class="fc" id="L30">		this.nomeUser=n;</span>
+<span class="fc" id="L31">		this.cognomeUser=c;</span>
+<span class="fc" id="L32">		this.numeroCC=cod;</span>
+<span class="fc" id="L33">		this.ammontare=1000.0;</span>
+<span class="fc" id="L34">		this.scadenza=date;</span>
+<span class="fc" id="L35">		this.civ=civ;</span>
+<span class="fc" id="L36">		this.prezzoTransazine=prezzo;</span>
+<span class="fc" id="L37">	}</span>
 
 	public String getNumeroCC() {
-<span class="fc" id="L43">		return numeroCC;</span>
+<span class="fc" id="L40">		return numeroCC;</span>
 	}
 	public void setNumeroCC(String numeroCC)  {
 
-<span class="fc" id="L47">		this.numeroCC = numeroCC;</span>
-<span class="fc" id="L48">	}</span>
+<span class="fc" id="L44">		this.numeroCC = numeroCC;</span>
+<span class="fc" id="L45">	}</span>
 	public double getLimite() {
-<span class="nc" id="L50">		return limite;</span>
+<span class="nc" id="L47">		return limite;</span>
 	}
 	public void setLimite(double limite)  {
 
-<span class="nc" id="L54">		this.limite = limite;</span>
-<span class="nc" id="L55">	}</span>
+<span class="nc" id="L51">		this.limite = limite;</span>
+<span class="nc" id="L52">	}</span>
 	public double getAmmontare() {
-<span class="fc" id="L57">		return ammontare;</span>
+<span class="fc" id="L54">		return ammontare;</span>
 	}
 	public void setAmmontare(double ammontare)  {
 
-<span class="nc" id="L61">		this.ammontare = ammontare;</span>
-<span class="nc" id="L62">	}</span>
+<span class="nc" id="L58">		this.ammontare = ammontare;</span>
+<span class="nc" id="L59">	}</span>
 	public java.util.Date getScadenza() {
-<span class="fc" id="L64">		return scadenza;</span>
+<span class="fc" id="L61">		return scadenza;</span>
 	}
 	public void setScadenza(Date scadenza)  {
 
-<span class="fc" id="L68">		this.scadenza = scadenza;</span>
-<span class="fc" id="L69">	}</span>
+<span class="fc" id="L65">		this.scadenza = scadenza;</span>
+<span class="fc" id="L66">	}</span>
 	public String getNomeUser() {
-<span class="fc" id="L71">		return nomeUser;</span>
+<span class="fc" id="L68">		return nomeUser;</span>
 	}
 	public void setNomeUser(String nomeUser)  {
 
-<span class="fc" id="L75">		this.nomeUser = nomeUser;</span>
-<span class="fc" id="L76">	}</span>
+<span class="fc" id="L72">		this.nomeUser = nomeUser;</span>
+<span class="fc" id="L73">	}</span>
 	public float getPrezzoTransazine() {
-<span class="fc" id="L78">		return prezzoTransazine;</span>
+<span class="fc" id="L75">		return prezzoTransazine;</span>
 	}
 	public void setPrezzoTransazine(float prezzoTransazine)  {
 
-<span class="nc" id="L82">		this.prezzoTransazine = prezzoTransazine;</span>
-<span class="nc" id="L83">	}</span>
+<span class="nc" id="L79">		this.prezzoTransazine = prezzoTransazine;</span>
+<span class="nc" id="L80">	}</span>
 
 	public String getCognomeUser() {
-<span class="fc" id="L86">		return cognomeUser;</span>
+<span class="fc" id="L83">		return cognomeUser;</span>
 	}
 
 	public void setCognomeUser(String cognomeUser)  {
 
-<span class="nc" id="L91">		this.cognomeUser = cognomeUser;</span>
-<span class="nc" id="L92">	}</span>
+<span class="nc" id="L88">		this.cognomeUser = cognomeUser;</span>
+<span class="nc" id="L89">	}</span>
 
 	public String getCiv() { 
-<span class="fc" id="L95">		return civ;</span>
+<span class="fc" id="L92">		return civ;</span>
 	}
 
 	public void setCiv(String civ) {
 
-<span class="fc" id="L100">		this.civ = civ;</span>
-<span class="fc" id="L101">	}</span>
+<span class="fc" id="L97">		this.civ = civ;</span>
+<span class="fc" id="L98">	}</span>
 
 	public static String[] getTypes() {
-<span class="nc" id="L104">		return types;</span>
+<span class="nc" id="L101">		return types;</span>
 	}
 
 
 	@Override
 	public String toString() {
-<span class="nc" id="L110">		return &quot;CartaDiCredito{&quot; +</span>
+<span class="nc" id="L107">		return &quot;CartaDiCredito{&quot; +</span>
 				&quot;numeroCC='&quot; + numeroCC + '\'' +
 				&quot;, scadenza=&quot; + scadenza +
 				&quot;, nomeUser='&quot; + nomeUser + '\'' +

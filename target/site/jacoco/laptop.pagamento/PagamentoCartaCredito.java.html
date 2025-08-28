@@ -11,101 +11,96 @@ public class PagamentoCartaCredito implements Serializable,Pagamento {
 <span class="fc" id="L11">    public PagamentoCartaCredito()  {</span>
 
 <span class="fc" id="L13">    }</span>
-
-
-
     private String nomeUtenteCC;
-     private float spesaTotaleCC;
-     private String emailCC;
-     private String tipoAcquistoCC;
-     private int idProdottoCC;
-     private String metodoCC;
-     private String cognomeUtenteCC;
+    private float spesaTotaleCC;
+    private String emailCC;
+    private String tipoAcquistoCC;
+    private int idProdottoCC;
+    private String metodoCC;
+    private String cognomeUtenteCC;
     private int idPagCC;
 
 
     public String getNomeUtenteCC() {
-<span class="fc" id="L28">        return nomeUtenteCC;</span>
+<span class="fc" id="L25">        return nomeUtenteCC;</span>
     }
 
     public void setNomeUtenteCC(String nomeUtenteCC) {
-<span class="fc" id="L32">        this.nomeUtenteCC = nomeUtenteCC;</span>
-<span class="fc" id="L33">    }</span>
+<span class="fc" id="L29">        this.nomeUtenteCC = nomeUtenteCC;</span>
+<span class="fc" id="L30">    }</span>
 
     public float getSpesaTotaleCC() {
-<span class="fc" id="L36">        return spesaTotaleCC;</span>
+<span class="fc" id="L33">        return spesaTotaleCC;</span>
     }
 
     public void setSpesaTotaleCC(float spesaTotaleCC) {
-<span class="fc" id="L40">        this.spesaTotaleCC = spesaTotaleCC;</span>
-<span class="fc" id="L41">    }</span>
+<span class="fc" id="L37">        this.spesaTotaleCC = spesaTotaleCC;</span>
+<span class="fc" id="L38">    }</span>
 
     public String getEmailCC() {
-<span class="fc" id="L44">        return emailCC;</span>
+<span class="fc" id="L41">        return emailCC;</span>
     }
 
     public void setEmailCC(String emailCC) {
-<span class="fc" id="L48">        this.emailCC = emailCC;</span>
-<span class="fc" id="L49">    }</span>
+<span class="fc" id="L45">        this.emailCC = emailCC;</span>
+<span class="fc" id="L46">    }</span>
 
     public String getTipoAcquistoCC() {
-<span class="fc" id="L52">        return tipoAcquistoCC;</span>
+<span class="fc" id="L49">        return tipoAcquistoCC;</span>
     }
 
     public void setTipoAcquistoCC(String tipoAcquistoCC) {
-<span class="fc" id="L56">        this.tipoAcquistoCC = tipoAcquistoCC;</span>
-<span class="fc" id="L57">    }</span>
+<span class="fc" id="L53">        this.tipoAcquistoCC = tipoAcquistoCC;</span>
+<span class="fc" id="L54">    }</span>
 
     public int getIdProdottoCC() {
-<span class="fc" id="L60">        return idProdottoCC;</span>
+<span class="fc" id="L57">        return idProdottoCC;</span>
     }
 
     public void setIdProdottoCC(int idProdottoCC) {
-<span class="fc" id="L64">        this.idProdottoCC = idProdottoCC;</span>
-<span class="fc" id="L65">    }</span>
+<span class="fc" id="L61">        this.idProdottoCC = idProdottoCC;</span>
+<span class="fc" id="L62">    }</span>
 
     public String getMetodoCC() {
-<span class="fc" id="L68">        return metodoCC;</span>
+<span class="fc" id="L65">        return metodoCC;</span>
     }
 
     public void setMetodoCC(String metodoCC) {
-<span class="fc" id="L72">        this.metodoCC = metodoCC;</span>
-<span class="fc" id="L73">    }</span>
+<span class="fc" id="L69">        this.metodoCC = metodoCC;</span>
+<span class="fc" id="L70">    }</span>
 
     public String getCognomeUtenteCC() {
-<span class="fc" id="L76">        return cognomeUtenteCC;</span>
+<span class="fc" id="L73">        return cognomeUtenteCC;</span>
     }
 
     public void setCognomeUtenteCC(String cognomeUtenteCC) {
-<span class="fc" id="L80">        this.cognomeUtenteCC = cognomeUtenteCC;</span>
-<span class="fc" id="L81">    }</span>
+<span class="fc" id="L77">        this.cognomeUtenteCC = cognomeUtenteCC;</span>
+<span class="fc" id="L78">    }</span>
 
     public int getIdPagCC() {
-<span class="fc" id="L84">        return idPagCC;</span>
+<span class="fc" id="L81">        return idPagCC;</span>
     }
 
     public void setIdPagCC(int idPagCC) {
-<span class="fc" id="L88">        this.idPagCC = idPagCC;</span>
-<span class="fc" id="L89">    }</span>
+<span class="fc" id="L85">        this.idPagCC = idPagCC;</span>
+<span class="fc" id="L86">    }</span>
 
-<span class="fc" id="L91">    public PagamentoCartaCredito(int idPagCC, String metodo, String nomeUtente, float spesaTotale, String email, String tipoAcquisto, int idProdotto){</span>
+<span class="fc" id="L88">    public PagamentoCartaCredito(int idPagCC, String metodo, String nomeUtente, float spesaTotale, String email, String tipoAcquisto, int idProdotto){</span>
 
-<span class="fc" id="L93">       this.idPagCC=idPagCC;</span>
-<span class="fc" id="L94">       this.metodoCC=metodo;</span>
-<span class="fc" id="L95">       this.nomeUtenteCC=nomeUtente;</span>
-<span class="fc" id="L96">       this.spesaTotaleCC=spesaTotale;</span>
-<span class="fc" id="L97">       this.emailCC=email;</span>
-<span class="fc" id="L98">       this.tipoAcquistoCC=tipoAcquisto;</span>
-<span class="fc" id="L99">       this.idProdottoCC=idProdotto;</span>
-
-
-<span class="fc" id="L102">    }</span>
+<span class="fc" id="L90">       this.idPagCC=idPagCC;</span>
+<span class="fc" id="L91">       this.metodoCC=metodo;</span>
+<span class="fc" id="L92">       this.nomeUtenteCC=nomeUtente;</span>
+<span class="fc" id="L93">       this.spesaTotaleCC=spesaTotale;</span>
+<span class="fc" id="L94">       this.emailCC=email;</span>
+<span class="fc" id="L95">       this.tipoAcquistoCC=tipoAcquisto;</span>
+<span class="fc" id="L96">       this.idProdottoCC=idProdotto;</span>
 
 
+<span class="fc" id="L99">    }</span>
 
     @Override
     public String toString() {
-<span class="fc" id="L108">        return &quot;PagamentoCartaCredito{&quot; +</span>
+<span class="fc" id="L103">        return &quot;PagamentoCartaCredito{&quot; +</span>
                 &quot;idProdotto=&quot; + idProdottoCC +
                 &quot;, cognomeUtente='&quot; + cognomeUtenteCC + '\'' +
                 &quot;, idPagCC=&quot; + idPagCC +
@@ -117,9 +112,9 @@ public class PagamentoCartaCredito implements Serializable,Pagamento {
 
     @Override
     public boolean controllaPagamento(String type) {
-<span class="nc" id="L120">        boolean status= type.equals(&quot;cCredito&quot;);</span>
-<span class="nc" id="L121">        Logger.getLogger(&quot;controllaPagamentoCC&quot;).log(Level.INFO,&quot;checking payment cc&quot;);</span>
-<span class="nc" id="L122">        return status;</span>
+<span class="nc" id="L115">        boolean status= type.equals(&quot;cCredito&quot;);</span>
+<span class="nc" id="L116">        Logger.getLogger(&quot;controllaPagamentoCC&quot;).log(Level.INFO,&quot;checking payment cc&quot;);</span>
+<span class="nc" id="L117">        return status;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -2,7 +2,6 @@
 
 
 import laptop.controller.ControllerSystemState;
-
 import laptop.database.primoucacquista.giornale.CsvGiornale;
 import laptop.database.primoucacquista.giornale.GiornaleDao;
 import laptop.database.primoucacquista.giornale.MemoriaGiornale;
@@ -20,101 +19,75 @@ import laptop.database.primoucacquista.libro.CsvLibro;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<span class="fc" id="L23">public class ControllerHomePage {</span>
+<span class="fc" id="L22">public class ControllerHomePage {</span>
 
-<span class="fc" id="L25">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
+<span class="fc" id="L24">    private static final ControllerSystemState vis=ControllerSystemState.getInstance();</span>
     private static final String DATABASE=&quot;database&quot;;
     private static final String FILE=&quot;file&quot;;
     private static final String MEMORIA=&quot;memoria&quot;;
-
     private PersistenzaLibro pL;
     private PersistenzaGiornale pG;
     private  PersistenzaRivista pR;
 
 
     private void inizializzaLibro(String type) {
-<span class="pc bpc" id="L36" title="1 of 4 branches missed.">        switch (type) {</span>
-<span class="fc" id="L37">            case DATABASE -&gt; pL = new LibroDao();</span>
-<span class="fc" id="L38">            case FILE -&gt; pL = new CsvLibro();</span>
-<span class="fc" id="L39">            case MEMORIA -&gt; pL = new MemoriaLibro();</span>
-<span class="nc" id="L40">            default -&gt; Logger.getLogger(&quot;inizializza libro&quot;).log(Level.SEVERE,&quot;persistency init book is wrong!!&quot;);</span>
-
+<span class="pc bpc" id="L34" title="1 of 4 branches missed.">        switch (type) {</span>
+<span class="fc" id="L35">            case DATABASE -&gt; pL = new LibroDao();</span>
+<span class="fc" id="L36">            case FILE -&gt; pL = new CsvLibro();</span>
+<span class="fc" id="L37">            case MEMORIA -&gt; pL = new MemoriaLibro();</span>
+<span class="nc" id="L38">            default -&gt; Logger.getLogger(&quot;inizializza libro&quot;).log(Level.SEVERE,&quot;persistency init book is wrong!!&quot;);</span>
         }
-<span class="fc" id="L43">        Logger.getLogger(&quot;inizializzazione libro&quot;).log(Level.INFO,&quot;type of persistency of book {0}&quot;,pL);</span>
-
-
-<span class="fc" id="L46">    }</span>
-
+<span class="fc" id="L40">        Logger.getLogger(&quot;inizializzazione libro&quot;).log(Level.INFO,&quot;type of persistency of book {0}&quot;,pL);</span>
+<span class="fc" id="L41">    }</span>
 
     private void inizializzaGiornale(String type)  {
-<span class="pc bpc" id="L50" title="1 of 4 branches missed.">        switch (type) {</span>
-<span class="fc" id="L51">            case DATABASE -&gt; pG = new GiornaleDao();</span>
-<span class="fc" id="L52">            case FILE -&gt; pG = new CsvGiornale();</span>
-<span class="fc" id="L53">            case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
-<span class="nc" id="L54">            default -&gt; Logger.getLogger(&quot;inizializza giornale&quot;).log(Level.SEVERE,&quot;persistency init daily is wrong!!&quot;);</span>
-
+<span class="pc bpc" id="L44" title="1 of 4 branches missed.">        switch (type) {</span>
+<span class="fc" id="L45">            case DATABASE -&gt; pG = new GiornaleDao();</span>
+<span class="fc" id="L46">            case FILE -&gt; pG = new CsvGiornale();</span>
+<span class="fc" id="L47">            case MEMORIA -&gt; pG = new MemoriaGiornale();</span>
+<span class="nc" id="L48">            default -&gt; Logger.getLogger(&quot;inizializza giornale&quot;).log(Level.SEVERE,&quot;persistency init daily is wrong!!&quot;);</span>
         }
-<span class="fc" id="L57">        Logger.getLogger(&quot;inizializzazione giornale&quot;).log(Level.INFO,&quot;type of persistency of daily {0}&quot;,pG);</span>
+<span class="fc" id="L50">        Logger.getLogger(&quot;inizializzazione giornale&quot;).log(Level.INFO,&quot;type of persistency of daily {0}&quot;,pG);</span>
 
-<span class="fc" id="L59">    }</span>
+<span class="fc" id="L52">    }</span>
     private void inizializzaRivista(String type) {
-<span class="pc bpc" id="L61" title="1 of 4 branches missed.">        switch (type) {</span>
-<span class="fc" id="L62">            case DATABASE -&gt; pR = new RivistaDao();</span>
-<span class="fc" id="L63">            case FILE -&gt; pR = new CsvRivista();</span>
-<span class="fc" id="L64">            case MEMORIA -&gt; pR = new MemoriaRivista();</span>
-<span class="nc" id="L65">            default -&gt; Logger.getLogger(&quot;inizializza rivista&quot;).log(Level.SEVERE,&quot;persistency magazine book is wrong!!&quot;);</span>
-
+<span class="pc bpc" id="L54" title="1 of 4 branches missed.">        switch (type) {</span>
+<span class="fc" id="L55">            case DATABASE -&gt; pR = new RivistaDao();</span>
+<span class="fc" id="L56">            case FILE -&gt; pR = new CsvRivista();</span>
+<span class="fc" id="L57">            case MEMORIA -&gt; pR = new MemoriaRivista();</span>
+<span class="nc" id="L58">            default -&gt; Logger.getLogger(&quot;inizializza rivista&quot;).log(Level.SEVERE,&quot;persistency magazine book is wrong!!&quot;);</span>
         }
-<span class="fc" id="L68">        Logger.getLogger(&quot;inizializzazione rivista&quot;).log(Level.INFO,&quot;type of persistency of magazine {0}&quot;,pR.toString());</span>
-<span class="fc" id="L69">    }</span>
-
-
-
-
-
+<span class="fc" id="L60">        Logger.getLogger(&quot;inizializzazione rivista&quot;).log(Level.INFO,&quot;type of persistency of magazine {0}&quot;,pR.toString());</span>
+<span class="fc" id="L61">    }</span>
 
     public void persistenza(String type) {
-
-<span class="pc bpc" id="L78" title="1 of 4 branches missed.">        switch (vis.getType())</span>
+<span class="pc bpc" id="L64" title="1 of 4 branches missed.">        switch (vis.getType())</span>
         {
-<span class="fc" id="L80">            case &quot;libro&quot;-&gt; inizializzaLibro(type);</span>
-<span class="fc" id="L81">            case &quot;giornale&quot;-&gt; inizializzaGiornale(type);</span>
-<span class="fc" id="L82">            case &quot;rivista&quot;-&gt; inizializzaRivista(type);</span>
-<span class="nc" id="L83">            default -&gt; Logger.getLogger(&quot;persistenza&quot;).log(Level.SEVERE,&quot; type is incorrect !!&quot;);</span>
+<span class="fc" id="L66">            case &quot;libro&quot;-&gt; inizializzaLibro(type);</span>
+<span class="fc" id="L67">            case &quot;giornale&quot;-&gt; inizializzaGiornale(type);</span>
+<span class="fc" id="L68">            case &quot;rivista&quot;-&gt; inizializzaRivista(type);</span>
+<span class="nc" id="L69">            default -&gt; Logger.getLogger(&quot;persistenza&quot;).log(Level.SEVERE,&quot; type is incorrect !!&quot;);</span>
         }
-
-<span class="fc" id="L86">    }</span>
-
-
-
-
-
+<span class="fc" id="L71">    }</span>
 
     public boolean logout()
     {
         try {
-
-
-<span class="pc bpc" id="L98" title="1 of 2 branches missed.">            if (User.getInstance().annullaUtente()) vis.setIsLogged(false);</span>
-
-
-<span class="pc bpc" id="L101" title="1 of 2 branches missed.">            if(vis.getIsLogged()) throw new LogoutException(&quot; user logged&quot;);</span>
-<span class="nc" id="L102">        }catch (LogoutException e)</span>
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">            if (User.getInstance().annullaUtente()) vis.setIsLogged(false);</span>
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">            if(vis.getIsLogged()) throw new LogoutException(&quot; user logged&quot;);</span>
+<span class="nc" id="L78">        }catch (LogoutException e)</span>
         {
-<span class="nc" id="L104">            Logger.getLogger(&quot;logout&quot;).log(Level.SEVERE,&quot; user yet logged&quot;);</span>
-<span class="fc" id="L105">        }</span>
-
-<span class="pc bpc" id="L107" title="1 of 2 branches missed.">        return !vis.getIsLogged();</span>
+<span class="nc" id="L80">            Logger.getLogger(&quot;logout&quot;).log(Level.SEVERE,&quot; user yet logged&quot;);</span>
+<span class="fc" id="L81">        }</span>
+<span class="pc bpc" id="L82" title="1 of 2 branches missed.">        return !vis.getIsLogged();</span>
     }
 
     public String getRuolo()
     {
-<span class="nc" id="L112">        return User.getInstance().getIdRuolo();</span>
+<span class="nc" id="L87">        return User.getInstance().getIdRuolo();</span>
     }
-
-
     public String getId() {
-<span class="nc" id="L117">        return String.valueOf(User.getInstance().getId());</span>
+<span class="nc" id="L90">        return String.valueOf(User.getInstance().getId());</span>
     }
 
 

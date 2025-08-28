@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laptop.boundary.demo.BoundarySceltaModalita">
+   <children>
+      <Label fx:id="header" layoutX="25.0" layoutY="24.0" prefHeight="46.0" prefWidth="560.0" text="Benvenuto nel BSO. Scegliere tra le seguenti modalità" textFill="#000cf8" />
+      <Button fx:id="demoB" layoutX="39.0" layoutY="93.0" mnemonicParsing="false" onAction="#demo" prefHeight="93.0" prefWidth="262.0" text="DEMO VERSION" textFill="#40b984" />
+      <Button fx:id="fullB" layoutX="39.0" layoutY="252.0" mnemonicParsing="false" onAction="#full" prefHeight="93.0" prefWidth="262.0" text="FULL VERSION" textFill="#ef00f7" />
+      <ImageView fx:id="imageFull" fitHeight="101.0" fitWidth="164.0" layoutX="372.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@67905253-full-version-rubber-stamp-grunge-design-with-dust-scratches-effects-can-be-easily-removed-for-a.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imageDemo" fitHeight="124.0" fitWidth="164.0" layoutX="372.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@demo_version.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

@@ -1,0 +1,268 @@
+package laptop.database.primoucacquista.pagamentocartacredito;
+
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
+import com.opencsv.exceptions.CsvValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import laptop.controller.ControllerSystemState;
+import laptop.database.PagamentoTotalePersistenza;
+import laptop.exception.IdException;
+import laptop.model.user.User;
+import laptop.pagamento.PagamentoCartaCredito;
+import org.apache.commons.lang.SystemUtils;
+import org.jetbrains.annotations.NotNull;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.attribute.FileAttribute;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.PosixFilePermissions;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+
+public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
+    private static final int GETINDEXIDP=0;
+    private static final int GETINDEXMETODOP=1;
+    private static final int GETINDEXNOMEP=2;
+    private static final int GETINDEXCOGNOMEP=3;
+    private static final int GETINDEXSPESAP=4;
+    private static final int GETINDEXEIAMILP=5;
+    private static final int GETINDEXACQUISTOP=6;
+    private static final int GETINDEXIDPRODOTTOP=7;
+    private final File filePagamento;
+    private static final String APPOGGIO="report/appoggio.csv";
+    private static final String PERMESSI="rwx------";
+    private static final String PREFIX="prefix";
+    private static final String SUFFIX="suffix";
+    private static final String PAGAMENTO="report/reportPagamentoCartaCredito.csv";
+    private static final String IDWRONG="id wrong ..!!";
+    private static final String IDERROR="id error !!..";
+
+    private  PagamentoTotalePersistenza pT;
+
+    private static final ControllerSystemState vis=ControllerSystemState.getInstance();
+
+    public CsvPagamentoCartaCredito() {
+        this.filePagamento=new File(PAGAMENTO);
+        if(!this.filePagamento.exists()) {
+            try {
+                Files.createFile(Path.of(this.filePagamento.toURI()));
+            } catch (IOException e) {
+                Logger.getLogger("costruttore").log(Level.SEVERE,"File not created :",e);
+            }
+        }
+
+    }
+    private static void cleanUp(Path path) throws IOException {
+        Files.delete(path);
+    }
+    @Override
+    public boolean inserisciPagamentoCartaCredito(PagamentoCartaCredito p)  {
+        super.inserisciPagamentoCartaCredito(p);
+        return creaPagamento(p);
+
+    }
+
+    @Override
+    public PagamentoCartaCredito ultimoPagamentoCartaCredito()  {
+        super.ultimoPagamentoCartaCredito();
+        ObservableList<PagamentoCartaCredito> list=FXCollections.observableArrayList();
+        try(CSVReader reader=new CSVReader(new BufferedReader(new FileReader(this.filePagamento))))
+        {
+            list=FXCollections.observableArrayList();
+            String[] gVector;
+            while ((gVector=reader.readNext())!=null)
+            {
+                PagamentoCartaCredito pCC = getPagamentoCartaCredito(gVector);
+                list.add(pCC);
+            }
+        }catch (IOException e){
+            Logger.getLogger("ultimoPagamentoCC io").log(Level.SEVERE,"ultimoPagamento io exception :",e);
+        }catch (CsvValidationException e1){
+            Logger.getLogger("ultimoPagamento csv").log(Level.SEVERE,"ultimoPagamento csv exception :",e1);
+
+        }
+
+        return list.get(list.size()-1);
+    }
+
+    private static @NotNull PagamentoCartaCredito getPagamentoCartaCredito(String[] gVector) {
+        PagamentoCartaCredito pCC=new PagamentoCartaCredito();
+        pCC.setIdPagCC(Integer.parseInt(gVector[GETINDEXIDP]));
+        pCC.setMetodoCC(gVector[GETINDEXMETODOP]);
+        pCC.setNomeUtenteCC(gVector[GETINDEXNOMEP]);
+        pCC.setCognomeUtenteCC(gVector[GETINDEXCOGNOMEP]);
+        pCC.setSpesaTotaleCC(Float.parseFloat(gVector[GETINDEXSPESAP]));
+        pCC.setEmailCC(gVector[GETINDEXEIAMILP]);
+        pCC.setTipoAcquistoCC(gVector[GETINDEXACQUISTOP]);
+        pCC.setIdProdottoCC(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));
+        return pCC;
+    }
+
+    private boolean creaPagamento(PagamentoCartaCredito p) {
+        try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.filePagamento, true)))) {
+            String[] gVectore = new String[8];
+            //fare if su tipo pagamento
+
+            gVectore[GETINDEXIDP] = String.valueOf(getIdMaxPagamento() + 1);
+            gVectore[GETINDEXMETODOP] = p.getMetodoCC();
+            gVectore[GETINDEXNOMEP] = p.getNomeUtenteCC();
+            gVectore[GETINDEXCOGNOMEP]=p.getCognomeUtenteCC();
+            gVectore[GETINDEXSPESAP] = String.valueOf(vis.getSpesaT());
+            gVectore[GETINDEXEIAMILP] = User.getInstance().getEmail();
+            gVectore[GETINDEXACQUISTOP] = p.getTipoAcquistoCC();
+            gVectore[GETINDEXIDPRODOTTOP] = String.valueOf(p.getIdProdottoCC());
+
+            csvWriter.writeNext(gVectore);
+            csvWriter.flush();
+        }catch (IOException e)
+        {
+            Logger.getLogger("creaPagamento").log(Level.SEVERE,"makePayment exception :",e);
+        }
+       return pT.inserisciPagamentoTotaleCC(p,"file");
+
+    }
+    private static int getIdMaxPagamento()  {
+        String[] gVector;
+        int id = 0;
+        try {
+            try(CSVReader reader = new CSVReader(new FileReader(PAGAMENTO))) {
+                while ((gVector = reader.readNext()) != null) {
+                    id = Integer.parseInt(gVector[GETINDEXIDP]);
+                }
+            }
+            if (id == 0)
+                throw new IdException("id == 0 ");
+
+        }catch (IdException | IOException |CsvValidationException e1)
+        {
+
+            Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR+":",e1);
+
+        }
+
+        return id;
+    }
+
+
+    private static @NotNull PagamentoCartaCredito getCartaCredito(String[] gVector) {
+        PagamentoCartaCredito p = new PagamentoCartaCredito();
+        p.setIdPagCC(Integer.parseInt(gVector[GETINDEXIDP]));
+        p.setMetodoCC(gVector[GETINDEXMETODOP]);
+        p.setNomeUtenteCC(gVector[GETINDEXNOMEP]);
+        p.setSpesaTotaleCC(Float.parseFloat(gVector[GETINDEXSPESAP]));
+        p.setEmailCC(gVector[GETINDEXEIAMILP]);
+        p.setTipoAcquistoCC(gVector[GETINDEXACQUISTOP]);
+        p.setIdProdottoCC(Integer.parseInt(gVector[GETINDEXIDPRODOTTOP]));
+        return p;
+    }
+
+
+    @Override
+    public boolean cancellaPagamentoCartaCredito(PagamentoCartaCredito p)  {
+        super.cancellaPagamentoCartaCredito(p);
+        boolean status = false;
+        try {
+        if (SystemUtils.IS_OS_UNIX) {
+            FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString(PERMESSI));
+            Files.createTempFile(PREFIX, SUFFIX, attr); // Compliant
+        }
+        File tmpFile = new File(APPOGGIO);
+        boolean found = isFound(p, tmpFile);
+        if (found) {
+            Files.move(tmpFile.toPath(), Path.of(PAGAMENTO), REPLACE_EXISTING);
+            status=true;
+        } else {
+            cleanUp(Path.of(tmpFile.toURI()));
+        }
+        }catch (IOException e){
+            Logger.getLogger("cancellaPagCC").log(Level.SEVERE,"delPaymentCC io exception :",e);
+        }catch (CsvValidationException e1){
+            Logger.getLogger("cancellaPagCC csv").log(Level.SEVERE,"delPaymentCC csv exception :",e1);
+
+        }
+        return status && pT.cancellaPagamentoFile(p);
+
+    }
+
+    @Override
+    public void inizializza()  {
+        Path path = Path.of(PAGAMENTO);
+        if(!Files.exists(path)) {
+            try {
+                Files.createFile(path);
+            } catch (IOException e) {
+                Logger.getLogger("inizializza pagamentoCC csv").log(Level.SEVERE,"exception in initialize :",e);
+            }
+        }
+        pT=new PagamentoTotalePersistenza("file");
+        super.inizializza();
+
+    }
+
+    private static boolean isFound(PagamentoCartaCredito p, File tmpFile) throws IOException, CsvValidationException {
+        boolean found = false;
+        try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(PAGAMENTO)))) {
+            String[] gVector;
+            try (CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true)))
+            ) {
+                boolean recordFound;
+                while ((gVector = reader.readNext()) != null) {
+
+                    recordFound = gVector[GETINDEXIDP].equals(String.valueOf(p.getIdPagCC()))
+                            || gVector[GETINDEXEIAMILP].equals(p.getEmailCC());
+
+                    if (!recordFound)
+                        writer.writeNext(gVector);
+                    else
+                        found = true;
+                }
+                writer.flush();
+            }
+        }
+        return found;
+    }
+
+
+    @Override
+    public ObservableList<PagamentoCartaCredito> listaPagamentiUserByCC(PagamentoCartaCredito pcc)  {
+        super.listaPagamentiUserByCC(pcc);
+        ObservableList<PagamentoCartaCredito> list=FXCollections.observableArrayList();
+        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(filePagamento)))) {
+            String[] gVector;
+            list = FXCollections.observableArrayList();
+
+
+            while ((gVector = csvReader.readNext()) != null) {
+
+
+                boolean recordFound = gVector[GETINDEXEIAMILP].equals(String.valueOf(pcc.getEmailCC()));
+                if (recordFound) {
+
+
+                    list.add(getCartaCredito(gVector));
+
+                }
+
+            }
+        }catch (IOException  |CsvValidationException e){
+            Logger.getLogger("listPagamento csv ioexc").log(Level.SEVERE,"listPayment io exception csv :",e);
+        }
+        try {
+            if (list.isEmpty()) {
+                throw new IdException("list pagamenti csv cc vuota!!");
+            }
+        }catch (IdException e)
+        {
+            Logger.getLogger("lista pagamentu by user cc").log(Level.SEVERE," list payment cc is empty!! ",e);
+        }
+
+
+        return list;
+
+    }
+}

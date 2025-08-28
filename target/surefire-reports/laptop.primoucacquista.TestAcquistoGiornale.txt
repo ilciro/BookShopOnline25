@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: laptop.primoucacquista.TestAcquistoGiornale
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.463 s - in laptop.primoucacquista.TestAcquistoGiornale
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.586 s - in laptop.primoucacquista.TestAcquistoGiornale

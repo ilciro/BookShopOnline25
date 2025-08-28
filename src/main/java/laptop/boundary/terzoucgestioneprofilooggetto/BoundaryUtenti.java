@@ -1,0 +1,208 @@
+package laptop.boundary.terzoucgestioneprofilooggetto;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import laptop.controller.ControllerSystemState;
+import laptop.controller.terzoucgestioneprofiloggetto.ControllerUtenti;
+import laptop.exception.IdException;
+import laptop.model.user.TempUser;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Objects;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class BoundaryUtenti implements Initializable {
+    private  ControllerUtenti cU;
+    private final ControllerSystemState vis=ControllerSystemState.getInstance();
+    private static final String CANCELLA="cancella ";
+    @FXML
+    private Pane pane;
+    @FXML
+    private Label header;
+    @FXML
+    private TableView <TempUser> tableview;
+    @FXML
+    private TableColumn<TempUser,Integer> id;
+    @FXML
+    private TableColumn<TempUser,String> nome;
+    @FXML
+    private TableColumn<TempUser,Integer> email;
+    @FXML
+    private VBox vbox;
+    @FXML
+    private Button buttonGenera;
+    @FXML
+    private Button inserisciB;
+    @FXML
+    private Button modificaB;
+    @FXML
+    private Button cancellaB;
+    @FXML
+    private Button indietroB;
+    @FXML
+    private VBox vbox1;
+    @FXML
+    private RadioButton databaseButton;
+    @FXML
+    private RadioButton fileButton;
+    @FXML
+    private RadioButton memoriaButton;
+    @FXML
+    private ToggleGroup toggleGroup;
+
+    @FXML
+    private void genera()  {
+        String type="";
+        if(databaseButton.isSelected()) type="database";
+        if(fileButton.isSelected()) type="file";
+        if(memoriaButton.isSelected()) type="memoria";
+        tableview.setItems(cU.getList(type));
+    }
+    @FXML
+    private void inserisci()  {
+        try {
+            vis.setTipoModifica("inserisci");
+            Stage stage;
+            Parent root;
+            stage = (Stage) inserisciB.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/gestioneUtente.fxml")));
+            stage.setTitle("Benvenuto nella schermata della gestione");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("inserisci").log(Level.SEVERE,"insert error {0}",e);
+        }
+    }
+    @FXML
+    private void modifica()  {
+        try {
+            int idM = tableview.getSelectionModel().getSelectedItem().getId();
+            if (idM == 0) throw new IdException("id is wrong");
+            vis.setIdUtente(idM);
+            vis.setTipoModifica("modifica");
+            Stage stage;
+            Parent root;
+            stage = (Stage) modificaB.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/gestioneUtente.fxml")));
+            stage.setTitle("Benvenuto nella schermata della gestione");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("modif").log(Level.SEVERE,"modif not avalaible {0}",e);
+        }catch (IdException e1)
+        {
+            Logger.getLogger("modif id").log(Level.SEVERE,"modif id is null {0}",e1);
+        }
+    }
+    @FXML
+    private void cancella() {
+
+        int idC=tableview.getSelectionModel().getSelectedItem().getId();
+        try{
+
+        if(idC<=0 ) throw new IdException(" selectd id is null");
+        else {
+            String type = "";
+            if (databaseButton.isSelected()) type = "database";
+            if (fileButton.isSelected()) type = "file";
+            if (memoriaButton.isSelected()) type = "memoria";
+            vis.setIdUtente(idC);
+            Logger.getLogger(CANCELLA).log(Level.INFO, " id : {0}", vis.getIdUtente());
+            if (cU.elimina(tableview.getSelectionModel().getSelectedItem().getEmailT(), type)) {
+                Logger.getLogger(CANCELLA).log(Level.INFO, " deleted successfully");
+                Stage stage;
+                Parent root;
+                stage = (Stage) cancellaB.getScene().getWindow();
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/utenti.fxml")));
+                stage.setTitle("Benvenuto nella schermata di utente");
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+
+            } else {
+                utenti();
+
+            }
+        }
+        }catch (IOException e)
+            {
+                Logger.getLogger("cancella").log(Level.SEVERE,"delete not avalaible {0}",e);
+            }catch (IdException e1)
+            {
+                Logger.getLogger("delete id").log(Level.SEVERE,"delete id is null {0}",e1);
+            }
+
+
+
+
+
+
+
+
+    }
+    @FXML
+    private void indietro() {
+       if(databaseButton.isSelected() || fileButton.isSelected())indietroToAdmin();
+    }
+
+    private Scene scene;
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        cU=new ControllerUtenti();
+
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nome.setCellValueFactory(new PropertyValueFactory<>("nomeT"));
+        email.setCellValueFactory(new PropertyValueFactory<>("emailT"));
+
+        if(vis.getTipologiaApplicazione().equals("full")) memoriaButton.setVisible(false);
+
+    }
+
+    private void utenti() {
+        try {
+            Logger.getLogger(CANCELLA).log(Level.INFO, " deleted unsuccessfully");
+            Stage stage;
+            Parent root;
+            stage = (Stage) cancellaB.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/utenti.fxml")));
+            stage.setTitle("Benvenuto nella schermata di utente");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("utenti").log(Level.SEVERE,"users not avalaible {0}",e);
+        }
+    }
+    private void indietroToAdmin(){
+        try {
+            Stage stage;
+            Parent root;
+            stage = (Stage) indietroB.getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/terzoucgestioneprofilooggetto/admin.fxml")));
+            stage.setTitle("Benvenuto nella schermata di admin");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e)
+        {
+            Logger.getLogger("admin").log(Level.SEVERE,"go back to admin not avalaible {0}",e);
+        }
+    }
+}
