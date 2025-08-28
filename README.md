@@ -2,5 +2,5 @@
 
 ## Class diagram 
 
-![VOPC Verifica Disponibilita Giornale](https://github.com/ilciro/BookShopOnline25/blob/master/VOPCVerificaDisponibilitaGiornale.drawio.png)
+![VOPC Acquisto con download di giornale](https://github.com/ilciro/BookShopOnline25/blob/master/VOPCAcquistoGiornale.png)
 
