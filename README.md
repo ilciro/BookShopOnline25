@@ -6,5 +6,5 @@
 
 ## High Level Diagram -> Pattern Factory
 
-![Pattern factory] (https://github.com/ilciro/BookShopOnline25/blob/master/Factory.drawio.png)
+![Pattern factory](https://github.com/ilciro/BookShopOnline25/blob/master/Factory.drawio.png)
 
