@@ -78,7 +78,6 @@ public class BoundaryHomePage implements Initializable {
 	protected Scene scene;
 	private static final String COMPRAVENDITA = "view/primoucacquista/compravendita.fxml";
 	private static final String PERSISTENZANULLA = "persistenza nulla";
-
 	private final ControllerSystemState vis = ControllerSystemState.getInstance();
 	private ControllerHomePage cHP;
 
@@ -111,7 +110,6 @@ public class BoundaryHomePage implements Initializable {
 	@FXML
 	private void login() throws IOException {
 		if (checkPersitenza()) {
-
 			Stage stage;
 			Parent root;
 			stage = (Stage) buttonLogin.getScene().getWindow();
@@ -128,7 +126,6 @@ public class BoundaryHomePage implements Initializable {
 	@FXML
 	private void cerca() throws IOException {
 		if (checkPersitenza()) {
-
 			vis.setIsSearch(true);
 			Stage stage;
 			Parent root;
@@ -148,13 +145,10 @@ public class BoundaryHomePage implements Initializable {
 
 	private void getPersistency() {
 		tArea.clear();
-
 		String type = "";
-
 		if(checkDataBase.isSelected())type="database";
 		if(checkFile.isSelected())type="file";
 		if(checkMemoria.isSelected()) type="memoria";
-
 		cHP.persistenza(type);
 
 

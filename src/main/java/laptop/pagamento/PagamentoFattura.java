@@ -1,6 +1,5 @@
 package laptop.pagamento;
 
-
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;

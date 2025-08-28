@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 public class PagamentoTotalePersistenza {
@@ -34,10 +33,7 @@ public class PagamentoTotalePersistenza {
     private static final int GETINDEXIDPAGAMENTOCC = 8;
     private static final String PAGAMENTOTOTALECSV = "report/reportPagamentoTotale.csv";
     private static final String PAGAMENTOTOTALEMEMORIA = "memory/serializzazionePagamentoTotale.ser";
-
     private File filePagamentoFattura ;
-
-
     private static final String APPOGGIO = "report/appoggioTotale.csv";
     private static final String PERMESSI = "rwx------";
     private static final String PREFIX = "prefix";
@@ -76,52 +72,39 @@ public class PagamentoTotalePersistenza {
         String[] gVector;
         int id = 0;
         try {
-
             try(CSVReader reader = new CSVReader(new FileReader(PAGAMENTOTOTALECSV))) {
                 while ((gVector = reader.readNext()) != null) {
                     if(gVector[GETINDEXMETODOP].equals("cash"))
                         id = Integer.parseInt(gVector[GETINDEXIDFATTURA]);
                 }
             }
-
             if (id == 0)
                 throw new IdException("id == 0 ");
-
         }catch (IdException |IOException |CsvValidationException e)
         {
-
             Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR);
-
         }
-
         return id;
-
     }
+
     private static  int getIdMaxCC()  {
         //used for insert correct idOgg
         String[] gVector;
         int id = 0;
         try {
-
             try(CSVReader reader = new CSVReader(new FileReader(PAGAMENTOTOTALECSV))) {
                 while ((gVector = reader.readNext()) != null) {
                     if(gVector[GETINDEXMETODOP].equals(CCREDITO))
                         id = Integer.parseInt(gVector[GETINDEXIDPAGAMENTOCC]);
                 }
             }
-
             if (id == 0)
                 throw new IdException("id == 0 ");
-
         }catch (IdException |IOException |CsvValidationException e)
         {
-
             Logger.getLogger(IDWRONG).log(Level.SEVERE, IDERROR);
-
         }
-
         return id;
-
     }
 
     public boolean inserisciPagamentoTotaleFattura( PagamentoFattura pF, String persistenza) {
@@ -129,31 +112,22 @@ public class PagamentoTotalePersistenza {
             switch (persistenza) {
                 case FILE -> {
                     try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.filePagamentoFattura, true)))) {
-
                         String[] gVectore = new String[9];
-
-                            gVectore[GETINDEXMETODOP] = "cash";
-                            gVectore[GETINDEXNOME] = pF.getNome();
-                            gVectore[GETINDEXCOGNOME] = pF.getCognome();
-                            gVectore[GETINDEXAMMONTAREF] = String.valueOf(pF.getAmmontare());
-                            gVectore[GETINDEXEMAIL] = pF.getEmail();
-                            gVectore[GETINDEXTIPOACQUISTO] = pF.getTipoAcquisto();
-                            gVectore[GETINDEXIDPRODOTTO] = String.valueOf(pF.getIdProdotto());
-                            gVectore[GETINDEXIDFATTURA] = String.valueOf(getIdMaxF()+1);
-                            gVectore[GETINDEXIDPAGAMENTOCC] = String.valueOf(0);
-
-
-
+                        gVectore[GETINDEXMETODOP] = "cash";
+                        gVectore[GETINDEXNOME] = pF.getNome();
+                        gVectore[GETINDEXCOGNOME] = pF.getCognome();
+                        gVectore[GETINDEXAMMONTAREF] = String.valueOf(pF.getAmmontare());
+                        gVectore[GETINDEXEMAIL] = pF.getEmail();
+                        gVectore[GETINDEXTIPOACQUISTO] = pF.getTipoAcquisto();
+                        gVectore[GETINDEXIDPRODOTTO] = String.valueOf(pF.getIdProdotto());
+                        gVectore[GETINDEXIDFATTURA] = String.valueOf(getIdMaxF()+1);
+                        gVectore[GETINDEXIDPAGAMENTOCC] = String.valueOf(0);
                         csvWriter.writeNext(gVectore);
                         csvWriter.flush();
-
                     }
-
                 }
                 case MEMORIA -> lista("cash");
                 default -> Logger.getLogger("inserisci pagamento totale").log(Level.SEVERE, "inserting payment total error");
-
-
             }
         } catch (IOException e) {
             Logger.getLogger("inserisci pagamento totale ").log(Level.SEVERE, "exception :", e);
@@ -167,9 +141,7 @@ public class PagamentoTotalePersistenza {
             switch (persistenza) {
                 case FILE -> {
                     try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.filePagamentoFattura, true)))) {
-
                         String[] gVectore = new String[9];
-
                         gVectore[GETINDEXMETODOP] = CCREDITO;
                         gVectore[GETINDEXNOME] = pcc.getNomeUtenteCC();
                         gVectore[GETINDEXCOGNOME] = pcc.getCognomeUtenteCC();
@@ -179,22 +151,13 @@ public class PagamentoTotalePersistenza {
                         gVectore[GETINDEXIDPRODOTTO] = String.valueOf(pcc.getIdProdottoCC());
                         gVectore[GETINDEXIDFATTURA] = String.valueOf(0);
                         gVectore[GETINDEXIDPAGAMENTOCC] = String.valueOf(getIdMaxCC()+1);
-
                         csvWriter.writeNext(gVectore);
                         csvWriter.flush();
-
-
                     }
                 }
-
-
                 case MEMORIA -> lista(CCREDITO);
-
                 default -> Logger.getLogger("inserisci pagamento totale").log(Level.SEVERE, "inserting payment total error");
-
                 }
-
-
             } catch (IOException e) {
             Logger.getLogger("inserisci pagamento totale ").log(Level.SEVERE, "exception :", e);
         }
@@ -206,23 +169,18 @@ public class PagamentoTotalePersistenza {
 
         PagamentoTotale pT;
         ArrayList<PagamentoTotale> listaR = new ArrayList<>();
-
         try (FileInputStream fin = new FileInputStream(PAGAMENTOTOTALEMEMORIA);
              ObjectInputStream ois = new ObjectInputStream(fin)) {
-
             listaR = (ArrayList<PagamentoTotale>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             Logger.getLogger("pagamento totale mem").log(Level.SEVERE, " error with file payment mem.", e);
-
         }
         Logger.getLogger("lista").log(Level.INFO," list read {0}",listaR);
-
         if (metodo.equals("cash")) {
             ArrayList<PagamentoFattura> listaTF;
             try (FileInputStream fis = new FileInputStream("memory/serializzazionePagamentoFattura.ser");
                  ObjectInputStream ois = new ObjectInputStream(fis)) {
                 listaTF = (ArrayList<PagamentoFattura>) ois.readObject();
-
                 Logger.getLogger("lista").log(Level.INFO,"list :{0}",listaTF);
                 //carico lista
                 for (PagamentoFattura pagamentoFattura : listaTF) {

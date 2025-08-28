@@ -32,12 +32,8 @@ public class PersistenzaGiornale {
         Logger.getLogger("inizializza persistenza giornale").log(Level.INFO," persistenza giornale inizializza");
         PersistenzaGenerale pG=new PersistenzaGenerale();
         pG.getExcepptionInit("giornale");
-
-
-
     }
     public ObservableList<Giornale> getGiornali()  {
-
         return FXCollections.observableArrayList();
     }
 

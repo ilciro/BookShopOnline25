@@ -8,6 +8,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PersistenzaGenerale {
+
+    //class used for check files . if not exists throws an exception
     private static final String REPORT="report/report";
     private static final String SERIALIZZAZIONE="memory/serializzazione";
     private static final String SQL="sql/tableCreate.sql";

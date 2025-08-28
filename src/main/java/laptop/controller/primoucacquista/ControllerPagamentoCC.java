@@ -3,10 +3,8 @@ package laptop.controller.primoucacquista;
 import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javafx.collections.ObservableList;
 import laptop.controller.ControllerSystemState;
-
 import laptop.database.primoucacquista.cartacredito.CartaCreditoDao;
 import laptop.database.primoucacquista.cartacredito.CsvCartaCredito;
 import laptop.database.primoucacquista.cartacredito.PersistenzaCC;
@@ -14,24 +12,18 @@ import laptop.database.primoucacquista.giornale.CsvGiornale;
 import laptop.database.primoucacquista.giornale.GiornaleDao;
 import laptop.database.primoucacquista.giornale.MemoriaGiornale;
 import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
-
-
 import laptop.database.primoucacquista.libro.CsvLibro;
 import laptop.database.primoucacquista.libro.LibroDao;
 import laptop.database.primoucacquista.libro.MemoriaLibro;
 import laptop.database.primoucacquista.libro.PersistenzaLibro;
-
 import laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito;
 import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
 import laptop.database.primoucacquista.rivista.RivistaDao;
-
-
 import laptop.database.primoucacquista.pagamentocartacredito.CsvPagamentoCartaCredito;
 import laptop.database.primoucacquista.pagamentocartacredito.PagamentoCartaCreditoDao;
 import laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito;
-
 import laptop.database.terzoucgestioneprofiloggetto.report.CsvReport;
 import laptop.database.terzoucgestioneprofiloggetto.report.MemoriaReport;
 import laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport;
@@ -50,10 +42,6 @@ public class ControllerPagamentoCC {
 
 
 	private final ControllerSystemState vis= ControllerSystemState.getInstance();
-
-
-
-
 	private static final String DATABASE="database";
 	private static final String FILE="file";
 	private static final String MEMORIA="memoria";
@@ -61,27 +49,21 @@ public class ControllerPagamentoCC {
 	private static final String LIBRO="libro";
 	private static final String GIORNALE="giornale";
 	private static final String RIVISTA="rivista";
-
 	private  PersistenzaLibro pL;
 	private PersistenzaGiornale pG;
 	private PersistenzaRivista pR;
 	private PersistenzaPagamentoCartaCredito pCC;
 	private PersistenzaReport pRepo;
-
 	private CartaDiCredito cc;
 	private PersistenzaCC persistenzaCC;
 
 	public ControllerPagamentoCC() {
 		Logger.getLogger("controlla pagamento cc").log(Level.INFO,"costructor");
 
-
 	}
-
 
 	public boolean aggiungiCartaDB(String n, String c, String cod, Date data, String civ, float prezzo,String persistenza) {
    			cc= new CartaDiCredito(n, c, cod,  data, civ, prezzo);
-
-
 
 			switch (persistenza)
 			{

@@ -88,8 +88,7 @@ public class BoundaryAcquista implements Initializable {
 		}catch (PersistenzaException e)
 		{
 			Logger.getLogger("persistenza ").log(Level.SEVERE,"persistency is empty !! {0}",e);
-
-		}
+        }
 		return type;
 	}
 
@@ -106,8 +105,6 @@ public class BoundaryAcquista implements Initializable {
 				ritiroN.setDisable(true);
 				calcola.setDisable(true);
 			}
-
-
 	}
 
 	@Override
@@ -117,7 +114,6 @@ public class BoundaryAcquista implements Initializable {
 		{
 			databaseButton.setVisible(false);
 			fileButton.setVisible(false);
-
 			switch (vis.getType()) {
 				case "libro" -> quantita.setText("3");
 				case "giornale" -> quantita.setText("5");
@@ -149,8 +145,7 @@ public class BoundaryAcquista implements Initializable {
 		}catch (IOException e)
 		{
 			Logger.getLogger("indietro").log(Level.SEVERE,"exception {0}",e);
-
-		}
+        }
 	}
 
 	@FXML
@@ -171,8 +166,7 @@ public class BoundaryAcquista implements Initializable {
 		}catch (IOException e)
 		{
 			Logger.getLogger("pagaCC").log(Level.SEVERE,"exception pagaCC {0}",e);
-
-		}
+        }
 
 	}
 	@FXML

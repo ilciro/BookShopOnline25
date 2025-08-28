@@ -2,16 +2,12 @@ package laptop.controller.primoucacquista;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
-
 import laptop.controller.ControllerSystemState;
 import laptop.database.primoucacquista.giornale.CsvGiornale;
 import laptop.database.primoucacquista.giornale.GiornaleDao;
 import laptop.database.primoucacquista.giornale.MemoriaGiornale;
 import laptop.database.primoucacquista.giornale.PersistenzaGiornale;
 import laptop.database.primoucacquista.libro.MemoriaLibro;
-
 import laptop.database.primoucacquista.rivista.CsvRivista;
 import laptop.database.primoucacquista.rivista.MemoriaRivista;
 import laptop.database.primoucacquista.rivista.PersistenzaRivista;
@@ -19,7 +15,6 @@ import laptop.database.primoucacquista.rivista.RivistaDao;
 import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Rivista;
-
 import laptop.database.primoucacquista.libro.CsvLibro;
 import laptop.database.primoucacquista.libro.PersistenzaLibro;
 import laptop.database.primoucacquista.libro.LibroDao;

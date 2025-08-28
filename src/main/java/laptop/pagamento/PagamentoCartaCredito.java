@@ -11,16 +11,13 @@ public class PagamentoCartaCredito implements Serializable,Pagamento {
     public PagamentoCartaCredito()  {
 
     }
-
-
-
     private String nomeUtenteCC;
-     private float spesaTotaleCC;
-     private String emailCC;
-     private String tipoAcquistoCC;
-     private int idProdottoCC;
-     private String metodoCC;
-     private String cognomeUtenteCC;
+    private float spesaTotaleCC;
+    private String emailCC;
+    private String tipoAcquistoCC;
+    private int idProdottoCC;
+    private String metodoCC;
+    private String cognomeUtenteCC;
     private int idPagCC;
 
 
@@ -100,8 +97,6 @@ public class PagamentoCartaCredito implements Serializable,Pagamento {
 
 
     }
-
-
 
     @Override
     public String toString() {

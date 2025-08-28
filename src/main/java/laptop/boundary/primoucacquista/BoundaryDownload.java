@@ -56,19 +56,11 @@ public class BoundaryDownload implements Initializable {
 			a.setTitle("Download effettuato");
 			a.setHeaderText("Premere ok per scaricarlo e leggerlo\n");
 			Optional<ButtonType> result = a.showAndWait();
-
-
 			if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
 				Logger.getLogger("scarica").log(Level.INFO, " all ok...");
-
 				//passo 0 per evitare il NullPointer
-
-
 				cD.scarica(vis.getType(), returnPersistenza());
-
-
 			}
-
 			Stage stage;
 			Parent root;
 			stage = (Stage) buttonA.getScene().getWindow();
@@ -83,10 +75,8 @@ public class BoundaryDownload implements Initializable {
 
 	@FXML
 	private void pulisci(){
-
 		try {
 			if (!Objects.equals(returnPersistenza(), "")) {
-
 				Stage stage;
 				Parent root;
 				stage = (Stage) buttonA.getScene().getWindow();
@@ -98,25 +88,18 @@ public class BoundaryDownload implements Initializable {
 		}catch (IOException e)
 		{
 			Logger.getLogger("pulisci").log(Level.SEVERE,"pulisci ioexception {0}",e);
-
 		}
-
-
 	}
-
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-
-            cD = new ControllerDownload();
-			if(vis.getTipologiaApplicazione().equals("demo")) {
-				databaseButton.setVisible(false);
-				fileButton.setVisible(false);
-			}
+        cD = new ControllerDownload();
+     	if(vis.getTipologiaApplicazione().equals("demo")) {
+			databaseButton.setVisible(false);
+			fileButton.setVisible(false);
+		}
 		if (vis.getTipologiaApplicazione().equals("full")) memoriaButton.setVisible(false);
-
-
     }
 
 	private String returnPersistenza()

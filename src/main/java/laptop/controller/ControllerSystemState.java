@@ -18,15 +18,10 @@ public class ControllerSystemState {
 	private int quantita; //usato per avere quantita oggetto che compro
 	private String metodoP;	//usato per vedere se contanti o cc
 	private String tipologiaApplicazione;
+    private String tipoModifica;
 
 
-	public String getTipologiaApplicazione() {
-		return tipologiaApplicazione;
-	}
 
-	public void setTipologiaApplicazione(String tipologiaApplicazione) {
-		this.tipologiaApplicazione = tipologiaApplicazione;
-	}
 
 
 	public int getIdLibro() {
@@ -66,7 +61,7 @@ public class ControllerSystemState {
 
 
 
-	private String tipoModifica;
+
 	 
 	 private static ControllerSystemState instance = null;
 
@@ -153,7 +148,13 @@ public class ControllerSystemState {
         this.tipoModifica = tipoModifica;
     }
 
+    public String getTipologiaApplicazione() {
+        return tipologiaApplicazione;
+    }
 
+    public void setTipologiaApplicazione(String tipologiaApplicazione) {
+        this.tipologiaApplicazione = tipologiaApplicazione;
+    }
 
 
 }

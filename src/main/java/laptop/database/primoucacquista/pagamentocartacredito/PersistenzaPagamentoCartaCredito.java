@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.database.PersistenzaGenerale;
 import laptop.pagamento.PagamentoCartaCredito;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

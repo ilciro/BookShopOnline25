@@ -233,9 +233,6 @@ public class MemoryInitialize {
         return true;
     }
 
-
-
-
     private void scriviInFile(String nome,ArrayList<Giornale> listaG,ArrayList<Libro> listaL,ArrayList<Rivista> listaR)
     {
         try(FileOutputStream fos=new FileOutputStream(nome,true);
@@ -287,7 +284,6 @@ public class MemoryInitialize {
             Logger.getLogger("leggi da file libro class").log(Level.SEVERE,"leggi da file class libro exception: ",e1);
 
         }
-
         return listL;
     }
     @SuppressWarnings("unchecked")
@@ -311,7 +307,6 @@ public class MemoryInitialize {
     public List<Giornale> listaGiornali(String file)  {
         return  leggiDaFileGiornale(file);
     }
-
     public List<Libro> listaLibri(String file)  {
         return  leggiDaFileLibro(file);
     }
@@ -323,10 +318,7 @@ public class MemoryInitialize {
 
     private static @NotNull Giornale getGiornale(int i) {
         String line;
-
-
         ArrayList<String> listaG = new ArrayList<>();
-
 
         try (FileReader fileReader = new FileReader("src/main/resources/tmpFiles/giornale" + i + ".txt");
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {

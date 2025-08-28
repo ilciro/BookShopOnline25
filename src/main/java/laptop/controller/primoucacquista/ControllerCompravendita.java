@@ -24,7 +24,6 @@ import laptop.database.primoucacquista.libro.LibroDao;
 import laptop.database.primoucacquista.libro.PersistenzaLibro;
 
 
-
 public class ControllerCompravendita {
 
 	private static final String DATABASE = "database";
@@ -35,12 +34,9 @@ public class ControllerCompravendita {
 	private PersistenzaRivista pR;
 
 	public ObservableList<Raccolta> getLista(String type, String database)  {
-
 		ObservableList<Raccolta> catalogo = FXCollections.observableArrayList();
-
 		switch (type) {
 			case "libro" -> {
-
 				switch (database) {
 					case DATABASE -> pL = new LibroDao();
 					case FILE -> pL = new CsvLibro();
@@ -48,13 +44,8 @@ public class ControllerCompravendita {
 					default -> Logger.getLogger("lista libro").log(Level.SEVERE, "book persistency not correct !!");
 				}
 				pL.initializza();
-
 				catalogo.addAll(pL.retrieveRaccoltaData());
-
-
 			}
-
-
 			case "giornale" -> {
 				switch (database) {
 					case DATABASE -> pG = new GiornaleDao();
@@ -64,10 +55,7 @@ public class ControllerCompravendita {
 				}
 				pG.initializza();
 				catalogo.addAll(pG.retrieveRaccoltaData());
-
 			}
-
-
 			case "rivista" -> {
 				switch (database) {
 					case DATABASE -> pR = new RivistaDao();
@@ -77,18 +65,11 @@ public class ControllerCompravendita {
 				}
 				pR.initializza();
 				catalogo.addAll(pR.retrieveRaccoltaData());
-
 			}
-
-
 			default -> Logger.getLogger("get lista").log(Level.SEVERE, " list is empty");
-
 		}
-
-
 		return catalogo;
 	}
-
 
 	public boolean checkId(int id,String type,String typeObj)  {
 		 boolean status=true;

@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import laptop.database.PagamentoTotalePersistenza;
 import laptop.pagamento.PagamentoCartaCredito;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;

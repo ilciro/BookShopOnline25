@@ -19,8 +19,6 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
     private static final ResourceBundle TRIGGERCC=ResourceBundle.getBundle("sql/triggerCartaCredito");
     private static final ResourceBundle CANCELLAPAGAMENTOCARTACREDITO=ResourceBundle.getBundle("sql/triggerCancellaPagamentoCCredito");
     private static final ResourceBundle PERMESSI=ResourceBundle.getBundle("sql/cancella");
-
-
     private String query;
 
     @Override
@@ -55,7 +53,6 @@ public class PagamentoCartaCreditoDao extends PersistenzaPagamentoCartaCredito{
         DaoInitialize dI=new DaoInitialize();
         dI.inizializza("pagamentoTotale");
         dI.inizializza("pagamentoCartaCredito");
-
         creaTrigger();
         super.inizializza();
     }

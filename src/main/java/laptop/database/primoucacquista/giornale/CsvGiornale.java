@@ -37,12 +37,8 @@ public class CsvGiornale extends PersistenzaGiornale{
     private static final int GETINDEXDISPG = 6;
     private static final int GETINDEXPREZZOG = 7;
     private static final int GETINDEXIDG = 8;
-
     private static final ControllerSystemState vis = ControllerSystemState.getInstance();
-
-
     private  final HashMap<Integer, Giornale> cacheGiornale;
-
     private final File fdG=new File(LOCATIONG);
     private static final String APPOGGIO="report/appoggio.csv";
     private static final String PERMESSI="rwx------";

@@ -129,18 +129,12 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
     private static int getIdMaxPagamento()  {
         String[] gVector;
         int id = 0;
-
-
         try {
-
-
-
             try(CSVReader reader = new CSVReader(new FileReader(PAGAMENTO))) {
                 while ((gVector = reader.readNext()) != null) {
                     id = Integer.parseInt(gVector[GETINDEXIDP]);
                 }
             }
-
             if (id == 0)
                 throw new IdException("id == 0 ");
 
@@ -153,8 +147,6 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 
         return id;
     }
-
-
 
 
     private static @NotNull PagamentoCartaCredito getCartaCredito(String[] gVector) {
@@ -214,7 +206,6 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 
     private static boolean isFound(PagamentoCartaCredito p, File tmpFile) throws IOException, CsvValidationException {
         boolean found = false;
-
         try (CSVReader reader = new CSVReader(new BufferedReader(new FileReader(PAGAMENTO)))) {
             String[] gVector;
             try (CSVWriter writer = new CSVWriter(new BufferedWriter(new FileWriter(tmpFile, true)))
@@ -224,7 +215,6 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
 
                     recordFound = gVector[GETINDEXIDP].equals(String.valueOf(p.getIdPagCC()))
                             || gVector[GETINDEXEIAMILP].equals(p.getEmailCC());
-
 
                     if (!recordFound)
                         writer.writeNext(gVector);
@@ -236,8 +226,6 @@ public class CsvPagamentoCartaCredito extends PersistenzaPagamentoCartaCredito{
         }
         return found;
     }
-
-
 
 
     @Override

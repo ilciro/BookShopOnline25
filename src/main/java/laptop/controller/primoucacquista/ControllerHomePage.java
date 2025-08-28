@@ -2,7 +2,6 @@ package laptop.controller.primoucacquista;
 
 
 import laptop.controller.ControllerSystemState;
-
 import laptop.database.primoucacquista.giornale.CsvGiornale;
 import laptop.database.primoucacquista.giornale.GiornaleDao;
 import laptop.database.primoucacquista.giornale.MemoriaGiornale;
@@ -26,7 +25,6 @@ public class ControllerHomePage {
     private static final String DATABASE="database";
     private static final String FILE="file";
     private static final String MEMORIA="memoria";
-
     private PersistenzaLibro pL;
     private PersistenzaGiornale pG;
     private  PersistenzaRivista pR;
@@ -38,13 +36,9 @@ public class ControllerHomePage {
             case FILE -> pL = new CsvLibro();
             case MEMORIA -> pL = new MemoriaLibro();
             default -> Logger.getLogger("inizializza libro").log(Level.SEVERE,"persistency init book is wrong!!");
-
         }
         Logger.getLogger("inizializzazione libro").log(Level.INFO,"type of persistency of book {0}",pL);
-
-
     }
-
 
     private void inizializzaGiornale(String type)  {
         switch (type) {
@@ -52,7 +46,6 @@ public class ControllerHomePage {
             case FILE -> pG = new CsvGiornale();
             case MEMORIA -> pG = new MemoriaGiornale();
             default -> Logger.getLogger("inizializza giornale").log(Level.SEVERE,"persistency init daily is wrong!!");
-
         }
         Logger.getLogger("inizializzazione giornale").log(Level.INFO,"type of persistency of daily {0}",pG);
 
@@ -63,18 +56,11 @@ public class ControllerHomePage {
             case FILE -> pR = new CsvRivista();
             case MEMORIA -> pR = new MemoriaRivista();
             default -> Logger.getLogger("inizializza rivista").log(Level.SEVERE,"persistency magazine book is wrong!!");
-
         }
         Logger.getLogger("inizializzazione rivista").log(Level.INFO,"type of persistency of magazine {0}",pR.toString());
     }
 
-
-
-
-
-
     public void persistenza(String type) {
-
         switch (vis.getType())
         {
             case "libro"-> inizializzaLibro(type);
@@ -82,28 +68,17 @@ public class ControllerHomePage {
             case "rivista"-> inizializzaRivista(type);
             default -> Logger.getLogger("persistenza").log(Level.SEVERE," type is incorrect !!");
         }
-
     }
-
-
-
-
-
 
     public boolean logout()
     {
         try {
-
-
             if (User.getInstance().annullaUtente()) vis.setIsLogged(false);
-
-
             if(vis.getIsLogged()) throw new LogoutException(" user logged");
         }catch (LogoutException e)
         {
             Logger.getLogger("logout").log(Level.SEVERE," user yet logged");
         }
-
         return !vis.getIsLogged();
     }
 
@@ -111,8 +86,6 @@ public class ControllerHomePage {
     {
         return User.getInstance().getIdRuolo();
     }
-
-
     public String getId() {
         return String.valueOf(User.getInstance().getId());
     }

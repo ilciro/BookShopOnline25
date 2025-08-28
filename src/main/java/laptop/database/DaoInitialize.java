@@ -162,11 +162,6 @@ public class DaoInitialize {
 
         Logger.getLogger("ispw creato").log(Level.INFO," databse ispw has been created!!");
 
-
-
-
-
-
         switch (type) {
             case LIBRO -> {
                 //creo

@@ -73,13 +73,10 @@ public class BoundaryCompravendita implements Initializable {
 
 	private  ControllerCompravendita cCV;
 	private static final ControllerSystemState vis=ControllerSystemState.getInstance();
-
 	private static final String TITOLOS="titolo";
 	private static final String EDITORES="editore";
 	private static final String PREZZOS="prezzo";
-
 	protected Scene scene;
-
 	private  String type="";
 
 

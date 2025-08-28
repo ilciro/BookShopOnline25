@@ -5,8 +5,6 @@ import java.util.logging.Logger;
 
 
 import laptop.controller.ControllerSystemState;
-
-
 import laptop.database.primoucacquista.giornale.CsvGiornale;
 import laptop.database.primoucacquista.giornale.GiornaleDao;
 import laptop.database.primoucacquista.giornale.MemoriaGiornale;
@@ -31,7 +29,6 @@ import laptop.model.raccolta.Giornale;
 import laptop.model.raccolta.Libro;
 import laptop.model.raccolta.Rivista;
 import laptop.model.user.User;
-
 import laptop.database.primoucacquista.pagamentofattura.ContrassegnoDao;
 import laptop.pagamento.PagamentoFattura;
 
@@ -56,8 +53,6 @@ public class ControllerPagamentoCash {
 	}
 
 	public void controlla(String nome, String cognome, String via, String com,String type)  {
-
-
 		//2
 		switch (type)
 		{
@@ -65,11 +60,9 @@ public class ControllerPagamentoCash {
 			case FILE -> pF=new CsvFattura();
 			case MEMORIA -> pF=new MemoriaFattura();
 			default -> Logger.getLogger("controlla tipologia fattura").log(Level.SEVERE," persistency fattura is wrong!!");
-
 		}
 		//creo tabella fattuira
 		pF.inizializza();
-
 		//3
 		int id = switch (vis.getType()) {
             case LIBRO -> vis.getIdLibro();
@@ -77,7 +70,6 @@ public class ControllerPagamentoCash {
             case RIVISTA -> vis.getIdRivista();
             default -> 0;
         };
-
 
 		PagamentoFattura p;
 		if(type.equals(DATABASE))
@@ -90,21 +82,14 @@ public class ControllerPagamentoCash {
 			p.setEmail(User.getInstance().getEmail());
 		else p.setEmail("");
 
-
-
-
-
 		//inserisco in pagamentoTotale
 		if(pF.inserisciPagamentoFattura(p))
 		{
 			Logger.getLogger("pagamento effettuato ").log(Level.INFO,"payment success with id object : {0}", p);
 			//database with triggers
-
-
-		}
+	}
 
 		//inserisco in report finale
-
         switch (type) {
             case FILE -> pRepo = new CsvReport();
             case MEMORIA -> pRepo = new MemoriaReport();
@@ -142,11 +127,8 @@ public class ControllerPagamentoCash {
 		r.setNrPezzi(vis.getQuantita());
 		r.setPrezzo(prezzo);
 		r.setTotale(r.getPrezzo()*vis.getQuantita());
-
 		if(pRepo.insertReport(r))
 			Logger.getLogger("insert repo cash").log(Level.INFO, "repo cash correct inserted");
-
-
 
 	}
 
@@ -162,9 +144,6 @@ public class ControllerPagamentoCash {
 
 	private String ritornaTipoOggetto(String persistenza,String type)  {
 		String tipologia = "";
-
-
-
 		switch (type)
 		{
 			case LIBRO ->
@@ -209,11 +188,7 @@ public class ControllerPagamentoCash {
 			}
 			default -> Logger.getLogger("ritorna tipo oggetto").log(Level.SEVERE," error with type object");
 		}
-
-
-
-
-		return tipologia;
+	return tipologia;
 	}
 
 

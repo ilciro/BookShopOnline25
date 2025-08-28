@@ -60,7 +60,6 @@ public class BoundaryPagamentoCash implements Initializable{
 	protected String c;
 	protected String v;
 	protected String com;
-	
 	protected Scene scene;
 	private static final ControllerSystemState vis = ControllerSystemState.getInstance();
 
@@ -68,14 +67,10 @@ public class BoundaryPagamentoCash implements Initializable{
 	private void procediCash()  {
 		
 			vis.setMetodoP("cash");
-
-
 			n = nomeTF.getText();
 			c = cognomeTF.getText();
 			v = viaTF.getText();
 			com = eventualiArea.getText();
-
-
 			Stage stage;
 			Parent root;
 

@@ -1,7 +1,6 @@
 package laptop.model;
 
 
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.sql.Date;
@@ -24,12 +23,10 @@ public class 	CartaDiCredito implements Serializable {
 
 	public CartaDiCredito() {
 	}
-	
 
 
 	public CartaDiCredito(String n,String c,String cod,java.util.Date date,String civ,float prezzo)
 	{
-		
 		this.nomeUser=n;
 		this.cognomeUser=c;
 		this.numeroCC=cod;

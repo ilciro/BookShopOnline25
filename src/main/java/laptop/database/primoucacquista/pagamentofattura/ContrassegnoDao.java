@@ -34,7 +34,6 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
 
             try(Connection conn= ConnToDb.connectionToDB();
                 PreparedStatement prepQ=conn.prepareStatement(query)){
-
                 prepQ.setString(1, f.getNome());
                 prepQ.setString(2, f.getCognome());
                 prepQ.setString(3, f.getVia());
@@ -44,9 +43,7 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
                 prepQ.setInt(7,f.getIdProdotto());
                 prepQ.setString(8,f.getTipoAcquisto());
                 prepQ.setString(9,f.getEmail());
-
-              row=prepQ.executeUpdate();
-
+                row=prepQ.executeUpdate();
 
             }catch(SQLException e)
             {
@@ -54,11 +51,6 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
             }
             return row==1;
 
-
-
-
-
-        
     }
 
     @Override
@@ -90,7 +82,6 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
         query="select * from pagamentoFattura order by idFattura desc limit 1";
         try(Connection conn=ConnToDb.connectionToDB();
             PreparedStatement prepQ=conn.prepareStatement(query)){
-
             ResultSet rs=prepQ.executeQuery();
             while (rs.next())
             {
@@ -110,27 +101,13 @@ public class ContrassegnoDao extends PersistenzaPagamentoFattura {
         return f;
     }
 
-
-
-
-
     @Override
     public void inizializza()  {
         DaoInitialize daoI=new DaoInitialize();
         daoI.inizializza("pagamentoTotale");
-
         daoI.inizializza("pagamentoFattura");
-
-
         creaTrigger();
-
-
         super.inizializza();
-
-
-
-
-
     }
 
     private void creaTrigger() {

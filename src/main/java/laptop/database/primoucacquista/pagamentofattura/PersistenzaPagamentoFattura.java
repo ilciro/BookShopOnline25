@@ -19,7 +19,6 @@ public class PersistenzaPagamentoFattura {
         return f.getIdFattura()!=-1;
     }
     public void inizializza()   {
-
         Logger.getLogger("persistenza fattura inizializza").log(Level.INFO,"persistenza pagamento fattura inizializza");
         PersistenzaGenerale pG=new PersistenzaGenerale();
         pG.getExcepptionInit("pagamentoFattura");

@@ -101,23 +101,14 @@ public class BoundaryPagamentoCC implements Initializable {
 		if(databaseButton.isSelected()) persistenza=DATABASE;
 		if(fileButton.isSelected()) persistenza=FILE;
 		if(memoriaButton.isSelected()) persistenza=MEMORIA;
-
 		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = sdf1.parse(scadenzaTF.getText());
 		java.sql.Date sqlStartDate = new java.sql.Date(date.getTime());
-
 		if(cPCC.aggiungiCartaDB(nomeTF.getText(),cognomeTF.getText(),codiceTF.getText(), sqlStartDate,passTF.getText(),vis.getSpesaT(),persistenza))
 		{
 			Logger.getLogger("carta di credito registrata").log(Level.INFO," cc inserted with success {0}", codiceTF.getText());
 			buttonReg.setDisable(true);
 		}
-
-
-
-
-
-
-
 
 	}
 
@@ -126,19 +117,14 @@ public class BoundaryPagamentoCC implements Initializable {
 		String persistenza="";
 		if(databaseButton.isSelected()) persistenza=DATABASE;
 		if(fileButton.isSelected()) persistenza=FILE;
-		//if(memoriaButton.isSelected()) persistenza=MEMORIA;
 		tableview.setItems(cPCC.ritornaElencoCC(nomeInput.getText(),persistenza,null));
-
 
 	}
 
 	@FXML
 	private void procediCC() throws IdException, IOException {
-
-
 		if(vis.getIsPickup())
 		{
-
 			Parent root;
 			stage = (Stage) buttonI.getScene().getWindow();
 			root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/scegliNegozio.fxml")));
@@ -148,15 +134,11 @@ public class BoundaryPagamentoCC implements Initializable {
 			stage.show();
         }
 		else {
-
-
 				String persistenza = "";
 				if (databaseButton.isSelected()) persistenza = DATABASE;
 				else if (fileButton.isSelected()) persistenza = FILE;
-				//else if (memoriaButton.isSelected()) persistenza = MEMORIA;
 				cPCC.pagamentoCC(nomeTF.getText(), persistenza, cognomeTF.getText());
 			if (cPCC.correttezza(codiceTF.getText(),scadenzaTF.getText(),passTF.getText())) {
-
 				Parent root;
 				stage = (Stage) buttonI.getScene().getWindow();
 				root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/download.fxml")));
@@ -168,8 +150,6 @@ public class BoundaryPagamentoCC implements Initializable {
 
 			}
 
-
-
     }
 
 
@@ -180,13 +160,10 @@ public class BoundaryPagamentoCC implements Initializable {
 
             cPCC=new ControllerPagamentoCC();
 			codiceCC.setCellValueFactory(new PropertyValueFactory<>("numeroCC"));
-
-
-		if(vis.getTipologiaApplicazione().equals("demo") && !vis.getIsLogged())
+		    if(vis.getTipologiaApplicazione().equals("demo") && !vis.getIsLogged())
 			{
 				databaseButton.setVisible(false);
 				fileButton.setVisible(false);
-
 				nomeTF.setText("prova");
 				cognomeTF.setText("prova");
 				codiceTF.setText("1111-5241-8888-9652");
@@ -225,12 +202,10 @@ public class BoundaryPagamentoCC implements Initializable {
 		{
 			codiceTF.setText(tableview.getSelectionModel().getSelectedItem().getNumeroCC());
 
-
 		}
 		String persistency="";
 		if(databaseButton.isSelected()) persistency="database";
 		if(fileButton.isSelected()) persistency="file";
-
 		scadenzaTF.setText(String.valueOf(cPCC.ritornaElencoCC(nomeTF.getText(),persistency,tableview.getSelectionModel().getSelectedItem().getNumeroCC()).get(0).getScadenza()).replace("-","/"));
 		passTF.setText(cPCC.ritornaElencoCC(nomeTF.getText(),persistency,tableview.getSelectionModel().getSelectedItem().getNumeroCC()).get(0).getCiv());
 	}

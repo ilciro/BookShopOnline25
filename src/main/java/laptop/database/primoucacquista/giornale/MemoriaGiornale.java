@@ -24,22 +24,14 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
 
     @Override
     public void initializza()  {
-
         mI.inizializza(SERIALIZZAZIONE);
         super.initializza();
-
-
-
     }
-
-
-
 
     @Override
 
     public boolean inserisciGiornale(Giornale g)  {
         super.inserisciGiornale(g);
-
         Path path2 = Path.of(SERIALIZZAZIONEAPPOGGIO);
         if (!Files.exists(path2))
         {
@@ -53,23 +45,16 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
 
     }
 
-
-
     @Override
-
     public ObservableList<Raccolta> retrieveRaccoltaData() {
         super.retrieveRaccoltaData();
-
         return FXCollections.observableArrayList(mI.listaGiornali(SERIALIZZAZIONE));
     }
 
     @Override
-
     public ObservableList<Giornale> getGiornaleByIdTitoloAutoreLibro(Giornale g)  {
         ObservableList<Giornale> listaRecuperata = FXCollections.observableArrayList();
-
         List<Giornale> list=mI.listaGiornali(SERIALIZZAZIONE);
-
         for(int i=0;i<list.size();i++)
         {
             if(i==g.getId()-1
@@ -80,7 +65,6 @@ public class  MemoriaGiornale extends PersistenzaGiornale{
             }
 
         }
-
 
         return listaRecuperata;
     }

@@ -20,7 +20,6 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 public class CsvFattura extends PersistenzaPagamentoFattura {
@@ -36,7 +35,6 @@ public class CsvFattura extends PersistenzaPagamentoFattura {
     private static final int GETINDEXTIPOACQUISTO=9;
     private  final File fileFattura;
     private final HashMap<String, PagamentoFattura> cacheFattura;
-
     private static final String APPOGGIO="report/appoggio.csv";
     private static final String PERMESSI="rwx------";
     private static final String PREFIX="prefix";

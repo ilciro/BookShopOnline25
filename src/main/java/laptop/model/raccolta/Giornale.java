@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
@@ -28,23 +27,16 @@ import com.itextpdf.text.pdf.PdfWriter;
 	private int disponibilita;
 	private float prezzo;
 	private int id;
-
 	private final transient ResourceBundle rbTitoli=ResourceBundle.getBundle("configurations/titles");
 	private static final String TITOLOG="titolo13";
 	private static final String DSTPATH="dstPath";
-
 	private String[] infoGenerali=new String[6];
-
-
-
-
 
 
 	public Giornale()
 	{
 		super();
 	}
-
 
 	public Giornale(String []info,LocalDate dataPubb,int nrCopie, int disponibilita, float prezzo, int id)
 	{
@@ -58,26 +50,19 @@ import com.itextpdf.text.pdf.PdfWriter;
 		this.categoria=info[5];
 		this.editore=info[2];
 		this.lingua=info[4];
-		
-
-
 
 	}
 
 	public String getTitolo() {
 		return titolo;
 	}
-
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
 
-
-
 	public String getLingua() {
 		return lingua;
 	}
-
 	public void setLingua(String lingua) {
 		this.lingua = lingua;
 	}
@@ -85,7 +70,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 	public String getEditore() {
 		return editore;
 	}
-
 	public void setEditore(String editore) {
 		this.editore = editore;
 	}
@@ -93,7 +77,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 	public LocalDate getDataPubb() {
 		return dataPubb;
 	}
-
 	public void setDataPubb(LocalDate dataPubb) {
 		this.dataPubb = dataPubb;
 	}
@@ -101,7 +84,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 	public int getCopieRimanenti() {
 		return copieRimanenti;
 	}
-
 	public void setCopieRimanenti(int copieRimanenti) {
 		this.copieRimanenti = copieRimanenti;
 	}
@@ -109,7 +91,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 	public int getDisponibilita() {
 		return this.disponibilita;
 	}
-
 	public void setDisponibilita(int disponibilita) {
 		this.disponibilita = disponibilita;
 	}
@@ -117,7 +98,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 	public float getPrezzo() {
 		return prezzo;
 	}
-
 	public void setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
 	}
@@ -126,7 +106,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
