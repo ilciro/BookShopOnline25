@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import laptop.controller.ControllerSystemState;
 import laptop.controller.terzoucgestioneprofiloggetto.ControllerGestioneUtente;
 import java.io.IOException;
 import java.net.URL;
@@ -85,6 +86,7 @@ public class BoundaryGestioneUtente implements Initializable {
     private static final String DATABASE="database";
     private static final String FILE="file";
     private static final String MEMORIA="memoria";
+    private static final ControllerSystemState vis=ControllerSystemState.getInstance();
     @FXML
     private void inserisci()  {
 
@@ -238,6 +240,8 @@ public class BoundaryGestioneUtente implements Initializable {
         ruoli.add("UTENTE");
         ruoli.add("ADMIN");
         listView.setItems(ruoli);
+
+        if(vis.getTipologiaApplicazione().equals("full")) memoriaButton.setVisible(false);
 
 
         }

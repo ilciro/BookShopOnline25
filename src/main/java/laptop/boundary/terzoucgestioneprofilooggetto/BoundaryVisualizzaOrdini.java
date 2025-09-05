@@ -125,30 +125,7 @@ public class BoundaryVisualizzaOrdini implements Initializable {
 
         }
 
-        /*
-        if(cV.cancellaPagamento(id,type))
-        {
-
-            try {
-
-                Stage stage;
-                Parent root;
-                stage = (Stage) eliminaB.getScene().getWindow();
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/primoucacquista/homePageFinale.fxml")));
-                stage.setTitle("Benvenuto nella home page");
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            }catch (IOException e)
-            {
-                Logger.getLogger("elimina").log(Level.SEVERE,"delete not avalaible {0}",e);
-            }
-        }
-        else {
-           eliminaEVisualizza();
-        }
-
-         */
+       Logger.getLogger("elimina").log(Level.INFO, "deleting id :{0}",id);
 
 
     }
