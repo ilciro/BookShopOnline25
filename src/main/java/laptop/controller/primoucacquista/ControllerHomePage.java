@@ -57,7 +57,7 @@ public class ControllerHomePage {
             case MEMORIA -> pR = new MemoriaRivista();
             default -> Logger.getLogger("inizializza rivista").log(Level.SEVERE,"persistency magazine book is wrong!!");
         }
-        Logger.getLogger("inizializzazione rivista").log(Level.INFO,"type of persistency of magazine {0}",pR.toString());
+        Logger.getLogger("inizializzazione rivista").log(Level.INFO,"type of persistency of magazine {0}",pR);
     }
 
     public void persistenza(String type) {

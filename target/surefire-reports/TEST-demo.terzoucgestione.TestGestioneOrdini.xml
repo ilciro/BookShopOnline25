@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="demo.terzoucgestione.TestGestioneOrdini" time="1.298" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="demo.terzoucgestione.TestGestioneOrdini" time="1.18" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IT"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter17006644284890340194.jar /home/daniele/IdeaProjects/BookShopOnline25/target/surefire 2025-09-08T19-29-28_734-jvmRun1 surefire18201848719362170728tmp surefire_0892624316797796529tmp"/>
+    <property name="sun.java.command" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter5099640615630040466.jar /home/daniele/IdeaProjects/BookShopOnline25/target/surefire 2025-09-08T19-47-14_308-jvmRun1 surefire18256097350299317354tmp surefire_04053956461765957147tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/daniele/IdeaProjects/BookShopOnline25/target/test-classes:/home/daniele/IdeaProjects/BookShopOnline25/target/classes:/home/daniele/.m2/repository/com/opencsv/opencsv/5.7.1/opencsv-5.7.1.jar:/home/daniele/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:/home/daniele/.m2/repository/org/apache/commons/commons-text/1.10.0/commons-text-1.10.0.jar:/home/daniele/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/home/daniele/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/home/daniele/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/daniele/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/home/daniele/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/daniele/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/home/daniele/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/home/daniele/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:/home/daniele/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17-linux.jar:/home/daniele/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17-linux.jar:/home/daniele/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17-linux.jar:/home/daniele/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17.jar:/home/daniele/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17-linux.jar:/home/daniele/.m2/repository/com/mysql/mysql-connector-j/8.2.0/mysql-connector-j-8.2.0.jar:/home/daniele/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar:/home/daniele/.m2/repository/com/itextpdf/itextpdf/5.5.13.3/itextpdf-5.5.13.3.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v131/4.27.0/selenium-devtools-v131-4.27.0.jar:/home/daniele/.m2/repository/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-api/4.27.0/selenium-api-4.27.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-json/4.27.0/selenium-json-4.27.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.27.0/selenium-remote-driver-4.27.0.jar:/home/daniele/.m2/repository/com/google/guava/guava/33.3.1-jre/guava-33.3.1-jre.jar:/home/daniele/.m2/repository/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.jar:/home/daniele/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/home/daniele/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/daniele/.m2/repository/org/checkerframework/checker-qual/3.43.0/checker-qual-3.43.0.jar:/home/daniele/.m2/repository/com/google/errorprone/error_prone_annotations/2.28.0/error_prone_annotations-2.28.0.jar:/home/daniele/.m2/repository/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.jar:/home/daniele/.m2/repository/io/opentelemetry/semconv/opentelemetry-semconv/1.25.0-alpha/opentelemetry-semconv-1.25.0-alpha.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-api/1.44.1/opentelemetry-api-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-context/1.44.1/opentelemetry-context-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-exporter-logging/1.44.1/opentelemetry-exporter-logging-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-common/1.44.1/opentelemetry-sdk-common-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.44.1/opentelemetry-sdk-extension-autoconfigure-spi-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.44.1/opentelemetry-sdk-extension-autoconfigure-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-api-incubator/1.44.1-alpha/opentelemetry-api-incubator-1.44.1-alpha.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-trace/1.44.1/opentelemetry-sdk-trace-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk/1.44.1/opentelemetry-sdk-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-metrics/1.44.1/opentelemetry-sdk-metrics-1.44.1.jar:/home/daniele/.m2/repository/io/opentelemetry/opentelemetry-sdk-logs/1.44.1/opentelemetry-sdk-logs-1.44.1.jar:/home/daniele/.m2/repository/net/bytebuddy/byte-buddy/1.15.10/byte-buddy-1.15.10.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-http/4.27.0/selenium-http-4.27.0.jar:/home/daniele/.m2/repository/dev/failsafe/failsafe/3.3.2/failsafe-3.3.2.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-os/4.27.0/selenium-os-4.27.0.jar:/home/daniele/.m2/repository/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.jar:/home/daniele/.m2/repository/org/glassfish/web/jakarta.servlet.jsp.jstl/3.0.1/jakarta.servlet.jsp.jstl-3.0.1.jar:/home/daniele/.m2/repository/jakarta/servlet/jsp/jstl/jakarta.servlet.jsp.jstl-api/3.0.0/jakarta.servlet.jsp.jstl-api-3.0.0.jar:/home/daniele/.m2/repository/jakarta/servlet/jakarta.servlet-api/6.0.0/jakarta.servlet-api-6.0.0.jar:/home/daniele/.m2/repository/jakarta/el/jakarta.el-api/5.0.0/jakarta.el-api-5.0.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/4.35.0/selenium-chrome-driver-4.35.0.jar:/home/daniele/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-chromium-driver/4.35.0/selenium-chromium-driver-4.35.0.jar:/home/daniele/.m2/repository/org/seleniumhq/selenium/selenium-manager/4.35.0/selenium-manager-4.35.0.jar:/home/daniele/.m2/repository/org/sonarsource/scanner/maven/sonar-maven-plugin/4.0.0.4121/sonar-maven-plugin-4.0.0.4121.jar:/home/daniele/.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.jar:/home/daniele/.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar:/home/daniele/.m2/repository/org/sonarsource/scanner/api/sonar-scanner-api/2.16.3.1081/sonar-scanner-api-2.16.3.1081.jar:/home/daniele/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar:/home/daniele/.m2/repository/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.jar:/home/daniele/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/daniele/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar:/home/daniele/.m2/repository/org/codehaus/mojo/build-helper-maven-plugin/3.4.0/build-helper-maven-plugin-3.4.0.jar:/home/daniele/.m2/repository/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar:/home/daniele/.m2/repository/org/apache-extras/beanshell/bsh/2.0b6/bsh-2.0b6.jar:/home/daniele/.m2/repository/org/apache/maven/shared/file-management/3.1.0/file-management-3.1.0.jar:/home/daniele/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/home/daniele/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/home/daniele/.m2/repository/org/jetbrains/annotations/15.0/annotations-15.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter17006644284890340194.jar"/>
+    <property name="surefire.real.class.path" value="/home/daniele/IdeaProjects/BookShopOnline25/target/surefire/surefirebooter5099640615630040466.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.16+8-Ubuntu-0ubuntu124.04.1"/>
     <property name="user.name" value="daniele"/>
@@ -55,18 +55,18 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testAnnullaOrdineCashByUserLogged" classname="demo.terzoucgestione.TestGestioneOrdini" time="1.217">
-    <system-err><![CDATA[set 08, 2025 7:29:31 PM laptop.controller.primoucacquista.ControllerPagamentoCash <init>
+  <testcase name="testAnnullaOrdineCashByUserLogged" classname="demo.terzoucgestione.TestGestioneOrdini" time="1.048">
+    <system-err><![CDATA[set 08, 2025 7:47:17 PM laptop.controller.primoucacquista.ControllerPagamentoCash <init>
 INFORMAZIONI: costructor
-set 08, 2025 7:29:31 PM laptop.controller.primoucacquista.ControllerPagamentoCC <init>
+set 08, 2025 7:47:17 PM laptop.controller.primoucacquista.ControllerPagamentoCC <init>
 INFORMAZIONI: costructor
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente initializza
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente initializza
 INFORMAZIONI: peristenza utente initialize
-set 08, 2025 7:29:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:17 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : utente
-set 08, 2025 7:29:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:17 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-set 08, 2025 7:29:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:17 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION utente
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:118)
@@ -146,53 +146,53 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION utente
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:17 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:31 PM laptop.database.primoucacquista.libro.PersistenzaLibro initializza
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro initializza
 INFORMAZIONI:  persistenza libro inizializza
-set 08, 2025 7:29:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:17 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : libro
-set 08, 2025 7:29:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:17 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-set 08, 2025 7:29:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:17 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION libro
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:118)
@@ -272,25 +272,25 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION libro
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:31 PM laptop.database.primoucacquista.libro.PersistenzaLibro retrieveRaccoltaData
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro retrieveRaccoltaData
 INFORMAZIONI: raccolta data book
-set 08, 2025 7:29:31 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
 INFORMAZIONI: lista libro by id .
-set 08, 2025 7:29:31 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
 INFORMAZIONI: lista libro by id .
-set 08, 2025 7:29:31 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
 INFORMAZIONI: lista libro by id .
-set 08, 2025 7:29:31 PM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
+set 08, 2025 7:47:17 PM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
 INFORMAZIONI: buying book :Libro{titolo='null', editore='null', autore='null', id=10}
-set 08, 2025 7:29:31 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
 INFORMAZIONI: lista libro by id .
-set 08, 2025 7:29:31 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
 INFORMAZIONI: lista libro by id .
-set 08, 2025 7:29:31 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
 INFORMAZIONI: lista libro by id .
-set 08, 2025 7:29:31 PM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
+set 08, 2025 7:47:17 PM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
 INFORMAZIONI: buying book :Libro{titolo='null', editore='null', autore='null', id=10}
-set 08, 2025 7:29:31 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 GRAVE: error with file :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -374,7 +374,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:31 PM laptop.database.PagamentoTotalePersistenza <init>
+set 08, 2025 7:47:17 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -459,13 +459,13 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:31 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
 INFORMAZIONI: persistenza pagamento fattura inizializza
-set 08, 2025 7:29:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:17 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : pagamentoFattura
-set 08, 2025 7:29:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:17 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-set 08, 2025 7:29:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:17 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:118)
@@ -545,27 +545,27 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:31 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
 INFORMAZIONI: lista libro by id .
-set 08, 2025 7:29:31 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inserisciPagamentoFattura
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inserisciPagamentoFattura
 INFORMAZIONI: persistenza pagamento insert fattura
-set 08, 2025 7:29:31 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inserisciPagamentoFattura
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inserisciPagamentoFattura
 INFORMAZIONI: fattura is wrote [PagamentoFattura{nome='prova', cognome='prova', ammontare=12.0, idFattura=1, email='', idProdotto=6}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=9.99, idFattura=3, email='giuliaConforto@gmail.eu', idProdotto=8}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=22.0, idFattura=4, email='giuliaConforto@gmail.eu', idProdotto=10}]
-set 08, 2025 7:29:31 PM laptop.database.PagamentoTotalePersistenza lista
+set 08, 2025 7:47:17 PM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI:  list read [PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=5.0, emailT='', tipoAcquistoT='MENSILE', idProdottoT=1, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=1, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='Editore Prova', cognomeT='Editore Prova', ammontareT=2.0, emailT='editore185@gmail.com', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=2}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=9.99, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='INFORMATICA', idProdottoT=8, idFatturaT=3, idPagCCT=0}]
-set 08, 2025 7:29:31 PM laptop.database.PagamentoTotalePersistenza lista
+set 08, 2025 7:47:17 PM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI: list :[PagamentoFattura{nome='prova', cognome='prova', ammontare=12.0, idFattura=1, email='', idProdotto=6}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=9.99, idFattura=3, email='giuliaConforto@gmail.eu', idProdotto=8}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=22.0, idFattura=4, email='giuliaConforto@gmail.eu', idProdotto=10}]
-set 08, 2025 7:29:31 PM laptop.database.PagamentoTotalePersistenza lista
+set 08, 2025 7:47:17 PM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI: list tota payments [PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=5.0, emailT='', tipoAcquistoT='MENSILE', idProdottoT=1, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=1, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='Editore Prova', cognomeT='Editore Prova', ammontareT=2.0, emailT='editore185@gmail.com', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=2}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=9.99, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='INFORMATICA', idProdottoT=8, idFatturaT=3, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=9.99, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='INFORMATICA', idProdottoT=8, idFatturaT=3, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=22.0, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='FUMETTI_MANGA', idProdottoT=10, idFatturaT=4, idPagCCT=0}]
-set 08, 2025 7:29:31 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
+set 08, 2025 7:47:17 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
 INFORMAZIONI: payment success with id object : PagamentoFattura{nome='giulia', cognome='conforto', ammontare=22.0, idFattura=4, email='giuliaConforto@gmail.eu', idProdotto=10}
-set 08, 2025 7:29:31 PM laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport inizializza
+set 08, 2025 7:47:17 PM laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport inizializza
 INFORMAZIONI: inizializza
-set 08, 2025 7:29:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:17 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : report
-set 08, 2025 7:29:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:17 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-set 08, 2025 7:29:31 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:17 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION report
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:118)
@@ -645,63 +645,63 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION report
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:31 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
 INFORMAZIONI: lista libro by id .
-set 08, 2025 7:29:31 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
 INFORMAZIONI: lista libro by id .
-set 08, 2025 7:29:31 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
 INFORMAZIONI: lista libro by id .
-set 08, 2025 7:29:31 PM laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport insertReport
+set 08, 2025 7:47:17 PM laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport insertReport
 INFORMAZIONI: insert report
-set 08, 2025 7:29:31 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
+set 08, 2025 7:47:17 PM laptop.controller.primoucacquista.ControllerPagamentoCash controlla
 INFORMAZIONI: repo cash correct inserted
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:17 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibroByIdTitoloAutoreLibro
 INFORMAZIONI: lista libro by id .
-set 08, 2025 7:29:32 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
+set 08, 2025 7:47:18 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
 INFORMAZIONI:  id eliminated book 9
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.libro.PersistenzaLibro getLibri
 INFORMAZIONI: peristenza libro getLibri
-set 08, 2025 7:29:32 PM laptop.database.MemoryInitialize inserisci
+set 08, 2025 7:47:18 PM laptop.database.MemoryInitialize inserisci
 INFORMAZIONI: inserted libro in list :
-set 08, 2025 7:29:32 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
+set 08, 2025 7:47:18 PM laptop.controller.primoucacquista.ControllerDownload acquistaLibro
 INFORMAZIONI: update book succesfully!!
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 GRAVE: error with file :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -785,7 +785,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.PagamentoTotalePersistenza <init>
+set 08, 2025 7:47:18 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -870,13 +870,13 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
 INFORMAZIONI: persistenza pagamento fattura inizializza
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : pagamentoFattura
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:118)
@@ -956,11 +956,11 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura listPagamentiByUserF
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura listPagamentiByUserF
 INFORMAZIONI: lisa payment by user:.
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura listPagamentiByUserF
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura listPagamentiByUserF
 INFORMAZIONI: list payment by user : [PagamentoFattura{nome='prova', cognome='prova', ammontare=12.0, idFattura=1, email='', idProdotto=6}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=9.99, idFattura=3, email='giuliaConforto@gmail.eu', idProdotto=8}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=22.0, idFattura=4, email='giuliaConforto@gmail.eu', idProdotto=10}]
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 GRAVE: error with file :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -1044,7 +1044,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.PagamentoTotalePersistenza <init>
+set 08, 2025 7:47:18 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -1129,13 +1129,13 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
 INFORMAZIONI: persistenza pagamento fattura inizializza
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : pagamentoFattura
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:118)
@@ -1215,11 +1215,11 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura listPagamentiByUserF
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura listPagamentiByUserF
 INFORMAZIONI: lisa payment by user:.
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura listPagamentiByUserF
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura listPagamentiByUserF
 INFORMAZIONI: list payment by user : [PagamentoFattura{nome='prova', cognome='prova', ammontare=12.0, idFattura=1, email='', idProdotto=6}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=9.99, idFattura=3, email='giuliaConforto@gmail.eu', idProdotto=8}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=22.0, idFattura=4, email='giuliaConforto@gmail.eu', idProdotto=10}]
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 GRAVE: error with file :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -1303,7 +1303,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.PagamentoTotalePersistenza <init>
+set 08, 2025 7:47:18 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -1388,13 +1388,13 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
 INFORMAZIONI: persistenza pagamento fattura inizializza
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : pagamentoFattura
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:118)
@@ -1474,7 +1474,7 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.PagamentoTotalePersistenza <init>
+set 08, 2025 7:47:18 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -1559,13 +1559,13 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito inizializza
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito inizializza
 INFORMAZIONI: inizializza persistency cc payment
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : pagamentoCC
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION PagamentoCartaCredito
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:118)
@@ -1645,26 +1645,26 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION PagamentoCa
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura cancellaPagamentoFattura
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura cancellaPagamentoFattura
 INFORMAZIONI: persistenza pagamento fattura delete
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura cancellaPagamentoFattura
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura cancellaPagamentoFattura
 INFORMAZIONI: id fattura :.
-set 08, 2025 7:29:32 PM laptop.database.PagamentoTotalePersistenza cancellaFatturaMem
-INFORMAZIONI: id payment :.
-set 08, 2025 7:29:32 PM demo.terzoucgestione.TestGestioneOrdini testAnnullaOrdineCashByUserLogged
+set 08, 2025 7:47:18 PM laptop.database.PagamentoTotalePersistenza cancellaFatturaMem
+INFORMAZIONI: id payment : 4 
+set 08, 2025 7:47:18 PM demo.terzoucgestione.TestGestioneOrdini testAnnullaOrdineCashByUserLogged
 INFORMAZIONI:  status : true
-set 08, 2025 7:29:32 PM laptop.model.user.User annullaUtente
+set 08, 2025 7:47:18 PM laptop.model.user.User annullaUtente
 INFORMAZIONI:  user data is cleaned
 ]]></system-err>
   </testcase>
-  <testcase name="testAnnullaOrdineCCByUSerLogged" classname="demo.terzoucgestione.TestGestioneOrdini" time="0.077">
-    <system-err><![CDATA[set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente initializza
+  <testcase name="testAnnullaOrdineCCByUSerLogged" classname="demo.terzoucgestione.TestGestioneOrdini" time="0.126">
+    <system-err><![CDATA[set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente initializza
 INFORMAZIONI: peristenza utente initialize
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : utente
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION utente
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:118)
@@ -1744,57 +1744,57 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION utente
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
+set 08, 2025 7:47:18 PM laptop.database.secondouclogin.users.PersistenzaUtente getUserData
 INFORMAZIONI: peristenza utente getUSerData
-set 08, 2025 7:29:32 PM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
+set 08, 2025 7:47:18 PM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
 INFORMAZIONI: buying magazine :Rivista{titolo='null', editore='null', id=2, autore='null'}
-set 08, 2025 7:29:32 PM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
+set 08, 2025 7:47:18 PM laptop.controller.primoucacquista.ControllerAcquista getNomeCostoDisp
 INFORMAZIONI: buying magazine :Rivista{titolo='null', editore='null', id=2, autore='null'}
-set 08, 2025 7:29:32 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaAnno
+set 08, 2025 7:47:18 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaAnno
 INFORMAZIONI:  year is correct : 2032
-set 08, 2025 7:29:32 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaMese
+set 08, 2025 7:47:18 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaMese
 INFORMAZIONI:  month is correct : 9
-set 08, 2025 7:29:32 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaGiorno
+set 08, 2025 7:47:18 PM laptop.controller.primoucacquista.ControllerPagamentoCC checkCorrettezzaGiorno
 INFORMAZIONI:  giorno is correct : 11
-set 08, 2025 7:29:32 PM laptop.database.PagamentoTotalePersistenza <init>
+set 08, 2025 7:47:18 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -1879,13 +1879,13 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito inizializza
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito inizializza
 INFORMAZIONI: inizializza persistency cc payment
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : pagamentoCC
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION PagamentoCartaCredito
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:118)
@@ -1965,21 +1965,21 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION PagamentoCa
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito inserisciPagamentoCartaCredito
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito inserisciPagamentoCartaCredito
 INFORMAZIONI: inizializza persistency insert cc payment
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito inserisciPagamentoCartaCredito
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito inserisciPagamentoCartaCredito
 INFORMAZIONI: payment is wrote [PagamentoCartaCredito{idProdotto=3, cognomeUtente='prova', idPagCC=1, nomeUtente='prova', spesaTotale=2.0, email=''}, PagamentoCartaCredito{idProdotto=3, cognomeUtente='Editore Prova', idPagCC=2, nomeUtente='Editore Prova', spesaTotale=2.0, email='editore185@gmail.com'}, PagamentoCartaCredito{idProdotto=2, cognomeUtente='prova', idPagCC=3, nomeUtente='prova', spesaTotale=2.0, email='giuliaConforto@gmail.eu'}]
-set 08, 2025 7:29:32 PM laptop.database.PagamentoTotalePersistenza lista
+set 08, 2025 7:47:18 PM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI:  list read [PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=5.0, emailT='', tipoAcquistoT='MENSILE', idProdottoT=1, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=1, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='Editore Prova', cognomeT='Editore Prova', ammontareT=2.0, emailT='editore185@gmail.com', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=2}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=9.99, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='INFORMATICA', idProdottoT=8, idFatturaT=3, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=9.99, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='INFORMATICA', idProdottoT=8, idFatturaT=3, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=22.0, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='FUMETTI_MANGA', idProdottoT=10, idFatturaT=4, idPagCCT=0}]
-set 08, 2025 7:29:32 PM laptop.database.PagamentoTotalePersistenza lista
+set 08, 2025 7:47:18 PM laptop.database.PagamentoTotalePersistenza lista
 INFORMAZIONI: list tota payments [PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=5.0, emailT='', tipoAcquistoT='MENSILE', idProdottoT=1, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=1, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='Editore Prova', cognomeT='Editore Prova', ammontareT=2.0, emailT='editore185@gmail.com', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=2}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=9.99, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='INFORMATICA', idProdottoT=8, idFatturaT=3, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='prova', cognomeT='prova', ammontareT=12.0, emailT='', tipoAcquistoT='FANTASCIENZA_FANTASY', idProdottoT=6, idFatturaT=1, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=4.0, emailT='zerocalcare@gmail.com', tipoAcquistoT='SETTIMANALE', idProdottoT=3, idFatturaT=2, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=9.99, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='INFORMATICA', idProdottoT=8, idFatturaT=3, idPagCCT=0}, PagamentoTotale{metodoT='cash', nomeT='giulia', cognomeT='conforto', ammontareT=22.0, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='FUMETTI_MANGA', idProdottoT=10, idFatturaT=4, idPagCCT=0}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=1}, PagamentoTotale{metodoT='cCredito', nomeT='Editore Prova', cognomeT='Editore Prova', ammontareT=2.0, emailT='editore185@gmail.com', tipoAcquistoT='QUOTIDIANO', idProdottoT=3, idFatturaT=0, idPagCCT=2}, PagamentoTotale{metodoT='cCredito', nomeT='prova', cognomeT='prova', ammontareT=2.0, emailT='giuliaConforto@gmail.eu', tipoAcquistoT='MENSILE', idProdottoT=2, idFatturaT=0, idPagCCT=3}]
-set 08, 2025 7:29:32 PM laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport inizializza
+set 08, 2025 7:47:18 PM laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport inizializza
 INFORMAZIONI: inizializza
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : report
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION report
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:118)
@@ -2059,17 +2059,17 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION report
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport insertReport
+set 08, 2025 7:47:18 PM laptop.database.terzoucgestioneprofiloggetto.report.PersistenzaReport insertReport
 INFORMAZIONI: insert report
-set 08, 2025 7:29:32 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
+set 08, 2025 7:47:18 PM laptop.controller.primoucacquista.ControllerPagamentoCC pagamentoCC
 INFORMAZIONI: repo cc correct inserted
-set 08, 2025 7:29:32 PM laptop.controller.primoucacquista.ControllerDownload acquistaRivista
+set 08, 2025 7:47:18 PM laptop.controller.primoucacquista.ControllerDownload acquistaRivista
 INFORMAZIONI:  id eliminated magazine1
-set 08, 2025 7:29:32 PM laptop.database.MemoryInitialize inserisci
+set 08, 2025 7:47:18 PM laptop.database.MemoryInitialize inserisci
 INFORMAZIONI: inserted rivista in list : 
-set 08, 2025 7:29:32 PM laptop.controller.primoucacquista.ControllerDownload acquistaRivista
+set 08, 2025 7:47:18 PM laptop.controller.primoucacquista.ControllerDownload acquistaRivista
 INFORMAZIONI: update magazine succesfully!!
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 GRAVE: error with file :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -2153,7 +2153,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.PagamentoTotalePersistenza <init>
+set 08, 2025 7:47:18 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -2238,13 +2238,13 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
 INFORMAZIONI: persistenza pagamento fattura inizializza
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : pagamentoFattura
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:118)
@@ -2324,11 +2324,11 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura listPagamentiByUserF
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura listPagamentiByUserF
 INFORMAZIONI: lisa payment by user:.
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura listPagamentiByUserF
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura listPagamentiByUserF
 INFORMAZIONI: list payment by user : [PagamentoFattura{nome='prova', cognome='prova', ammontare=12.0, idFattura=1, email='', idProdotto=6}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=9.99, idFattura=3, email='giuliaConforto@gmail.eu', idProdotto=8}]
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 GRAVE: error with file :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -2412,7 +2412,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.PagamentoTotalePersistenza <init>
+set 08, 2025 7:47:18 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -2497,13 +2497,13 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
 INFORMAZIONI: persistenza pagamento fattura inizializza
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : pagamentoFattura
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:118)
@@ -2583,11 +2583,11 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura listPagamentiByUserF
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura listPagamentiByUserF
 INFORMAZIONI: lisa payment by user:.
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura listPagamentiByUserF
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura listPagamentiByUserF
 INFORMAZIONI: list payment by user : [PagamentoFattura{nome='prova', cognome='prova', ammontare=12.0, idFattura=1, email='', idProdotto=6}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=4.0, idFattura=2, email='zerocalcare@gmail.com', idProdotto=3}, PagamentoFattura{nome='giulia', cognome='conforto', ammontare=9.99, idFattura=3, email='giuliaConforto@gmail.eu', idProdotto=8}]
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.MemoriaFattura inizializza
 GRAVE: error with file :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -2671,7 +2671,7 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoFattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.PagamentoTotalePersistenza <init>
+set 08, 2025 7:47:18 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -2756,13 +2756,13 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentofattura.PersistenzaPagamentoFattura inizializza
 INFORMAZIONI: persistenza pagamento fattura inizializza
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : pagamentoFattura
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:118)
@@ -2842,7 +2842,7 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION fattura
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.PagamentoTotalePersistenza <init>
+set 08, 2025 7:47:18 PM laptop.database.PagamentoTotalePersistenza <init>
 GRAVE: excpetion  has occurred !! :
 java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.ser
 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
@@ -2927,13 +2927,13 @@ java.nio.file.FileAlreadyExistsException: memory/serializzazionePagamentoTotale.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito inizializza
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito inizializza
 INFORMAZIONI: inizializza persistency cc payment
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 INFORMAZIONI: checking files of type : pagamentoCC
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception type has occurred :class com.opencsv.exceptions.CsvValidationException
-set 08, 2025 7:29:32 PM laptop.database.PersistenzaGenerale getExcepptionInit
+set 08, 2025 7:47:18 PM laptop.database.PersistenzaGenerale getExcepptionInit
 GRAVE: exception :
 com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION PagamentoCartaCredito
 	at laptop.database.PersistenzaGenerale.getExcepptionInit(PersistenzaGenerale.java:118)
@@ -3013,15 +3013,15 @@ com.opencsv.exceptions.CsvValidationException: CSVALIDATIONEXCEPTION PagamentoCa
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
 
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito cancellaPagamentoCartaCredito
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentocartacredito.PersistenzaPagamentoCartaCredito cancellaPagamentoCartaCredito
 INFORMAZIONI: inizializza persistency delete cc payment
-set 08, 2025 7:29:32 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito cancellaPagamentoCartaCredito
+set 08, 2025 7:47:18 PM laptop.database.primoucacquista.pagamentocartacredito.MemoriaPagamentoCartaCredito cancellaPagamentoCartaCredito
 INFORMAZIONI: id payment : 3
-set 08, 2025 7:29:32 PM laptop.database.PagamentoTotalePersistenza cancellaPagCCMem
-INFORMAZIONI: id payment :.
-set 08, 2025 7:29:32 PM demo.terzoucgestione.TestGestioneOrdini testAnnullaOrdineCCByUSerLogged
+set 08, 2025 7:47:18 PM laptop.database.PagamentoTotalePersistenza cancellaPagCCMem
+INFORMAZIONI: id payment : 3
+set 08, 2025 7:47:18 PM demo.terzoucgestione.TestGestioneOrdini testAnnullaOrdineCCByUSerLogged
 INFORMAZIONI:  status : true
-set 08, 2025 7:29:32 PM laptop.model.user.User annullaUtente
+set 08, 2025 7:47:18 PM laptop.model.user.User annullaUtente
 INFORMAZIONI:  user data is cleaned
 ]]></system-err>
   </testcase>

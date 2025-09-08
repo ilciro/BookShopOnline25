@@ -371,7 +371,7 @@ public class PagamentoTotalePersistenza {
 <span class="pc" id="L371">        }</span>
 <span class="fc bfc" id="L372" title="All 2 branches covered.">        for (int i = 0; i &lt; list.size(); i++) {</span>
 <span class="fc bfc" id="L373" title="All 2 branches covered.">            if (i == f.getIdFattura()-1) {</span>
-<span class="fc" id="L374">                Logger.getLogger(&quot;cancella fattura&quot;).log(Level.INFO,&quot;id payment :.&quot;,f.getIdFattura());</span>
+<span class="fc" id="L374">                Logger.getLogger(&quot;cancella fattura&quot;).log(Level.INFO,&quot;id payment : {0} &quot;,f.getIdFattura());</span>
 
 <span class="fc" id="L376">                status = list.remove(list.get(i));</span>
 
@@ -398,7 +398,7 @@ public class PagamentoTotalePersistenza {
 <span class="pc" id="L398">        }</span>
 <span class="fc bfc" id="L399" title="All 2 branches covered.">        for (int i = 0; i &lt; list.size(); i++) {</span>
 <span class="fc bfc" id="L400" title="All 2 branches covered.">            if (i == pcc.getIdPagCC()-1) {</span>
-<span class="fc" id="L401">                Logger.getLogger(&quot;cancella fattura&quot;).log(Level.INFO,&quot;id payment :.&quot;, pcc.getIdPagCC());</span>
+<span class="fc" id="L401">                Logger.getLogger(&quot;cancella fattura&quot;).log(Level.INFO,&quot;id payment : {0}&quot;, pcc.getIdPagCC());</span>
 
 <span class="fc" id="L403">                status = list.remove(list.get(i));</span>
 

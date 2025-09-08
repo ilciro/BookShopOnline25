@@ -371,7 +371,7 @@ public class PagamentoTotalePersistenza {
         }
         for (int i = 0; i < list.size(); i++) {
             if (i == f.getIdFattura()-1) {
-                Logger.getLogger("cancella fattura").log(Level.INFO,"id payment :.",f.getIdFattura());
+                Logger.getLogger("cancella fattura").log(Level.INFO,"id payment : {0} ",f.getIdFattura());
 
                 status = list.remove(list.get(i));
 
@@ -398,7 +398,7 @@ public class PagamentoTotalePersistenza {
         }
         for (int i = 0; i < list.size(); i++) {
             if (i == pcc.getIdPagCC()-1) {
-                Logger.getLogger("cancella fattura").log(Level.INFO,"id payment :.", pcc.getIdPagCC());
+                Logger.getLogger("cancella fattura").log(Level.INFO,"id payment : {0}", pcc.getIdPagCC());
 
                 status = list.remove(list.get(i));
 

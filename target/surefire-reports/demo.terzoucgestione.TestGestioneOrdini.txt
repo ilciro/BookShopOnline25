@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: demo.terzoucgestione.TestGestioneOrdini
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.298 s - in demo.terzoucgestione.TestGestioneOrdini
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.18 s - in demo.terzoucgestione.TestGestioneOrdini

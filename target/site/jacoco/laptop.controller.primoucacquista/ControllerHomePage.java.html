@@ -57,7 +57,7 @@ import java.util.logging.Logger;
 <span class="fc" id="L57">            case MEMORIA -&gt; pR = new MemoriaRivista();</span>
 <span class="nc" id="L58">            default -&gt; Logger.getLogger(&quot;inizializza rivista&quot;).log(Level.SEVERE,&quot;persistency magazine book is wrong!!&quot;);</span>
         }
-<span class="fc" id="L60">        Logger.getLogger(&quot;inizializzazione rivista&quot;).log(Level.INFO,&quot;type of persistency of magazine {0}&quot;,pR.toString());</span>
+<span class="fc" id="L60">        Logger.getLogger(&quot;inizializzazione rivista&quot;).log(Level.INFO,&quot;type of persistency of magazine {0}&quot;,pR);</span>
 <span class="fc" id="L61">    }</span>
 
     public void persistenza(String type) {
